@@ -3,16 +3,17 @@
 import { FC } from "react";
 
 interface DarkModeToggleProps {
-  toggleDarkMode: () => void;
-}
+    toggleDarkMode: () => void;
+    isDarkMode: boolean; // Add isDarkMode prop
+  }
 
-const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode }) => {
+const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode }) => {
   return (
     <button
       onClick={toggleDarkMode}
-      className="mt-4 p-2 rounded bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+      className="transition-all duration-200 p-4 rounded-full border-2 border-foreground text-foreground hover:scale-120 hover:border-background hover:bg-neutral-800 hover:dark:bg-neutral-200 hover:text-background font-bold tracking-tight"
     >
-      Toggle Themes
+      {isDarkMode ? 'Light' : 'Dark'} 
     </button>
   );
 };

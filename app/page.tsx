@@ -6,7 +6,7 @@ export default function Home(){
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-10 row-start-2 items-center sm:items-start">
-        <h1 className="transition-all hover:text-neutral-300 hover:text-6xl text-5xl font-bold tracking-tight">
+        <h1 className="transition-all drop-shadow text-foreground hover:text-neutral-300 hover:text-6xl text-5xl font-bold tracking-tight">
           Hello World.
           </h1>
         {/* <Image
@@ -30,7 +30,7 @@ export default function Home(){
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
-            className="rounded-full transition-all flex items-center justify-center bg-foreground font-bold text-background dark:text-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-neutral-100 text-sm text-neutral-100 hover:text-neutral-900 sm:text-base h-10 sm:h-12 px-5 sm:min-w-44 hover:scale-105"
+            className="rounded-full transition-all flex items-center justify-center bg-background drop-shadow-md hover:drop-shadow-xl font-bold text-foreground sm:text-base h-10 sm:h-12 px-5 sm:min-w-44 hover:scale-105"
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
@@ -38,7 +38,7 @@ export default function Home(){
             Button 1
           </a>
           <a
-            className="rounded-full transition-all flex items-center justify-center bg-neutral-200 font-bold text-foreground dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-800 dark:hover:text-neutral-100 text-sm text-neutral-100 hover:text-neutral-100 sm:text-base h-10 sm:h-12 px-5 sm:min-w-44 hover:scale-105"
+            className="rounded-full transition-all flex items-center justify-center bg-background drop-shadow-md hover:drop-shadow-xl font-bold text-foreground sm:text-base h-10 sm:h-12 px-5 sm:min-w-44 hover:scale-105"
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"

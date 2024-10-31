@@ -22,7 +22,7 @@ const geistMono = localFont({
 // };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -31,10 +31,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   
   return (
     <html className={isDarkMode ? "dark" : ""}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <DarkModeToggle toggleDarkMode={toggleDarkMode} />
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen transition-all`}>
+        <main className="flex-grow">{children}</main>
+        <footer className="fixed bottom-14 left-0 right-14 flex gap-10 flex-wrap items-center justify-end "> {/* Fixed footer */}
+        <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
+        </footer>
       </body>
     </html>
   );
+  
+  
 }
