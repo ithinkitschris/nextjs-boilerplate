@@ -1,7 +1,7 @@
 'use client';
 import {useState} from "react";
 import DarkModeToggle from "./dark-mode-toggle";
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -39,6 +39,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </body>
     </html>
   );
-  
-  
 }
