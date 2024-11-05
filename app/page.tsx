@@ -28,32 +28,36 @@ export default function Home(){
           <li>
             But for now, this page is a shell for whats to come.
             <br />
-            If youd like to follow my progress, you may check out
+            If you would like to follow my progress, you may check 
             <br />
-            my documentation of the process below.
+            out my documentation of the process below, or my 
+            <br /> 
+            pre-existing website whose days are numbered.
           </li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row mt-2 -ml-1">
-          <Link href="/resume"
+          <a href="https://hissing-sphere-1e7.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f"
               className="rounded-full transition-all flex items-center justify-center 
               bg-background drop-shadow font-bold text-foreground 
               dark:border-2 dark:border-neutral-500
               sm:text-base h-10 sm:h-12 px-5 sm:min-w-36 
               hover:scale-105 hover:drop-shadow-xl" 
+              target="_blank"
               rel="noopener noreferrer"
             >
-              Resume
-          </Link>
-          <Link href="/gallery"
+              Documentation
+          </a>
+          <a href="http://ithinkitschris.com"
             className="rounded-full transition-all flex items-center justify-center 
             bg-background drop-shadow hover:drop-shadow-xl font-bold text-foreground 
             dark:border-2 dark:border-neutral-500
             sm:text-base h-10 sm:h-12 px-5 sm:min-w-36 hover:scale-105"
+            target="_blank"
             rel="noopener noreferrer"
           >
-            Work
-          </Link>
+            Current Portfolio
+          </a>
         </div>
       
       </main>
