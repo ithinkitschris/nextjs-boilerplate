@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-// import Image from "next/image";
 export default function Home(){
 
 
@@ -13,14 +12,6 @@ export default function Home(){
           hover:text-6xl text-5xl font-bold tracking-tight">
           Hello World.
           </h1>
-        {/* <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={200}
-          height={38}
-          priority
-        /> */}
         <ol className="list-inside text-sm text-center sm:text-left">
           <li className="mb-2 font-bold">
             I am Chris. Welcome to my Portfolio.
