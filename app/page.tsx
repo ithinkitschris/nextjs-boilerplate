@@ -20,15 +20,15 @@ export default function Home(){
             <br />
               the intent is for this site to be ever iterating
             <br />
-              based on your input and how you'd like it to be.
+              based on your input and how you would like it to be.
           </li>
           <li className="mt-2 mb-2 font-bold">
            Yes, you.
           </li>
           <li>
-            But for now, this page is a shell for what's to come.
+            But for now, this page is a shell for whats to come.
             <br />
-            If you'd like to follow my progress, you may check out
+            If youd like to follow my progress, you may check out
             <br />
             my documentation of the process below.
           </li>
