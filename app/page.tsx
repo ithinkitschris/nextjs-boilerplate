@@ -7,8 +7,9 @@ export default function Home(){
     <div className="grid grid-rows-[10px_1fr_10px] items-center justify-items-center 
     min-h-screen p-8 pb-20 gap-15 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 className="transition-all drop-shadow text-foreground -ml-1
-          hover:text-6xl text-5xl font-bold tracking-tight">
+        <h1 className="text-foreground -ml-1
+          hover:text-6xl text-5xl font-bold tracking-tight
+          transition-all">
           Hello World.
           </h1>
         <ol className="list-inside text-sm text-center sm:text-left">
@@ -37,21 +38,24 @@ export default function Home(){
 
         <div className="flex gap-4 items-center flex-col sm:flex-row mt-2 -ml-1">
           <a href="https://hissing-sphere-1e7.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f"
-              className="rounded-full transition-all flex items-center justify-center 
-              bg-background drop-shadow font-bold text-foreground 
-              dark:border-2 dark:border-neutral-500
-              sm:text-base h-10 sm:h-12 px-5 sm:min-w-36 
-              hover:scale-105 hover:drop-shadow-xl" 
+              className="rounded-full flex items-center justify-center 
+              bg-background border-1.5 border-background drop-shadow font-bold text-foreground 
+              dark:border-1.5 dark:border-neutral-500
+              text-sm h-10 sm:h-12 px-5 sm:min-w-36 
+              hover:scale-105 hover:drop-shadow-xl
+              transition-all"
               target="_blank"
               rel="noopener noreferrer"
             >
               Documentation
           </a>
           <a href="http://ithinkitschris.com"
-            className="rounded-full transition-all flex items-center justify-center 
-            bg-background drop-shadow hover:drop-shadow-xl font-bold text-foreground 
-            dark:border-2 dark:border-neutral-500
-            sm:text-base h-10 sm:h-12 px-5 sm:min-w-36 hover:scale-105"
+            className="rounded-full flex items-center justify-center 
+              bg-background border-1.5 border-background drop-shadow font-bold text-foreground 
+              dark:border-1.5 dark:border-neutral-500
+              text-sm h-10 sm:h-12 px-5 sm:min-w-36 
+              hover:scale-105 hover:drop-shadow-xl
+              transition-all"
             target="_blank"
             rel="noopener noreferrer"
           >

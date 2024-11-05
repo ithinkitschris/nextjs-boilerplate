@@ -5,11 +5,13 @@
 :root {
   --background: #f4f4f4;
   --foreground: #1c1c1c;
+  --midground: #848484;
 }
 
 .dark {
   --background: #1c1c1c;
   --foreground: #f4f4f4;
+  --midground: #848484;
 }
 
 /* @media (prefers-color-scheme: dark) {

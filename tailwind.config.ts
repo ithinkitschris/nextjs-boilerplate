@@ -9,9 +9,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderWidth: {
+      1: '1px',
+      1.5: '1.5px',
+      },
+      spacing: {
+        18: "4.5rem",
+        54: "13.5rem", // Customize this value as needed
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        midground: "var(--midground)",
       },
       scale: {
         '120':'1.20',
