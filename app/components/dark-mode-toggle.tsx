@@ -11,7 +11,13 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
   return (
     <button
       onClick={toggleDarkMode}
-      className="transition-all duration-200 p-4 rounded-full border-2 border-foreground text-foreground hover:scale-120 hover:border-background hover:bg-neutral-800 hover:dark:bg-neutral-200 hover:text-background font-bold tracking-tight"
+      className="
+      transition-all duration-200 
+      p-3 rounded-full border-2 border-foreground text-foreground 
+      hover:scale-110 hover:bg-foreground
+      hover:dark:bg-foreground hover:text-background 
+      font-bold tracking-tight
+      "
     >
       {isDarkMode ? 'Light' : 'Dark'} 
     </button>
