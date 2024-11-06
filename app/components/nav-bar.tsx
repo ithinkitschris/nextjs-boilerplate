@@ -3,8 +3,8 @@ import Link from 'next/link';
 const Navbar = () => {
     return (
         <nav className="
-        fixed top-2 left-10 right-0 p-5 
-        flex justify-center sm:justify-start items-center z-10
+        flex justify-center sm:justify-start sm:ml-8 sm: mt-1 items-center z-10
+        fixed top-0 left-0 w-full p-5
         tracking-tight">
             <div className="flex gap-6">
                 <Link href="/"
