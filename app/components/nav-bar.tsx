@@ -5,7 +5,7 @@ const Navbar = () => {
         <nav className="
         fixed top-1 left-5 right-0 p-5 
         flex justify-center sm:justify-start items-center z-10
-        font-bold text-sm tracking-tight">
+        font-bold tracking-tight">
             <div className="flex gap-6">
                 <Link href="/"
                 className="hover:text-midground hover:scale-95 transition-all mr-1.5">
