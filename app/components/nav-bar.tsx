@@ -8,15 +8,19 @@ const Navbar = () => {
         tracking-tight">
             <div className="flex gap-6">
                 <Link href="/"
-                className="hover:text-midground hover:scale-95 transition-all mr-1.5">
+                className="hover:text-midground hover:scale-95 transition-transform mr-1.5">
                     Home
                 </Link>
                 <Link href="/pages/resume"
-                className="hover:text-midground hover:scale-95 transition-all">
+                className="hover:text-midground hover:scale-95 transition-transform">
                     Resume
                 </Link>
+                {/* <Link href="/pages/gallery"
+                className="hover:text-midground hover:scale-95 transition-transform">
+                    Gallery
+                </Link> */}
                 <Link href="/pages/sandbox"
-                className="hover:text-midground hover:scale-95 transition-all">
+                className="hover:text-midground hover:scale-95 transition-transform">
                     Sandbox
                 </Link>
             </div>

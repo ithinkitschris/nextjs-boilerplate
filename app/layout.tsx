@@ -28,7 +28,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   
   return (
     <html className={isDarkMode ? "dark" : ""}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen transition-all`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} 
+      antialiased flex flex-col min-h-screen
+      bg-background transition-all duration-200`}>
         <Navbar />
           <main className="flex-grow">{children}</main>
             <footer className="fixed bottom-8 left-0 right-0 flex gap-3 flex-wrap items-center justify-between px-10"> 
