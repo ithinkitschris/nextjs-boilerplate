@@ -1,14 +1,22 @@
 'use client';
+import {motion} from "framer-motion"
+
 export default function Home(){
+
+
 
 
   return (
     
-    <div className="grid grid-cols-1 sm:grid-cols-3 items-center justify-items-center 
+    <div className="grid grid-cols-1 sm:grid-cols-5 items-center justify-items-center 
     min-h-screen p-8 pb-20 gap-15 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col col-start-2 px-10 gap-8 items-center sm:items-start">
+      <motion.main 
+      className="flex flex-col col-start-2 2xl:col-start-3 2xl:col-span-1 col-span-3 px-10 gap-8 items-center sm:items-start"
+      initial={{opacity:0, y:20}}
+      animate={{opacity:1, y:0}}
+      transition={{duration:0.4, ease:"easeOut"}}>
         <h1 className="text-foreground -ml-1 -mb-3
-          text-5xl hover:text-6xl tracking-tight
+          text-5xl tracking-tight
           transition-all">
           Hello World.
           </h1>
@@ -28,32 +36,40 @@ export default function Home(){
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row mt-2 -ml-1">
-          <a href="https://hissing-sphere-1e7.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f"
+          <motion.div
+          initial={{opacity:0, y:10}}
+          animate={{opacity:1, y:0}}
+          transition={{duration:0.3, ease:"easeOut"}}>
+            <a href="https://hissing-sphere-1e7.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f"
+                className="rounded-full flex items-center justify-center 
+                bg-background border-1.5 border-midground font-semibold text-foreground
+                text-sm h-10 px-3 sm:min-w-36 
+                hover:scale-105 hover:drop-shadow-md hover:border-background
+                transition-all"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Documentation
+            </a>
+          </motion.div>
+          <motion.div
+          initial={{opacity:0, y:10}}
+          animate={{opacity:1, y:0}}
+          transition={{delay:0.1, duration:0.3, ease:"easeOut"}}>
+            <a href="http://ithinkitschris.com"
               className="rounded-full flex items-center justify-center 
-              bg-background border-1.5 border-midground font-semibold text-foreground
-              text-sm h-10 px-3 sm:min-w-36 
-              hover:scale-105 hover:drop-shadow-xl hover:border-background
-              transition-all"
+                bg-background border-1.5 border-midground font-semibold text-foreground 
+                text-sm h-10 px-3 sm:min-w-36 
+                hover:scale-105 hover:drop-shadow-md hover:border-background 
+                transition-all"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Documentation
-          </a>
-          <a href="http://ithinkitschris.com"
-            className="rounded-full flex items-center justify-center 
-              bg-background border-1.5 border-midground font-semibold text-foreground 
-              text-sm h-10 px-3 sm:min-w-36 
-              hover:scale-105 hover:drop-shadow-xl hover:border-background 
-              transition-all"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Current Portfolio
-          </a>
-          
+              Current Portfolio
+            </a>
+          </motion.div>
         </div>
-      
-      </main>
+      </motion.main>
       {/* <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"

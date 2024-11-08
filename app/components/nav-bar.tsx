@@ -11,13 +11,13 @@ const Navbar = () => {
                 className="hover:text-midground hover:scale-95 transition-all mr-1.5">
                     Home
                 </Link>
-                <Link href="/resume"
+                <Link href="/pages/resume"
                 className="hover:text-midground hover:scale-95 transition-all">
                     Resume
                 </Link>
-                <Link href="/gallery"
+                <Link href="/pages/sandbox"
                 className="hover:text-midground hover:scale-95 transition-all">
-                    Gallery
+                    Sandbox
                 </Link>
             </div>
         </nav>
