@@ -26,13 +26,15 @@ export default function Home(){
 
       <motion.video 
       src="/CCS/montageFade.mp4" 
-      className="absolute top-0 left-0 w-full h-full object-cover rounded-full -z-10 scale-100 blur-3xl saturate-200 opacity-100"
+      className="absolute top-0 left-0 w-full h-full 
+      object-cover rounded-full -z-10 scale-100 
+      blur-3xl saturate-200 opacity-0 dark:opacity-100"
       autoPlay 
       muted 
       loop
-      initial={{opacity:0}}
-      animate={{opacity:1}}
-      transition={{duration:1, ease:"easeOut"}}
+      // initial={{opacity:0}}
+      // animate={{opacity:1}}
+      // transition={{duration:1, ease:"easeOut"}}
       ></motion.video>
 
       <motion.main 
@@ -42,13 +44,13 @@ export default function Home(){
       variants={animateIn}> 
 
         <motion.h1 className="text-background -ml-1 -mb-3
-          text-8xl tracking-tighter transition-colors font-light text-center sm:text-left dark:text-foreground whitespace-nowrap"
+          text-8xl tracking-tighter transition-colors font-light text-center sm:text-left text-foreground whitespace-nowrap"
           variants={animateInChild}>
           Hello World.<br/>
         </motion.h1>
 
 
-        <motion.ol className="list-insid text-background text-sm text-center sm:text-left dark:text-foreground"
+        <motion.ol className="list-insid text-sm text-center sm:text-left text-foreground"
         variants={animateInChild}>
           <li className="mb-4 text-xl">
             Welcome to my Portfolio. <span className="text-xs align-top italic">Well, kinda. Not quite yet.</span>
@@ -64,15 +66,15 @@ export default function Home(){
           </li>
         </motion.ol>
 
-        <div className="flex gap-3 items-center flex-col sm:flex-row mt-2 -ml-1">
+        <div className="flex gap-2 items-center flex-row mt-2 -ml-1">
         <motion.div
           variants={animateInChild}>
             <Link href="/resume"
-              className="rounded-full flex items-center justify-center 
-                border-1.5 border-background font-semibold text-background 
+              className="rounded-full flex items-center justify-center
+                border-1.5 border-foreground font-semibold text-foreground 
                 text-sm h-10 px-1 sm:min-w-24 
-                hover:scale-110 hover:border-background hover:text-foreground hover:bg-background 
-                dark:border-foreground dark:text-foreground dark:hover:text-background dark:hover:bg-foreground
+                hover:scale-90 hover:border-foreground hover:drop-shadow-none
+                dark:border-foreground dark:text-foreground
                 transition-all"
             >
               Who am I?
@@ -82,11 +84,11 @@ export default function Home(){
           <motion.div
           variants={animateInChild}>
             <a href="https://hissing-sphere-1e7.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f"
-                className="rounded-full flex items-center justify-center 
-                border-1.5 border-background font-semibold text-background
-                text-sm h-10 px-3 sm:min-w-32 
-                hover:scale-110 hover:border-background hover:text-foreground hover:bg-background 
-                dark:border-foreground dark:text-foreground dark:hover:text-background dark:hover:bg-foreground
+                className="rounded-full flex items-center justify-center
+                border-1.5 border-foreground font-semibold text-foreground 
+                text-sm h-10 px-1 sm:min-w-40 
+                hover:scale-93 hover:border-foreground hover:drop-shadow-none
+                dark:border-foreground dark:text-foreground
                 transition-all"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -98,11 +100,11 @@ export default function Home(){
           <motion.div
           variants={animateInChild}>
             <a href="http://ithinkitschris.com"
-              className="rounded-full flex items-center justify-center 
-                border-1.5 border-background font-semibold text-background 
-                text-sm h-10 px-3 sm:min-w-36 
-                hover:scale-110 hover:border-background hover:text-foreground hover:bg-background 
-                dark:border-foreground dark:text-foreground dark:hover:text-background dark:hover:bg-foreground
+              className="rounded-full flex items-center justify-center
+                border-1.5 border-foreground font-semibold text-foreground 
+                text-sm h-10 px-1 sm:min-w-54 
+                hover:scale-95 hover:border-foreground hover:drop-shadow-none
+                dark:border-foreground dark:text-foreground
                 transition-all"
               target="_blank"
               rel="noopener noreferrer"

@@ -21,39 +21,41 @@ show: {
     
     return(
         
-        <motion.div className="grid grid-cols-3 gap-10
+        <motion.div className="grid grid-cols-6 gap-3
         p-4 sm:p-10 mt-6 max-w-full font-[family-name:var(--font-geist-sans)]"
         initial="hidden"
         animate="show"
         variants={animateIn}>
 
-            {/* <motion.video 
-            src="/CCS/montageFade.mp4" 
-            className="absolute top-52 left-0 w-full h-2/3 object-cover rounded-full -z-10 blur-3xl saturate-200"
+            {/* Background Glow */}
+            <video 
+            src="/CCS/montagefade.mp4" 
+            className="absolute top-40 left-0 w-full h-2/3 object-cover rounded-full -z-10 
+            opacity-0 dark:opacity-100 blur-3xl saturate-200"
             autoPlay 
             muted 
             loop
-            initial={{opacity:0}}
-            animate={{opacity:1}}
-            transition={{duration:0.5, ease:"easeOut"}}
-            ></motion.video> */}
-
+            ></video>
+            
+            {/* Header */}
             <motion.div 
-            className="mt-2 tracking-tighter col-span-3"
+            className="tracking-tighter col-span-full mt-2 mb-8"
             variants={animateInChild}>
-                <h1 className="text-7xl sm:text-8xl text-center sm:text-left font-light tracking-tighter -ml-2.5 mt-4 sm:mt-0">Beyond The Cabin</h1>
+                <h1 className="text-7xl sm:text-8xl text-center sm:text-left font-base tracking-tighter -ml-2 mt-4 sm:mt-0">Beyond The Cabin</h1>
                 <p className="text-3xl text-center sm:text-left">Brand Campaign for Singapore Airlines</p>
             </motion.div> 
 
+            {/* Banner Video */}
             <motion.video src="/CCS/montage.mp4" 
-            className="col-span-full drop-shadow-lg rounded-xl w-full h-screen/2 lg:w-full lg:h-auto object-cover"
+            className="col-span-full drop-shadow-lg rounded-xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop
             variants={animateInChild}
             // whileHover={{scale:1.01}}
             >
             </motion.video>
 
-            <div className="col-span-full sm:col-span-2">
+            {/* Subheader */}
+            <div className="col-span-full sm:col-span-4">
                 <motion.div className="text-3xl tracking-tight text-center sm:text-left" variants={animateInChild}>
                 6 Cities. 6 Cabin Crew. 6 Passions. <br/>
                 Journey beyond the cabin with our cabin crew.
@@ -61,7 +63,8 @@ show: {
                 </motion.div>
             </div>
 
-            <div className="flex flex-row col-span-full sm:col-span-1 px-4 sm:px-0 justify-between">
+            {/* Project Details */}
+            <div className="flex flex-row col-span-full sm:col-span-2 px-4 sm:px-0 justify-between">
                 <motion.div variants={animateInChild}>
                     Role:
                     <ol className="mt-2">
@@ -84,7 +87,8 @@ show: {
                 </motion.div>
             </div>
 
-            <div className="flex flex-col sm:flex-row col-span-full px-4 sm:px-0 gap-10">
+            {/* Writeup */}
+            <div className="flex flex-col sm:flex-row col-span-full px-4 sm:px-0 gap-10 mt-6 mb-24 mr-7">
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2">The Ask:</p>
                     <p>Singapore Airlines Cabin Crew are commonly seen as being one-dimensional - from misconceptions of misogyny to them being just “servants of the cabin”. As part of the Welcome to World Class brand campaign, we want to dimensionalise Cabin Crew by “freeing” them in their portrayals, going from just “servants of the cabin” to modern, informed and relatable travelers of the world outside of the cabin.</p>
@@ -102,19 +106,97 @@ show: {
                 </motion.div>
             </div>
 
+{/*             
             <motion.img 
                 src="/CCS/End Frame KV.jpg"
-                className="col-span-full sm:col-span-2 px-4 sm:px-0 mt-10
-                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                className="col-span-full px-4 sm:px-0 mt-10
+                w-full drop-shadow-lg hover:drop-shadow-xl rounded-lg 
                 object-cover transition-scale duration-200"
                 variants={animateInChild}
                 whileHover={{scale:1.01}}>
-            </motion.img>
+            </motion.img> */}
 
-            <motion.div className="text-3xl tracking-tight text-start sm:text-left sm:w-2/6" variants={animateInChild}>
-            Key Visual design
-            </motion.div>         
+
+            <div className="flex flex-col gap-4 col-span-full lg:col-span-3 px-4 sm:px-0">
+                <h1 className="text-xl tracking-tight -mb-1">Title Sequence</h1>
+                <motion.video
+                    src="/CCS/Title Sequence (New York City) 16-9.mp4"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale"
+                    variants={animateInChild}
+                    autoPlay loop muted
+                    whileHover={{scale:1.02}}>
+                </motion.video>
+            </div>
+            <div className="flex flex-col gap-4 col-span-full lg:col-span-3 px-4 sm:px-0">
+                <h1 className="text-xl tracking-tight -mb-1">End Sequence</h1>
+
+                <motion.video
+                    src="/CCS/End Frame (Paris) 16-9.mp4"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale"
+                    variants={animateInChild}
+                    autoPlay loop muted
+                    whileHover={{scale:1.02}}>
+                </motion.video>
+            </div>
+
+            <h1 className="col-span-full text-xl tracking-tight mt-14 -mb-2">Behind the Scenes</h1>
+            <motion.img
+                src="/CCS/bts1.jpg"
+                className="col-span-3 sm:col-span-2
+                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                object-cover transition-scale duration-200"
+                variants={animateInChild}
+                whileHover={{scale:1.02}}>
+            </motion.img>
+            <motion.img
+                src="/CCS/bts2.jpg"
+                className="col-span-3 sm:col-span-2
+                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                object-cover transition-scale duration-200"
+                variants={animateInChild}
+                whileHover={{scale:1.02}}>
+            </motion.img>
+            <motion.img
+                src="/CCS/bts3.jpg"
+                className="col-span-3 sm:col-span-2
+                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                object-cover transition-scale duration-200"
+                variants={animateInChild}
+                whileHover={{scale:1.02}}>
+            </motion.img>
+            <motion.img
+                src="/CCS/bts4.jpg"
+                className="col-span-3 sm:col-span-2
+                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                object-cover transition-scale duration-200"
+                variants={animateInChild}
+                whileHover={{scale:1.02}}>
+            </motion.img>
+            <motion.img
+                src="/CCS/bts5.jpg"
+                className="col-span-3 sm:col-span-2
+                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                object-cover transition-scale duration-200"
+                variants={animateInChild}
+                whileHover={{scale:1.02}}>
+            </motion.img>
+            <motion.img
+                src="/CCS/bts6.jpg"
+                className="col-span-3 sm:col-span-2
+                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                object-cover transition-scale duration-200"
+                variants={animateInChild}
+                whileHover={{scale:1.02}}>
+            </motion.img>
+            
+            
+                
+
+    
+
+
         </motion.div>
     )
-
 }
