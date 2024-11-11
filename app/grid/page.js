@@ -146,7 +146,7 @@ const GridPage = () => {
         onClick={() => toggleTag('3')}>3</motion.button>
 
       </motion.div>
-      <motion.div className="grid grid-cols-2 lg:grid-cols-4 gap-3 px-10">
+      <motion.div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-3 px-10">
         <AnimatePresence>
           {filteredVideos.map((video, index) => (
             <VideoSquare key={video.src} videoSrc={video.src} link={video.link} />

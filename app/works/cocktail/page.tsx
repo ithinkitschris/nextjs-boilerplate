@@ -39,9 +39,9 @@ show: {
             ></motion.video> */}
 
             <motion.div 
-            className="mt-2 tracking-tighter col-span-3"
+            className="tracking-tighter col-span-full mt-2 mb-2"
             variants={animateInChild}>
-                <h1 className="text-7xl sm:text-8xl text-center sm:text-left font-light tracking-tighter -ml-2.5 mt-4 sm:mt-0">Cocktail Conversations</h1>
+                <h1 className="text-7xl sm:text-8xl text-center sm:text-left tracking-tighter -ml-2 mt-4 sm:mt-0">Cocktail Conversations</h1>
                 <p className="text-3xl text-center sm:text-left">Brand Campaign for Singapore Airlines</p>
             </motion.div> 
 

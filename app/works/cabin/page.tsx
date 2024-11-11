@@ -8,7 +8,7 @@ const animateIn ={
     hidden: {opacity:0, y:20},
     show: {
         opacity:1, y:0, 
-        transition: {staggerChildren: 0.15, duration:0.3, ease:"easeOut"}
+        transition: {staggerChildren: 0.1, duration:0.3, ease:"easeOut"}
     }
 }
 const animateInChild ={
@@ -21,7 +21,7 @@ show: {
     
     return(
         
-        <motion.div className="grid grid-cols-6 gap-3
+        <motion.div className="grid grid-cols-6 gap-2 sm:gap-3
         p-4 sm:p-10 mt-6 max-w-full font-[family-name:var(--font-geist-sans)]"
         initial="hidden"
         animate="show"
@@ -41,7 +41,7 @@ show: {
             <motion.div 
             className="tracking-tighter col-span-full mt-2 mb-8"
             variants={animateInChild}>
-                <h1 className="text-7xl sm:text-8xl text-center sm:text-left font-base tracking-tighter -ml-2 mt-4 sm:mt-0">Beyond The Cabin</h1>
+                <h1 className="text-7xl sm:text-8xl text-center sm:text-left tracking-tighter -ml-2 mt-4 sm:mt-0">Beyond The Cabin</h1>
                 <p className="text-3xl text-center sm:text-left">Brand Campaign for Singapore Airlines</p>
             </motion.div> 
 
@@ -106,96 +106,177 @@ show: {
                 </motion.div>
             </div>
 
-{/*             
-            <motion.img 
-                src="/CCS/End Frame KV.jpg"
-                className="col-span-full px-4 sm:px-0 mt-10
-                w-full drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                object-cover transition-scale duration-200"
-                variants={animateInChild}
-                whileHover={{scale:1.01}}>
-            </motion.img> */}
+            
+            {/* Episodes */}
+            <motion.div className="col-span-full mb-6" variants={animateInChild}>
+                <h1 className="text-4xl font-medium tracking-tighter">Episodes</h1>
+            </motion.div>
 
-
-            <div className="flex flex-col gap-4 col-span-full lg:col-span-3 px-4 sm:px-0">
-                <h1 className="text-xl tracking-tight -mb-1">Title Sequence</h1>
-                <motion.video
-                    src="/CCS/Title Sequence (New York City) 16-9.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale"
+            {/* Episode Thumbnails */}
+            <div className="gap-3 flex flex-row mb-8">
+                <motion.img src="/CCS/thumbnail1.jpg" 
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale h-full"
                     variants={animateInChild}
-                    autoPlay loop muted
                     whileHover={{scale:1.02}}>
-                </motion.video>
-            </div>
-            <div className="flex flex-col gap-4 col-span-full lg:col-span-3 px-4 sm:px-0">
-                <h1 className="text-xl tracking-tight -mb-1">End Sequence</h1>
-
-                <motion.video
-                    src="/CCS/End Frame (Paris) 16-9.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale"
+                </motion.img>
+                <motion.img src="/CCS/thumbnail2.jpg" 
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale h-full"
                     variants={animateInChild}
-                    autoPlay loop muted
                     whileHover={{scale:1.02}}>
-                </motion.video>
+                </motion.img>
+                <motion.img src="/CCS/thumbnail3.jpg" 
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale h-full"
+                    variants={animateInChild}
+                    whileHover={{scale:1.02}}>
+                </motion.img>
+                <motion.img src="/CCS/thumbnail4.jpg" 
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale h-full"
+                    variants={animateInChild}
+                    whileHover={{scale:1.02}}>
+                </motion.img>
+                <motion.img src="/CCS/thumbnail5.jpg" 
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale h-full"
+                    variants={animateInChild}
+                    whileHover={{scale:1.02}}>
+                </motion.img>
+                <motion.img src="/CCS/thumbnail6.jpg" 
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale h-full"
+                    variants={animateInChild}
+                    whileHover={{scale:1.02}}>
+                </motion.img>
             </div>
 
-            <h1 className="col-span-full text-xl tracking-tight mt-14 -mb-1">Behind the Scenes</h1>              
+            {/* Spacer to fix an untroubleshootable bug */}
+            <div className="col-span-full "></div>
+
+            {/* Episode Children */}
+                <motion.div className="col-span-1"
+                    variants={animateInChild}>
+                    <h1 className="text-2xl tracking-tight mb-4">Episode 1</h1>
+                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
+                </motion.div>
+                
                 <motion.video
                     src="/CCS/montage1.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale col-span-4"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale col-span-5 w-full"
                     variants={animateInChild}
-                    autoPlay loop muted
-                    whileHover={{scale:1.02}}>
+                    autoPlay loop muted drag
+                    dragConstraints={{left:0,top:0,right:0,bottom:0}}
+                    whileHover={{scale:1.02}}>      
                 </motion.video>
+
+                <div className="col-span-1">
+                    <h1 className="text-2xl tracking-tight mb-4 mt-2">Episode 2</h1>
+                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
+                </div>
+                    
                 <motion.video
                     src="/CCS/montage2.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale col-span-2 h-full"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale col-span-5 w-full"
                     variants={animateInChild}
-                    autoPlay loop muted
+                    autoPlay loop muted drag
+                    dragConstraints={{left:0,top:0,right:0,bottom:0}}
                     whileHover={{scale:1.02}}>
                 </motion.video>
+
+                <div className="col-span-1">
+                    <h1 className="text-2xl tracking-tight mb-4">Episode 3</h1>
+                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
+                </div>
+                    
                 <motion.video
                     src="/CCS/montage3.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale col-span-2 h-full"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale col-span-5 w-full mb-2"
                     variants={animateInChild}
                     autoPlay loop muted
                     whileHover={{scale:1.02}}>
                 </motion.video>
+
+                <div className="col-span-1">
+                    <h1 className="text-2xl tracking-tight mb-4">Episode 4</h1>
+                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
+                </div>
+                    
                 <motion.video
                     src="/CCS/montage4.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale col-span-4 w-full"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale col-span-5 w-full mb-2"
                     variants={animateInChild}
                     autoPlay loop muted
                     whileHover={{scale:1.02}}>
                 </motion.video>
+
+                <div className="col-span-1">
+                    <h1 className="text-2xl tracking-tight mb-4">Episode 5</h1>
+                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
+                </div>
+                    
                 <motion.video
                     src="/CCS/montage5.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale col-span-4"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale col-span-5 w-full mb-2"
                     variants={animateInChild}
                     autoPlay loop muted
                     whileHover={{scale:1.02}}>
                 </motion.video>
+
+                <div className="col-span-1">
+                    <h1 className="text-2xl tracking-tight mb-4">Episode 6</h1>
+                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
+                </div>
+                    
                 <motion.video
                     src="/CCS/montage6.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale col-span-2 h-full"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                    object-cover transition-scale col-span-5 w-full mb-2"
                     variants={animateInChild}
                     autoPlay loop muted
                     whileHover={{scale:1.02}}>
                 </motion.video>
-                
+
+            <div className="col-span-full">
+                <h1 className="text-4xl font-medium tracking-tighter mb-2">Motion Design</h1>
+            </div>
+
+                <div className="flex flex-col gap-4 col-span-full lg:col-span-3 px-4 sm:px-0">
+                    <h1 className="text-2xl tracking-tight backdrop:-mb-1">Title Sequence</h1>
+                    <motion.video
+                        src="/CCS/Title Sequence (New York City) 16-9.mp4"
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                        object-cover transition-scale"
+                        variants={animateInChild}
+                        autoPlay loop muted
+                        whileHover={{scale:1.02}}>
+                    </motion.video>
+                </div>
+                <div className="flex flex-col gap-4 col-span-full lg:col-span-3 px-4 sm:px-0">
+                    <h1 className="text-2xl tracking-tight backdrop:-mb-1">End Sequence</h1>
+
+                    <motion.video
+                        src="/CCS/End Frame (Paris) 16-9.mp4"
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                        object-cover transition-scale"
+                        variants={animateInChild}
+                        autoPlay loop muted
+                        whileHover={{scale:1.02}}>
+                    </motion.video>
+                </div>
+            
+            
 
 
 
             {/* Behind the Scenes */}
-            <h1 className="col-span-full text-xl tracking-tight mt-14 -mb-2">Behind the Scenes</h1>
+            <h1 className="col-span-full text-xl tracking-tight -mb-2">Behind the Scenes</h1>
                 <motion.img
                     src="/CCS/bts1.jpg"
                     className="col-span-3 sm:col-span-2
@@ -254,3 +335,13 @@ show: {
         </motion.div>
     )
 }
+
+
+{/* <motion.img 
+                src="/CCS/End Frame KV.jpg"
+                className="col-span-full px-4 sm:px-0 mt-10
+                w-full drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                object-cover transition-scale duration-200"
+                variants={animateInChild}
+                whileHover={{scale:1.01}}>
+            </motion.img> */}

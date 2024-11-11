@@ -43,6 +43,10 @@ const config: Config = {
       height: {
         'screen/2': '50vh',
       },
+      margin: {
+        '-mt-6': '-5rem',
+        '-mt-[15vh]': '-15vh'
+      },
     },
   },
   plugins: [],
