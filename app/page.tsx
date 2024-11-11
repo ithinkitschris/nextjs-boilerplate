@@ -20,50 +20,62 @@ export default function Home(){
    }
 
   return (
-    
-    <div className="grid grid-cols-1 sm:grid-cols-5 items-center justify-items-center 
+
+    <div className="grid grid-cols-1 sm:grid-cols-6 items-center justify-items-center 
     min-h-screen p-8 pb-20 gap-15 sm:p-20 font-[family-name:var(--font-geist-sans)]">
 
+      <motion.video 
+      src="/CCS/montageFade.mp4" 
+      className="absolute top-0 left-0 w-full h-full object-cover rounded-full -z-10 scale-100 blur-3xl saturate-200 opacity-100"
+      autoPlay 
+      muted 
+      loop
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      transition={{duration:1, ease:"easeOut"}}
+      ></motion.video>
+
       <motion.main 
-      className="flex flex-col col-start-2 2xl:col-start-3 2xl:col-span-1 col-span-3 px-10 gap-8 items-center sm:items-start"
+      className="flex flex-col col-start-2 sm:col-start-3 sm:col-span-2 col-span-3 px-10 gap-8 items-center sm:items-start"
       initial="hidden"
       animate="show"
       variants={animateIn}> 
 
-        <motion.h1 className="text-foreground -ml-1 -mb-3
-          text-8xl tracking-tighter transition-colors font-light text-center sm:text-left"
+        <motion.h1 className="text-background -ml-1 -mb-3
+          text-8xl tracking-tighter transition-colors font-light text-center sm:text-left dark:text-foreground whitespace-nowrap"
           variants={animateInChild}>
-          Hello World.
+          Hello World.<br/>
         </motion.h1>
 
 
-        <motion.ol className="list-inside text-sm text-center sm:text-left"
+        <motion.ol className="list-insid text-background text-sm text-center sm:text-left dark:text-foreground"
         variants={animateInChild}>
           <li className="mb-4 text-xl">
-            Welcome to my Portfolio.
+            Welcome to my Portfolio. <span className="text-xs align-top italic">Well, kinda. Not quite yet.</span>
           </li>
-          <li className="mb-4">This is a work in progress, it will never be complete – the intent is for this site to be ever iterating
+          {/* <li className="mb-4">This is a work in progress, it will never be complete – the intent is for this site to be ever iterating
               based on your input and how you would like it to be.
-          </li>
+          </li> */}
           <li>
-            But for now, this page is a shell for whats to come.
+            This page is a shell for whats to come.
             If you would like to follow my progress, you may check 
             out my documentation of the process thus far, or my 
             pre-existing website whose days are numbered.
           </li>
         </motion.ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row mt-2 -ml-1">
+        <div className="flex gap-3 items-center flex-col sm:flex-row mt-2 -ml-1">
         <motion.div
           variants={animateInChild}>
-            <Link href="/pages/resume"
+            <Link href="/resume"
               className="rounded-full flex items-center justify-center 
-                bg-background border-2 border-midground font-semibold text-foreground 
-                text-sm h-10 px-3 sm:min-w-36 
-                hover:scale-105 hover:drop-shadow-md hover:border-background 
+                border-1.5 border-background font-semibold text-background 
+                text-sm h-10 px-1 sm:min-w-24 
+                hover:scale-110 hover:border-background hover:text-foreground hover:bg-background 
+                dark:border-foreground dark:text-foreground dark:hover:text-background dark:hover:bg-foreground
                 transition-all"
             >
-              About Me
+              Who am I?
             </Link>
           </motion.div>
 
@@ -71,14 +83,15 @@ export default function Home(){
           variants={animateInChild}>
             <a href="https://hissing-sphere-1e7.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f"
                 className="rounded-full flex items-center justify-center 
-                bg-background border-2 border-midground font-semibold text-foreground
-                text-sm h-10 px-3 sm:min-w-36 
-                hover:scale-105 hover:drop-shadow-md hover:border-background
+                border-1.5 border-background font-semibold text-background
+                text-sm h-10 px-3 sm:min-w-32 
+                hover:scale-110 hover:border-background hover:text-foreground hover:bg-background 
+                dark:border-foreground dark:text-foreground dark:hover:text-background dark:hover:bg-foreground
                 transition-all"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Documentation
+                How did I do this??
             </a>
           </motion.div>
 
@@ -86,17 +99,17 @@ export default function Home(){
           variants={animateInChild}>
             <a href="http://ithinkitschris.com"
               className="rounded-full flex items-center justify-center 
-                bg-background border-2 border-midground font-semibold text-foreground 
+                border-1.5 border-background font-semibold text-background 
                 text-sm h-10 px-3 sm:min-w-36 
-                hover:scale-105 hover:drop-shadow-md hover:border-background 
+                hover:scale-110 hover:border-background hover:text-foreground hover:bg-background 
+                dark:border-foreground dark:text-foreground dark:hover:text-background dark:hover:bg-foreground
                 transition-all"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Current Portfolio
+              What have I done before???
             </a>
           </motion.div>
-
         </div>
       </motion.main>
     </div>
