@@ -44,7 +44,8 @@ export default function Home(){
       variants={animateIn}> 
 
         <motion.h1 className="text-background -ml-1 -mb-3
-          text-8xl tracking-tighter transition-colors font-light text-center sm:text-left text-foreground whitespace-nowrap"
+          text-8xl tracking-tighter transition-colors font-light text-center sm:text-left 
+          text-foreground whitespace-nowrap "
           variants={animateInChild}>
           Hello World.<br/>
         </motion.h1>
@@ -74,7 +75,7 @@ export default function Home(){
                 border-1.5 border-foreground font-semibold text-foreground 
                 text-sm h-10 px-1 sm:min-w-24 
                 hover:scale-90 hover:border-foreground hover:drop-shadow-none
-                dark:border-foreground dark:text-foreground
+                dark:border-foreground dark:text-foreground dark:hover:bg-foreground dark:hover:text-background
                 transition-all"
             >
               Who am I?
@@ -88,7 +89,7 @@ export default function Home(){
                 border-1.5 border-foreground font-semibold text-foreground 
                 text-sm h-10 px-1 sm:min-w-40 
                 hover:scale-93 hover:border-foreground hover:drop-shadow-none
-                dark:border-foreground dark:text-foreground
+                dark:border-foreground dark:text-foreground dark:hover:bg-foreground dark:hover:text-background
                 transition-all"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -104,7 +105,7 @@ export default function Home(){
                 border-1.5 border-foreground font-semibold text-foreground 
                 text-sm h-10 px-1 sm:min-w-54 
                 hover:scale-95 hover:border-foreground hover:drop-shadow-none
-                dark:border-foreground dark:text-foreground
+                dark:border-foreground dark:text-foreground dark:hover:bg-foreground dark:hover:text-background
                 transition-all"
               target="_blank"
               rel="noopener noreferrer"

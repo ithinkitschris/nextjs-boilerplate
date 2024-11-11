@@ -141,55 +141,109 @@ show: {
                 </motion.video>
             </div>
 
+            <h1 className="col-span-full text-xl tracking-tight mt-14 -mb-1">Behind the Scenes</h1>              
+                <motion.video
+                    src="/CCS/montage1.mp4"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale col-span-4"
+                    variants={animateInChild}
+                    autoPlay loop muted
+                    whileHover={{scale:1.02}}>
+                </motion.video>
+                <motion.video
+                    src="/CCS/montage2.mp4"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale col-span-2 h-full"
+                    variants={animateInChild}
+                    autoPlay loop muted
+                    whileHover={{scale:1.02}}>
+                </motion.video>
+                <motion.video
+                    src="/CCS/montage3.mp4"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale col-span-2 h-full"
+                    variants={animateInChild}
+                    autoPlay loop muted
+                    whileHover={{scale:1.02}}>
+                </motion.video>
+                <motion.video
+                    src="/CCS/montage4.mp4"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale col-span-4 w-full"
+                    variants={animateInChild}
+                    autoPlay loop muted
+                    whileHover={{scale:1.02}}>
+                </motion.video>
+                <motion.video
+                    src="/CCS/montage5.mp4"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale col-span-4"
+                    variants={animateInChild}
+                    autoPlay loop muted
+                    whileHover={{scale:1.02}}>
+                </motion.video>
+                <motion.video
+                    src="/CCS/montage6.mp4"
+                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale col-span-2 h-full"
+                    variants={animateInChild}
+                    autoPlay loop muted
+                    whileHover={{scale:1.02}}>
+                </motion.video>
+                
+
+
+
+            {/* Behind the Scenes */}
             <h1 className="col-span-full text-xl tracking-tight mt-14 -mb-2">Behind the Scenes</h1>
-            <motion.img
-                src="/CCS/bts1.jpg"
-                className="col-span-3 sm:col-span-2
-                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                object-cover transition-scale duration-200"
-                variants={animateInChild}
-                whileHover={{scale:1.02}}>
-            </motion.img>
-            <motion.img
-                src="/CCS/bts2.jpg"
-                className="col-span-3 sm:col-span-2
-                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                object-cover transition-scale duration-200"
-                variants={animateInChild}
-                whileHover={{scale:1.02}}>
-            </motion.img>
-            <motion.img
-                src="/CCS/bts3.jpg"
-                className="col-span-3 sm:col-span-2
-                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                object-cover transition-scale duration-200"
-                variants={animateInChild}
-                whileHover={{scale:1.02}}>
-            </motion.img>
-            <motion.img
-                src="/CCS/bts4.jpg"
-                className="col-span-3 sm:col-span-2
-                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                object-cover transition-scale duration-200"
-                variants={animateInChild}
-                whileHover={{scale:1.02}}>
-            </motion.img>
-            <motion.img
-                src="/CCS/bts5.jpg"
-                className="col-span-3 sm:col-span-2
-                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                object-cover transition-scale duration-200"
-                variants={animateInChild}
-                whileHover={{scale:1.02}}>
-            </motion.img>
-            <motion.img
-                src="/CCS/bts6.jpg"
-                className="col-span-3 sm:col-span-2
-                drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                object-cover transition-scale duration-200"
-                variants={animateInChild}
-                whileHover={{scale:1.02}}>
-            </motion.img>
+                <motion.img
+                    src="/CCS/bts1.jpg"
+                    className="col-span-3 sm:col-span-2
+                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale duration-200 w-full"
+                    variants={animateInChild}
+                    whileHover={{scale:1.02}}>
+                </motion.img>
+                <motion.img
+                    src="/CCS/bts2.jpg"
+                    className="col-span-3 sm:col-span-2
+                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale duration-200 w-full"
+                    variants={animateInChild}
+                    whileHover={{scale:1.02}}>
+                </motion.img>
+                <motion.img
+                    src="/CCS/bts3.jpg"
+                    className="col-span-3 sm:col-span-2
+                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale duration-200 w-full"
+                    variants={animateInChild}
+                    whileHover={{scale:1.02}}>
+                </motion.img>
+                <motion.img
+                    src="/CCS/bts4.jpg"
+                    className="col-span-3 sm:col-span-2
+                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale duration-200 w-full"
+                    variants={animateInChild}
+                    whileHover={{scale:1.02}}>
+                </motion.img>
+                <motion.img
+                    src="/CCS/bts5.jpg"
+                    className="col-span-3 sm:col-span-2
+                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale duration-200 w-full"
+                    variants={animateInChild}
+                    whileHover={{scale:1.02}}>
+                </motion.img>
+                <motion.img
+                    src="/CCS/bts6.jpg"
+                    className="col-span-3 sm:col-span-2
+                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                    object-cover transition-scale duration-200 w-full"
+                    variants={animateInChild}
+                    whileHover={{scale:1.02}}>
+                </motion.img>
             
             
                 
