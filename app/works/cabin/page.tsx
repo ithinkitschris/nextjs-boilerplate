@@ -22,7 +22,7 @@ show: {
     return(
         
         <motion.div className="grid grid-cols-6 gap-2 sm:gap-3
-        p-4 sm:p-10 mt-6 max-w-full font-[family-name:var(--font-geist-sans)]"
+        p-4 md:p-6 2xl:p-8 mt-6 max-w-full font-[family-name:var(--font-geist-sans)]"
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -47,7 +47,7 @@ show: {
 
             {/* Banner Video */}
             <motion.video src="/CCS/montage.mp4" 
-            className="col-span-full drop-shadow-lg rounded-xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="col-span-full shadow-standard rounded-xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop
             variants={animateInChild}
             // whileHover={{scale:1.01}}
@@ -88,7 +88,7 @@ show: {
             </div>
 
             {/* Writeup */}
-            <div className="flex flex-col sm:flex-row col-span-full px-4 sm:px-0 gap-10 mt-6 mb-24 mr-7">
+            <div className="flex flex-col sm:flex-row col-span-full px-4 sm:px-0 gap-10 mt-6 mb-14 mr-7">
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2">The Ask:</p>
                     <p>Singapore Airlines Cabin Crew are commonly seen as being one-dimensional - from misconceptions of misogyny to them being just “servants of the cabin”. As part of the Welcome to World Class brand campaign, we want to dimensionalise Cabin Crew by “freeing” them in their portrayals, going from just “servants of the cabin” to modern, informed and relatable travelers of the world outside of the cabin.</p>
@@ -107,144 +107,175 @@ show: {
             </div>
 
             
-            {/* Episodes */}
-            <motion.div className="col-span-full mb-6" variants={animateInChild}>
-                <h1 className="text-4xl font-medium tracking-tighter">Episodes</h1>
-            </motion.div>
+            
 
-            {/* Episode Thumbnails */}
-            <div className="gap-3 flex flex-row mb-8">
-                <motion.img src="/CCS/thumbnail1.jpg" 
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale h-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
-                </motion.img>
-                <motion.img src="/CCS/thumbnail2.jpg" 
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale h-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
-                </motion.img>
-                <motion.img src="/CCS/thumbnail3.jpg" 
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale h-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
-                </motion.img>
-                <motion.img src="/CCS/thumbnail4.jpg" 
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale h-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
-                </motion.img>
-                <motion.img src="/CCS/thumbnail5.jpg" 
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale h-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
-                </motion.img>
-                <motion.img src="/CCS/thumbnail6.jpg" 
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale h-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
-                </motion.img>
-            </div>
+            {/* Episodes Wrapper */}
+            <div className="col-span-6 border-foreground dark:border-midground rounded-2xl gap-4">
 
-            {/* Spacer to fix an untroubleshootable bug */}
-            <div className="col-span-full "></div>
-
-            {/* Episode Children */}
-                <motion.div className="col-span-1"
-                    variants={animateInChild}>
-                    <h1 className="text-2xl tracking-tight mb-4">Episode 1</h1>
-                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
+                {/* Episodes Header */}
+                <motion.div className="col-span-full mb-4" variants={animateInChild}>
+                    <h1 className="text-4xl font-medium tracking-tighter">Episodes</h1>
                 </motion.div>
-                
-                <motion.video
-                    src="/CCS/montage1.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale col-span-5 w-full"
-                    variants={animateInChild}
-                    autoPlay loop muted drag
-                    dragConstraints={{left:0,top:0,right:0,bottom:0}}
-                    whileHover={{scale:1.02}}>      
-                </motion.video>
 
-                <div className="col-span-1">
-                    <h1 className="text-2xl tracking-tight mb-4 mt-2">Episode 2</h1>
-                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
-                </div>
-                    
-                <motion.video
-                    src="/CCS/montage2.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale col-span-5 w-full"
-                    variants={animateInChild}
-                    autoPlay loop muted drag
-                    dragConstraints={{left:0,top:0,right:0,bottom:0}}
-                    whileHover={{scale:1.02}}>
-                </motion.video>
+                {/* Episode Thumbnails */}
+                <motion.div className="gap-2 2xl:gap-3 grid grid-cols-6 col-span-full mb-8" variants={animateInChild}>
+                    <motion.img src="/CCS/thumbnail1.jpg" 
+                        className="shadow-standard hover:shadow-standard-hover rounded-lg
+                        object-cover transition-scale h-full"
+                        variants={animateInChild}
+                        whileHover={{scale:1.05}}>
+                    </motion.img>
+                    <motion.img src="/CCS/thumbnail2.jpg" 
+                        className="shadow-standard hover:shadow-standard-hover rounded-lg
+                        object-cover transition-scale h-full"
+                        variants={animateInChild}
+                        whileHover={{scale:1.05}}>
+                    </motion.img>
+                    <motion.img src="/CCS/thumbnail3.jpg" 
+                        className="shadow-standard hover:shadow-standard-hover rounded-lg
+                        object-cover transition-scale h-full"
+                        variants={animateInChild}
+                        whileHover={{scale:1.05}}>
+                    </motion.img>
+                    <motion.img src="/CCS/thumbnail4.jpg" 
+                        className="shadow-standard hover:shadow-standard-hover rounded-lg
+                        object-cover transition-scale h-full"
+                        variants={animateInChild}
+                        whileHover={{scale:1.05}}>
+                    </motion.img>
+                    <motion.img src="/CCS/thumbnail5.jpg" 
+                        className="shadow-standard hover:shadow-standard-hover rounded-lg
+                        object-cover transition-scale h-full"
+                        variants={animateInChild}
+                        whileHover={{scale:1.05}}>
+                    </motion.img>
+                    <motion.img src="/CCS/thumbnail6.jpg" 
+                        className="shadow-standard hover:shadow-standard-hover rounded-lg
+                        object-cover transition-scale h-full"
+                        variants={animateInChild}
+                        whileHover={{scale:1.05}}>
+                    </motion.img>
+                </motion.div>
 
-                <div className="col-span-1">
-                    <h1 className="text-2xl tracking-tight mb-4">Episode 3</h1>
-                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
-                </div>
+                {/* Episodes Children */}
+                <div className="grid grid-cols-6 col-span-full mb-3 xl:mb-5">
+                    <motion.div className="col-span-2 xl:col-span-1"
+                        variants={animateInChild}>
+                        <h1 className="text-2xl tracking-tight mb-4 leading-7">
+                            <span className="font-medium">Episode 1</span>
+                            <br/>Dance Your Way <br/>Through Seoul</h1>
+                        <p className="text-base font-normal mr-10">Dance your way through Seoul with Pin, our Flight Stewardess, as we explore this vibrant city.</p>
+                    </motion.div>
                     
-                <motion.video
-                    src="/CCS/montage3.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale col-span-5 w-full mb-2"
-                    variants={animateInChild}
-                    autoPlay loop muted
-                    whileHover={{scale:1.02}}>
-                </motion.video>
+                    <motion.video
+                        src="/CCS/montage1.mp4"
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                        object-cover col-span-4 xl:col-span-5 w-full"
+                        variants={animateInChild}
+                        autoPlay loop muted drag
+                        dragConstraints={{left:0,top:0,right:0,bottom:0}}>   
+                    </motion.video>
+                </div>
+        
+                <div className="grid grid-cols-6 col-span-full mb-3 xl:mb-5">
+                    <motion.div className="col-span-2 xl:col-span-1"
+                        variants={animateInChild}>
+                        <h1 className="text-2xl tracking-tight mb-4 leading-7">
+                            <span className="font-medium">Episode 2</span>
+                            <br/>Vintage Finds <br/>In Paris</h1>
+                        <p className="text-base font-normal mr-10">Uncover vintage finds with Moon, our Leading Steward. See Paris in a different light.</p>
+                    </motion.div>
+                    
+                    <motion.video
+                        src="/CCS/montage2.mp4"
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                        object-cover transition-scale col-span-4 xl:col-span-5 w-full"
+                        variants={animateInChild}
+                        autoPlay loop muted drag
+                        dragConstraints={{left:0,top:0,right:0,bottom:0}}>     
+                    </motion.video>
+                </div>
 
-                <div className="col-span-1">
-                    <h1 className="text-2xl tracking-tight mb-4">Episode 4</h1>
-                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
-                </div>
+                <div className="grid grid-cols-6 col-span-full mb-3 xl:mb-5">
+                    <motion.div className="col-span-2 xl:col-span-1"
+                        variants={animateInChild}>
+                        <h1 className="text-2xl tracking-tight mb-4 leading-7">
+                            <span className="font-medium">Episode 3</span>
+                            <br/>The Jazz Scene<br/>of Ho Chi Min City</h1>
+                        <p className="text-base font-normal mr-10">Enter the jazz scene of Ho Chi Minh City with Chief Stewardess Joslyn and discover the musical side of this city.</p>
+                    </motion.div>
                     
-                <motion.video
-                    src="/CCS/montage4.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale col-span-5 w-full mb-2"
-                    variants={animateInChild}
-                    autoPlay loop muted
-                    whileHover={{scale:1.02}}>
-                </motion.video>
+                    <motion.video
+                        src="/CCS/montage3.mp4"
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                        object-cover transition-scale col-span-4 xl:col-span-5 w-full"
+                        variants={animateInChild}
+                        autoPlay loop muted drag
+                        dragConstraints={{left:0,top:0,right:0,bottom:0}}>     
+                    </motion.video>
+                </div>
 
-                <div className="col-span-1">
-                    <h1 className="text-2xl tracking-tight mb-4">Episode 5</h1>
-                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
-                </div>
+                <div className="grid grid-cols-6 col-span-full mb-3 xl:mb-5">
+                    <motion.div className="col-span-2 xl:col-span-1"
+                        variants={animateInChild}>
+                        <h1 className="text-2xl tracking-tight mb-4 leading-7">
+                            <span className="font-medium">Episode 4</span>
+                            <br/>The Artsy Side<br/>of Auckland</h1>
+                        <p className="text-base font-normal mr-10">Join Priscilla, our Flight Stewardess, on a journey across Auckland. Experience this artistic city through her lens.</p>
+                    </motion.div>
                     
-                <motion.video
-                    src="/CCS/montage5.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale col-span-5 w-full mb-2"
-                    variants={animateInChild}
-                    autoPlay loop muted
-                    whileHover={{scale:1.02}}>
-                </motion.video>
+                    <motion.video
+                        src="/CCS/montage4.mp4"
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                        object-cover transition-scale col-span-4 xl:col-span-5 w-full"
+                        variants={animateInChild}
+                        autoPlay loop muted drag
+                        dragConstraints={{left:0,top:0,right:0,bottom:0}}>     
+                    </motion.video>
+                </div>
 
-                <div className="col-span-1">
-                    <h1 className="text-2xl tracking-tight mb-4">Episode 6</h1>
-                    <p className="text-base font-normal mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a dapibus odio. Suspendisse et ornare lorem. Nulla facilisi.</p>
-                </div>
+                <div className="grid grid-cols-6 col-span-full mb-3 xl:mb-5">
+                    <motion.div className="col-span-2 xl:col-span-1"
+                        variants={animateInChild}>
+                        <h1 className="text-2xl tracking-tight mb-4 leading-7">
+                            <span className="font-medium">Episode 5</span>
+                            <br/>Flavours of<br/>New Delhi</h1>
+                        <p className="text-base font-normal mr-10">Follow Mitchelle, our In-Flight Manager, on a culinary journey in New Delhi. Savour this flavourful city with us.</p>
+                    </motion.div>
                     
-                <motion.video
-                    src="/CCS/montage6.mp4"
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
-                    object-cover transition-scale col-span-5 w-full mb-2"
-                    variants={animateInChild}
-                    autoPlay loop muted
-                    whileHover={{scale:1.02}}>
-                </motion.video>
+                    <motion.video
+                        src="/CCS/montage5.mp4"
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                        object-cover transition-scale col-span-4 xl:col-span-5 w-full"
+                        variants={animateInChild}
+                        autoPlay loop muted drag
+                        dragConstraints={{left:0,top:0,right:0,bottom:0}}>     
+                    </motion.video>
+                </div>
+
+                <div className="grid grid-cols-6 col-span-full mb-3 xl:mb-5">
+                    <motion.div className="col-span-2 xl:col-span-1"
+                        variants={animateInChild}>
+                        <h1 className="text-2xl tracking-tight mb-4 leading-7">
+                            <span className="font-medium">Episode 6</span>
+                            <br/>New York City<br/>in Reel Life</h1>
+                        <p className="text-base font-normal mr-10">Experience reel life in real life with In-Flight Manager Fadzil, on a cinematic tour around New York City.</p>
+                    </motion.div>
+                    
+                    <motion.video
+                        src="/CCS/montage6.mp4"
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+                        object-cover transition-scale col-span-4 xl:col-span-5 w-full"
+                        variants={animateInChild}
+                        autoPlay loop muted drag
+                        dragConstraints={{left:0,top:0,right:0,bottom:0}}>     
+                    </motion.video>
+                </div>
+            </div>
+            
 
             <div className="col-span-full">
-                <h1 className="text-4xl font-medium tracking-tighter mb-2">Motion Design</h1>
+                <h1 className="text-4xl font-medium tracking-tighter mt-18 mb-2">Motion Design</h1>
             </div>
 
                 <div className="flex flex-col gap-4 col-span-full lg:col-span-3 px-4 sm:px-0">
@@ -276,7 +307,9 @@ show: {
 
 
             {/* Behind the Scenes */}
-            <h1 className="col-span-full text-xl tracking-tight -mb-2">Behind the Scenes</h1>
+            <div className="col-span-full">
+                <h1 className="text-4xl font-medium tracking-tighter mt-18 mb-2">Behind the Scenes</h1>
+            </div>
                 <motion.img
                     src="/CCS/bts1.jpg"
                     className="col-span-3 sm:col-span-2

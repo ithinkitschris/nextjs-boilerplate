@@ -11,6 +11,10 @@ const config: Config = {
     extend: {
       width: {
         62: '15.5rem',
+        'screen/1.5': '75%',
+        'screen/3': '33.33333%',
+        'screen/4': '25%',
+        'screen/5': '20%',
       },
       borderWidth: {
         1: '1px',
@@ -42,10 +46,21 @@ const config: Config = {
       },
       height: {
         'screen/2': '50vh',
+        'screen/1.5': '80vh',
+        'screen/3': '33.33333vh',
+        'screen/4': '25vh',
+        'screen/5': '20vh',
       },
       margin: {
         '-mt-6': '-5rem',
         '-mt-[15vh]': '-15vh'
+      },
+      boxShadow: {
+        'inner-standard': 'inset 0 0px 12px rgba(0,0,0,0.15)',
+        'mild': '1px 1px 15px rgba(0,0,0,0.1)',
+        'standard': '1px 1px 12px rgba(0,0,0,0.3)',
+        'strong': '2px 2px 8px rgba(0,0,0,0.8)',
+        'standard-hover': '0px 5px 20px rgba(0,0,0,0.3)',
       },
     },
   },
