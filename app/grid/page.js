@@ -163,30 +163,30 @@ const VideoSquare = ({ videoSrc, link }) => {
         <div className="flex flex-col gap-1 items-start text-left text-neutral-350 dark:text-neutral-500">
 
           <motion.h1
-          className="text-3xl font-medium mb-2 -ml-0.5 text-foreground"
+          className="text-3xl font-medium mb-2 -ml-0.5 text-foreground tracking-tighter"
           variants={animateInChild}>
             Give me...
           </motion.h1>
 
           <motion.button 
           className={`hover:text-foreground text-left text-xl mr-8 
-            ${selectedTags.length===0 ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-          whileHover={{scale:0.96}}
-          animate={{scale: selectedTags.length===0 ? 0.96 : 1}}
+            ${(selectedTags.length===0 && showPhotography===(false)) ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
+          whileHover={{scale:1.06}}
+          animate={{scale: (selectedTags.length===0 && showPhotography===(false)) ? 1.06 : 1}}
           variants={animateInChild}
           onClick={() => toggleTag('all')}>everything.</motion.button>
 
           <motion.button 
           className={`hover:text-foreground text-left text-xl mr-8 
             ${selectedTags.includes('best') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-          whileHover={{scale:0.96}}
-          animate={{scale: selectedTags.includes('best') ? 0.96 : 1}}
+          whileHover={{scale:1.06}}
+          animate={{scale: selectedTags.includes('best') ? 1.06 : 1}}
           variants={animateInChild}
           onClick={() => toggleTag('best')}>the best!</motion.button>
 
           <motion.button 
           className={"hover:text-foreground text-left text-xl mr-4"}
-          whileHover={{scale:0.96}}
+          whileHover={{scale:1.06}}
           variants={animateInChild}
           onClick={toggleNav}>more choice, man.</motion.button>
 
@@ -197,7 +197,7 @@ const VideoSquare = ({ videoSrc, link }) => {
           {showNav && (
             <>
               <motion.div 
-              className="flex flex-col gap-1 items-start text-left text-neutral-350 dark:text-neutral-500"
+              className="flex flex-col gap-1 items-start text-left dark:text-neutral-500"
               initial="hidden"
               animate="show"
               exit="exit"
@@ -212,8 +212,8 @@ const VideoSquare = ({ videoSrc, link }) => {
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8 
                   ${selectedTags.includes('creative') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('creative') ? 0.96 : 1}}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('creative') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => {
                   toggleTag('creative');
@@ -223,55 +223,55 @@ const VideoSquare = ({ videoSrc, link }) => {
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8 
                   ${selectedTags.includes('graphic') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('graphic') ? 0.96 : 1}}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('graphic') ? 1.06 : 1}}
                 variants={animateInChild}
-                onClick={() => toggleTag('graphic')}>Graphic Design</motion.button>
+                onClick={() => toggleTag('graphic')}>Visual Design</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8 
                   ${selectedTags.includes('edit') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('edit') ? 0.96 : 1}}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('edit') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => toggleTag('edit')}>Video Editing</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8 
                   ${selectedTags.includes('motion') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('motion') ? 0.96 : 1}}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('motion') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => toggleTag('motion')}>Motion Design</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8 
                   ${selectedTags.includes('ixd') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('ixd') ? 0.96 : 1}}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('ixd') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => toggleTag('ixd')}>Interaction Design</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8 
                   ${showPhotography ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{ scale: showPhotography ? 0.95 : 1 }}
+                whileHover={{scale:1.06}}
+                animate={{ scale: showPhotography ? 1.06 : 1 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography')}>Photography</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8 
                   ${selectedTags.includes('content') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('content') ? 0.96 : 1}}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('content') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => toggleTag('content')}>Content Creation</motion.button>
               </motion.div>
 
               {/* All Work */}
               <motion.div
-              className="hidden sm:flex flex-col items-start gap-1 text-neutral-350 dark:text-neutral-500"
+              className="hidden sm:flex flex-col items-start gap-1 text-neutral-300 dark:text-neutral-500"
               initial="hidden"
               animate="show"
               exit="exit"
@@ -286,134 +286,134 @@ const VideoSquare = ({ videoSrc, link }) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                ${selectedTags.includes('creative', 'motion') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('creative', 'motion') ? 0.96 : 1}}
+                ${selectedTags.includes('creative', 'motion') ? 'text-foreground' : 'text-neutral-300 dark:text-neutral-500 dark:hover:text-foreground'}`}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('creative', 'motion') ? 1.06 : 1}}
                 variants={animateInChild}>The World of Studio Ghibli</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                ${selectedTags.includes('creative', 'motion') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('creative', 'motion') ? 0.96 : 1}}
+                ${selectedTags.includes('creative', 'motion') ? 'text-foreground' : 'text-neutral-300 dark:text-neutral-500 dark:hover:text-foreground'}`}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('creative', 'motion') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => toggleTag('2')}>Beyond the Cabin</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                ${selectedTags.includes('creative', 'motion') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('creative', 'motion') ? 0.96 : 1}}
+                ${selectedTags.includes('creative', 'motion') ? 'text-foreground' : 'text-neutral-300 dark:text-neutral-500 dark:hover:text-foreground'}`}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('creative', 'motion') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Cocktail Conversations</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                ${selectedTags.includes('creative') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('creative') ? 0.96 : 1}}
+                ${selectedTags.includes('creative') ? 'text-foreground' : 'text-neutral-300 dark:text-neutral-500 dark:hover:text-foreground'}`}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('creative') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Kris+ Brand Campaign</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                ${selectedTags.includes('creative', 'motion') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('creative', 'motion') ? 0.96 : 1}}
+                ${selectedTags.includes('creative', 'motion') ? 'text-foreground' : 'text-neutral-300 dark:text-neutral-500 dark:hover:text-foreground'}`}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('creative', 'motion') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>SilverKris Lounge</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                ${selectedTags.includes('creative') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('creative') ? 0.96 : 1}}
+                ${selectedTags.includes('creative') ? 'text-foreground' : 'text-neutral-300 dark:text-neutral-500 dark:hover:text-foreground'}`}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('creative') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography')}>Oops Happens</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                ${selectedTags.includes('creative') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                whileHover={{scale:0.96}}
-                animate={{scale: selectedTags.includes('creative') ? 0.96 : 1}}
+                ${selectedTags.includes('creative') ? 'text-foreground' : 'text-neutral-300 dark:text-neutral-500 dark:hover:text-foreground'}`}
+                whileHover={{scale:1.06}}
+                animate={{scale: selectedTags.includes('creative') ? 1.06 : 1}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>I Spy in the Sky</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('1')}>JolliEverAfter</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('2')}>Virtual Sentosa</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Samsung Lifestyle Displays</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Nike Athlete Stories: Koy & Toon</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>New Style Fresh Start</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography')}>Your Stage Now Live</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Sentosa Island</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>iPhone 12 Pro</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>iPhone 15 Pro</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography')}>Leica M10-P</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>ByBit Moon Pillow</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography')}>TBWA One Show Shortlist</motion.button>
 
                 <motion.button 
                 className="hover:text-foreground text-left mr-8"
-                whileHover={{scale:0.96}}
+                whileHover={{scale:1.06}}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>3D Motion Exploration</motion.button>
 
