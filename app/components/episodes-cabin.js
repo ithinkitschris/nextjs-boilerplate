@@ -1,5 +1,4 @@
 import React, {useRef} from 'react';
-import {motion} from 'framer-motion';
 
 const Episodes = () => {
 
@@ -46,21 +45,21 @@ const Episodes = () => {
 
     return (
         <div>
-            <motion.div className="col-span-full mb-4">
-                <h1 className="text-4xl font-medium tracking-tighter">Episodes</h1>
-            </motion.div>
+            <div className="col-span-full mb-10 md:mb-6">
+                <h1 className="text-4xl font-medium text-center md:text-left tracking-tighter">Episodes</h1>
+            </div>
 
             {/* Episode Thumbnails */}
-            <motion.div className="gap-2 2xl:gap-3 grid grid-cols-6 col-span-full mb-8">
+            <div className="gap-2 2xl:gap-3 grid grid-cols-3 md:grid-cols-6 mb-5 md:mb-24 w-full h-auto">
                 {episodeData.map((_, index) => (
-                    <motion.img
+                    <img
                     key={index}
                     src={`/CCS/thumbnail${index + 1}.jpg`}
-                    className="transition-all shadow-standard hover:shadow-standard-hover hover:scale-105 rounded-lg object-cover h-full"
+                    className="transition-all duration-200 shadow-standard hover:shadow-standard-hover hover:scale-107 ease-out rounded-lg object-cover h-full"
                     onClick={() => scrollToEpisode(index)} // Scroll to the episode on click
                     />    
                 ))}
-            </motion.div>
+            </div>
 
             {/* Episodes */}
             {episodeData.map((episode, index) => (
@@ -70,26 +69,24 @@ const Episodes = () => {
                 className="grid grid-cols-6 col-span-full mb-3 xl:mb-5"
                 >
                 
-                    <motion.div className="col-span-2 xl:col-span-1">
-                        <h1 className="text-2xl tracking-tight mb-4 leading-7 mr-10">
+                    <div className="col-span-6 md:col-span-2 xl:col-span-1">
+                        <h1 className="text-2xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-10 md:mt-0">
                         <span className="font-medium">Episode {index + 1}</span>
                         <br />
                         {episode.title}
                         </h1>
-                        <p className="text-base font-normal mr-10">
+                        <p className="text-base font-normal md:mr-10 text-center md:text-left px-18 md:px-0 mb-6 md:mb-0 leading-6">
                         {episode.description}
                         </p>
-                    </motion.div>
+                    </div>
 
-                    <motion.video
-                    src={episode.videoSrc}
-                    className="drop-shadow-lg hover:drop-shadow-xl rounded-lg object-cover col-span-4 xl:col-span-5 w-full"
-                    autoPlay
-                    loop
-                    muted
-                    drag
-                    dragConstraints={{ left: 0, top: 0, right: 0, bottom: 0 }}
-                    ></motion.video>
+                    <video
+                        src={episode.videoSrc}
+                        className="shadow-standard rounded-lg object-cover col-span-6 md:col-span-4 xl:col-span-5 h-full w-full"
+                        autoPlay
+                        loop
+                        muted
+                    ></video>
                 </div>
             ))}
         </div>

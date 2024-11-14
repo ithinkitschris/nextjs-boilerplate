@@ -26,7 +26,7 @@ export default function Home(){
 
       <motion.video 
       src="/CCS/montageFade.mp4" 
-      className="absolute top-0 left-0 w-full h-full 
+      className="pointer-events-none absolute top-0 left-0 w-full h-full 
       object-cover rounded-full -z-10 scale-100 
       blur-3xl saturate-200 opacity-0 dark:opacity-100"
       autoPlay 
@@ -44,10 +44,10 @@ export default function Home(){
       variants={animateIn}> 
 
         <motion.h1 className="text-background -ml-1 -mb-3
-          text-8xl tracking-tighter transition-colors font-light text-center sm:text-left 
+          text-8xl tracking-tighter transition-colors text-center sm:text-left 
           text-foreground whitespace-nowrap "
           variants={animateInChild}>
-          Hello World.<br/>
+          Hey.<br/>
         </motion.h1>
 
 

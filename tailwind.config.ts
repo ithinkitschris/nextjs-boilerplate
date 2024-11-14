@@ -40,6 +40,8 @@ const config: Config = {
         '102': '1.02',
         '103': '1.03',
         '104': '1.04',
+        '106': '1.06', // Added comma
+        '107': '1.07',
       },
       blur: {
         '3xl': '2000px',
@@ -64,7 +66,12 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
-};
+  corePlugins: {
+    aspectRatio: false, // Disabling built-in aspect ratio plugin
+  },
+  plugins: [
+    require('@tailwindcss/aspect-ratio'), // Custom aspect ratio plugin
+  ],
+}
 
 export default config;

@@ -41,24 +41,23 @@ show: {
             
             {/* Header */}
             <motion.div 
-            className="tracking-tighter col-span-full mt-2 mb-8"
+            className="tracking-tighter col-span-full mt-12 md:mt-6 mb-8 md:mb-8"
             variants={animateInChild}>
-                <h1 className="text-7xl sm:text-8xl text-center sm:text-left tracking-tighter -ml-2 mt-4 sm:mt-0">Beyond The Cabin</h1>
-                <p className="text-3xl text-center sm:text-left">Brand Campaign for Singapore Airlines</p>
+                <h1 className="text-6xl sm:text-8xl text-center sm:text-left tracking-tighter -ml-2">Beyond The Cabin</h1>
+                <p className="text-2xl sm:text-3xl text-center sm:text-left">Brand Campaign for Singapore Airlines</p>
             </motion.div> 
 
             {/* Banner Video */}
             <motion.video src="/CCS/montage.mp4" 
-            className="col-span-full shadow-standard rounded-xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="col-span-full shadow-standard rounded-xl w-full h-screen/1.5 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop
             variants={animateInChild}
             // whileHover={{scale:1.01}}
             >
             </motion.video>
-
             {/* Subheader */}
             <div className="col-span-full sm:col-span-4">
-                <motion.div className="text-3xl tracking-tight text-center sm:text-left" variants={animateInChild}>
+                <motion.div className="text-3xl tracking-tight text-center sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 6 Cities. 6 Cabin Crew. 6 Passions. <br/>
                 Journey beyond the cabin with our cabin crew.
                 You see them on board, now follow their travels around the world. 
@@ -108,17 +107,29 @@ show: {
                 </motion.div>
             </div>
 
-            <div className='col-span-full'>
+            <motion.div className='col-span-full mt-6' variants={animateInChild}>
                 <Episodes />
-            </div>
-            
+            </motion.div>
 
             <div className="col-span-full">
-                <h1 className="text-4xl font-medium tracking-tighter mt-18 mb-2">Motion Design</h1>
+                <h1 className="text-4xl font-medium tracking-tighter mt-10 mb-4">Key Visual  &  Motion Design</h1>
             </div>
+            <motion.img 
+                src="/CCS/End Frame KV.jpg"
+                className="col-span-full
+                w-full drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                object-cover transition-scale duration-200"
+                variants={animateInChild}
+                whileHover={{scale:1.01}}>
+            </motion.img>
+            
 
-                <div className="flex flex-col gap-4 col-span-full lg:col-span-3 px-4 sm:px-0">
-                    <h1 className="text-2xl tracking-tight backdrop:-mb-1">Title Sequence</h1>
+            {/* <div className="col-span-full">
+                <h1 className="text-4xl font-medium tracking-tighter mt-18 mb-2">Motion Design</h1>
+            </div> */}
+
+                <div className="flex flex-col gap-2 col-span-full lg:col-span-3">
+                    {/* <h1 className="text-xl tracking-tight">Title Sequence</h1> */}
                     <motion.video
                         src="/CCS/Title Sequence (New York City) 16-9.mp4"
                         className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
@@ -128,8 +139,8 @@ show: {
                         whileHover={{scale:1.02}}>
                     </motion.video>
                 </div>
-                <div className="flex flex-col gap-4 col-span-full lg:col-span-3 px-4 sm:px-0">
-                    <h1 className="text-2xl tracking-tight backdrop:-mb-1">End Sequence</h1>
+                <div className="flex flex-col gap-2 col-span-full lg:col-span-3 mb-40">
+                    {/* <h1 className="text-xl tracking-tight">End Sequence</h1> */}
 
                     <motion.video
                         src="/CCS/End Frame (Paris) 16-9.mp4"
@@ -146,7 +157,7 @@ show: {
 
 
             {/* Behind the Scenes */}
-            <div className="col-span-full">
+            {/* <div className="col-span-full">
                 <h1 className="text-4xl font-medium tracking-tighter mt-18 mb-2">Behind the Scenes</h1>
             </div>
                 <motion.img
@@ -196,7 +207,7 @@ show: {
                     object-cover transition-scale duration-200 w-full"
                     variants={animateInChild}
                     whileHover={{scale:1.02}}>
-                </motion.img>
+                </motion.img> */}
             
             
                 
