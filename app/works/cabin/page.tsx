@@ -48,7 +48,7 @@ show: {
             </motion.div> 
 
             {/* Banner Video */}
-            <motion.video src="/CCS/montage.mp4" 
+            <motion.video src="/CCS/montagelow.mp4" 
             className="col-span-full shadow-standard rounded-xl w-full h-screen/1.5 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop
             variants={animateInChild}

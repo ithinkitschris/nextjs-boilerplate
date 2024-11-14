@@ -86,6 +86,22 @@ export default function Home(){
 
           <motion.div
           variants={animateInChild}>
+            <Link href="/grid"
+              className="rounded-full flex items-center justify-center
+                border-1.5 border-foreground font-semibold text-foreground 
+                text-sm h-10 px-1 sm:min-w-52 
+                hover:scale-95 hover:border-foreground hover:drop-shadow-none
+                dark:border-foreground dark:text-foreground dark:hover:bg-foreground dark:hover:text-background
+                transition-all"
+              // target="_blank"
+              // rel="noopener noreferrer"
+            >
+              What have I done before??
+            </Link>
+          </motion.div>
+
+          <motion.div
+          variants={animateInChild}>
             <a href="https://hissing-sphere-1e7.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f"
                 className="rounded-full flex items-center justify-center
                 border-1.5 border-foreground font-semibold text-foreground 
@@ -96,23 +112,7 @@ export default function Home(){
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                How did I do this??
-            </a>
-          </motion.div>
-
-          <motion.div
-          variants={animateInChild}>
-            <a href="http://ithinkitschris.com"
-              className="rounded-full flex items-center justify-center
-                border-1.5 border-foreground font-semibold text-foreground 
-                text-sm h-10 px-1 sm:min-w-54 
-                hover:scale-95 hover:border-foreground hover:drop-shadow-none
-                dark:border-foreground dark:text-foreground dark:hover:bg-foreground dark:hover:text-background
-                transition-all"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              What have I done before???
+                How did I do this???
             </a>
           </motion.div>
         </div>
