@@ -4,7 +4,7 @@ import * as motion from "framer-motion/client"
 import Episodes from "@/app/components/episodes-cabin.js";
 import Link from "next/link";
 
-export default function CabinCrewStories() {
+export default function CabinCrewStories({className=""}) {
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -23,8 +23,7 @@ show: {
     
     return(
         
-        <motion.div className="grid grid-cols-6 gap-2 sm:gap-3
-        p-4 md:p-6 2xl:p-8 mt-6 max-w-full font-[family-name:var(--font-geist-sans)]"
+        <motion.div className={`grid grid-cols-6 gap-2 sm:gap-3 p-4 md:p-6 2xl:p-8 mt-6 max-w-full font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>

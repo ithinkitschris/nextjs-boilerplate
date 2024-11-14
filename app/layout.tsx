@@ -2,6 +2,7 @@
 import {useState} from "react";
 import DarkModeToggle from "./components/dark-mode-toggle";
 import Navbar from "./components/nav-bar";
+import BackButton from "./components/backbutton";
 import DocumentationButton from "./components/documentation";
 import localFont from "next/font/local";
 import "./globals.css";
