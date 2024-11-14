@@ -9,7 +9,7 @@ const Navbar = () => {
             <div className="flex gap-6">
                 <Link href="/"
                 className="hover:text-midground hover:scale-95 transition-transform mr-1.5">
-                    Let's rewind
+                    What is this?
                 </Link>
                 <Link href="/resume"
                 className="hover:text-midground hover:scale-95 transition-transform">
@@ -21,7 +21,7 @@ const Navbar = () => {
                 </Link>
                 <Link href="/sandbox"
                 className="hover:text-midground hover:scale-95 transition-transform">
-                    Sandbox
+                    What am I cooking?
                 </Link>
             </div>
         </nav>

@@ -26,6 +26,8 @@ const PhotographyPage = ({className}) => {
     animate="show"
     variants={animateIn}>
 
+        
+        
       {/* Full-Width Image */}
         <motion.div className="col-span-full mb-2" variants={animateInChild} >
             <img
@@ -57,6 +59,67 @@ const PhotographyPage = ({className}) => {
             className="h-auto w-full object-cover rounded-lg shadow-lg"
             />
         </motion.div>
+
+        <div className="grid grid-cols-6 col-span-full gap-2">
+            <motion.img
+                src="/photography/bbh1.jpg"
+                alt="Description of Image 3"
+                className="col-span-2 h-full w-auto object-cover rounded-lg shadow-lg"
+                variants={animateInChild}
+            />
+            <motion.img
+                src="/photography/bbh2.jpg"
+                alt="Description of Image 3"
+                className="col-span-2 h-full w-auto object-cover rounded-lg shadow-lg"
+                variants={animateInChild}
+            />
+
+            <motion.img
+                src="/photography/bbh3.jpg"
+                alt="Description of Image 3"
+                className="col-span-2 h-full w-auto object-cover rounded-lg shadow-lg"
+                variants={animateInChild}
+            />
+        </div>
+
+        {/* Two Images Side by Side */}
+        <div className="grid grid-cols-6 col-span-full mt-2 gap-2">
+            <motion.img
+                src="/photography/bbh8.jpg"
+                alt="Description of Image 3"
+                className="col-span-4 h-full w-auto object-cover rounded-lg shadow-lg"
+                variants={animateInChild}
+            />
+            <motion.img
+                src="/photography/bbh7.jpg"
+                alt="Description of Image 3"
+                className="col-span-2 h-full w-auto object-cover rounded-lg shadow-lg"
+                variants={animateInChild}
+            />
+
+        </div>
+
+        <div className="grid grid-cols-6 col-span-full mt-2 gap-2 mb-2">
+            <motion.img
+                src="/photography/bbh4.jpg"
+                alt="Description of Image 3"
+                className="col-span-2 h-full w-auto object-cover rounded-lg shadow-lg"
+                variants={animateInChild}
+            />
+            <motion.img
+                src="/photography/bbh5.jpg"
+                alt="Description of Image 3"
+                className="col-span-2 h-full w-auto object-cover rounded-lg shadow-lg"
+                variants={animateInChild}
+            />
+
+            <motion.img
+                src="/photography/bbh6.jpg"
+                alt="Description of Image 3"
+                className="col-span-2 h-full w-auto object-cover rounded-lg shadow-lg"
+                variants={animateInChild}
+            />
+        </div>
 
         {/* Three Images Side by Side */}
         {/* <div className="grid grid-cols-6 col-span-full gap-2 mb-2">
@@ -143,10 +206,26 @@ const PhotographyPage = ({className}) => {
             />
         </div>
 
+         {/* Two Images Side by Side */}
+         <div className="grid grid-cols-6 col-span-full mt-2 gap-2">
+            <motion.img
+                src="/photography/tp5.jpg"
+                alt="Description of Image 3"
+                className="col-span-4 h-full w-auto object-cover rounded-lg shadow-lg"
+                variants={animateInChild}
+            />
+            <motion.img
+                src="/photography/tp4.jpg"
+                alt="Description of Image 3"
+                className="col-span-2 h-full w-auto object-cover rounded-lg shadow-lg"
+                variants={animateInChild}
+            />
+        </div>
+
         {/* Full-Width Image */}
         <motion.div className="mt-2 col-span-full mb-2" variants={animateInChild} >
             <img
-            src="/photography/13.jpg"
+            src="/photography/12.jpg"
             className="h-auto w-full object-cover rounded-lg shadow-lg"
             />
         </motion.div>
@@ -154,7 +233,7 @@ const PhotographyPage = ({className}) => {
         {/* Two Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full gap-2">
             <motion.img
-                src="/photography/12.jpg"
+                src="/photography/13.jpg"
                 alt="Description of Image 3"
                 className="col-span-3 h-full w-auto object-cover rounded-lg shadow-lg"
                 variants={animateInChild}

@@ -24,6 +24,7 @@ export default function Home(){
     <div className="grid grid-cols-1 sm:grid-cols-6 items-center justify-items-center 
     min-h-screen p-8 pb-20 gap-15 sm:p-20 font-[family-name:var(--font-geist-sans)]">
 
+      {/* Background Glow */}
       <motion.video 
       src="/CCS/montageFade.mp4" 
       className="pointer-events-none absolute top-0 left-0 w-full h-full 
@@ -37,12 +38,14 @@ export default function Home(){
       // transition={{duration:1, ease:"easeOut"}}
       ></motion.video>
 
+
       <motion.main 
       className="flex flex-col col-start-2 sm:col-start-3 sm:col-span-2 col-span-3 px-10 gap-8 items-center sm:items-start"
       initial="hidden"
       animate="show"
       variants={animateIn}> 
 
+        {/* Main Header */}
         <motion.h1 className="text-background -ml-1 -mb-3
           text-8xl tracking-tighter transition-colors text-center sm:text-left 
           text-foreground whitespace-nowrap "
@@ -50,15 +53,14 @@ export default function Home(){
           Hey.<br/>
         </motion.h1>
 
-
+        {/* Subheader */}
         <motion.ol className="list-insid text-sm text-center sm:text-left text-foreground"
         variants={animateInChild}>
           <li className="mb-4 text-xl">
             Welcome to my Portfolio. <span className="text-xs align-top italic">Well, kinda. Not quite yet.</span>
           </li>
-          {/* <li className="mb-4">This is a work in progress, it will never be complete – the intent is for this site to be ever iterating
-              based on your input and how you would like it to be.
-          </li> */}
+
+          {/* Writeup */}
           <li>
             This page is a shell for whats to come.
             If you would like to follow my progress, you may check 

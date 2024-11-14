@@ -28,6 +28,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         midground: "var(--midground)",
+        neutral: {
+          350: '#B3B3B3',
+        },
       },
       scale: {
         '120': '1.20',
