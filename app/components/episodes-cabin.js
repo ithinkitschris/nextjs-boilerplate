@@ -44,13 +44,13 @@ const Episodes = () => {
     };
 
     return (
-        <div>
+        <div className="font-[family-name:var(--font-geist-sans)]">
             <div className="col-span-full mb-10 md:mb-6">
                 <h1 className="text-4xl font-medium text-center md:text-left tracking-tighter">Episodes</h1>
             </div>
 
             {/* Episode Thumbnails */}
-            <div className="gap-2 2xl:gap-3 grid grid-cols-3 md:grid-cols-6 mb-5 md:mb-24 w-full h-auto">
+            <div className="gap-2 2xl:gap-3 grid grid-cols-3 lg:grid-cols-6 mb-10 lg:mb-24 w-full h-auto">
                 {episodeData.map((_, index) => (
                     <img
                     key={index}
@@ -69,20 +69,20 @@ const Episodes = () => {
                 className="grid grid-cols-6 col-span-full mb-3 xl:mb-5"
                 >
                 
-                    <div className="col-span-6 md:col-span-2 xl:col-span-1">
-                        <h1 className="text-2xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-10 md:mt-0">
+                    <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1">
+                        <h1 className="text-xl lg:text-2xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-10 md:mt-0">
                         <span className="font-medium">Episode {index + 1}</span>
                         <br />
                         {episode.title}
                         </h1>
-                        <p className="text-base font-normal md:mr-10 text-center md:text-left px-18 md:px-0 mb-6 md:mb-0 leading-6">
+                        <p className="text-sm lg:text-base font-normal md:mr-10 text-center md:text-left px-18 md:px-0 mb-6 md:mb-0">
                         {episode.description}
                         </p>
                     </div>
 
                     <video
                         src={episode.videoSrc}
-                        className="shadow-standard rounded-lg object-cover col-span-6 md:col-span-4 xl:col-span-5 h-full w-full"
+                        className="shadow-standard rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-full w-full"
                         autoPlay
                         loop
                         muted
