@@ -23,7 +23,7 @@ show: {
     
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 sm:gap-3 p-4 md:p-6 2xl:p-8 mt-6 max-w-full font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-6 gap-2 sm:gap-3 max-w-full font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>

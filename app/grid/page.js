@@ -48,7 +48,7 @@ const skillContainer = {
   show: {
     opacity: 1,
     transition: {
-      when: "beforeChildren",
+      //when: "beforeChildren",
       staggerChildren: 0.03, // Stagger the children
     },
   },
@@ -60,7 +60,7 @@ const worksContainer = {
   show: {
     opacity: 1,
     transition: {
-      delay: 0.35, // Delay to make Works fade in after Skillsets
+      // delay: 0.05, // Delay to make Works fade in after Skillsets
       when: "beforeChildren",
       staggerChildren: 0.03,
     },
@@ -116,6 +116,7 @@ const GridPage = () => {
 
 const [selectedTags, setSelectedTags] = useState([]);
 const [showPhotography, setShowPhotography] = useState(false);
+const [showCabin, setShowCabin] = useState(false);
 const [showNav, setShowNav] = useState(false);
 const [hoveredWork, setHoveredWork] = useState(null);
 
@@ -125,6 +126,9 @@ const toggleTag = (tag) => {
     setShowPhotography(false);} 
   else if (tag === 'Photography') {
     setShowPhotography(!showPhotography);
+    setSelectedTags([]);}
+  else if (tag === 'cabin') {
+    setShowCabin(!showCabin);
     setSelectedTags([]);}
   else {
     if (selectedTags.includes(tag)) {
@@ -150,7 +154,7 @@ const filteredVideos = videoData.filter((video) => {
 });
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 px-8 py-6 mt-12 text-sm 2xl:text-base">
+    <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 px-8 py-6 mt-12 text-sm 2xl:text-base font-[family-name:var(--font-geist-sans)]">
       
       {/* Side Navbar */}
       <motion.div
@@ -160,16 +164,16 @@ const filteredVideos = videoData.filter((video) => {
         variants={animateIn}>
 
         {/* Give me... */}
-        <div className="flex flex-col gap-1 items-start text-left text-neutral-350 dark:text-neutral-500">
+        <div className="flex flex-col items-start text-left text-neutral-350 dark:text-neutral-500">
 
           <motion.h1
-          className="text-3xl font-medium mb-2 -ml-0.5 text-foreground tracking-tighter"
+          className="text-3xl font-medium mb-2 -ml-0.5 text-foreground tracking-tight"
           variants={animateInChild}>
             Give me...
           </motion.h1>
 
           <motion.button 
-          className={`hover:text-foreground text-left text-xl mr-8 
+          className={`hover:text-foreground text-left text-lg mr-8 tracking-tight 
             ${(selectedTags.length===0 && showPhotography===(false)) ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
           whileHover={{scale:1.06}}
           animate={{scale: (selectedTags.length===0 && showPhotography===(false)) ? 1.06 : 1}}
@@ -177,7 +181,7 @@ const filteredVideos = videoData.filter((video) => {
           onClick={() => toggleTag('all')}>everything.</motion.button>
 
           <motion.button 
-          className={`hover:text-foreground text-left text-xl mr-8 
+          className={`hover:text-foreground text-left text-lg mr-8 tracking-tight 
             ${selectedTags.includes('best') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
           whileHover={{scale:1.06}}
           animate={{scale: selectedTags.includes('best') ? 1.06 : 1}}
@@ -185,10 +189,10 @@ const filteredVideos = videoData.filter((video) => {
           onClick={() => toggleTag('best')}>the best.</motion.button>
 
           <motion.button 
-          className={"hover:text-foreground text-left text-xl mr-4"}
+          className={"hover:text-foreground text-left text-lg mr-4 tracking-tight "}
           whileHover={{scale:1.06}}
           variants={animateInChild}
-          onClick={toggleNav}>more choice, man.</motion.button>
+          onClick={toggleNav}>more choices, man.</motion.button>
 
         </div>
 
@@ -271,7 +275,7 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* All Work */}
               <motion.div
-              className="hidden sm:flex flex-col items-start gap-1 dark:text-neutral-500"
+              className="hidden sm:flex flex-col items-start gap-1 dark:text-neutral-500 sticky top-20"
               initial="hidden"
               animate="show"
               exit="exit"
@@ -609,9 +613,9 @@ const filteredVideos = videoData.filter((video) => {
         <motion.div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-2 mt-10 md:mt-0">
           <AnimatePresence>
             {showPhotography ? (
-              <CabinCrewStories 
+              <PhotographyPage
               key="photography"
-              className="col-span-full -mt-24"
+              className="col-span-full -mt-14"
               />
             ) : (
                 filteredVideos.map((video) => (
