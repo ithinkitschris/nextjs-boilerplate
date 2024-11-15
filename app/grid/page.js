@@ -115,7 +115,7 @@ const GridPage = () => {
     
   ];
 
-const [selectedTags, setSelectedTags] = useState(['all']);
+const [selectedTags, setSelectedTags] = useState([]);
 const [selectedWork, setSelectedWork] = useState([]);
 const [showNav, setShowNav] = useState(false);
 const [hoveredWork, setHoveredWork] = useState(null);
@@ -144,7 +144,8 @@ const toggleTag = (tag) => {
 
 const toggleWork = (work) => {
   if (work === 'clear') {
-    setSelectedWork([]);
+    setSelectedWork([])
+    setSelectedWork(['all']);
   } else {
     setSelectedWork(work);
   }
@@ -164,26 +165,43 @@ const filteredVideos = videoData.filter((video) => {
 });
 
   return (
+    
     <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 px-8 py-6 mt-12 text-sm 2xl:text-base font-[family-name:var(--font-geist-sans)]">
-      
-      {/* Side Navbar */}
-      <motion.div
-        className="col-span-1 flex flex-col gap-10 tracking-tight"
-        initial="hidden"
-        animate="show"
-        variants={animateIn}>
+     
+      {/* Top Navbar */}
+      <nav className="
+        flex justify-center sm:justify-between sm:ml-4 2xl:ml-6 items-center z-10
+        fixed top-0 left-0 right-0 p-2 mt-4 w-full
+        tracking-tighter font-[family-name:var(--font-geist-sans)] text-base">
+          <div className="flex gap-6 justify-center sm:justify-between w-full max-w-screen pr-12">
+              <Link href="/"
+              className="hover:text-midground hover:scale-95 transition-transform mr-1.5">
+                  Take me back!
+              </Link>
+                <Link href="/resume"
+              className="hover:text-midground hover:scale-95 transition-transform">
+                  Who are you again?
+              </Link>
+              <Link href="/resume"
+              className="hover:text-midground hover:scale-95 transition-transform">
+                  
+              </Link>
+        
+          </div>
+      </nav>  
 
-        {/* Give me... */}
-        <div className="flex flex-col items-start text-left text-neutral-350 dark:text-neutral-500">
+      {/* Give me... */}
+      <div className="col-span-full mb-4 -mt-4">
+        <div className="flex flex-row text-left gap-10 items-end text-neutral-350 dark:text-neutral-500">
 
           <motion.h1
-          className="text-3xl font-medium mb-2 -ml-0.5 text-foreground tracking-tight"
+          className="text-3xl font-medium -ml-0.5 text-foreground tracking-tight"
           variants={animateInChild}>
             Give me...
           </motion.h1>
 
           <motion.button 
-          className={`hover:text-foreground text-left text-lg mr-8 tracking-tight 
+          className={`hover:text-foreground text-left text-xl tracking-tight ml-5
             ${(selectedTags.includes('all')) ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
           whileHover={{scale:1.06}}
           animate={{scale: (selectedTags.includes('all')) ? 1.06 : 1}}
@@ -195,7 +213,7 @@ const filteredVideos = videoData.filter((video) => {
           }}>everything.</motion.button>
 
           <motion.button 
-          className={`hover:text-foreground text-left text-lg mr-8 tracking-tight 
+          className={`hover:text-foreground text-left text-xl tracking-tight 
             ${selectedTags.includes('best') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
           whileHover={{scale:1.06}}
           animate={{scale: selectedTags.includes('best') ? 1.06 : 1}}
@@ -205,12 +223,22 @@ const filteredVideos = videoData.filter((video) => {
             toggleWork('clear');}}>the best.</motion.button>
 
           <motion.button 
-          className={"hover:text-foreground text-left text-lg mr-4 tracking-tight "}
+          className={"hover:text-foreground text-left text-xl tracking-tight "}
           whileHover={{scale:1.06}}
           variants={animateInChild}
           onClick={toggleNav}>more choices, man.</motion.button>
 
         </div>
+      </div>  
+
+      {/* Side Navbar */}
+      <motion.div
+        className="col-span-1 flex flex-col gap-10 tracking-tight"
+        initial="hidden"
+        animate="show"
+        variants={animateIn}>
+
+      
 
         {/* Skillsets */}
         <AnimatePresence>
@@ -454,13 +482,13 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                  ${includesTags(['motion']) || hoveredWork ==='virtualsentosa' 
+                  ${includesTags(['motion','edit']) || hoveredWork ==='virtualsentosa' 
                   ? 'text-foreground' 
                   : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                 } transition-colors duration-100`}
                 whileHover={{scale:1.06}}
                 animate={{scale: 
-                  includesTags(['motion']) ||
+                  includesTags(['motion', 'edit']) ||
                   hoveredWork==='virtualsentosa' 
                   ? 1.06 : 1
                 }}
@@ -469,13 +497,13 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                  ${includesTags(['motion']) || hoveredWork ==='samsung' 
+                  ${includesTags(['motion','edit']) || hoveredWork ==='samsung' 
                   ? 'text-foreground' 
                   : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                 } transition-colors duration-100`}
                 whileHover={{scale:1.06}}
                 animate={{scale: 
-                  includesTags(['motion']) ||
+                  includesTags(['motion','edit']) ||
                   hoveredWork==='samsung' 
                   ? 1.06 : 1
                 }}
@@ -484,13 +512,13 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                  ${includesTags(['motion']) || hoveredWork ==='nike' 
+                  ${includesTags(['motion','edit']) || hoveredWork ==='nike' 
                   ? 'text-foreground' 
                   : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                 } transition-colors duration-100`}
                 whileHover={{scale:1.06}}
                 animate={{scale: 
-                  includesTags(['motion']) ||
+                  includesTags(['motion','edit']) ||
                   hoveredWork==='nike' 
                   ? 1.06 : 1
                 }}
@@ -529,13 +557,13 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                  ${includesTags(['motion']) || hoveredWork ==='sentosa' 
+                  ${includesTags(['motion','edit']) || hoveredWork ==='sentosa' 
                   ? 'text-foreground' 
                   : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                 } transition-colors duration-100`}
                 whileHover={{scale:1.06}}
                 animate={{scale: 
-                  includesTags(['motion']) ||
+                  includesTags(['motion','edit']) ||
                   hoveredWork==='sentosa' 
                   ? 1.06 : 1
                 }}
@@ -640,12 +668,12 @@ const filteredVideos = videoData.filter((video) => {
 
       {/* Works Grid */}
       <div className="sm:col-span-2 md:col-span-3 lg:col-span-4 2xl:col-span-8">
-        <motion.div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-2 mt-10 md:mt-0">
+        <motion.div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-10 md:mt-0">
           <AnimatePresence>
             {selectedWork === 'photography' ? (
-              <PhotographyPage key="photography" className="col-span-full -mt-14"/>
+              <PhotographyPage key="photography" className="col-span-full -mt-22"/>
             ) : selectedWork === 'cabin' ? (
-              <CabinCrewStories key="cabin" className="col-span-full -mt-14"/>
+              <CabinCrewStories key="cabin" className="col-span-full -mt-10"/>
             ) : (
                 filteredVideos.map((video) => (
                 <VideoSquare 

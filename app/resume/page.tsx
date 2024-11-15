@@ -1,14 +1,16 @@
 'use client';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import DarkModeToggle from "../components/dark-mode-toggle";
 import React, {useState, useEffect} from 'react';
+import Link from "next/link";
 
-const animateIn ={
-    hidden: {opacity:0, y:20},
+const animateIn = {
+    hidden: { opacity: 0, y: 20 },
     show: {
-        opacity:1, y:0, 
-        transition: {staggerChildren: 0.03, duration:0.2, ease:"easeOut"}
+        opacity: 1, y: 0,
+        transition: { staggerChildren: 0.03, duration: 0.2, ease: "easeOut" }
     }
-}
+};
 const animateInChild ={
     hidden: {opacity:0, y:20},
     show: {
@@ -77,17 +79,38 @@ export default function Resume() {
       return () => clearInterval(timer);
     }, []);
 
-    // useEffect(() => {
-    //     document.body.style.overflowY = 'hidden'; // Disable vertical scroll on body
-    //     document.body.style.overflowX = 'auto'; // Enable horizontal scroll on body
-
-    //     return () => {
-    //         document.body.style.overflowY = ''; // Reset overflowY when the component unmounts
-    //         document.body.style.overflowX = ''; // Reset overflowX when the component unmounts
-    //     };
-    // }, []);
+    const [isDarkMode, setIsDarkMode] = useState(false);
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+        console.log("Dark mode toggled:", isDarkMode);
+    
+      };
 
     return (
+    <>
+        <nav className="
+            flex justify-center sm:justify-between sm:ml-4 2xl:ml-6 items-center z-10
+            fixed top-0 left-0 right-0 p-2 mt-4 w-full
+            tracking-tighter font-[family-name:var(--font-geist-sans)]">
+            <div className="flex gap-6 justify-center sm:justify-between w-full max-w-screen pr-12">
+                <Link href="/"
+                className="hover:text-midground hover:scale-95 transition-transform mr-1.5">
+                    Take me back!
+                </Link>
+                <Link href="/grid"
+                className="hover:text-midground hover:scale-95 transition-transform">
+                    What have you done?
+                </Link>
+
+                <Link href="/grid"
+                className="hover:text-midground hover:scale-95 transition-transform">
+                    
+                </Link>
+
+                {/* <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/> */}
+            </div>
+        </nav>  
+
         <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
         items-start justify-items-start
         p-14 mt-4 gap-8 text-base tracking-tight
@@ -97,6 +120,8 @@ export default function Resume() {
         // whileInView="show"
         // viewport={{once:true}}
         variants={animateIn}>
+
+        
             
             {/* Bio */}
             <div className= "col-span-1 mr-10"> 
@@ -454,5 +479,6 @@ export default function Resume() {
                     </motion.div>
             </div>
         </motion.div>
+    </>
     );
 }

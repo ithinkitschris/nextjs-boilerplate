@@ -52,12 +52,14 @@ const Episodes = () => {
             {/* Episode Thumbnails */}
             <div className="gap-2 2xl:gap-3 grid grid-cols-3 lg:grid-cols-6 mb-10 lg:mb-24 w-full h-auto">
                 {episodeData.map((_, index) => (
-                    <img
-                    key={index}
-                    src={`/CCS/thumbnail${index + 1}.jpg`}
-                    className="transition-all duration-200 shadow-standard hover:shadow-standard-hover hover:scale-107 ease-out rounded-lg object-cover h-full"
-                    onClick={() => scrollToEpisode(index)} // Scroll to the episode on click
-                    />    
+                    <button>
+                      <img
+                      key={index}
+                      src={`/CCS/thumbnail${index + 1}.jpg`}
+                      className="transition-all duration-200 shadow-standard hover:shadow-standard-hover hover:scale-107 ease-out rounded-lg object-cover h-full"
+                      onClick={() => scrollToEpisode(index)} // Scroll to the episode on click
+                      />    
+                    </button>
                 ))}
             </div>
 
