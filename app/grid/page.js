@@ -191,68 +191,73 @@ const filteredVideos = videoData.filter((video) => {
       </nav>  
 
       {/* Give me... */}
-      <div className="col-span-full mb-4 -mt-4">
-        <div className="flex flex-row text-left gap-10 items-end text-neutral-350 dark:text-neutral-500">
+      <div className="col-span-full mb-4 -mt-4 sticky z-10 top-14">
+        <AnimatePresence>
+          <motion.div 
+          className="flex flex-row text-left gap-10 items-end text-neutral-350 dark:text-neutral-500"
+          initial="hidden"
+          animate="show"
+          exit="fade"
+          variants={animateIn}>
 
-          <motion.h1
-          className="text-3xl font-medium -ml-0.5 text-foreground tracking-tight"
-          variants={animateInChild}>
-            Give me...
-          </motion.h1>
+            <motion.h1
+            className="text-3xl font-medium -ml-0.5 text-foreground tracking-tight"
+            variants={animateInChild}>
+              Give me...
+            </motion.h1>
 
-          <motion.button 
-          className={`hover:text-foreground text-left text-xl tracking-tight ml-5
-            ${(selectedTags.includes('all')) ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-          whileHover={{scale:1.06}}
-          animate={{scale: (selectedTags.includes('all')) ? 1.06 : 1}}
-          variants={animateInChild}
-          onClick={() => {
-            toggleTag('clear');
-            toggleWork('clear');
-            setSelectedTags(['all']);
-          }}>everything.</motion.button>
+            <motion.button 
+            className={`hover:text-foreground text-left text-xl tracking-tight ml-4
+              ${(selectedTags.includes('all')) ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
+            whileHover={{scale:1.06}}
+            animate={{scale: (selectedTags.includes('all')) ? 1.06 : 1}}
+            variants={animateInChild}
+            onClick={() => {
+              toggleTag('clear');
+              toggleWork('clear');
+              setSelectedTags(['all']);
+            }}>everything.</motion.button>
 
-          <motion.button 
-          className={`hover:text-foreground text-left text-xl tracking-tight 
-            ${selectedTags.includes('best') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-          whileHover={{scale:1.06}}
-          animate={{scale: selectedTags.includes('best') ? 1.06 : 1}}
-          variants={animateInChild}
-          onClick={() => {
-            toggleTag('best');
-            toggleWork('clear');}}>the best.</motion.button>
+            <motion.button 
+            className={`hover:text-foreground text-left text-xl tracking-tight 
+              ${selectedTags.includes('best') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
+            whileHover={{scale:1.06}}
+            animate={{scale: selectedTags.includes('best') ? 1.06 : 1}}
+            variants={animateInChild}
+            onClick={() => {
+              toggleTag('best');
+              toggleWork('clear');}}>your best.</motion.button>
 
-          <motion.button 
-          className={"hover:text-foreground text-left text-xl tracking-tight "}
-          whileHover={{scale:1.06}}
-          variants={animateInChild}
-          onClick={toggleNav}>more choices, man.</motion.button>
+            <motion.button 
+            className={"hover:text-foreground text-left text-xl tracking-tight "}
+            whileHover={{scale:1.06}}
+            variants={animateInChild}
+            onClick={toggleNav}>more choices, man.</motion.button>
 
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>  
 
       {/* Side Navbar */}
       <motion.div
-        className="col-span-1 flex flex-col gap-10 tracking-tight"
+        className={showNav ? "col-span-1 flex flex-col gap-10 tracking-tight"  : "hidden flex flex-col gap-10 tracking-tight"}
         initial="hidden"
         animate="show"
         variants={animateIn}>
-
-      
 
         {/* Skillsets */}
         <AnimatePresence>
           {showNav && (
             <>
               <motion.div 
-              className="flex flex-col gap-1 items-start text-left dark:text-neutral-500"
+              className="flex flex-col gap-1 items-start text-left dark:text-neutral-500 mt-2"
               initial="hidden"
               animate="show"
               exit="exit"
               variants={skillContainer}>
 
                 <motion.h1
-                className="text-xl font-medium mb-4 text-foreground"
+                className="text-xl tracking-tight mb-4 text-foreground"
                 variants={animateInChild}>
                   Skillsets
                 </motion.h1>
@@ -332,7 +337,7 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* All Work */}
               <motion.div
-              className="hidden sm:flex flex-col items-start gap-1 dark:text-neutral-500 sticky top-20"
+              className="hidden sm:flex flex-col items-start gap-1 dark:text-neutral-500 sticky top-28"
               initial="hidden"
               animate="show"
               exit="exit"
@@ -340,7 +345,7 @@ const filteredVideos = videoData.filter((video) => {
               >
 
                 <motion.h1
-                className="text-xl font-medium mb-4 text-foreground"
+                className="text-xl tracking-tight mb-4 text-foreground"
                 variants={animateInChild}>
                   Work
                 </motion.h1>
@@ -667,8 +672,9 @@ const filteredVideos = videoData.filter((video) => {
       </motion.div>
 
       {/* Works Grid */}
-      <div className="sm:col-span-2 md:col-span-3 lg:col-span-4 2xl:col-span-8">
+      <div className={showNav ? "col-span-8" : "col-span-full"}>
         <motion.div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-10 md:mt-0">
+        {/* "grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-10 md:mt-0" */}
           <AnimatePresence>
             {selectedWork === 'photography' ? (
               <PhotographyPage key="photography" className="col-span-full -mt-22"/>
