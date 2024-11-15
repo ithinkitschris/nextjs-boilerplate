@@ -20,9 +20,9 @@ const scaleIn ={
 };
 
 const animateIn ={
-  hidden: {opacity:0, y:-6},
+  hidden: {opacity:0, x:-10},
   show: {
-      opacity:1, y:0, 
+      opacity:1, x:0, 
       transition: {staggerChildren: 0.05, duration:0.1, ease:"easeOut"},
   },
   fade: {
@@ -32,9 +32,9 @@ const animateIn ={
 };
 
 const animateInChild ={
-  hidden: {opacity:0, y:-6},
+  hidden: {opacity:0, x:-20},
   show: {
-    opacity:1, y:0,
+    opacity:1, x:0,
     transition: {duration:0.25, ease:"easeOut"},
     },
   fade: {
@@ -191,10 +191,10 @@ const filteredVideos = videoData.filter((video) => {
       </nav>  
 
       {/* Give me... */}
-      <div className="col-span-full mb-4 -mt-4 sticky z-10 top-14">
+      <div className="col-span-full mb-4 -mt-4 sticky z-10 top-14 text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground">
         <AnimatePresence>
           <motion.div 
-          className="flex flex-row text-left gap-10 items-end text-neutral-350 dark:text-neutral-500"
+          className="flex flex-row text-left gap-10 items-end"
           initial="hidden"
           animate="show"
           exit="fade"
@@ -208,7 +208,7 @@ const filteredVideos = videoData.filter((video) => {
 
             <motion.button 
             className={`hover:text-foreground text-left text-xl tracking-tight ml-4
-              ${(selectedTags.includes('all')) ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
+              ${(selectedTags.includes('all')) ? '' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
             whileHover={{scale:1.06}}
             animate={{scale: (selectedTags.includes('all')) ? 1.06 : 1}}
             variants={animateInChild}
@@ -229,10 +229,12 @@ const filteredVideos = videoData.filter((video) => {
               toggleWork('clear');}}>your best.</motion.button>
 
             <motion.button 
-            className={"hover:text-foreground text-left text-xl tracking-tight "}
-            whileHover={{scale:1.06}}
-            variants={animateInChild}
-            onClick={toggleNav}>more choices, man.</motion.button>
+                className="hover:text-foreground text-left text-xl tracking-tight"
+                whileHover={{ scale: 1.06 }}
+                variants={animateInChild}
+                onClick={toggleNav}>
+                more choices, man.
+            </motion.button>
 
           </motion.div>
         </AnimatePresence>
@@ -672,34 +674,38 @@ const filteredVideos = videoData.filter((video) => {
       </motion.div>
 
       {/* Works Grid */}
-      <div className={showNav ? "col-span-8" : "col-span-full"}>
-        <motion.div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-10 md:mt-0">
-        {/* "grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-10 md:mt-0" */}
+      <motion.div
+        className={showNav ? "col-span-8" : "col-span-full"}
+        layout="position" // Animate the position change of the parent container
+        layoutId="sideNav enterExit" // Unique identifier for the layout transition
+        transition={{ duration: 0.2, type: "spring", stiffness: 800, damping: 40 }}  // Control the speed of the transition
+      > 
+        {/* The grid container does not animate layout */}
+        <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-10 md:mt-0">
           <AnimatePresence>
             {selectedWork === 'photography' ? (
               <PhotographyPage key="photography" className="col-span-full -mt-22"/>
             ) : selectedWork === 'cabin' ? (
               <CabinCrewStories key="cabin" className="col-span-full -mt-10"/>
             ) : (
-                filteredVideos.map((video) => (
-                <VideoSquare 
-                key={video.src} 
-                videoSrc={video.src} 
-                link={video.link}
-                tags={video.tags}
-                setHoveredWork={setHoveredWork}
-                onClick={() => {
-                  if (video.tags.includes('cabin')) {
-                    toggleTag('clear');
-                    toggleWork('cabin');
-                    }
-                  }}
+              filteredVideos.map((video) => (
+                <VideoSquare
+                  key={video.src}
+                  videoSrc={video.src}
+                  link={video.link}
+                  tags={video.tags}
+                  setHoveredWork={setHoveredWork}
+                  onClick={() => { 
+                    if (video.tags.includes('cabin')) { 
+                      setSelectedWork('cabin'); 
+                    } 
+                  }} 
                 />
               ))
             )}
           </AnimatePresence>
-        </motion.div>
-      </div>
+        </div> 
+      </motion.div>
     </div>
   );
 };
