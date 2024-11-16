@@ -16,6 +16,11 @@ const config: Config = {
         'screen/4': '25%',
         'screen/5': '20%',
       },
+      maxWidth: {
+        '8xl' : '96rem',
+        '9xl' : '120rem',
+        '10xl' : '144rem',
+      },
       borderWidth: {
         1: '1px',
         1.5: '1.5px',

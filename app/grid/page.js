@@ -5,7 +5,11 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import PhotographyPage from '../components/photography';
+import Ghibli from '../works/ghibli/page';
 import CabinCrewStories from '../works/cabin/page';
+import Cocktail from '../works/cocktail/page';
+import BestWorkPage from '../bestwork/page';
+import Resume from '../resume/page';
 
 const scaleIn ={
   hidden: {opacity:0, scale:0.90},
@@ -115,10 +119,11 @@ const GridPage = () => {
     
   ];
 
-const [selectedTags, setSelectedTags] = useState([]);
+const [selectedTags, setSelectedTags] = useState(['all']);
 const [selectedWork, setSelectedWork] = useState([]);
 const [showNav, setShowNav] = useState(false);
 const [hoveredWork, setHoveredWork] = useState(null);
+const [moveUp, setMoveUp] = useState(false);
 
 const includesTags = (tags) => {
   return tags.some((tag) => selectedTags.includes(tag));
@@ -159,6 +164,14 @@ const toggleNav = () => {
   }
 };
 
+const MoveUp = () => {
+  if (moveUp) {
+    setMoveUp(false);
+  } else {
+    setMoveUp(true);
+  }
+}
+
 const filteredVideos = videoData.filter((video) => {
   if (selectedTags.includes('all')) return true;
   return selectedTags.some((tag) => video.tags.includes(tag));
@@ -166,7 +179,8 @@ const filteredVideos = videoData.filter((video) => {
 
   return (
     
-    <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 px-8 py-6 text-sm 2xl:text-base font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 
+    px-6 text-sm 2xl:text-base max-w-9xl font-[family-name:var(--font-geist-sans)]">
      
       {/* Top Navbar
       <nav className="
@@ -190,73 +204,87 @@ const filteredVideos = videoData.filter((video) => {
           </div>
       </nav>   */}
 
-      {/* Give me... */}
-      <div className="col-span-full mb-4 sticky z-10 top-6 text-neutral-350 dark:text-neutral-500">
+      {/* Top Navbar */}
+      <div className={`col-span-full mb-5 sticky z-20 top-4 text-xl mr-28 text-neutral-350 dark:text-neutral-500
+        moveUp`}>
+
         <AnimatePresence>
-          <motion.div 
-          className="flex flex-row min-w-screen justify-between text-left gap-5 items-end"
+
+          <motion.div
+          className="flex flex-row min-w-screen justify-between text-left"
           initial="hidden"
           animate="show"
-          exit="fade"
-          variants={animateIn}>
+          layout
+          variants={animateIn}
+          transition={{ duration: 0.5 }} // Adjust duration as needed
+  >
 
             <motion.h1
-            className="text-3xl font-medium -ml-0.5 text-foreground tracking-tight"
+            className="font-medium text-foreground text-xl tracking-tight"
+            layout
             variants={animateInChild}>
-              Show me...
+              Here are...
             </motion.h1>
 
+            {/* All Button */}
             <motion.button 
-            className={`hover:text-foreground text-left text-xl tracking-tight ml-4
+            className={`hover:text-foreground text-left tracking-tight ml-4
               ${(selectedTags.includes('all')) ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
             whileHover={{scale:1.03}}
             animate={{scale: (selectedTags.includes('all')) ? 1.03 : 1}}
             variants={animateInChild}
+            layout
             onClick={() => {
               toggleTag('clear');
               toggleWork('clear');
               setSelectedTags(['all']);
-            }}>everything.</motion.button>
+            }}>all my work.</motion.button>
 
+            {/* Best Button */}
             <motion.button 
-            className={`hover:text-foreground text-left text-xl tracking-tight 
+            className={`hover:text-foreground text-left tracking-tight 
               ${selectedTags.includes('best') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
             whileHover={{scale:1.03}}
             animate={{scale: selectedTags.includes('best') ? 1.03 : 1}}
             variants={animateInChild}
+            layout
             onClick={() => {
-              toggleTag('best');
-              toggleWork('clear');}}>your best.</motion.button>
+              toggleTag('clear');
+              toggleWork('bestwork');
+              setSelectedTags(['best'])}}>my personal favourites.</motion.button>
 
-
+            {/* SideNav Button */}
             <motion.button 
-                className="hover:text-foreground text-left text-xl tracking-tight "
-                whileHover={{ scale: 1.03 }}
-                variants={animateInChild}
-                onClick={toggleNav}>
-                {showNav ? 'less choices, man.' : 'more choices, man'}
-            </motion.button>
+            className="flex items-center gap-2 hover:text-foreground text-left tracking-tight"
+            whileHover={{ scale: 1.03 }}
+            variants={animateInChild}
+            layout="position"
+            onClick={toggleNav}
+          >
+            {/* Example of an SVG icon */}
+            <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+              <path d="M5 12h14" />
+              <path d="M5 6h14" />
+              <path d="M5 18h14" />
+            </svg>
+
+            {/* Text content */}
+            {showNav ? 'even less choices, fullscreen is always great.' : 'even more choices.'}
+          </motion.button>
             
-            <Link href="/resume">
-              <motion.div
-                className="hover:text-foreground text-left text-xl tracking-tight text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground"
-                whileHover={{ scale: 1.03 }}
-                variants={animateInChild}
-              >
-                your resume.
-              </motion.div>
-            </Link>
-
-            <Link href="/">
-              <motion.div
-                className="hover:text-foreground text-left text-xl tracking-tight text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground"
-                whileHover={{ scale: 1.03 }}
-                variants={animateInChild}
-              >
-                the way back.
-              </motion.div>
-            </Link>
-
+            {/* Resume Button */}
+            <motion.div
+              className={`hover:text-foreground text-left tracking-tight 
+                ${selectedWork.includes('resume') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
+              whileHover={{ scale: 1.03 }}
+              variants={animateInChild}
+              animate={{scale: selectedWork.includes('resume') ? 1.03 : 1}}
+              layout
+              onClick={() => {
+                toggleTag('clear');
+                toggleWork('resume')}}>
+              all the details about myself.
+            </motion.div>
           </motion.div>
         </AnimatePresence>
       </div>  
@@ -273,7 +301,7 @@ const filteredVideos = videoData.filter((video) => {
           {showNav && (
             <>
               <motion.div 
-              className="flex flex-col gap-1 items-start text-left dark:text-neutral-500 mt-2"
+              className="flex flex-col gap-1 items-start text-left mt-18 dark:text-neutral-500"
               initial="hidden"
               animate="show"
               exit="exit"
@@ -375,27 +403,30 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                  ${includesTags(['creative', 'motion', 'graphic']) || hoveredWork ==='ghibli' 
+                  ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['ghibli']) || hoveredWork ==='ghibli' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                 whileHover={{scale:1.06}}
                 animate={{scale: 
-                  includesTags(['creative', 'motion', 'graphic']) ||
+                  includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['ghibli']) ||
                   hoveredWork==='ghibli' 
                   ? 1.02 : 1
                 }}
-                variants={animateInChild}>The World of Studio Ghibli</motion.button>
+                variants={animateInChild}
+                onClick={() => {
+                  toggleTag('clear');
+                  toggleWork('ghibli')}}>The World of Studio Ghibli</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                ${includesTags(['creative', 'motion', 'graphic']) || selectedWork.includes(['cabin']) || hoveredWork ==='cabin' 
+                ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cabin']) || hoveredWork ==='cabin' 
                   ? 'text-foreground' 
                   : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                 } transition-colors duration-100`}
                 whileHover={{scale:1.06}}
                 animate={{scale: 
-                  includesTags(['creative', 'motion', 'graphic']) || selectedWork.includes(['cabin']) || hoveredWork==='cabin' 
+                  includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cabin']) || hoveredWork==='cabin' 
                   ? 1.02 : 1
                 }}
                 variants={animateInChild}
@@ -405,18 +436,18 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                  ${includesTags(['creative', 'motion', 'graphic']) || hoveredWork ==='cocktail' 
+                  ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cocktail']) || hoveredWork ==='cocktail' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                 whileHover={{scale:1.06}}
                 animate={{scale: 
-                  includesTags(['creative', 'motion', 'graphic']) ||
+                  includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cocktail']) ||
                   hoveredWork==='cocktail' 
                   ? 1.02 : 1
                 }}
                 variants={animateInChild}
-                onClick={() => toggleTag('3')}>Cocktail Conversations</motion.button>
+                onClick={() => toggleWork('cocktail')}>Cocktail Conversations</motion.button>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
@@ -699,16 +730,24 @@ const filteredVideos = videoData.filter((video) => {
         className={showNav ? "col-span-8" : "col-span-full"}
         layout="position"
         layoutId='test'
-        transition={{ type: "spring", stiffness: 400, damping: 25 }}  // Control the speed of the transition
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}  // Control the speed of the transition
       > 
-        {/* The grid container does not animate layout */}
+
         <motion.div 
-        className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-10 md:mt-0">
+        className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-14 md:mt-2">
           <AnimatePresence>
             {selectedWork === 'photography' ? (
               <PhotographyPage key="photography" className="col-span-full -mt-22"/>
+            ) : selectedWork === 'resume' ? (
+              <Resume key="resume" className="col-span-full"/>
+            ) : selectedWork === 'ghibli' ? (
+              <Ghibli key="ghibli" className="col-span-full"/>
             ) : selectedWork === 'cabin' ? (
-              <CabinCrewStories key="cabin" className="col-span-full -mt-6"/>
+              <CabinCrewStories key="cabin" className="col-span-full"/>
+            ) : selectedWork === 'cocktail' ? (
+              <Cocktail key="cocktail" className="col-span-full"/>
+            ) : selectedWork === 'bestwork' ? (
+              <BestWorkPage key="bestwork" className="col-span-full mt-2" setSelectedWork={setSelectedWork}/>
             ) : (
               filteredVideos.map((video) => (
                 <VideoSquare
@@ -718,10 +757,12 @@ const filteredVideos = videoData.filter((video) => {
                   tags={video.tags}
                   setHoveredWork={setHoveredWork}
                   onClick={() => { 
-                    if (video.tags.includes('cabin')) { 
-                      setSelectedWork('cabin'); 
-                    } 
-                  }} 
+                    const workTags = ['cabin', 'cocktail', 'ghibli'];
+                    const matchedWork = workTags.find((tag) => video.tags.includes(tag));
+                    if (matchedWork) {
+                      setSelectedWork(matchedWork);
+                    }
+                  }}
                 />
               ))
             )}

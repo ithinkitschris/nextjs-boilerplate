@@ -19,7 +19,7 @@ const animateInChild ={
         }
     }
 
-export default function Resume() {
+export default function Resume({className=""}) {
 
     const [timeNyc, setTimeNyc] = useState<string | null>(null);
     useEffect(() => {
@@ -88,7 +88,7 @@ export default function Resume() {
 
     return (
     <>
-        <nav className="
+        {/* <nav className="
             flex justify-center sm:justify-between sm:ml-4 2xl:ml-6 items-center z-10
             fixed top-0 left-0 right-0 p-2 mt-4 w-full
             tracking-tighter font-[family-name:var(--font-geist-sans)]">
@@ -107,14 +107,14 @@ export default function Resume() {
                     
                 </Link>
 
-                {/* <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/> */}
+                {/* <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/> 
             </div>
-        </nav>  
+        </nav>   */}
 
-        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
+        <motion.div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
         items-start justify-items-start
-        p-14 mt-4 gap-8 text-base tracking-tight
-        font-[family-name:var(--font-geist-sans)]"
+        p-0 gap-8 text-base tracking-tight
+        font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
         // whileInView="show"
@@ -126,7 +126,7 @@ export default function Resume() {
             {/* Bio */}
             <div className= "col-span-1 mr-10"> 
                 <motion.h1 
-                className="-ml-1 text-4xl mb-6 tracking-tight leading-10 font-light"
+                className="-ml-1 text-4xl mb-6 tracking-tight whitespace-nowrap leading-10 font-medium"
                 variants={animateInChild}>
                     Chris Leow
                 </motion.h1>
@@ -172,11 +172,11 @@ export default function Resume() {
             {/* Currently: */}
             <div className="col-span-1 sm:pr-4">
 
-                <motion.h1 className="text-2xl mb-8 -ml-0.5" variants={animateInChild}>
+                <motion.h1 className="text-2xl mb-8 -ml-0.5 mt-2" variants={animateInChild}>
                 Currently:<br/>
                 </motion.h1>
 
-                    <motion.p variants={animateInChild}>
+                    <motion.p variants={animateInChild} className="-mt-2">
                     <span className="underline" style={{ textUnderlineOffset: '2px' }}>Master's Student</span>
                     <br/>
                     MFA Interaction Design
@@ -222,14 +222,14 @@ export default function Resume() {
             </div>
             
             {/* ArtScience Museum */}
-            <div className="col-span-1 sm:pr-4">
+            <div className="col-span-1 sm:pr-4 mt-2">
                 
-                <motion.div variants={animateInChild}>
+                <motion.div variants={animateInChild} className="">
                     <h1 className="text-2xl mb-8 -ml-0.5">
                         Previously:
                     </h1>
 
-                    <p>
+                    <p className="-mt-2">
                     <span className="underline" style={{ textUnderlineOffset: '2px' }}>Creative Lead</span><br/>
                     Marina Bay Sands <i>(ArtScience Museum)</i><br/>
                     <i className="-ml-0.5">January 2024 – November 2024</i>

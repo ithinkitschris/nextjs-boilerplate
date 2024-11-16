@@ -34,11 +34,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       antialiased flex flex-col min-h-screen
       bg-background transition-all duration-300`}>
         {/* <Navbar /> */}
-        {/* <header className="fixed p-7 right-1 z-10"><DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/></header> */}
+        <header className="fixed right-6 top-3 z-10"><DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/></header>
           <main className="flex-grow">{children}</main>
             <footer className="fixed bottom-8 left-0 right-0 flex gap-3 flex-wrap items-center justify-between px-10"> 
               <DocumentationButton />
-              <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
+              {/* <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/> */}
             </footer>
       </body>
     </html>
