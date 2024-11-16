@@ -211,7 +211,7 @@ const filteredVideos = videoData.filter((video) => {
         <AnimatePresence>
 
           <motion.div
-          className="flex flex-row min-w-screen justify-between text-left"
+          className="flex flex-row min-w-screen justify-between gap-14 text-left"
           initial="hidden"
           animate="show"
           layout
@@ -220,7 +220,7 @@ const filteredVideos = videoData.filter((video) => {
   >
 
             <motion.h1
-            className="font-medium text-foreground text-xl tracking-tight"
+            className="font-semibold text-foreground text-xl tracking-tight"
             layout
             variants={animateInChild}>
               Here are...
@@ -228,7 +228,7 @@ const filteredVideos = videoData.filter((video) => {
 
             {/* All Button */}
             <motion.button 
-            className={`hover:text-foreground text-left tracking-tight ml-4
+            className={`hover:text-foreground text-left text-lg tracking-tight ml-4
               ${(selectedTags.includes('all')) ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
             whileHover={{scale:1.03}}
             animate={{scale: (selectedTags.includes('all')) ? 1.03 : 1}}
@@ -242,7 +242,7 @@ const filteredVideos = videoData.filter((video) => {
 
             {/* Best Button */}
             <motion.button 
-            className={`hover:text-foreground text-left tracking-tight 
+            className={`hover:text-foreground text-left text-lg tracking-tight 
               ${selectedTags.includes('best') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
             whileHover={{scale:1.03}}
             animate={{scale: selectedTags.includes('best') ? 1.03 : 1}}
@@ -255,7 +255,7 @@ const filteredVideos = videoData.filter((video) => {
 
             {/* SideNav Button */}
             <motion.button 
-            className="flex items-center gap-2 hover:text-foreground text-left tracking-tight"
+            className="flex items-center gap-2 hover:text-foreground text-left text-lg tracking-tight"
             whileHover={{ scale: 1.03 }}
             variants={animateInChild}
             layout="position"
@@ -269,12 +269,12 @@ const filteredVideos = videoData.filter((video) => {
             </svg>
 
             {/* Text content */}
-            {showNav ? 'even less choices, fullscreen is always great.' : 'even more choices.'}
+            {showNav ? 'even less choices.' : 'even more choices.'}
           </motion.button>
             
             {/* Resume Button */}
             <motion.div
-              className={`hover:text-foreground text-left tracking-tight 
+              className={`hover:text-foreground text-left text-lg tracking-tight 
                 ${selectedWork.includes('resume') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
               whileHover={{ scale: 1.03 }}
               variants={animateInChild}
@@ -282,7 +282,9 @@ const filteredVideos = videoData.filter((video) => {
               layout
               onClick={() => {
                 toggleTag('clear');
-                toggleWork('resume')}}>
+                toggleWork('resume');
+                setSelectedTags(['all'])}}
+                >
               all the details about myself.
             </motion.div>
           </motion.div>
@@ -294,6 +296,7 @@ const filteredVideos = videoData.filter((video) => {
         className={showNav ? "col-span-1 flex flex-col gap-10 tracking-tight"  : "hidden flex flex-col gap-10 tracking-tight"}
         initial="hidden"
         animate="show"
+        layout
         variants={animateIn}>
 
         {/* Skillsets */}
@@ -301,7 +304,7 @@ const filteredVideos = videoData.filter((video) => {
           {showNav && (
             <>
               <motion.div 
-              className="flex flex-col gap-1 items-start text-left mt-18 dark:text-neutral-500"
+              className="flex flex-col gap-1 items-start text-left mt-10 dark:text-neutral-500"
               initial="hidden"
               animate="show"
               exit="exit"
@@ -372,7 +375,7 @@ const filteredVideos = videoData.filter((video) => {
                 onClick={() => {
                   toggleTag('clear');
                   toggleWork('photography');
-                  setSelectedTags(['photography']);}}>Photography</motion.button>
+                  setSelectedTags(['all']);}}>Photography</motion.button>
                   
 
                 <motion.button 
@@ -401,10 +404,16 @@ const filteredVideos = videoData.filter((video) => {
                   Work
                 </motion.h1>
 
+                <motion.h1
+                className={`text-xs tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                variants={animateInChild}>
+                  2024
+                </motion.h1>
+
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
                   ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['ghibli']) || hoveredWork ==='ghibli' 
-                    ? 'text-foreground' 
+                    ? 'text-foreground mb-3' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                 whileHover={{scale:1.06}}
@@ -418,6 +427,12 @@ const filteredVideos = videoData.filter((video) => {
                   toggleTag('clear');
                   toggleWork('ghibli')}}>The World of Studio Ghibli</motion.button>
 
+                <motion.h1
+                className={`text-xs tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                variants={animateInChild}>
+                  2023
+                </motion.h1>
+                  
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
                 ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cabin']) || hoveredWork ==='cabin' 
@@ -481,6 +496,27 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
+                  ${includesTags(['creative']) || hoveredWork ==='ispy' 
+                    ? 'text-foreground' 
+                    : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
+                  } transition-colors duration-100`}
+                whileHover={{scale:1.06}}
+                animate={{scale: 
+                  includesTags(['creative']) ||
+                  hoveredWork==='ispy' 
+                  ? 1.02 : 1
+                }}
+                variants={animateInChild}
+                onClick={() => toggleTag('3')}>I Spy in the Sky</motion.button>
+
+                 <motion.h1
+                className={`text-xs tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                variants={animateInChild}>
+                  2022
+                </motion.h1>
+
+                <motion.button 
+                className={`hover:text-foreground text-left mr-8
                   ${includesTags(['creative', 'motion', 'edit', 'graphic']) || hoveredWork ==='lounge' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
@@ -511,18 +547,41 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
-                  ${includesTags(['creative']) || hoveredWork ==='ispy' 
-                    ? 'text-foreground' 
-                    : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
-                  } transition-colors duration-100`}
+                  ${includesTags(['motion']) || hoveredWork ==='oneshow' 
+                  ? 'text-foreground' 
+                  : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
+                } transition-colors duration-100`}
                 whileHover={{scale:1.06}}
                 animate={{scale: 
-                  includesTags(['creative']) ||
-                  hoveredWork==='ispy' 
+                  includesTags(['motion']) ||
+                  hoveredWork==='oneshow' 
                   ? 1.02 : 1
                 }}
                 variants={animateInChild}
-                onClick={() => toggleTag('3')}>I Spy in the Sky</motion.button>
+                onClick={() => toggleTag('Photography')}>TBWA One Show Shortlist</motion.button>
+
+                <motion.button 
+                className={`hover:text-foreground text-left mr-8
+                  ${includesTags(['motion']) || hoveredWork ==='bybit' 
+                  ? 'text-foreground' 
+                  : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
+                } transition-colors duration-100`}
+                whileHover={{scale:1.06}}
+                animate={{scale: 
+                  includesTags(['motion']) ||
+                  hoveredWork==='bybit' 
+                  ? 1.02 : 1
+                }}
+                variants={animateInChild}
+                onClick={() => toggleTag('3')}>ByBit Moon Pillow</motion.button>
+
+
+                <motion.h1
+                className={`text-xs tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                variants={animateInChild}>
+                  2021
+                </motion.h1>
+
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
@@ -571,6 +630,28 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
+                  ${includesTags(['motion','edit']) || hoveredWork ==='sentosa' 
+                  ? 'text-foreground' 
+                  : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
+                } transition-colors duration-100`}
+                whileHover={{scale:1.06}}
+                animate={{scale: 
+                  includesTags(['motion','edit']) ||
+                  hoveredWork==='sentosa' 
+                  ? 1.02 : 1
+                }}
+                variants={animateInChild}
+                onClick={() => toggleTag('3')}>Sentosa Island</motion.button>
+
+                <motion.h1
+                className={`text-xs tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                variants={animateInChild}>
+                  2019
+                </motion.h1>
+                
+
+                <motion.button 
+                className={`hover:text-foreground text-left mr-8
                   ${includesTags(['motion','edit']) || hoveredWork ==='nike' 
                   ? 'text-foreground' 
                   : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
@@ -599,6 +680,12 @@ const filteredVideos = videoData.filter((video) => {
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>New Style Fresh Start</motion.button>
 
+                <motion.h1
+                className={`text-xs tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                variants={animateInChild}>
+                  2017
+                </motion.h1>
+
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
                   ${includesTags(['motion', 'graphic']) || hoveredWork ==='uniqlo1' 
@@ -614,20 +701,11 @@ const filteredVideos = videoData.filter((video) => {
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography', 'graphic')}>Your Stage Now Live</motion.button>
 
-                <motion.button 
-                className={`hover:text-foreground text-left mr-8
-                  ${includesTags(['motion','edit']) || hoveredWork ==='sentosa' 
-                  ? 'text-foreground' 
-                  : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
-                } transition-colors duration-100`}
-                whileHover={{scale:1.06}}
-                animate={{scale: 
-                  includesTags(['motion','edit']) ||
-                  hoveredWork==='sentosa' 
-                  ? 1.02 : 1
-                }}
-                variants={animateInChild}
-                onClick={() => toggleTag('3')}>Sentosa Island</motion.button>
+                <motion.h1
+                className={`text-xs tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                variants={animateInChild}>
+                  Personal
+                </motion.h1>
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
@@ -674,35 +752,7 @@ const filteredVideos = videoData.filter((video) => {
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography')}>Leica M10-P</motion.button>
 
-                <motion.button 
-                className={`hover:text-foreground text-left mr-8
-                  ${includesTags(['motion']) || hoveredWork ==='bybit' 
-                  ? 'text-foreground' 
-                  : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
-                } transition-colors duration-100`}
-                whileHover={{scale:1.06}}
-                animate={{scale: 
-                  includesTags(['motion']) ||
-                  hoveredWork==='bybit' 
-                  ? 1.02 : 1
-                }}
-                variants={animateInChild}
-                onClick={() => toggleTag('3')}>ByBit Moon Pillow</motion.button>
-
-                <motion.button 
-                className={`hover:text-foreground text-left mr-8
-                  ${includesTags(['motion']) || hoveredWork ==='oneshow' 
-                  ? 'text-foreground' 
-                  : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
-                } transition-colors duration-100`}
-                whileHover={{scale:1.06}}
-                animate={{scale: 
-                  includesTags(['motion']) ||
-                  hoveredWork==='oneshow' 
-                  ? 1.02 : 1
-                }}
-                variants={animateInChild}
-                onClick={() => toggleTag('Photography')}>TBWA One Show Shortlist</motion.button>
+            
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8

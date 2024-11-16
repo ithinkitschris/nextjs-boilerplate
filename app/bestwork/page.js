@@ -26,8 +26,8 @@ const BestWorkPage = ({className, setSelectedWork}) => {
 
 
         <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild} >
-            <p className="font-base text-lg tracking-tighter -mb-1 ml-0.5">01.</p>
-            <h1 className="text-6xl font-medium tracking-tighter mb-2 mr-20">Beyond The Cabin</h1>
+            <p className="font-medium text-lg tracking-tighter ml-0.5">01.</p>
+            <h1 className="text-6xl font-semibold tracking-tighter leading-tighter mb-2 mr-20">Beyond The Cabin</h1>
             <h1 className="text-2xl tracking-tighter mb-4 mr-10">Brand Campaign for Singapore Airlines</h1>
             <p className="mr-10">6 Cities. 6 Cabin Crew. 6 Passions.<br/>
             Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world.
@@ -46,8 +46,8 @@ const BestWorkPage = ({className, setSelectedWork}) => {
         </button>
 
         <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}>
-            <p className="font-base text-lg tracking-tighter -mb-1 ml-0.5">02.</p>
-            <h1 className="text-6xl font-medium tracking-tighter mb-2 mr-20">Cocktail Conversations</h1>
+            <p className="font-medium text-lg tracking-tighter ml-0.5">02.</p>
+            <h1 className="text-6xl font-semibold tracking-tighter leading-tighter mb-2 mr-20">Cocktail Conversations</h1>
             <h1 className="text-2xl tracking-tighter mb-4 mr-10">Brand Campaign for Singapore Airlines</h1>
             <p className="mr-10">6 Cities. 6 Cabin Crew. 6 Passions.<br/>
             Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world.
@@ -68,8 +68,8 @@ const BestWorkPage = ({className, setSelectedWork}) => {
 
         <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}
         onClick={() => setSelectedWork('ghibli')}>
-            <p className="font-base text-lg tracking-tighter -mb-1">03.</p>
-            <h1 className="text-6xl font-medium tracking-tighter mb-2 mr-20">The World of Studio Ghibli</h1>
+            <p className="font-medium text-lg tracking-tighter">03.</p>
+            <h1 className="text-6xl font-semibold tracking-tighter leading-tighter mb-2 mr-20">The World of Studio Ghibli</h1>
             <h1 className="text-2xl tracking-tighter mb-4 mr-10">Marketing Campaign for ArtScience Museum</h1>
             <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum, where imagination begins.
             </p>

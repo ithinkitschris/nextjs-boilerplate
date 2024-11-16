@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       width: {
         62: '15.5rem',
+        '19' : '4.75rem',
         'screen/1.5': '75%',
         'screen/3': '33.33333%',
         'screen/4': '25%',
@@ -71,6 +72,10 @@ const config: Config = {
         'standard': '1px 1px 12px rgba(0,0,0,0.3)',
         'strong': '2px 2px 8px rgba(0,0,0,0.8)',
         'standard-hover': '0px 5px 20px rgba(0,0,0,0.3)',
+      },
+      lineHeight: {
+        'tighter' : '0.92',
+        'tightest' : '0.6',
       },
     },
   },

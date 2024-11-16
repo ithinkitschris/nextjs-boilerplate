@@ -313,7 +313,7 @@ export default function Resume({className=""}) {
                         </p>
                     </motion.div>
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">Every Getaway begins with your Everyday</h1>
+                        <h1 className="mt-6 mb-4">Kris+ Brand Campaign</h1>
                         <p className="mb-4 ml-6">
                         Lead Creative for a tactical brand campaign for Kris+, the lifestyle rewards app by Singapore Airlines. Centred around the idea of a holiday getaway being just one tap away on the app through shopping and dining, the campaign was brought to life in the likes of a Rube Goldberg device, symbolising the domino effect through the journey of using the app.</p>
                         <p className="mb-4 ml-6">
