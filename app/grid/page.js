@@ -171,7 +171,7 @@ const filteredVideos = videoData.filter((video) => {
       {/* Top Navbar */}
       <nav className="
         flex justify-center sm:justify-between sm:ml-4 2xl:ml-6 items-center z-10
-        fixed top-0 left-0 right-0 p-2 mt-4 w-full
+        absolute top-0 left-0 right-0 p-2 mt-4 w-full
         tracking-tighter font-[family-name:var(--font-geist-sans)] text-base">
           <div className="flex gap-6 justify-center sm:justify-between w-full max-w-screen pr-12">
               <Link href="/"
@@ -191,7 +191,7 @@ const filteredVideos = videoData.filter((video) => {
       </nav>  
 
       {/* Give me... */}
-      <div className="col-span-full mb-4 -mt-4 sticky z-10 top-14 text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground">
+      <div className="col-span-full mb-4 -mt-4 sticky z-10 top-6 text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground">
         <AnimatePresence>
           <motion.div 
           className="flex flex-row text-left gap-10 items-end"
@@ -233,7 +233,7 @@ const filteredVideos = videoData.filter((video) => {
                 whileHover={{ scale: 1.06 }}
                 variants={animateInChild}
                 onClick={toggleNav}>
-                more choices, man.
+                {showNav ? 'less choices, man.' : 'more choices, man'}
             </motion.button>
 
           </motion.div>
@@ -339,7 +339,7 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* All Work */}
               <motion.div
-              className="hidden sm:flex flex-col items-start gap-1 dark:text-neutral-500 sticky top-28"
+              className="hidden sm:flex flex-col items-start gap-1 dark:text-neutral-500 sticky top-24"
               initial="hidden"
               animate="show"
               exit="exit"
@@ -362,7 +362,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['creative', 'motion', 'graphic']) ||
                   hoveredWork==='ghibli' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}>The World of Studio Ghibli</motion.button>
 
@@ -375,7 +375,7 @@ const filteredVideos = videoData.filter((video) => {
                 whileHover={{scale:1.06}}
                 animate={{scale: 
                   includesTags(['creative', 'motion', 'graphic']) || selectedWork.includes(['cabin']) || hoveredWork==='cabin' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => {
@@ -392,7 +392,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['creative', 'motion', 'graphic']) ||
                   hoveredWork==='cocktail' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Cocktail Conversations</motion.button>
@@ -407,7 +407,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['creative', 'motion']) ||
                   hoveredWork==='kris' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Kris+ Brand Campaign</motion.button>
@@ -422,7 +422,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['creative', 'motion']) ||
                   hoveredWork==='travelbig' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Travel Like Never Before</motion.button>
@@ -437,7 +437,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['creative', 'motion', 'edit', 'graphic']) ||
                   hoveredWork==='lounge' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>SilverKris Lounge</motion.button>
@@ -452,7 +452,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['creative']) ||
                   hoveredWork==='hemsaker' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography')}>Oops Happens</motion.button>
@@ -467,7 +467,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['creative']) ||
                   hoveredWork==='ispy' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>I Spy in the Sky</motion.button>
@@ -482,7 +482,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion', 'edit']) || selectedTags.includes('edit') ||
                   hoveredWork==='jolli' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('1')}>JolliEverAfter</motion.button>
@@ -497,7 +497,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion', 'edit']) ||
                   hoveredWork==='virtualsentosa' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('2')}>Virtual Sentosa</motion.button>
@@ -512,7 +512,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion','edit']) ||
                   hoveredWork==='samsung' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Samsung Lifestyle Displays</motion.button>
@@ -527,7 +527,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion','edit']) ||
                   hoveredWork==='nike' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Nike Athlete Stories: Koy & Toon</motion.button>
@@ -542,7 +542,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion']) ||
                   hoveredWork==='uniqlo2' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>New Style Fresh Start</motion.button>
@@ -557,7 +557,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion', 'graphic']) ||
                   hoveredWork==='uniqlo1' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography', 'graphic')}>Your Stage Now Live</motion.button>
@@ -572,7 +572,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion','edit']) ||
                   hoveredWork==='sentosa' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>Sentosa Island</motion.button>
@@ -587,7 +587,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion']) ||
                   hoveredWork==='iphone12' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>iPhone 12 Pro</motion.button>
@@ -602,7 +602,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion']) ||
                   hoveredWork==='iphone' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>iPhone 15 Pro</motion.button>
@@ -617,7 +617,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion']) ||
                   hoveredWork==='leica' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography')}>Leica M10-P</motion.button>
@@ -632,7 +632,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion']) ||
                   hoveredWork==='bybit' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>ByBit Moon Pillow</motion.button>
@@ -647,7 +647,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion']) ||
                   hoveredWork==='oneshow' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('Photography')}>TBWA One Show Shortlist</motion.button>
@@ -662,7 +662,7 @@ const filteredVideos = videoData.filter((video) => {
                 animate={{scale: 
                   includesTags(['motion']) ||
                   hoveredWork==='3d' 
-                  ? 1.06 : 1
+                  ? 1.02 : 1
                 }}
                 variants={animateInChild}
                 onClick={() => toggleTag('3')}>3D Motion Exploration</motion.button>
@@ -673,7 +673,7 @@ const filteredVideos = videoData.filter((video) => {
         </AnimatePresence>
       </motion.div>
 
-      {/* Works Grid */}
+      {/* Grid */}
       <motion.div
         className={showNav ? "col-span-8" : "col-span-full"}
         layout="position" // Animate the position change of the parent container
