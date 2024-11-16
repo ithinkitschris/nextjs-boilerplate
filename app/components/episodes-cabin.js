@@ -52,9 +52,8 @@ const Episodes = () => {
             {/* Episode Thumbnails */}
             <div className="gap-2 2xl:gap-3 grid grid-cols-3 lg:grid-cols-6 mb-10 lg:mb-24 w-full h-auto">
                 {episodeData.map((_, index) => (
-                    <button>
+                    <button key={index}>
                       <img
-                      key={index}
                       src={`/CCS/thumbnail${index + 1}.jpg`}
                       className="transition-all duration-200 shadow-standard hover:shadow-standard-hover hover:scale-107 ease-out rounded-lg object-cover h-full"
                       onClick={() => scrollToEpisode(index)} // Scroll to the episode on click
@@ -66,7 +65,7 @@ const Episodes = () => {
             {/* Episodes */}
             {episodeData.map((episode, index) => (
                 <div
-                key={index}
+                key={episode.title}
                 ref={(el) => (episodeRefs.current[index] = el)}
                 className="grid grid-cols-6 col-span-full mb-3 xl:mb-5"
                 >

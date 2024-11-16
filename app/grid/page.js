@@ -166,9 +166,9 @@ const filteredVideos = videoData.filter((video) => {
 
   return (
     
-    <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 px-8 py-6 mt-12 text-sm 2xl:text-base font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 px-8 py-6 text-sm 2xl:text-base font-[family-name:var(--font-geist-sans)]">
      
-      {/* Top Navbar */}
+      {/* Top Navbar
       <nav className="
         flex justify-center sm:justify-between sm:ml-4 2xl:ml-6 items-center z-10
         absolute top-0 left-0 right-0 p-2 mt-4 w-full
@@ -188,13 +188,13 @@ const filteredVideos = videoData.filter((video) => {
               </Link>
         
           </div>
-      </nav>  
+      </nav>   */}
 
       {/* Give me... */}
-      <div className="col-span-full mb-4 -mt-4 sticky z-10 top-6 text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground">
+      <div className="col-span-full mb-4 sticky z-10 top-6 text-neutral-350 dark:text-neutral-500">
         <AnimatePresence>
           <motion.div 
-          className="flex flex-row text-left gap-10 items-end"
+          className="flex flex-row min-w-screen justify-between text-left gap-5 items-end"
           initial="hidden"
           animate="show"
           exit="fade"
@@ -203,14 +203,14 @@ const filteredVideos = videoData.filter((video) => {
             <motion.h1
             className="text-3xl font-medium -ml-0.5 text-foreground tracking-tight"
             variants={animateInChild}>
-              Give me...
+              Show me...
             </motion.h1>
 
             <motion.button 
             className={`hover:text-foreground text-left text-xl tracking-tight ml-4
-              ${(selectedTags.includes('all')) ? '' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-            whileHover={{scale:1.06}}
-            animate={{scale: (selectedTags.includes('all')) ? 1.06 : 1}}
+              ${(selectedTags.includes('all')) ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
+            whileHover={{scale:1.03}}
+            animate={{scale: (selectedTags.includes('all')) ? 1.03 : 1}}
             variants={animateInChild}
             onClick={() => {
               toggleTag('clear');
@@ -221,20 +221,41 @@ const filteredVideos = videoData.filter((video) => {
             <motion.button 
             className={`hover:text-foreground text-left text-xl tracking-tight 
               ${selectedTags.includes('best') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-            whileHover={{scale:1.06}}
-            animate={{scale: selectedTags.includes('best') ? 1.06 : 1}}
+            whileHover={{scale:1.03}}
+            animate={{scale: selectedTags.includes('best') ? 1.03 : 1}}
             variants={animateInChild}
             onClick={() => {
               toggleTag('best');
               toggleWork('clear');}}>your best.</motion.button>
 
+
             <motion.button 
-                className="hover:text-foreground text-left text-xl tracking-tight"
-                whileHover={{ scale: 1.06 }}
+                className="hover:text-foreground text-left text-xl tracking-tight "
+                whileHover={{ scale: 1.03 }}
                 variants={animateInChild}
                 onClick={toggleNav}>
                 {showNav ? 'less choices, man.' : 'more choices, man'}
             </motion.button>
+            
+            <Link href="/resume">
+              <motion.div
+                className="hover:text-foreground text-left text-xl tracking-tight text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground"
+                whileHover={{ scale: 1.03 }}
+                variants={animateInChild}
+              >
+                your resume.
+              </motion.div>
+            </Link>
+
+            <Link href="/">
+              <motion.div
+                className="hover:text-foreground text-left text-xl tracking-tight text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground"
+                whileHover={{ scale: 1.03 }}
+                variants={animateInChild}
+              >
+                the way back.
+              </motion.div>
+            </Link>
 
           </motion.div>
         </AnimatePresence>
@@ -676,17 +697,18 @@ const filteredVideos = videoData.filter((video) => {
       {/* Grid */}
       <motion.div
         className={showNav ? "col-span-8" : "col-span-full"}
-        layout="position" // Animate the position change of the parent container
-        layoutId="sideNav enterExit" // Unique identifier for the layout transition
-        transition={{ duration: 0.2, type: "spring", stiffness: 800, damping: 40 }}  // Control the speed of the transition
+        layout="position"
+        layoutId='test'
+        transition={{ type: "spring", stiffness: 400, damping: 25 }}  // Control the speed of the transition
       > 
         {/* The grid container does not animate layout */}
-        <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-10 md:mt-0">
+        <motion.div 
+        className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-10 md:mt-0">
           <AnimatePresence>
             {selectedWork === 'photography' ? (
               <PhotographyPage key="photography" className="col-span-full -mt-22"/>
             ) : selectedWork === 'cabin' ? (
-              <CabinCrewStories key="cabin" className="col-span-full -mt-10"/>
+              <CabinCrewStories key="cabin" className="col-span-full -mt-6"/>
             ) : (
               filteredVideos.map((video) => (
                 <VideoSquare
@@ -704,7 +726,7 @@ const filteredVideos = videoData.filter((video) => {
               ))
             )}
           </AnimatePresence>
-        </div> 
+        </motion.div> 
       </motion.div>
     </div>
   );
