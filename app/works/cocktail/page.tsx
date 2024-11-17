@@ -30,7 +30,7 @@ show: {
             {/* Background Glow */}
             <video 
             src="/cocktail/montagelow.mp4" 
-            className="absolute top-40 left-0 w-full h-2/3 object-cover rounded-full -z-10 
+            className="absolute mt-20 w-full h-screen/1.2 max-w-9xl object-cover rounded-full -z-10 
             opacity-0 dark:opacity-100 blur-3xl saturate-200"
             autoPlay 
             muted 

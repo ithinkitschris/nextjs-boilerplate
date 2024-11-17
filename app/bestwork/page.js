@@ -34,9 +34,9 @@ const BestWorkPage = ({className, setSelectedWork}) => {
             </p>
         </motion.div>
 
-        <button className="col-span-4 mb-4">
+        <button className="col-span-4 rounded-lg mb-4">
             <motion.video src="/CCS/montagelow.mp4" 
-            className="shadow-standard rounded-lg w-full h-96 object-cover"
+            className="rounded-lg shadow-standard w-full h-96 object-cover"
             autoPlay muted loop
             variants={animateInChild}
             whileHover={{scale:0.99}}
@@ -54,9 +54,9 @@ const BestWorkPage = ({className, setSelectedWork}) => {
             </p>
         </motion.div>
 
-        <button className="col-span-4 mb-4">
+        <button className="col-span-4 rounded-lg mb-4">
             <motion.video src="/Cocktail/montage.mp4" 
-            className="shadow-standard rounded-lg w-full h-96 object-cover"
+            className="rounded-lg shadow-standard w-full h-96 object-cover object-[0_30%]"
             autoPlay muted loop
             variants={animateInChild}
             whileHover={{scale:0.99}}
@@ -71,13 +71,53 @@ const BestWorkPage = ({className, setSelectedWork}) => {
             <p className="font-medium text-lg tracking-tighter">03.</p>
             <h1 className="text-6xl font-semibold tracking-tighter leading-tighter mb-2 mr-20">The World of Studio Ghibli</h1>
             <h1 className="text-2xl tracking-tighter mb-4 mr-10">Marketing Campaign for ArtScience Museum</h1>
+            <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum. Be spirited away into the magical scenes from My Neighbor Totoro, Kiki’s Delivery Service, and other iconic films through immersive theatrical sets, whimsical art installations and more.​
+            </p>
+        </motion.div>
+
+        <button className="col-span-4 rounded-lg mb-4">
+            <motion.video src="/ghibli/banner.mp4" 
+            className="rounded-lg shadow-standard w-full h-96 object-cover"
+            autoPlay muted loop
+            variants={animateInChild}
+            whileHover={{scale:0.99}}
+            transition={{duration:0.10}}
+            onClick={() => setSelectedWork('ghibli')}>
+            </motion.video>
+        </button>
+
+        <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}
+        onClick={() => setSelectedWork('ghibli')}>
+            <p className="font-medium text-lg tracking-tighter">04.</p>
+            <h1 className="text-6xl font-semibold tracking-tighter leading-tighter mb-2 mr-20 -ml-1">JolliEverAfter</h1>
+            <h1 className="text-2xl tracking-tighter mb-4 mr-10">Social Media Campaign for Jollibee</h1>
             <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum, where imagination begins.
             </p>
         </motion.div>
 
-        <button className="col-span-4 mb-4">
-            <motion.video src="/ghibli/banner.mp4" 
-            className="shadow-standard rounded-lg w-full h-96 object-cover"
+        <button className="col-span-4 rounded-lg mb-4">
+            <motion.video src="/jollieverafter/teaser.mp4" 
+            className="rounded-lg shadow-standard w-full h-96 object-cover object-[0_35%]"
+            autoPlay muted loop
+            variants={animateInChild}
+            whileHover={{scale:0.99}}
+            transition={{duration:0.10}}
+            onClick={() => setSelectedWork('ghibli')}>
+            </motion.video>
+        </button>
+
+        <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}
+        onClick={() => setSelectedWork('ghibli')}>
+            <p className="font-medium text-lg tracking-tighter">05.</p>
+            <h1 className="text-6xl font-semibold tracking-tighter leading-tighter mb-2 mr-20 -ml-1">Your Stage Now Live</h1>
+            <h1 className="text-2xl tracking-tighter mb-4 mr-10">In-Store Displays for Uniqlo</h1>
+            <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum, where imagination begins.
+            </p>
+        </motion.div>
+
+        <button className="col-span-4 rounded-lg mb-4">
+            <motion.video src="/uniqlo1/montage.mp4" 
+            className="rounded-lg shadow-standard w-full h-96 object-cover"
             autoPlay muted loop
             variants={animateInChild}
             whileHover={{scale:0.99}}

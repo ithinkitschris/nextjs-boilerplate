@@ -57,6 +57,7 @@ const config: Config = {
       },
       height: {
         'screen/2': '50vh',
+        'screen/1.2': '69vh',
         'screen/1.5': '80vh',
         'screen/3': '33.33333vh',
         'screen/4': '25vh',
@@ -67,8 +68,8 @@ const config: Config = {
         '-mt-[15vh]': '-15vh'
       },
       boxShadow: {
-        'inner-standard': 'inset 0 0px 12px rgba(0,0,0,0.15)',
-        'mild': '1px 1px 15px rgba(0,0,0,0.1)',
+        'inner-standard': 'inset 5px 5px 20px rgba(0,0,0,0.1)',
+        'mild': '5px 1px 15px rgba(0,0,0,0.1)',
         'standard': '1px 1px 12px rgba(0,0,0,0.3)',
         'strong': '2px 2px 8px rgba(0,0,0,0.8)',
         'standard-hover': '0px 5px 20px rgba(0,0,0,0.3)',
