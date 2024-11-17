@@ -54,7 +54,7 @@ const animateIn ={
                 ></motion.video>
 
                 {/* Subheader */}
-                <div className="col-span-full sm:col-span-4">
+                <div className="col-span-full sm:col-span-4 mr-16">
                     <motion.div className="text-3xl tracking-tight text-center sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                     Explore the World of Studio Ghibli at ArtScience Museum.
                     Be spirited away into the magical scenes from My Neighbor Totoro, Kiki’s Delivery Service, and other iconic films through immersive theatrical sets, whimsical art installations and more.​

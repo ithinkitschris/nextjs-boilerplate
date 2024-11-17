@@ -112,7 +112,7 @@ export default function Resume({className=""}) {
         </nav>   */}
 
         <motion.div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
-        items-start justify-items-start
+        items-start justify-items-start ml-6
         p-0 gap-8 text-base tracking-tight
         font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"

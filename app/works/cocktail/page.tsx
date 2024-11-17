@@ -54,7 +54,7 @@ show: {
             >
             </motion.video>
             {/* Subheader */}
-            <div className="col-span-full sm:col-span-4">
+            <div className="col-span-full sm:col-span-4 mr-16">
                 <motion.div className="text-4xl tracking-tight text-center sm:text-left mx-4 pr-10 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 If there was a drink to match every personality, how would your bespoke cocktail look and taste like? 
                 </motion.div>
@@ -87,12 +87,13 @@ show: {
             <div className="flex flex-col sm:flex-row col-span-full px-4 sm:px-0 gap-10 mt-6 mb-14 mr-7">
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <p className="mb-2">The Ask:</p>
-                    <p>The Flagship SilverKris Lounge at Singapore Changi Airport Terminal 3 was rebuilt from ground up and opened in 2022. With the launch campaign having run it's course in the weeks post-opening, there was a need for a sustenance campaign for the lounge. One that would showcase not only it's class-leading interior design but also most importantly, its meticulous service.</p>
+                    <p className="mb-3">The Flagship SilverKris Lounge at Singapore Changi Airport Terminal 3 was rebuilt from ground up and opened in 2022.</p>
+                    <p>Post-launch, there was a need for a sustenance campaign for the lounge. One that would showcase not only it's class-leading interior design but also most importantly, its meticulous service.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <p className="mb-2">The How:</p>
-                    <p className="mb-2">Featuring a blend of notable customers & personalities who pass through the lounge, each episode stars a different guest where we learn about their craft and travel preferences.</p> 
+                    <p className="mb-3">Featuring a blend of notable customers & personalities who pass through the lounge, each episode stars a different guest where we learn about their craft and travel preferences.</p> 
                     <p>Through curated rapid-fire questions, the bartenders at the Crystal Bar then concoct bespoke cocktails named after them based on their answers.</p>
                         
                 </motion.div>
@@ -105,10 +106,10 @@ show: {
                 
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <p className="mb-2">–</p>
-                    <p className="mb-2">
+                    <p className="mb-3">
                     This was a campaign where I oversaw the conceptualisation and overall Art Direction.</p> 
-                    <p className="mb-2">All Motion Graphics and title sequences in the episodes were both designed and animated by me and passed to the production team for the final masters.</p> 
-                    <p className="mb-2">The sustenance cocktail recipe videos for social platforms were also edited on my end.</p>
+                    <p className="mb-3">All Motion Graphics and title sequences in the episodes were both designed and animated by me and passed to the production team for the final masters.</p> 
+                    <p className="mb-3">The sustenance cocktail recipe videos for social platforms were also edited on my end.</p>
                     {/* <p>A 9:16 portrait film for social platforms was also adapted by me from the 16:9 main film for all 6 episodes. Using B-roll footage captured from the shoots, the 9:16 film incorporated a multi panelled approach to certain scenes to ensure the film was still watchable in a vertical format and provided additional content as well as context to the film for social consumption.</p> */}
                 </motion.div>
             </div>

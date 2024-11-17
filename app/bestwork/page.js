@@ -17,9 +17,9 @@ show: {
     }
 }
 
-const BestWorkPage = ({className, setSelectedWork}) => {
+const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
   return (
-    <motion.div className={`grid grid-cols-6 font-[family-name:var(--font-geist-sans)] ${className}`}
+    <motion.div className={`grid grid-cols-6 font-[family-name:var(--font-geist-sans)] ml-6 ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
@@ -28,10 +28,17 @@ const BestWorkPage = ({className, setSelectedWork}) => {
         <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild} >
             <p className="font-medium text-lg tracking-tighter ml-0.5">01.</p>
             <h1 className="text-6xl font-semibold tracking-tighter leading-tighter mb-2 mr-20">Beyond The Cabin</h1>
-            <h1 className="text-2xl tracking-tighter mb-4 mr-10">Brand Campaign for Singapore Airlines</h1>
-            <p className="mr-10">6 Cities. 6 Cabin Crew. 6 Passions.<br/>
-            Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world.
-            </p>
+            <h1 className="text-2xl tracking-tighter mb-2 mr-10">Brand Campaign for Singapore Airlines</h1>
+            {/* <div className="flex flex-row gap-4 mb-6">
+                <p className=" font-semibold">Role:</p>
+                <p className="">Creative Direction</p>
+                <p className="">Motion Design</p>
+                <p className="">Ideation</p>
+              
+            </div> */}
+            <p className="mr-10">6 Cities. 6 Cabin Crew. 6 Passions.
+                Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world.
+                </p>
         </motion.div>
 
         <button className="col-span-4 rounded-lg mb-4">
@@ -41,16 +48,26 @@ const BestWorkPage = ({className, setSelectedWork}) => {
             variants={animateInChild}
             whileHover={{scale:0.99}}
             transition={{duration:0.10}}
-            onClick={() => setSelectedWork('cabin')}>
+            onMouseEnter={() => {setHoveredWork('cabin')}}
+            onMouseLeave={() => setHoveredWork(null)}
+            onClick={() => {
+                
+                setSelectedWork('cabin')}}>
             </motion.video>
         </button>
+            
+            {/* Background Glow */}
+            <video src="/CCS/montagelow.mp4" 
+            className="absolute -z-10 rounded-full blur-3xl w-full h-96 object-cover saturate-200 opacity-0 dark:opacity-100"
+            autoPlay muted loop
+            >
+            </video>
 
         <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}>
             <p className="font-medium text-lg tracking-tighter ml-0.5">02.</p>
             <h1 className="text-6xl font-semibold tracking-tighter leading-tighter mb-2 mr-20">Cocktail Conversations</h1>
             <h1 className="text-2xl tracking-tighter mb-4 mr-10">Brand Campaign for Singapore Airlines</h1>
-            <p className="mr-10">6 Cities. 6 Cabin Crew. 6 Passions.<br/>
-            Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world.
+            <p className="mr-20">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?
             </p>
         </motion.div>
 
@@ -61,10 +78,18 @@ const BestWorkPage = ({className, setSelectedWork}) => {
             variants={animateInChild}
             whileHover={{scale:0.99}}
             transition={{duration:0.10}}
+            onMouseEnter={() => {setHoveredWork('cocktail')}}
+            onMouseLeave={() => setHoveredWork(null)}
             onClick={() => setSelectedWork('cocktail')}>
             </motion.video>
         </button>
         
+            {/* Background Glow */}
+            <video src="/Cocktail/montage.mp4" 
+            className="absolute top-1/4 -z-10 rounded-full blur-3xl w-full h-96 object-cover saturate-200 opacity-0 dark:opacity-60"
+            autoPlay muted loop
+            >
+            </video>
 
         <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}
         onClick={() => setSelectedWork('ghibli')}>
@@ -82,9 +107,18 @@ const BestWorkPage = ({className, setSelectedWork}) => {
             variants={animateInChild}
             whileHover={{scale:0.99}}
             transition={{duration:0.10}}
+            onMouseEnter={() => {setHoveredWork('ghibli')}}
+            onMouseLeave={() => setHoveredWork(null)}
             onClick={() => setSelectedWork('ghibli')}>
             </motion.video>
         </button>
+
+            {/* Background Glow */}
+            <video src="/ghibli/banner.mp4" 
+            className="absolute top-2/4 -mt-40 -z-10 rounded-full blur-3xl w-full h-96 object-cover saturate-200 opacity-0 dark:opacity-100"
+            autoPlay muted loop
+            >
+            </video>
 
         <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}
         onClick={() => setSelectedWork('ghibli')}>
@@ -102,12 +136,21 @@ const BestWorkPage = ({className, setSelectedWork}) => {
             variants={animateInChild}
             whileHover={{scale:0.99}}
             transition={{duration:0.10}}
-            onClick={() => setSelectedWork('ghibli')}>
+            onMouseEnter={() => {setHoveredWork('jolli')}}
+            onMouseLeave={() => setHoveredWork(null)}
+            onClick={() => setSelectedWork('jolli')}>
             </motion.video>
         </button>
 
+            {/* Background Glow */}
+            <video src="/jollieverafter/teaser.mp4" 
+            className="absolute top-2/3 -mt-56 blur-3xl -z-10 rounded-full w-full  h-2/4 object-cover saturate-200 opacity-0 dark:opacity-60"
+            autoPlay muted loop
+            >
+            </video>
+
         <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}
-        onClick={() => setSelectedWork('ghibli')}>
+        onClick={() => setSelectedWork('uniqlo1')}>
             <p className="font-medium text-lg tracking-tighter">05.</p>
             <h1 className="text-6xl font-semibold tracking-tighter leading-tighter mb-2 mr-20 -ml-1">Your Stage Now Live</h1>
             <h1 className="text-2xl tracking-tighter mb-4 mr-10">In-Store Displays for Uniqlo</h1>
@@ -122,9 +165,13 @@ const BestWorkPage = ({className, setSelectedWork}) => {
             variants={animateInChild}
             whileHover={{scale:0.99}}
             transition={{duration:0.10}}
-            onClick={() => setSelectedWork('ghibli')}>
+            onMouseEnter={() => {setHoveredWork('uniqlo1')}}
+            onMouseLeave={() => setHoveredWork(null)}
+            onClick={() => setSelectedWork('uniqlo1')}>
             </motion.video>
         </button>
+
+           
 
         
 

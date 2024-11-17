@@ -25,6 +25,8 @@ const config: Config = {
       borderWidth: {
         1: '1px',
         1.5: '1.5px',
+        1.6: '1.6px',
+        1.7: '1.7px',
       },
       spacing: {
         18: "4.5rem",
@@ -53,7 +55,7 @@ const config: Config = {
         '107': '1.07',
       },
       blur: {
-        '3xl': '2000px',
+        '3xl': '300px',
       },
       height: {
         'screen/2': '50vh',

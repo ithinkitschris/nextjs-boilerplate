@@ -88,7 +88,7 @@ show: {
             >
             </motion.video>
             {/* Subheader */}
-            <div className="col-span-full sm:col-span-4">
+            <div className="col-span-full sm:col-span-4 mr-16 ">
                 <motion.div className="text-3xl tracking-tight text-center sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 6 Cities. 6 Cabin Crew. 6 Passions. <br/>
                 Journey beyond the cabin with our cabin crew.
