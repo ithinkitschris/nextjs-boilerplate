@@ -99,7 +99,7 @@ const PhotographyPage = ({className}) => {
 
         </div>
 
-        <div className="grid grid-cols-6 col-span-full mt-2 gap-2 mb-2">
+        <div className="grid grid-cols-6 col-span-full mt-2 gap-2">
             <motion.img
                 src="/photography/bbh4.jpg"
                 alt="Description of Image 3"
@@ -120,6 +120,14 @@ const PhotographyPage = ({className}) => {
                 variants={animateInChild}
             />
         </div>
+
+        {/* Full-Width Image */}
+        <motion.div className="col-span-full mt-2 mb-2" variants={animateInChild} >
+            <img
+            src="/photography/155.jpg"
+            className="h-auto w-full object-cover rounded-lg shadow-lg"
+            />
+        </motion.div>
 
         {/* Three Images Side by Side */}
         {/* <div className="grid grid-cols-6 col-span-full gap-2 mb-2">
@@ -205,6 +213,7 @@ const PhotographyPage = ({className}) => {
                 variants={animateInChild}
             />
         </div>
+
 
          {/* Two Images Side by Side */}
          <div className="grid grid-cols-6 col-span-full mt-2 gap-2">

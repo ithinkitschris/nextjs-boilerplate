@@ -192,8 +192,12 @@ useEffect(() => {
   } else {
     setShowReset(true); // Show Reset button for other cases
   }
+  console.log('selectedTags', selectedTags);
   console.log('selectedWork:', selectedWork)
   console.log('showReset:', showReset);
+  console.log('showNav', showNav);
+  console.log('showReset', showReset);
+  
 }, [selectedTags, selectedWork]);
 
 const filteredVideos = videoData.filter((video) => {
@@ -210,8 +214,7 @@ const filteredVideos = videoData.filter((video) => {
   
 
         {/* Top Navbar */}
-        <div className={`col-span-full mb-5 sticky z-20 top-4 text-xl pr-28
-          moveUp`}>
+        <div className="col-span-full sticky top-4 z-20 mt-4 text-xl pr-28">
 
 
             <motion.div
@@ -224,7 +227,7 @@ const filteredVideos = videoData.filter((video) => {
             
 
               <motion.h1
-              className="font-semibold text-foreground text-2xl tracking-tight cursor-pointer hover:text-neutral-600 transition-colors"
+              className="font-semibold text-foreground text-3xl tracking-tight cursor-pointer hover:text-neutral-600 transition-colors"
               whileHover={{scale:1.05}}
               layout
               variants={animateInChild}
@@ -234,8 +237,8 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* All Button */}
               <motion.button 
-              className={`hover:text-foreground text-left text-lg tracking-tight ml-4 font-base border-foreground rounded-full px-3
-                ${(selectedTags.includes('all')) ? 'text-foreground border-1.5 font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
+              className={`hover:text-foreground text-left text-lg tracking-tight ml-4 font-base border-foreground rounded-full px-3 border-1.5 border-transparent hover:border-foreground transition-colors 
+                ${(selectedTags.includes('all')) ? 'text-foreground border-black dark:border-white font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
               whileHover={{scale:1.03}}
               variants={animateInChild}
               layout
@@ -243,11 +246,11 @@ const filteredVideos = videoData.filter((video) => {
                 toggleTag('clear');
                 toggleWork('clear');
                 setSelectedTags(['all']);
-              }}>everything, all of it.</motion.button>
+              }}>Everything, all of it.</motion.button>
 
               {/* Best Button */}
               <motion.button 
-              className={`hover:text-foreground text-left text-lg tracking-tight ml-4 font-base border-foreground rounded-full px-3
+              className={`hover:text-foreground text-left text-lg tracking-tight ml-4 font-base border-foreground rounded-full px-3 border-1.5 border-transparent hover:border-foreground transition-colors 
                 ${selectedWork.includes('bestwork') ? 'text-foreground border-1.5 font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
               whileHover={{scale:1.03}}
               variants={animateInChild}
@@ -255,11 +258,11 @@ const filteredVideos = videoData.filter((video) => {
               onClick={() => {
                 toggleTag('clear');
                 toggleWork('bestwork');
-                setSelectedTags([''])}}>personal favourites.</motion.button>
+                setSelectedTags([''])}}>Personal favourites.</motion.button>
 
               {/* Resume Button */}
               <motion.button
-                className={`hover:text-foreground text-left text-lg tracking-tight border-foreground font-base rounded-full px-3
+                className={`hover:text-foreground text-left text-lg tracking-tight ml-4 font-base border-foreground rounded-full px-3 border-1.5 border-transparent hover:border-foreground transition-colors 
                   ${selectedWork.includes('resume') ? 'text-foreground border-1.5 font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
                 whileHover={{ scale: 1.03 }}
                 variants={animateInChild}
@@ -269,7 +272,7 @@ const filteredVideos = videoData.filter((video) => {
                   toggleWork('clear')
                   toggleWork('resume')}}
                   >
-                information about yourself.
+                Information about yourself.
               </motion.button>
 
               {/* SideNav Button */}
@@ -288,7 +291,7 @@ const filteredVideos = videoData.filter((video) => {
               </svg>
 
               {/* Text content */}
-              {showNav ? 'a fullscreen experience' : 'more choices, man.'}
+              {showNav ? 'A fullscreen experience' : 'More choices, man.'}
             </motion.button>
               
               
@@ -331,7 +334,7 @@ const filteredVideos = videoData.filter((video) => {
             <>
               {/* Reset Button */}
               <motion.div 
-                className="sticky top-20 mt-4">
+                className="sticky top-14 mt-6">
                 {showReset && (
                   <motion.button
                     className="group hover:text-background font-medium flex gap-1.5
@@ -371,7 +374,7 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* Skillsets */}    
               <motion.div 
-              className="flex flex-col gap-1 items-start text-left mt-6 dark:text-neutral-500 relative"
+              className="flex flex-col gap-1 items-start text-left mt-2 dark:text-neutral-500 relative"
               initial="hidden"
               animate="show"
               exit="fade"
@@ -472,7 +475,7 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* All Work */}
               <motion.div
-              className="hidden sm:flex flex-col items-start gap-1 mt-12 dark:text-neutral-500 sticky top-36 z-10"
+              className={`hidden sm:flex flex-col items-start gap-1 mt-12 dark:text-neutral-500 sticky z-10 ${showReset ? "top-28" : "top-16"}`}
               initial="hidden"
               animate="show"
               exit="exit"
@@ -894,17 +897,16 @@ const filteredVideos = videoData.filter((video) => {
           )} 
         </motion.div>
 
-        {/* Grid */}
+        {/* Pages Container */}
         <motion.div
-          className={`${showNav ? "col-span-8" : "col-span-full"} mt-2`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+          className={`${showNav ? "col-span-8" : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
           layout="position"
           layoutId='test'
           transition={{ type: "spring", stiffness: 400, damping: 24 }}  
         > 
-
-
+          {/* Grid / Page */}
           <motion.div 
-          className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-14 md:mt-2">
+          className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-14 md:mt-4">
             <AnimatePresence>
               {selectedWork === 'photography' ? (
                 <PhotographyPage key="photography" className="col-span-full -mt-22"/>

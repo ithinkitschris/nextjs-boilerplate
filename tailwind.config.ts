@@ -74,6 +74,9 @@ const config: Config = {
         'screen/3': '33.33333vh',
         'screen/4': '25vh',
         'screen/5': '20vh',
+        '120': '30rem',
+        '135': '34rem',
+        '150': '37.5rem',
       },
       margin: {
         '-mt-6': '-5rem',
