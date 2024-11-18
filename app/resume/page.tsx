@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import DarkModeToggle from "../components/dark-mode-toggle";
 import React, {useState, useEffect} from 'react';
 import Link from "next/link";
+import SearchMenu from "../components/search-menu";
 
 const animateIn = {
     hidden: { opacity: 0, y: 20 },
@@ -87,6 +88,7 @@ export default function Resume({className=""}) {
       };
 
     return (
+        
     <>
         {/* <nav className="
             flex justify-center sm:justify-between sm:ml-4 2xl:ml-6 items-center z-10
@@ -112,16 +114,16 @@ export default function Resume({className=""}) {
         </nav>   */}
 
         <motion.div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
-        items-start justify-items-start ml-6
+        items-start justify-items-start ml-6 font-[family-name:var(--font-geist-sans)] font-sans
         p-0 gap-8 text-base tracking-tight
-        font-[family-name:var(--font-geist-sans)] ${className}`}
+         ${className}`}
         initial="hidden"
         animate="show"
         // whileInView="show"
         // viewport={{once:true}}
         variants={animateIn}>
 
-        
+            
             
             {/* Bio */}
             <div className= "col-span-1 mr-10"> 

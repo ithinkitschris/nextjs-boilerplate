@@ -40,6 +40,16 @@ const config: Config = {
           350: '#B3B3B3',
         },
       },
+      opacity: {
+        10: '0.1',
+        20: '0.2',
+        30: '0.3',
+        40: '0.4',
+        60: '0.6',
+        70: '0.7',
+        80: '0.8',
+        90: '0.9',
+      },
       scale: {
         '120': '1.20',
         '93': '0.93',
@@ -82,12 +92,12 @@ const config: Config = {
       },
     },
   },
-  corePlugins: {
-    aspectRatio: false, // Disabling built-in aspect ratio plugin
-  },
-  plugins: [
-    require('@tailwindcss/aspect-ratio'), // Custom aspect ratio plugin
-  ],
+  // corePlugins: {
+  //   aspectRatio: false, // Disabling built-in aspect ratio plugin
+  // },
+  // plugins: [
+  //   require('@tailwindcss/aspect-ratio'), // Custom aspect ratio plugin
+  // ],
 }
 
 export default config;

@@ -43,7 +43,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
         <button className="col-span-4 rounded-lg mb-4">
             <motion.video src="/CCS/montagelow.mp4" 
-            className="rounded-lg shadow-standard w-full h-96 object-cover"
+            className="rounded-lg shadow-standard w-full h-screen/2 object-cover"
             autoPlay muted loop
             variants={animateInChild}
             whileHover={{scale:0.99}}
@@ -58,7 +58,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
             
             {/* Background Glow */}
             <video src="/CCS/montagelow.mp4" 
-            className="absolute -z-10 rounded-full blur-3xl w-full h-96 object-cover saturate-200 opacity-0 dark:opacity-100"
+            className="absolute -z-10 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
             autoPlay muted loop
             >
             </video>
@@ -73,7 +73,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
         <button className="col-span-4 rounded-lg mb-4">
             <motion.video src="/Cocktail/montage.mp4" 
-            className="rounded-lg shadow-standard w-full h-96 object-cover object-[0_30%]"
+            className="rounded-lg shadow-standard w-full h-screen/2 object-cover object-[0_30%]"
             autoPlay muted loop
             variants={animateInChild}
             whileHover={{scale:0.99}}
@@ -86,7 +86,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
         
             {/* Background Glow */}
             <video src="/Cocktail/montage.mp4" 
-            className="absolute top-1/4 -z-10 rounded-full blur-3xl w-full h-96 object-cover saturate-200 opacity-0 dark:opacity-60"
+            className="absolute top-1/4 -z-10 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-60"
             autoPlay muted loop
             >
             </video>
@@ -102,7 +102,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
         <button className="col-span-4 rounded-lg mb-4">
             <motion.video src="/ghibli/banner.mp4" 
-            className="rounded-lg shadow-standard w-full h-96 object-cover"
+            className="rounded-lg shadow-standard w-full h-screen/2 object-cover"
             autoPlay muted loop
             variants={animateInChild}
             whileHover={{scale:0.99}}
@@ -115,7 +115,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Background Glow */}
             <video src="/ghibli/banner.mp4" 
-            className="absolute top-2/4 -mt-40 -z-10 rounded-full blur-3xl w-full h-96 object-cover saturate-200 opacity-0 dark:opacity-100"
+            className="absolute top-2/4 -mt-40 -z-10 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
             autoPlay muted loop
             >
             </video>
@@ -131,7 +131,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
         <button className="col-span-4 rounded-lg mb-4">
             <motion.video src="/jollieverafter/teaser.mp4" 
-            className="rounded-lg shadow-standard w-full h-96 object-cover object-[0_35%]"
+            className="rounded-lg shadow-standard w-full h-screen/2 object-cover object-[0_35%]"
             autoPlay muted loop
             variants={animateInChild}
             whileHover={{scale:0.99}}

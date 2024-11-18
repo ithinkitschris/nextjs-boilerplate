@@ -12,7 +12,7 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
       onClick={toggleDarkMode}
       className="
       group transition-all duration-200
-      p-1.5 rounded-full bg-background border-1.5 border-foreground hover:border-transparent dark:border-[rgba(255,255,255,.6)] dark:bg-transparent 
+      p-1.5 rounded-full backdrop-blur-md border-1.5 border-foreground hover:border-transparent dark:border-[rgba(255,255,255,.6)] dark:bg-transparent 
       dark:hover:bg-foreground dark:hover:border-transparent text-foreground hover:bg-foreground hover:scale-90
       z-20
       "
@@ -25,7 +25,7 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
           viewBox="0 0 120 120"
           className="w-5 h-5 text-foreground group-hover:text-background  transition-colors duration-200"
         >
-          <circle className="stroke-current fill-none" cx="60.9" cy="60.6" r="30.4" style={{ strokeWidth: '6' }}/>
+          <circle className="stroke-current fill-none" cx="50.9" cy="60.6" r="30.4" style={{ strokeWidth: '6' }}/>
           <g>
             <line className="stroke-current" x1="60.9" y1="17.6" x2="60.9" y2="4.3" style={{ strokeWidth: '6' }} />
             <line className="stroke-current" x1="60.9" y1="116.8" x2="60.9" y2="103.5" style={{ strokeWidth: '6' }} />
