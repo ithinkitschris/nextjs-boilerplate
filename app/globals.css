@@ -3,15 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --background: #ededed;
-  --foreground: #282828;
+  --background: #f5f5f5;
+  --foreground: #2f2f2f;
   --midground: #a0a0a0;
 }
 
 .dark {
-  --background: #111111;
-  --foreground: #ededed;
+  --background: #101010;
+  --foreground: #ffffff;
   --midground: #878787;
+}
+
+.color {
+  --background: #ffffff;
+  --foreground: #000000;
+  --midground: #d5d5d5;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -25,4 +31,11 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  position: static; /* Ensure there is no relative positioning */
+  overflow: visible; /* Make sure overflow is not hidden or clipped */
+  height: 100%; /* Ensure they take the full height of the viewport */
+  margin: 0; /* Remove any default margins */
 }

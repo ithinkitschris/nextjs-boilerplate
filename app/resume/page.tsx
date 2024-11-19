@@ -1,14 +1,17 @@
 'use client';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import DarkModeToggle from "../components/dark-mode-toggle";
 import React, {useState, useEffect} from 'react';
+import Link from "next/link";
+import SearchMenu from "../components/search-menu";
 
-const animateIn ={
-    hidden: {opacity:0, y:20},
+const animateIn = {
+    hidden: { opacity: 0, y: 20 },
     show: {
-        opacity:1, y:0, 
-        transition: {staggerChildren: 0.03, duration:0.2, ease:"easeOut"}
+        opacity: 1, y: 0,
+        transition: { staggerChildren: 0.03, duration: 0.2, ease: "easeOut" }
     }
-}
+};
 const animateInChild ={
     hidden: {opacity:0, y:20},
     show: {
@@ -17,7 +20,7 @@ const animateInChild ={
         }
     }
 
-export default function Resume() {
+export default function Resume({className=""}) {
 
     const [timeNyc, setTimeNyc] = useState<string | null>(null);
     useEffect(() => {
@@ -77,31 +80,55 @@ export default function Resume() {
       return () => clearInterval(timer);
     }, []);
 
-    // useEffect(() => {
-    //     document.body.style.overflowY = 'hidden'; // Disable vertical scroll on body
-    //     document.body.style.overflowX = 'auto'; // Enable horizontal scroll on body
-
-    //     return () => {
-    //         document.body.style.overflowY = ''; // Reset overflowY when the component unmounts
-    //         document.body.style.overflowX = ''; // Reset overflowX when the component unmounts
-    //     };
-    // }, []);
+    const [isDarkMode, setIsDarkMode] = useState(false);
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+        console.log("Dark mode toggled:", isDarkMode);
+    
+      };
 
     return (
-        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
-        items-start justify-items-start
-        p-14 mt-4 gap-8 text-base tracking-tight
-        font-[family-name:var(--font-geist-sans)]"
+        
+    <>
+        {/* <nav className="
+            flex justify-center sm:justify-between sm:ml-4 2xl:ml-6 items-center z-10
+            fixed top-0 left-0 right-0 p-2 mt-4 w-full
+            tracking-tighter font-[family-name:var(--font-geist-sans)]">
+            <div className="flex gap-6 justify-center sm:justify-between w-full max-w-screen pr-12">
+                <Link href="/"
+                className="hover:text-midground hover:scale-95 transition-transform mr-1.5">
+                    Take me back!
+                </Link>
+                <Link href="/grid"
+                className="hover:text-midground hover:scale-95 transition-transform">
+                    What have you done?
+                </Link>
+
+                <Link href="/grid"
+                className="hover:text-midground hover:scale-95 transition-transform">
+                    
+                </Link>
+
+                {/* <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/> 
+            </div>
+        </nav>   */}
+
+        <motion.div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
+        items-start justify-items-start ml-6 font-[family-name:var(--font-geist-sans)] font-sans
+        p-0 gap-8 text-base tracking-tight
+         ${className}`}
         initial="hidden"
         animate="show"
         // whileInView="show"
         // viewport={{once:true}}
         variants={animateIn}>
+
+            
             
             {/* Bio */}
             <div className= "col-span-1 mr-10"> 
                 <motion.h1 
-                className="-ml-1 text-4xl mb-6 tracking-tight leading-10 font-light"
+                className="-ml-1 text-4xl mb-6 tracking-tight whitespace-nowrap leading-10 font-medium"
                 variants={animateInChild}>
                     Chris Leow
                 </motion.h1>
@@ -147,11 +174,11 @@ export default function Resume() {
             {/* Currently: */}
             <div className="col-span-1 sm:pr-4">
 
-                <motion.h1 className="text-2xl mb-8 -ml-0.5" variants={animateInChild}>
+                <motion.h1 className="text-2xl mb-8 -ml-0.5 mt-2" variants={animateInChild}>
                 Currently:<br/>
                 </motion.h1>
 
-                    <motion.p variants={animateInChild}>
+                    <motion.p variants={animateInChild} className="-mt-2">
                     <span className="underline" style={{ textUnderlineOffset: '2px' }}>Master's Student</span>
                     <br/>
                     MFA Interaction Design
@@ -197,14 +224,14 @@ export default function Resume() {
             </div>
             
             {/* ArtScience Museum */}
-            <div className="col-span-1 sm:pr-4">
+            <div className="col-span-1 sm:pr-4 mt-2">
                 
-                <motion.div variants={animateInChild}>
+                <motion.div variants={animateInChild} className="">
                     <h1 className="text-2xl mb-8 -ml-0.5">
                         Previously:
                     </h1>
 
-                    <p>
+                    <p className="-mt-2">
                     <span className="underline" style={{ textUnderlineOffset: '2px' }}>Creative Lead</span><br/>
                     Marina Bay Sands <i>(ArtScience Museum)</i><br/>
                     <i className="-ml-0.5">January 2024 – November 2024</i>
@@ -288,7 +315,7 @@ export default function Resume() {
                         </p>
                     </motion.div>
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">Every Getaway begins with your Everyday</h1>
+                        <h1 className="mt-6 mb-4">Kris+ Brand Campaign</h1>
                         <p className="mb-4 ml-6">
                         Lead Creative for a tactical brand campaign for Kris+, the lifestyle rewards app by Singapore Airlines. Centred around the idea of a holiday getaway being just one tap away on the app through shopping and dining, the campaign was brought to life in the likes of a Rube Goldberg device, symbolising the domino effect through the journey of using the app.</p>
                         <p className="mb-4 ml-6">
@@ -454,5 +481,6 @@ export default function Resume() {
                     </motion.div>
             </div>
         </motion.div>
+    </>
     );
 }
