@@ -1,9 +1,7 @@
 'use client';
 import { motion } from "framer-motion";
-import DarkModeToggle from "../components/dark-mode-toggle";
 import React, {useState, useEffect} from 'react';
-import Link from "next/link";
-import SearchMenu from "../components/search-menu";
+
 
 const animateIn = {
     hidden: { opacity: 0, y: 20 },
@@ -80,12 +78,7 @@ export default function Resume({className=""}) {
       return () => clearInterval(timer);
     }, []);
 
-    const [isDarkMode, setIsDarkMode] = useState(false);
-    const toggleDarkMode = () => {
-        setIsDarkMode(!isDarkMode);
-        console.log("Dark mode toggled:", isDarkMode);
-    
-      };
+   
 
     return (
         
@@ -157,7 +150,7 @@ export default function Resume({className=""}) {
                 <motion.p 
                 className="mb-10"
                 variants={animateInChild}>
-                    In his spare time after work <i>(which, realistically, isn't much)</i>, he does even more work, but for himself—creating content through photography, videography, editing and motion design. When he is finally not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He loves building his living space up, though he wouldn’t go so far as to call it interior design.
+                    In his spare time after work <i>(which, realistically, isn&apos;t much)</i>, he does even more work, but for himself—creating content through photography, videography, editing and motion design. When he is finally not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He loves building his living space up, though he wouldn&apos;t go so far as to call it interior design.
                 </motion.p>
 
                 <motion.p 
@@ -179,7 +172,7 @@ export default function Resume({className=""}) {
                 </motion.h1>
 
                     <motion.p variants={animateInChild} className="-mt-2">
-                    <span className="underline" style={{ textUnderlineOffset: '2px' }}>Master's Student</span>
+                    <span className="underline" style={{ textUnderlineOffset: '2px' }}>Master&apos;s Student</span>
                     <br/>
                     MFA Interaction Design
                     <br/>
@@ -276,7 +269,7 @@ export default function Resume({className=""}) {
                     <h1 className="mt-4 mb-4">
                         ArtScience Cinema</h1>
                     <p className="ml-6">
-                    Creative direction for all marketing deliverables for ArtScience Cinema, ArtScience Museums's purpose-built cinema that screens a curated programme of film all year round by the museums film curatorial team.
+                    Creative direction for all marketing deliverables for ArtScience Cinema, ArtScience Museumss purpose-built cinema that screens a curated programme of film all year round by the museums film curatorial team.
                     </p>
                     </motion.div>
 
@@ -387,7 +380,7 @@ export default function Resume({className=""}) {
                     </motion.div>
 
                     <motion.div variants={animateInChild}>
-                    <h1 className="mt-6 mb-4">Women's Instazine</h1>
+                    <h1 className="mt-6 mb-4">Womens Instazine</h1>
                     <p className="ml-6 mb-4">
                     Edited and animated supporting assets for the campaign as well as the case study film for Women’s Instazine
                     </p>

@@ -1,6 +1,5 @@
 // import { motion } from "framer-motion"
 import * as motion from "framer-motion/client"
-import Link from "next/link";
 
 export default function Ghibli({className=""}) {
 

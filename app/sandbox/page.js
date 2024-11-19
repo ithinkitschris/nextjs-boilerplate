@@ -5,7 +5,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import React, { useState, useEffect } from 'react';
-import SearchMenu from '../components/search-menu';
 import DocumentationButton from '../components/documentation';
 
 const animateIn = {

@@ -1,6 +1,5 @@
 // import { motion } from "framer-motion"
 import * as motion from "framer-motion/client"
-import Link from "next/link";
 
 export default function Cocktail({className=""}) {
 
@@ -88,7 +87,7 @@ show: {
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <p className="mb-2">The Ask:</p>
                     <p className="mb-3">The Flagship SilverKris Lounge at Singapore Changi Airport Terminal 3 was rebuilt from ground up and opened in 2022.</p>
-                    <p>Post-launch, there was a need for a sustenance campaign for the lounge. One that would showcase not only it's class-leading interior design but also most importantly, its meticulous service.</p>
+                    <p>Post-launch, there was a need for a sustenance campaign for the lounge. One that would showcase not only its class-leading interior design but also most importantly, its meticulous service.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>

@@ -1,6 +1,6 @@
 'use client'
 import * as motion from "framer-motion/client"
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -32,9 +32,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             <motion.div className="col-span-2 mb-4 mr-4 font-base rounded-lg p-6]" 
             variants={animateInChild} >
-                <div className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
+                <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
                 flex items-center justify-center border-1.5 border-foreground mb-1
-                hover:bg-foreground hover:text-background hover:scale-90 transition-transform cursor-pointer
+                hover:bg-foreground hover:text-background hover:scale-90 transition-transform 
                 ${isHovered.includes('1') ? "bg-foreground text-background scale-90" : ''}`}
                 onClick={() => setSelectedWork('cocktail')}>
                 01
@@ -51,7 +51,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 17L17 7" />
                     <path d="M7 7h10v10" />
                     </svg>
-                </div>
+                </button>
                 <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20">Beyond The Cabin</h1>
                 <h1 className="text-2xl tracking-tighter mb-6 mr-10">Brand Campaign for Singapore Airlines</h1>
                 {/* <div className="flex flex-row gap-4 mb-6">
@@ -138,7 +138,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
             
                 {/* Background Glow */}
                 <video src="/Cocktail/montage.mp4" 
-                className="absolute top-1/4 -z-10 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-60"
+                className="absolute top-96 mt-60 blur-3xl -z-10 rounded-full w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-60"
                 autoPlay muted loop
                 >
                 </video>
@@ -186,14 +186,20 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     setIsHovered([])}}
                 onClick={() => setSelectedWork('ghibli')}>
                 </motion.video>
-            </button>
 
-                {/* Background Glow */}
                 <video src="/ghibli/banner.mp4" 
-                className="absolute top-2/4 -mt-40 -z-10 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
+                className="absolute -z-10 top-full mt-32 right-0 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
                 autoPlay muted loop
                 >
                 </video>
+            </button>
+
+                {/* Background Glow */}
+                {/* <video src="/ghibli/banner.mp4" 
+                className="absolute top-96 -mt-40 -z-10 rounded-full  w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
+                autoPlay muted loop
+                >
+                </video> */}
 
             <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}
             onClick={() => setSelectedWork('ghibli')}>

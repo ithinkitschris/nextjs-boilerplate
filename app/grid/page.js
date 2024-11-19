@@ -2,7 +2,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import PhotographyPage from '../components/photography';
 import Ghibli from '../works/ghibli/page';
@@ -10,8 +9,10 @@ import CabinCrewStories from '../works/cabin/page.js';
 import Cocktail from '../works/cocktail/page';
 import BestWorkPage from '../bestwork/page';
 import Resume from '../resume/page';
-import DarkModeToggle from '../components/dark-mode-toggle';
-import DocumentationButton from '../components/documentation';
+import StreetPhotography from '../components/street-photo';
+import BBH from '../components/bbh';
+import Unshackle from '../components/unshackle'
+import BTS from '../components/bts'
 
 const scaleIn ={
   hidden: {opacity:0, scale:0.90},
@@ -74,7 +75,7 @@ const worksContainer = {
   exit: { opacity: 0 },
 };
 
-const VideoSquare = ({ videoSrc, link, tags, setHoveredWork, onClick }) => {
+const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick }) => {
   return (
     <motion.div
       className="overflow-hidden bg-background drop-shadow-lg rounded-lg ease-in-out hover:scale-98 hover:drop-shadow-md"
@@ -114,6 +115,7 @@ const GridPage = () => {
     { src: '/hemsaker/cover.mp4', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
     { src: '/ispy/cover.mp4', tags: ['ispy', 'all', 'creative', 'sia'] },
     { src: '/jollieverafter/cover.mp4', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
+    { src: '/photography/bbh/cover.mp4', tags: ['bbh', 'all', 'photography'] },
     { src: '/oneshow/cover.mp4', tags: ['oneshow', 'all', 'motion', 'oneshow'] },
     { src: '/leica/leica.mp4', tags: ['leica', 'all', 'motion'] },
     { src: '/iphone/iphone.mp4', tags: ['iphone', 'all', 'motion'] },
@@ -130,6 +132,10 @@ const [moveUp, setMoveUp] = useState(false);
 
 const includesTags = (tags) => {
   return tags.some((tag) => selectedTags.includes(tag));
+};
+
+const includesWorks = (works) => {
+  return works.some((work) => selectedWork.includes(work));
 };
 
 const toggleTag = (tag) => {
@@ -167,21 +173,6 @@ const toggleNav = () => {
   }
 };
 
-const toggleReset = (selectedTags) => {
-  if (selectedTags.length > 0) {
-    setShowNav(true);
-  } else if (selectedTags.includes('all)')) {
-    setShowNav(false);
-  }
-};
-
-const MoveUp = () => {
-  if (moveUp) {
-    setMoveUp(false);
-  } else {
-    setMoveUp(true);
-  }
-}
 
 
 useEffect(() => {
@@ -353,7 +344,7 @@ const filteredVideos = videoData.filter((video) => {
                       setSelectedTags(['all']);
                       setSelectedWork([]);
                     }}
-                  >Let's rewind
+                  >Lets rewind
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 100 105"
@@ -450,9 +441,9 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8 
-                  ${selectedWork.includes('photography') ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
+                  ${includesWorks(['photography', 'street', 'bbh', 'bts', 'unshackle']) ? 'text-foreground' : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
                 whileHover={{scale:1.06}}
-                animate={{scale: selectedWork.includes('photography') ? 1.06 : 1}}
+                animate={{scale: includesWorks(['photography', 'street', 'bbh', 'bts', 'unshackle']) ? 1.06 : 1}}
                 variants={animateInChild}
                 layout="position"      
                 onClick={() => {
@@ -783,6 +774,23 @@ const filteredVideos = videoData.filter((video) => {
 
                 <motion.button 
                 className={`hover:text-foreground text-left mr-8
+                  ${includesWorks(['bbh']) || hoveredWork ==='bbh' 
+                  ? 'text-foreground' 
+                  : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
+                } transition-colors duration-100`}
+                whileHover={{scale:1.06}}
+                animate={{scale: 
+                  includesWorks(['bbh']) ||
+                  hoveredWork==='bbh' 
+                  ? 1.02 : 1
+                }}
+                variants={animateInChild}
+                onClick={() => {
+                  toggleTag('clear');
+                  setSelectedWork('bbh')}}>BBH Profile Headshots</motion.button>
+
+                <motion.button 
+                className={`hover:text-foreground text-left mr-8
                   ${includesTags(['motion']) || hoveredWork ==='uniqlo2' 
                   ? 'text-foreground' 
                   : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
@@ -909,7 +917,15 @@ const filteredVideos = videoData.filter((video) => {
           className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-full gap-3 mt-14 md:mt-4">
             <AnimatePresence>
               {selectedWork === 'photography' ? (
-                <PhotographyPage key="photography" className="col-span-full -mt-22"/>
+                <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>
+              ) : selectedWork === 'street' ? (
+                <StreetPhotography key="street" className="col-span-full"/>
+              ) : selectedWork === 'bbh' ? (
+                <BBH key="bbh" className="col-span-full"/>
+              ) : selectedWork === 'unshackle' ? (
+                <Unshackle key="unshackle" className="col-span-full"/>
+              ) : selectedWork === 'bts' ? (
+                <BTS key="bts" className="col-span-full"/>
               ) : selectedWork === 'resume' ? (
                 <Resume key="resume" className="col-span-full"/>
               ) : selectedWork === 'ghibli' ? (
@@ -929,7 +945,7 @@ const filteredVideos = videoData.filter((video) => {
                     tags={video.tags}
                     setHoveredWork={setHoveredWork}
                     onClick={() => { 
-                      const workTags = ['cabin', 'cocktail', 'ghibli'];
+                      const workTags = ['cabin', 'cocktail', 'ghibli', 'bbh'];
                       const matchedWork = workTags.find((tag) => video.tags.includes(tag));
                       if (matchedWork) {
                         setSelectedWork(matchedWork);

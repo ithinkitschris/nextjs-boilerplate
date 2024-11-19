@@ -3,7 +3,6 @@
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
 import Episodes from "@/app/components/episodes-cabin.js";
-import Link from "next/link";
 
 export default function CabinCrewStories({className=""}) {
     const backgroundGlowRef=useRef(null);
