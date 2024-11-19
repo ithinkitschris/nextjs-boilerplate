@@ -1,7 +1,7 @@
 'use client'
 
 import * as motion from "framer-motion/client"
-import {useState} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes
 
 const animateIn ={
@@ -23,16 +23,66 @@ show: {
 const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
    
     const [isHovered, setIsHovered] = useState([]);
+
+    const cabinVideoRef=useRef(null);
+    const cabinBgRef=useRef(null);
+    
+    const cocktailVideoRef=useRef(null);
+    const cocktailBgRef=useRef(null);
+    
+    const ghibliVideoRef=useRef(null);
+    const ghibliBgRef=useRef(null);
+
+
+    useEffect(() => {
+        const cabinVideo = cabinVideoRef.current;
+        const cabinBg = cabinBgRef.current;
+        
+        const cocktailVideo = cocktailVideoRef.current;
+        const cocktailBg = cocktailBgRef.current;
+        
+        const ghibliVideo = ghibliVideoRef.current;
+        const ghibliBg = ghibliBgRef.current;
+    
+        if (cabinVideo && cabinBg && cocktailVideo && cocktailBg && ghibliVideo && ghibliBg) {
+          // Ensure both videos start together
+            cabinVideo.play();
+            cabinBg.play();
+            cocktailVideo.play();
+            cocktailBg.play();
+            ghibliVideo.play();
+            ghibliBg.play();
+    
+          // Synchronize the videos periodically
+          const syncVideos = () => {
+            if (Math.abs(cabinVideo.currentTime - cabinBg.currentTime) > 0.1) {
+              cabinBg.currentTime = cabinVideo.currentTime;
+            }
+            if (Math.abs(cocktailVideo.currentTime - cocktailBg.currentTime) > 0.1) {
+              cocktailBg.currentTime = cocktailVideo.currentTime;
+            }
+            if (Math.abs(ghibliVideo.currentTime - ghibliBg.currentTime) > 0.1) {
+              ghibliBg.currentTime = ghibliVideo.currentTime;
+            }
+          };
+    
+          // Set an interval to check and sync the videos every 100ms
+          const syncInterval = setInterval(syncVideos, 100);
+    
+          // Clean up the interval on component unmount
+          return () => clearInterval(syncInterval);
+        }
+      }, []);
  
     return (
-        <motion.div className={`grid grid-cols-7 font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-9 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
 
             {/* border-2 border-black/40 dark:border-[rgba(255,255,255,0.2)] */}
 
-            <motion.div className="col-span-2 mb-4 mr-4 font-base rounded-lg p-6]" 
+            <motion.div className="col-span-3 mb-4 mr-4 font-base rounded-lg p-6]" 
             variants={animateInChild} >
                 <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
                 flex items-center justify-center border-1.5 border-foreground mb-1
@@ -68,8 +118,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     </p>
             </motion.div>
 
-            <button className="col-span-5 rounded-lg mb-4">
+            <button className="col-span-6 rounded-lg mb-4">
                 <motion.video src="/CCS/montagelow.mp4" 
+                ref={cabinVideoRef}
                 className="rounded-lg shadow-standard w-full h-135 object-cover"
                 autoPlay muted loop
                 variants={animateInChild}
@@ -89,12 +140,13 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 
                 {/* Background Glow */}
                 <video src="/CCS/montagelow.mp4" 
-                className="absolute -z-10 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
+                ref={cabinBgRef}
+                className="absolute -z-10 top-0 rounded-full blur-3xl w-full h-screen/1.5 object-cover saturate-200 opacity-0 dark:opacity-100"
                 autoPlay muted loop
                 >
                 </video>
 
-            <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}>
+            <motion.div className="col-span-3 mb-2 font-base" variants={animateInChild}>
                 <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
                 flex items-center justify-center border-1.5 border-foreground mb-1
                 hover:bg-foreground hover:text-background hover:scale-90 transition-transform
@@ -121,8 +173,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </p>
             </motion.div>
 
-            <button className="col-span-5 rounded-lg mb-4">
+            <button className="col-span-6 rounded-lg mb-4">
                 <motion.video src="/Cocktail/montage.mp4" 
+                ref={cocktailVideoRef}
                 className="rounded-lg shadow-standard w-full h-135 object-cover object-[0_30%]"
                 autoPlay muted loop
                 variants={animateInChild}
@@ -140,12 +193,13 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
             
                 {/* Background Glow */}
                 <video src="/Cocktail/montage.mp4" 
+                ref={cocktailBgRef}
                 className="absolute top-96 mt-60 blur-3xl -z-10 rounded-full w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-60"
                 autoPlay muted loop
                 >
                 </video>
 
-            <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}
+            <motion.div className="col-span-3 mb-2 font-base" variants={animateInChild}
             onClick={() => setSelectedWork('ghibli')}>
                 <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
                 flex items-center justify-center border-1.5 border-foreground mb-1
@@ -173,8 +227,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </p>
             </motion.div>
 
-            <button className="col-span-5 rounded-lg mb-4">
+            <button className="col-span-6 rounded-lg mb-4">
                 <motion.video src="/ghibli/banner.mp4" 
+                ref={ghibliVideoRef}
                 className="rounded-lg shadow-standard w-full h-135 object-cover"
                 autoPlay muted loop
                 variants={animateInChild}
@@ -190,7 +245,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </motion.video>
 
                 <video src="/ghibli/banner.mp4" 
-                className="absolute -z-10 top-full mt-32 right-0 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
+                ref={ghibliBgRef}
+                className="absolute -z-10 top-full mt-52 right-0 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
                 autoPlay muted loop
                 >
                 </video>
@@ -203,7 +259,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 >
                 </video> */}
 
-            <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}
+            <motion.div className="col-span-3 mb-2 font-base" variants={animateInChild}
             onClick={() => setSelectedWork('ghibli')}>
                 <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
                 flex items-center justify-center border-1.5 border-foreground mb-1
@@ -231,7 +287,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </p>
             </motion.div>
 
-            <button className="col-span-5 rounded-lg mb-4">
+            <button className="col-span-6 rounded-lg mb-4">
                 <motion.video src="/jollieverafter/teaser.mp4" 
                 className="rounded-lg shadow-standard w-full h-135 object-cover object-[0_35%]"
                 autoPlay muted loop
@@ -255,7 +311,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 >
                 </video>
 
-            <motion.div className="col-span-2 mb-2 font-base" variants={animateInChild}
+            <motion.div className="col-span-3 mb-2 font-base" variants={animateInChild}
             onClick={() => setSelectedWork('uniqlo1')}>
                 <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
                 flex items-center justify-center border-1.5 border-foreground mb-1
@@ -283,7 +339,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </p>
             </motion.div>
 
-            <button className="col-span-5 rounded-lg mb-4">
+            <button className="col-span-6 rounded-lg mb-4">
                 <motion.video src="/uniqlo1/montage.mp4" 
                 className="rounded-lg shadow-standard w-full h-135 object-cover"
                 autoPlay muted loop

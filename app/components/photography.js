@@ -30,9 +30,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Personal */}
         <motion.div 
-        className="group col-span-3 mr-3 tracking-tight relative z-10" 
+        className="group col-span-3 mr-2 tracking-tight relative z-10" 
         whileHover={{ scale: 0.99 }}
-        transition={{ duration: 0.15, ease: "easeOut" }}
+        transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('street')}>
 
@@ -79,9 +79,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BBH */}
         <motion.div 
-        className="col-span-3 mr-3 tracking-tight relative "
+        className="col-span-3 mr-2 tracking-tight relative "
         whileHover={{ scale: 0.99 }}
-        transition={{ duration: 0.15, ease: "easeOut" }}
+        transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('bbh')}>
         
@@ -131,9 +131,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BTS */}
         <motion.div 
-        className="col-span-3 mr-3 tracking-tight relative" 
+        className="col-span-3 mr-2 tracking-tight relative" 
         whileHover={{ scale: 0.99 }}
-        transition={{ duration: 0.15, ease: "easeOut" }}
+        transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('bts')}> 
 
@@ -186,9 +186,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Unshackle */}
         <motion.div 
-        className="col-span-3 mr-3 tracking-tight relative" 
+        className="col-span-3 mr-2 tracking-tight relative" 
         whileHover={{ scale: 0.99 }}
-        transition={{ duration: 0.15, ease: "easeOut" }}
+        transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('unshackle')}> 
 
@@ -231,19 +231,6 @@ const PhotographyPage = ({className, setSelectedWork}) => {
                 </button>
             </div>
         </motion.div>
-
-        
-
-        
-
-        
-
-        
-
-        
-
-
-        
 
     </motion.div>
   );
