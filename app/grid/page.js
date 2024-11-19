@@ -128,7 +128,7 @@ const [selectedWork, setSelectedWork] = useState([]);
 const [showNav, setShowNav] = useState(false);
 const [showReset, setShowReset] = useState(false);
 const [hoveredWork, setHoveredWork] = useState(null);
-const [moveUp, setMoveUp] = useState(false);
+
 
 const includesTags = (tags) => {
   return tags.some((tag) => selectedTags.includes(tag));
