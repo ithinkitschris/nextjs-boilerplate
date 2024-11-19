@@ -1,6 +1,8 @@
 'use client'
+
 import * as motion from "framer-motion/client"
 import {useState} from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -328,6 +330,12 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
         </motion.div>
   );
+};
+
+BestWorkPage.propTypes = {
+    className: PropTypes.string.isRequired,
+    setSelectedWork: PropTypes.func.isRequired,
+    setHoveredWork: PropTypes.func.isRequired
 };
 
 export default BestWorkPage;
