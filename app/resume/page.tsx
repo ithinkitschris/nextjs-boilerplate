@@ -83,32 +83,10 @@ export default function Resume({className=""}) {
     return (
         
     <>
-        {/* <nav className="
-            flex justify-center sm:justify-between sm:ml-4 2xl:ml-6 items-center z-10
-            fixed top-0 left-0 right-0 p-2 mt-4 w-full
-            tracking-tighter font-[family-name:var(--font-geist-sans)]">
-            <div className="flex gap-6 justify-center sm:justify-between w-full max-w-screen pr-12">
-                <Link href="/"
-                className="hover:text-midground hover:scale-95 transition-transform mr-1.5">
-                    Take me back!
-                </Link>
-                <Link href="/grid"
-                className="hover:text-midground hover:scale-95 transition-transform">
-                    What have you done?
-                </Link>
-
-                <Link href="/grid"
-                className="hover:text-midground hover:scale-95 transition-transform">
-                    
-                </Link>
-
-                {/* <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/> 
-            </div>
-        </nav>   */}
 
         <motion.div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
         items-start justify-items-start ml-6 font-[family-name:var(--font-geist-sans)] font-sans
-        p-0 gap-8 text-base tracking-tight
+        p-0 gap-8 text-sm tracking-tight
          ${className}`}
         initial="hidden"
         animate="show"
@@ -129,7 +107,7 @@ export default function Resume({className=""}) {
                 <motion.h1 
                 className="mb-6 -ml-0.5"
                 variants={animateInChild}>
-                    <span className="underline" style={{ textUnderlineOffset: '2px' }}>Senior Creative</span><br/>
+                    <h1 className="text-base mb-2">Senior Creative</h1>
                     Based in New York City <span className="text-neutral-500 align-top text-xs ml-1"> {timeNyc}</span><br/>
                     <i className="-ml-0.5">From Singapore</i> <span className="text-neutral-500 align-top text-xs ml-1"> {timeSg}</span>
                 </motion.h1>
@@ -172,8 +150,7 @@ export default function Resume({className=""}) {
                 </motion.h1>
 
                     <motion.p variants={animateInChild} className="-mt-2">
-                    <span className="underline" style={{ textUnderlineOffset: '2px' }}>Master&apos;s Student</span>
-                    <br/>
+                    <h1 className="text-base mb-2">Master&apos;s Student</h1>
                     MFA Interaction Design
                     <br/>
                     School of Visual Arts
@@ -225,7 +202,7 @@ export default function Resume({className=""}) {
                     </h1>
 
                     <p className="-mt-2">
-                    <span className="underline" style={{ textUnderlineOffset: '2px' }}>Creative Lead</span><br/>
+                    <h1 className="text-base mb-2">Creative Lead</h1>
                     Marina Bay Sands <i>(ArtScience Museum)</i><br/>
                     <i className="-ml-0.5">January 2024 – November 2024</i>
                     </p>
@@ -282,7 +259,7 @@ export default function Resume({className=""}) {
             <div className="col-span-1 sm:pr-4 mt-16">
                 <motion.div variants={animateInChild}>
                     <p>
-                    <span className="underline" style={{ textUnderlineOffset: '2px' }}>Art Director</span><br/>
+                    <h1 className="text-base mb-2">Art Director</h1>
                     TBWA\ Singapore<br/>
                     <i className="-ml-0.5">March 2021 – August 2023</i>
                     </p>
@@ -365,7 +342,7 @@ export default function Resume({className=""}) {
             {/* BBH */}
             <div className="col-span-1 sm:pr-4 mt-16">
                 <motion.p variants={animateInChild}>
-                <span className="underline" style={{ textUnderlineOffset: '2px' }}>Motion Art Director</span><br/>
+                <h1 className="text-base mb-2">Motion Art Director</h1>
                 BBH Singapore<br/>
                 <i className="-ml-0.5">June 2019 – March 2021</i>
                 </motion.p>

@@ -8,6 +8,7 @@ import Ghibli from '../works/ghibli/page';
 import CabinCrewStories from '../works/cabin/page.js';
 import Cocktail from '../works/cocktail/page';
 import BestWorkPage from '../bestwork/page';
+import BestWorkPage2 from '../bestwork2/page';
 import Resume from '../resume/page';
 import StreetPhotography from '../components/street-photo';
 import BBH from '../components/bbh';
@@ -174,9 +175,11 @@ const toggleNav = () => {
 };
 
 
-
+// Reset Button Logic
 useEffect(() => {
-  if (selectedWork.length > 0) {
+  if (selectedWork.includes('bestwork')) {
+    setShowReset(false); 
+  } else if (selectedWork.length > 0) {
     setShowReset(true); // Always show Reset button if there is any selected work
   } else if (selectedTags.includes('all') || selectedTags.length === 0) {
     setShowReset(false); // Hide Reset button if 'all' is selected or if there are no tags
@@ -191,6 +194,7 @@ useEffect(() => {
   
 }, [selectedTags, selectedWork]);
 
+
 const filteredVideos = videoData.filter((video) => {
   if (selectedTags.includes('all')) return true;
   return selectedTags.some((tag) => video.tags.includes(tag));
@@ -204,11 +208,11 @@ const filteredVideos = videoData.filter((video) => {
         
 
         {/* Top Navbar */}
-        <div className="col-span-full sticky top-4 z-20 mt-4 text-xl pr-28">
+        <div className="col-span-full sticky top-3 z-20 mt-3 text-xl z-20 mb-4">
 
 
             <motion.div
-            className="flex flex-row min-w-screen justify-start gap-20"
+            className="flex flex-row min-w-screen justify-start gap-20 mix-blend-difference text-white"
             initial="hidden"
             animate="show"
             layout
@@ -229,7 +233,7 @@ const filteredVideos = videoData.filter((video) => {
               <motion.button 
                 className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
                   ${selectedWork.includes('bestwork') 
-                    ? 'border border-black dark:border-white text-foreground font-medium' 
+                    ? 'border border-black dark:border-white text-foreground font-medium backdrop-blur-sm' 
                     : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
                   }`}
                 whileHover={{ scale: 1.03 }}
@@ -248,7 +252,7 @@ const filteredVideos = videoData.filter((video) => {
               <motion.button 
               className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
                 ${selectedTags.includes('all') 
-                  ? 'border border-black dark:border-white text-foreground font-medium' 
+                  ? 'border border-black dark:border-white text-foreground font-medium backdrop-blur-sm' 
                   : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
                 }`}
               whileHover={{scale:1.03}}
@@ -264,7 +268,7 @@ const filteredVideos = videoData.filter((video) => {
               <motion.button
                 className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
                   ${selectedWork.includes('resume') 
-                    ? 'border border-black dark:border-white text-foreground font-medium' 
+                    ? 'border border-black dark:border-white text-foreground font-medium backdrop-blur-sm' 
                     : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
                   }`}
                 whileHover={{ scale: 1.03 }}
@@ -301,15 +305,13 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* Sandbox */}
               {/* <motion.button
-                className="hover:text-foreground text-midground text-left text-lg tracking-tight border-foreground font-base rounded-full px-3"
+                className="hover:text-foreground text-black mix-blend-difference text-left text-base tracking-tight z-10"
                 whileHover={{ scale: 1.03 }}
                 variants={animateInChild}
-                layout>
-                  <Link
-                  href="../sandbox">
-                      experimental features
-                  </Link>
+                layout> Sandbox
               </motion.button> */}
+
+
 
               {/* <motion.button
                 className="hover:text-foreground text-midground text-left text-lg tracking-tight border-foreground font-base rounded-full px-3"
@@ -325,6 +327,9 @@ const filteredVideos = videoData.filter((video) => {
             </motion.div>
         </div>  
 
+        <div className="fixed backdrop-blur-md left-0 top-0 w-full h-12 shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-10"></div>
+
+
         {/* Side Navbar */}
         <motion.div
           className={`${
@@ -337,7 +342,7 @@ const filteredVideos = videoData.filter((video) => {
             <>
               {/* Reset Button */}
               <motion.div 
-                className="sticky top-14 mt-6">
+                className="sticky top-14 mt-4">
                 {showReset && (
                   <motion.button
                     className="group hover:text-background font-medium flex gap-1.5
@@ -377,7 +382,7 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* Skillsets */}    
               <motion.div 
-              className="flex flex-col gap-1 items-start text-left mt-2 dark:text-neutral-500 relative"
+              className="flex flex-col gap-1 items-start text-left dark:text-neutral-500 relative"
               initial="hidden"
               animate="show"
               exit="fade"
@@ -388,7 +393,7 @@ const filteredVideos = videoData.filter((video) => {
                 damping: 17, // Adjust for bounciness and smoothness
                 }}
               variants={skillContainer}>
-
+                {/* <div className="h-0.5 bg-black/50 w-3"></div> */}
                 <motion.h1
                 className="text-xl font-medium tracking-tighter mb-4 text-foreground"
                 variants={animateInChild}
