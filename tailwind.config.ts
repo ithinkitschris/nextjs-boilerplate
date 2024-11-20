@@ -13,9 +13,14 @@ const config: Config = {
         62: '15.5rem',
         '19' : '4.75rem',
         'screen/1.5': '75%',
+        'screen/2': '50%',
         'screen/3': '33.33333%',
         'screen/4': '25%',
         'screen/5': '20%',
+        '120': '30rem',
+        '135': '34rem',
+        '150': '37.5rem',
+        '200': '42rem',
       },
       maxWidth: {
         '8xl' : '96rem',
@@ -50,6 +55,9 @@ const config: Config = {
         80: '0.8',
         90: '0.9',
       },
+      fontSize: {
+        '7.5xl': '5.5rem',
+      },
       scale: {
         '120': '1.20',
         '93': '0.93',
@@ -77,6 +85,7 @@ const config: Config = {
         '120': '30rem',
         '135': '34rem',
         '150': '37.5rem',
+        '200': '42rem',
       },
       margin: {
         '-mt-6': '-5rem',

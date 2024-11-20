@@ -227,20 +227,30 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* Best Button */}
               <motion.button 
-              className={`hover:text-foreground text-base tracking-tight rounded-full px-3 border-1 border-transparent hover:border-foreground transition-colors
-                ${(selectedWork.includes('bestwork')) ? 'text-foreground border-black dark:border-white font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
-              whileHover={{scale:1.03}}
-              variants={animateInChild}
-              layout
-              onClick={() => {
-                toggleTag('clear');
-                toggleWork('bestwork');
-                setSelectedTags([''])}}>my personal favourites.</motion.button>
+                className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
+                  ${selectedWork.includes('bestwork') 
+                    ? 'border border-black dark:border-white text-foreground font-medium' 
+                    : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                  }`}
+                whileHover={{ scale: 1.03 }}
+                variants={animateInChild}
+                layout
+                onClick={() => {
+                  toggleTag('clear');
+                  toggleWork('bestwork');
+                  setSelectedTags(['']);
+                }}
+              >
+                my personal favourites.
+              </motion.button>
 
               {/* All Button */}
               <motion.button 
-              className={`hover:text-foreground text-base tracking-tight rounded-full px-3 border-1 border-transparent hover:border-foreground transition-colors 
-                ${(selectedTags.includes('all')) ? 'text-foreground border-black dark:border-white font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
+              className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
+                ${selectedTags.includes('all') 
+                  ? 'border border-black dark:border-white text-foreground font-medium' 
+                  : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                }`}
               whileHover={{scale:1.03}}
               variants={animateInChild}
               layout
@@ -252,8 +262,11 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* Resume Button */}
               <motion.button
-                className={`hover:text-foreground text-base tracking-tight rounded-full px-3 border-1 border-transparent hover:border-foreground transition-colors
-                  ${(selectedWork.includes('resume')) ? 'text-foreground border-black dark:border-white font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
+                className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
+                  ${selectedWork.includes('resume') 
+                    ? 'border border-black dark:border-white text-foreground font-medium' 
+                    : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                  }`}
                 whileHover={{ scale: 1.03 }}
                 variants={animateInChild}
                 layout

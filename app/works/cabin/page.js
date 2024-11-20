@@ -5,6 +5,7 @@ import * as motion from "framer-motion/client"
 import Episodes from "@/app/components/episodes-cabin.js";
 
 export default function CabinCrewStories({className=""}) {
+    
     const backgroundGlowRef=useRef(null);
     const bannerVideoRef=useRef(null);
 
