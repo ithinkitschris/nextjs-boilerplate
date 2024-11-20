@@ -25,7 +25,7 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
           viewBox="0 0 120 120"
           className="w-5 h-5 text-foreground group-hover:text-background  transition-colors duration-200"
         >
-          <circle className="stroke-current fill-none" cx="50.9" cy="60.6" r="30.4" style={{ strokeWidth: '6' }}/>
+          <circle className="stroke-current fill-none" cx="60.9" cy="60.6" r="30.4" style={{ strokeWidth: '6' }}/>
           <g>
             <line className="stroke-current" x1="60.9" y1="17.6" x2="60.9" y2="4.3" style={{ strokeWidth: '6' }} />
             <line className="stroke-current" x1="60.9" y1="116.8" x2="60.9" y2="103.5" style={{ strokeWidth: '6' }} />

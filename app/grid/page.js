@@ -78,7 +78,7 @@ const worksContainer = {
 const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick }) => {
   return (
     <motion.div
-      className="overflow-hidden bg-background drop-shadow-lg rounded-lg ease-in-out hover:scale-98 hover:drop-shadow-md"
+      className="overflow-hidden bg-background drop-shadow-lg rounded-lg ease-in-out hover:scale-98 hover:drop-shadow-md cursor-pointer"
       initial="hidden"
       animate="show"
       whileHover={{scale:0.98}}
@@ -123,8 +123,8 @@ const GridPage = () => {
     
   ];
 
-const [selectedTags, setSelectedTags] = useState(['all']);
-const [selectedWork, setSelectedWork] = useState([]);
+const [selectedTags, setSelectedTags] = useState([]);
+const [selectedWork, setSelectedWork] = useState('bestwork');
 const [showNav, setShowNav] = useState(false);
 const [showReset, setShowReset] = useState(false);
 const [hoveredWork, setHoveredWork] = useState(null);
@@ -208,7 +208,7 @@ const filteredVideos = videoData.filter((video) => {
 
 
             <motion.div
-            className="flex flex-row min-w-screen justify-between text-left "
+            className="flex flex-row min-w-screen justify-start gap-20"
             initial="hidden"
             animate="show"
             layout
@@ -217,17 +217,29 @@ const filteredVideos = videoData.filter((video) => {
             
 
               <motion.h1
-              className="font-semibold text-foreground text-2xl tracking-tight cursor-pointer hover:text-neutral-600 transition-colors"
+              className="font-semibold text-foreground text-xl tracking-tight cursor-pointer hover:text-neutral-600 transition-colors"
               whileHover={{scale:1.05}}
               layout
               variants={animateInChild}
               onClick={toggleNav}>
-                Show me...
+                Here you will find...
               </motion.h1>
+
+              {/* Best Button */}
+              <motion.button 
+              className={`hover:text-foreground text-base tracking-tight rounded-full px-3 border-1 border-transparent hover:border-foreground transition-colors
+                ${(selectedWork.includes('bestwork')) ? 'text-foreground border-black dark:border-white font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
+              whileHover={{scale:1.03}}
+              variants={animateInChild}
+              layout
+              onClick={() => {
+                toggleTag('clear');
+                toggleWork('bestwork');
+                setSelectedTags([''])}}>my personal favourites.</motion.button>
 
               {/* All Button */}
               <motion.button 
-              className={`hover:text-foreground text-base tracking-tight rounded-full px-3 border-1.5 border-transparent hover:border-foreground transition-colors 
+              className={`hover:text-foreground text-base tracking-tight rounded-full px-3 border-1 border-transparent hover:border-foreground transition-colors 
                 ${(selectedTags.includes('all')) ? 'text-foreground border-black dark:border-white font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
               whileHover={{scale:1.03}}
               variants={animateInChild}
@@ -236,23 +248,11 @@ const filteredVideos = videoData.filter((video) => {
                 toggleTag('clear');
                 toggleWork('clear');
                 setSelectedTags(['all']);
-              }}>...everything, all that you've got.</motion.button>
-
-              {/* Best Button */}
-              <motion.button 
-              className={`hover:text-foreground text-base tracking-tight rounded-full px-3 border-1.5 border-transparent hover:border-foreground transition-colors
-                ${(selectedWork.includes('bestwork')) ? 'text-foreground border-black dark:border-white font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
-              whileHover={{scale:1.03}}
-              variants={animateInChild}
-              layout
-              onClick={() => {
-                toggleTag('clear');
-                toggleWork('bestwork');
-                setSelectedTags([''])}}>...your personal favourites.</motion.button>
+              }}>everything that I've got.</motion.button>
 
               {/* Resume Button */}
               <motion.button
-                className={`hover:text-foreground text-base tracking-tight rounded-full px-3 border-1.5 border-transparent hover:border-foreground transition-colors
+                className={`hover:text-foreground text-base tracking-tight rounded-full px-3 border-1 border-transparent hover:border-foreground transition-colors
                   ${(selectedWork.includes('resume')) ? 'text-foreground border-black dark:border-white font-medium' : 'text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'}`}
                 whileHover={{ scale: 1.03 }}
                 variants={animateInChild}
@@ -262,7 +262,7 @@ const filteredVideos = videoData.filter((video) => {
                   toggleWork('clear')
                   toggleWork('resume')}}
                   >
-                ...your resume.
+                my journey.
               </motion.button>
 
               {/* SideNav Button */}
@@ -281,7 +281,7 @@ const filteredVideos = videoData.filter((video) => {
               </svg>
 
               {/* Text content */}
-              {showNav ? 'a fullscreen experience' : 'more choices, man.'}
+              {showNav ? 'a fullscreen experience.' : 'more options.'}
             </motion.button>
               
               
