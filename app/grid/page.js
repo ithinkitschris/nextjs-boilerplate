@@ -124,8 +124,8 @@ const GridPage = () => {
     
   ];
 
-const [selectedTags, setSelectedTags] = useState([]);
-const [selectedWork, setSelectedWork] = useState('bestwork');
+const [selectedTags, setSelectedTags] = useState(['all']);
+const [selectedWork, setSelectedWork] = useState('');
 const [showNav, setShowNav] = useState(false);
 const [showReset, setShowReset] = useState(false);
 const [hoveredWork, setHoveredWork] = useState(null);
@@ -139,23 +139,32 @@ const includesWorks = (works) => {
   return works.some((work) => selectedWork.includes(work));
 };
 
+// const toggleTag = (tag) => {
+//   if (tag === 'clear') {
+//     setSelectedTags([]);
+//   } else {
+//     // Remove 'all' from the selectedTags array if it exists
+//     const updatedTags = selectedTags.filter((t) => t !== 'all');
+
+//     // Check if the tag is already in updatedTags
+//     if (updatedTags.includes(tag)) {
+//       // Remove the tag if it's already selected
+//       setSelectedTags(updatedTags.filter((t) => t !== tag));
+//     } else {
+//       // Add the tag if it's not selected
+//       setSelectedTags([...updatedTags, tag]);
+//     }
+//   }
+// };
 const toggleTag = (tag) => {
   if (tag === 'clear') {
-    setSelectedTags(['test']);
+    setSelectedTags([]); // Clear all tags
   } else {
-    // Remove 'all' from the selectedTags array if it exists
-    const updatedTags = selectedTags.filter((t) => t !== 'all');
-
-    // Check if the tag is already in updatedTags
-    if (updatedTags.includes(tag)) {
-      // Remove the tag if it's already selected
-      setSelectedTags(updatedTags.filter((t) => t !== tag));
-    } else {
-      // Add the tag if it's not selected
-      setSelectedTags([...updatedTags, tag]);
-    }
+    setSelectedTags([tag]); // Ensure selectedTags is always an array
   }
 };
+
+
 
 const toggleWork = (work) => {
   if (work === 'clear') {
@@ -197,8 +206,13 @@ useEffect(() => {
 
 const filteredVideos = videoData.filter((video) => {
   if (selectedTags.includes('all')) return true;
+
+  // Safeguard for when selectedTags is not an array
+  if (!Array.isArray(selectedTags)) return false;
+
   return selectedTags.some((tag) => video.tags.includes(tag));
 });
+
 
   return (
     <>
@@ -226,8 +240,24 @@ const filteredVideos = videoData.filter((video) => {
               layout
               variants={animateInChild}
               onClick={toggleNav}>
-                Here you will find...
+                Chris Leow
               </motion.h1>
+
+              {/* All Button */}
+              <motion.button 
+              className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
+                ${selectedTags.includes('all') 
+                  ? 'border border-black dark:border-white text-foreground font-medium backdrop-blur-sm' 
+                  : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                }`}
+              whileHover={{scale:1.03}}
+              variants={animateInChild}
+              layout
+              onClick={() => {
+                toggleTag('clear');
+                toggleWork('clear');
+                setSelectedTags(['all']);
+              }}>Here's everything that I've got.</motion.button>
 
               {/* Best Button */}
               <motion.button 
@@ -245,24 +275,8 @@ const filteredVideos = videoData.filter((video) => {
                   setSelectedTags(['']);
                 }}
               >
-                my personal favourites.
+                These are my personal favourites.
               </motion.button>
-
-              {/* All Button */}
-              <motion.button 
-              className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
-                ${selectedTags.includes('all') 
-                  ? 'border border-black dark:border-white text-foreground font-medium backdrop-blur-sm' 
-                  : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
-                }`}
-              whileHover={{scale:1.03}}
-              variants={animateInChild}
-              layout
-              onClick={() => {
-                toggleTag('clear');
-                toggleWork('clear');
-                setSelectedTags(['all']);
-              }}>everything that I've got.</motion.button>
 
               {/* Resume Button */}
               <motion.button
@@ -279,7 +293,7 @@ const filteredVideos = videoData.filter((video) => {
                   toggleWork('clear')
                   toggleWork('resume')}}
                   >
-                my journey.
+                Who even am I?
               </motion.button>
 
               {/* SideNav Button */}
@@ -298,7 +312,7 @@ const filteredVideos = videoData.filter((video) => {
               </svg>
 
               {/* Text content */}
-              {showNav ? 'a fullscreen experience.' : 'more options.'}
+              {showNav ? 'a fullscreen experience.' : 'More options.'}
             </motion.button>
               
               
@@ -348,7 +362,7 @@ const filteredVideos = videoData.filter((video) => {
                     className="group hover:text-background font-medium flex gap-1.5
                     -ml-1 mb-6 pt-1 pb-1 pr-2 pl-2.5 
                     items-center text-foreground transition-colors hover:bg-foreground 
-                    rounded-full border-1.5 border-foreground dark:border-neutral-400 "
+                    rounded-full border-1 border-foreground dark:border-neutral-400 "
                     initial={{ opacity: 0, y:-20 }} 
                     animate={{ opacity: 1, y:0 }}  
                     transition={{

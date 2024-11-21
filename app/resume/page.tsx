@@ -1,6 +1,9 @@
 'use client';
 import { motion } from "framer-motion";
 import React, {useState, useEffect} from 'react';
+import Image from 'next/image';
+import Carousel from '../components/profile-carousel.js'
+
 
 
 const animateIn = {
@@ -84,36 +87,40 @@ export default function Resume({className=""}) {
         
     <>
 
-        <motion.div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5
-        items-start justify-items-start ml-6 font-[family-name:var(--font-geist-sans)] font-sans
-        p-0 gap-8 text-sm tracking-tight
-         ${className}`}
+        <motion.div className={`grid grid-cols-10
+        items-start justify-items-start font-[family-name:var(--font-geist-sans)]
+        gap-2 text-sm tracking-tight ${className}`}
         initial="hidden"
         animate="show"
-        // whileInView="show"
-        // viewport={{once:true}}
         variants={animateIn}>
 
             
             
             {/* Bio */}
-            <div className= "col-span-1 mr-10"> 
-                <motion.h1 
-                className="-ml-1 text-4xl mb-6 tracking-tight whitespace-nowrap leading-10 font-medium"
-                variants={animateInChild}>
-                    Chris Leow
+            <div className="col-span-4 mr-10">
+
+
+                <motion.h1
+                className="-ml-1 mt-6 text-8xl mb-14 tracking-tighter whitespace-nowrap leading-10 font-base text-foreground"
+                variants={animateInChild}
+                >
+                I am Chris Leow.
+                {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
                 </motion.h1>
 
-                <motion.h1 
-                className="mb-6 -ml-0.5"
-                variants={animateInChild}>
-                    <h1 className="text-base mb-2">Senior Creative</h1>
-                    Based in New York City <span className="text-neutral-500 align-top text-xs ml-1"> {timeNyc}</span><br/>
-                    <i className="-ml-0.5">From Singapore</i> <span className="text-neutral-500 align-top text-xs ml-1"> {timeSg}</span>
-                </motion.h1>
-                {/* <motion.div className="mb-4 text-lg" variants={animateInChild}>
-                Creative Direction. Graphic Design. Content Creation. Edit. 2D + 3D Motion Design. Photography. Videography.
-                </motion.div> */}
+                <motion.div
+                className="mb-6 -ml-0.5 text-foreground"
+                variants={animateInChild}
+                >
+                <p className="flex items-center justify-center -ml-1.5 border-1 border-foreground rounded-full tracking-tight font-medium w-32 text-base mb-5">Senior Creative</p>
+                Based in New York City
+                <span className="text-neutral-300 align-top text-xs ml-1">{timeNyc}</span>
+                <br />
+                <i className="-ml-0.5">From Singapore</i>
+                <span className="text-neutral-300 align-top text-xs ml-1">{timeSg}</span>
+                </motion.div>
+
+
                 <motion.p 
                 className="mb-4"
                 variants={animateInChild}>
@@ -142,28 +149,35 @@ export default function Resume({className=""}) {
                 </motion.p>
             </div>
 
-            {/* Currently: */}
-            <div className="col-span-1 sm:pr-4">
+            <div className="col-span-1"/>
+             
+            <Carousel/>
 
-                <motion.h1 className="text-2xl mb-8 -ml-0.5 mt-2" variants={animateInChild}>
+
+            {/* Currently: */}
+            <div className="col-span-2">
+
+                <motion.h1 className="text-3xl mb-11 -ml-0.5 mt-10 tracking-tight" variants={animateInChild}>
                 Currently:<br/>
                 </motion.h1>
 
-                    <motion.p variants={animateInChild} className="-mt-2">
-                    <h1 className="text-base mb-2">Master&apos;s Student</h1>
-                    MFA Interaction Design
-                    <br/>
-                    School of Visual Arts
-                    <br/>
-                    <i className="-ml-0.5">September 2024 – May 2026</i>
-                    </motion.p>
-
-                    <motion.div variants={animateInChild}>
-                        <h1 className="mt-8 text-xl" >Curriculum undertaken</h1>
+                    <motion.div variants={animateInChild} className="-mt-2">
+                        <h1 className="text-base mb-2">Master&apos;s Student</h1>
+                        <p>
+                            MFA Interaction Design
+                            <br/>
+                            School of Visual Arts
+                            <br/>
+                            <i className="-ml-0.5">September 2024 – May 2026</i>
+                        </p>
                     </motion.div>
 
-                    <motion.div className="ml-6" variants={animateInChild}>
-                        <p className="mt-6">Research Methodology</p>
+                    <motion.div variants={animateInChild}>
+                        <h1 className="mt-8 text-lg" >Curriculum undertaken</h1>
+                    </motion.div>
+
+                    <motion.div className="ml-4" variants={animateInChild}>
+                        <p className="mt-4">Research Methodology</p>
                         <p>Service Design</p>
                         <p>UX Content Writing</p>
                         <p>Programming <i>(C, Python, JavaScript)</i></p>
@@ -172,11 +186,11 @@ export default function Resume({className=""}) {
                     </motion.div>
 
                     <motion.div className="text-midground" variants={animateInChild}>
-                        <h1 className="mt-8 text-xl" >Curriculum to be undertaken</h1>
+                        <h1 className="mt-8 text-lg" >Curriculum to be undertaken</h1>
                     </motion.div>
 
-                    <motion.div className="ml-6 text-midground" variants={animateInChild}>
-                        <p className="mt-6">Inclusive Design</p>
+                    <motion.div className="ml-4 text-midground" variants={animateInChild}>
+                        <p className="mt-4">Inclusive Design</p>
                         <p>Inclusive Design II</p>
                         <p>Spatial Computing</p>
                         <p>Advanced Fundamentals of UX</p>
@@ -194,18 +208,20 @@ export default function Resume({className=""}) {
             </div>
             
             {/* ArtScience Museum */}
-            <div className="col-span-1 sm:pr-4 mt-2">
+            <div className="col-span-2 sm:pr-4 mt-11">
                 
                 <motion.div variants={animateInChild} className="">
-                    <h1 className="text-2xl mb-8 -ml-0.5">
+                    <p className="text-3xl mb-10 -ml-0.5 tracking-tight">
                         Previously:
-                    </h1>
-
-                    <p className="-mt-2">
-                    <h1 className="text-base mb-2">Creative Lead</h1>
-                    Marina Bay Sands <i>(ArtScience Museum)</i><br/>
-                    <i className="-ml-0.5">January 2024 – November 2024</i>
                     </p>
+
+                    <div className="-mt-2">
+                    <h1 className="text-base mb-2">Creative Lead</h1>
+                    <p>
+                        Marina Bay Sands <i>(ArtScience Museum)</i><br/>
+                        <i className="-ml-0.5">January 2024 – November 2024</i>
+                    </p>
+                    </div>
                 </motion.div>
 
                 <div>
@@ -256,13 +272,15 @@ export default function Resume({className=""}) {
             </div>
 
             {/* TBWA */}
-            <div className="col-span-1 sm:pr-4 mt-16">
+            <div className="col-span-2 sm:pr-4 mt-28">
                 <motion.div variants={animateInChild}>
-                    <p>
+                <div>
                     <h1 className="text-base mb-2">Art Director</h1>
+                    <p>
                     TBWA\ Singapore<br/>
                     <i className="-ml-0.5">March 2021 – August 2023</i>
                     </p>
+                </div>
                 </motion.div>
 
                     <motion.h1 className="mt-8 2xl:mt-14 text-xl" variants={animateInChild}>Singapore Airlines</motion.h1>
@@ -340,12 +358,12 @@ export default function Resume({className=""}) {
             </div>
 
             {/* BBH */}
-            <div className="col-span-1 sm:pr-4 mt-16">
-                <motion.p variants={animateInChild}>
+            <div className="col-span-2 sm:pr-4 mt-28">
+                <motion.div variants={animateInChild}>
                 <h1 className="text-base mb-2">Motion Art Director</h1>
                 BBH Singapore<br/>
                 <i className="-ml-0.5">June 2019 – March 2021</i>
-                </motion.p>
+                </motion.div>
 
                 <motion.h1 className="mt-8 2xl:mt-14 text-xl" variants={animateInChild}>NIKE</motion.h1>
                     
@@ -447,6 +465,31 @@ export default function Resume({className=""}) {
                     </p>
                     <p className="ml-6 mb-4">
                     Art directed and produced teaser films and event coverage of the behind the scenes and happenings of the Star Wars edition of Sentosa Sandsation.
+                    </p>
+                    </motion.div>
+            </div>
+
+            {/* Kinetic */}
+            <div className="col-span-2 sm:pr-4 mt-28">
+            <motion.div variants={animateInChild}>
+            <h1 className="text-base mb-2">Motion Designer</h1>
+            <h3>Kinetic Singapore</h3>
+            <i className="-ml-0.5 mb-2">January 2019 – April 2019</i>
+            </motion.div>
+
+                <motion.h1 className="mt-8 2xl:mt-14 text-xl" variants={animateInChild}>Uniqlo</motion.h1>
+                    
+                    <motion.div variants={animateInChild}>
+                    <h1 className="mt-6 mb-4">New Style Fresh Start</h1>
+                    <p className="ml-6 mb-4">
+                    Produced a set of videos distributed on displays in stores around South East Asia as part of the 2019 Chinese New Year season.
+                    </p>
+                    </motion.div>
+
+                    <motion.div variants={animateInChild}>
+                    <h1 className="mt-6 mb-4">Your Stage Now Live</h1>
+                    <p className="ml-6 mb-4">
+                    Art Directed and produced a set of videos for the panoramic displays during the launch of the Uniqlo flagship store as part of the Your Stage Now Live launch campaign
                     </p>
                     </motion.div>
             </div>
