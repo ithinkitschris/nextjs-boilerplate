@@ -81,7 +81,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
         variants={animateIn}>
 
             {/* border-2 border-black/40 dark:border-[rgba(255,255,255,0.2)] */}
-
+            
             <motion.div className="col-span-3 mb-4 mr-4 font-base rounded-lg p-6]" 
             variants={animateInChild} >
                 <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
@@ -137,6 +137,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     setSelectedWork('cabin')}}>
                 </motion.video>
             </button>
+
                 
                 {/* Background Glow */}
                 <video src="/CCS/montagelow.mp4" 
@@ -145,6 +146,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 autoPlay muted loop
                 >
                 </video>
+
+            
 
             <motion.div className="col-span-3 mb-2 font-base" variants={animateInChild}>
                 <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
@@ -404,7 +407,55 @@ export default BestWorkPage;
 
 
 
+{/* <div className="col-span-full grid grid-cols-9 border-1.5 group hover:scale-99 border-[rgb(0,0,0,0)] dark:border-[rgb(255,255,255,0.4)] hover:bg-white/5 shadow-mild hover:shadow-none rounded-xl mb-4 transition-transform duration-200">
+                <motion.div className="col-span-3 mr-4 font-base rounded-lg p-6 ]" 
+                variants={animateInChild} >
+                    <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
+                    flex items-center justify-center border-1.5 border-foreground mb-1
+                    hover:bg-foreground hover:text-background hover:scale-90 transition-transform 
+                    ${isHovered.includes('1') ? "bg-foreground text-background scale-90" : ''}`}
+                    onClick={() => setSelectedWork('cocktail')}>
+                    01
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 3 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-4 h-4"
+                        >
+                        <path d="M7 17L17 7" />
+                        <path d="M7 7h10v10" />
+                        </svg>
+                    </button>
+                    <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20">Beyond The Cabin</h1>
+                    <h1 className="text-2xl tracking-tighter mb-6 mr-10">Brand Campaign for Singapore Airlines</h1>
+                    <p className="mr-10">6 Cities. 6 Cabin Crew. 6 Passions.
+                        Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world.
+                        </p>
+                </motion.div>
 
+                <button className="col-span-6 rounded-lg">
+                    <motion.video src="/CCS/montagelow.mp4" 
+                    ref={cabinVideoRef}
+                    className="rounded-r-lg w-full h-135 object-cover"
+                    autoPlay muted loop
+                    variants={animateInChild}
+                    transition={{duration:0.10}}
+                    onMouseEnter={() => {
+                        setHoveredWork('cabin')
+                        setIsHovered('1')}}
+                    onMouseLeave={() => {
+                        setHoveredWork(null)
+                        setIsHovered([])}}
+                    onClick={() => {
+                        
+                        setSelectedWork('cabin')}}>
+                    </motion.video>
+                </button>
+</div> */}
 
 
 

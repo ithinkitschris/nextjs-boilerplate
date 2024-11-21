@@ -76,10 +76,10 @@ const worksContainer = {
   exit: { opacity: 0 },
 };
 
-const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick }) => {
+const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, role }) => {
   return (
     <motion.div
-      className="overflow-hidden bg-background drop-shadow-lg rounded-lg ease-in-out hover:scale-98 hover:drop-shadow-md cursor-pointer"
+      className="overflow-hidden bg-background drop-shadow-lg rounded-lg ease-in-out hover:scale-98 hover:drop-shadow-md cursor-pointer group-hover:z-50"
       initial="hidden"
       animate="show"
       whileHover={{scale:0.98}}
@@ -87,16 +87,67 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick }) => {
       variants={scaleIn}
       onMouseEnter={() => {setHoveredWork(tags[0]); console.log(tags)}}
       onMouseLeave={() => setHoveredWork(null)}
-      onClick={onClick}
-    >
-        
-          <div className="pt-[100%]">
+      onClick={onClick}>
+
+          {/* Title */}
+          <div className="pt-[100%] group relative">
+
+            {/* Text Container */}
+            <div className="absolute inset-0 flex flex-col items-start justify-between p-6 gap-4">
+
+              {/* Title of work */}
+              <h1 className="text-5xl tracking-tight font-medium text-white opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 w-3/4 mix-blend-screen leading-11">
+                {title}
+              </h1>
+
+              {/* Work Details Container */}
+              <div className="z-50 flex flex-row justify-between">
+
+                {/* Subheader */}
+                <h3 className="z-50 text-white font-medium tracking-tight text-base opacity-0 group-hover:opacity-100
+                transition-all duration-300 leading-5 w-1/2">
+                {subheader}
+                </h3>
+
+                {/* Role */}
+                <h3 className="z-50 text-white tracking-tight text-xs opacity-0 group-hover:opacity-100
+                transition-all duration-300 leading-5 w-1/2">
+                {role}
+                </h3>
+              </div>
+            </div>
+      
+            {/* Corner Arrow */}
+            <button className="absolute top-2 right-2 z-20 p-0 m-1 scale-100
+            rounded-full border-0 border-[rgba(255,255,255,0.5)] text-white backdrop-blur
+            group-hover:bg-white group-hover:text-black group-hover:scale-150 group-hover:m-2 group-hover:px-1
+            transition-all duration-200">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="2 2 20 20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-4 h-4">
+                <path d="M7 17L17 7"
+                className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <path d="M7 7h10v10" />
+                </svg>
+            </button>
+
+            {/* Gradient */}
+            {/* <div className="absolute inset-0 z-10 h-2/3 bg-gradient-to-b from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 bg-blend-multiply">
+            </div> */}
+
+            {/* Video */}
             <video
-              className="absolute scale-102 inset-0 w-full h-full object-cover"
+              className="absolute scale-102 inset-0 w-full h-full object-cover blur-none 
+              group-hover:blur-xl group-hover:opacity-80 transition-all duration-200"
               autoPlay
               muted
-              loop
-            >
+              loop>
               <source src={videoSrc} type="video/mp4" />
             </video>
           </div>
@@ -107,19 +158,19 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick }) => {
 
 const GridPage = () => {
   const videoData = [
-    { src: '/ghibli/cover1.mp4', tags: ['ghibli', 'all', 'creative', 'asm', 'motion', 'graphic', 'best'] },
-    { src: '/CCS/cover1.mp4', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
-    { src: '/cocktail/cover1.mp4', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
-    { src: '/kris/cover1.mp4', tags: ['kris', 'all', 'creative', 'sia'] },
-    { src: '/travelbig/cover.mp4', tags: ['travelbig', 'all', 'creative', 'sia'] },
-    { src: '/lounge/cover.mp4', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
-    { src: '/hemsaker/cover.mp4', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
-    { src: '/ispy/cover.mp4', tags: ['ispy', 'all', 'creative', 'sia'] },
-    { src: '/jollieverafter/cover.mp4', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
-    { src: '/photography/bbh/cover.mp4', tags: ['bbh', 'all', 'photography'] },
-    { src: '/oneshow/cover.mp4', tags: ['oneshow', 'all', 'motion', 'oneshow'] },
-    { src: '/leica/leica.mp4', tags: ['leica', 'all', 'motion'] },
-    { src: '/iphone/iphone.mp4', tags: ['iphone', 'all', 'motion'] },
+    { src: '/ghibli/cover1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing Campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'motion', 'graphic', 'best'] },
+    { src: '/CCS/cover1.mp4', title:'Beyond the Cabin', subheader:'Brand Campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+    { src: '/cocktail/cover1.mp4', title:'Cocktail Conversations', subheader:'Brand Campaign for Singapore Airlines', role:' Creative Direction | Motion Design', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+    { src: '/kris/cover1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand Campaign for Singapore Airlines', role:'Creative Direction', tags: ['kris', 'all', 'creative', 'sia'] },
+    { src: '/travelbig/cover.mp4', title:'Travel Like Never Before', subheader:'Brand Campaign for Singapore Airlines', role:'Creative Direction', tags: ['travelbig', 'all', 'creative', 'sia'] },
+    { src: '/lounge/cover.mp4', title:'SilverKris Lounge', subheader:'Brand Campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design | Video Edit', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
+    { src: '/hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product Campaign for IKEA', role:'Creative Direction', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
+    { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social Content for Singapore Airlines', role:'Creative Direction', tags: ['ispy', 'all', 'creative', 'sia'] },
+    { src: '/jollieverafter/cover.mp4', title:'JolliEverAfter', subheader:'Social Media Campaign for Jollibee', role:'Motion Design | Video Edit', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
+    { src: '/photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait Series', role:'Art Direction | Photography', tags: ['bbh', 'all', 'photography'] },
+    { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social Media Post', role:'Art Direction | 3D Motion Design', tags: ['oneshow', 'all', 'motion', 'oneshow'] },
+    { src: '/leica/leica.mp4', title:'Leica M10-P', subheader:'Personal Explorations', role:'3D Motion Design', tags: ['leica', 'all', 'motion'] },
+    { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal Explorations', role:'3D Motion Design', tags: ['iphone', 'all', 'motion'] },
     
     
   ];
@@ -186,7 +237,7 @@ const toggleNav = () => {
 
 // Reset Button Logic
 useEffect(() => {
-  if (selectedWork.includes('bestwork')) {
+  if (selectedWork.includes('bestwork') || selectedWork.includes('resume')) {
     setShowReset(false); 
   } else if (selectedWork.length > 0) {
     setShowReset(true); // Always show Reset button if there is any selected work
@@ -222,26 +273,67 @@ const filteredVideos = videoData.filter((video) => {
         
 
         {/* Top Navbar */}
-        <div className="col-span-full sticky top-3 z-20 mt-3 text-xl z-20 mb-4">
+        <div className="col-span-full sticky top-3 mt-3 text-xl z-20 mb-4">
 
 
             <motion.div
-            className="flex flex-row min-w-screen justify-start gap-20 mix-blend-difference text-white"
+            className="flex flex-row min-w-screen justify-start gap-10 mix-blend-difference text-white"
             initial="hidden"
             animate="show"
-            layout
+            layout="position"
             variants={animateIn}
             transition={{ duration: 0.5 }}> 
             
+              {/* SideNav Button */}
+              <motion.button 
+              className="text-foreground border-1 p-1 rounded-full border-foreground flex items-center justify-center pl-2 pr-1.5 pt-1.5 hover:bg-foreground hover:text-background transition-colors duration-100 -ml-1"
+              whileHover={{ scale: 0.9 }}
+              variants={animateInChild}
+              layout="position"
+              onClick={toggleNav}>
 
-              <motion.h1
+                {/* Example of an SVG icon */}
+                <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-5 h-5">
+                  <path d={`${showNav ? 'M0 10h20' : 'M5 10h10'}`}
+                  className='transition-all duration-200'/>
+                  <path d={`${showNav ? 'M0 15h20' : 'M5 15h10'}`}
+                  className='transition-all duration-300'/>
+                  <path d={`${showNav ? 'M0 5h20' : 'M5 5h10'}`}
+                  className='transition-all duration-100'/>
+                </svg>
+              </motion.button>
+
+              {/* <motion.h1
               className="font-semibold text-foreground text-xl tracking-tight cursor-pointer hover:text-neutral-600 transition-colors"
               whileHover={{scale:1.05}}
-              layout
+              
               variants={animateInChild}
-              onClick={toggleNav}>
+              onClick={() => {
+                toggleTag('clear');
+                toggleWork('clear');
+                setSelectedTags(['all']);
+              }}>
                 Chris Leow
-              </motion.h1>
+              </motion.h1> */}
+
+              {/* Resume Button */}
+              <motion.button
+                className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
+                  ${selectedWork.includes('resume') 
+                    ? 'border border-black dark:border-white text-foreground font-medium backdrop-blur-sm' 
+                    : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                  }`}
+                whileHover={{ scale: 1.03 }}
+                variants={animateInChild}
+                layout="position"
+                onClick={() => {
+                  toggleTag('clear');
+                  toggleWork('resume');
+                  setSelectedTags(['']);
+                }}
+                  >
+                Who am I?
+              </motion.button>
 
               {/* All Button */}
               <motion.button 
@@ -252,7 +344,7 @@ const filteredVideos = videoData.filter((video) => {
                 }`}
               whileHover={{scale:1.03}}
               variants={animateInChild}
-              layout
+              layout="position"
               onClick={() => {
                 toggleTag('clear');
                 toggleWork('clear');
@@ -268,7 +360,7 @@ const filteredVideos = videoData.filter((video) => {
                   }`}
                 whileHover={{ scale: 1.03 }}
                 variants={animateInChild}
-                layout
+                layout="position"
                 onClick={() => {
                   toggleTag('clear');
                   toggleWork('bestwork');
@@ -278,42 +370,26 @@ const filteredVideos = videoData.filter((video) => {
                 These are my personal favourites.
               </motion.button>
 
-              {/* Resume Button */}
-              <motion.button
-                className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
-                  ${selectedWork.includes('resume') 
-                    ? 'border border-black dark:border-white text-foreground font-medium backdrop-blur-sm' 
-                    : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
-                  }`}
-                whileHover={{ scale: 1.03 }}
-                variants={animateInChild}
-                layout
-                onClick={() => {
-                  toggleTag('clear');
-                  toggleWork('clear')
-                  toggleWork('resume')}}
-                  >
-                Who even am I?
-              </motion.button>
+              
 
               {/* SideNav Button */}
-              <motion.button 
+              {/* <motion.button 
               className="flex items-center gap-2 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] hover:text-foreground dark:hover:text-foreground text-left text-base tracking-tight"
               whileHover={{ scale: 1.03 }}
               variants={animateInChild}
               layout="position"
-              onClick={toggleNav}
-            >
+              onClick={toggleNav}> */}
+
               {/* Example of an SVG icon */}
-              <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+              {/* <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
                 <path d={`${showNav ? 'M18 12h4' : 'M5 12h18'}`} />
                 <path d={`${showNav ? 'M18 18h4' : 'M5 18h18'}`} />
                 <path d={`${showNav ? 'M18 6h4' : 'M5 6h18'}`} />
-              </svg>
+              </svg> */}
 
               {/* Text content */}
-              {showNav ? 'a fullscreen experience.' : 'More options.'}
-            </motion.button>
+              {/* {showNav ? 'A fullscreen experience.' : 'More options.'}
+              </motion.button> */}
               
               
 
@@ -972,6 +1048,9 @@ const filteredVideos = videoData.filter((video) => {
                   <VideoSquare
                     key={video.src}
                     videoSrc={video.src}
+                    title={video.title}
+                    subheader={video.subheader}
+                    role={video.role}
                     link={video.link}
                     tags={video.tags}
                     setHoveredWork={setHoveredWork}

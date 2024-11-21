@@ -30,15 +30,15 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Personal */}
         <motion.div 
-        className="group col-span-3 mr-2 tracking-tight relative z-10" 
-        whileHover={{ scale: 0.99 }}
+        className="group col-span-3 mr-2 tracking-tight relative z-10 overflow-hidden rounded-lg cursor-pointer" 
+        whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('street')}>
 
             {/* Image */}
             <img 
-            className="w-auto h-full inset-0 object-cover rounded-lg  "
+            className="w-auto h-full inset-0 object-cover rounded-lg blur-none group-hover:blur-sm transition-all duration-300"
             src="/photography/street/cover2.jpg">
             </img>
 
@@ -52,9 +52,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
                     Personal
                 </h1>
 
-                <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2 mt-1 mr-1 rounded-full 
-                flex items-center justify-center border-1.5 border-white text-white
-                group-hover:bg-white group-hover:text-black group-hover:scale-90 transition-transform`}>
+                <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
+                flex items-center justify-center border-1 border-white text-white cursor-pointer
+                group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="2 2 20 20"
@@ -79,15 +79,15 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BBH */}
         <motion.div 
-        className="col-span-3 mr-2 tracking-tight relative "
-        whileHover={{ scale: 0.99 }}
+        className="group col-span-3 mr-2 tracking-tight relative z-10 overflow-hidden rounded-lg"
+        whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('bbh')}>
         
         {/* Image */}
         <img 
-            className="group w-full h-full object-cover rounded-lg transform transition-transform duration-150 hover:scale-90 hover:brightness-50"
+            className="w-auto h-full inset-0 object-cover rounded-lg blur-none group-hover:blur-sm transition-all duration-300"
             src="/photography/bbh/cover.jpg"/>
 
         {/* Gradient */}
@@ -99,23 +99,22 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             <p className="-mt-1 ml-1 text-2xl text-white font-medium tracking-tight">Profile Headshots</p>
             {/* <h2 className="text-xl text-white tracking-tight">Subheader</h2> */}
 
-            <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2 mt-1 mr-1 rounded-full 
-                flex items-center justify-center border-1.5 border-white text-white
-                group-hover:bg-white group-hover:text-black group-hover:scale-90 transition-transform`}>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5"
-            >
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-            </svg>
-            </button>
+            <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
+                flex items-center justify-center border-1 border-white text-white cursor-pointer
+                group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="2 2 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-5 h-5">
+                    <path d="M7 17L17 7" />
+                    <path d="M7 7h10v10" />
+                    </svg>
+                </button>
         </div>
         <img 
             className="absolute top-24 h-screen scale-100 rounded-full blur-3xl -z-40 opacity-0 dark:opacity-100"
@@ -131,15 +130,15 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BTS */}
         <motion.div 
-        className="col-span-3 mr-2 tracking-tight relative" 
-        whileHover={{ scale: 0.99 }}
+        className="group col-span-3 mr-2 tracking-tight relative z-10 overflow-hidden rounded-lg" 
+        whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('bts')}> 
 
             {/* Image */}
             <img 
-            className="bg-black w-auto h-full object-cover rounded-lg hover:brightness-50 hover:scale-95"
+            className="w-auto h-full inset-0 object-cover rounded-lg blur-none group-hover:blur-sm transition-all duration-300"
             src="/photography/bts/cover.jpg">
             </img>
 
@@ -157,9 +156,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
                     Subheader
                 </h2> */}
 
-                <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2 mt-1 mr-1 rounded-full 
-                flex items-center justify-center border-1.5 border-white text-white
-                group-hover:bg-white group-hover:text-black group-hover:scale-90 transition-transform`}>
+                <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
+                flex items-center justify-center border-1 border-white text-white cursor-pointer
+                group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="2 2 20 20"
@@ -186,15 +185,15 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Unshackle */}
         <motion.div 
-        className="col-span-3 mr-2 tracking-tight relative" 
-        whileHover={{ scale: 0.99 }}
+        className="group col-span-3 mr-2 tracking-tight relative z-10 overflow-hidden rounded-lg" 
+        whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('unshackle')}> 
 
             {/* Image */}
             <img 
-            className="bg-black w-auto h-full object-cover rounded-lg object-[58%]"
+            className="w-auto h-full inset-0 object-cover rounded-lg blur-none group-hover:blur-sm transition-all duration-300 object-[58%]"
             src="/photography/unshackle/cover.jpg">
             </img>
 
@@ -213,9 +212,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
                     Subheader
                 </h2> */}
 
-                <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2 mt-1 mr-1 rounded-full 
-                flex items-center justify-center border-1.5 border-white text-white
-                group-hover:bg-white group-hover:text-black group-hover:scale-90 transition-transform`}>
+                <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
+                flex items-center justify-center border-1 border-white text-white cursor-pointer
+                group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="2 2 20 20"

@@ -104,7 +104,7 @@ export default function Resume({className=""}) {
                 className="-ml-1 mt-6 text-8xl mb-14 tracking-tighter whitespace-nowrap leading-10 font-base text-foreground"
                 variants={animateInChild}
                 >
-                I am Chris Leow.
+                I am Chris.
                 {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
                 </motion.h1>
 

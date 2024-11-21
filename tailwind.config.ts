@@ -101,6 +101,11 @@ const config: Config = {
       lineHeight: {
         'tighter' : '0.92',
         'tightest' : '0.6',
+        '11' : '2.7rem',
+        '12' : '3.25rem',
+        '13' : '3.5rem',
+        '14' : '3.75rem',
+        '15' : '4rem',
       },
     },
   },
