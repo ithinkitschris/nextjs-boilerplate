@@ -147,7 +147,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 autoPlay
                 muted
                 loop
-                variants={animateInChild}
+
                 ></motion.video>
 
                 {/* Background Glow */}
@@ -212,9 +212,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video src="/Cocktail/montage.mp4" 
                 ref={cocktailVideoRef}
                 className="col-span-6 rounded-lg w-full h-96 group-hover:h-150 transition-all duration-300 object-cover"
-                autoPlay muted loop
-                variants={animateInChild}
-                transition={{duration:0.10}}>
+                autoPlay muted loop>
                 </motion.video>
 
                 {/* Background Glow */}
@@ -276,9 +274,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video src="/ghibli/banner.mp4" 
                 ref={ghibliVideoRef}
                 className="rounded-lg w-full h-120 group-hover:h-135 transition-all duration-300 object-cover col-span-6"
-                autoPlay muted loop 
-                variants={animateInChild}
-                transition={{duration:0.10}}>
+                autoPlay muted loop>
                 </motion.video>
 
                 {/* Background Glow */}

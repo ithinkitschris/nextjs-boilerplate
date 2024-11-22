@@ -273,7 +273,7 @@ const filteredVideos = videoData.filter((video) => {
         
 
         {/* Top Navbar */}
-        <div className="col-span-full sticky top-3 mt-3 text-xl z-20 mb-4">
+        <div className="col-span-full sticky top-2 text-xl z-20 mb-4">
 
 
             <motion.div
@@ -318,12 +318,13 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* Resume Button */}
               <motion.button
-                className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
+                className={`hover:text-background text-base font-medium tracking-tight rounded-full px-3 border-1 border-black/0 dark:hover:bg-foreground dark:hover:text-black
+                  hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300
                   ${selectedWork.includes('resume') 
-                    ? 'border border-black dark:border-white text-foreground font-medium backdrop-blur-sm' 
-                    : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                    ? ' border-black/100 dark:border-white/100 text-foreground' 
+                    : ' text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
                   }`}
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 0.94 }}
                 variants={animateInChild}
                 layout="position"
                 onClick={() => {
@@ -337,10 +338,11 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* All Button */}
               <motion.button 
-              className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
+              className={`hover:text-background text-base font-medium tracking-tight rounded-full px-3 border-1 border-black/0 dark:hover:text-black
+                hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300
                 ${selectedTags.includes('all') 
-                  ? 'border border-black dark:border-white text-foreground font-medium backdrop-blur-sm' 
-                  : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                  ? ' border-black/100 dark:border-white/100 text-foreground' 
+                  : ' text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
                 }`}
               whileHover={{scale:1.03}}
               variants={animateInChild}
@@ -353,10 +355,11 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* Best Button */}
               <motion.button 
-                className={`hover:text-foreground text-base tracking-tight rounded-full px-3 
+                className={`hover:text-background text-base font-medium tracking-tight rounded-full px-3 border-1 border-black/0 dark:hover:text-black
+                  hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300
                   ${selectedWork.includes('bestwork') 
-                    ? 'border border-black dark:border-white text-foreground font-medium backdrop-blur-sm' 
-                    : 'border-0 text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                    ? ' border-black/100 dark:border-white/100 text-foreground' 
+                    : ' text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
                   }`}
                 whileHover={{ scale: 1.03 }}
                 variants={animateInChild}
@@ -432,11 +435,11 @@ const filteredVideos = videoData.filter((video) => {
             <>
               {/* Reset Button */}
               <motion.div 
-                className="sticky top-14 mt-4">
+                className="sticky top-14 mt-4 z-50">
                 {showReset && (
                   <motion.button
                     className="group hover:text-background font-medium flex gap-1.5
-                    -ml-1 mb-6 pt-1 pb-1 pr-2 pl-2.5 
+                    -ml-1 mb-6 pt-1 pb-1 pr-2 pl-2.5 backdrop-blur
                     items-center text-foreground transition-colors hover:bg-foreground 
                     rounded-full border-1 border-foreground dark:border-neutral-400 "
                     initial={{ opacity: 0, y:-20 }} 
@@ -450,6 +453,10 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       setSelectedTags(['all']);
                       setSelectedWork([]);
+                      window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth' // Enables smooth scrolling to the top
+                      });
                     }}
                   >Lets rewind
                     <svg
