@@ -13,10 +13,10 @@ const config: Config = {
         62: '15.5rem',
         '19' : '4.75rem',
         'screen/1.5': '75%',
+        'screen/2': '50%',
         'screen/3': '33.33333%',
         'screen/4': '25%',
         'screen/5': '20%',
-        '70': '17.2rem',
         '120': '30rem',
         '135': '34rem',
         '150': '37.5rem',
@@ -55,6 +55,9 @@ const config: Config = {
         80: '0.8',
         90: '0.9',
       },
+      fontSize: {
+        '7.5xl': '5.5rem',
+      },
       scale: {
         '120': '1.20',
         '93': '0.93',
@@ -74,7 +77,6 @@ const config: Config = {
       },
       height: {
         'screen/2': '50vh',
-        'screen/1.1': '90vh',
         'screen/1.2': '69vh',
         'screen/1.5': '80vh',
         'screen/3': '33.33333vh',
@@ -83,13 +85,14 @@ const config: Config = {
         '120': '30rem',
         '135': '34rem',
         '150': '37.5rem',
+        '200': '42rem',
       },
       margin: {
         '-mt-6': '-5rem',
         '-mt-[15vh]': '-15vh'
       },
       boxShadow: {
-        'inner-standard': 'inset 1px 1px 15px rgba(0,0,0,0.05)',
+        'inner-standard': 'inset 5px 5px 20px rgba(0,0,0,0.1)',
         'mild': '5px 1px 15px rgba(0,0,0,0.1)',
         'standard': '1px 1px 12px rgba(0,0,0,0.3)',
         'strong': '2px 2px 8px rgba(0,0,0,0.8)',
@@ -105,7 +108,7 @@ const config: Config = {
         '15' : '4rem',
       },
       transitionProperty: {
-        'non-color': 'filter, transform, box-shadow, opacity',
+        'non-color': ' filter, transform, box-shadow, opacity', // Excludes color
       },
     },
   },

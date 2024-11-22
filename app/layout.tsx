@@ -31,8 +31,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${geistSans.variable} ${geistMono.variable} 
       antialiased flex flex-col min-h-screen
       bg-background transition-all duration-300`}>
-        <DocumentationButton/>
-        <div className="fixed right-6 top-4 z-50">
+        {/* <DocumentationButton/> */}
+        <div className="fixed right-6 top-2 z-50">
           <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
         </div>        
         <SearchMenu />
