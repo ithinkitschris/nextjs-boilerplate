@@ -30,8 +30,8 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Personal */}
         <motion.div 
-        className="group col-span-3 mr-2 tracking-tight relative z-10" 
-        whileHover={{ scale: 0.99 }}
+        className="group col-span-3 mr-2 tracking-tight h-screen/1.1 relative z-10 overflow-hidden rounded-lg cursor-pointer" 
+        whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('street')}>
@@ -73,14 +73,14 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
             {/* Background Glow */}
             <img 
-            className="absolute top-28 rounded-full h-screen left-14 scale-120 blur-3xl -z-50 opacity-0 dark:opacity-100"
+            className="absolute top-28 rounded-full h-screen left-14 scale-120 blur-3xl -z-50 transition-opacity opacity-0 dark:opacity-100"
             src="/photography/street/cover2.jpg">
             </img>
 
         {/* BBH */}
         <motion.div 
-        className="col-span-3 mr-2 tracking-tight relative "
-        whileHover={{ scale: 0.99 }}
+        className="group col-span-3 mr-2 tracking-tight relative h-screen/1.1 z-10 overflow-hidden rounded-lg"
+        whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('bbh')}>
@@ -117,22 +117,22 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             </svg>
             </button>
         </div>
-        <img 
-            className="absolute top-24 h-screen scale-100 rounded-full blur-3xl -z-40 opacity-0 dark:opacity-100"
+        {/* <img 
+            className="absolute top-24 h-5/6 scale-100 rounded-full blur-3xl -z-40 opacity-0 dark:opacity-100"
             src="/photography/bbh/cover.jpg">
-        </img>
+        </img> */}
         </motion.div>
 
         {/* Background Glow */}
-            {/* <img 
-            className="absolute top-0 left-96 rounded-full blur- -z-40 opacity-70"
+            <img 
+            className="absolute top-20 scale-110 ml-20 left-1/4 h-5/6 rounded-full blur-3xl -z-40 transition-opacity opacity-0 dark:opacity-70"
             src="/photography/bbh/cover.jpg">
-            </img> */}
+            </img>
 
         {/* BTS */}
         <motion.div 
-        className="col-span-3 mr-2 tracking-tight relative" 
-        whileHover={{ scale: 0.99 }}
+        className="group col-span-3 mr-2 tracking-tight h-screen/1.1 relative z-10 overflow-hidden rounded-lg" 
+        whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('bts')}> 
@@ -186,8 +186,8 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Unshackle */}
         <motion.div 
-        className="col-span-3 mr-2 tracking-tight relative" 
-        whileHover={{ scale: 0.99 }}
+        className="group col-span-3 mr-2 tracking-tight h-screen/1.1 relative z-10 overflow-hidden rounded-lg" 
+        whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
         onClick={() => setSelectedWork('unshackle')}> 

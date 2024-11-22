@@ -126,16 +126,28 @@ export default function Resume({className=""}) {
                     Chris Leow
                 </motion.h1>
 
-                <motion.h1 
-                className="mb-6 -ml-0.5"
-                variants={animateInChild}>
-                    <span className="underline" style={{ textUnderlineOffset: '2px' }}>Senior Creative</span><br/>
-                    Based in New York City <span className="text-neutral-500 align-top text-xs ml-1"> {timeNyc}</span><br/>
-                    <i className="-ml-0.5">From Singapore</i> <span className="text-neutral-500 align-top text-xs ml-1"> {timeSg}</span>
+                <motion.h1
+                className="-ml-1 mt-6 text-8xl mb-14 tracking-tighter whitespace-nowrap leading-10 font-base text-foreground"
+                variants={animateInChild}
+                >
+                I am Chris.
+                <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span>
                 </motion.h1>
-                {/* <motion.div className="mb-4 text-lg" variants={animateInChild}>
-                Creative Direction. Graphic Design. Content Creation. Edit. 2D + 3D Motion Design. Photography. Videography.
-                </motion.div> */}
+
+                <motion.div
+                className="mb-6 -ml-0.5 text-foreground"
+                variants={animateInChild}
+                >
+                <p className="flex items-center justify-center -ml-1.5 border-1 border-foreground
+                rounded-full tracking-tight font-medium w-70 text-base mb-5">and I am currently a Senior Creative</p>
+                Based in New York City
+                <span className="text-neutral-300 align-top text-xs ml-1">{timeNyc}</span>
+                <br />
+                <i className="-ml-0.5">From Singapore</i>
+                <span className="text-neutral-300 align-top text-xs ml-1">{timeSg}</span>
+                </motion.div>
+
+
                 <motion.p 
                 className="mb-4"
                 variants={animateInChild}>
