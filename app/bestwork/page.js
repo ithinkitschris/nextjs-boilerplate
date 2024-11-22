@@ -76,15 +76,15 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
  
     return (
         <motion.div
-        className={`grid grid-cols-9 font-[family-name:var(--font-geist-sans)] ${className}`}
+        className={`font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
 
             {/* Beyond The Cabin */}
             <div
-                className="col-span-full grid grid-cols-9 border-1.5 group 
-                border-[rgb(0,0,0,0)] dark:hover:border-[rgb(255,255,255,0.2)] hover:shadow-mild hover:scale-101
+                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group 
+                border-[rgb(0,0,0,0)] dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
                 rounded-xl mb-4 transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cabin");
@@ -99,7 +99,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
             >
                 <motion.div
-                className="col-span-3 mr-4 font-base mb-4 rounded-lg p-6 -mt-1 relative"
+                className="col-span-3 font-base mb-4 rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
                 variants={animateInChild}
                 >
                 <button
@@ -128,26 +128,27 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     Beyond The Cabin
                 </h1>
                 <h1 className="text-2xl tracking-tighter mb-6 mr-10">Brand Campaign for Singapore Airlines</h1>
-                <div className="absolute bottom-0 flex flex-row gap-6 tracking-tight opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="mr-10">
+                    6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see
+                    them on board, now follow their travels around the world.
+                </p>
+                <div className="absolute bottom-0 flex-row gap-6 tracking-tight hidden 2xl:flex
+                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <p className="font-semibold">Role:</p>
                     <p>Creative Direction</p>
                     <p>Motion Design</p>
                     <p>Visual Design</p>
                 </div>
-                <p className="mr-10">
-                    6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see
-                    them on board, now follow their travels around the world.
-                </p>
                 </motion.div>
 
                 <motion.video
                 src="/CCS/montagelow.mp4"
                 ref={cabinVideoRef}
-                className="rounded-lg w-full h-96 group-hover:h-150 object-cover col-span-6 transition-all duration-300"
+                className="rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-6 transition-all duration-300"
                 autoPlay
                 muted
                 loop
-
+                playsInline
                 ></motion.video>
 
                 {/* Background Glow */}
@@ -158,15 +159,14 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 autoPlay
                 muted
                 loop
+                playsInline
                 ></video>
             </div>
-                
-                
 
             {/* Cocktail Conversations */}
-            <div className="col-span-full grid grid-cols-9 border-1.5 group 
-            border-[rgb(0,0,0,0)] dark:hover:border-[rgb(255,255,255,0.2)] hover:shadow-mild hover:scale-101
-            rounded-xl mb-4 transition-non-color cursor-pointer"
+            <div className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group 
+                border-[rgb(0,0,0,0)] dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
+                rounded-xl mb-4 transition-non-color cursor-pointer"
             onMouseEnter={() => {
                 setHoveredWork('cocktail')
                 setIsHovered('2')}}
@@ -176,7 +176,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
             onClick={() => {
                 setSelectedWork('cocktail')}}>
 
-                <motion.div className="col-span-3 mr-4 font-base mb-4 rounded-lg p-6 -mt-1 relative" 
+                <motion.div
+                className="col-span-3 mr-4 font-base mb-4 rounded-lg p-0 md:p-2 2xl:p-6 mt-4 md:mt-0 relative "
                 variants={animateInChild}>
 
                     <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
@@ -199,10 +200,11 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                         <path d="M7 7h10v10" />
                         </svg>
                     </button>
-                    <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20">Cocktail Conversations</h1>
+                    <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 md:mr-0 break-words hyphens-auto">Cocktail Conversations</h1>
                     <h1 className="text-2xl tracking-tighter mb-6 mr-10">Brand Campaign for Singapore Airlines</h1>
                     <p className="mr-20">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
-                    <div className="absolute bottom-0 flex flex-row gap-6 tracking-tight opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 flex-row gap-6 tracking-tight hidden 2xl:flex
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
                         <p className="">Creative Direction</p>
                         <p className="">Motion Design</p>
@@ -211,8 +213,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
                 <motion.video src="/Cocktail/montage.mp4" 
                 ref={cocktailVideoRef}
-                className="col-span-6 rounded-lg w-full h-96 group-hover:h-150 transition-all duration-300 object-cover"
-                autoPlay muted loop>
+                className="rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-6 transition-all duration-300"
+                autoPlay muted loop
+                playsInline>
                 </motion.video>
 
                 {/* Background Glow */}
@@ -220,6 +223,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 ref={cocktailBgRef}
                 className="absolute blur-3xl -z-10 rounded-full w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-60"
                 autoPlay muted loop
+                playsInline
                 >
                 </video>
             </div>
@@ -274,7 +278,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video src="/ghibli/banner.mp4" 
                 ref={ghibliVideoRef}
                 className="rounded-lg w-full h-120 group-hover:h-135 transition-all duration-300 object-cover col-span-6"
-                autoPlay muted loop>
+                autoPlay muted loop
+                playsInline>
                 </motion.video>
 
                 {/* Background Glow */}
@@ -282,7 +287,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 ref={ghibliBgRef}
                 className="absolute -z-10 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
                 autoPlay muted loop
-                >
+                playsInline>
                 </video>
 
             </div>
@@ -338,7 +343,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 className="rounded-lg col-span-6 w-full h-80 group-hover:h-200 transition-all duration-300 object-cover object-[0_35%]"
                 autoPlay muted loop
                 variants={animateInChild}
-                transition={{duration:0.10}}>
+                transition={{duration:0.10}}
+                playsInline>
                 </motion.video>
                 
             </div>
@@ -347,6 +353,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <video src="/jollieverafter/teaser.mp4" 
                 className="absolute top-2/3 -mt-56 blur-3xl -z-10 rounded-full w-full  h-2/4 object-cover saturate-200 opacity-0 dark:opacity-60"
                 autoPlay muted loop
+                playsInline
                 >
                 </video>
 
@@ -399,40 +406,13 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video src="/uniqlo1/montage.mp4" 
                 className="rounded-lg col-span-6 w-full h-135 object-cover"
                 autoPlay muted loop
+                playsInline
                 variants={animateInChild}
                 transition={{duration:0.10}}>
                 </motion.video>
 
 
             </div>
-
-            
-
-            
-
-            {/* <div className="relative col-span-full shadow-standard rounded-lg w-full h-96 mb-4">
-                <motion.video
-                    src="/ghibli/banner.mp4"
-                    className="w-full h-full object-cover rounded-lg"
-                    autoPlay
-                    muted
-                    loop
-                    variants={animateInChild}
-                />
-                <p className="absolute inset-0 flex flex-col items-start justify-start p-10 text-7xl tracking-tighter font-base z-10 text-background max-w-lg">
-                    The World of Studio Ghibli
-                    <h1 className="text-2xl tracking-tighter mb-4 mr-10">Marketing Campaign for ArtScience Museum</h1>
-                    <p className="text-base mr-10">Explore the World of Studio Ghibli at ArtScience Museum, where imagination begins.</p>
-                </p>
-                
-                
-            </div> */}
-
-            
-            
-
-            
-
 
         </motion.div>
   );

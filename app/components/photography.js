@@ -23,14 +23,14 @@ show: {
 const PhotographyPage = ({className, setSelectedWork}) => {
 
   return (
-    <motion.div className={`grid grid-cols-12 font-[family-name:var(--font-geist-sans)] min-h-screen ${className}`}
+    <motion.div className={`grid grid-cols-1 md:grid-cols-6 2xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] min-h-screen ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
 
         {/* Personal */}
         <motion.div 
-        className="group col-span-3 mr-2 tracking-tight relative z-10 overflow-hidden rounded-lg cursor-pointer" 
+        className="group col-span-3 mr-2 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg cursor-pointer" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -79,7 +79,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BBH */}
         <motion.div 
-        className="group col-span-3 mr-2 tracking-tight relative z-10 overflow-hidden rounded-lg"
+        className="group col-span-3 mr-2 2xl:h-5/6 mt-2 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-lg"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -130,7 +130,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BTS */}
         <motion.div 
-        className="group col-span-3 mr-2 tracking-tight relative z-10 overflow-hidden rounded-lg" 
+        className="group col-span-3 mr-2 h-screen/1.5 mt-2 2xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -185,7 +185,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Unshackle */}
         <motion.div 
-        className="group col-span-3 mr-2 tracking-tight relative z-10 overflow-hidden rounded-lg" 
+        className="group col-span-3 mr-2 h-screen/1.5 mt-2 2xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}

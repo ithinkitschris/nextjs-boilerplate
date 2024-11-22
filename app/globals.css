@@ -39,3 +39,11 @@ html, body {
   height: 100%; /* Ensure they take the full height of the viewport */
   margin: 0; /* Remove any default margins */
 }
+
+video {
+  controls-list: nofullscreen; /* Disable fullscreen controls */
+  -webkit-user-select: none;   /* Prevent fullscreen via double-click */
+  -webkit-playsinline: true;   /* Ensure inline playback on Safari/iOS */
+  playsinline: true;           /* Ensure inline playback across modern browsers */
+}
+
