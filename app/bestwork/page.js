@@ -21,8 +21,6 @@ show: {
 
 
 const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
-   
-    const [isHovered, setIsHovered] = useState([]);
 
     const cabinVideoRef=useRef(null);
     const cabinBgRef=useRef(null);
@@ -85,7 +83,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
             <div
                 className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group 
                 border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
-                rounded-xl mb-4 transition-non-color cursor-pointer"
+                rounded-xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cabin");
                 }}
@@ -97,7 +95,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
             >
                 <motion.div
-                className="col-span-3 font-base mb-4 rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
+                className="col-span-3 font-base rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
                 variants={animateInChild}
                 >
                 <button
@@ -122,8 +120,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20">
                     Beyond The Cabin
                 </h1>
-                <h1 className="text-2xl tracking-tighter mb-6">Brand Campaign for Singapore Airlines</h1>
-                <p className="mr-10">
+                <h1 className="text-2xl tracking-tighter mb-4">Brand Campaign for Singapore Airlines</h1>
+                <p className="mr-10 mb-4">
                     6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see
                     them on board, now follow their travels around the world.
                 </p>
@@ -149,9 +147,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Cocktail Conversations */}
             <div
-                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group mt-14 md:mt-4
+                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
                 border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
-                rounded-xl mb-4 transition-non-color cursor-pointer"
+                rounded-xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cocktail");
                 }}
@@ -185,10 +183,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-2 -mr-2 ">
+                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter mb-2 -mr-2 ">
                    Cocktail Conversations
                 </h1>
-                <h1 className="text-2xl tracking-tighter mb-6">Brand Campaign for Singapore Airlines</h1>
+                <h1 className="text-2xl tracking-tighter mb-4">Brand Campaign for Singapore Airlines</h1>
                 <p className="mr-10">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
                 <div className="absolute bottom-0 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -211,7 +209,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Ghibli */}
             <div
-                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group mt-14 md:mt-4
+                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
                 border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
                 rounded-xl mb-4 transition-non-color cursor-pointer"
                 onMouseEnter={() => {
@@ -250,8 +248,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-2 -mr-2 ">
                    The World of Studio Ghibli
                 </h1>
-                <h1 className="text-2xl tracking-tighter mb-6">Marketing Campaign for ArtScience Museum</h1>
-                <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum. Be spirited away into the magical scenes from My Neighbor Totoro, Kiki’s Delivery Service, and other iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
+                <h1 className="text-2xl tracking-tighter mb-4">Marketing Campaign for ArtScience Museum</h1>
+                <p className="mr-10">Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
                 <div className="absolute bottom-0 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
@@ -264,6 +262,68 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video
                 src="/ghibli/banner.mp4"
                 ref={ghibliVideoRef}
+                className="rounded-lg w-full h-96 md:group-hover:h-120 object-cover col-span-full md:col-span-6 transition-all duration-300"
+                autoPlay
+                muted
+                loop
+                playsInline
+                ></motion.video>
+            </div>
+
+            {/* JolliEverAfter */}
+            <div
+                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
+                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
+                rounded-xl mb-4 transition-non-color cursor-pointer"
+                onMouseEnter={() => {
+                setHoveredWork("jolli");
+                }}
+                onMouseLeave={() => {
+                setHoveredWork(null);
+                }}
+                onClick={() => {
+                setSelectedWork("jolli");
+                }}
+            >
+                <motion.div
+                className="col-span-3 font-base mb-4 rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
+                variants={animateInChild}
+                >
+                <button
+                    className="font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
+                    flex items-center justify-center border-1.5 border-foreground mb-1
+                    group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
+                    04
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 3 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-4 h-4"
+                    >
+                    <path d="M7 17L17 7" />
+                    <path d="M7 7h10v10" />
+                    </svg>
+                </button>
+                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-2 -mr-2 ">
+                   JolliEverAfter
+                </h1>
+                <h1 className="text-2xl tracking-tighter mb-6">Social Media Campaign for Jollibee</h1>
+                <p className="mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam facilisis hendrerit. Integer pulvinar nibh erat, a iaculis nisi condimentum ac. Nam in cursus turpis, sed ullamcorper nisl. </p>
+                <div className="absolute bottom-0 flex-row gap-6 tracking-tight hidden 2xl:flex
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className=" font-semibold">Role:</p>
+                        <p className="">Motion Design</p>
+                        <p className="">Video Edit</p>
+                </div>
+                </motion.div>
+
+                <motion.video
+                src="/jollieverafter/teaser.mp4"
+                ref={''}
                 className="rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
                 muted
@@ -272,13 +332,110 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 ></motion.video>
             </div>
 
-            
+            {/* Uniqlo */}
+            <div
+                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
+                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
+                rounded-xl mb-4 transition-non-color cursor-pointer"
+                onMouseEnter={() => {
+                setHoveredWork("uniqlo1");
+                }}
+                onMouseLeave={() => {
+                setHoveredWork(null);
+                }}
+                onClick={() => {
+                setSelectedWork("uniqlo1");
+                }}
+            >
+                <motion.div
+                className="col-span-3 font-base mb-4 rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
+                variants={animateInChild}
+                >
+                <button
+                    className="font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
+                    flex items-center justify-center border-1.5 border-foreground mb-1
+                    group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
+                    05
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 3 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-4 h-4"
+                    >
+                    <path d="M7 17L17 7" />
+                    <path d="M7 7h10v10" />
+                    </svg>
+                </button>
+                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter mb-2 mr-10">
+                   Your Stage Now Live
+                </h1>
+                <h1 className="text-2xl tracking-tighter mb-6">In-store Displays for Uniqlo</h1>
+                <p className="mr-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam facilisis hendrerit. Integer pulvinar nibh erat, a iaculis nisi condimentum ac. Nam in cursus turpis, sed ullamcorper nisl. </p>
+                <div className="absolute bottom-0 flex-row gap-6 tracking-tight hidden 2xl:flex
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className=" font-semibold">Role:</p>
+                        <p className="">Motion Design</p>
+                        <p className="">Visual Design</p>
+                </div>
+                </motion.div>
+
+                <motion.video
+                src="/uniqlo1/montage.mp4"
+                ref={''}
+                className="rounded-lg w-full h-96 md:group-hover:h-120 object-cover col-span-full md:col-span-6 transition-all duration-300"
+                autoPlay
+                muted
+                loop
+                playsInline
+                ></motion.video>
+            </div>
+
+            {/* Background Glow */}
+            <div className="absolute -z-50 top-0">
+                <div className="min-w-screen flex-col blur-3xl opacity-0 dark:opacity-100">
+                    <motion.video
+                    src="/CCS/montagelow.mp4"
+                    ref={cabinBgRef}
+                    className="rounded-full w-screen h-screen md:h-screen/2 object-cover saturate-200 opacity-70"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    ></motion.video>
+
+                    <motion.video
+                    src="/cocktail/montage.mp4"
+                    ref={cocktailBgRef}
+                    className="rounded-full w-screen h-screen md:h-screen/2 object-cover saturate-200 opacity-70"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    ></motion.video>
+
+                    <motion.video
+                    src="/ghibli/banner.mp4"
+                    ref={ghibliBgRef}
+                    className="rounded-full w-screen h-screen md:h-screen/2 object-cover saturate-200 opacity-70"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    ></motion.video>
+                </div>
+            </div>
 
          
            
 
           
         </motion.div>
+
+        
   );
 };
 

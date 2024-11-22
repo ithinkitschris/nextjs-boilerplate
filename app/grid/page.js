@@ -266,16 +266,16 @@ const filteredVideos = videoData.filter((video) => {
   return (
     <>
       {/* Entire Page column setup */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 mt-12
         px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen overflow-x-hidden md:overflow-x-auto mx-auto">
           
 
           {/* Top Navbar */}
-          <div className="col-span-full sticky top-2 z-20 mb-4 text-sm lg:text-base font-medium mr-7">
+          <div className="col-span-full fixed top-2 z-20 mb-4 text-sm lg:text-base font-medium w-5/6">
 
 
               <motion.div
-              className="flex flex-row min-w-screen justify-between md:justify-start mr-10 md:mr-0 md:gap-10 mix-blend-difference text-white"
+              className="flex flex-row justify-between  md:justify-start md:mr-0 md:gap-10 mix-blend-difference text-white"
               initial="hidden"
               animate="show"
               layout="position"
@@ -304,11 +304,11 @@ const filteredVideos = videoData.filter((video) => {
 
                 {/* Resume Button */}
                 <motion.button
-                  className={`hover:text-background tracking-tight rounded-full px-3 border-1 border-black/0 dark:hover:bg-foreground dark:hover:text-black
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 border-1 border-black/0 dark:hover:bg-transparent 
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap
                     ${selectedWork.includes('resume') 
                       ? ' border-black/100 dark:border-white/100 text-foreground' 
-                      : ' text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                      : ' text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] '
                     }`}
                   whileHover={{ scale: 0.94 }}
                   variants={animateInChild}
@@ -325,8 +325,8 @@ const filteredVideos = videoData.filter((video) => {
 
                 {/* All Button */}
                 <motion.button 
-                className={`hover:text-background tracking-tight rounded-full px-3 border-1 border-black/0 dark:hover:text-black
-                  hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap
+                className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 border-1 border-black/0 dark:hover:bg-transparent 
+                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap
                   ${selectedTags.includes('all') 
                     ? ' border-black/100 dark:border-white/100 text-foreground' 
                     : ' text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
@@ -346,7 +346,7 @@ const filteredVideos = videoData.filter((video) => {
 
                 {/* Best Button */}
                 <motion.button 
-                  className={`hover:text-background tracking-tight rounded-full px-3 border-1 border-black/0 dark:hover:text-black
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 border-1 border-black/0 dark:hover:bg-transparent 
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap
                     ${selectedWork.includes('bestwork') 
                       ? ' border-black/100 dark:border-white/100 text-foreground' 
@@ -368,7 +368,8 @@ const filteredVideos = videoData.filter((video) => {
               </motion.div>
           </div>  
 
-          <div className="fixed backdrop-blur-md left-0 top-0 w-full h-12 shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-10"></div>
+          {/* Top Navbar BG */}
+          <div className="fixed backdrop-blur left-0 top-0 w-full h-12 shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-10"></div>
 
 
           {/* Side Navbar */}
@@ -384,12 +385,12 @@ const filteredVideos = videoData.filter((video) => {
             {showNav && (
               <>
                 {/* Mobile Skillsets Container */}
-                <div className="md:hidden flex flex-col gap-4 items-center justify">
+                <div className="md:hidden flex gap-4 items-end justify-between">
                   <motion.h1
                     className="text-5xl font-medium tracking-tighter mt-4 text-foreground sm:hidden -ml-1"
                     variants={animateInChild}
                     layout="position">
-                      Skillsets
+                      All Work
                   </motion.h1>
 
                   {/* Mobile Reset Button */}
@@ -398,7 +399,7 @@ const filteredVideos = videoData.filter((video) => {
                   {showReset && (
                     <motion.button
                       className="group hover:text-background font-medium flex gap-1.5
-                      -ml-1 mb-2 pt-1 pb-1 pr-2 pl-2.5 backdrop-blur
+                      -ml-1 mb-2 pt-1 pb-1 pr-2 pl-2.5 backdrop-blur 
                       items-center text-foreground transition-colors hover:bg-foreground 
                       rounded-full border-1 border-foreground dark:border-neutral-400 "
                       initial={{ opacity: 0, y:-20 }} 
