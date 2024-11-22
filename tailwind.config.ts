@@ -107,6 +107,9 @@ const config: Config = {
         '14' : '3.75rem',
         '15' : '4rem',
       },
+      transitionProperty: {
+        'non-color': ' filter, transform, box-shadow, opacity', // Excludes color
+      },
     },
   },
   // corePlugins: {

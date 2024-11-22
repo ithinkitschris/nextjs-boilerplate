@@ -75,87 +75,41 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
       }, []);
  
     return (
-        <motion.div className={`grid grid-cols-9 font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div
+        className={`grid grid-cols-9 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
 
-            {/* border-2 border-black/40 dark:border-[rgba(255,255,255,0.2)] */}
-            
-            <motion.div className="col-span-3 mb-4 mr-4 font-base rounded-lg p-6]" 
-            variants={animateInChild} >
-                <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
-                flex items-center justify-center border-1.5 border-foreground mb-1
-                hover:bg-foreground hover:text-background hover:scale-90 transition-transform 
-                ${isHovered.includes('1') ? "bg-foreground text-background scale-90" : ''}`}
-                onClick={() => setSelectedWork('cocktail')}>
-                01
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 3 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4"
-                    >
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                    </svg>
-                </button>
-                <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20">Beyond The Cabin</h1>
-                <h1 className="text-2xl tracking-tighter mb-6 mr-10">Brand Campaign for Singapore Airlines</h1>
-                {/* <div className="flex flex-row gap-4 mb-6">
-                    <p className=" font-medium">Role:</p>
-                    <p className="">Creative Direction</p>
-                    <p className="">Motion Design</p>
-                    <p className="">Ideation</p>
-                
-                </div> */}
-                <p className="mr-10">6 Cities. 6 Cabin Crew. 6 Passions.
-                    Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world.
-                    </p>
-            </motion.div>
-
-            <button className="col-span-6 rounded-lg mb-4">
-                <motion.video src="/CCS/montagelow.mp4" 
-                ref={cabinVideoRef}
-                className="rounded-lg shadow-standard w-full h-135 object-cover"
-                autoPlay muted loop
-                variants={animateInChild}
-                whileHover={{scale:0.99}}
-                transition={{duration:0.10}}
+            {/* Beyond The Cabin */}
+            <div
+                className="col-span-full grid grid-cols-9 border-1.5 group 
+                border-[rgb(0,0,0,0)] dark:hover:border-[rgb(255,255,255,0.2)] hover:shadow-mild hover:scale-101
+                rounded-xl mb-4 transition-non-color cursor-pointer"
                 onMouseEnter={() => {
-                    setHoveredWork('cabin')
-                    setIsHovered('1')}}
+                setHoveredWork("cabin");
+                setIsHovered("1");
+                }}
                 onMouseLeave={() => {
-                    setHoveredWork(null)
-                    setIsHovered([])}}
+                setHoveredWork(null);
+                setIsHovered([]);
+                }}
                 onClick={() => {
-                    
-                    setSelectedWork('cabin')}}>
-                </motion.video>
-            </button>
-
-                
-                {/* Background Glow */}
-                <video src="/CCS/montagelow.mp4" 
-                ref={cabinBgRef}
-                className="absolute -z-10 top-0 rounded-full blur-3xl w-full h-screen/1.5 object-cover saturate-200 opacity-0 dark:opacity-100"
-                autoPlay muted loop
+                setSelectedWork("cabin");
+                }}
+            >
+                <motion.div
+                className="col-span-3 mr-4 font-base mb-4 rounded-lg p-6 -mt-1 relative"
+                variants={animateInChild}
                 >
-                </video>
-
-            
-
-            <motion.div className="col-span-3 mb-2 font-base" variants={animateInChild}>
-                <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
-                flex items-center justify-center border-1.5 border-foreground mb-1
-                hover:bg-foreground hover:text-background hover:scale-90 transition-transform
-                ${isHovered.includes('2') ? "bg-foreground text-background scale-90" : ''}`}
-                onClick={() => setSelectedWork('cocktail')}>
-                02
+                <button
+                    className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
+                    flex items-center justify-center border-1.5 border-foreground mb-1
+                    hover:bg-foreground hover:text-background hover:scale-90 transition-non-color 
+                    ${isHovered.includes("1") ? "bg-foreground text-background scale-90" : ""}`}
+                    onClick={() => setSelectedWork("cabin")}
+                >
+                    01
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 3 20 20"
@@ -170,142 +124,228 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20">Cocktail Conversations</h1>
+                <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20">
+                    Beyond The Cabin
+                </h1>
                 <h1 className="text-2xl tracking-tighter mb-6 mr-10">Brand Campaign for Singapore Airlines</h1>
-                <p className="mr-20">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?
+                <div className="absolute bottom-0 flex flex-row gap-6 tracking-tight opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="font-semibold">Role:</p>
+                    <p>Creative Direction</p>
+                    <p>Motion Design</p>
+                    <p>Visual Design</p>
+                </div>
+                <p className="mr-10">
+                    6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see
+                    them on board, now follow their travels around the world.
                 </p>
-            </motion.div>
+                </motion.div>
 
-            <button className="col-span-6 rounded-lg mb-4">
+                <motion.video
+                src="/CCS/montagelow.mp4"
+                ref={cabinVideoRef}
+                className="rounded-lg w-full h-96 group-hover:h-150 object-cover col-span-6 transition-all duration-300"
+                autoPlay
+                muted
+                loop
+                variants={animateInChild}
+                ></motion.video>
+
+                {/* Background Glow */}
+                <video
+                src="/CCS/montagelow.mp4"
+                ref={cabinBgRef}
+                className="absolute -z-50 rounded-full w-full h-screen/1.5 -mt-28 blur-3xl object-cover saturate-200 opacity-0 dark:opacity-100"
+                autoPlay
+                muted
+                loop
+                ></video>
+            </div>
+                
+                
+
+            {/* Cocktail Conversations */}
+            <div className="col-span-full grid grid-cols-9 border-1.5 group 
+            border-[rgb(0,0,0,0)] dark:hover:border-[rgb(255,255,255,0.2)] hover:shadow-mild hover:scale-101
+            rounded-xl mb-4 transition-non-color cursor-pointer"
+            onMouseEnter={() => {
+                setHoveredWork('cocktail')
+                setIsHovered('2')}}
+            onMouseLeave={() => {
+                setHoveredWork(null)
+                setIsHovered([])}}
+            onClick={() => {
+                setSelectedWork('cocktail')}}>
+
+                <motion.div className="col-span-3 mr-4 font-base mb-4 rounded-lg p-6 -mt-1 relative" 
+                variants={animateInChild}>
+
+                    <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
+                    flex items-center justify-center border-1.5 border-foreground mb-1
+                    hover:bg-foreground hover:text-background hover:scale-90 transition-transform
+                    ${isHovered.includes('2') ? "bg-foreground text-background scale-90" : ''}`}
+                    onClick={() => setSelectedWork('cocktail')}>
+                    02
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 3 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-4 h-4"
+                        >
+                        <path d="M7 17L17 7" />
+                        <path d="M7 7h10v10" />
+                        </svg>
+                    </button>
+                    <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20">Cocktail Conversations</h1>
+                    <h1 className="text-2xl tracking-tighter mb-6 mr-10">Brand Campaign for Singapore Airlines</h1>
+                    <p className="mr-20">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
+                    <div className="absolute bottom-0 flex flex-row gap-6 tracking-tight opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className=" font-semibold">Role:</p>
+                        <p className="">Creative Direction</p>
+                        <p className="">Motion Design</p>
+                    </div>
+                </motion.div>
+
                 <motion.video src="/Cocktail/montage.mp4" 
                 ref={cocktailVideoRef}
-                className="rounded-lg shadow-standard w-full h-135 object-cover object-[0_30%]"
+                className="col-span-6 rounded-lg w-full h-96 group-hover:h-150 transition-all duration-300 object-cover"
                 autoPlay muted loop
                 variants={animateInChild}
-                whileHover={{scale:0.99}}
-                transition={{duration:0.10}}
-                onMouseEnter={() => {
-                    setHoveredWork('cocktail')
-                    setIsHovered('2')}}
-                onMouseLeave={() => {
-                    setHoveredWork(null)
-                    setIsHovered([])}}
-                onClick={() => setSelectedWork('cocktail')}>
+                transition={{duration:0.10}}>
                 </motion.video>
-            </button>
-            
+
                 {/* Background Glow */}
                 <video src="/Cocktail/montage.mp4" 
                 ref={cocktailBgRef}
-                className="absolute top-96 mt-60 blur-3xl -z-10 rounded-full w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-60"
+                className="absolute blur-3xl -z-10 rounded-full w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-60"
                 autoPlay muted loop
                 >
                 </video>
+            </div>
 
-            <motion.div className="col-span-3 mb-2 font-base" variants={animateInChild}
-            onClick={() => setSelectedWork('ghibli')}>
-                <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
-                flex items-center justify-center border-1.5 border-foreground mb-1
-                hover:bg-foreground hover:text-background hover:scale-90 transition-transform
-                ${isHovered.includes('3') ? "bg-foreground text-background scale-90" : ''}`}
-                onClick={() => setSelectedWork('ghibli')}>
-                03
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 3 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4"
-                    >
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                    </svg>
-                </button>
-                <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20">The World of Studio Ghibli</h1>
-                <h1 className="text-2xl tracking-tighter mb-6 mr-10">Marketing Campaign for ArtScience Museum</h1>
-                <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum. Be spirited away into the magical scenes from My Neighbor Totoro, Kiki’s Delivery Service, and other iconic films through immersive theatrical sets, whimsical art installations and more.​
-                </p>
-            </motion.div>
+            {/* Ghibli */}
+            <div className="col-span-full grid grid-cols-9 border-1.5 group 
+            border-[rgb(0,0,0,0)] dark:hover:border-[rgb(255,255,255,0.2)] hover:shadow-mild hover:scale-101
+            rounded-xl mb-4 transition-non-color cursor-pointer"
+            onMouseEnter={() => {
+                setHoveredWork('ghibli')
+                setIsHovered('3')}}
+            onMouseLeave={() => {
+                setHoveredWork(null)
+                setIsHovered([])}}
+            onClick={() => {
+                setSelectedWork('ghibli')}}>
 
-            <button className="col-span-6 rounded-lg mb-4">
+                <motion.div className="col-span-3 mr-4 font-base mb-4 rounded-lg p-6 -mt-1 relative" 
+                variants={animateInChild}>
+                    <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
+                    flex items-center justify-center border-1.5 border-foreground mb-1
+                    hover:bg-foreground hover:text-background hover:scale-90 transition-transform
+                    ${isHovered.includes('3') ? "bg-foreground text-background scale-90" : ''}`}
+                    onClick={() => setSelectedWork('ghibli')}>
+                    03
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 3 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-4 h-4"
+                        >
+                        <path d="M7 17L17 7" />
+                        <path d="M7 7h10v10" />
+                        </svg>
+                    </button>
+                    <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20">The World of Studio Ghibli</h1>
+                    <h1 className="text-2xl tracking-tighter mb-6 mr-10">Marketing Campaign for ArtScience Museum</h1>
+                    <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum. Be spirited away into the magical scenes from My Neighbor Totoro, Kiki’s Delivery Service, and other iconic films through immersive theatrical sets, whimsical art installations and more.​
+                    </p>
+                    <div className="absolute bottom-0 flex flex-row gap-6 tracking-tight opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <p className=" font-semibold">Role:</p>
+                        <p className="">Creative Direction</p>
+                        <p className="">Motion Design</p>
+                        <p className="">Visual Design</p>
+                    </div>
+                </motion.div>
+                
                 <motion.video src="/ghibli/banner.mp4" 
                 ref={ghibliVideoRef}
-                className="rounded-lg shadow-standard w-full h-135 object-cover"
-                autoPlay muted loop
+                className="rounded-lg w-full h-120 group-hover:h-135 transition-all duration-300 object-cover col-span-6"
+                autoPlay muted loop 
                 variants={animateInChild}
-                whileHover={{scale:0.99}}
-                transition={{duration:0.10}}
-                onMouseEnter={() => {
-                    setHoveredWork('ghibli')
-                    setIsHovered('3')}}
-                onMouseLeave={() => {
-                    setHoveredWork(null)
-                    setIsHovered([])}}
-                onClick={() => setSelectedWork('ghibli')}>
+                transition={{duration:0.10}}>
                 </motion.video>
 
+                {/* Background Glow */}
                 <video src="/ghibli/banner.mp4" 
                 ref={ghibliBgRef}
-                className="absolute -z-10 top-full mt-52 right-0 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
+                className="absolute -z-10 rounded-full blur-3xl w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
                 autoPlay muted loop
                 >
                 </video>
-            </button>
 
-                {/* Background Glow */}
-                {/* <video src="/ghibli/banner.mp4" 
-                className="absolute top-96 -mt-40 -z-10 rounded-full  w-full h-screen/2 object-cover saturate-200 opacity-0 dark:opacity-100"
-                autoPlay muted loop
-                >
-                </video> */}
+            </div>
+                
 
-            <motion.div className="col-span-3 mb-2 font-base" variants={animateInChild}
-            onClick={() => setSelectedWork('ghibli')}>
-                <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
-                flex items-center justify-center border-1.5 border-foreground mb-1
-                hover:bg-foreground hover:text-background hover:scale-90 transition-transform
-                ${isHovered.includes('4') ? "bg-foreground text-background scale-90" : ''}`}
-                onClick={() => setSelectedWork('jolli')}>
-                04
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 3 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4"
-                    >
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                    </svg>
-                </button>
-                <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20 -ml-1">JolliEverAfter</h1>
-                <h1 className="text-2xl tracking-tighter mb-6 mr-10">Social Media Campaign for Jollibee</h1>
-                <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum, where imagination begins.
-                </p>
-            </motion.div>
+            {/* JolliEverAfter */}
+            <div className="col-span-full grid grid-cols-9 border-1.5 group 
+            border-[rgb(0,0,0,0)] dark:hover:border-[rgb(255,255,255,0.2)] hover:shadow-mild hover:scale-101
+            rounded-xl mb-4 transition-non-color cursor-pointer"
+            onMouseEnter={() => {
+                setHoveredWork('jolli')
+                setIsHovered('4')}}
+            onMouseLeave={() => {
+                setHoveredWork(null)
+                setIsHovered([])}}
+            onClick={() => {
+                setSelectedWork('jolli')}}>
 
-            <button className="col-span-6 rounded-lg mb-4">
+                <motion.div className="col-span-3 mr-4 font-base mb-4 rounded-lg p-6 -mt-1 relative" 
+                variants={animateInChild}>
+                    <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
+                    flex items-center justify-center border-1.5 border-foreground mb-1
+                    hover:bg-foreground hover:text-background hover:scale-90 transition-transform
+                    ${isHovered.includes('4') ? "bg-foreground text-background scale-90" : ''}`}
+                    onClick={() => setSelectedWork('jolli')}>
+                    04
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 3 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-4 h-4"
+                        >
+                        <path d="M7 17L17 7" />
+                        <path d="M7 7h10v10" />
+                        </svg>
+                    </button>
+                    <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20 -ml-1">JolliEverAfter</h1>
+                    <h1 className="text-2xl tracking-tighter mb-6 mr-10">Social Media Campaign for Jollibee</h1>
+                    <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum, where imagination begins.
+                    </p>
+                    <div className="absolute bottom-0 flex flex-row gap-6 tracking-tight opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <p className=" font-semibold">Role:</p>
+                        <p className="">Motion Design</p>
+                        <p className="">Video Edit</p>
+                    </div>
+                </motion.div>
+
                 <motion.video src="/jollieverafter/teaser.mp4" 
-                className="rounded-lg shadow-standard w-full h-135 object-cover object-[0_35%]"
+                className="rounded-lg col-span-6 w-full h-80 group-hover:h-200 transition-all duration-300 object-cover object-[0_35%]"
                 autoPlay muted loop
                 variants={animateInChild}
-                whileHover={{scale:0.99}}
-                transition={{duration:0.10}}
-                onMouseEnter={() => {
-                    setHoveredWork('jolli')
-                    setIsHovered('4')}}
-                onMouseLeave={() => {
-                    setHoveredWork(null)
-                    setIsHovered([])}}
-                onClick={() => setSelectedWork('jolli')}>
+                transition={{duration:0.10}}>
                 </motion.video>
-            </button>
+                
+            </div>
 
                 {/* Background Glow */}
                 <video src="/jollieverafter/teaser.mp4" 
@@ -314,50 +354,61 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 >
                 </video>
 
-            <motion.div className="col-span-3 mb-2 font-base" variants={animateInChild}
-            onClick={() => setSelectedWork('uniqlo1')}>
-                <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
-                flex items-center justify-center border-1.5 border-foreground mb-1
-                hover:bg-foreground hover:text-background hover:scale-90 transition-transform
-                ${isHovered.includes('5') ? "bg-foreground text-background scale-90" : ''}`}
-                onClick={() => setSelectedWork('uniqlo1')}>
-                05
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 3 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4"
-                    >
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                    </svg>
-                </button>
-                <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20 -ml-1">Your Stage Now Live</h1>
-                <h1 className="text-2xl tracking-tighter mb-6 mr-10">In-Store Displays for Uniqlo</h1>
-                <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum, where imagination begins.
-                </p>
-            </motion.div>
+            {/* Uniqlo */}
+            <div className="col-span-full grid grid-cols-9 border-1.5 group 
+            border-[rgb(0,0,0,0)] dark:hover:border-[rgb(255,255,255,0.2)] hover:shadow-mild hover:scale-101
+            rounded-xl mb-4 transition-non-color cursor-pointer"
+            onMouseEnter={() => {
+                setHoveredWork('uniqlo1')
+                setIsHovered('5')}}
+            onMouseLeave={() => {
+                setHoveredWork(null)
+                setIsHovered([])}}
+            onClick={() => {
+                setSelectedWork('uniqlo')}}>
 
-            <button className="col-span-6 rounded-lg mb-4">
+                <motion.div className="col-span-3 mr-4 font-base mb-4 rounded-lg p-6 -mt-1 relative" 
+                variants={animateInChild}>
+                    <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
+                    flex items-center justify-center border-1.5 border-foreground mb-1
+                    hover:bg-foreground hover:text-background hover:scale-90 transition-transform
+                    ${isHovered.includes('5') ? "bg-foreground text-background scale-90" : ''}`}>
+                    05
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 3 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-4 h-4"
+                        >
+                        <path d="M7 17L17 7" />
+                        <path d="M7 7h10v10" />
+                        </svg>
+                    </button>
+                    <h1 className="text-7xl font-medium tracking-tighter leading-tighter mb-2 mr-20 -ml-1">Your Stage Now Live</h1>
+                    <h1 className="text-2xl tracking-tighter mb-6 mr-10">In-Store Displays for Uniqlo</h1>
+                    <p className="mr-10">Explore the World of Studio Ghibli at ArtScience Museum, where imagination begins.
+                    </p>
+                    <div className="absolute bottom-0 flex flex-row gap-6 tracking-tight">
+                        <p className=" font-semibold">Role:</p>
+                        <p className="">Motion Design</p>
+                        <p className="">Visual Design</p>
+                    </div>
+                </motion.div>
+
+
                 <motion.video src="/uniqlo1/montage.mp4" 
-                className="rounded-lg shadow-standard w-full h-135 object-cover"
+                className="rounded-lg col-span-6 w-full h-135 object-cover"
                 autoPlay muted loop
                 variants={animateInChild}
-                whileHover={{scale:0.99}}
-                transition={{duration:0.10}}
-                onMouseEnter={() => {
-                    setHoveredWork('uniqlo')
-                    setIsHovered('5')}}
-                onMouseLeave={() => {
-                    setHoveredWork(null)
-                    setIsHovered([])}}
-                onClick={() => setSelectedWork('uniqlo1')}>
+                transition={{duration:0.10}}>
                 </motion.video>
-            </button>
+
+
+            </div>
 
             
 
@@ -410,10 +461,10 @@ export default BestWorkPage;
 {/* <div className="col-span-full grid grid-cols-9 border-1.5 group hover:scale-99 border-[rgb(0,0,0,0)] dark:border-[rgb(255,255,255,0.4)] hover:bg-white/5 shadow-mild hover:shadow-none rounded-xl mb-4 transition-transform duration-200">
                 <motion.div className="col-span-3 mr-4 font-base rounded-lg p-6 ]" 
                 variants={animateInChild} >
-                    <button className={`font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
+                    <button className={font-medium text-lg tracking-tighter p-1 w-12 h-7 mr-0.5 rounded-full 
                     flex items-center justify-center border-1.5 border-foreground mb-1
                     hover:bg-foreground hover:text-background hover:scale-90 transition-transform 
-                    ${isHovered.includes('1') ? "bg-foreground text-background scale-90" : ''}`}
+                    ${isHovered.includes('1') ? "bg-foreground text-background scale-90" : ''}}
                     onClick={() => setSelectedWork('cocktail')}>
                     01
                         <svg
@@ -456,12 +507,6 @@ export default BestWorkPage;
                     </motion.video>
                 </button>
 </div> */}
-
-
-
-
-
-
 // 'use client'
 
 // import * as motion from "framer-motion/client"
@@ -539,7 +584,7 @@ export default BestWorkPage;
 //       }, []);
  
 //     return (
-//         <motion.div className={`grid grid-cols-9 font-[family-name:var(--font-geist-sans)] ${className}`}
+//         <motion.div className={grid grid-cols-9 font-[family-name:var(--font-geist-sans)] ${className}}
 //         initial="hidden"
 //         animate="show"
 //         variants={animateIn}>
@@ -547,7 +592,7 @@ export default BestWorkPage;
 //             {/* Beyond the Cabin */}
 //             <motion.div className="group col-span-full cursor-pointer rounded-xl mb-3 relative"
 //             variants={animateInChild}
-//             whileHover={{scale:0.99}}
+//        
 //             transition={{duration:0.15}}
 //             onMouseEnter={() => {
 //                 setHoveredWork('cabin')}}
@@ -577,7 +622,7 @@ export default BestWorkPage;
 //                     </button>
 //                     <h1 className="text-7.5xl font-medium tracking-tighter leading-tighter mb-2 mr-20 w-screen/3 z-20">Beyond<br/> The Cabin</h1>
 //                     <h1 className="text-2xl tracking-tighter mb-6 mr-10 z-20">Brand Campaign for Singapore Airlines</h1>
-//                     {/* <div className="flex flex-row gap-4 mb-6">
+//                     {/* <div className="flex flex-row gap-6 mb-6">
 //                         <p className=" font-medium">Role:</p>
 //                         <p className="">Creative Direction</p>
 //                         <p className="">Motion Design</p>
@@ -616,7 +661,7 @@ export default BestWorkPage;
 //             {/* Cocktail */}
 //             <motion.div className="group col-span-full cursor-pointer rounded-xl mb-3 relative"
 //             variants={animateInChild}
-//             whileHover={{scale:0.99}}
+//        
 //             transition={{duration:0.15}}
 //             onMouseEnter={() => {
 //                 setHoveredWork('cocktail')}}
