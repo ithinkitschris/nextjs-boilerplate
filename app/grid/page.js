@@ -307,7 +307,7 @@ const filteredVideos = videoData.filter((video) => {
               </motion.button>
 
               <motion.div
-              className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-3 md:gap-10 mix-blend-difference text-white"
+              className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-5 md:gap-10 mix-blend-difference text-white"
               initial="hidden"
               animate="show"
               layout="position"
@@ -396,7 +396,7 @@ const filteredVideos = videoData.filter((video) => {
           <motion.div
             className={`fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
               border-white/60 dark:border-white/20 transition-colors
-              ${showNav ? "h-135 border-b-2 md:border-0 md:h-12 bg-white/60 dark:bg-black/60" : "h-12"}`}
+              ${showNav ? "h-135 border-b-2 md:border-0 md:h-12 bg-white/60 md:bg-white/0 dark:bg-black/60 md:dark:bg-black/0" : "h-12"}`}
             layout
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
           ></motion.div>
@@ -1128,14 +1128,14 @@ const filteredVideos = videoData.filter((video) => {
 
           {/* Pages Container */}
           <motion.div
-            className={`${showNav ? "col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-8" : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className={`${showNav ? "col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8" : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 400, damping: 24 }}  
           > 
             {/* Grid / Page */}
             <motion.div 
-            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full gap-1.5 mt-6 md:mt-4">
+            className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 col-span-full gap-1.5 mt-6 md:mt-4">
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
                   <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>
