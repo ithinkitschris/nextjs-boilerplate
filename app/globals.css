@@ -20,12 +20,13 @@
   --midground: #d5d5d5;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #101010;
+    --foreground: #ffffff;
+    --midground: #878787;
   }
-} */
+}
 
 body {
   color: var(--foreground);
