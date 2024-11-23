@@ -394,9 +394,9 @@ const filteredVideos = videoData.filter((video) => {
 
           {/* Top Navbar BG */}
           <motion.div
-            className={`fixed backdrop-blur-md left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
-              border-white/20 dark:border-white/10
-              ${showNav ? (showReset ? "h-screen/2 border-b-2 md:border-0 md:h-12" : "h-screen/2 border-b-2 md:border-0 md:h-12") : "h-12"}`}
+            className={`fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
+              border-white/60 dark:border-white/20 transition-colors
+              ${showNav ? "h-135 border-b-2 md:border-0 md:h-12 bg-white/60 dark:bg-black/60" : "h-12"}`}
             layout
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
           ></motion.div>
@@ -405,7 +405,7 @@ const filteredVideos = videoData.filter((video) => {
           {/* Side Navbar */}
           <motion.div
             className={`${showNav ? "col-span-1 flex flex-col tracking-tight " : "opacity-0 pointer-events-none"}
-            relative transition-opacity duration-300`} 
+            relative transition-opacity duration-300 `} 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }}
             variants={animateInChildMobile}>
@@ -414,6 +414,8 @@ const filteredVideos = videoData.filter((video) => {
               <>
                 {/* Mobile Container */}
                 <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-20 fixed w-screen -ml-4 font-medium ">
+
+                  {/* Header */}
                   {/* <motion.h1
                     className="text-4xl font-medium tracking-tighter mt-1.5 text-center text-foreground sm:hidden -ml-1"
                     initial={{ opacity: 0, y:-20 }} 
@@ -473,7 +475,7 @@ const filteredVideos = videoData.filter((video) => {
 
                   {/* Mobile Skillsets Container */}    
                   <motion.div 
-                  className="flex flex-col gap-3 items-start tracking-tight font-medium text-3xl mt-4 w-full px-18 pr-2 md:hidden "
+                  className="flex flex-col gap-8 items-start tracking-tighter text-4.5xl leading-tighter font-medium mt-10 w-full px-18 md:hidden "
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -486,53 +488,59 @@ const filteredVideos = videoData.filter((video) => {
                   variants={skillContainer}>
 
                     <motion.button 
-                    className="text-left text-white"
+                    className="text-left text-foreground"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('creative');
                       toggleNav('false');
-                      toggleWork('clear');}}>Creative</motion.button>
+                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-1'>01. </span>
+                      Creative</motion.button>
 
                     <motion.button 
-                    className="text-left text-white"
+                    className="text-left text-foreground"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('motion');
                       toggleNav('false');
-                      toggleWork('clear');}}>Motion</motion.button>
+                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-1'>02. </span>
+                      Motion</motion.button>
 
                     <motion.button 
-                    className="text-left text-white"
+                    className="text-left text-foreground"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('edit');
                       toggleNav('false');
-                      toggleWork('clear');}}>Edit</motion.button>
+                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-1'>03. </span>
+                      Edit</motion.button>
 
                     <motion.button 
-                    className="text-left text-white"
+                    className="text-left text-foreground"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('ixd');
                       toggleNav('false');
-                      toggleWork('clear');}}>Interaction Design</motion.button>
+                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-1'>04. </span>
+                      Interaction Design</motion.button>
 
                     <motion.button 
-                    className="text-left text-white"
+                    className="text-left text-foreground"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('clear');
                       toggleNav('false');
                       toggleWork('photography');
-                      }}>Photography</motion.button>
+                      }}><span className='text-xs align-top tracking-tight mr-1'>05. </span>
+                      Photography</motion.button>
                       
 
                     <motion.button 
-                   className="text-left text-white"
+                   className="text-left text-foreground"
                    variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('content');
-                      toggleWork('clear');}}>Content Creation</motion.button>
+                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-1'>06. </span>
+                      Content Creation</motion.button>
                   </motion.div>
                 </div>
 

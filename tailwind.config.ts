@@ -58,6 +58,7 @@ const config: Config = {
       },
       fontSize: {
         '7.5xl': '5.5rem',
+        '4.5xl': '2.5rem',
       },
       scale: {
         '120': '1.20',

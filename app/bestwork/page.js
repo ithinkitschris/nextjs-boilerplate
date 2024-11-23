@@ -81,8 +81,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Beyond The Cabin */}
             <div
-                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group 
-                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 border-1.5 group 
+                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild hover:scale-98 md:hover:scale-101
                 rounded-xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cabin");
@@ -147,8 +147,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Cocktail Conversations */}
             <div
-                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
-                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
+                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild hover:scale-98 md:hover:scale-101
                 rounded-xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cocktail");
@@ -161,6 +161,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
             >
                 <motion.div
+                lang="en"
                 className="col-span-3 font-base mb-4 rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
                 variants={animateInChild}
                 >
@@ -183,7 +184,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter mb-2 -mr-2 ">
+                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter mb-2 break-words mr-10 hyphens-auto">
                    Cocktail Conversations
                 </h1>
                 <h1 className="text-2xl tracking-tighter mb-4">Brand Campaign for Singapore Airlines</h1>
@@ -209,8 +210,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Ghibli */}
             <div
-                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
-                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
+                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild hover:scale-98 md:hover:scale-101
                 rounded-xl mb-4 transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cocktail");
@@ -272,8 +273,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* JolliEverAfter */}
             <div
-                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
-                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
+                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild hover:scale-98 md:hover:scale-101
                 rounded-xl mb-4 transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("jolli");
@@ -334,8 +335,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Uniqlo */}
             <div
-                className="col-span-full grid grid-cols-1 2xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
-                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild md:hover:scale-101
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
+                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild hover:scale-98 md:hover:scale-101
                 rounded-xl mb-4 transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("uniqlo1");
