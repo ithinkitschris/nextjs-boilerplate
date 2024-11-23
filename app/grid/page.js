@@ -91,7 +91,8 @@ const worksContainer = {
 const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, role }) => {
   return (
     <motion.div
-      className="overflow-hidden bg-background drop-shadow-lg rounded-lg ease-in-out hover:scale-98 hover:drop-shadow-md cursor-pointer group-hover:z-50"
+      className="overflow-hidden drop-shadow-lg rounded-lg hover:scale-98 hover:drop-shadow-md cursor-pointer group-hover:z-50
+      "
       initial="hidden"
       animate="show"
       whileHover={{scale:0.98}}
@@ -101,28 +102,33 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
       onMouseLeave={() => setHoveredWork(null)}
       onClick={onClick}>
 
-          {/* Title */}
-          <div className="pt-[100%] group relative">
+          {/* Square */}
+          <div className="pt-[125%] lg:pt-[100%] group relative">
 
             {/* Text Container */}
-            <div className="absolute inset-0 flex flex-col items-start justify-between p-3 md:p-6 gap-4">
+            <div className="absolute inset-0 flex flex-col items-start justify-between p-4 md:p-6 gap-1 lg:gap-4">
 
               {/* Title of work */}
-              <h1 className="text-3xl md:text-5xl tracking-tight font-medium text-white opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 w-3/4 mix-blend-screen leading-tighter md:leading-11">
+              <h1 className="text-5xl md:text-4xl 2xl:text-5xl tracking-tight font-medium text-white p-2 md:p-0
+              opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 z-50 w-2/3 md:w-3/4 leading-tighter md:leading-11">
                 {title}
               </h1>
 
-              {/* Work Details Container */}
-              <div className="z-50 flex flex-row justify-between">
+              {/* Gradient */}
+              <div className="absolute lg:hidden inset-0 top-0 z-10 h-72 bg-gradient-to-b from-black/70 to-transparent mix-blend-multiply"/>
+              <div className="absolute lg:hidden inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-black/30 to-transparent mix-blend-multiply"/>
+
+              {/* Details Container */}
+              <div className="z-50 flex flex-row justify-between w-full">
 
                 {/* Subheader */}
-                <h3 className="z-50 text-white font-medium tracking-tight text-base opacity-0 group-hover:opacity-100
-                transition-all duration-300 leading-5 w-1/2">
+                <h3 className="z-50 text-white pl-2.5 pb-2 md:pb-0 text-base md:text-base font-medium tracking-tight opacity-100 lg:opacity-0 lg:group-hover:opacity-100
+                transition-all duration-300 leading-5 w-full lg:w-1/2">
                 {subheader}
                 </h3>
 
                 {/* Role */}
-                <h3 className="z-50 text-white tracking-tight text-xs opacity-0 group-hover:opacity-100
+                <h3 className="hidden lg:block z-50 text-white text-sm tracking-tight opacity-0 group-hover:opacity-100
                 transition-all duration-300 leading-5 w-1/2">
                 {role}
                 </h3>
@@ -130,7 +136,7 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
             </div>
       
             {/* Corner Arrow */}
-            <button className="absolute top-2 right-2 z-20 p-0 m-1 scale-100
+            <button className="hidden lg:block absolute top-2 right-2 z-20 p-0 m-1 scale-100
             rounded-full border-0 border-[rgba(255,255,255,0.5)] text-white backdrop-blur
             group-hover:bg-white group-hover:text-black group-hover:scale-150 group-hover:m-2 group-hover:px-1
             transition-all duration-200">
@@ -149,14 +155,28 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
                 </svg>
             </button>
 
-            {/* Gradient */}
-            {/* <div className="absolute inset-0 z-10 h-2/3 bg-gradient-to-b from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 bg-blend-multiply">
-            </div> */}
+            {/* Mobile Corner Arrow */}
+            <button className={`lg:hidden absolute top-6 right-6 font-medium text-lg tracking-tighter p-1 px-2 rounded-full z-50
+            flex items-center justify-center border-1 border-white text-white cursor-pointer
+            group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="2 2 20 20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-5 h-5">
+                <path d="M7 17L17 7" />
+                <path d="M7 7h10v10" />
+                </svg>
+            </button>
 
             {/* Video */}
             <video
               className="absolute scale-102 inset-0 w-full h-full object-cover blur-none 
-              md:group-hover:blur-xl group-hover:opacity-80 transition-all duration-200"
+              md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-200"
               autoPlay muted loop playsInline>
               <source src={videoSrc} type="video/mp4" />
             </video>
@@ -168,7 +188,7 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
 
 const GridPage = () => {
   const videoData = [
-    { src: '/ghibli/cover1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing Campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'motion', 'graphic', 'best'] },
+    { src: '/ghibli/cover1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing Campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
     { src: '/CCS/cover1.mp4', title:'Beyond the Cabin', subheader:'Brand Campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
     { src: '/cocktail/cover1.mp4', title:'Cocktail Conversations', subheader:'Brand Campaign for Singapore Airlines', role:' Creative Direction | Motion Design', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
     { src: '/kris/cover1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand Campaign for Singapore Airlines', role:'Creative Direction', tags: ['kris', 'all', 'creative', 'sia'] },
@@ -473,9 +493,9 @@ const filteredVideos = videoData.filter((video) => {
                   )}
                   </motion.div> */}
 
-                  {/* Mobile Skillsets Container */}    
+                  {/* Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-8 items-start tracking-tighter text-4.5xl leading-tighter font-medium mt-10 w-full px-18 md:hidden "
+                  className="flex flex-col gap-6 items-start tracking-tighter text-4.5xl leading-tighter font-medium mt-8 w-full px-18 md:hidden "
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -486,6 +506,15 @@ const filteredVideos = videoData.filter((video) => {
                     damping: 17, // Adjust for bounciness and smoothness
                     }}
                   variants={skillContainer}>
+
+                    <motion.button 
+                    className="text-left text-foreground font-light"
+                    variants={animateInChildMobile}
+                    onClick={() => {
+                      toggleTag('all');
+                      toggleNav('false');
+                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-0.5'>00. </span>
+                      Everything.</motion.button>
 
                     <motion.button 
                     className="text-left text-foreground"
@@ -1135,7 +1164,7 @@ const filteredVideos = videoData.filter((video) => {
           > 
             {/* Grid / Page */}
             <motion.div 
-            className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 col-span-full gap-1.5 mt-6 md:mt-4">
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full gap-1.5 mt-6 md:mt-4">
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
                   <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>

@@ -81,9 +81,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Beyond The Cabin */}
             <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 border-1.5 group 
-                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild hover:scale-98 md:hover:scale-101
-                rounded-xl transition-non-color cursor-pointer"
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
+                 dark:border-[rgb(255,255,255,0.2)] md:dark:border-transparent md:dark:hover:border-[rgb(255,255,255,0.2)] 
+                 md:hover:shadow-mild md:hover:scale-101 rounded-xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cabin");
                 }}
@@ -95,7 +95,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
             >
                 <motion.div
-                className="col-span-3 font-base rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
+                className="col-span-3 rounded-lg p-4 2xl:p-6 relative"
                 variants={animateInChild}
                 >
                 <button
@@ -137,7 +137,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video
                 src="/CCS/montagelow.mp4"
                 ref={cabinVideoRef}
-                className="rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
+                className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
                 muted
                 loop
@@ -147,9 +147,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Cocktail Conversations */}
             <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
-                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild hover:scale-98 md:hover:scale-101
-                rounded-xl transition-non-color cursor-pointer"
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
+              dark:border-[rgb(255,255,255,0.2)] md:dark:border-transparent md:dark:hover:border-[rgb(255,255,255,0.2)] mt-4 md:mt-3
+                md:hover:shadow-mild md:hover:scale-101 rounded-xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cocktail");
                 }}
@@ -162,7 +162,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
             >
                 <motion.div
                 lang="en"
-                className="col-span-3 font-base mb-4 rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
+                className="col-span-3 rounded-lg p-4 2xl:p-6 relative"
                 variants={animateInChild}
                 >
                 <button
@@ -200,7 +200,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video
                 src="/cocktail/montage.mp4"
                 ref={cocktailVideoRef}
-                className="rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
+                className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
                 muted
                 loop
@@ -210,9 +210,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Ghibli */}
             <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
-                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild hover:scale-98 md:hover:scale-101
-                rounded-xl mb-4 transition-non-color cursor-pointer"
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
+                dark:border-[rgb(255,255,255,0.2)] md:dark:border-transparent md:dark:hover:border-[rgb(255,255,255,0.2)] mt-4 md:mt-3
+                  md:hover:shadow-mild md:hover:scale-101 rounded-xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cocktail");
                 }}
@@ -224,7 +224,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
             >
                 <motion.div
-                className="col-span-3 font-base mb-4 rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
+                className="col-span-3 rounded-lg p-4 2xl:p-6 relative"
                 variants={animateInChild}
                 >
                 <button
@@ -263,7 +263,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video
                 src="/ghibli/banner.mp4"
                 ref={ghibliVideoRef}
-                className="rounded-lg w-full h-96 md:group-hover:h-120 object-cover col-span-full md:col-span-6 transition-all duration-300"
+                className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
                 muted
                 loop
@@ -273,9 +273,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* JolliEverAfter */}
             <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
-                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild hover:scale-98 md:hover:scale-101
-                rounded-xl mb-4 transition-non-color cursor-pointer"
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
+                dark:border-[rgb(255,255,255,0.2)] md:dark:border-transparent md:dark:hover:border-[rgb(255,255,255,0.2)] mt-4 md:mt-3
+                  md:hover:shadow-mild md:hover:scale-101 rounded-xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("jolli");
                 }}
@@ -287,7 +287,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
             >
                 <motion.div
-                className="col-span-3 font-base mb-4 rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
+                className="col-span-3 rounded-lg p-4 2xl:p-6 relative"
                 variants={animateInChild}
                 >
                 <button
@@ -325,7 +325,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video
                 src="/jollieverafter/teaser.mp4"
                 ref={''}
-                className="rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
+                className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
                 muted
                 loop
@@ -335,9 +335,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Uniqlo */}
             <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 border-1.5 group mt-14 md:mt-3
-                border-[rgb(0,0,0,0)] md:dark:hover:border-[rgb(255,255,255,0.2)] md:hover:shadow-mild hover:scale-98 md:hover:scale-101
-                rounded-xl mb-4 transition-non-color cursor-pointer"
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
+                dark:border-[rgb(255,255,255,0.2)] md:dark:border-transparent md:dark:hover:border-[rgb(255,255,255,0.2)] mt-4 md:mt-3
+                  md:hover:shadow-mild md:hover:scale-101 rounded-xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("uniqlo1");
                 }}
@@ -349,7 +349,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
             >
                 <motion.div
-                className="col-span-3 font-base mb-4 rounded-lg p-0 md:p-2 2xl:p-6 -mt-1 relative"
+                className="col-span-3 rounded-lg p-4 2xl:p-6 relative"
                 variants={animateInChild}
                 >
                 <button
@@ -387,7 +387,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video
                 src="/uniqlo1/montage.mp4"
                 ref={''}
-                className="rounded-lg w-full h-96 md:group-hover:h-120 object-cover col-span-full md:col-span-6 transition-all duration-300"
+                className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
                 muted
                 loop
