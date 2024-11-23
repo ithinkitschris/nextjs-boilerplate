@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       antialiased flex flex-col min-h-screen
       bg-background transition-all duration-300`}>
         {/* <DocumentationButton/> */}
-        <div className="fixed right-2 md:right-6 top-2 z-50">
+        <div className="fixed left-3 md:left-auto md:right-6 top-2 z-50">
           <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
         </div>        
         <SearchMenu />

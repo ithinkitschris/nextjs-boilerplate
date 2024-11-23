@@ -267,44 +267,43 @@ const filteredVideos = videoData.filter((video) => {
     <>
       {/* Entire Page column setup */}
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 mt-12
-        px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen overflow-x-hidden md:overflow-x-auto mx-auto">
+        px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
 
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-2 z-20 mb-4 text-sm lg:text-base font-medium w-5/6">
+          <div className="col-span-full fixed top-2 z-40 mb-4 text-sm lg:text-base font-medium w-screen pr-6">
 
+            {/* SideNav Button */}
+            <motion.button 
+              className="absolute text-foreground border-1 p-1 rounded-full border-foreground flex items-center justify-center pl-2 pr-1.5 pt-1.5 
+              hover:bg-foreground hover:text-background transition-colors duration-100 z-50 right-5 md:right-auto md:left-0.5"
+              whileHover={{ scale: 0.9 }}
+              variants={animateInChild}
+              layout="position"
+              onClick={toggleNav}>
+
+                {/* Example of an SVG icon */}
+                <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-5 h-5">
+                  <path d={`${showNav ? 'M0 10h20' : 'M5 10h10'}`}
+                  className='transition-all duration-200'/>
+                  <path d={`${showNav ? 'M0 15h20' : 'M5 15h10'}`}
+                  className='transition-all duration-300'/>
+                  <path d={`${showNav ? 'M0 5h20' : 'M5 5h10'}`}
+                  className='transition-all duration-100'/>
+                </svg>
+              </motion.button>
 
               <motion.div
-              className="flex flex-row justify-between  md:justify-start md:mr-0 md:gap-10 mix-blend-difference text-white"
+              className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-6 md:gap-10 mix-blend-difference text-white"
               initial="hidden"
               animate="show"
               layout="position"
               variants={animateIn}
               transition={{ duration: 0.5 }}> 
-              
-                {/* SideNav Button */}
-                <motion.button 
-                className="text-foreground border-1 p-1 rounded-full border-foreground flex items-center justify-center pl-2 pr-1.5 pt-1.5 
-                hover:bg-foreground hover:text-background transition-colors duration-100 -ml-1"
-                whileHover={{ scale: 0.9 }}
-                variants={animateInChild}
-                layout="position"
-                onClick={toggleNav}>
-
-                  {/* Example of an SVG icon */}
-                  <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-5 h-5">
-                    <path d={`${showNav ? 'M0 10h20' : 'M5 10h10'}`}
-                    className='transition-all duration-200'/>
-                    <path d={`${showNav ? 'M0 15h20' : 'M5 15h10'}`}
-                    className='transition-all duration-300'/>
-                    <path d={`${showNav ? 'M0 5h20' : 'M5 5h10'}`}
-                    className='transition-all duration-100'/>
-                  </svg>
-                </motion.button>
 
                 {/* Resume Button */}
                 <motion.button
-                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 border-1 border-black/0 dark:hover:bg-transparent 
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-1 border-1 border-black/0 dark:hover:bg-transparent 
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap
                     ${selectedWork.includes('resume') 
                       ? ' border-black/100 dark:border-white/100 text-foreground' 
@@ -369,7 +368,7 @@ const filteredVideos = videoData.filter((video) => {
           </div>  
 
           {/* Top Navbar BG */}
-          <div className="fixed backdrop-blur left-0 top-0 w-full h-12 shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-10"></div>
+          <div className={`fixed backdrop-blur left-0 top-0 w-full h-12 shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-30 ${showNav ? "h-12" : "h-12"}`}></div>
 
 
           {/* Side Navbar */}
@@ -385,21 +384,27 @@ const filteredVideos = videoData.filter((video) => {
             {showNav && (
               <>
                 {/* Mobile Skillsets Container */}
-                <div className="md:hidden flex gap-4 items-end justify-between">
+                <div className="md:hidden flex flex-col gap-4 items-center justify-between z-20">
                   <motion.h1
-                    className="text-5xl font-medium tracking-tighter mt-4 text-foreground sm:hidden -ml-1"
-                    variants={animateInChild}
+                    className="text-5xl font-medium tracking-tighter mt-1 text-foreground sm:hidden -ml-1"
+                    initial={{ opacity: 0, y:-20 }} 
+                      animate={{ opacity: 1, y:0 }}  
+                      transition={{
+                        type: "spring",
+                        stiffness: 500, 
+                        damping: 15, 
+                        }} 
                     layout="position">
                       All Work
                   </motion.h1>
 
                   {/* Mobile Reset Button */}
                   <motion.div 
-                  className="z-50">
+                  className={`z-50 ${showReset ? "mt-0" : "-mt-6"}`}>
                   {showReset && (
                     <motion.button
                       className="group hover:text-background font-medium flex gap-1.5
-                      -ml-1 mb-2 pt-1 pb-1 pr-2 pl-2.5 backdrop-blur 
+                      -ml-1 pt-1 pb-1 pr-2 pl-2.5 backdrop-blur
                       items-center text-foreground transition-colors hover:bg-foreground 
                       rounded-full border-1 border-foreground dark:border-neutral-400 "
                       initial={{ opacity: 0, y:-20 }} 
