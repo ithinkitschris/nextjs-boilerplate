@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: 'class', // Enable class-based dark mode
+  darkMode: 'class', 
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,15 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: '#f5f5f5', // Default background
-        foreground: '#2f2f2f', // Default foreground
-        'background-dark': '#101010', // Dark mode background
-        'foreground-dark': '#ffffff', // Dark mode foreground
-      },
       width: {
         62: '15.5rem',
-        '19': '4.75rem',
+        '19' : '4.75rem',
         'screen/1.5': '75%',
         'screen/2': '50%',
         'screen/3': '33.33333%',
@@ -29,9 +23,9 @@ const config: Config = {
         '200': '42rem',
       },
       maxWidth: {
-        '8xl': '96rem',
-        '9xl': '120rem',
-        '10xl': '144rem',
+        '8xl' : '96rem',
+        '9xl' : '120rem',
+        '10xl' : '144rem',
       },
       borderWidth: {
         1: '1px',
@@ -40,8 +34,17 @@ const config: Config = {
         1.7: '1.7px',
       },
       spacing: {
+        1.75: '0.4375rem',
         18: "4.5rem",
         54: "13.5rem",
+      },
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        midground: "var(--midground)",
+        neutral: {
+          350: '#B3B3B3',
+        },
       },
       opacity: {
         10: '0.1',
@@ -67,7 +70,7 @@ const config: Config = {
         '102': '1.02',
         '103': '1.03',
         '104': '1.04',
-        '106': '1.06',
+        '106': '1.06', // Added comma
         '107': '1.07',
       },
       blur: {
@@ -87,7 +90,7 @@ const config: Config = {
       },
       margin: {
         '-mt-6': '-5rem',
-        '-mt-[15vh]': '-15vh',
+        '-mt-[15vh]': '-15vh'
       },
       boxShadow: {
         'inner-standard': 'inset 5px 5px 20px rgba(0,0,0,0.1)',
@@ -97,20 +100,25 @@ const config: Config = {
         'standard-hover': '0px 5px 20px rgba(0,0,0,0.3)',
       },
       lineHeight: {
-        'tighter': '0.92',
-        'tightest': '0.6',
-        '11': '2.7rem',
-        '12': '3.25rem',
-        '13': '3.5rem',
-        '14': '3.75rem',
-        '15': '4rem',
+        'tighter' : '0.92',
+        'tightest' : '0.6',
+        '11' : '2.7rem',
+        '12' : '3.25rem',
+        '13' : '3.5rem',
+        '14' : '3.75rem',
+        '15' : '4rem',
       },
       transitionProperty: {
-        'non-color': 'filter, transform, box-shadow, opacity', // Excludes color
+        'non-color': ' filter, transform, box-shadow, opacity', // Excludes color
       },
     },
   },
-  plugins: [],
-};
+  // corePlugins: {
+  //   aspectRatio: false, // Disabling built-in aspect ratio plugin
+  // },
+  // plugins: [
+  //   require('@tailwindcss/aspect-ratio'), // Custom aspect ratio plugin
+  // ],
+}
 
 export default config;

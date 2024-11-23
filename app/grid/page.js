@@ -105,10 +105,10 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
           <div className="pt-[100%] group relative">
 
             {/* Text Container */}
-            <div className="absolute inset-0 flex flex-col items-start justify-between p-6 gap-4">
+            <div className="absolute inset-0 flex flex-col items-start justify-between p-3 md:p-6 gap-4">
 
               {/* Title of work */}
-              <h1 className="text-5xl tracking-tight font-medium text-white opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 w-3/4 mix-blend-screen leading-11">
+              <h1 className="text-3xl md:text-5xl tracking-tight font-medium text-white opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 w-3/4 mix-blend-screen leading-tighter md:leading-11">
                 {title}
               </h1>
 
@@ -156,7 +156,7 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
             {/* Video */}
             <video
               className="absolute scale-102 inset-0 w-full h-full object-cover blur-none 
-              group-hover:blur-xl group-hover:opacity-80 transition-all duration-200"
+              md:group-hover:blur-xl group-hover:opacity-80 transition-all duration-200"
               autoPlay muted loop playsInline>
               <source src={videoSrc} type="video/mp4" />
             </video>
@@ -278,7 +278,7 @@ const filteredVideos = videoData.filter((video) => {
   return (
     <>
       {/* Entire Page column setup */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-9 mt-12
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12
         px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
 
@@ -287,8 +287,8 @@ const filteredVideos = videoData.filter((video) => {
 
             {/* SideNav Button */}
             <motion.button 
-              className={`absolute text-foreground border-1 p-1 rounded-full border-foreground flex items-center justify-center pl-2 pr-1.5 pt-1.5 
-              hover:bg-foreground hover:text-background transition-colors duration-100 z-50 right-7  md:right-auto md:left-0.5
+              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-foreground flex items-center justify-center  
+              hover:bg-foreground hover:text-background transition-colors duration-100 z-50 right-7 md:right-auto md:left-0.5
               ${showNav ? "text-white dark:text-black bg-foreground" : ""}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
@@ -296,12 +296,12 @@ const filteredVideos = videoData.filter((video) => {
               onClick={toggleNav}>
 
                 {/* Example of an SVG icon */}
-                <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-5 h-5">
-                  <path d={`${showNav ? 'M0 10h20' : 'M5 10h10'}`}
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-5 h-5">
+                  <path d={`${showNav ? 'M2 10h16' : 'M6 10h8'}`}
                   className='transition-all duration-200'/>
-                  <path d={`${showNav ? 'M0 15h20' : 'M5 15h10'}`}
+                  <path d={`${showNav ? 'M2 15h16' : 'M6 15h8'}`}
                   className='transition-all duration-300'/>
-                  <path d={`${showNav ? 'M0 5h20' : 'M5 5h10'}`}
+                  <path d={`${showNav ? 'M2 5h16' : 'M6 5h8'}`}
                   className='transition-all duration-100'/>
                 </svg>
               </motion.button>
@@ -352,15 +352,11 @@ const filteredVideos = videoData.filter((video) => {
                 onClick={() => {
                   toggleTag('clear');
                   toggleWork('clear');
-<<<<<<< HEAD
                   setSelectedTags(['all']);
                   if (window.matchMedia('(max-width: 640px)').matches) {
                     toggleNav(true);
                     }
                   }}>
-=======
-                  setSelectedTags(['all']);}}>
->>>>>>> parent of 1f6836b (22 November 10pm)
 
                   <span className="hidden md:block">Here's everything that I've got.</span>
                   <span className="block md:hidden">All Work</span>
@@ -397,7 +393,6 @@ const filteredVideos = videoData.filter((video) => {
           </div>  
 
           {/* Top Navbar BG */}
-<<<<<<< HEAD
           <motion.div
             className={`fixed backdrop-blur-md left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
               border-white/20 dark:border-white/10
@@ -405,9 +400,6 @@ const filteredVideos = videoData.filter((video) => {
             layout
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
           ></motion.div>
-=======
-          <div className={`fixed backdrop-blur left-0 top-0 w-full h-12 shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-30 ${showNav ? "h-12" : "h-12"}`}></div>
->>>>>>> parent of 1f6836b (22 November 10pm)
 
 
           {/* Side Navbar */}
@@ -418,21 +410,12 @@ const filteredVideos = videoData.filter((video) => {
             animate={{ opacity: 1 }}
             variants={animateInChildMobile}>
 
-              
-
             {showNav && (
               <>
-<<<<<<< HEAD
                 {/* Mobile Container */}
-                <div className="md:hidden flex flex-col gap-4 items-left justify-between z-20 fixed w-screen -ml-4 font-medium ">
+                <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-20 fixed w-screen -ml-4 font-medium ">
                   {/* <motion.h1
                     className="text-4xl font-medium tracking-tighter mt-1.5 text-center text-foreground sm:hidden -ml-1"
-=======
-                {/* Mobile Skillsets Container */}
-                <div className="md:hidden flex flex-col gap-4 items-center justify-between z-20">
-                  <motion.h1
-                    className="text-5xl font-medium tracking-tighter mt-1 text-foreground sm:hidden -ml-1"
->>>>>>> parent of 1f6836b (22 November 10pm)
                     initial={{ opacity: 0, y:-20 }} 
                       animate={{ opacity: 1, y:0 }}  
                       transition={{
@@ -441,23 +424,18 @@ const filteredVideos = videoData.filter((video) => {
                         damping: 15, 
                         }} 
                     layout="position">
-                      All Work
-                  </motion.h1>
+                      Skillsets
+                  </motion.h1> */}
 
                   {/* Mobile Reset Button */}
-<<<<<<< HEAD
                   {/* <motion.div 
                   className={`z-50 ${showReset ? "mt-2" : "-mt-5"}`}>
-=======
-                  <motion.div 
-                  className={`z-50 ${showReset ? "mt-0" : "-mt-6"}`}>
->>>>>>> parent of 1f6836b (22 November 10pm)
                   {showReset && (
                     <motion.button
-                      className="group hover:text-background font-medium flex gap-1.5
-                      -ml-1 pt-1 pb-1 pr-2 pl-2.5 backdrop-blur
-                      items-center text-foreground transition-colors hover:bg-foreground 
-                      rounded-full border-1 border-foreground dark:border-neutral-400 "
+                      className="group font-medium flex gap-1.5
+                      -ml-1 pt-1 pb-1 pr-2 pl-2.5 -mb-4 mr-5
+                      items-center text-white 
+                      rounded-full border-1 border-white"
                       initial={{ opacity: 0, y:-20 }} 
                       animate={{ opacity: 1, y:0 }}  
                       transition={{
@@ -478,7 +456,7 @@ const filteredVideos = videoData.filter((video) => {
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 100 105"
-                        className="w-4 h-4 group-hover:text-background"
+                        className="w-4 h-4"
                       >
                         <path
                           d="M50,96.7c-20.3,0-38-14.4-42.1-34.3-.4-2.2,1-4.3,3.1-4.7,2.2-.4,4.3,1,4.7,3.1,3.3,16.2,17.7,27.9,34.2,27.9s35-15.7,35-35-15.7-35-35-35-14.9,2.4-21,7c-1.8,1.3-4.3,1-5.6-.8-1.3-1.8-1-4.3.8-5.6,7.5-5.6,16.4-8.6,25.8-8.6,23.7,0,43,19.3,43,43s-19.3,43-43,43Z"
@@ -491,7 +469,6 @@ const filteredVideos = videoData.filter((video) => {
                       </svg> 
                     </motion.button>
                   )}
-<<<<<<< HEAD
                   </motion.div> */}
 
                   {/* Mobile Skillsets Container */}    
@@ -556,8 +533,6 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('content');
                       toggleWork('clear');}}>Content Creation</motion.button>
-=======
->>>>>>> parent of 1f6836b (22 November 10pm)
                   </motion.div>
                 </div>
 
@@ -607,7 +582,7 @@ const filteredVideos = videoData.filter((video) => {
 
                 {/* Skillsets */}    
                 <motion.div 
-                className="flex flex-wrap grid grid-cols-3 sm:grid-cols-1 sm:flex-col gap-2 sm:gap-1 mt-4 dark:text-neutral-500 relative "
+                className="flex-wrap grid grid-cols-3 sm:grid-cols-1 sm:flex-col gap-2 sm:gap-1 mt-4 dark:text-neutral-500 relative hidden md:flex"
                 initial="hidden"
                 animate="show"
                 exit="fade"
@@ -704,7 +679,7 @@ const filteredVideos = videoData.filter((video) => {
 
                 {/* All Work */}
                 <motion.div
-                className={`hidden sm:flex flex-col items-start gap-1 mt-12 dark:text-neutral-500 sticky z-10 ${showReset ? "top-28" : "top-16"}`}
+                className={`hidden md:flex flex-col items-start gap-1 mt-12 dark:text-neutral-500 sticky z-10 ${showReset ? "top-28" : "top-16"}`}
                 initial="hidden"
                 animate="show"
                 exit="exit"
@@ -1145,14 +1120,14 @@ const filteredVideos = videoData.filter((video) => {
 
           {/* Pages Container */}
           <motion.div
-            className={`${showNav ? "col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 2xl:col-span-8" : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className={`${showNav ? "col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-8" : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 400, damping: 24 }}  
           > 
             {/* Grid / Page */}
             <motion.div 
-            className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 col-span-full gap-1.5 mt-6 md:mt-4">
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full gap-1.5 mt-6 md:mt-4">
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
                   <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>

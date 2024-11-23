@@ -23,7 +23,7 @@ show: {
 const PhotographyPage = ({className, setSelectedWork}) => {
 
   return (
-    <motion.div className={`grid grid-cols-1 md:grid-cols-6 2xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] min-h-screen ${className}`}
+    <motion.div className={`grid grid-cols-1 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] min-h-screen ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
