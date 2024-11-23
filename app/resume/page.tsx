@@ -86,8 +86,8 @@ export default function Resume({className=""}) {
     return (
         
     <>
-
-        <motion.div className={`grid grid-cols-10
+        {/* Page Container */}
+        <motion.div className={`grid grid-cols-1 lg:grid-cols-10 w-full pl-2 md:pl-4
         items-start justify-items-start font-[family-name:var(--font-geist-sans)]
         gap-2 text-sm tracking-tight ${className}`}
         initial="hidden"
@@ -97,21 +97,53 @@ export default function Resume({className=""}) {
             
             
             {/* Bio */}
-            <div className="col-span-4 mr-10">
+            <div className="col-span-4 ">
 
+                {/* Mobile Photo Card */}
+                <div className="lg:hidden relative w-full h-[600px]">
+                    <motion.h1
+                    className="z-50 pl-5 pt-8 text-7xl tracking-tighter whitespace-nowrap leading-10 font-base text-white"
+                    variants={animateInChild}
+                    >
+                    I am Chris.
+                    {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
+                    </motion.h1>
 
+                    <Image
+                    src="/profile/profile.jpg"
+                    alt=""
+                    className="absolute rounded-lg top-0 left-0 h-full w-full object-cover -z-50 object-bottom"
+                    layout="fill"
+                    objectFit="cover"
+                    />
+
+                    <motion.div
+                    className="absolute bottom-0 pl-6 pb-5 text-white "
+                    variants={animateInChild}
+                    >
+                        <p className="flex items-center justify-center -ml-1.5 border-1 border-white 
+                        rounded-full tracking-tight font-medium w-32 text-base mb-2">Senior Creative</p>
+                        Based in New York City
+                        <span className="text-neutral-300 align-top text-xs ml-1">{timeNyc}</span>
+                        <br />
+                        <i className="-ml-0.5">From Singapore</i>
+                        <span className="text-neutral-300 align-top text-xs ml-1">{timeSg}</span>
+                    </motion.div>
+                </div>
+
+                {/* Desktop Header */}
                 <motion.h1
-                className="-ml-1 mt-6 text-8xl mb-14 tracking-tighter whitespace-nowrap leading-10 font-base text-foreground"
-                variants={animateInChild}
-                >
-                I am Chris.
-                {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
+                    className="hidden lg:block mt-2 mb-12 text-7xl tracking-tighter whitespace-nowrap leading-10 font-base text-foreground"
+                    variants={animateInChild}
+                    >
+                    I am Chris.
+                    {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
                 </motion.h1>
 
+                {/* Desktop Details */}
                 <motion.div
-                className="mb-6 -ml-0.5 text-foreground"
-                variants={animateInChild}
-                >
+                className="mb-6 -ml-0.5 text-foreground hidden md:block"
+                variants={animateInChild}>
                 <p className="flex items-center justify-center -ml-1.5 border-1 border-foreground rounded-full tracking-tight font-medium w-32 text-base mb-5">Senior Creative</p>
                 Based in New York City
                 <span className="text-neutral-300 align-top text-xs ml-1">{timeNyc}</span>
@@ -120,49 +152,63 @@ export default function Resume({className=""}) {
                 <span className="text-neutral-300 align-top text-xs ml-1">{timeSg}</span>
                 </motion.div>
 
+                <motion.p 
+                className="mb-8 mt-8 md:mt-0 px-5 md:px-0 text-4xl font-medium tracking-tight"
+                variants={animateInChild}>
+                    & Here are answers.
+                </motion.p>
 
-                <motion.p 
-                className="mb-4"
+                <motion.div 
+                className="mb-6 px-5 md:px-0"
                 variants={animateInChild}>
-                    Born and raised in sunny <i>(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, he finds himself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world. 
-                    With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in creating visually compelling work across various mediums.
-                </motion.p>
-                <motion.p 
-                className="mb-4"
+                    <p className="mb-2 italic font-mono tracking-tighter">Who?</p>
+                    Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world. 
+                    With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.
+                </motion.div>
+
+                <motion.div 
+                className="mb-6 px-5 md:px-0"
                 variants={animateInChild}>
-                    As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore, Chris has eight years of experience in the Advertising and Design industry. He has most notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
-                </motion.p>
-                <motion.p 
-                className="mb-10"
+                    <p className="mb-2 italic font-mono tracking-tighter">What?</p>
+                    As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; eight years of experience in the Advertising and Design industry is what I find myself with–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
+                </motion.div>
+
+                <motion.div 
+                className="mb-10 px-5 md:px-0"
                 variants={animateInChild}>
+                    <p className="mb-2 italic font-mono tracking-tighter">And?</p>
                     In his spare time after work <i>(which, realistically, isn&apos;t much)</i>, he does even more work, but for himself—creating content through photography, videography, editing and motion design. When he is finally not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He loves building his living space up, though he wouldn&apos;t go so far as to call it interior design.
-                </motion.p>
+                </motion.div>
 
-                <motion.p 
-                className="mb-8"
+                <motion.div 
+                className="mb-8 px-5 md:px-0"
                 variants={animateInChild}>
+                    <p className="mb-2 italic font-mono tracking-tighter">I'm sold.</p>
                     Email – ithinkitschristopher@gmail.com
                     <br/>
                     LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground">Chris Leow</a>
                     <br/>
                     Instagram – <a href="https://www.instagram.com/khristurtle/" className="underline transition-colors hover:text-midground">@khristurtle</a>
-                </motion.p>
+                </motion.div>
             </div>
 
-            <div className="col-span-1"/>
-             
-            <Carousel/>
+            <div className="hidden md:block md:col-span-5"/>
+
+            {/* <div className="hidden md:block col-span-5">
+                <Carousel className="w-full col-span-full" />
+            </div> */}
 
 
             {/* Currently: */}
-            <div className="col-span-2">
+            <div className="col-span-full pl-5 md:pl-0 md:col-span-2">
 
-                <motion.h1 className="text-3xl mb-11 -ml-0.5 mt-10 tracking-tight" variants={animateInChild}>
+                <motion.h1 className="text-4xl md:text-3xl mb-11 -ml-0.5 mt-10 tracking-tight" variants={animateInChild}>
                 Currently:<br/>
                 </motion.h1>
 
                     <motion.div variants={animateInChild} className="-mt-2">
-                        <h1 className="text-base mb-2">Master&apos;s Student</h1>
+                        <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
+                        rounded-full tracking-tight font-medium w-36 text-base mb-2">Master's Student</p>
                         <p>
                             MFA Interaction Design
                             <br/>
@@ -177,7 +223,7 @@ export default function Resume({className=""}) {
                     </motion.div>
 
                     <motion.div className="ml-4" variants={animateInChild}>
-                        <p className="mt-4">Research Methodology</p>
+                        <p className="mt-4">Research Methodologies</p>
                         <p>Service Design</p>
                         <p>UX Content Writing</p>
                         <p>Programming <i>(C, Python, JavaScript)</i></p>
@@ -204,64 +250,62 @@ export default function Resume({className=""}) {
                         <p>Thesis</p>
                     </motion.div>
 
-
             </div>
             
             {/* ArtScience Museum */}
-            <div className="col-span-2 sm:pr-4 mt-11">
+            <div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-11">
                 
                 <motion.div variants={animateInChild} className="">
-                    <p className="text-3xl mb-10 -ml-0.5 tracking-tight">
+                    <p className="text-4xl md:text-3xl mb-10 -ml-0.5 tracking-tight">
                         Previously:
                     </p>
 
                     <div className="-mt-2">
-                    <h1 className="text-base mb-2">Creative Lead</h1>
-                    <p>
-                        Marina Bay Sands <i>(ArtScience Museum)</i><br/>
-                        <i className="-ml-0.5">January 2024 – November 2024</i>
-                    </p>
+                    <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
+                        rounded-full tracking-tight font-medium w-30 text-base mb-2">Creative Lead</p>
+                    <p>Marina Bay Sands <i>(ArtScience Museum)</i></p>
+                    <p className="-ml-0.5 italic opacity-75">January 2024 – November 2024</p>
                     </div>
                 </motion.div>
 
                 <div>
-                    <motion.h1 className="mt-8 2xl:mt-14 text-xl" variants={animateInChild}>
+                    <motion.h1 className="mt-8 2xl:mt-14 text-lg font-medium" variants={animateInChild}>
                     ArtScience Museum</motion.h1>
 
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">
+                        <h1 className="mt-6 mb-4 opacity-90">
                             The World of Studio Ghibli
                         </h1>
 
-                        <p className="ml-6">
+                        <p className="ml-6 opacity-50">
                         Creative direction for the integrated marketing campaign for The World of Studio Ghibli, the first ever Studio Ghibli exhibition in Singapore held at ArtScience Museum. Designed the Key Visual for the exhibition and provided creative direction over marketing partners as well as merchandise for the exhibition. 
                         </p>
                     </motion.div>
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-4 mb-4">
+                        <h1 className="mt-4 mb-4 opacity-90">
                             Goddess: Brave. Bold. Beautiful.</h1>
-                        <p className="ml-6">
+                        <p className="ml-6 opacity-50">
                         Creative direction and strategic positioning for the marketing campaign of Goddess, an exhibition at the ArtScience Museum that celebrates screen icons across 120 years of moving image history. 
                         </p>
                     </motion.div>
                     <motion.div variants={animateInChild}>
-                    <h1 className="mt-4 mb-4">
+                    <h1 className="mt-4 mb-4 opacity-90">
                         Frida Kahlo: The Life of an Icon</h1>
-                    <p className="ml-6">
+                    <p className="ml-6 opacity-50">
                     Creative direction and strategic positioning for the marketing campaign of Frida Kahlo: Life of an Icon, an exhibition at the ArtScience Museum on Mexican artist Frida Kahlo, alongside the companion exhibition Laid Bare: Frida’s Inner World. Managed and produced visuals and assets across the campaign titled Frida Forever for the lineup of activities held at the museum.
                     </p>
                     </motion.div>
                     <motion.div variants={animateInChild}>
-                    <h1 className="mt-4 mb-4">
+                    <h1 className="mt-4 mb-4 opacity-90">
                         ArtScience After Hours</h1>
-                    <p className="ml-6">
+                    <p className="ml-6 opacity-50">
                     Creative direction and visual identity oversight on ArtScience After Hours, an all-encompassing night time experience for the ArtScience Museum, with late-night offerings and experiences beyond daylight.
                     </p>
                     </motion.div>
                     <motion.div variants={animateInChild}>
-                    <h1 className="mt-4 mb-4">
+                    <h1 className="mt-4 mb-4 opacity-90">
                         ArtScience Cinema</h1>
-                    <p className="ml-6">
+                    <p className="ml-6 opacity-50">
                     Creative direction for all marketing deliverables for ArtScience Cinema, ArtScience Museumss purpose-built cinema that screens a curated programme of film all year round by the museums film curatorial team.
                     </p>
                     </motion.div>
@@ -272,67 +316,68 @@ export default function Resume({className=""}) {
             </div>
 
             {/* TBWA */}
-            <div className="col-span-2 sm:pr-4 mt-28">
+            <div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-28">
                 <motion.div variants={animateInChild}>
                 <div>
-                    <h1 className="text-base mb-2">Art Director</h1>
+                <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
+                        rounded-full tracking-tight font-medium w-26 text-base mb-2">Art Director</p>
                     <p>
                     TBWA\ Singapore<br/>
-                    <i className="-ml-0.5">March 2021 – August 2023</i>
+                    <i className="-ml-0.5 opacity-75">March 2021 – August 2023</i>
                     </p>
                 </div>
                 </motion.div>
 
-                    <motion.h1 className="mt-8 2xl:mt-14 text-xl" variants={animateInChild}>Singapore Airlines</motion.h1>
+                    <motion.h1 className="mt-8 2xl:mt-14 text-lg font-medium" variants={animateInChild}>Singapore Airlines</motion.h1>
 
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">Beyond The Cabin</h1>
-                        <p className="mb-4 ml-6">
+                        <h1 className="mt-6 mb-4 opacity-90 font-base">Beyond The Cabin</h1>
+                        <p className="mb-4 ml-6 opacity-50">
                         Lead Creative and Motion Designer for Beyond The Cabin, an episodic brand campaign and content series that was centred around Singapore Airline’s Cabin Crew’s as World Class travellers with worldly passions.</p>
-                        <p className="mb-4 ml-6">
+                        <p className="mb-4 ml-6 opacity-50">
                         Produced travel guides featuring Cabin Crew, casted for their expertise and passion for destinations flown to by Singapore Airlines. Showcasing a depth of understanding they have for the destinations and novel experiences through 
                         their insights
                         </p>
                     </motion.div>
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">Cocktail Conversations</h1>
-                        <p className="mb-4 ml-6">
+                        <h1 className="mt-6 mb-4 opacity-90 font-base">Cocktail Conversations</h1>
+                        <p className="mb-4 ml-6 opacity-50">
                         Lead Creative and Motion Designer for Cocktail Conversations, an episodic sustenance campaign and content series for the flagship SilverKris Lounge at Singapore Changi Airport Terminal 3. </p>
-                        <p className="mb-4 ml-6">
+                        <p className="mb-4 ml-6 opacity-50">
                         Centred around the idea of the lounges being home to personalities from all walks of life around the world. We invited a couple of these personalities to have a conversation with us at the Crystal Bar in the First Class SilverKris Lounge, finishing off with a bespoke cocktail concocted just for them based off their answers and available for passengers to order at the bar.
                         </p>
                     </motion.div>
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">Kris+ Brand Campaign</h1>
-                        <p className="mb-4 ml-6">
+                        <h1 className="mt-6 mb-4 opacity-90 font-base">Kris+ Brand Campaign</h1>
+                        <p className="mb-4 ml-6 opacity-50">
                         Lead Creative for a tactical brand campaign for Kris+, the lifestyle rewards app by Singapore Airlines. Centred around the idea of a holiday getaway being just one tap away on the app through shopping and dining, the campaign was brought to life in the likes of a Rube Goldberg device, symbolising the domino effect through the journey of using the app.</p>
-                        <p className="mb-4 ml-6">
+                        <p className="mb-4 ml-6 opacity-50">
                         The campaign launched with a 30s brand film and OOH placements around Singapore.
                         </p>
                     </motion.div>
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">Travel Like Never Before</h1>
-                        <p className="mb-4 ml-6">
+                        <h1 className="mt-6 mb-4 opacity-90 font-base">Travel Like Never Before</h1>
+                        <p className="mb-4 ml-6 opacity-50">
                         Conceptualised and art directed a brand campaign for the recovery efforts of Singapore Airlines as travel restrictions lifted across the world in 2022. With the strategy of travelling bigger and better than ever before, the campaign was centred around travelling for the big milestone and sentimental moments now that travel is back on the table.</p>
-                        <p className="mb-4 ml-6">
+                        <p className="mb-4 ml-6 opacity-50">
                         The brand film has been viewed over 36 million times. 
                         </p>
                     </motion.div>
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">SilverKris Lounge</h1>
-                        <p className="mb-4 ml-6">
+                        <h1 className="mt-6 mb-4 opacity-90 font-base">SilverKris Lounge</h1>
+                        <p className="mb-4 ml-6 opacity-50">
                         Lead Creative, Editor and Motion Designer for the launch campaign of the brand new flagship SilverKris Lounges at Changi Airport. Produced a 90s brand film that covered the amenities across the 4 lounges.
                         </p>
-                        <p className="mb-4 ml-6">
+                        <p className="mb-4 ml-6 opacity-50">
                         Oversaw the creation of a glass installation of the Batik Motif as the entrance facade to the lounges and the animation of the Batik Motif for an 8 metre curved digital wall at the entrance foyer.
                         </p>
-                        <p className="mb-4 ml-6">
+                        <p className="mb-4 ml-6 opacity-50">
                         Art directed a photo asset library shoot and film shoot and offline / online edited the film till delivery.
                         </p>                          
                     </motion.div>
                     {/* <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">Cargo THRUCOOL</h1>
-                        <p className="mb-4 ml-6">
+                        <h1 className="mt-6 mb-4 opacity-90 font-base">Cargo THRUCOOL</h1>
+                        <p className="mb-4 ml-6 opacity-50">
                         Conceptualized and art directed a film for Singapore Airlines Cargo’s THRUCOOL product, that boasts a seamless cold chain cargo service for temperature critical products that can shipped across the world with Singapore Airline’s global destinations network.
                         </p>
                     </motion.div> */}
@@ -340,8 +385,8 @@ export default function Resume({className=""}) {
                     <motion.h1 className="mt-8 2xl:mt-14 text-xl" variants={animateInChild}>IKEA</motion.h1>
 
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">Oops Happens <i className="text-neutral-500">(HEMSÄKER)</i></h1>
-                        <p className="mb-4 ml-6">
+                        <h1 className="mt-6 mb-4 opacity-90 font-base">Oops Happens <i className="text-neutral-500">(HEMSÄKER)</i></h1>
+                        <p className="mb-4 ml-6 opacity-50">
                         Art directed and conceptualised a campaign for IKEA Singapore & Malaysia’s insurance product, HEMSAKER. A set of 9 videos that went live across IKEA’s social platforms, web pages and various other platforms.
                         </p>
                     </motion.div>
@@ -349,8 +394,8 @@ export default function Resume({className=""}) {
                     <motion.h1 className="mt-8 2xl:mt-14 text-xl" variants={animateInChild}>Standard Chartered Bank</motion.h1>
 
                     <motion.div variants={animateInChild}>
-                        <h1 className="mt-6 mb-4">Marina Bay Financial Centre</h1>
-                        <p className="mb-4 ml-6">
+                        <h1 className="mt-6 mb-4 opacity-90 font-base">Marina Bay Financial Centre</h1>
+                        <p className="mb-4 ml-6 opacity-50">
                         Art directed and did the offline / online edit of a video and photo set of the new Standard Chartered signage at Marina Bay Financial Centre as part of their latest brand identity refresh and brand evolution. The video and photos were circulated globally as part of internal communications in Standard Chartered Bank.
                         </p>
                     </motion.div>
@@ -358,9 +403,10 @@ export default function Resume({className=""}) {
             </div>
 
             {/* BBH */}
-            <div className="col-span-2 sm:pr-4 mt-28">
+            <div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-28">
                 <motion.div variants={animateInChild}>
-                <h1 className="text-base mb-2">Motion Art Director</h1>
+                <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
+                        rounded-full tracking-tight font-medium w-40 text-base mb-2">Motion Art Director</p>
                 BBH Singapore<br/>
                 <i className="-ml-0.5">June 2019 – March 2021</i>
                 </motion.div>
@@ -470,9 +516,10 @@ export default function Resume({className=""}) {
             </div>
 
             {/* Kinetic */}
-            <div className="col-span-2 sm:pr-4 mt-28">
+            <div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-28">
             <motion.div variants={animateInChild}>
-            <h1 className="text-base mb-2">Motion Designer</h1>
+            <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
+                        rounded-full tracking-tight font-medium w-[140px] text-base mb-2">Motion Designer</p>
             <h3>Kinetic Singapore</h3>
             <i className="-ml-0.5 mb-2">January 2019 – April 2019</i>
             </motion.div>

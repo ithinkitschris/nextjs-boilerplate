@@ -48,7 +48,7 @@ const imageCarousel = [
 
 ];
 
-export default function Carousel() {
+export default function Carousel({ className }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0); // Direction for sliding animation
   const [isFirstLoad, setIsFirstLoad] = useState(true);
@@ -71,9 +71,8 @@ export default function Carousel() {
     return () => clearTimeout(timeout);
   }, []);
 
-
   return (
-    <div className="col-span-5 relative h-200 w-full rounded-lg drop-shadow-lg overflow-hidden">
+    <div className={`relative h-200 w-full rounded-lg drop-shadow-lg overflow-hidden ${className}`}>
       {/* Image Section */}
       <div className="absolute inset-0 z-0 rounded-lg object-cover scale-100 object-right">
         <AnimatePresence custom={direction}>
@@ -139,3 +138,4 @@ export default function Carousel() {
     </div>
   );
 }
+

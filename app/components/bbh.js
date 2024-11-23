@@ -53,14 +53,14 @@ const BBH = ({className}) => {
         </div>
 
         {/* Two Images */}
-        <motion.div className="grid grid-cols-6 col-span-full mb-1 lg:mb-2 gap-1 lg:gap-2 h-60" variants={animateInChild} >
+        <motion.div className="grid grid-cols-6 col-span-full mb-1 lg:mb-2 gap-1 lg:gap-2 h-96" variants={animateInChild} >
             <img
             src="/photography/bbh/bbh11.jpg"
-            className="col-span-2 h-60 w-auto object-cover rounded-lg shadow-lg"
+            className="col-span-2 h-96 w-full object-cover rounded-lg shadow-lg"
             />
             <img
             src="/photography/bbh/bbh12.jpg"
-            className="col-span-4 h-60 w-full object-cover rounded-lg shadow-lg object-[50%_35%]"
+            className="col-span-4 h-96 w-full object-cover rounded-lg shadow-lg object-[50%_30%]"
             />
         </motion.div>
 

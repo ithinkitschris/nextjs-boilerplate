@@ -12,6 +12,8 @@ const config: Config = {
       width: {
         62: '15.5rem',
         '19' : '4.75rem',
+        '26' : '6.5rem',
+        '30' : '7.5rem',
         'screen/1.5': '75%',
         'screen/2': '50%',
         'screen/3': '33.33333%',
@@ -57,6 +59,7 @@ const config: Config = {
         90: '0.9',
       },
       fontSize: {
+        'xxs': '0.5rem',
         '7.5xl': '5.5rem',
         '4.5xl': '2.5rem',
       },

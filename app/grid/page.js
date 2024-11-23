@@ -115,15 +115,15 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
               </h1>
 
               {/* Gradient */}
-              <div className="absolute lg:hidden inset-0 top-0 z-10 h-96 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply"/>
-              <div className="absolute lg:hidden inset-x-0 bottom-0 z-10 h-44 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply"/>
+              <div className="absolute lg:hidden inset-0 top-0 z-10 h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply"/>
+              <div className="absolute lg:hidden inset-x-0 bottom-0 z-10 h-1/6 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply"/>
 
               {/* Details Container */}
               <div className="z-50 flex flex-row justify-between w-full">
 
                 {/* Subheader */}
-                <h3 className="z-50 text-white pl-2.5 pb-2 md:pb-0 text-base md:text-base font-medium tracking-tight opacity-100 lg:opacity-0 lg:group-hover:opacity-100
-                transition-all duration-300 leading-5 w-full lg:w-1/2">
+                <h3 className="z-10 text-white pl-2.5 pb-2 md:pb-0 text-base md:text-base font-medium tracking-tight opacity-65 lg:opacity-0 lg:group-hover:opacity-100
+                transition-all duration-300 leading-5 w-full lg:w-1/2 ">
                 {subheader}
                 </h3>
 
@@ -415,10 +415,10 @@ const filteredVideos = videoData.filter((video) => {
           {/* Top Navbar BG */}
           <motion.div
             className={`fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
-              border-white/60 dark:border-white/10 transition-colors
-              ${showNav ? "h-135 border-b-1 md:border-0 md:h-12 bg-white/60 md:bg-white/0 dark:bg-black/50 md:dark:bg-black/0" : "h-12"}`}
-            layout
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              border-white/60 dark:border-white/10 transition-colors dark:bg-black/40 bg-white/20
+              ${showNav ? "h-135 border-b-1 md:border-0 md:h-12 bg-white/60 md:bg-white/0 dark:bg-black/50 " : "h-12"}`}
+            layout="position"
+            transition={{ type: "spring", stiffness: 250, damping: 20 }}
           ></motion.div>
 
 
