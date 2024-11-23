@@ -106,17 +106,17 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
           <div className="pt-[125%] lg:pt-[100%] group relative">
 
             {/* Text Container */}
-            <div className="absolute inset-0 flex flex-col items-start justify-between p-4 md:p-6 gap-1 lg:gap-4">
+            <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-6 gap-1 lg:gap-4">
 
               {/* Title of work */}
               <h1 className="text-5xl md:text-4xl 2xl:text-5xl tracking-tight font-medium text-white p-2 md:p-0
-              opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 z-50 w-2/3 md:w-3/4 leading-tighter md:leading-11">
+              opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 z-50 w-4/5 md:w-3/4 leading-tighter md:leading-11">
                 {title}
               </h1>
 
               {/* Gradient */}
-              <div className="absolute lg:hidden inset-0 top-0 z-10 h-72 bg-gradient-to-b from-black/70 to-transparent mix-blend-multiply"/>
-              <div className="absolute lg:hidden inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-black/30 to-transparent mix-blend-multiply"/>
+              <div className="absolute lg:hidden inset-0 top-0 z-10 h-96 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply"/>
+              <div className="absolute lg:hidden inset-x-0 bottom-0 z-10 h-44 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply"/>
 
               {/* Details Container */}
               <div className="z-50 flex flex-row justify-between w-full">
@@ -415,8 +415,8 @@ const filteredVideos = videoData.filter((video) => {
           {/* Top Navbar BG */}
           <motion.div
             className={`fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
-              border-white/60 dark:border-white/20 transition-colors
-              ${showNav ? "h-135 border-b-2 md:border-0 md:h-12 bg-white/60 md:bg-white/0 dark:bg-black/60 md:dark:bg-black/0" : "h-12"}`}
+              border-white/60 dark:border-white/10 transition-colors
+              ${showNav ? "h-135 border-b-1 md:border-0 md:h-12 bg-white/60 md:bg-white/0 dark:bg-black/50 md:dark:bg-black/0" : "h-12"}`}
             layout
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
           ></motion.div>
@@ -495,7 +495,7 @@ const filteredVideos = videoData.filter((video) => {
 
                   {/* Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-6 items-start tracking-tighter text-4.5xl leading-tighter font-medium mt-8 w-full px-18 md:hidden "
+                  className="flex flex-col gap-6 items-start tracking-tighter text-4.5xl leading-tighter font-medium mt-8 w-full px-8 md:hidden "
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -513,8 +513,8 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('all');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-0.5'>00. </span>
-                      Everything.</motion.button>
+                      toggleWork('clear');}}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>00. </span>
+                      Everything.<span className='ml-1 font-mono italic text-xs align-top '>It's a lot.</span></motion.button>
 
                     <motion.button 
                     className="text-left text-foreground"
@@ -522,7 +522,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('creative');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-1'>01. </span>
+                      toggleWork('clear');}}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>01. </span>
                       Creative</motion.button>
 
                     <motion.button 
@@ -531,7 +531,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('motion');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-1'>02. </span>
+                      toggleWork('clear');}}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>02. </span>
                       Motion</motion.button>
 
                     <motion.button 
@@ -540,7 +540,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('edit');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-1'>03. </span>
+                      toggleWork('clear');}}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>03. </span>
                       Edit</motion.button>
 
                     <motion.button 
@@ -549,7 +549,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('ixd');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-1'>04. </span>
+                      toggleWork('clear');}}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>04. </span>
                       Interaction Design</motion.button>
 
                     <motion.button 
@@ -559,7 +559,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleTag('clear');
                       toggleNav('false');
                       toggleWork('photography');
-                      }}><span className='text-xs align-top tracking-tight mr-1'>05. </span>
+                      }}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>05. </span>
                       Photography</motion.button>
                       
 
@@ -568,7 +568,7 @@ const filteredVideos = videoData.filter((video) => {
                    variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('content');
-                      toggleWork('clear');}}><span className='text-xs align-top tracking-tight mr-1'>06. </span>
+                      toggleWork('clear');}}><span className='font-mono font-light text-xs align-top tracking-tight'>06. </span>
                       Content Creation</motion.button>
                   </motion.div>
                 </div>
