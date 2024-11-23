@@ -307,8 +307,8 @@ const filteredVideos = videoData.filter((video) => {
 
             {/* SideNav Button */}
             <motion.button 
-              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-foreground flex items-center justify-center  
-              hover:bg-foreground hover:text-background transition-colors duration-100 z-50 right-7 md:right-auto md:left-0.5
+              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/20 dark:border-white/20 flex items-center justify-center  
+              lg:hover:bg-foreground lg:hover:text-background transition-colors duration-100 z-50 right-8 md:right-auto md:left-0.5 -mt-0.5 md:mt-0
               ${showNav ? "text-white dark:text-black bg-foreground" : ""}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
@@ -316,7 +316,7 @@ const filteredVideos = videoData.filter((video) => {
               onClick={toggleNav}>
 
                 {/* Example of an SVG icon */}
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-5 h-5">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 lg:w-5 h-6 lg:h-5">
                   <path d={`${showNav ? 'M2 10h16' : 'M6 10h8'}`}
                   className='transition-all duration-200'/>
                   <path d={`${showNav ? 'M2 15h16' : 'M6 15h8'}`}
@@ -327,7 +327,7 @@ const filteredVideos = videoData.filter((video) => {
               </motion.button>
 
               <motion.div
-              className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-5 md:gap-10 mix-blend-difference text-white"
+              className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-5 md:gap-10 mix-blend-difference text-white mt-0.5 lg:mt-0"
               initial="hidden"
               animate="show"
               layout="position"
@@ -379,7 +379,7 @@ const filteredVideos = videoData.filter((video) => {
                   }}>
 
                   <span className="hidden md:block">Here's everything that I've got.</span>
-                  <span className="block md:hidden">All Work</span>
+                  <span className="block md:hidden">All</span>
                   
                 </motion.button>
 
@@ -412,14 +412,19 @@ const filteredVideos = videoData.filter((video) => {
               </motion.div>
           </div>  
 
-          {/* Top Navbar BG */}
+          {/* Mobile Navbar BG */}
           <motion.div
-            className={`fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
-              border-white/60 dark:border-white/10 transition-colors dark:bg-black/40 bg-white/20
-              ${showNav ? "h-135 border-b-1 md:border-0 md:h-12 bg-white/60 md:bg-white/0 dark:bg-black/50 " : "h-12"}`}
-            layout="position"
-            transition={{ type: "spring", stiffness: 250, damping: 20 }}
+            className={`lg:hidden fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
+              border-white/60 dark:border-white/10 transition-colors
+              ${showNav ? "h-135 border-b-1 bg-white/60 md:bg-white/0 dark:bg-black/50" : "h-12"}`}
+            layout
+            transition={{ type: "spring", stiffness: 250, damping: 22 }}
           ></motion.div>
+
+          {/* Desktop Navbar BG */}
+          <div
+            className="hidden lg:block fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20 h-12"
+          ></div>
 
 
           {/* Side Navbar */}

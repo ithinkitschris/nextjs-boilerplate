@@ -184,7 +184,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl leading-tighter md:leading-normal md:text-7xl font-medium tracking-tighter mb-2 break-words mr-10 hyphens-auto">
+                <h1 className="text-6xl leading-tighter md:leading-tighter md:text-6xl font-medium tracking-tighter mb-2 break-words mr-0 hyphens-auto">
                    Cocktail Conversations
                 </h1>
                 <h1 className="text-xl md:text-2xl tracking-tighter mb-4">Brand Campaign for Singapore Airlines</h1>

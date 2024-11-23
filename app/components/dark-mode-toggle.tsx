@@ -11,9 +11,9 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
     <button
       onClick={toggleDarkMode}
       className="
-      group transition-all duration-200
-      p-1.5 rounded-full backdrop-blur-md border-1 border-foreground hover:border-transparent dark:border-[rgba(255,255,255,.6)] dark:bg-transparent 
-      dark:hover:bg-foreground dark:hover:border-transparent text-foreground hover:bg-foreground hover:scale-90
+      group transition-all duration-200 -mt-0.5 lg:mt-0 ml-1
+      p-1.5 rounded-full backdrop-blur-md border-1 border-black/20 dark:border-white/20 lg:hover:border-transparent dark:bg-transparent 
+      lg:dark:hover:bg-foreground lg:dark:hover:border-transparent text-foreground lg:hover:bg-foreground lg:hover:scale-90
       z-20
       "
     >
@@ -23,7 +23,7 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 120 120"
-          className="w-5 h-5 text-foreground group-hover:text-background  transition-colors duration-200"
+          className="w-6 lg:w-5 h-6 lg:h-5 text-foreground lg:group-hover:text-background  transition-colors duration-200"
         >
           <circle className="stroke-current fill-none" cx="60.9" cy="60.6" r="30.4" style={{ strokeWidth: '6' }}/>
           <g>
@@ -44,7 +44,7 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 90 90"
-          className="w-5 h-5 text-foreground group-hover:text-background transition-colors duration-200"
+          className="w-6 lg:w-5 h-6 lg:h-5 text-foreground lg:group-hover:text-background transition-colors duration-200"
         >
           <path
             d="M34.8,10c-2,4.7-3,9.8-3,15,0,21.6,17.5,39.1,39.1,39.1s4.1-.2,6.2-.5c-6.5,10.7-18.2,17.6-31.2,17.6-20.1,0-36.5-16.4-36.5-36.5s3.7-18.7,10.5-25.6c4.2-4.3,9.3-7.4,14.9-9.2M45.2,3C22.5,3.4,4.2,21.9,4.2,44.7s18.7,41.7,41.7,41.7,35.8-13.3,40.4-31.4c-4.6,2.4-9.8,3.7-15.4,3.7-18.7,0-33.8-15.1-33.8-33.8s3-16,8.1-21.9h0Z"
