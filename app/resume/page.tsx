@@ -88,7 +88,7 @@ export default function Resume({className=""}) {
     <>
         {/* Page Container */}
         <motion.div className={`grid grid-cols-1 lg:grid-cols-10 w-full md:pl-4
-        items-start justify-items-start font-[family-name:var(--font-geist-sans)]
+        items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
         gap-2 text-sm tracking-tight ${className}`}
         initial="hidden"
         animate="show"
@@ -102,7 +102,7 @@ export default function Resume({className=""}) {
                 {/* Mobile Photo Card */}
                 <div className="lg:hidden relative w-full h-[600px]">
                     <motion.h1
-                    className="z-50 pl-5 pt-8 text-7xl tracking-tighter whitespace-nowrap leading-10 font-base text-white"
+                    className="z-50 pl-5 pt-6 text-7xl tracking-tighter leading-15 font-base text-white"
                     variants={animateInChild}
                     >
                     I am Chris.
@@ -112,7 +112,7 @@ export default function Resume({className=""}) {
                     <Image
                     src="/profile/profile.jpg"
                     alt=""
-                    className="absolute rounded-lg top-0 left-0 h-full w-full object-cover -z-50 object-bottom"
+                    className="absolute rounded-lg top-0 left-0 h-auto w-fill object-cover -z-50 object-bottom"
                     layout="fill"
                     objectFit="cover"
                     />
@@ -122,18 +122,18 @@ export default function Resume({className=""}) {
                     variants={animateInChild}
                     >
                         <p className="flex items-center justify-center -ml-1.5 border-1 border-white 
-                        rounded-full tracking-tight font-medium w-32 text-base mb-2">Senior Creative</p>
+                        rounded-full tracking-tighter font-medium w-[150px] text-base mb-2 font-mono">Senior Creative</p>
                         Based in New York City
-                        <span className="text-neutral-300 align-top text-xs ml-1">{timeNyc}</span>
+                        <span className="text-neutral-300 text-xxs ml-2 font-mono tracking-tighter">{timeNyc}</span>
                         <br />
                         <i className="-ml-0.5">From Singapore</i>
-                        <span className="text-neutral-300 align-top text-xs ml-1">{timeSg}</span>
+                        <span className="text-neutral-300 text-xxs ml-2 font-mono tracking-tighter">{timeSg}</span>
                     </motion.div>
                 </div>
 
                 {/* Desktop Header */}
                 <motion.h1
-                    className="hidden lg:block mt-2 mb-12 text-7xl tracking-tighter whitespace-nowrap leading-10 font-base text-foreground"
+                    className="hidden lg:block mt-2 mb-12 text-7xl tracking-tighter whitespace-nowrap leading-10 text-foreground"
                     variants={animateInChild}
                     >
                     I am Chris.
@@ -153,15 +153,15 @@ export default function Resume({className=""}) {
                 </motion.div>
 
                 <motion.p 
-                className="mb-8 mt-8 md:mt-0 px-5 md:px-0 text-4xl font-medium tracking-tight"
+                className="mb-8 mt-12 md:mt-0 px-5 md:px-0 text-5xl font-medium tracking-tight"
                 variants={animateInChild}>
-                    & Here are answers.
+                    & here are some answers.
                 </motion.p>
 
                 <motion.div 
                 className="mb-6 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 italic font-mono tracking-tighter">Who?</p>
+                    <p className="mb-2 font-mono tracking-tighter">Who?</p>
                     Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world. 
                     With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.
                 </motion.div>
@@ -169,14 +169,14 @@ export default function Resume({className=""}) {
                 <motion.div 
                 className="mb-6 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 italic font-mono tracking-tighter">What?</p>
+                    <p className="mb-2 font-mono tracking-tighter">What?</p>
                     As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; eight years of experience in the Advertising and Design industry is what I find myself with–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
                 </motion.div>
 
                 <motion.div 
                 className="mb-10 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 italic font-mono tracking-tighter">And?</p>
+                    <p className="mb-2 font-mono tracking-tighter">And?</p>
                     In his spare time after work <i>(which, realistically, isn&apos;t much)</i>, he does even more work, but for himself—creating content through photography, videography, editing and motion design. When he is finally not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He loves building his living space up, though he wouldn&apos;t go so far as to call it interior design.
                 </motion.div>
 
@@ -208,7 +208,7 @@ export default function Resume({className=""}) {
 
                     <motion.div variants={animateInChild} className="-mt-2">
                         <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
-                        rounded-full tracking-tight font-medium w-36 text-base mb-2">Master's Student</p>
+                        rounded-full tracking-tighter font-medium text-sm w-36 mb-2 font-mono whitespace-nowrap">Master's Student</p>
                         <p>
                             MFA Interaction Design
                             <br/>
@@ -262,7 +262,7 @@ export default function Resume({className=""}) {
 
                     <div className="-mt-2">
                     <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
-                        rounded-full tracking-tight font-medium w-30 text-base mb-2">Creative Lead</p>
+                        rounded-full tracking-tighter font-medium text-sm w-30 mb-2 font-mono whitespace-nowrap">Creative Lead</p>
                     <p>Marina Bay Sands <i>(ArtScience Museum)</i></p>
                     <p className="-ml-0.5 italic opacity-75">January 2024 – November 2024</p>
                     </div>
@@ -320,7 +320,7 @@ export default function Resume({className=""}) {
                 <motion.div variants={animateInChild}>
                 <div>
                 <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
-                        rounded-full tracking-tight font-medium w-26 text-base mb-2">Art Director</p>
+                        rounded-full tracking-tighter font-medium text-sm w-26 mb-2 font-mono whitespace-nowrap">Art Director</p>
                     <p>
                     TBWA\ Singapore<br/>
                     <i className="-ml-0.5 opacity-75">March 2021 – August 2023</i>
@@ -406,7 +406,7 @@ export default function Resume({className=""}) {
             <div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-28">
                 <motion.div variants={animateInChild}>
                 <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
-                        rounded-full tracking-tight font-medium w-40 text-base mb-2">Motion Art Director</p>
+                        rounded-full tracking-tighter font-medium text-sm w-40 mb-2 font-mono whitespace-nowrap">Motion Art Director</p>
                 BBH Singapore<br/>
                 <i className="-ml-0.5">June 2019 – March 2021</i>
                 </motion.div>
@@ -519,7 +519,7 @@ export default function Resume({className=""}) {
             <div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-28">
             <motion.div variants={animateInChild}>
             <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
-                        rounded-full tracking-tight font-medium w-[140px] text-base mb-2">Motion Designer</p>
+                        rounded-full tracking-tighter font-medium text-sm w-[140px] mb-2 font-mono whitespace-nowrap">Motion Designer</p>
             <h3>Kinetic Singapore</h3>
             <i className="-ml-0.5 mb-2">January 2019 – April 2019</i>
             </motion.div>

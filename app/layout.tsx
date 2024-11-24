@@ -1,5 +1,6 @@
 'use client';
 import {useState} from "react";
+import {Playfair_Display} from "next/font/google";
 import DarkModeToggle from "./components/dark-mode-toggle";
 import DocumentationButton from "./components/documentation";
 import localFont from "next/font/local";
@@ -17,6 +18,12 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"], // Load Latin characters
+  variable: "--font-playfair", // CSS variable name for the font
+  display: "swap", // Optimize font loading behavior
+});
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -28,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   
   return (
     <html className={isDarkMode ? "dark" : ""}>
-      <body className={`${geistSans.variable} ${geistMono.variable} 
+      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable}
       antialiased flex flex-col min-h-screen
       bg-background transition-all duration-300`}>
         {/* <DocumentationButton/> */}

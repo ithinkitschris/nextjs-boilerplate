@@ -55,7 +55,7 @@ const Episodes = () => {
                     <button key={index}>
                       <img
                       src={`/CCS/thumbnail${index + 1}.jpg`}
-                      className="transition-all duration-200 shadow-standard hover:shadow-standard-hover hover:scale-107 ease-out rounded-lg object-cover h-full"
+                      className="transition-all duration-200 shadow-standard hover:shadow-standard-hover lg:hover:scale-107 ease-out rounded-lg object-cover lg:h-full"
                       onClick={() => scrollToEpisode(index)} // Scroll to the episode on click
                       />    
                     </button>
@@ -71,12 +71,12 @@ const Episodes = () => {
                 >
                 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1">
-                        <h1 className="text-xl lg:text-2xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-10 md:mt-0">
+                        <h1 className="text-xl lg:text-2xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
                         <span className="font-medium">Episode {index + 1}</span>
                         <br />
-                        {episode.title}
+                        <span className="font-mono tracking-tighter text-base leading-5">{episode.title}</span>
                         </h1>
-                        <p className="text-sm lg:text-base font-normal md:mr-10 text-center md:text-left px-18 md:px-0 mb-6 md:mb-0">
+                        <p className="text-sm lg:text-base font-normal md:mr-10 text-center md:text-left px-2 md:px-0 mb-6 md:mb-0">
                         {episode.description}
                         </p>
                     </div>
@@ -87,6 +87,7 @@ const Episodes = () => {
                         autoPlay
                         loop
                         muted
+                        playsInline
                     ></video>
                 </div>
             ))}

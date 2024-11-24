@@ -9,29 +9,29 @@ export default function CabinCrewStories({className=""}) {
     const backgroundGlowRef=useRef(null);
     const bannerVideoRef=useRef(null);
 
-    useEffect(() => {
-        const backgroundGlow = backgroundGlowRef.current;
-        const bannerVideo = bannerVideoRef.current;
+    // useEffect(() => {
+    //     const backgroundGlow = backgroundGlowRef.current;
+    //     const bannerVideo = bannerVideoRef.current;
     
-        if (backgroundGlow && bannerVideo) {
-          // Ensure both videos start together
-          backgroundGlow.play();
-          bannerVideo.play();
+    //     if (backgroundGlow && bannerVideo) {
+    //       // Ensure both videos start together
+    //       backgroundGlow.play();
+    //       bannerVideo.play();
     
-          // Synchronize the videos periodically
-          const syncVideos = () => {
-            if (Math.abs(backgroundGlow.currentTime - bannerVideo.currentTime) > 0.1) {
-              bannerVideo.currentTime = backgroundGlow.currentTime;
-            }
-          };
+    //       // Synchronize the videos periodically
+    //       const syncVideos = () => {
+    //         if (Math.abs(backgroundGlow.currentTime - bannerVideo.currentTime) > 0.2) {
+    //           bannerVideo.currentTime = backgroundGlow.currentTime;
+    //         }
+    //       };
     
-          // Set an interval to check and sync the videos every 100ms
-          const syncInterval = setInterval(syncVideos, 100);
+    //       // Set an interval to check and sync the videos every 100ms
+    //       const syncInterval = setInterval(syncVideos, 100);
     
-          // Clean up the interval on component unmount
-          return () => clearInterval(syncInterval);
-        }
-      }, []);
+    //       // Clean up the interval on component unmount
+    //       return () => clearInterval(syncInterval);
+    //     }
+    //   }, []);
 
 
 const animateIn ={
@@ -52,8 +52,8 @@ show: {
 
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 -mt-8
-            sm:gap-3 max-w-full font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -62,19 +62,20 @@ show: {
             <video 
             ref={backgroundGlowRef}
             src="/CCS/montageglow_1.mp4" 
-            className="absolute mt-20 w-full h-screen/1.2 max-w-9xl object-cover rounded-full -z-10 
-            opacity-0 dark:opacity-100 blur-3xl saturate-200"
+            className="absolute mt-20 w-screen h-screen/1.2 object-cover rounded-full -z-10 
+            opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200"
             autoPlay 
             muted 
             loop
+            playsInline
             ></video>
             
             {/* Header */}
             <motion.div 
-            className="tracking-tighter col-span-full mt-12 md:mt-6 mb-8 md:mb-8"
+            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
             variants={animateInChild}>
-                <h1 className="text-6xl sm:text-8xl text-center sm:text-left tracking-tighter -ml-2">Beyond The Cabin</h1>
-                <p className="text-2xl sm:text-3xl text-center sm:text-left">Brand Campaign for Singapore Airlines</p>
+                <h1 className="text-7xl sm:text-8xl text-center font-medium sm:text-left tracking-tighter -ml-2">Beyond The Cabin</h1>
+                <p className="text-xl mt-2 sm:text-3xl text-center sm:text-left font-mono tracking-tighter">Brand Campaign for Singapore Airlines</p>
             </motion.div> 
 
             {/* Banner Video */}
@@ -82,14 +83,14 @@ show: {
             ref={bannerVideoRef}
             src="/CCS/montagelow.mp4" 
             className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
-            autoPlay muted loop
+            autoPlay muted loop playsInline
             variants={animateInChild}
             // whileHover={{scale:1.01}}
             >
             </motion.video>
             {/* Subheader */}
-            <div className="col-span-full sm:col-span-4 mr-16 ">
-                <motion.div className="text-3xl tracking-tight text-center sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+            <div className="col-span-full sm:col-span-4 lg:mr-16 ">
+                <motion.div className="text-2xl tracking-tight text-center sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 6 Cities. 6 Cabin Crew. 6 Passions. <br/>
                 Journey beyond the cabin with our cabin crew.
                 You see them on board, now follow their travels around the world. 
@@ -97,10 +98,10 @@ show: {
             </div>
 
             {/* Project Details */}
-            <div className="flex flex-row col-span-full sm:col-span-2 px-4 sm:px-0 justify-between">
+            <div className="flex flex-row col-span-full sm:col-span-2 px-8 sm:px-0 justify-between tracking-tighter font-mono">
                 <motion.div variants={animateInChild}>
                     Role:
-                    <ol className="mt-2">
+                    <ol className="mt-2 text-xs font-sans tracking-tight">
                         <li>Creative Direction</li>
                         <li>Motion Design</li>
                         <li>Ideation</li>
@@ -108,32 +109,32 @@ show: {
                 </motion.div>
                 <motion.div variants={animateInChild}>
                     Client:
-                    <ol className="mt-2">
+                    <ol className="mt-2 text-xs font-sans tracking-tight">
                         <li>Singapore Airlines</li>
                     </ol>
                 </motion.div>
                 <motion.div variants={animateInChild}>
                     Agency:
-                    <ol className="mt-2">
+                    <ol className="mt-2 text-xs font-sans tracking-tight">
                         <li>TBWA\ Singapore</li>
                     </ol>
                 </motion.div>
             </div>
 
             {/* Writeup */}
-            <div className="flex flex-col sm:flex-row col-span-full px-4 sm:px-0 gap-10 mt-6 mb-14 mr-7">
+            <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-10 mt-6 mb-14 md:mr-7">
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2">The Ask:</p>
+                <p className="mb-2 font-mono tracking-tighter">The Ask:</p>
                     <p>Singapore Airlines Cabin Crew are commonly seen as being one-dimensional - from misconceptions of misogyny to them being just “servants of the cabin”. As part of the Welcome to World Class brand campaign, we want to dimensionalise Cabin Crew by “freeing” them in their portrayals, going from just “servants of the cabin” to modern, informed and relatable travelers of the world outside of the cabin.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2">The How:</p>
+                <p className="mb-2 font-mono tracking-tighter">The How:</p>
                     <p>We create travel guides fronted by our Cabin Crew, who are casted for their expertise in destinations they fly to frequently and are passionate for. Allowing them to showcase a depth of understanding they have for the destinations Singapore Airlines flies to and the unique and novel, experiences of the different destinations through their insights.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2">–</p>
+                <p className="mb-2 font-mono tracking-tighter">–</p>
                     <p className="mb-2">This was a campaign that I had the opportunity to oversee from conceptualisation to overall art direction, pre production, shoot, post production and execution of the motion graphics for the opening and end sequences.</p>
                     {/* <p>A 9:16 portrait film for social platforms was also adapted by me from the 16:9 main film for all 6 episodes. Using B-roll footage captured from the shoots, the 9:16 film incorporated a multi panelled approach to certain scenes to ensure the film was still watchable in a vertical format and provided additional content as well as context to the film for social consumption.</p> */}
                 </motion.div>
@@ -167,7 +168,7 @@ show: {
                         className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
                         object-cover transition-scale"
                         variants={animateInChild}
-                        autoPlay loop muted
+                        autoPlay loop muted playsInline
                         whileHover={{scale:1.02}}>
                     </motion.video>
                 </div>
@@ -179,7 +180,7 @@ show: {
                         className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
                         object-cover transition-scale"
                         variants={animateInChild}
-                        autoPlay loop muted
+                        autoPlay loop muted playsInline
                         whileHover={{scale:1.02}}>
                     </motion.video>
                 </div>

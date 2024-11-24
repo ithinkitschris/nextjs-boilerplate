@@ -237,6 +237,7 @@ const includesWorks = (works) => {
 //     }
 //   }
 // };
+
 const toggleTag = (tag) => {
   if (tag === 'clear') {
     setSelectedTags([]); // Clear all tags
@@ -518,8 +519,8 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('all');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>00. </span>
-                      Everything.<span className='ml-1 font-mono italic text-xs align-top '>It's a lot.</span></motion.button>
+                      toggleWork('clear');}}><span className='font-mono font-light text-xs align-top tracking-tight'>00 </span>
+                      Everything.<span className='ml-1 font-mono italic text-xs align-top '>It's a lot</span></motion.button>
 
                     <motion.button 
                     className="text-left text-foreground"
@@ -527,7 +528,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('creative');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>01. </span>
+                      toggleWork('clear');}}><span className='font-mono font-light text-xs align-top tracking-tight'>01 </span>
                       Creative</motion.button>
 
                     <motion.button 
@@ -536,7 +537,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('motion');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>02. </span>
+                      toggleWork('clear');}}><span className='font-mono font-light text-xs align-top tracking-tight'>02 </span>
                       Motion</motion.button>
 
                     <motion.button 
@@ -545,7 +546,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('edit');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>03. </span>
+                      toggleWork('clear');}}><span className='font-mono font-light text-xs align-top tracking-tight'>03 </span>
                       Edit</motion.button>
 
                     <motion.button 
@@ -554,7 +555,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('ixd');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>04. </span>
+                      toggleWork('clear');}}><span className='font-mono font-light text-xs align-top tracking-tight'>04 </span>
                       Interaction Design</motion.button>
 
                     <motion.button 
@@ -564,7 +565,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleTag('clear');
                       toggleNav('false');
                       toggleWork('photography');
-                      }}><span className='font-mono font-light -mr-1 text-xs align-top tracking-tight'>05. </span>
+                      }}><span className='font-mono font-light text-xs align-top tracking-tight'>05 </span>
                       Photography</motion.button>
                       
 
@@ -573,7 +574,7 @@ const filteredVideos = videoData.filter((video) => {
                    variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('content');
-                      toggleWork('clear');}}><span className='font-mono font-light text-xs align-top tracking-tight'>06. </span>
+                      toggleWork('clear');}}><span className='font-mono font-light text-xs align-top tracking-tight'>06 </span>
                       Content Creation</motion.button>
                   </motion.div>
                 </div>
@@ -584,7 +585,7 @@ const filteredVideos = videoData.filter((video) => {
                   {showReset && (
                     <motion.button
                       className="group hover:text-background font-medium flex gap-1.5
-                      -ml-1 mb-6 pt-1 pb-1 pr-2 pl-2.5 backdrop-blur
+                      -ml-1 mb-6 pt-1 pb-1 pr-2 pl-2.5 backdrop-blur 
                       items-center text-foreground transition-colors hover:bg-foreground 
                       rounded-full border-1 border-foreground dark:border-neutral-400 "
                       initial={{ opacity: 0, y:-20 }} 
@@ -741,7 +742,7 @@ const filteredVideos = videoData.filter((video) => {
                   </motion.h1>
 
                   <motion.h1
-                  className={`text-xs tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  className={`text-xs tracking-tighter transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
                   variants={animateInChild}>
                     2024
                   </motion.h1>

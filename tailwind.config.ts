@@ -63,6 +63,12 @@ const config: Config = {
         '7.5xl': '5.5rem',
         '4.5xl': '2.5rem',
       },
+      fontFamily: {
+        serif: ["var(--font-playfair)", "serif"], // Use Playfair Display as the serif font
+        sans: ["var(--font-geist-sans)", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "monospace"],
+      },
+      
       scale: {
         '120': '1.20',
         '93': '0.93',
