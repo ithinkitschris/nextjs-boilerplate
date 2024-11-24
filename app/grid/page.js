@@ -122,10 +122,16 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
               <div className="z-50 flex flex-row justify-end w-full">
 
                 {/* Subheader */}
-                <h3 className="z-10 text-white pl-2.5 pb-1 md:pb-0 text-xs md:text-base tracking-tight opacity-100 lg:opacity-0 lg:group-hover:opacity-100
-                transition-all duration-300 leading-4 md:leading-5 w-2/3 text-right md:text-left lg:w-1/2 ">
+                <h3 className="z-10 text-white pl-2.5 pb-2 pr-3 md:pb-0 text-normal md:text-base tracking-normal
+                font-script opacity-100 lg:opacity-0 lg:group-hover:opacity-100 -rotate-3 w-1/2 text-right
+                transition-all duration-300 leading-6 md:leading-5 md:text-left lg:w-1/2">
                 {subheader}
                 </h3>
+
+                {/* <h3 className="z-10 text-white pl-2.5 pb-2 md:pb-0 uppercase text-xxs md:text-base tracking-widest font-medium font-sans opacity-100 lg:opacity-0 lg:group-hover:opacity-100
+                transition-all duration-300 leading-4 md:leading-5 text-left md:text-left lg:w-1/2">
+                {subheader}
+                </h3> */}
 
                 {/* Role */}
                 <h3 className="hidden lg:block z-50 text-white text-sm tracking-tight opacity-0 group-hover:opacity-100
@@ -188,15 +194,15 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
 
 const GridPage = () => {
   const videoData = [
-    { src: '/ghibli/cover1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing Campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
-    { src: '/CCS/cover1.mp4', title:'Beyond the Cabin', subheader:'Brand Campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
-    { src: '/cocktail/cover1.mp4', title:'Cocktail Conversations', subheader:'Brand Campaign for Singapore Airlines', role:' Creative Direction | Motion Design', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
-    { src: '/kris/cover1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand Campaign for Singapore Airlines', role:'Creative Direction', tags: ['kris', 'all', 'creative', 'sia'] },
-    { src: '/travelbig/cover.mp4', title:'Travel Like Never Before', subheader:'Brand Campaign for Singapore Airlines', role:'Creative Direction', tags: ['travelbig', 'all', 'creative', 'sia'] },
-    { src: '/lounge/cover.mp4', title:'SilverKris Lounge', subheader:'Brand Campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design | Video Edit', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
-    { src: '/hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product Campaign for IKEA', role:'Creative Direction', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
+    { src: '/ghibli/cover1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
+    { src: '/CCS/cover1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+    { src: '/cocktail/cover1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', role:' Creative Direction | Motion Design', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+    { src: '/kris/cover1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['kris', 'all', 'creative', 'sia'] },
+    { src: '/travelbig/cover.mp4', title:'Travel Like Never Before', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['travelbig', 'all', 'creative', 'sia'] },
+    { src: '/lounge/cover.mp4', title:'SilverKris Lounge', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design | Video Edit', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
+    { src: '/hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product campaign for IKEA', role:'Creative Direction', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
     { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social Content for Singapore Airlines', role:'Creative Direction', tags: ['ispy', 'all', 'creative', 'sia'] },
-    { src: '/jollieverafter/cover.mp4', title:'JolliEverAfter', subheader:'Social Media Campaign for Jollibee', role:'Motion Design | Video Edit', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
+    { src: '/jollieverafter/cover.mp4', title:'JolliEverAfter', subheader:'Social Media campaign for Jollibee', role:'Motion Design | Video Edit', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
     { src: '/photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait Series', role:'Art Direction | Photography', tags: ['bbh', 'all', 'photography'] },
     { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social Media Post', role:'Art Direction | 3D Motion Design', tags: ['oneshow', 'all', 'motion', 'oneshow'] },
     { src: '/leica/leica.mp4', title:'Leica M10-P', subheader:'Personal Explorations', role:'3D Motion Design', tags: ['leica', 'all', 'motion'] },
@@ -327,6 +333,7 @@ const filteredVideos = videoData.filter((video) => {
                 </svg>
               </motion.button>
 
+              {/* Top Navbar Contents */}
               <motion.div
               className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-5 md:gap-10 mix-blend-difference text-white mt-0.5 lg:mt-0"
               initial="hidden"
@@ -414,13 +421,13 @@ const filteredVideos = videoData.filter((video) => {
           </div>  
 
           {/* Mobile Navbar BG */}
-          <div
+          <motion.div
             className={`lg:hidden fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
-              border-white/60 dark:border-white/10 transition-colors bg-white/30 dark:bg-black/0
-              ${showNav ? "h-135 border-b-1 bg-white/60 md:bg-white/0 dark:bg-black/60" : "h-12"}`}
+              border-white/60 dark:border-white/25 transition-colors bg-white/30 dark:bg-black/0 mix-blend-soft-light
+              ${showNav ? "h-135 border-b-1 bg-white/60 md:bg-white/0 dark:bg-black/50" : "h-12"}`}
             layout
             transition={{ type: "spring", stiffness: 250, damping: 22 }}
-          ></div>
+          ></motion.div>
 
           {/* Desktop Navbar BG */}
           <div
@@ -438,10 +445,10 @@ const filteredVideos = videoData.filter((video) => {
 
             {showNav && (
               <>
-                {/* Mobile Container */}
+                {/* Top Mobile Container */}
                 <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-20 fixed w-screen -ml-4 font-medium ">
 
-                  {/* Header */}
+                  {/* Mobile Header */}
                   {/* <motion.h1
                     className="text-4xl font-medium tracking-tighter mt-1.5 text-center text-foreground sm:hidden -ml-1"
                     initial={{ opacity: 0, y:-20 }} 
@@ -453,7 +460,7 @@ const filteredVideos = videoData.filter((video) => {
                         }} 
                     layout="position">
                       Skillsets
-                  </motion.h1> */}
+                  </motion.h1>  */}
 
                   {/* Mobile Reset Button */}
                   {/* <motion.div 
@@ -497,20 +504,19 @@ const filteredVideos = videoData.filter((video) => {
                       </svg> 
                     </motion.button>
                   )}
-                  </motion.div> */}
+                  </motion.div>  */}
 
-                  {/* Dropdown Menu */}    
+                  {/* Mobile Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-6 items-start tracking-tighter text-4.5xl leading-tighter font-medium mt-8 w-full px-8 md:hidden "
+                  className="flex flex-col gap-6 items-start tracking-tighter text-4.5xl leading-tighter font-medium mt-10 w-full px-14 md:hidden "
                   initial="hidden"
                   animate="show"
                   exit="fade"
-                  
-                    transition={{
-                    type: "spring",
-                    stiffness: 400, // Adjust for faster or slower animation
-                    damping: 17, // Adjust for bounciness and smoothness
-                    }}
+                  transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 17, 
+                  }}
                   variants={skillContainer}>
 
                     <motion.button 
@@ -519,8 +525,8 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('all');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='font-mono font-light text-lg align-top tracking-tight'>00 </span>
-                      Everything.<span className='ml-2 font-mono italic text-lg align-top '>It's quite a bit</span></motion.button>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>00 </span>
+                      Everything.<span className='ml-2 absolute -rotate-3 mt-1 font-script italic tracking-wider text-xs align-super whitespace-nowrap'>It's quite a bit</span></motion.button>
 
                     <motion.button 
                     className="text-left text-foreground"
@@ -528,7 +534,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('creative');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='font-mono font-light text-lg align-top tracking-tight'>01 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>01 </span>
                       Creative</motion.button>
 
                     <motion.button 
@@ -537,7 +543,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('motion');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='font-mono font-light text-lg align-top tracking-tight'>02 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>02 </span>
                       Motion</motion.button>
 
                     <motion.button 
@@ -546,7 +552,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('edit');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='font-mono font-light text-lg align-top tracking-tight'>03 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>03 </span>
                       Edit</motion.button>
 
                     <motion.button 
@@ -555,7 +561,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('ixd');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='font-mono font-light text-lg align-top tracking-tight'>04 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>04 </span>
                       Interaction Design</motion.button>
 
                     <motion.button 
@@ -565,7 +571,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleTag('clear');
                       toggleNav('false');
                       toggleWork('photography');
-                      }}><span className='font-mono font-light text-lg align-top tracking-tight'>05 </span>
+                      }}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>05 </span>
                       Photography</motion.button>
                       
 
@@ -574,12 +580,12 @@ const filteredVideos = videoData.filter((video) => {
                    variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('content');
-                      toggleWork('clear');}}><span className='font-mono font-light text-lg align-top tracking-tight'>06 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>06 </span>
                       Content Creation</motion.button>
                   </motion.div>
                 </div>
 
-                {/* Reset Button */}
+                {/* Side Navbar Reset Button */}
                 <motion.div 
                   className="sticky top-14 mt-4 z-50 hidden md:block">
                   {showReset && (
@@ -623,7 +629,7 @@ const filteredVideos = videoData.filter((video) => {
                   )}
                 </motion.div>
 
-                {/* Skillsets */}    
+                {/* Side Navbar Skillsets */}    
                 <motion.div 
                 className="flex-wrap grid grid-cols-3 sm:grid-cols-1 sm:flex-col gap-2 sm:gap-1 mt-4 dark:text-neutral-500 relative hidden md:flex"
                 initial="hidden"
@@ -720,7 +726,7 @@ const filteredVideos = videoData.filter((video) => {
                     toggleWork('clear');}}>Content Creation</motion.button>
                 </motion.div>
 
-                {/* All Work */}
+                {/* Side Navbar All Work */}
                 <motion.div
                 className={`hidden md:flex flex-col items-start gap-1 mt-12 dark:text-neutral-500 sticky z-10 ${showReset ? "top-28" : "top-16"}`}
                 initial="hidden"

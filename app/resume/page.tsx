@@ -101,14 +101,17 @@ export default function Resume({className=""}) {
 
                 {/* Mobile Photo Card */}
                 <div className="lg:hidden relative w-full h-[600px]">
+
+                    {/* Name */}
                     <motion.h1
-                    className="z-50 pl-5 pt-4 text-7xl tracking-tighter leading-15 font-base text-white"
+                    className="z-50 pl-5 pt-5 text-6xl tracking-tighter leading-15 font-base text-white"
                     variants={animateInChild}
                     >
-                    I am <span className="font-mono tracking-tightest text-8xl align-top ml-1">Chris.</span>
+                    I am <span className="font-script absolute top-10 tracking-tight text-7xl align-top ml-2">Chris</span>
                     {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
                     </motion.h1>
 
+                    {/* Image */}
                     <Image
                     src="/profile/profile.jpg"
                     alt=""
@@ -117,17 +120,18 @@ export default function Resume({className=""}) {
                     objectFit="cover"
                     />
 
+                    {/* Details */}
                     <motion.div
                     className="absolute bottom-0 pl-6 pb-5 text-white "
                     variants={animateInChild}
                     >
-                        <p className="flex items-center justify-center -ml-1.5 -rotate-2
-                        rounded-full tracking-tightest font-medium whitespace-nowrap text-4.5xl mb-3 font-mono">Senior Creative</p>
+                        <p className="flex items-center justify-start -rotate-2
+                        rounded-full tracking-tighter whitespace-nowrap text-2xl -ml-1.5 font-script mb-2">Senior Creative</p>
                         Based in New York City
-                        <span className="text-neutral-300 text-base ml-2 font-mono tracking-tighter">{timeNyc}</span>
+                        <span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide">{timeNyc}</span>
                         <br />
                         <i className="-ml-0.5">From Singapore</i>
-                        <span className="text-neutral-300 text-base ml-2 font-mono tracking-tighter">{timeSg}</span>
+                        <span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide">{timeSg}</span>
                     </motion.div>
                 </div>
 
@@ -142,9 +146,10 @@ export default function Resume({className=""}) {
 
                 {/* Desktop Details */}
                 <motion.div
-                className="mb-6 -ml-0.5 text-foreground hidden md:block"
+                className="mb-10 -ml-0.5 text-foreground hidden md:block"
                 variants={animateInChild}>
-                <p className="flex items-center justify-center -ml-1.5 border-1 border-foreground rounded-full tracking-tight font-medium w-32 text-base mb-5">Senior Creative</p>
+                <p className="flex items-center justify-center -ml-1.5 border-1 border-foreground 
+                rounded-full tracking-tight font-medium w-32 text-base mb-5">Senior Creative</p>
                 Based in New York City
                 <span className="text-neutral-300 align-top text-xs ml-1">{timeNyc}</span>
                 <br />
@@ -153,42 +158,40 @@ export default function Resume({className=""}) {
                 </motion.div>
 
                 <motion.p 
-                className="mb-8 mt-12 md:mt-0 px-5 md:px-0 text-5xl font-medium tracking-tight"
+                className="mb-8 mt-12 md:mt-0 px-5 md:px-0 text-5xl font-medium tracking-tight leading-11"
                 variants={animateInChild}>
                     & here are some answers.
                 </motion.p>
 
                 <motion.div 
-                className="mb-6 px-5 md:px-0"
+                className="mb-10 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 font-mono text-lg -rotate-3 tracking-tighter">Who?</p>
+                    <p className="mb-2 font-sans font-semibold uppercase text-xs tracking-wider ">Who?</p>
                     Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world. 
                     With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.
                 </motion.div>
 
                 <motion.div 
-                className="mb-6 px-5 md:px-0"
+                className="mb-10 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 font-mono text-lg -rotate-3 tracking-tighter">What?</p>
+                    <p className="mb-2 font-sans font-semibold uppercase text-xs tracking-wider ">What?</p>
                     As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; eight years of experience in the Advertising and Design industry is what I find myself with–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
                 </motion.div>
 
                 <motion.div 
-                className="mb-10 px-5 md:px-0"
+                className="mb-8 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 font-mono text-lg -rotate-3 tracking-tighter">And?</p>
+                    <p className="mb-2 font-sans font-semibold uppercase text-xs tracking-wider ">And?</p>
                     In his spare time after work <i>(which, realistically, isn&apos;t much)</i>, he does even more work, but for himself—creating content through photography, videography, editing and motion design. When he is finally not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He loves building his living space up, though he wouldn&apos;t go so far as to call it interior design.
                 </motion.div>
 
                 <motion.div 
                 className="mb-8 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 italic font-mono text-lg -rotate-3 tracking-tighter">I'm sold.</p>
-                    Email – ithinkitschristopher@gmail.com
-                    <br/>
-                    LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground">Chris Leow</a>
-                    <br/>
-                    Instagram – <a href="https://www.instagram.com/khristurtle/" className="underline transition-colors hover:text-midground">@khristurtle</a>
+                    <p className="mb-2 font-sans font-semibold uppercase text-xs tracking-wider">I'm sold.</p>
+                    <p className=""><span className="font-semibold">Email</span> – ithinkitschristopher@gmail.com</p>
+                    <p className=""><span className="font-semibold">LinkedIn</span> – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground">Chris Leow</a></p>
+                    <p className=""><span className="font-semibold">Instagram</span> – <a href="https://www.instagram.com/khristurtle/" className="underline transition-colors hover:text-midground">@khristurtle</a></p>
                 </motion.div>
             </div>
 

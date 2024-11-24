@@ -59,14 +59,22 @@ const config: Config = {
         90: '0.9',
       },
       fontSize: {
-        'xxs': '0.5rem',
+        'xxs': '0.65rem',
         '7.5xl': '5.5rem',
         '4.5xl': '2.5rem',
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "serif"], // Use Playfair Display as the serif font
+        serif: ["var(--font-geist-sans)", "serif"], // Use Playfair Display as the serif font
         sans: ["var(--font-geist-sans)", "sans-serif"],
-        mono: ["var(--font-nothing-you-could-do)", "monospace"],
+        mono: ["var(--font-geist-mono)", "monospace"],
+        script: ["var(--font-breathing)", "script"],
+        script2: ["var(--font-modernline)", "script"],
+      },
+      wordSpacing: {
+        tighter: '-0.03em',
+        tight: '-0.05em',
+        normal: '0',
+        wide: '0.1em',
       },
       rotate: {
         3: '3deg',

@@ -45,8 +45,8 @@ const Episodes = () => {
 
     return (
         <div className="font-[family-name:var(--font-geist-sans)]">
-            <div className="col-span-full mb-10 md:mb-6">
-                <h1 className="text-4xl font-medium text-center md:text-left tracking-tighter">Episodes</h1>
+            <div className="col-span-full mb-14 md:mb-6">
+                <h1 className="text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Episodes</h1>
             </div>
 
             {/* Episode Thumbnails */}
@@ -74,7 +74,7 @@ const Episodes = () => {
                         <h1 className="text-xl lg:text-2xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
                         <span className="font-medium">Episode {index + 1}</span>
                         <br />
-                        <span className="font-mono tracking-tightest text-lg leading-5">{episode.title}</span>
+                        <span className="font-script tracking-tight font-light text-base leading-5">{episode.title}</span>
                         </h1>
                         <p className="text-sm lg:text-base font-normal md:mr-10 text-center md:text-left px-2 md:px-0 mb-6 md:mb-0">
                         {episode.description}

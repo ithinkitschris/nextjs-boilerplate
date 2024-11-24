@@ -99,7 +99,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 variants={animateInChild}
                 >
                 <button
-                    className="font-base font-mono text-3xl tracking-tightest p-1 w-12 h-7 rounded-full 
+                    className="font-base font-mono text-base tracking-tighter w-11 h-6 rounded-full 
                     flex items-center justify-center border-1 border-foreground mb-2 -ml-0.5
                     group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
                     01
@@ -117,10 +117,11 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl md:text-7xl -ml-1 font-medium tracking-tighter leading-tighter mb-2 mr-24">
+                
+                <h1 className="text-6xl md:text-7xl -ml-1 font-medium tracking-tighter leading-tighter mb-1 mr-24">
                     Beyond The Cabin
                 </h1>
-                <h1 className="text-xl md:text-2xl tracking-tighter mb-4">Brand Campaign for Singapore Airlines</h1>
+                <h1 className="text-xl [word-spacing:-0.05em] font-script md:text-xl -rotate-3 tracking-tight lg:-mt-1 mb-5">Brand campaign for Singapore Airlines</h1>
                 <p className="mr-10 mb-4">
                     6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see
                     them on board, now follow their travels around the world.
@@ -166,8 +167,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 variants={animateInChild}
                 >
                 <button
-                    className="font-base font-mono text-2xl tracking-tightest w-12 h-7 rounded-full 
-                    flex items-center justify-center border-1 border-foreground mb-2 -ml-0.5
+                    className="font-base font-mono text-base tracking-tighter w-11 h-6 rounded-full 
+                    flex items-center justify-center border-1 border-foreground mb-2 
                     group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
                     02
                     <svg
@@ -184,10 +185,14 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl leading-tighter md:leading-tighter md:text-6xl font-medium tracking-tighter mb-2 break-words mr-0 hyphens-auto">
+                <h1 className="text-6xl leading-tighter md:leading-tighter md:text-6xl font-medium tracking-tighter mb-3 break-words mr-0 hyphens-auto -ml-0.5">
                    Cocktail Conversations
                 </h1>
-                <h1 className="text-xl md:text-2xl tracking-tighter mb-4">Brand Campaign for Singapore Airlines</h1>
+
+                {/* Geist Uppercase subheader */}
+                {/* <h1 className="text-sm font-medium md:text-xl font-sans uppercase tracking-wider lg:-mt-1 mb-4"> */}
+
+                <h1 className="text-xl [word-spacing:-0.1em] font-script md:text-xl -rotate-1 tracking-tight lg:-mt-1 mb-5">Brand campaign for Singapore Airlines</h1>
                 <p className="mr-10 mb-4 md:mb-0">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
                 <div className="absolute bottom-0 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -228,8 +233,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 variants={animateInChild}
                 >
                 <button
-                    className="font-base font-mono text-2xl tracking-tightest w-12 h-7 rounded-full 
-                    flex items-center justify-center border-1 border-foreground mb-2 -ml-0.5
+                    className="font-base font-mono text-base tracking-tighter w-11 h-6 rounded-full 
+                    flex items-center justify-center border-1 border-foreground mb-2 
                     group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
                     03
                     <svg
@@ -246,10 +251,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-2 -mr-2 ">
+                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
                    The World of Studio Ghibli
                 </h1>
-                <h1 className="text-xl lg:text-2xl tracking-tighter mb-4">Marketing Campaign for ArtScience Museum</h1>
+                <h1 className="text-sm font-medium md:text-xl font-sans uppercase tracking-wide lg:-mt-1 mb-4">Marketing Campaign for ArtScience Museum</h1>
                 <p className="mr-10 mb-4 md:mb-0">Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
                 <div className="absolute bottom-0 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -291,8 +296,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 variants={animateInChild}
                 >
                 <button
-                    className="font-base font-mono text-2xl tracking-tightest w-12 h-7 rounded-full 
-                    flex items-center justify-center border-1 border-foreground mb-2 -ml-0.5
+                    className="font-base font-mono text-base tracking-tighter w-11 h-6 rounded-full 
+                    flex items-center justify-center border-1 border-foreground mb-2 
                     group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
                     04
                     <svg
@@ -309,10 +314,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-2 -mr-2 ">
+                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
                    JolliEverAfter
                 </h1>
-                <h1 className="text-xl lg:text-2xl tracking-tighter mb-6">Social Media Campaign for Jollibee</h1>
+                <h1 className="text-sm font-medium md:text-xl font-sans uppercase tracking-wide lg:-mt-1 mb-4">Social Media Campaign for Jollibee</h1>
                 <p className="mr-10 mb-4 md:mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam facilisis hendrerit. Integer pulvinar nibh erat, a iaculis nisi condimentum ac. Nam in cursus turpis, sed ullamcorper nisl. </p>
                 <div className="absolute bottom-0 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -353,8 +358,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 variants={animateInChild}
                 >
                 <button
-                    className="font-base font-mono text-2xl tracking-tightest w-12 h-7 rounded-full 
-                    flex items-center justify-center border-1 border-foreground mb-2 -ml-0.5
+                    className="font-base font-mono text-base tracking-tighter w-11 h-6 rounded-full 
+                    flex items-center justify-center border-1 border-foreground mb-2 
                     group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
                     05
                     <svg
@@ -371,10 +376,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl leading-tighter md:text-7xl font-medium tracking-tighter mb-2 mr-10">
+                <h1 className="text-6xl leading-tighter md:text-7xl font-medium tracking-tighter mb-3 mr-10">
                    Your Stage Now Live
                 </h1>
-                <h1 className="text-xl lg:text-2xl tracking-tighter mb-6">In-store Displays for Uniqlo</h1>
+                <h1 className="text-sm font-medium md:text-xl font-sans uppercase tracking-wide lg:-mt-1 mb-4">In-store Displays for Uniqlo</h1>
                 <p className="mr-10 mb-4 md:mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam facilisis hendrerit. Integer pulvinar nibh erat, a iaculis nisi condimentum ac. Nam in cursus turpis, sed ullamcorper nisl. </p>
                 <div className="absolute bottom-0 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">

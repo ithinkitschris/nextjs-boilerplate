@@ -1,8 +1,6 @@
 'use client';
 import {useState} from "react";
-import {Playfair_Display} from "next/font/google";
-import {Poppins} from "next/font/google";
-import { Nothing_You_Could_Do } from "next/font/google";
+import {Playfair_Display, Noto_Serif} from "next/font/google";
 import DarkModeToggle from "./components/dark-mode-toggle";
 import DocumentationButton from "./components/documentation";
 import localFont from "next/font/local";
@@ -20,18 +18,30 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-const playfairDisplay = Playfair_Display({
+const breathing = localFont({
+  src: "./fonts/Breathing.ttf",
+  variable: "--font-breathing",
+  weight: "100",
+});
+
+const modernLine = localFont({
+  src: "./fonts/AndoraModernScript.otf",
+  variable: "--font-modernline",
+  weight: "100",
+});
+
+// const playfairDisplay = Playfair_Display({
+//   subsets: ["latin"], // Load Latin characters
+//   variable: "--font-playfair", // CSS variable name for the font
+//   display: "swap", // Optimize font loading behavior
+// });
+
+const notoSerif = Noto_Serif({
   subsets: ["latin"], // Load Latin characters
-  variable: "--font-playfair", // CSS variable name for the font
+  variable: "--font-noto-serif", // CSS variable name for the font
   display: "swap", // Optimize font loading behavior
 });
 
-const nothingYouCouldDo = Nothing_You_Could_Do({
-  subsets: ["latin"],
-  variable: "--font-nothing-you-could-do",
-  weight: "400",
-  display: "swap",
-});
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
@@ -44,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   
   return (
     <html className={isDarkMode ? "dark" : ""}>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${nothingYouCouldDo.variable}
+      <body className={`${geistSans.variable} ${geistMono.variable} ${modernLine.variable} ${notoSerif.variable} ${breathing.variable}
       antialiased flex flex-col min-h-screen
       bg-background transition-all duration-300`}>
         {/* <DocumentationButton/> */}
