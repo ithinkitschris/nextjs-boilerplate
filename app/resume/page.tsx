@@ -161,7 +161,7 @@ export default function Resume({className=""}) {
                 <motion.div 
                 className="mb-6 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 font-mono tracking-tighter">Who?</p>
+                    <p className="mb-2 font-mono text-lg -rotate-3 tracking-tighter">Who?</p>
                     Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world. 
                     With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.
                 </motion.div>
@@ -169,21 +169,21 @@ export default function Resume({className=""}) {
                 <motion.div 
                 className="mb-6 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 font-mono tracking-tighter">What?</p>
+                    <p className="mb-2 font-mono text-lg -rotate-3 tracking-tighter">What?</p>
                     As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; eight years of experience in the Advertising and Design industry is what I find myself with–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
                 </motion.div>
 
                 <motion.div 
                 className="mb-10 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 font-mono tracking-tighter">And?</p>
+                    <p className="mb-2 font-mono text-lg -rotate-3 tracking-tighter">And?</p>
                     In his spare time after work <i>(which, realistically, isn&apos;t much)</i>, he does even more work, but for himself—creating content through photography, videography, editing and motion design. When he is finally not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He loves building his living space up, though he wouldn&apos;t go so far as to call it interior design.
                 </motion.div>
 
                 <motion.div 
                 className="mb-8 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 italic font-mono tracking-tighter">I'm sold.</p>
+                    <p className="mb-2 italic font-mono text-lg -rotate-3 tracking-tighter">I'm sold.</p>
                     Email – ithinkitschristopher@gmail.com
                     <br/>
                     LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground">Chris Leow</a>

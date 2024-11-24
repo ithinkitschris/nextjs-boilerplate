@@ -75,7 +75,7 @@ show: {
             className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
             variants={animateInChild}>
                 <h1 className="text-7xl sm:text-8xl text-center font-medium sm:text-left tracking-tighter -ml-2">Beyond The Cabin</h1>
-                <p className="text-xl mt-2 sm:text-3xl text-center sm:text-left font-mono tracking-tighter">Brand Campaign for Singapore Airlines</p>
+                <p className="text-2xl -rotate-2 mt-2 sm:text-3xl text-center sm:text-left font-mono tracking-tightest">Brand Campaign for Singapore Airlines</p>
             </motion.div> 
 
             {/* Banner Video */}
@@ -98,10 +98,10 @@ show: {
             </div>
 
             {/* Project Details */}
-            <div className="flex flex-row col-span-full sm:col-span-2 px-8 sm:px-0 justify-between tracking-tighter font-mono">
+            <div className="flex flex-row col-span-full sm:col-span-2 px-8 sm:px-0 justify-between tracking-tightest text-base font-bold font-mono">
                 <motion.div variants={animateInChild}>
                     Role:
-                    <ol className="mt-2 text-xs font-sans tracking-tight">
+                    <ol className="mt-2 text-xs font-sans font-normal tracking-tight">
                         <li>Creative Direction</li>
                         <li>Motion Design</li>
                         <li>Ideation</li>
@@ -109,13 +109,13 @@ show: {
                 </motion.div>
                 <motion.div variants={animateInChild}>
                     Client:
-                    <ol className="mt-2 text-xs font-sans tracking-tight">
+                    <ol className="mt-2 text-xs font-sans font-normal tracking-tight">
                         <li>Singapore Airlines</li>
                     </ol>
                 </motion.div>
                 <motion.div variants={animateInChild}>
                     Agency:
-                    <ol className="mt-2 text-xs font-sans tracking-tight">
+                    <ol className="mt-2 text-xs font-sans font-normal tracking-tight">
                         <li>TBWA\ Singapore</li>
                     </ol>
                 </motion.div>
@@ -124,17 +124,17 @@ show: {
             {/* Writeup */}
             <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-10 mt-6 mb-14 md:mr-7">
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono tracking-tighter">The Ask:</p>
+                <p className="mb-2 font-mono tracking-tightest font-bold -ml-0.5">The Ask:</p>
                     <p>Singapore Airlines Cabin Crew are commonly seen as being one-dimensional - from misconceptions of misogyny to them being just “servants of the cabin”. As part of the Welcome to World Class brand campaign, we want to dimensionalise Cabin Crew by “freeing” them in their portrayals, going from just “servants of the cabin” to modern, informed and relatable travelers of the world outside of the cabin.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono tracking-tighter">The How:</p>
+                <p className="mb-2 font-mono tracking-tightest font-bold -ml-0.5">The How:</p>
                     <p>We create travel guides fronted by our Cabin Crew, who are casted for their expertise in destinations they fly to frequently and are passionate for. Allowing them to showcase a depth of understanding they have for the destinations Singapore Airlines flies to and the unique and novel, experiences of the different destinations through their insights.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono tracking-tighter">–</p>
+                <p className="mb-2 font-mono tracking-tightest">–</p>
                     <p className="mb-2">This was a campaign that I had the opportunity to oversee from conceptualisation to overall art direction, pre production, shoot, post production and execution of the motion graphics for the opening and end sequences.</p>
                     {/* <p>A 9:16 portrait film for social platforms was also adapted by me from the 16:9 main film for all 6 episodes. Using B-roll footage captured from the shoots, the 9:16 film incorporated a multi panelled approach to certain scenes to ensure the film was still watchable in a vertical format and provided additional content as well as context to the film for social consumption.</p> */}
                 </motion.div>

@@ -20,14 +20,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-const poppins = Poppins({
-  subsets: ["latin"], // Load Latin characters
-  variable: "--font-poppins", // CSS variable for use in your styles
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // Available font weights
-  display: "swap", // Optimize font loading behavior
-});
-
-
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"], // Load Latin characters
   variable: "--font-playfair", // CSS variable name for the font
@@ -52,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   
   return (
     <html className={isDarkMode ? "dark" : ""}>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${poppins.variable} ${nothingYouCouldDo.variable}
+      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${nothingYouCouldDo.variable}
       antialiased flex flex-col min-h-screen
       bg-background transition-all duration-300`}>
         {/* <DocumentationButton/> */}

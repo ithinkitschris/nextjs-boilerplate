@@ -99,8 +99,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 variants={animateInChild}
                 >
                 <button
-                    className="font-base font-mono text-lg tracking-tighter p-1 w-12 h-7 rounded-full 
-                    flex items-center justify-center border-1.5 border-foreground mb-2 -ml-0.5
+                    className="font-base font-mono text-3xl tracking-tightest p-1 w-12 h-7 rounded-full 
+                    flex items-center justify-center border-1 border-foreground mb-2 -ml-0.5
                     group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
                     01
                     <svg
@@ -166,8 +166,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 variants={animateInChild}
                 >
                 <button
-                    className="font-light font-mono text-lg tracking-tighter p-1 w-12 h-7 rounded-full 
-                    flex items-center justify-center border-1.5 border-foreground mb-2 
+                    className="font-base font-mono text-2xl tracking-tightest w-12 h-7 rounded-full 
+                    flex items-center justify-center border-1 border-foreground mb-2 -ml-0.5
                     group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
                     02
                     <svg
@@ -228,8 +228,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 variants={animateInChild}
                 >
                 <button
-                    className="font-light font-mono text-lg tracking-tighter p-1 w-12 h-7 rounded-full 
-                    flex items-center justify-center border-1.5 border-foreground mb-2 -ml-0.5
+                    className="font-base font-mono text-2xl tracking-tightest w-12 h-7 rounded-full 
+                    flex items-center justify-center border-1 border-foreground mb-2 -ml-0.5
                     group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
                     03
                     <svg
@@ -291,8 +291,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 variants={animateInChild}
                 >
                 <button
-                    className="font-light font-mono text-lg tracking-tighter p-1 w-12 h-7 rounded-full 
-                    flex items-center justify-center border-1.5 border-foreground mb-2 
+                    className="font-base font-mono text-2xl tracking-tightest w-12 h-7 rounded-full 
+                    flex items-center justify-center border-1 border-foreground mb-2 -ml-0.5
                     group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
                     04
                     <svg
@@ -353,8 +353,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 variants={animateInChild}
                 >
                 <button
-                    className="font-light font-mono text-lg tracking-tighter p-1 w-12 h-7 rounded-full 
-                    flex items-center justify-center border-1.5 border-foreground mb-2 -ml-0.5
+                    className="font-base font-mono text-2xl tracking-tightest w-12 h-7 rounded-full 
+                    flex items-center justify-center border-1 border-foreground mb-2 -ml-0.5
                     group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
                     05
                     <svg
