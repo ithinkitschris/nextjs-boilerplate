@@ -1,6 +1,8 @@
 'use client';
 import {useState} from "react";
 import {Playfair_Display} from "next/font/google";
+import {Poppins} from "next/font/google";
+import { Nothing_You_Could_Do } from "next/font/google";
 import DarkModeToggle from "./components/dark-mode-toggle";
 import DocumentationButton from "./components/documentation";
 import localFont from "next/font/local";
@@ -18,10 +20,25 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const poppins = Poppins({
+  subsets: ["latin"], // Load Latin characters
+  variable: "--font-poppins", // CSS variable for use in your styles
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // Available font weights
+  display: "swap", // Optimize font loading behavior
+});
+
+
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"], // Load Latin characters
   variable: "--font-playfair", // CSS variable name for the font
   display: "swap", // Optimize font loading behavior
+});
+
+const nothingYouCouldDo = Nothing_You_Could_Do({
+  subsets: ["latin"],
+  variable: "--font-nothing-you-could-do",
+  weight: "400",
+  display: "swap",
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -35,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   
   return (
     <html className={isDarkMode ? "dark" : ""}>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable}
+      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${poppins.variable} ${nothingYouCouldDo.variable}
       antialiased flex flex-col min-h-screen
       bg-background transition-all duration-300`}>
         {/* <DocumentationButton/> */}

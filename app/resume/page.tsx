@@ -102,10 +102,10 @@ export default function Resume({className=""}) {
                 {/* Mobile Photo Card */}
                 <div className="lg:hidden relative w-full h-[600px]">
                     <motion.h1
-                    className="z-50 pl-5 pt-6 text-7xl tracking-tighter leading-15 font-base text-white"
+                    className="z-50 pl-5 pt-4 text-7xl tracking-tighter leading-15 font-base text-white"
                     variants={animateInChild}
                     >
-                    I am Chris.
+                    I am <span className="font-mono tracking-tightest text-8xl align-top ml-1">Chris.</span>
                     {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
                     </motion.h1>
 
@@ -121,13 +121,13 @@ export default function Resume({className=""}) {
                     className="absolute bottom-0 pl-6 pb-5 text-white "
                     variants={animateInChild}
                     >
-                        <p className="flex items-center justify-center -ml-1.5 border-1 border-white 
-                        rounded-full tracking-tighter font-medium w-[150px] text-base mb-2 font-mono">Senior Creative</p>
+                        <p className="flex items-center justify-center -ml-1.5 -rotate-2
+                        rounded-full tracking-tightest font-medium whitespace-nowrap text-4.5xl mb-3 font-mono">Senior Creative</p>
                         Based in New York City
-                        <span className="text-neutral-300 text-xxs ml-2 font-mono tracking-tighter">{timeNyc}</span>
+                        <span className="text-neutral-300 text-base ml-2 font-mono tracking-tighter">{timeNyc}</span>
                         <br />
                         <i className="-ml-0.5">From Singapore</i>
-                        <span className="text-neutral-300 text-xxs ml-2 font-mono tracking-tighter">{timeSg}</span>
+                        <span className="text-neutral-300 text-base ml-2 font-mono tracking-tighter">{timeSg}</span>
                     </motion.div>
                 </div>
 

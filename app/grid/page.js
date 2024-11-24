@@ -91,7 +91,7 @@ const worksContainer = {
 const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, role }) => {
   return (
     <motion.div
-      className="overflow-hidden drop-shadow-lg rounded-lg hover:scale-98 hover:drop-shadow-md cursor-pointer group-hover:z-50
+      className="overflow-hidden drop-shadow-lg rounded-xl md:rounded-lg hover:scale-98 hover:drop-shadow-md cursor-pointer group-hover:z-50
       "
       initial="hidden"
       animate="show"
@@ -103,27 +103,27 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
       onClick={onClick}>
 
           {/* Square */}
-          <div className="pt-[50%] lg:pt-[100%] group relative">
+          <div className="pt-[125%] lg:pt-[100%] group relative">
 
             {/* Text Container */}
             <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-6 gap-1 lg:gap-4">
 
               {/* Title of work */}
-              <h1 className="text-3xl md:text-4xl 2xl:text-5xl tracking-tight font-medium text-white p-2 md:p-0 
-              opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 z-50 w-1/3 md:w-3/4 leading-tighter md:leading-11">
+              <h1 className="text-5xl md:text-4xl 2xl:text-5xl tracking-tight font-medium text-white p-2 md:p-0
+              opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 z-50 w-4/5 md:w-3/4 leading-tighter md:leading-11">
                 {title}
               </h1>
 
               {/* Gradient */}
-              <div className="absolute lg:hidden inset-0 top-0 z-10 w-1/2 h-full bg-gradient-to-r from-black/40 dark:from-black/90 to-transparent mix-blend-multiply"/>
-              <div className="absolute lg:hidden inset-x-0 bottom-0 z-10 h-1/2 bg-gradient-to-t from-black/30 to-transparent mix-blend-multiply"/>
+              <div className="absolute rounded-xl md:rounded-lg lg:hidden inset-0 top-0 z-10 h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply"/>
+              <div className="absolute rounded-xl md:rounded-lg lg:hidden inset-x-0 bottom-0 z-10 h-1/6 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply"/>
 
               {/* Details Container */}
               <div className="z-50 flex flex-row justify-end w-full">
 
                 {/* Subheader */}
-                <h3 className="z-10 text-white/50 pl-2.5 -mb-1 md:pb-0 text-xxs md:text-base font-medium tracking-tight opacity-100 lg:opacity-0 lg:group-hover:opacity-100
-                transition-all duration-300 leading-2 text-right">
+                <h3 className="z-10 text-white pl-2.5 pb-1 md:pb-0 text-xs md:text-base tracking-tight opacity-100 lg:opacity-0 lg:group-hover:opacity-100
+                transition-all duration-300 leading-4 md:leading-5 w-2/3 text-right md:text-left lg:w-1/2 ">
                 {subheader}
                 </h3>
 
@@ -132,8 +132,6 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
                 transition-all duration-300 leading-5 w-1/2">
                 {role}
                 </h3>
-
-                
               </div>
             </div>
       
@@ -177,7 +175,7 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
 
             {/* Video */}
             <video
-              className="absolute scale-102 inset-0 w-full h-full object-cover blur-none 
+              className="absolute inset-0 w-full h-full object-cover blur-none rounded-xl md:rounded-lg
               md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-200"
               autoPlay muted loop playsInline>
               <source src={videoSrc} type="video/mp4" />
@@ -358,7 +356,7 @@ const filteredVideos = videoData.filter((video) => {
                   }}
                     >
                   <span className="hidden md:block">Who am I?</span>
-                  <span className="block md:hidden">Who am I?</span>
+                  <span className="block md:hidden">Chris Leow</span>
                 </motion.button>
 
                 {/* All Button */}
@@ -418,8 +416,8 @@ const filteredVideos = videoData.filter((video) => {
           {/* Mobile Navbar BG */}
           <motion.div
             className={`lg:hidden fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
-              border-white/60 dark:border-white/10 transition-colors
-              ${showNav ? "h-135 border-b-1 bg-white/60 md:bg-white/0 dark:bg-black/50" : "h-12"}`}
+              border-white/60 dark:border-white/10 transition-colors bg-white/30 dark:bg-black/0
+              ${showNav ? "h-135 border-b-1 bg-white/60 md:bg-white/0 dark:bg-black/60" : "h-12"}`}
             layout
             transition={{ type: "spring", stiffness: 250, damping: 22 }}
           ></motion.div>

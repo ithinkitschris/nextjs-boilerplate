@@ -66,9 +66,14 @@ const config: Config = {
       fontFamily: {
         serif: ["var(--font-playfair)", "serif"], // Use Playfair Display as the serif font
         sans: ["var(--font-geist-sans)", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        mono: ["var(--font-nothing-you-could-do)", "monospace"],
       },
-      
+      rotate: {
+        3: '3deg',
+      },
+      letterSpacing: {
+        tightest: '-0.08em', // Adjust the value as needed
+      },
       scale: {
         '120': '1.20',
         '93': '0.93',
