@@ -10,7 +10,7 @@ const animateIn = {
     hidden: { opacity: 0, y: 20 },
     show: {
         opacity: 1, y: 0,
-        transition: { staggerChildren: 0.03, duration: 0.2, ease: "easeOut" }
+        transition: { staggerChildren: 0.06, duration: 0.2, ease: "easeOut" }
     }
 };
 const animateInChild ={
@@ -100,7 +100,7 @@ export default function Resume({className=""}) {
             <div className="col-span-4 ">
 
                 {/* Mobile Photo Card */}
-                <div className="lg:hidden relative w-full h-[600px]">
+                <div className="lg:hidden relative w-full h-[620px]">
 
                     {/* Name */}
                     <motion.h1
@@ -112,21 +112,29 @@ export default function Resume({className=""}) {
                     </motion.h1>
 
                     {/* Image */}
-                    <Image
-                    src="/profile/profile.jpg"
-                    alt=""
-                    className="absolute rounded-lg top-0 left-0 h-auto w-fill object-cover -z-50 object-bottom"
-                    layout="fill"
-                    objectFit="cover"
-                    />
+                    <motion.div className="absolute top-0 left-0 w-full h-full -z-50" variants={animateInChild}>
+                        <Image
+                        src="/profile/profile.jpg"
+                        alt=""
+                        className="rounded-lg object-cover"
+                        layout="fill"
+                        objectFit="cover"
+                        />
+                    </motion.div>
 
                     {/* Details */}
                     <motion.div
-                    className="absolute bottom-0 pl-6 pb-5 text-white "
+                    className="absolute bottom-0 pl-6 pb-14 text-white "
                     variants={animateInChild}
                     >
-                        <p className="flex items-center justify-start -rotate-2
-                        rounded-full tracking-tighter whitespace-nowrap text-2xl -ml-1.5 font-script mb-2">Senior Creative</p>
+                        {/* Circle Header */}
+                        <h1 className="flex items-center justify-center -ml-2.5 border-1 border-white/50  
+                        rounded-full tracking-tighter font-medium text-sm w-[135px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
+                        
+                        {/* Script Header */}
+                        {/* <h1 className="flex items-center justify-start -rotate-2
+                        rounded-full tracking-tighter whitespace-nowrap text-2xl -ml-1.5 font-script mb-2">Senior Creative</h1> */}
+
                         Based in New York City
                         <span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide">{timeNyc}</span>
                         <br />
@@ -157,16 +165,17 @@ export default function Resume({className=""}) {
                 <span className="text-neutral-300 align-top text-xs ml-1">{timeSg}</span>
                 </motion.div>
 
-                <motion.p 
-                className="mb-8 mt-12 md:mt-0 px-5 md:px-0 text-5xl font-medium tracking-tight leading-11"
+                <motion.h1 
+                className="mb-10 -mt-8 md:mt-0 text-[52px] px-2 font-script tracking-tight leading-13 mix-blend-difference text-white"
+                animate={{rotate:-4}}
                 variants={animateInChild}>
-                    & here are some answers.
-                </motion.p>
+                    And here are <span className="ml-12 whitespace-nowrap">some answers:</span>
+                </motion.h1>
 
                 <motion.div 
                 className="mb-10 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 font-sans font-semibold uppercase text-xs tracking-wider ">Who?</p>
+                    <p className="mb-3 font-mono text-sm">Who?</p>
                     Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world. 
                     With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.
                 </motion.div>
@@ -174,27 +183,28 @@ export default function Resume({className=""}) {
                 <motion.div 
                 className="mb-10 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 font-sans font-semibold uppercase text-xs tracking-wider ">What?</p>
+                    <p className="mb-3 font-mono text-sm">What?</p>
                     As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; eight years of experience in the Advertising and Design industry is what I find myself with–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
                 </motion.div>
 
                 <motion.div 
                 className="mb-8 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 font-sans font-semibold uppercase text-xs tracking-wider ">And?</p>
+                    <p className="mb-3 font-mono text-sm">And?</p>
                     In his spare time after work <i>(which, realistically, isn&apos;t much)</i>, he does even more work, but for himself—creating content through photography, videography, editing and motion design. When he is finally not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He loves building his living space up, though he wouldn&apos;t go so far as to call it interior design.
                 </motion.div>
 
                 <motion.div 
                 className="mb-8 px-5 md:px-0"
                 variants={animateInChild}>
-                    <p className="mb-2 font-sans font-semibold uppercase text-xs tracking-wider">I'm sold.</p>
+                    <p className="mb-0 font-script w-12 whitespace-nowrap -ml-1.5 -rotate-6  text-sm italic tracking-wider">I'm sold<span className="font-mono font-semibold">.</span></p>
                     <p className=""><span className="font-semibold">Email</span> – ithinkitschristopher@gmail.com</p>
                     <p className=""><span className="font-semibold">LinkedIn</span> – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground">Chris Leow</a></p>
                     <p className=""><span className="font-semibold">Instagram</span> – <a href="https://www.instagram.com/khristurtle/" className="underline transition-colors hover:text-midground">@khristurtle</a></p>
                 </motion.div>
             </div>
 
+            {/* Temporary Spacer */}
             <div className="hidden md:block md:col-span-5"/>
 
             {/* <div className="hidden md:block col-span-5">
@@ -203,15 +213,17 @@ export default function Resume({className=""}) {
 
 
             {/* Currently: */}
-            <div className="col-span-full pl-5 md:pl-0 md:col-span-2">
+            <div className="col-span-full pl-5 md:pl-0 md:col-span-2 relative">
 
-                <motion.h1 className="text-4xl md:text-3xl mb-11 -ml-0.5 mt-10 tracking-tight" variants={animateInChild}>
-                Currently:<br/>
+                <motion.h1 
+                className="text-4xl md:text-3xl mb-11 -ml-1 mt-10 tracking-normal font-script " 
+                variants={animateInChild}>
+                Currently:
                 </motion.h1>
 
                     <motion.div variants={animateInChild} className="-mt-2">
-                        <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
-                        rounded-full tracking-tighter font-medium text-sm w-36 mb-2 font-mono whitespace-nowrap">Master's Student</p>
+                        <h1 className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
+                        rounded-full tracking-tighter font-medium text-sm w-36 mb-2 font-mono whitespace-nowrap">Master's Student</h1>
                         <p>
                             MFA Interaction Design
                             <br/>
@@ -259,9 +271,7 @@ export default function Resume({className=""}) {
             <div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-11">
                 
                 <motion.div variants={animateInChild} className="">
-                    <p className="text-4xl md:text-3xl mb-10 -ml-0.5 tracking-tight">
-                        Previously:
-                    </p>
+                    <h1 className="text-4xl md:text-3xl mb-10 -ml-2 mt-10 tracking-normal -rotate-3 w-24 font-script">Previously:</h1>
 
                     <div className="-mt-2">
                     <p className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
