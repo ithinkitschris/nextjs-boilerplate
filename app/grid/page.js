@@ -88,10 +88,10 @@ const worksContainer = {
   exit: { opacity: 0 },
 };
 
-const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, role }) => {
+const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, role, selectedTags }) => {
   return (
     <motion.div
-      className="overflow-hidden drop-shadow-lg rounded-xl md:rounded-lg hover:scale-98 hover:drop-shadow-md cursor-pointer group-hover:z-50
+      className="overflow-hidden drop-shadow-lg rounded-lg hover:scale-98 hover:drop-shadow-md cursor-pointer group-hover:z-50
       "
       initial="hidden"
       animate="show"
@@ -103,20 +103,22 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
       onClick={onClick}>
 
           {/* Square */}
-          <div className="pt-[125%] lg:pt-[100%] group relative">
+          <div className={`lg:pt-[100%] group relative
+            ${selectedTags.includes('all') ? 'pt-[150%]' : 'pt-[150%]'}`}>
 
             {/* Text Container */}
             <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-6 gap-1 lg:gap-4">
 
               {/* Title of work */}
-              <h1 className="text-5xl md:text-4xl 2xl:text-5xl tracking-tight font-medium text-white p-2 md:p-0
-              opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 z-50 w-4/5 md:w-3/4 leading-tighter md:leading-11">
+              <h1 className={`md:text-4xl 2xl:text-5xl tracking-tight font-medium text-white p-2 md:p-0
+              opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 z-50 w-4/5 md:w-3/4 leading-tighter md:leading-11
+              ${selectedTags.includes('all') ? 'text-[24px]' : 'text-5xl p-3'}`}>
                 {title}
               </h1>
 
               {/* Gradient */}
-              <div className="absolute rounded-xl md:rounded-lg lg:hidden inset-0 top-0 z-10 h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply"/>
-              <div className="absolute rounded-xl md:rounded-lg lg:hidden inset-x-0 bottom-0 z-10 h-1/6 bg-gradient-to-t from-black/50 to-transparent mix-blend-multiply"/>
+              <div className="absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] z-10 h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply"/>
+              <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply"/>
 
               {/* Details Container */}
               <div className="z-50 flex flex-row justify-end w-full">
@@ -128,9 +130,10 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
                 {subheader}</h3> */}
 
                 {/* Clean Subheader */}
-                <h3 className="z-10 text-white pl-2.5 pb-1 pr-0.5 md:pb-0 uppercase text-xxs md:text-base tracking-widest 
+                <h3 className={`z-10 text-white pl-2.5 -mb-0.5  md:pb-0 uppercase md:text-base tracking-widest 
                 font-medium font-mono opacity-100 lg:opacity-0 lg:group-hover:opacity-100
-                transition-all duration-300 leading-4 md:leading-5 text-left md:text-left lg:w-1/2">
+                transition-all duration-300 leading-4 md:leading-5 text-left md:text-left lg:w-1/2
+                ${selectedTags.includes('all') ? 'text-[6px] pr-0.5' : 'text-xxs p-1.5'}`}>
                 {subheader}</h3>
 
                 {/* Role */}
@@ -162,9 +165,9 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
             </button>
 
             {/* Mobile Corner Arrow */}
-            <button className={`lg:hidden absolute top-6 right-6 font-medium text-lg tracking-tighter p-1 px-2 rounded-full z-50
-            flex items-center justify-center border-1 border-white text-white cursor-pointer
-            group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
+            <button className={`lg:hidden absolute top-2.5 right-2.5 font-medium text-lg tracking-tighter p-0.5 px-1 rounded-full z-50
+            flex items-center justify-center text-white cursor-pointer
+            group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-1 transition-all duration-200`}>
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="2 2 20 20"
@@ -173,15 +176,16 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="w-5 h-5">
-                <path d="M7 17L17 7" />
+                className="w-3 h-3">
+                <path d="M7 17L17 7"
+                className="opacity-0 group-hover:opacity-100 transition-opacity" />
                 <path d="M7 7h10v10" />
                 </svg>
             </button>
 
             {/* Video */}
             <video
-              className="absolute inset-0 w-full h-full object-cover blur-none rounded-xl md:rounded-lg
+              className="absolute inset-0 w-full h-full object-cover blur-none rounded-lg
               md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-200"
               autoPlay muted loop playsInline>
               <source src={videoSrc} type="video/mp4" />
@@ -414,9 +418,9 @@ const filteredVideos = videoData.filter((video) => {
 
           {/* Mobile Navbar BG */}
           <motion.div
-            className={`lg:hidden fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
+            className={`lg:hidden fixed backdrop-blur-lg left-0 -top-2 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
               border-white dark:border-white/10 transition-colors bg-white/30 dark:bg-black/0 blur-[0.5px]
-              ${showNav ? "h-135 border-b-1 bg-white/60 md:bg-white/0 dark:bg-black/40 shadow-standard" : "h-12"}`}
+              ${showNav ? "h-135 border-b-1 bg-white/60 md:bg-white/0 dark:bg-black/40 shadow-standard" : "h-14"}`}
             layout
             transition={{ type: "spring", stiffness: 250, damping: 22 }}
           ></motion.div>
@@ -1167,7 +1171,8 @@ const filteredVideos = videoData.filter((video) => {
           > 
             {/* Grid / Page */}
             <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full gap-1.5 mt-6 md:mt-4">
+            className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full gap-1.5 mt-6 md:mt-4
+            ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1' : 'grid-cols-3'}`}>
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
                   <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>
@@ -1200,6 +1205,7 @@ const filteredVideos = videoData.filter((video) => {
                       link={video.link}
                       tags={video.tags}
                       setHoveredWork={setHoveredWork}
+                      selectedTags={selectedTags}
                       onClick={() => { 
                         const workTags = ['cabin', 'cocktail', 'ghibli', 'bbh'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));
