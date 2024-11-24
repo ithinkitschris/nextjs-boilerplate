@@ -103,27 +103,27 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
       onClick={onClick}>
 
           {/* Square */}
-          <div className="pt-[125%] lg:pt-[100%] group relative">
+          <div className="pt-[50%] lg:pt-[100%] group relative">
 
             {/* Text Container */}
             <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-6 gap-1 lg:gap-4">
 
               {/* Title of work */}
-              <h1 className="text-5xl md:text-4xl 2xl:text-5xl tracking-tight font-medium text-white p-2 md:p-0
-              opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 z-50 w-4/5 md:w-3/4 leading-tighter md:leading-11">
+              <h1 className="text-3xl md:text-4xl 2xl:text-5xl tracking-tight font-medium text-white p-2 md:p-0 
+              opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 z-50 w-1/3 md:w-3/4 leading-tighter md:leading-11">
                 {title}
               </h1>
 
               {/* Gradient */}
-              <div className="absolute lg:hidden inset-0 top-0 z-10 h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply"/>
-              <div className="absolute lg:hidden inset-x-0 bottom-0 z-10 h-1/6 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply"/>
+              <div className="absolute lg:hidden inset-0 top-0 z-10 w-1/2 h-full bg-gradient-to-r from-black/40 dark:from-black/90 to-transparent mix-blend-multiply"/>
+              <div className="absolute lg:hidden inset-x-0 bottom-0 z-10 h-1/2 bg-gradient-to-t from-black/30 to-transparent mix-blend-multiply"/>
 
               {/* Details Container */}
-              <div className="z-50 flex flex-row justify-between w-full">
+              <div className="z-50 flex flex-row justify-end w-full">
 
                 {/* Subheader */}
-                <h3 className="z-10 text-white pl-2.5 pb-2 md:pb-0 text-base md:text-base font-medium tracking-tight opacity-65 lg:opacity-0 lg:group-hover:opacity-100
-                transition-all duration-300 leading-5 w-full lg:w-1/2 ">
+                <h3 className="z-10 text-white/50 pl-2.5 -mb-1 md:pb-0 text-xxs md:text-base font-medium tracking-tight opacity-100 lg:opacity-0 lg:group-hover:opacity-100
+                transition-all duration-300 leading-2 text-right">
                 {subheader}
                 </h3>
 
@@ -132,6 +132,8 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
                 transition-all duration-300 leading-5 w-1/2">
                 {role}
                 </h3>
+
+                
               </div>
             </div>
       
