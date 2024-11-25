@@ -313,7 +313,7 @@ const filteredVideos = videoData.filter((video) => {
         px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-2 z-40 mb-4 text-sm lg:text-base font-medium w-screen pr-6">
+          <div className="col-span-full fixed top-2 md:top-0.5 lg:top-1.5 z-40 mb-4 text-sm lg:text-base font-medium w-screen pr-6">
 
             {/* Sidenav / Dropdown Button */}
             <motion.button 
@@ -427,16 +427,26 @@ const filteredVideos = videoData.filter((video) => {
 
           {/* Mobile Navbar BG */}
           <motion.div
-            className={`lg:hidden fixed dark:backdrop-blur-lg md:backdrop-blur-lg left-1/6 top-2 rounded-full w-4/6 shadow lg:shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.4)] z-20
+            className={`md:hidden fixed dark:backdrop-blur-lg md:backdrop-blur-lg top-2 w-full max-w-[69%] shadow lg:shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.4)] z-20
               border-white/80 dark:border-white/10 transition-colors bg-background dark:bg-black/20 blur-[0.2px]
-              ${showNav ? "h-120 border-b-1 bg-white md:bg-white/0 dark:bg-black/35 shadow-standard rounded-xl" : "h-10"}`}
-            layout
-            transition={{ type: "spring", stiffness: 250, damping: 22 }}
+              ${showNav ? " border-b-1 bg-background backdrop-blur-md md:bg-white/0 dark:bg-black/35 shadow-standard" : ""}`}
+            style={{
+              left: "50%",
+              transform: "translateX(-50%)",
+            }}
+              animate={{ 
+                width: showNav? "30rem" : "18.5rem",
+                height: showNav ? "27.2rem" : "2.5rem",
+                borderRadius: showNav ? "1rem" : "50rem"}}
+              transition={{
+                height: { type: "spring", stiffness: showNav ? 250 : 270 , damping: showNav ? 22 : 27 }, // Faster or bouncier for height
+                borderRadius: { duration: showNav ? 0.02 : 10 } // Separate easing for smooth border-radius transition
+              }}
           ></motion.div>
 
           {/* Desktop Navbar BG */}
           <div
-            className="hidden lg:block fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20 h-12"
+            className="hidden md:block fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20 h-12"
           ></div>
 
           {/* Side Navbar */}
@@ -512,7 +522,7 @@ const filteredVideos = videoData.filter((video) => {
 
                   {/* Mobile Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-6 items-start tracking-tighter text-3xl leading-tighter font-medium mt-8 w-full px-[105px] md:hidden"
+                  className="flex flex-col gap-6 items-start tracking-tighter text-3xl leading-tighter font-medium mt-6 w-full max-w-[55%] mx-auto md:hidden"
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -524,13 +534,23 @@ const filteredVideos = videoData.filter((video) => {
                   variants={skillContainer}>
 
                     <motion.button 
+                    className="text-left text-foreground "
+                    variants={animateInChildMobile}
+                    onClick={() => {
+                      toggleTag('clear');
+                      toggleWork('bestwork');
+                      setSelectedTags(['']);
+                      setShowNav(false)}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>01 </span>
+                      Favourites</motion.button>
+
+                    <motion.button 
                     className="text-left text-foreground"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('all');
                       toggleNav('false');
                       toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>00 </span>
-                      Everything.<span className='ml-1 absolute -rotate-2 mt-1 font-script italic tracking-wider text-xxs align-super whitespace-nowrap'
+                      Everything.<span className='ml-1 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
                       >It's quite a lot</span></motion.button>
 
                     <motion.button 
