@@ -428,7 +428,7 @@ const filteredVideos = videoData.filter((video) => {
           {/* Mobile Navbar BG */}
           <motion.div
             className={`md:hidden fixed dark:backdrop-blur-lg md:backdrop-blur-lg top-2 w-full max-w-[69%] shadow lg:shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.4)] z-20
-              border-white/80 dark:border-white/10 transition-colors bg-background dark:bg-black/20 blur-[0.2px]
+              border-white/80 dark:border-white/15 transition-colors bg-background dark:bg-black/20 blur-[0.2px]
               ${showNav ? " border-b-1 bg-background backdrop-blur-md md:bg-white/0 dark:bg-black/35 shadow-standard" : ""}`}
             style={{
               left: "50%",
@@ -436,7 +436,7 @@ const filteredVideos = videoData.filter((video) => {
             }}
               animate={{ 
                 width: showNav? "30rem" : "18.5rem",
-                height: showNav ? "27.2rem" : "2.5rem",
+                height: showNav ? "30.5rem" : "2.5rem",
                 borderRadius: showNav ? "1rem" : "50rem"}}
               transition={{
                 height: { type: "spring", stiffness: showNav ? 250 : 270 , damping: showNav ? 22 : 27 }, // Faster or bouncier for height
@@ -522,7 +522,7 @@ const filteredVideos = videoData.filter((video) => {
 
                   {/* Mobile Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-6 items-start tracking-tighter text-3xl leading-tighter font-medium mt-6 w-full max-w-[55%] mx-auto md:hidden"
+                  className="flex flex-col gap-6 items-start tracking-tighter text-3xl leading-tighter font-medium mt-6 w-full max-w-[57%] mx-auto md:hidden"
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -540,7 +540,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleTag('clear');
                       toggleWork('bestwork');
                       setSelectedTags(['']);
-                      setShowNav(false)}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>01 </span>
+                      setShowNav(false)}}><span className=' mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
                       Favourites</motion.button>
 
                     <motion.button 
@@ -549,63 +549,63 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('all');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>00 </span>
+                      toggleWork('clear');}}><span className=' mr-1.5 font-light text-base -ml-0.5 align-top tracking-normal'>∞</span>
                       Everything.<span className='ml-1 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
                       >It's quite a lot</span></motion.button>
 
                     <motion.button 
-                    className="text-left text-foreground "
+                    className="text-left text-foreground font-normal dark:font-light "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('creative');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>01 </span>
+                      toggleWork('clear');}}><span className=' mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>01 </span>
                       Creative</motion.button>
 
                     <motion.button 
-                    className="text-left text-foreground "
+                    className="text-left text-foreground font-normal dark:font-light "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('motion');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>02 </span>
+                      toggleWork('clear');}}><span className=' mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>02 </span>
                       Motion</motion.button>
 
                     <motion.button 
-                    className="text-left text-foreground "
+                    className="text-left text-foreground font-normal dark:font-light "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('edit');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>03 </span>
+                      toggleWork('clear');}}><span className=' mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>03 </span>
                       Edit</motion.button>
 
                     <motion.button 
-                    className="text-left text-foreground "
+                    className="text-left text-foreground font-normal dark:font-light whitespace-nowrap"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('ixd');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>04 </span>
+                      toggleWork('clear');}}><span className=' mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>04 </span>
                       Interaction Design</motion.button>
 
                     <motion.button 
-                    className="text-left text-foreground "
+                    className="text-left text-foreground font-normal dark:font-light "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('clear');
                       toggleNav('false');
                       toggleWork('photography');
-                      }}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>05 </span>
+                      }}><span className=' mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>05 </span>
                       Photography</motion.button>
                       
 
                     <motion.button 
-                   className="text-left text-foreground "
+                   className="text-left text-foreground font-normal dark:font-light "
                    variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('content');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>06 </span>
+                      toggleWork('clear');}}><span className=' mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>06 </span>
                       Content Creation</motion.button>
                   </motion.div>
                 </div>
