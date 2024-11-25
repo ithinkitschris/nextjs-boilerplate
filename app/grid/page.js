@@ -317,9 +317,9 @@ const filteredVideos = videoData.filter((video) => {
 
             {/* Sidenav / Dropdown Button */}
             <motion.button 
-              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/20 dark:border-white/20 flex items-center justify-center  
-              lg:hover:bg-foreground lg:hover:text-background transition-colors duration-100 z-50 right-8 md:right-auto md:left-0.5 -mt-0.5 md:mt-0
-              ${showNav ? "text-white dark:text-black bg-foreground" : ""}`}
+              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/0 dark:backdrop-blur 
+              flex items-center shadow lg:shadow-none lg:hover:bg-foreground lg:hover:text-background transition-colors duration-100 z-50 right-8 md:right-auto md:left-0.5 mt-0.5 md:mt-0
+              ${showNav ? "text-white dark:text-black bg-foreground" : "bg-[#f5f5f5] dark:bg-black/20 lg:dark:bg-transparent"}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
               layout="position"
@@ -338,7 +338,7 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* Top Navbar Contents */}
               <motion.div
-              className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-5 md:gap-10 mix-blend-difference text-white mt-0.5 lg:mt-0.5"
+              className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-3 md:gap-10 mix-blend-difference text-white mt-[7px] lg:mt-0.5"
               initial="hidden"
               animate="show"
               layout="position"
@@ -427,9 +427,9 @@ const filteredVideos = videoData.filter((video) => {
 
           {/* Mobile Navbar BG */}
           <motion.div
-            className={`lg:hidden fixed backdrop-blur-lg left-0 -top-2 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20
-              border-white dark:border-white/10 transition-colors bg-white/30 dark:bg-black/0 blur-[0.5px]
-              ${showNav ? "h-135 border-b-1 bg-white/60 md:bg-white/0 dark:bg-black/40 shadow-standard" : "h-14"}`}
+            className={`lg:hidden fixed dark:backdrop-blur-lg md:backdrop-blur-lg left-1/6 top-2 rounded-full w-4/6 shadow lg:shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.4)] z-20
+              border-white/80 dark:border-white/10 transition-colors bg-background dark:bg-black/20 blur-[0.2px]
+              ${showNav ? "h-120 border-b-1 bg-white md:bg-white/0 dark:bg-black/35 shadow-standard rounded-xl" : "h-10"}`}
             layout
             transition={{ type: "spring", stiffness: 250, damping: 22 }}
           ></motion.div>
@@ -512,7 +512,7 @@ const filteredVideos = videoData.filter((video) => {
 
                   {/* Mobile Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-6 items-start tracking-tighter text-4xl leading-tighter font-medium mt-10 w-full px-16 md:hidden "
+                  className="flex flex-col gap-6 items-start tracking-tighter text-3xl leading-tighter font-medium mt-8 w-full px-[105px] md:hidden"
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -530,7 +530,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleTag('all');
                       toggleNav('false');
                       toggleWork('clear');}}><span className='hidden mr-1 font-light text-sm align-top tracking-normal'>00 </span>
-                      Everything.<span className='ml-2 absolute -rotate-3 mt-1 font-script italic tracking-wider text-xs align-super whitespace-nowrap'
+                      Everything.<span className='ml-1 absolute -rotate-2 mt-1 font-script italic tracking-wider text-xxs align-super whitespace-nowrap'
                       >It's quite a lot</span></motion.button>
 
                     <motion.button 

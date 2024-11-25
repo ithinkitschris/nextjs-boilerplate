@@ -115,6 +115,9 @@ const config: Config = {
         '-mt-6': '-5rem',
         '-mt-[15vh]': '-15vh'
       },
+      inset: {
+        '1/6': '16.6667%',
+      },
       boxShadow: {
         'inner-standard': 'inset 5px 5px 20px rgba(0,0,0,0.1)',
         'mild': '5px 1px 15px rgba(0,0,0,0.1)',
