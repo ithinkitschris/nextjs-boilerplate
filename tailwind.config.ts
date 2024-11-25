@@ -64,7 +64,7 @@ const config: Config = {
         '4.5xl': '2.5rem',
       },
       fontFamily: {
-        serif: ["var(--font-geist-sans)", "serif"], // Use Playfair Display as the serif font
+        serif: ["var(--font-noto-serif)", "serif"], // Use Playfair Display as the serif font
         sans: ["var(--font-geist-sans)", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
         script: ["var(--font-breathing)", "script"],

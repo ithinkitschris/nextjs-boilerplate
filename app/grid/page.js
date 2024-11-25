@@ -14,6 +14,7 @@ import StreetPhotography from '../components/street-photo';
 import BBH from '../components/bbh';
 import Unshackle from '../components/unshackle'
 import BTS from '../components/bts'
+import { select } from 'framer-motion/client';
 
 const scaleIn ={
   hidden: {opacity:0, scale:0.90},
@@ -91,7 +92,8 @@ const worksContainer = {
 const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, role, selectedTags }) => {
   return (
     <motion.div
-      className="overflow-hidden drop-shadow-lg rounded-lg hover:scale-98 hover:drop-shadow-md cursor-pointer group-hover:z-50
+      lang='en'
+      className="drop-shadow-lg rounded-lg hover:drop-shadow-md cursor-pointer group-hover:z-50
       "
       initial="hidden"
       animate="show"
@@ -103,25 +105,26 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
       onClick={onClick}>
 
           {/* Square */}
-          <div className={`lg:pt-[100%] group relative
+          <div className={`lg:pt-[100%] group relative overflow-hidden
             ${selectedTags.includes('all') ? 'pt-[150%]' : 'pt-[150%]'}`}>
 
             {/* Text Container */}
             <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-6 gap-1 lg:gap-4">
 
               {/* Title of work */}
-              <h1 className={`md:text-4xl 2xl:text-5xl tracking-tight font-medium text-white p-2 md:p-0
-              opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 z-50 w-4/5 md:w-3/4 leading-tighter md:leading-11
-              ${selectedTags.includes('all') ? 'text-[24px]' : 'text-5xl p-3'}`}>
+              <h1 className={`md:text-4xl 2xl:text-5xl tracking-tight font-medium p-0.5 md:p-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100
+              transition-opacity duration-300 z-50 break-words hyphens-auto w-5/6 md:w-3/4 leading-tighter md:leading-11
+              ${selectedTags.includes('all') ? 'text-[20px] text-white/100 dark:text-white/80 dark:mix-blend-screen md:dark:mix-blend-normal group-hover:opacity-0' : 'text-5xl p-3 text-white'}`}>
                 {title}
               </h1>
 
               {/* Gradient */}
-              <div className="absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] z-10 h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply"/>
-              <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply"/>
-
+              <div className={`${selectedTags.includes('all') ? 'opacity-0' : 'opacity-100'}`}>
+                <div className={`absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply`}/>
+                <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] -right-[0.2px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply"/>
+              </div>
               {/* Details Container */}
-              <div className="z-50 flex flex-row justify-end w-full">
+              <div className="z-50 flex flex-row justify-start w-full">
 
                 {/* Script Subheader */}
                 {/* <h3 className="z-10 text-white pl-2.5 pb-1 pr-2 md:pb-0 md:text-base tracking-tight
@@ -130,10 +133,11 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
                 {subheader}</h3> */}
 
                 {/* Clean Subheader */}
-                <h3 className={`z-10 text-white pl-2.5 -mb-0.5  md:pb-0 uppercase md:text-base tracking-widest 
-                font-medium font-mono opacity-100 lg:opacity-0 lg:group-hover:opacity-100
-                transition-all duration-300 leading-4 md:leading-5 text-left md:text-left lg:w-1/2
-                ${selectedTags.includes('all') ? 'text-[6px] pr-0.5' : 'text-xxs p-1.5'}`}>
+                <h3 className={`z-10 -mb-0.5 md:pb-0 uppercase md:text-base tracking-widest 
+                 font-mono opacity-100 lg:opacity-0 lg:group-hover:opacity-100 
+                transition-opacity duration-300 leading-normal md:leading-5 text-left md:text-left lg:w-1/2
+                ${selectedTags.includes('all') ? 'text-[6px] pr-0.5 mix-blend-screen lg:mix-blend-normal text-white/80 group-hover:opacity-0 w-5/6 font-bold' 
+                : 'text-xxs p-1.5 pl-2.5 text-white w-full font-light'}`}>
                 {subheader}</h3>
 
                 {/* Role */}
@@ -165,9 +169,10 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
             </button>
 
             {/* Mobile Corner Arrow */}
-            <button className={`lg:hidden absolute top-2.5 right-2.5 font-medium text-lg tracking-tighter p-0.5 px-1 rounded-full z-50
-            flex items-center justify-center text-white cursor-pointer
-            group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-1 transition-all duration-200`}>
+            <button className={`lg:hidden absolute font-medium text-lg tracking-tighter p-0.5 px-1 rounded-full z-50 
+            flex items-center justify-center cursor-pointer group-hover:bg-white group-hover:text-black transition-all duration-300
+            ${selectedTags.includes('all') ? 'top-1 right-1 group-hover:-m-0 text-white/50 mix-blend-overlay group-hover:mix-blend-normal group-hover:scale-90' 
+            : 'top-6 right-6 scale-150 group-hover:-m-3 group-hover:scale-150 text-white'}`}>
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="2 2 20 20"
@@ -185,8 +190,10 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
 
             {/* Video */}
             <video
-              className="absolute inset-0 w-full h-full object-cover blur-none rounded-lg
-              md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-200"
+              className={`absolute inset-0 w-full h-full object-cover rounded-lg 
+              md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-500 
+              ${selectedTags.includes('all') ? 'blur-[30px] md:blur-none group-hover:blur-none' : 'blur-none'}`}
+              style={{ clipPath: 'inset(0 round 0.5rem)' }}
               autoPlay muted loop playsInline>
               <source src={videoSrc} type="video/mp4" />
             </video>
@@ -308,7 +315,7 @@ const filteredVideos = videoData.filter((video) => {
           {/* Top Navbar */}
           <div className="col-span-full fixed top-2 z-40 mb-4 text-sm lg:text-base font-medium w-screen pr-6">
 
-            {/* SideNav Button */}
+            {/* Sidenav / Dropdown Button */}
             <motion.button 
               className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/20 dark:border-white/20 flex items-center justify-center  
               lg:hover:bg-foreground lg:hover:text-background transition-colors duration-100 z-50 right-8 md:right-auto md:left-0.5 -mt-0.5 md:mt-0
@@ -374,16 +381,18 @@ const filteredVideos = videoData.filter((video) => {
                 variants={animateInChild}
                 layout="position"
                 onClick={() => {
-                  toggleTag('clear');
-                  toggleWork('clear');
-                  setSelectedTags(['all']);
                   if (window.matchMedia('(max-width: 640px)').matches) {
                     toggleNav(true);
+                    } else {
+                      toggleTag('clear');
+                      toggleWork('clear');
+                      setSelectedTags(['all']);
+                      setShowNav(true);
                     }
                   }}>
 
                   <span className="hidden md:block">Here's everything that I've got.</span>
-                  <span className="block md:hidden">All</span>
+                  <span className="block md:hidden">Works</span>
                   
                 </motion.button>
 
@@ -1171,7 +1180,7 @@ const filteredVideos = videoData.filter((video) => {
           > 
             {/* Grid / Page */}
             <motion.div 
-            className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full gap-1.5 mt-6 md:mt-4
+            className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full gap-1.5 mt-4 md:mt-4
             ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1' : 'grid-cols-3'}`}>
               <AnimatePresence>
                 {selectedWork === 'photography' ? (

@@ -254,7 +254,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
                    The World of Studio Ghibli
                 </h1>
-                <h1 className="text-xl [word-spacing:-0.05em] font-script md:text-xl w-120 -rotate-1 tracking-normal mt-2 mb-5">Marketing campaign for ArtScience Museum</h1>
+                <h1 className="text-lg font-script md:text-xl -rotate-1 tracking-normal mt-2 mb-5">Marketing campaign for ArtScience Museum</h1>
                 <p className="mr-10 mb-4 md:w-3/4">Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
