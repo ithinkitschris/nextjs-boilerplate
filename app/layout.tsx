@@ -6,7 +6,6 @@ import DocumentationButton from "./components/documentation";
 import localFont from "next/font/local";
 import "./globals.css";
 import SearchMenu from "./components/search-menu";
-import { NavProvider } from "./components/NavContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -54,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
   
   return (
-    <html className={isDarkMode ? "dark" : ""} lang="en">
+    <html className={isDarkMode ? "dark" : ""}>
       <body className={`${geistSans.variable} ${geistMono.variable} ${modernLine.variable} ${notoSerif.variable} ${breathing.variable}
       antialiased flex flex-col min-h-screen
       bg-background transition-all duration-300`}>
@@ -65,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
         </div>        
         <SearchMenu />
-        <main><NavProvider>{children}</NavProvider></main>
+        <main>{children}</main>
       </body>
     </html>
   );

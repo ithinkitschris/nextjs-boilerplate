@@ -14,9 +14,8 @@ import StreetPhotography from '../components/street-photo';
 import BBH from '../components/bbh';
 import Unshackle from '../components/unshackle'
 import BTS from '../components/bts'
-import { select } from 'framer-motion/client';
-import { type } from 'os';
 
+// Motion
 const scaleIn ={
   hidden: {opacity:0, scale:0.90},
   show: {
@@ -28,7 +27,6 @@ const scaleIn ={
     transition: {duration: 0.1, ease: "easeOut"},
   },
 };
-
 const animateIn ={
   hidden: {opacity:0, x:-10},
   show: {
@@ -40,7 +38,6 @@ const animateIn ={
     transition: {duration: 0.1, ease: "easeOut"},
   },
 };
-
 const animateInChild ={
   hidden: {opacity:0, x:-20},
   show: {
@@ -52,7 +49,6 @@ const animateInChild ={
     transition: {duration: 0.5, ease: "easeOut"},
   },
 };
-
 const animateInChildMobile ={
   hidden: {opacity:0, y:-20},
   show: {
@@ -64,7 +60,6 @@ const animateInChildMobile ={
     transition: {duration: 0.5, ease: "easeOut"},
   },
 };
-
 const skillContainer = {
   hidden: { opacity: 0 },
   show: {
@@ -76,7 +71,6 @@ const skillContainer = {
   },
   exit: { opacity: 0 },
 };
-
 const worksContainer = {
   hidden: { opacity: 0 },
   show: {
@@ -90,6 +84,7 @@ const worksContainer = {
   exit: { opacity: 0 },
 };
 
+// VideoSquare
 const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, role, selectedTags }) => {
   return (
     <motion.div
@@ -361,13 +356,13 @@ const filteredVideos = videoData.filter((video) => {
         px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-2 md:top-0.5 lg:top-1.5 z-40 mb-4 text-sm lg:text-base font-medium w-screen h-screen pr-6">
+          <div className="col-span-full fixed top-2 md:top-0.5 lg:top-1.5 z-40 mb-4 text-sm lg:text-base font-medium w-screen pr-6">
 
             {/* Sidenav / Dropdown Button */}
             <motion.button 
               className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/0 dark:backdrop-blur 
               flex items-center shadow lg:shadow-none lg:hover:bg-foreground lg:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
-              ${showNav ? "text-white dark:text-black bg-foreground right-6" : "bg-[#f5f5f5] dark:bg-black/20 lg:dark:bg-transparent right-8"}`}
+              ${showNav ? "text-white dark:text-black bg-foreground right-8" : "bg-[#f5f5f5] dark:bg-black/20 lg:dark:bg-transparent right-8"}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
               layout="position"
@@ -509,7 +504,7 @@ const filteredVideos = videoData.filter((video) => {
             {showNav && (
               <>
                 {/* Mobile Dropdown Container */}
-                <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-20 fixed w-screen -ml-4 font-medium ">
+                <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-50 fixed w-screen -ml-4 font-medium ">
 
                   {/* Header */}
                   {/* <motion.h1
@@ -588,7 +583,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('creative');
                       toggleWork('bestwork');
-                      setShowNav(false)}}><span className='hidden mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
+                      setShowNav(false)}}><span className='-ml-[18px] mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
                       Favourites</motion.button>
 
                     <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
@@ -599,7 +594,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('all');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1.5 font-light text-base -ml-0.5 align-top tracking-normal'>∞</span>
+                      toggleWork('clear');}}><span className='-ml-[18.5px] mr-1.5 font-light text-base align-top tracking-normal'>∞</span>
                       Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
                       >It's quite a lot</span></motion.button>
                       

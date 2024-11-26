@@ -9,29 +9,29 @@ export default function CabinCrewStories({className=""}) {
     const backgroundGlowRef=useRef(null);
     const bannerVideoRef=useRef(null);
 
-    // useEffect(() => {
-    //     const backgroundGlow = backgroundGlowRef.current;
-    //     const bannerVideo = bannerVideoRef.current;
+    useEffect(() => {
+        const backgroundGlow = backgroundGlowRef.current;
+        const bannerVideo = bannerVideoRef.current;
     
-    //     if (backgroundGlow && bannerVideo) {
-    //       // Ensure both videos start together
-    //       backgroundGlow.play();
-    //       bannerVideo.play();
+        if (backgroundGlow && bannerVideo) {
+          // Ensure both videos start together
+          backgroundGlow.play();
+          bannerVideo.play();
     
-    //       // Synchronize the videos periodically
-    //       const syncVideos = () => {
-    //         if (Math.abs(backgroundGlow.currentTime - bannerVideo.currentTime) > 0.2) {
-    //           bannerVideo.currentTime = backgroundGlow.currentTime;
-    //         }
-    //       };
+          // Synchronize the videos periodically
+          const syncVideos = () => {
+            if (Math.abs(backgroundGlow.currentTime - bannerVideo.currentTime) > 0.2) {
+              bannerVideo.currentTime = backgroundGlow.currentTime;
+            }
+          };
     
-    //       // Set an interval to check and sync the videos every 100ms
-    //       const syncInterval = setInterval(syncVideos, 100);
+          // Set an interval to check and sync the videos every 100ms
+          const syncInterval = setInterval(syncVideos, 100);
     
-    //       // Clean up the interval on component unmount
-    //       return () => clearInterval(syncInterval);
-    //     }
-    //   }, []);
+          // Clean up the interval on component unmount
+          return () => clearInterval(syncInterval);
+        }
+      }, []);
 
 
 const animateIn ={
