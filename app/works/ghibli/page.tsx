@@ -66,6 +66,7 @@ const animateIn ={
                 autoPlay 
                 muted 
                 loop
+                playsInline
                 ></video>
                 
                 {/* Header */}

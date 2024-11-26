@@ -102,23 +102,23 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
 
           {/* Square */}
           <div className={`lg:pt-[100%] group relative overflow-hidden
-            ${selectedTags.includes('all') ? 'pt-[60%]' : 'pt-[150%]'}`}>
+            ${selectedTags.includes('all') ? 'pt-[161%]' : 'pt-[150%]'}`}>
 
             {/* Text Container */}
-            <div className="absolute inset-0 flex  items-end justify-between p-2 md:p-6 gap-1 lg:gap-4">
+            <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-6 gap-1 lg:gap-4">
 
               {/* Title of work */}
               <h1 className={`md:text-4xl 2xl:text-5xl tracking-tight font-medium p-0.5 md:p-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100
-              transition-opacity duration-300 z-50 break-words hyphens-auto w-full md:w-3/4 md:leading-11 bottom-0
+              transition-opacity duration-300 z-50 break-words hyphens-auto w-5/6 md:w-3/4 md:leading-11
               ${selectedTags.includes('all') 
-              ? 'text-[20px] text-white/100 dark:text-white dark:mix-blend-screen md:dark:mix-blend-normal group-hover:opacity-0 leading-[16px]' 
+              ? 'text-[16px] text-white/100 dark:text-white dark:mix-blend-screen md:dark:mix-blend-normal group-hover:opacity-0 leading-[16px]' 
               : 'text-5xl p-3 text-white leading-tighter'}`}>
                 {title}
               </h1>
 
               {/* Gradient */}
-              <div className={` ${selectedTags.includes('all') ? 'opacity-100 group-hover:opacity-0 transition-all duration-300' : 'opacity-100'}`}>
-                <div className={`hidden absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
+              <div className={` ${selectedTags.includes('all') ? 'opacity-0 group-hover:opacity-0 transition-all duration-300' : 'opacity-100'}`}>
+                <div className={`absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
                 <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] -right-[0.2px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply "/>
               </div>
               {/* Details Container */}
@@ -190,7 +190,7 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
             <video
               className={`absolute inset-0 w-full h-full object-cover rounded-lg 
               md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-500 
-              ${selectedTags.includes('all') ? 'blur-[0px] md:blur-none group-hover:blur-none' : 'blur-none'}`}
+              ${selectedTags.includes('all') ? 'blur-[18px] md:blur-none group-hover:blur-none' : 'blur-none'}`}
               style={{ clipPath: 'inset(0 round 0.5rem)' }}
               autoPlay muted loop playsInline>
               <source src={videoSrc} type="video/mp4" />
@@ -219,12 +219,37 @@ const GridPage = () => {
     { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', role:'3D Motion Design', tags: ['iphone', 'all', 'motion'] }, 
   ];
 
-const [selectedTags, setSelectedTags] = useState(['all']);
+const [isMobile, setIsMobile] = useState(false);
+const [selectedTags, setSelectedTags] = useState('');
 const [selectedWork, setSelectedWork] = useState('');
 const [showNav, setShowNav] = useState(false);
 const [showReset, setShowReset] = useState(false);
 const [hoveredWork, setHoveredWork] = useState(null);
-const [isMobile, setIsMobile] = useState(false);
+
+// Check if Mobile
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    const mediaQuery = window.matchMedia("(max-width: 640px)");
+
+    setIsMobile(mediaQuery.matches);
+
+    const handleResize = () => setIsMobile(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }
+}, []);
+
+useEffect(() => {
+  if (isMobile) {
+    setSelectedTags('');
+    setSelectedWork('resume');
+  } else {
+    setSelectedTags('all');
+    setSelectedWork('');
+  }
+}, [isMobile]);
+
 // const [touchStart, setTouchStart] = useState(0);
 // const [touchEnd, setTouchEnd] = useState(0);
 
@@ -306,20 +331,6 @@ const toggleNav = () => {
     setShowNav(true);
   }
 };
-
-// Check if Mobile
-useEffect(() => {
-  if (typeof window !== "undefined") {
-    const mediaQuery = window.matchMedia("(max-width: 640px)");
-
-    setIsMobile(mediaQuery.matches);
-
-    const handleResize = () => setIsMobile(mediaQuery.matches);
-    mediaQuery.addEventListener("change", handleResize);
-
-    return () => mediaQuery.removeEventListener("change", handleResize);
-  }
-}, []);
 
 // Reset Button Logic
 useEffect(() => {
@@ -583,7 +594,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('creative');
                       toggleWork('bestwork');
-                      setShowNav(false)}}><span className='-ml-[18px] mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
+                      setShowNav(false)}}><span className='hidden mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
                       Favourites</motion.button>
 
                     <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
@@ -594,7 +605,7 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('all');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='-ml-[18.5px] mr-1.5 font-light text-base align-top tracking-normal'>∞</span>
+                      toggleWork('clear');}}><span className='hidden mr-1.5 font-light text-base align-top tracking-normal'>∞</span>
                       Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
                       >It's quite a lot</span></motion.button>
                       
@@ -1257,7 +1268,7 @@ const filteredVideos = videoData.filter((video) => {
             {/* Grid / Page */}
             <motion.div 
             className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full md:gap-1.5 mt-4 md:mt-4
-            ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1 gap-2' : 'grid-cols-1 gap-1'}`}>
+            ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1 gap-2' : 'grid-cols-3 gap-1'}`}>
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
                   <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>
@@ -1274,7 +1285,7 @@ const filteredVideos = videoData.filter((video) => {
                 ) : selectedWork === 'ghibli' ? (
                   <Ghibli key="ghibli" className="col-span-full"/>
                 ) : selectedWork === 'cabin' ? (
-                  <CabinCrewStories key="cabin" className="col-span-full"/>
+                  <CabinCrewStories key="cabin" className="col-span-full" isMobile={isMobile}/>
                 ) : selectedWork === 'cocktail' ? (
                   <Cocktail key="cocktail" className="col-span-full"/>
                 ) : selectedWork === 'bestwork' ? (

@@ -4,12 +4,14 @@ import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
 import Episodes from "@/app/components/episodes-cabin.js";
 
-export default function CabinCrewStories({className=""}) {
+export default function CabinCrewStories({className="", isMobile}) {
     
     const backgroundGlowRef=useRef(null);
     const bannerVideoRef=useRef(null);
 
     useEffect(() => {
+        if (isMobile) return;
+        
         const backgroundGlow = backgroundGlowRef.current;
         const bannerVideo = bannerVideoRef.current;
     
