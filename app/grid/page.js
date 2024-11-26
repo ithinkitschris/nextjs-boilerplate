@@ -102,23 +102,23 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
 
           {/* Square */}
           <div className={`lg:pt-[100%] group relative overflow-hidden
-            ${selectedTags.includes('all') ? 'pt-[161%]' : 'pt-[150%]'}`}>
+            ${selectedTags.includes('all') ? 'pt-[60%]' : 'pt-[150%]'}`}>
 
             {/* Text Container */}
-            <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-6 gap-1 lg:gap-4">
+            <div className="absolute inset-0 flex  items-end justify-between p-2 md:p-6 gap-1 lg:gap-4">
 
               {/* Title of work */}
               <h1 className={`md:text-4xl 2xl:text-5xl tracking-tight font-medium p-0.5 md:p-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100
-              transition-opacity duration-300 z-50 break-words hyphens-auto w-5/6 md:w-3/4 md:leading-11
+              transition-opacity duration-300 z-50 break-words hyphens-auto w-full md:w-3/4 md:leading-11 bottom-0
               ${selectedTags.includes('all') 
-              ? 'text-[14px] text-white/100 dark:text-white dark:mix-blend-screen md:dark:mix-blend-normal group-hover:opacity-0 leading-[16px]' 
+              ? 'text-[20px] text-white/100 dark:text-white dark:mix-blend-screen md:dark:mix-blend-normal group-hover:opacity-0 leading-[16px]' 
               : 'text-5xl p-3 text-white leading-tighter'}`}>
                 {title}
               </h1>
 
               {/* Gradient */}
               <div className={` ${selectedTags.includes('all') ? 'opacity-100 group-hover:opacity-0 transition-all duration-300' : 'opacity-100'}`}>
-                <div className={`absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
+                <div className={`hidden absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
                 <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] -right-[0.2px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply "/>
               </div>
               {/* Details Container */}
@@ -1257,7 +1257,7 @@ const filteredVideos = videoData.filter((video) => {
             {/* Grid / Page */}
             <motion.div 
             className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full md:gap-1.5 mt-4 md:mt-4
-            ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1 gap-2' : 'grid-cols-3 gap-1'}`}>
+            ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1 gap-2' : 'grid-cols-1 gap-1'}`}>
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
                   <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>
