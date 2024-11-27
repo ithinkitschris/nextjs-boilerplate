@@ -26,7 +26,7 @@ const dropdown = {
     hidden: { opacity: 0, y: -20 },
     show: {
         opacity: 1, y: 0,
-        transition: { staggerChildren: 0.1, duration: 0.25, ease: "easeOut" }
+        transition: { staggerChildren: 0.05, duration: 0.25, ease: "easeOut" }
     },
     fade: { 
         opacity:0,
@@ -113,6 +113,18 @@ export default function Resume({className=""}) {
     const [showLong, setShowLong] = useState(false);
     const [showCurriculum, setShowCurriculum] = useState(false);
     const [showAsm, setShowAsm] = useState(false);
+    const [showTBWA, setShowTBWA] = useState(false);
+    const [showSIA, setShowSIA] = useState(false);
+    const [showIKEA, setShowIKEA] = useState(false);
+    const [showSC, setShowSC] = useState(false);
+    const [showBBH, setShowBBH] = useState(false);
+    const [showSamsung, setShowSamsung] = useState(false);
+    const [showNike, setShowNike] = useState(false);
+    const [showJollibee, setShowJollibee] = useState(false);
+    const [showSentosa, setShowSentosa] = useState(false);
+    const [showKinetic, setShowKinetic] = useState(false);
+    const [showFreelance, setShowFreelance] = useState(false);
+    const [showOthers, setShowOthers] = useState(false);
 
     const toggleShort = () => {
         showShort ? setShowShort(false) : setShowShort(true)
@@ -129,6 +141,52 @@ export default function Resume({className=""}) {
     const toggleAsm = () => {
         setShowAsm((prevState) => !prevState);
     }
+
+    const toggleTBWA = () => {
+        setShowTBWA((prevState) => !prevState);
+    }
+
+    const toggleSIA = () => {
+        setShowSIA((prevState) => !prevState);
+    }
+
+    const toggleIKEA = () => {
+        setShowIKEA((prevState) => !prevState);
+    }
+
+    const toggleSC = () => {
+        setShowSC((prevState) => !prevState);
+    }
+
+    const toggleBBH = () => {
+        setShowBBH((prevState) => !prevState);
+    }
+
+    const toggleSamsung = () => {
+        setShowSamsung((prevState) => !prevState);
+    }
+
+    const toggleNike = () => {
+        setShowNike((prevState) => !prevState);
+    }
+
+    const toggleJollibee = () => {
+        setShowJollibee((prevState) => !prevState);
+    }
+
+    const toggleSentosa = () => {
+        setShowSentosa((prevState) => !prevState);
+    }
+
+    const toggleKinetic = () => {
+        setShowKinetic((prevState) => !prevState);
+    }
+
+    const toggleFreelance = () => {
+        setShowFreelance((prevState) => !prevState);
+    }
+
+
 
    
 
@@ -177,7 +235,7 @@ export default function Resume({className=""}) {
                     >
                         {/* Circle Header */}
                         <h1 className="flex items-center justify-center -ml-2.5 border-1 border-white/50  
-                        rounded-full tracking-tighter font-medium text-sm w-[135px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
+                        rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
                         
                         {/* Script Header */}
                         {/* <h1 className="flex items-center justify-start -rotate-2
@@ -230,7 +288,7 @@ export default function Resume({className=""}) {
                     Lorem ipsum blah blah bla bla bla blah blah.
                 </motion.div>
 
-                <motion.button className={`px-5 text-lg font-medium tracking-tighter w-full text-left mb-2 -ml-0.5`} onClick={toggleLong} variants={animateInChild}>Give me the entire backstory.</motion.button>
+                <motion.button className={`px-5 text-lg font-medium tracking-tighter w-full text-left mb-4 -ml-0.5`} onClick={toggleLong} variants={animateInChild}>Give me the entire backstory.</motion.button>
 
                 {showLong && (
                     <motion.div 
@@ -270,52 +328,74 @@ export default function Resume({className=""}) {
                 )}
             
             </div>
+            
 
+            
 
+            {/* Contact */}
             <motion.div 
-                className="mb-8 px-5 md:px-0"
+                className="mt-2 mb-8 px-5 md:px-0 col-span-full"
                 layout="position"
-                variants={dropdownChild}
+                variants={animateInChild}
+                transition={{
+                    type: "spring",
+                    stiffness: 300, // Adjust for faster or slower animation
+                    damping: 26, // Adjust for bounciness and smoothness
+                    }}
                 key="Contact">
-                    <p className="mb-0 font-script w-12 whitespace-nowrap -ml-1.5 -rotate-6  text-sm italic tracking-wider">Contact<span className="font-mono font-semibold">.</span></p>
+                    {/* <p className="mb-3 font-mono font-medium text-sm">Contact.</p> */}
+                    <p className="mb-1 font-script w-12 whitespace-nowrap -ml-1 -rotate-3 text-sm italic tracking-">Drop me a hello!</p>
                     <p className=""><span className="font-semibold">Email</span> – ithinkitschristopher@gmail.com</p>
                     <p className=""><span className="font-semibold">LinkedIn</span> – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground">Chris Leow</a></p>
                     <p className=""><span className="font-semibold">Instagram</span> – <a href="https://www.instagram.com/khristurtle/" className="underline transition-colors hover:text-midground">@khristurtle</a></p>
             </motion.div>
-
+            
             {/* Currently: */}
             <motion.div 
-                className="col-span-full pl-5 md:pl-0 md:col-span-2 relative"
+                className="col-span-full pl-5 md:pl-0 md:col-span-2 relative mt-4 cursor-pointer"
                 variants={animateInChild}
                 key="Currently"
-                layout="position">
+                layout="position"
+                transition={{
+                    type: "spring",
+                    stiffness: 300, // Adjust for faster or slower animation
+                    damping: 24, // Adjust for bounciness and smoothness
+                    }}
+                onClick={toggleCurriculum}>
+                    
 
-                <h1 className="text-4xl md:text-3xl mb-11 -ml-1 mt-10 tracking-normal font-script">
-                    Currently:
-                </h1>
-                
-                <div className="-mt-2">
-                    <button 
-                    className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
-                    rounded-full tracking-tighter font-medium text-sm w-[153px] pl-1 mb-2 font-mono whitespace-nowrap"
-                    onClick={toggleCurriculum}>
-                        Master's Student 
+                <h1 className="text-[23px] md:text-3xl mb-8 -ml-1 mt-6 tracking-normal font-script -rotate-3 w-[88vw]">Currently:</h1>
+                {/* <h1 className="text-2xl md:text-3xl mb-8 -ml-1 mt-10 tracking-tight  w-20">Currently:</h1> */}
+                {/* Top Line */}
+                <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow mt-4" variants={dropdownChild} layout='position'/>
+
+                {/* Button Row */}
+                <div className="flex justify-between mt-4">
+                    <div 
+                    className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-non-color duration-200
+                    rounded-full tracking-tight font-medium text-sm w-[125px] mb-2 font-mono whitespace-nowrap ${showCurriculum ? 'bg-foreground text-background scale-96' : ''}`}>
+                        Master's Student
+                    </div>
+
+                    <div 
+                    className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
+                    rounded-full mb-2 px-1 ${showCurriculum ? 'bg-foreground text-background scale-96' : ''}`}>
+                       
                     {showCurriculum ? (
-                        <ChevronUpIcon className="ml-0.5 h-3 w-3" />
+                        <ChevronUpIcon className="h-4 w-4" />
                     ) : (
-                        <ChevronDownIcon className="ml-0.5 h-3 w-3" />
+                        <ChevronDownIcon className="h-4 w-4" />
                     )}
-                    </button>
+                    </div>
+                </div>  
 
-                    <p>
-                        MFA Interaction Design
-                        <br/>
-                        School of Visual Arts
-                        <br/>
-                        <i className="-ml-0.5">September 2024 – May 2026</i>
-                    </p>
-
+                <div>
+                    <p>MFA Interaction Design</p>
+                    <p>School of Visual Arts</p>
+                    <i className="-ml-0.5">September 2024 – May 2026</i>
                 </div>
+
+
 
                 {showCurriculum && (
                     <motion.div
@@ -357,22 +437,52 @@ export default function Resume({className=""}) {
             </motion.div>
 
             {/* ArtScience Museum */}
-            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-11"
+            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-0"
             variants={animateInChild}
             key="ASM"
-            layout="position">
+            layout="position"
+            transition={{
+                type: "spring",
+                stiffness: 300, // Adjust for faster or slower animation
+                damping: 24, // Adjust for bounciness and smoothness
+                }}>
                 
                 <div className="">
-                    <h1 className="text-4xl md:text-3xl mb-10 -ml-2 mt-10 tracking-normal -rotate-3 w-24 font-script">Previously:</h1>
+                    <h1 className="text-[23px] md:text-3xl mb-6 -ml-2 mt-18 tracking-normal -rotate-3 w-24 font-script">Previously:</h1>
 
-                    <div className="-mt-2">
-                    <button className="flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 
-                        rounded-full tracking-tighter font-medium text-sm w-30 mb-2 font-mono whitespace-nowrap"
-                        onClick={toggleAsm}>Creative Lead</button>
-                    <p>Marina Bay Sands <i>(ArtScience Museum)</i></p>
-                    <p className="-ml-0.5 italic opacity-75">January 2024 – November 2024</p>
+                    {/* Line */}
+                    <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow" variants={dropdownChild} layout='position'/>
+
+                    {/* Clickable Area */}
+                    <div className="cursor-pointer" onClick={toggleAsm}>
+
+                        {/* Button Row */}
+                        <div className="flex justify-between mt-4">
+                            <div 
+                            className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-non-color duration-200
+                            rounded-full tracking-tight font-medium text-sm w-[104px] mb-2 font-mono whitespace-nowrap ${showAsm ? 'bg-foreground text-background scale-96' : ''}`}>
+                                Creative Lead
+                            </div>
+
+                            <div 
+                            className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
+                            rounded-full mb-2 px-1 ${showAsm ? 'bg-foreground text-background scale-96' : ''}`}>
+                            
+                            {showAsm ? (
+                                <ChevronUpIcon className="h-4 w-4" />
+                            ) : (
+                                <ChevronDownIcon className="h-4 w-4" />
+                            )}
+                            </div>
+                        </div> 
+
+                        <p>Marina Bay Sands <i>(ArtScience Museum)</i></p>
+                        <p className="-ml-0.5 italic opacity-75">January 2024 – November 2024</p>
+
                     </div>
+
                 </div>
+
                 { showAsm && (
                     <motion.div
                     key="dropdown-asm"
@@ -380,52 +490,746 @@ export default function Resume({className=""}) {
                     animate="show"
                     layout="position"
                     variants={dropdown}>
-                        <h1 className="mt-8 2xl:mt-14 text-lg font-medium">
+                        <h1 className="mt-8 2xl:mt-14 text-lg">
                         ArtScience Museum</h1>
 
                         <motion.div variants={dropdownChild}>
-                            <h1 className="mt-6 mb-4 opacity-90">
+                            <h1 className="mt-6 mb-4 ml-5 opacity-90">
                                 The World of Studio Ghibli
                             </h1>
 
-                            <p className="ml-6 opacity-50">
+                            <p className="ml-5 opacity-50">
                             Creative direction for the integrated marketing campaign for The World of Studio Ghibli, the first ever Studio Ghibli exhibition in Singapore held at ArtScience Museum. Designed the Key Visual for the exhibition and provided creative direction over marketing partners as well as merchandise for the exhibition. 
                             </p>
                         </motion.div>
                         <motion.div variants={dropdownChild}>
-                            <h1 className="mt-4 mb-4 opacity-90">
+                            <h1 className="mt-4 mb-4 ml-5 opacity-90">
                                 Goddess: Brave. Bold. Beautiful.</h1>
-                            <p className="ml-6 opacity-50">
+                            <p className="ml-5 opacity-50">
                             Creative direction and strategic positioning for the marketing campaign of Goddess, an exhibition at the ArtScience Museum that celebrates screen icons across 120 years of moving image history. 
                             </p>
                         </motion.div>
                         <motion.div variants={dropdownChild}>
-                        <h1 className="mt-4 mb-4 opacity-90">
+                        <h1 className="mt-4 mb-4 ml-5 opacity-90">
                             Frida Kahlo: The Life of an Icon</h1>
-                        <p className="ml-6 opacity-50">
+                        <p className="ml-5 opacity-50">
                         Creative direction and strategic positioning for the marketing campaign of Frida Kahlo: Life of an Icon, an exhibition at the ArtScience Museum on Mexican artist Frida Kahlo, alongside the companion exhibition Laid Bare: Frida’s Inner World. Managed and produced visuals and assets across the campaign titled Frida Forever for the lineup of activities held at the museum.
                         </p>
                         </motion.div>
                         <motion.div variants={dropdownChild}>
-                        <h1 className="mt-4 mb-4 opacity-90">
+                        <h1 className="mt-4 mb-4 ml-5 opacity-90">
                             ArtScience After Hours</h1>
-                        <p className="ml-6 opacity-50">
+                        <p className="ml-5 opacity-50">
                         Creative direction and visual identity oversight on ArtScience After Hours, an all-encompassing night time experience for the ArtScience Museum, with late-night offerings and experiences beyond daylight.
                         </p>
                         </motion.div>
                         <motion.div variants={dropdownChild}>
-                        <h1 className="mt-4 mb-4 opacity-90">
+                        <h1 className="mt-4 mb-4 ml-5 opacity-90">
                             ArtScience Cinema</h1>
-                        <p className="ml-6 opacity-50">
+                        <p className="ml-5 opacity-50">
                         Creative direction for all marketing deliverables for ArtScience Cinema, ArtScience Museumss purpose-built cinema that screens a curated programme of film all year round by the museums film curatorial team.
                         </p>
                         </motion.div>
                     </motion.div>
                 )}
+
             </motion.div>
 
-        
+            {/* TBWA */}
+            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-2"
+            variants={animateInChild}
+            key="TBWA"
+            layout="position"
+            transition={{
+                type: "spring",
+                stiffness: 300, // Adjust for faster or slower animation
+                damping: 28, // Adjust for bounciness and smoothness
+                }}>
 
+                {/* Line */}
+                <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow" variants={dropdownChild} layout='position'/>
+
+                {/* Button Row */}
+                <motion.div variants={animateInChild} className="cursor-pointer" onClick={toggleTBWA}>
+                    
+                    {/* Title + Button */}
+                    <div className="flex justify-between mt-4">
+                        <div 
+                        className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-non-color duration-200
+                        rounded-full tracking-tight font-medium text-sm w-[88px] mb-2 font-mono whitespace-nowrap ${showTBWA ? 'bg-foreground text-background scale-96' : ''}`}>
+                            Art Director
+                        </div>
+
+                        <div 
+                        className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
+                        rounded-full mb-2 px-1 ${showTBWA ? 'bg-foreground text-background scale-96' : ''}`}>
+                        
+                        {showTBWA ? (
+                            <ChevronUpIcon className="h-4 w-4" />
+                        ) : (
+                            <ChevronDownIcon className="h-4 w-4" />
+                        )}
+                        </div>
+                    </div> 
+
+                    <p>TBWA\ Singapore</p>
+                    <i className="-ml-[1px] opacity-75">March 2021 – August 2023</i>
+                </motion.div>
+
+                {showTBWA && (
+                <motion.div
+                className=""
+                key="dropdown-TBWA"
+                initial="hidden"
+                animate="show"
+                layout="position"
+                variants={dropdown}
+                transition={{
+                    type: "spring",
+                    stiffness: 300, // Adjust for faster or slower animation
+                    damping: 26, // Adjust for bounciness and smoothness
+                    }}>
+
+                    {/* SIA Button Row */}
+                    <motion.div
+                    className="flex justify-between cursor-pointer pr-1 mt-6"
+                    onClick={toggleSIA}
+                    variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 300, // Adjust for faster or slower animation
+                        damping: 26, // Adjust for bounciness and smoothness
+                        }}>
+                        <button 
+                        className="2xl:mt-14 text-lg whitespace-nowrap tracking-tight flex items-center">
+                            Singapore Airlines
+                        </button>
+
+                        <button 
+                        className="2xl:mt-14 flex items-center">
+                        {showSIA 
+                        ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
+                        : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
+                        </button>
+                    </motion.div>
+
+                    {/* SIA Dropdown */}
+                    {showSIA && (
+                    <motion.div className=""
+                    key="dropdown-SIA"
+                    initial="hidden"
+                    animate="show"
+                    layout="position"
+                    variants={dropdown}>
+
+                        
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Beyond The Cabin</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Lead Creative and Motion Designer for Beyond The Cabin, an episodic brand campaign and content series that was centred around Singapore Airline’s Cabin Crew’s as World Class travellers with worldly passions.</p>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Produced travel guides featuring Cabin Crew, casted for their expertise and passion for destinations flown to by Singapore Airlines. Showcasing a depth of understanding they have for the destinations and novel experiences through 
+                            their insights
+                            </p>
+                        </motion.div>
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Cocktail Conversations</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Lead Creative and Motion Designer for Cocktail Conversations, an episodic sustenance campaign and content series for the flagship SilverKris Lounge at Singapore Changi Airport Terminal 3. </p>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Centred around the idea of the lounges being home to personalities from all walks of life around the world. We invited a couple of these personalities to have a conversation with us at the Crystal Bar in the First Class SilverKris Lounge, finishing off with a bespoke cocktail concocted just for them based off their answers and available for passengers to order at the bar.
+                            </p>
+                        </motion.div>
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Kris+ Brand Campaign</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Lead Creative for a tactical brand campaign for Kris+, the lifestyle rewards app by Singapore Airlines. Centred around the idea of a holiday getaway being just one tap away on the app through shopping and dining, the campaign was brought to life in the likes of a Rube Goldberg device, symbolising the domino effect through the journey of using the app.</p>
+                            <p className="mb-4 ml-5 opacity-50">
+                            The campaign launched with a 30s brand film and OOH placements around Singapore.
+                            </p>
+                        </motion.div>
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Travel Like Never Before</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Conceptualised and art directed a brand campaign for the recovery efforts of Singapore Airlines as travel restrictions lifted across the world in 2022. With the strategy of travelling bigger and better than ever before, the campaign was centred around travelling for the big milestone and sentimental moments now that travel is back on the table.</p>
+                            <p className="mb-4 ml-5 opacity-50">
+                            The brand film has been viewed over 36 million times. 
+                            </p>
+                        </motion.div>
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">SilverKris Lounge</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Lead Creative, Editor and Motion Designer for the launch campaign of the brand new flagship SilverKris Lounges at Changi Airport. Produced a 90s brand film that covered the amenities across the 4 lounges.
+                            </p>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Oversaw the creation of a glass installation of the Batik Motif as the entrance facade to the lounges and the animation of the Batik Motif for an 8 metre curved digital wall at the entrance foyer.
+                            </p>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Art directed a photo asset library shoot and film shoot and offline / online edited the film till delivery.
+                            </p>                          
+                        </motion.div>
+                        
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Cargo THRUCOOL</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Conceptualized and art directed a film for Singapore Airlines Cargo’s THRUCOOL product, that boasts a seamless cold chain cargo service for temperature critical products that can shipped across the world with Singapore Airline’s global destinations network.
+                            </p>
+                        </motion.div>
+                    </motion.div>
+                    )}
+
+                    {/* IKEA Button Row */}
+                    <motion.div
+                    className="flex justify-between cursor-pointer pr-1 mt-2"
+                    onClick={toggleIKEA}
+                    variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 350, // Adjust for faster or slower animation
+                        damping: 31, // Adjust for bounciness and smoothness
+                        }}>
+                        <button 
+                        className="2xl:mt-14 text-lg whitespace-nowrap tracking-tight flex items-center">
+                            IKEA
+                        </button>
+
+                        <button 
+                        className="2xl:mt-14 flex items-center">
+                        {showIKEA 
+                        ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
+                        : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
+                        </button>
+                    </motion.div>
+                    
+                    {/* IKEA Dropdown */}
+                    {showIKEA && (
+                    <motion.div variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 350, // Adjust for faster or slower animation
+                        damping: 32, // Adjust for bounciness and smoothness
+                        }}>
+                        <h1 className="mt-4 ml-5 mb-4 opacity-90 font-base">Oops Happens <i className="text-neutral-500">(HEMSÄKER)</i></h1>
+                        <p className="mb-4 ml-5 opacity-50">
+                        Art directed and conceptualised a campaign for IKEA Singapore & Malaysia’s insurance product, HEMSAKER. A set of 9 videos that went live across IKEA’s social platforms, web pages and various other platforms.
+                        </p>
+                    </motion.div>
+                    )}
+
+                    {/* SC Button Row */}
+                    <motion.div
+                    className="flex justify-between cursor-pointer pr-1 mt-2"
+                    onClick={toggleSC}
+                    variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 350, // Adjust for faster or slower animation
+                        damping: 31, // Adjust for bounciness and smoothness
+                        }}>
+                        <button 
+                        className="2xl:mt-14 text-lg whitespace-nowrap tracking-tight flex items-center">
+                            Standard Chartered
+                        </button>
+
+                        <button 
+                        className="2xl:mt-14 flex items-center">
+                        {showSC 
+                        ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
+                        : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
+                        </button>
+                    </motion.div>
+
+                    {/* SC Dropdown */}
+                    {showSC &&(
+                    <motion.div variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 350, // Adjust for faster or slower animation
+                        damping: 31, // Adjust for bounciness and smoothness
+                        }}>
+                        <h1 className="mt-4 ml-5 mb-4 opacity-90 font-base">Marina Bay Financial Centre</h1>
+                        <p className="mb-4 ml-5 opacity-50">
+                        Art directed and did the offline / online edit of a video and photo set of the new Standard Chartered signage at Marina Bay Financial Centre as part of their latest brand identity refresh and brand evolution. The video and photos were circulated globally as part of internal communications in Standard Chartered Bank.
+                        </p>
+                    </motion.div>
+                    )}
+
+                </motion.div>
+                )}
+            </motion.div>
+
+            {/* BBH */}
+            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-2"
+            variants={animateInChild}
+            key="BBH"
+            layout="position"
+            transition={{
+                type: "spring",
+                stiffness: 300, // Adjust for faster or slower animation
+                damping: 28, // Adjust for bounciness and smoothness
+                }}>
+
+                {/* Line */}
+                <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow" variants={dropdownChild} layout='position'/>
+
+                {/* Button Row */}
+                <motion.div variants={animateInChild} className="cursor-pointer" onClick={toggleBBH}>
+                    
+                    {/* Title + Button */}
+                    <div className="flex justify-between mt-4">
+                        <div 
+                        className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-non-color duration-200
+                        rounded-full tracking-tight font-medium text-sm w-[135px] mb-2 font-mono whitespace-nowrap ${showBBH ? 'bg-foreground text-background scale-96' : ''}`}>
+                            Motion Art Director
+                        </div>
+
+                        <div 
+                        className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
+                        rounded-full mb-2 px-1 ${showBBH ? 'bg-foreground text-background scale-96' : ''}`}>
+                        
+                        {showBBH ? (
+                            <ChevronUpIcon className="h-4 w-4" />
+                        ) : (
+                            <ChevronDownIcon className="h-4 w-4" />
+                        )}
+                        </div>
+                    </div> 
+
+                    <p>BBH Singapore</p>
+                    <i className="-ml-[1px] opacity-75">June 2019 – March 2021</i>
+                </motion.div>
+
+                {showBBH && (
+                <motion.div
+                className=""
+                initial="hidden"
+                animate="show"
+                layout="position"
+                variants={dropdown}
+                transition={{
+                    type: "spring",
+                    stiffness: 300, // Adjust for faster or slower animation
+                    damping: 26, // Adjust for bounciness and smoothness
+                    }}>
+
+                    {/* SAMSUNG Button Row */}
+                    <motion.div
+                    className="flex justify-between cursor-pointer pr-1 mt-6"
+                    onClick={toggleSamsung}
+                    variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 300, // Adjust for faster or slower animation
+                        damping: 26, // Adjust for bounciness and smoothness
+                        }}>
+                        <button 
+                        className="2xl:mt-14 text-lg whitespace-nowrap tracking-tight flex items-center">
+                            Samsung
+                        </button>
+
+                        <button 
+                        className="2xl:mt-14 flex items-center">
+                        {showSamsung 
+                        ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
+                        : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
+                        </button>
+                    </motion.div>
+
+                    {/* Samsung Dropdown */}
+                    {showSamsung && (
+                    <motion.div className=""
+                    key="dropdown-SIA"
+                    initial="hidden"
+                    animate="show"
+                    layout="position"
+                    variants={dropdown}>
+
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Global Lifestyle TV Pitch</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Provided motion design direction, content series visualisations and a manifesto film for the global pitch for the Lifestyle TV campaign.</p>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Winning both the Lifestyle TV campaign and global visual displays digital / social strategy, platform management and content creation retainer business for BBH Singapore.
+                            </p>
+                        </motion.div>
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">CES 2020</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Art directed & executed on site social coverage of Samsung’s Visual display’s new releases and technology at CES 2020 in Las Vegas. </p>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Content produced involved short form video series distributed on Facebook and Instagram feed, day to day event coverage on Instagram stories and long form event recap videos for Youtube.
+                            </p>
+                        </motion.div>
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Motion Design</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Edited and motion designed pre-roll films, Instagram Stories and Carousel posts for the Samsung Lifestyle TV social platforms. Both organic and paid media.</p>
+                            <div className="ml-6 opacity-50 mb-10">
+                                <h1 className="">The Frame</h1>
+                                {/* <p className="mb-4">A video promoting the latest 2021 model of The Frame</p> */}
+
+                                <h1 className="">Why Would You Do That?</h1>
+                                {/* <p className="mb-4">A video promoting the features of pairing a Samsung Soundbar with a Samsung TV, executed in a tongue-in-cheek manner. </p> */}
+
+                                <h1 className="">The Terrace Feature Highlights</h1>
+                                {/* <p className="mb-4">Produced a set of 4 videos each highlighting a feature of the latest Samsung lifestyle TV, The Terrace.</p> */}
+
+                                <h1 className="">Smart Features Highlights</h1>
+                                {/* <p className="mb-4">Produced a set of 4 videos highlighting a Smart Feature that comes equipped with Samsung Smart TVs</p> */}
+                                <h1>QLED 8K + Galaxy S20</h1>
+                                <h1>TV Burn-in Checker</h1>
+                            </div>
+                        </motion.div>
+                        
+                    </motion.div>
+                    )}
+
+                    {/* Nike Button Row */}
+                    <motion.div
+                    className="flex justify-between cursor-pointer pr-1 mt-2"
+                    onClick={toggleNike}
+                    variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 350, // Adjust for faster or slower animation
+                        damping: 31, // Adjust for bounciness and smoothness
+                        }}>
+                        <button 
+                        className="2xl:mt-14 text-lg whitespace-nowrap tracking-tight flex items-center">
+                            NIKE
+                        </button>
+
+                        <button 
+                        className="2xl:mt-14 flex items-center">
+                        {showNike 
+                        ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
+                        : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
+                        </button>
+                    </motion.div>
+                    
+                    {/* Nike Dropdown */}
+                    {showNike && (
+                    <motion.div variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 350, // Adjust for faster or slower animation
+                        damping: 32, // Adjust for bounciness and smoothness
+                        }}>
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Athlete Stories: Koy & Toon</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Offline and online edit and animation for a set of videos and a full film highlighting the stories of Bangkok based NIKE athletes Koy & toon, distributed on Nike’s Instagram feed, stories and TV.</p>
+                        </motion.div>
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Women's Instazine</h1>
+                            <p className="mb-10 ml-5 opacity-50">
+                            Edited and animated supporting assets for the campaign as well as the case study film for Women’s Instazine</p>
+                        </motion.div>
+                    </motion.div>
+                    
+                    )}
+
+                    {/* Jollibee Button Row */}
+                    <motion.div
+                    className="flex justify-between cursor-pointer pr-1 mt-2 -ml-0.5"
+                    onClick={toggleJollibee}
+                    variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 350, // Adjust for faster or slower animation
+                        damping: 31, // Adjust for bounciness and smoothness
+                        }}>
+                        <button 
+                        className="2xl:mt-14 text-lg whitespace-nowrap tracking-tight flex items-center">
+                            Jollibee
+                        </button>
+
+                        <button 
+                        className="2xl:mt-14 flex items-center">
+                        {showJollibee 
+                        ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
+                        : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
+                        </button>
+                    </motion.div>
+
+                    {/* Jollibee Dropdown */}
+                    {showJollibee &&(
+                    <motion.div variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 350, // Adjust for faster or slower animation
+                        damping: 31, // Adjust for bounciness and smoothness
+                        }}>
+                        <h1 className="mt-4 ml-5 mb-4 opacity-90 font-base">JolliEverAfter</h1>
+                        <p className="mb-4 ml-5 opacity-50">
+                        Pre Production, Art Direction, Offline and online edit and animation of the teaser film & challenges for JolliEverAfter, a campaign for Jollibee that brought their annual long form film to TikTok in the form of 9 challenges.
+                        </p>
+                    </motion.div>
+                    )}
+
+                    {/* Sentosa Button Row */}
+                    <motion.div
+                    className="flex justify-between cursor-pointer pr-1 mt-2"
+                    onClick={toggleSentosa}
+                    variants={dropdownChild}
+                    layout='position'
+                    transition={{
+                        type: "spring",
+                        stiffness: 300, // Adjust for faster or slower animation
+                        damping: 28, // Adjust for bounciness and smoothness
+                        }}>
+                        <button 
+                        className="2xl:mt-14 text-lg whitespace-nowrap tracking-tight flex items-center">
+                            Sentosa
+                        </button>
+
+                        <button 
+                        className="2xl:mt-14 flex items-center">
+                        {showSentosa 
+                        ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
+                        : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
+                        </button>
+                    </motion.div>
+
+                    {/* Sentosa Dropdown */}
+                    {showSentosa && (
+                    <motion.div className=""
+                    key="dropdown-sentosa"
+                    initial="hidden"
+                    animate="show"
+                    layout="position"
+                    transition={{
+                        type: "spring",
+                        stiffness: 300, // Adjust for faster or slower animation
+                        damping: 28, // Adjust for bounciness and smoothness
+                        }}
+                    variants={dropdown}>
+
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Virtual Sentosa</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Compiled footage of Virtual Sentosa and edited + animated a set of launch and PR videos for the campaign. The videos were then distributed on Sentosa’s social media platforms as well as news outlets and channels both locally and globally.</p>
+                            <p className="mb-4 ml-5 opacity-50">
+                            The campaign was covered by news outlets worldwide including Campaign Asia, Hypebeast, Conde Nast, NHK Japan.
+
+
+                            </p>
+                        </motion.div>
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">#BehindSentosa</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Filmed and directed a video covering the efforts undertaken by the staff of Sentosa in response to the COVID-19 outbreak. The video went live on Sentosa’s Facebook and Instagram channels.</p>
+                        </motion.div>
+                        <motion.div variants={dropdownChild}>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Motion Design</h1>
+                            <p className="mb-4 ml-5 opacity-50">
+                            Content creation within the Social team for Sentosa within the Agency. Roles included Editor, Motion Designer and Videographer.</p>
+                            <div className="ml-6 opacity-50 mb-10">
+                                <h1>Sandsation: Star Wars</h1>
+                                <h1>Sentosa Grillfest 2019</h1>
+                                <h1>Siloso Beach Party</h1>
+                                <h1>Halloween Horror Nights 2019</h1>
+                                <h1>Island Lights</h1>
+                                <h1>Tanjong Beach Club</h1>
+                                <h1>Pokemon GO Safari Zone</h1>
+                                <h1>Auriga Spa</h1>
+                                <h1>AJ Hackett</h1>
+                            </div>
+                        </motion.div>
+                        
+                    </motion.div>
+                    )}
+
+                    
+
+                </motion.div>
+                )}
+            </motion.div>
+
+            {/* Kinetic */}
+            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-2" 
+            variants={animateInChild}
+            key="Kinetic"
+            layout="position"
+            transition={{
+                type: "spring",
+                stiffness: 300, // Adjust for faster or slower animation
+                damping: 28, // Adjust for bounciness and smoothness
+                }}>
+
+                {/* Line */}
+                <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow" variants={dropdownChild} layout='position'/>
+
+                {/* Button Row */}
+                <motion.div variants={animateInChild} className="cursor-pointer" onClick={toggleKinetic}>
+                    
+                    {/* Title + Button */}
+                    <div className="flex justify-between mt-4">
+                        <div 
+                        className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-non-color duration-200
+                        rounded-full tracking-tight font-medium text-sm w-[120px] mb-2 font-mono whitespace-nowrap ${showKinetic ? 'bg-foreground text-background scale-96' : ''}`}>
+                            Motion Designer
+                        </div>
+
+                        <div 
+                        className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
+                        rounded-full mb-2 px-1 ${showKinetic ? 'bg-foreground text-background scale-96' : ''}`}>
+                        
+                        {showKinetic ? (
+                            <ChevronUpIcon className="h-4 w-4" />
+                        ) : (
+                            <ChevronDownIcon className="h-4 w-4" />
+                        )}
+                        </div>
+                    </div> 
+
+                    <p>Kinetic Singapore</p>
+                    <i className="-ml-[1px] opacity-75">January 2019 – Aptil 2019</i>
+
+                  
+                </motion.div>
+
+                {showKinetic && (
+                <motion.div
+                className=""
+                initial="hidden"
+                animate="show"
+                layout="position"
+                variants={dropdown}
+                transition={{
+                    type: "spring",
+                    stiffness: 300, // Adjust for faster or slower animation
+                    damping: 26, // Adjust for bounciness and smoothness
+                    }}>
+
+                    <p className="mt-4">Freelance Creative</p>
+                    <i className="-ml-[1px] opacity-75">July 2016 – October 2016</i>
+
+                    <p className="mt-4">Creative Intern</p>
+                    <i className="-ml-[1px] opacity-75">August 2015 – November 2015</i>
+
+                    <h1 className="mt-8 2xl:mt-14 text-lg">
+                        Uniqlo Singapore</h1>
+
+                    <motion.div variants={dropdownChild}>
+                        <h1 className="mt-8 mb-4 ml-5 opacity-90">
+                            New Style Fresh Start
+                        </h1>
+                        <p className="ml-5 opacity-50">
+                        Produced a set of videos distributed on displays in stores around South East Asia as part of the 2019 Chinese New Year season.
+                        </p>
+                    </motion.div>
+
+                    <motion.div variants={dropdownChild}>
+                        <h1 className="mt-4 mb-4 ml-5 opacity-90">
+                            Your Stage Now Live</h1>
+                        <p className="ml-5 opacity-50">
+                        Art Directed and produced a set of videos for the panoramic displays during the launch of the Uniqlo flagship store as part of the Your Stage Now Live launch campaign
+                        </p>
+                    </motion.div>
+
+                </motion.div>
+                )}
+            </motion.div>
+
+            {/* Freelance */}
+            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-2" 
+            variants={animateInChild}
+            key="Freelance"
+            layout="position"
+            transition={{
+                type: "spring",
+                stiffness: 300, // Adjust for faster or slower animation
+                damping: 28, // Adjust for bounciness and smoothness
+                }}>
+
+                {/* Line */}
+                <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow" variants={dropdownChild} layout='position'/>
+
+                {/* Button Row */}
+                <motion.div variants={animateInChild} className="cursor-pointer" onClick={toggleFreelance}>
+                    
+                    {/* Title + Button */}
+                    <div className="flex justify-between mt-4">
+                        <div 
+                        className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-non-color duration-200
+                        rounded-full tracking-tight font-medium text-sm w-[80px] mb-2 font-mono whitespace-nowrap ${showFreelance ? 'bg-foreground text-background scale-96' : ''}`}>
+                            Freelance
+                        </div>
+
+                        <div 
+                        className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
+                        rounded-full mb-2 px-1 ${showFreelance ? 'bg-foreground text-background scale-96' : ''}`}>
+                        
+                        {showFreelance ? (
+                            <ChevronUpIcon className="h-4 w-4" />
+                        ) : (
+                            <ChevronDownIcon className="h-4 w-4" />
+                        )}
+                        </div>
+                    </div> 
+
+                    <p>Motion Designer</p>
+                    <i className="-ml-[1px] opacity-75">November 2015 – January 2019</i>
+
+                  
+                </motion.div>
+
+                {showFreelance && (
+                <motion.div
+                className=""
+                initial="hidden"
+                animate="show"
+                layout="position"
+                variants={dropdown}
+                transition={{
+                    type: "spring",
+                    stiffness: 300, // Adjust for faster or slower animation
+                    damping: 26, // Adjust for bounciness and smoothness
+                    }}>
+
+                    <p className="mt-4">The Secret Little Agency (TSLA)</p>
+                    <p className="mt-1">MadebyAnonymous</p>
+                    <p className="mt-1">GOODSTUPH</p>
+                    <p className="mt-1">TMRRWstudio</p>
+                    <p className="mt-1">Sixtoes.tv/TBWA Singapore</p>
+                    <p className="mt-1">Superunion Singapore</p>
+
+                    {/* <h1 className="mt-8 2xl:mt-14 text-lg">
+                        Uniqlo Singapore</h1>
+
+                    <motion.div variants={dropdownChild}>
+                        <h1 className="mt-8 mb-4 ml-5 opacity-90">
+                            New Style Fresh Start
+                        </h1>
+                        <p className="ml-5 opacity-50">
+                        Produced a set of videos distributed on displays in stores around South East Asia as part of the 2019 Chinese New Year season.
+                        </p>
+                    </motion.div>
+
+                    <motion.div variants={dropdownChild}>
+                        <h1 className="mt-4 mb-4 ml-5 opacity-90">
+                            Your Stage Now Live</h1>
+                        <p className="ml-5 opacity-50">
+                        Art Directed and produced a set of videos for the panoramic displays during the launch of the Uniqlo flagship store as part of the Your Stage Now Live launch campaign
+                        </p>
+                    </motion.div> */}
+
+                </motion.div>
+                )}
+            </motion.div>
+
+            <div className={`${showFreelance ? 'h-[400px]' : 'h-[200px]'}`} key='whateverdude'/>
             </AnimatePresence>    
         </motion.div>
     </>

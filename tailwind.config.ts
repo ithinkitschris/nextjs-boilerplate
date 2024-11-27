@@ -66,7 +66,7 @@ const config: Config = {
       fontFamily: {
         serif: ["var(--font-noto-serif)", "serif"], // Use Playfair Display as the serif font
         sans: ["var(--font-geist-sans)", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
+        mono: ["var(--font-geist-sans)", "monospace"],
         script: ["var(--font-breathing)", "script"],
         script2: ["var(--font-modernline)", "script"],
       },

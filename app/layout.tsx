@@ -45,7 +45,7 @@ const notoSerif = Noto_Serif({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);

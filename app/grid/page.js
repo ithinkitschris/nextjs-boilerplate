@@ -491,8 +491,8 @@ const filteredVideos = videoData.filter((video) => {
             }}
               animate={{ 
                 width: showNav? "30rem" : "11.4rem",
-                height: showNav ? "30.5rem" : "2.5rem",
-                borderRadius: showNav ? "1rem" : "50rem"}}
+                height: showNav ? "31rem" : "2.5rem",
+                borderRadius: showNav ? "0.7rem" : "50rem"}}
               transition={{
                 height: { type: "spring", stiffness: showNav ? 250 : 270 , damping: showNav ? 22 : 27 }, // Faster or bouncier for height
                 borderRadius: { duration: showNav ? 0.02 : 10 } // Separate easing for smooth border-radius transition
@@ -723,7 +723,7 @@ const filteredVideos = videoData.filter((video) => {
 
                 {/* Desktop Side Navbar Skillsets */}    
                 <motion.div 
-                className="hidden md:flex flex-col items-start gap-1 mt-12 dark:text-neutral-500 sticky z-10"
+                className="hidden md:flex flex-col items-start gap-1 mt-4 dark:text-neutral-500 sticky z-10"
                 initial="hidden"
                 animate="show"
                 exit="fade"
