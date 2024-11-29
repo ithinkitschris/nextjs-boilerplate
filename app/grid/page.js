@@ -101,23 +101,25 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
       onClick={onClick}>
 
           {/* Square */}
-          <div className={`lg:pt-[100%] group relative overflow-hidden
-            ${selectedTags.includes('all') ? 'pt-[161%]' : 'pt-[140%]'}`}>
+          <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100
+            ${selectedTags.includes('all') 
+            ? 'pt-[14%] hover:pt-[136%] md:hover:pt-[100%] transition-all duration-300 saturate-200 md:saturate-100 hover:saturate-100 ' 
+            : 'pt-[175%]'}`}>
 
             {/* Text Container */}
             <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-6 gap-1 lg:gap-4">
 
               {/* Title of work */}
-              <h1 className={`md:text-4xl 2xl:text-5xl tracking-tight font-medium p-0.5 md:p-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100
-              transition-opacity duration-300 z-50 break-words hyphens-auto w-5/6 md:w-3/4 md:leading-11
+              <h1 className={`md:text-4xl tracking-tight font-medium p-1 md:p-0 opacity-100 md:opacity-0 md:group-hover:opacity-100
+              transition-all duration-300 z-50 break-words hyphens-auto w-5/6 md:w-3/4 md:leading-11
               ${selectedTags.includes('all') 
-              ? 'text-[16px] text-white/100 dark:text-white dark:mix-blend-screen md:dark:mix-blend-normal group-hover:opacity-0 leading-[16px]' 
+              ? 'text-[20px] text-foreground group-hover:text-white group-hover:text-5xl md:group-hover:text-4.5xl' 
               : 'text-5xl p-3 text-white leading-tighter'}`}>
                 {title}
               </h1>
 
               {/* Gradient */}
-              <div className={` ${selectedTags.includes('all') ? 'opacity-100 group-hover:opacity-0 transition-all duration-300' : 'opacity-100'}`}>
+              <div className={` ${selectedTags.includes('all') ? 'opacity-0 group-hover:opacity-75 transition-all duration-300 z-10' : 'opacity-100'}`}>
                 <div className={`absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
                 <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] -right-[0.2px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply "/>
               </div>
@@ -125,16 +127,17 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
               <div className="z-50 flex flex-row justify-start w-full">
 
                 {/* Script Subheader */}
-                {/* <h3 className="z-10 text-white pl-2.5 pb-1 pr-2 md:pb-0 md:text-base tracking-tight
+                {/* <h3 className="z-10 text-white text-[10px] pl-2.5 pb-1 pr-2 md:pb-0 md:text-base tracking-tight
                 font-script opacity-100 lg:opacity-0 lg:group-hover:opacity-100 -rotate-1 text-right
                 transition-all duration-300 leading-6 md:leading-5 md:text-left w-2/3lg:w-1/2">
                 {subheader}</h3> */}
 
                 {/* Clean Subheader */}
-                <h3 className={`z-10 -mb-0.5 md:pb-0 uppercase md:text-base tracking-widest 
-                 font-mono opacity-100 lg:opacity-0 lg:group-hover:opacity-100 
+                <h3 className={`z-10 md:pb-0 md:text-base tracking-tight 
+                opacity-100 md:opacity-0 md:group-hover:opacity-100 ml-1
                 transition-opacity duration-300 leading-normal md:leading-5 text-left md:text-left lg:w-1/2
-                ${selectedTags.includes('all') ? 'text-[6px] pr-0.5 mix-blend-screen lg:mix-blend-normal text-white/80 group-hover:opacity-0 w-5/6 font-bold' 
+                ${selectedTags.includes('all') 
+                ? 'text-[8px] text-foreground opacity-35 group-hover:text-white group-hover:opacity-100 w-5/6' 
                 : 'text-xxs p-1.5 pl-2.5 text-white w-full font-light'}`}>
                 {subheader}</h3>
 
@@ -190,11 +193,16 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
             <video
               className={`absolute inset-0 w-full h-full object-cover rounded-lg 
               md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-500 
-              ${selectedTags.includes('all') ? 'blur-[0px] md:blur-none group-hover:blur-none' : 'blur-none'}`}
+              ${selectedTags.includes('all') 
+                ? 'blur-[0px] md:blur-none group-hover:blur-none opacity-0 md:opacity-100 group-hover:opacity-100' 
+                : 'blur-none opacity-100'}`}
               style={{ clipPath: 'inset(0 round 0.5rem)' }}
               autoPlay muted loop playsInline>
               <source src={videoSrc} type="video/mp4" />
             </video>
+
+            {/* Line */}
+            <motion.div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15 mt-1"/>
           </div>
       
     </motion.div>
@@ -373,7 +381,7 @@ const filteredVideos = videoData.filter((video) => {
             <motion.button 
               className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/0 backdrop-blur-lg 
               flex items-center shadow lg:shadow-none lg:hover:bg-foreground lg:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
-              ${showNav ? "text-white dark:text-black bg-foreground right-8" : "bg-[#f5f5f5] dark:bg-black/20 lg:dark:bg-transparent right-8"}`}
+              ${showNav ? "text-white dark:text-black bg-foreground right-8" : "bg-white dark:bg-black/20 lg:dark:bg-transparent right-8"}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
               layout="position"
@@ -447,7 +455,7 @@ const filteredVideos = videoData.filter((video) => {
                   }}>
 
                   <span className="hidden md:block">Here's everything that I've got.</span>
-                  <span className="block md:hidden">Works</span>
+                  <span className="block md:hidden">Work</span>
                   
                 </motion.button>
 
@@ -490,9 +498,9 @@ const filteredVideos = videoData.filter((video) => {
               transform: "translateX(-50%)",
             }}
               animate={{ 
-                width: showNav? "20rem" : "11.4rem",
-                height: showNav ? "30rem" : "2.5rem",
-                borderRadius: showNav ? "0.7rem" : "50rem"}}
+                width: showNav? "17.5rem" : "11.1rem",
+                height: showNav ? "29.5rem" : "2.5rem",
+                borderRadius: showNav ? "0.75rem" : "50rem"}}
               transition={{
                 width: { type: "spring", stiffness: showNav ? 500 : 500 , damping: showNav ? 28 : 26 },
                 height: { type: "spring", stiffness: showNav ? 500 : 500 , damping: showNav ? 26 : 36 }, // Faster or bouncier for height
@@ -578,7 +586,7 @@ const filteredVideos = videoData.filter((video) => {
 
                   {/* Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-2 items-start tracking-tighter text-[27px] leading-tighter font-medium mt-7 w-full max-w-[53%] mx-auto md:hidden"
+                  className="flex flex-col gap-2 items-start tracking-tighter text-[26px] leading-tighter font-medium mt-7 w-full max-w-[53%] mx-auto md:hidden"
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -599,7 +607,7 @@ const filteredVideos = videoData.filter((video) => {
                       Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
                       >It's quite a lot</span></motion.button>
 
-                    <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground mt-1 mb-1 px-5"
@@ -610,7 +618,7 @@ const filteredVideos = videoData.filter((video) => {
                       setShowNav(false)}}><span className='hidden mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
                       Favourites</motion.button>
                       
-                    <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
@@ -621,7 +629,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleWork('clear');}}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>01 </span>
                       Creative</motion.button>
 
-                    <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
@@ -632,7 +640,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleWork('clear');}}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>02 </span>
                       Motion</motion.button>
 
-                    <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
@@ -643,7 +651,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleWork('clear');}}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>03 </span>
                       Edit</motion.button>
 
-                    <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 whitespace-nowrap"
@@ -654,7 +662,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleWork('clear');}}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>04 </span>
                       Interaction Design</motion.button>
 
-                    <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
@@ -666,7 +674,7 @@ const filteredVideos = videoData.filter((video) => {
                       }}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>05 </span>
                       Photography</motion.button>
                       
-                    <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                    className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
@@ -1269,7 +1277,7 @@ const filteredVideos = videoData.filter((video) => {
             {/* Grid / Page */}
             <motion.div 
             className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full md:gap-1.5 mt-4 md:mt-4
-            ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1 gap-2' : 'grid-cols-3 gap-1'}`}>
+            ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1 gap-2' : 'grid-cols-1 gap-1'}`}>
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
                   <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>

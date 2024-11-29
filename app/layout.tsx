@@ -54,8 +54,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   
   return (
     <html className={isDarkMode ? "dark" : ""}>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${modernLine.variable} ${notoSerif.variable} ${breathing.variable}
-      antialiased flex flex-col min-h-screen
+      <body className={`
+      ${geistSans.variable} 
+      ${geistMono.variable} 
+      ${modernLine.variable} 
+      ${notoSerif.variable} 
+      ${breathing.variable}
+      antialiased flex flex-col min-h-screen font-mono
       bg-background transition-all duration-300`}>
         {/* <DocumentationButton/> */}
         <div className="fixed left-4 md:left-auto md:right-6 top-3 md:top-2 z-50">

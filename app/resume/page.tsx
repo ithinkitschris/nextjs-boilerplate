@@ -356,7 +356,7 @@ export default function Resume({className=""}) {
 
             {/* Contact */}
             <motion.div 
-                className="mt-4 mb-8 px-5 md:px-0 col-span-full"
+                className="mt-4 mb-8 px-5 md:px-0 col-span-full tracking-tight"
                 layout="position"
                 variants={animateInChild}
                 transition={{
@@ -425,7 +425,7 @@ export default function Resume({className=""}) {
                     animate="show"
                     layout="position"
                     variants={dropdown}>
-                        <h1 className="mt-8 text-lg">Curriculum undertaken</h1>
+                        <h1 className="mt-8 text-lg">Curriculum</h1>
                         <div className="ml-4">
                             <p className="mt-4">Research Methodologies</p>
                             <p>Service Design</p>
@@ -435,12 +435,8 @@ export default function Resume({className=""}) {
                             <p>Physical Computing</p>
                         </div>
 
-                        <div className="text-midground">
-                            <h1 className="mt-8 text-lg">Curriculum to be undertaken</h1>
-                        </div>
-
-                        <div className="ml-4 text-midground">
-                            <p className="mt-4">Inclusive Design</p>
+                        <div className="ml-4 text-black/25 dark:text-white/25">
+                            <p className="mt-0">Inclusive Design</p>
                             <p>Inclusive Design II</p>
                             <p>Spatial Computing</p>
                             <p>Advanced Fundamentals of UX</p>
