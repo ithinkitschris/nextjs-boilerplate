@@ -31,7 +31,7 @@ const animateIn ={
   hidden: {opacity:0, x:-10},
   show: {
       opacity:1, x:0, 
-      transition: {staggerChildren: 0.05, duration:0.1, ease:"easeOut"},
+      transition: {staggerChildren: 0.02, duration:0.1, ease:"easeOut"},
   },
   fade: {
     opacity:0,
@@ -53,7 +53,7 @@ const animateInChildMobile ={
   hidden: {opacity:0, y:-20},
   show: {
     opacity:1, y:0,
-    transition: {duration:0.25, ease:"easeOut"},
+    transition: {duration:0.2, ease:"easeOut"},
     },
   fade: {
     opacity:0,
@@ -66,7 +66,7 @@ const skillContainer = {
     opacity: 1,
     transition: {
       //when: "beforeChildren",
-      staggerChildren: 0.03, // Stagger the children
+      staggerChildren: 0.015, // Stagger the children
     },
   },
   exit: { opacity: 0 },
@@ -102,7 +102,7 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
 
           {/* Square */}
           <div className={`lg:pt-[100%] group relative overflow-hidden
-            ${selectedTags.includes('all') ? 'pt-[161%]' : 'pt-[150%]'}`}>
+            ${selectedTags.includes('all') ? 'pt-[161%]' : 'pt-[140%]'}`}>
 
             {/* Text Container */}
             <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-6 gap-1 lg:gap-4">
@@ -117,7 +117,7 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
               </h1>
 
               {/* Gradient */}
-              <div className={` ${selectedTags.includes('all') ? 'opacity-0 group-hover:opacity-0 transition-all duration-300' : 'opacity-100'}`}>
+              <div className={` ${selectedTags.includes('all') ? 'opacity-100 group-hover:opacity-0 transition-all duration-300' : 'opacity-100'}`}>
                 <div className={`absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
                 <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] -right-[0.2px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply "/>
               </div>
@@ -190,7 +190,7 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
             <video
               className={`absolute inset-0 w-full h-full object-cover rounded-lg 
               md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-500 
-              ${selectedTags.includes('all') ? 'blur-[18px] md:blur-none group-hover:blur-none' : 'blur-none'}`}
+              ${selectedTags.includes('all') ? 'blur-[0px] md:blur-none group-hover:blur-none' : 'blur-none'}`}
               style={{ clipPath: 'inset(0 round 0.5rem)' }}
               autoPlay muted loop playsInline>
               <source src={videoSrc} type="video/mp4" />
@@ -371,7 +371,7 @@ const filteredVideos = videoData.filter((video) => {
 
             {/* Sidenav / Dropdown Button */}
             <motion.button 
-              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/0 dark:backdrop-blur 
+              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/0 backdrop-blur-lg 
               flex items-center shadow lg:shadow-none lg:hover:bg-foreground lg:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
               ${showNav ? "text-white dark:text-black bg-foreground right-8" : "bg-[#f5f5f5] dark:bg-black/20 lg:dark:bg-transparent right-8"}`}
               whileHover={{ scale: 0.9 }}
@@ -490,12 +490,13 @@ const filteredVideos = videoData.filter((video) => {
               transform: "translateX(-50%)",
             }}
               animate={{ 
-                width: showNav? "30rem" : "11.4rem",
-                height: showNav ? "31rem" : "2.5rem",
+                width: showNav? "20rem" : "11.4rem",
+                height: showNav ? "30rem" : "2.5rem",
                 borderRadius: showNav ? "0.7rem" : "50rem"}}
               transition={{
-                height: { type: "spring", stiffness: showNav ? 250 : 270 , damping: showNav ? 22 : 27 }, // Faster or bouncier for height
-                borderRadius: { duration: showNav ? 0.02 : 10 } // Separate easing for smooth border-radius transition
+                width: { type: "spring", stiffness: showNav ? 500 : 500 , damping: showNav ? 28 : 26 },
+                height: { type: "spring", stiffness: showNav ? 500 : 500 , damping: showNav ? 26 : 36 }, // Faster or bouncier for height
+                borderRadius: { duration: showNav ? 0.01 : 10 } // Separate easing for smooth border-radius transition
               }}
           ></motion.div>
 
@@ -577,7 +578,7 @@ const filteredVideos = videoData.filter((video) => {
 
                   {/* Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-2 items-start tracking-tighter text-[29px] leading-tighter font-medium mt-7 w-full max-w-[58%] mx-auto md:hidden"
+                  className="flex flex-col gap-2 items-start tracking-tighter text-[27px] leading-tighter font-medium mt-7 w-full max-w-[53%] mx-auto md:hidden"
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -592,10 +593,11 @@ const filteredVideos = videoData.filter((video) => {
                     className="text-left text-foreground mb-1 px-5"
                     variants={animateInChildMobile}
                     onClick={() => {
-                      toggleTag('creative');
-                      toggleWork('bestwork');
-                      setShowNav(false)}}><span className='hidden mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
-                      Favourites</motion.button>
+                      toggleTag('all');
+                      toggleNav('false');
+                      toggleWork('clear');}}><span className='hidden mr-1.5 font-light text-base align-top tracking-normal'>∞</span>
+                      Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
+                      >It's quite a lot</span></motion.button>
 
                     <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
 
@@ -603,11 +605,10 @@ const filteredVideos = videoData.filter((video) => {
                     className="text-left text-foreground mt-1 mb-1 px-5"
                     variants={animateInChildMobile}
                     onClick={() => {
-                      toggleTag('all');
-                      toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1.5 font-light text-base align-top tracking-normal'>∞</span>
-                      Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
-                      >It's quite a lot</span></motion.button>
+                      toggleTag('creative');
+                      toggleWork('bestwork');
+                      setShowNav(false)}}><span className='hidden mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
+                      Favourites</motion.button>
                       
                     <motion.div className="w-full bg-black/[5%] dark:bg-white/[7%] shadow-standard rounded-full h-[1px]" variants={animateInChildMobile}/>
 

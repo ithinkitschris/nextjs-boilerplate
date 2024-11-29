@@ -1,5 +1,6 @@
 'use client';
 import { FC } from "react";
+import { Moon } from '@heroicons/react/24/solid';
 
 interface DarkModeToggleProps {
   toggleDarkMode: () => void;
@@ -41,16 +42,11 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
         </svg>
       ) : (
         // Moon icon 
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 90 90"
-          className="w-6 lg:w-5 h-6 lg:h-5 text-foreground lg:group-hover:text-background transition-colors duration-200"
-        >
-          <path
-            d="M34.8,10c-2,4.7-3,9.8-3,15,0,21.6,17.5,39.1,39.1,39.1s4.1-.2,6.2-.5c-6.5,10.7-18.2,17.6-31.2,17.6-20.1,0-36.5-16.4-36.5-36.5s3.7-18.7,10.5-25.6c4.2-4.3,9.3-7.4,14.9-9.2M45.2,3C22.5,3.4,4.2,21.9,4.2,44.7s18.7,41.7,41.7,41.7,35.8-13.3,40.4-31.4c-4.6,2.4-9.8,3.7-15.4,3.7-18.7,0-33.8-15.1-33.8-33.8s3-16,8.1-21.9h0Z"
-            fill="currentColor"
-          />
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.3} stroke="currentColor" className="size-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
         </svg>
+
+
       )}
     </button>
   );

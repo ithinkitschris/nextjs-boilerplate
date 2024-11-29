@@ -234,7 +234,7 @@ export default function Resume({className=""}) {
                     variants={animateInChild}
                     >
                         {/* Circle Header */}
-                        <h1 className="flex items-center justify-center -ml-2.5 border-1 border-white/50  
+                        <h1 className="flex items-center justify-center -ml-2 border-1 border-white/60  
                         rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
                         
                         {/* Script Header */}
@@ -272,24 +272,48 @@ export default function Resume({className=""}) {
                 </motion.div>
 
                 <motion.h1 
-                className="mb-10 -mt-8 md:mt-0 text-[52px] px-2 font-script tracking-tight leading-13 mix-blend-difference text-white"
+                className="mb-14 -mt-8 -ml-1 md:mt-0 text-[40px] px-2 font-script tracking-tight leading-11 mix-blend-difference text-white"
                 animate={{rotate:-4}}
                 variants={animateInChild}>
-                    And here are <span className="ml-12 whitespace-nowrap">some answers:</span>
+                    And here are three <span className="ml-28 whitespace-nowrap">things about me:</span>
                 </motion.h1>
-
-                {/* <motion.button className="px-5 text-lg font-medium tracking-tight w-full text-left mb-2 -ml-0.5" variants={animateInChild}>Simply put:</motion.button> */}
-
                 
                 <motion.div 
-                className="mb-10 px-5 md:px-0"
+                className="mb-12 px-5 md:px-0 ml-1"
                 variants={animateInChild}>
-                    <p className="font-mono text-sm">I don't anything seriously.</p>
-                    Lorem ipsum blah blah bla bla bla blah blah.
+                    {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
+                    <p className="text-[22px]  tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 ml-1">1</span> I don't take anything too seriously.</p>
+                    <p className="text-xxs ml-0.5 opacity-35 mb-10 tracking-normal font-light">Come on, script typeface on a portfolio website?</p>
+                    <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2">2</span> I aim to have fun in whatever I do.</p>
+                    <p className="text-xxs ml-1 mt-1 opacity-35 mb-10 tacking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Masochistic? <i>Food for thought.</i></p>
+                    <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2">3</span> I am all about craft.</p>
+                    <p className="text-xxs ml-0.5 opacity-35 mb-10 tracking-normal font-light">Truly. I hope you keep this in mind as you peruse my work.</p>
                 </motion.div>
 
-                <motion.button className={`px-5 text-lg font-medium tracking-tighter w-full text-left mb-4 -ml-0.5`} onClick={toggleLong} variants={animateInChild}>Give me the entire backstory.</motion.button>
+                {/* Line */}
+                <motion.div className="col-span-full ml-4 w-[89vw] h-[1px] dark:bg-white/15 shadow mt-4" variants={dropdownChild} layout='position' key='alamak'/>
 
+                {/* FAQ Button Row */}
+                <div className="flex justify-between mt-3 px-5 cursor-pointer mb-10 ml-1" onClick={toggleLong}>
+                    <div 
+                    className={`flex items-center justify-center -ml-3 transition-non-color duration-200 w-[55px]
+                    rounded-full tracking-normal text-xl ${showLong ? 'bg-foreground text-background scale-90' : ''}`}>
+                        FAQ
+                    </div>
+
+                    <div 
+                    className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
+                    rounded-full mb-2 px-1 ${showLong ? 'bg-foreground text-background scale-90' : ''}`}>
+                       
+                    {showLong ? (
+                        <ChevronUpIcon className="h-4 w-4" />
+                    ) : (
+                        <ChevronDownIcon className="h-4 w-4" />
+                    )}
+                    </div>
+                </div> 
+                
+                {/* FAQ Dropdown */}
                 {showLong && (
                     <motion.div 
                     key="dropdown-long"
@@ -303,8 +327,8 @@ export default function Resume({className=""}) {
                         variants={dropdownChild}
                         layout="position">
                             <p className="mb-3 font-mono text-sm">Who?</p>
-                            Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world. 
-                            With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.
+                            <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
+                            <p>With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.</p>
                         </motion.div>
 
                         <motion.div 
@@ -322,32 +346,30 @@ export default function Resume({className=""}) {
                         variants={dropdownChild}
                         layout="position">
                             <p className="mb-3 font-mono text-sm">And?</p>
-                            In his spare time after work <i>(which, realistically, isn&apos;t much)</i>, he does even more work, but for himself—creating content through photography, videography, editing and motion design. When he is finally not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He loves building his living space up, though he wouldn&apos;t go so far as to call it interior design.
+                            <p className="mb-3">In my spare time after work <i>(which, realistically, isn&apos;t much)</i>, I do... even more work, but for myself—creating content through photography, videography, editing and motion design.</p>
+                            <p className="">When I am finally, actually, not working, you will find me thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. I do love building my living space up, though I wouldn&apos;t go so far as to call it interior design.</p>
                         </motion.div>
                     </motion.div>
                 )}
             
             </div>
-            
-
-            
 
             {/* Contact */}
             <motion.div 
-                className="mt-2 mb-8 px-5 md:px-0 col-span-full"
+                className="mt-4 mb-8 px-5 md:px-0 col-span-full"
                 layout="position"
                 variants={animateInChild}
                 transition={{
                     type: "spring",
-                    stiffness: 300, // Adjust for faster or slower animation
-                    damping: 26, // Adjust for bounciness and smoothness
+                    stiffness: 300, 
+                    damping: 26, 
                     }}
                 key="Contact">
-                    {/* <p className="mb-3 font-mono font-medium text-sm">Contact.</p> */}
-                    <p className="mb-1 font-script w-12 whitespace-nowrap -ml-1 -rotate-3 text-sm italic tracking-">Drop me a hello!</p>
-                    <p className=""><span className="font-semibold">Email</span> – ithinkitschristopher@gmail.com</p>
-                    <p className=""><span className="font-semibold">LinkedIn</span> – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground">Chris Leow</a></p>
-                    <p className=""><span className="font-semibold">Instagram</span> – <a href="https://www.instagram.com/khristurtle/" className="underline transition-colors hover:text-midground">@khristurtle</a></p>
+                    <p className="mb-2 text-xl ">Contact</p>
+                    {/* <p className="mb-1 font-script w-12 whitespace-nowrap -ml-0.5 -rotate-3 text-sm italic tracking-">Drop me a hello!</p> */}
+                    <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
+                    <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
+                    <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
             </motion.div>
             
             {/* Currently: */}
@@ -358,16 +380,17 @@ export default function Resume({className=""}) {
                 layout="position"
                 transition={{
                     type: "spring",
-                    stiffness: 300, // Adjust for faster or slower animation
-                    damping: 24, // Adjust for bounciness and smoothness
+                    stiffness: 300, 
+                    damping: 24, 
                     }}
                 onClick={toggleCurriculum}>
                     
 
-                <h1 className="text-[23px] md:text-3xl mb-8 -ml-1 mt-6 tracking-normal font-script -rotate-3 w-[88vw]">Currently:</h1>
+                <h1 className="text-[23px] md:text-3xl mb-8 -ml-1 mt-6 tracking-normal font-script -rotate-3 w-[89vw]">Currently:</h1>
                 {/* <h1 className="text-2xl md:text-3xl mb-8 -ml-1 mt-10 tracking-tight  w-20">Currently:</h1> */}
-                {/* Top Line */}
-                <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow mt-4" variants={dropdownChild} layout='position'/>
+
+                {/* Line */}
+                <motion.div className="col-span-full -ml-1 w-[89vw] h-[1px] dark:bg-white/15 shadow mt-4" variants={dropdownChild} layout='position'/>
 
                 {/* Button Row */}
                 <div className="flex justify-between mt-4">
@@ -394,8 +417,6 @@ export default function Resume({className=""}) {
                     <p>School of Visual Arts</p>
                     <i className="-ml-0.5">September 2024 – May 2026</i>
                 </div>
-
-
 
                 {showCurriculum && (
                     <motion.div
@@ -444,14 +465,14 @@ export default function Resume({className=""}) {
             transition={{
                 type: "spring",
                 stiffness: 300, // Adjust for faster or slower animation
-                damping: 24, // Adjust for bounciness and smoothness
+                damping: 28, // Adjust for bounciness and smoothness
                 }}>
                 
                 <div className="">
                     <h1 className="text-[23px] md:text-3xl mb-6 -ml-2 mt-18 tracking-normal -rotate-3 w-24 font-script">Previously:</h1>
 
                     {/* Line */}
-                    <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow" variants={dropdownChild} layout='position'/>
+                    <motion.div className="col-span-full -ml-1 w-[89vw] h-[1px] dark:bg-white/15 shadow" variants={dropdownChild} layout='position'/>
 
                     {/* Clickable Area */}
                     <div className="cursor-pointer" onClick={toggleAsm}>
@@ -518,6 +539,13 @@ export default function Resume({className=""}) {
                         </motion.div>
                         <motion.div variants={dropdownChild}>
                         <h1 className="mt-4 mb-4 ml-5 opacity-90">
+                            teamLab Future World: Where Art M9eets Science</h1>
+                        <p className="ml-5 opacity-50">
+                        Creative direction and oversight on all marketing deliverables for Future World, ArtScience Museum's permanent exhibition in collaboration with teamLab.
+                        </p>
+                        </motion.div>
+                        <motion.div variants={dropdownChild}>
+                        <h1 className="mt-4 mb-4 ml-5 opacity-90">
                             ArtScience After Hours</h1>
                         <p className="ml-5 opacity-50">
                         Creative direction and visual identity oversight on ArtScience After Hours, an all-encompassing night time experience for the ArtScience Museum, with late-night offerings and experiences beyond daylight.
@@ -527,7 +555,7 @@ export default function Resume({className=""}) {
                         <h1 className="mt-4 mb-4 ml-5 opacity-90">
                             ArtScience Cinema</h1>
                         <p className="ml-5 opacity-50">
-                        Creative direction for all marketing deliverables for ArtScience Cinema, ArtScience Museumss purpose-built cinema that screens a curated programme of film all year round by the museums film curatorial team.
+                        Creative direction on all marketing deliverables for ArtScience Cinema, ArtScience Museumss purpose-built cinema that screens a curated programme of film all year round by the museums film curatorial team.
                         </p>
                         </motion.div>
                     </motion.div>
@@ -536,18 +564,18 @@ export default function Resume({className=""}) {
             </motion.div>
 
             {/* TBWA */}
-            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-2"
+            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-3"
             variants={animateInChild}
             key="TBWA"
             layout="position"
             transition={{
                 type: "spring",
                 stiffness: 300, // Adjust for faster or slower animation
-                damping: 28, // Adjust for bounciness and smoothness
+                damping: 27, // Adjust for bounciness and smoothness
                 }}>
 
                 {/* Line */}
-                <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow" variants={dropdownChild} layout='position'/>
+                <motion.div className="col-span-full -ml-1 w-[89vw] h-[1px] dark:bg-white/15 shadow" variants={dropdownChild} layout='position'/>
 
                 {/* Button Row */}
                 <motion.div variants={animateInChild} className="cursor-pointer" onClick={toggleTBWA}>
@@ -764,18 +792,18 @@ export default function Resume({className=""}) {
             </motion.div>
 
             {/* BBH */}
-            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-2"
+            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-3"
             variants={animateInChild}
             key="BBH"
             layout="position"
             transition={{
                 type: "spring",
                 stiffness: 300, // Adjust for faster or slower animation
-                damping: 28, // Adjust for bounciness and smoothness
+                damping: 26, // Adjust for bounciness and smoothness
                 }}>
 
                 {/* Line */}
-                <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow" variants={dropdownChild} layout='position'/>
+                <motion.div className="col-span-full -ml-1 w-[89vw] h-[1px] dark:bg-white/15 shadow" variants={dropdownChild} layout='position'/>
 
                 {/* Button Row */}
                 <motion.div variants={animateInChild} className="cursor-pointer" onClick={toggleBBH}>
@@ -1057,18 +1085,18 @@ export default function Resume({className=""}) {
             </motion.div>
 
             {/* Kinetic */}
-            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-2" 
+            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-3" 
             variants={animateInChild}
             key="Kinetic"
             layout="position"
             transition={{
                 type: "spring",
                 stiffness: 300, // Adjust for faster or slower animation
-                damping: 28, // Adjust for bounciness and smoothness
+                damping: 25, // Adjust for bounciness and smoothness
                 }}>
 
                 {/* Line */}
-                <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow" variants={dropdownChild} layout='position'/>
+                <motion.div className="col-span-full -ml-1 w-[89vw] h-[1px] dark:bg-white/15 shadow" variants={dropdownChild} layout='position'/>
 
                 {/* Button Row */}
                 <motion.div variants={animateInChild} className="cursor-pointer" onClick={toggleKinetic}>
@@ -1143,18 +1171,18 @@ export default function Resume({className=""}) {
             </motion.div>
 
             {/* Freelance */}
-            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-2" 
+            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-4 mt-3" 
             variants={animateInChild}
             key="Freelance"
             layout="position"
             transition={{
                 type: "spring",
                 stiffness: 300, // Adjust for faster or slower animation
-                damping: 28, // Adjust for bounciness and smoothness
+                damping: 24, // Adjust for bounciness and smoothness
                 }}>
 
                 {/* Line */}
-                <motion.div className="col-span-full w-[88vw] h-[1px] dark:bg-white/10 shadow" variants={dropdownChild} layout='position'/>
+                <motion.div className="col-span-full -ml-1 w-[89vw] h-[1px] dark:bg-white/15 shadow" variants={dropdownChild} layout='position'/>
 
                 {/* Button Row */}
                 <motion.div variants={animateInChild} className="cursor-pointer" onClick={toggleFreelance}>
