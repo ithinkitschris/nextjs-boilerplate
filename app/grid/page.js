@@ -86,6 +86,12 @@ const worksContainer = {
 
 // VideoSquare
 const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, role, selectedTags }) => {
+
+  const [showVideo, setShowVideo] = useState(false);
+  const toggleVideo = () => {
+    setShowVideo((prevState) => !prevState);
+  };
+
   return (
     <motion.div
       lang='en'
@@ -98,12 +104,16 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
       variants={scaleIn}
       onMouseEnter={() => {setHoveredWork(tags[0]); console.log(tags)}}
       onMouseLeave={() => setHoveredWork(null)}
-      onClick={onClick}>
+      onClick={()=>
+        selectedTags.includes('all') 
+        ? (showVideo ? onClick() : toggleVideo())
+        : onClick()
+      }>
 
           {/* Square */}
-          <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100
+          <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 
             ${selectedTags.includes('all') 
-            ? 'pt-[14%] hover:pt-[136%] md:hover:pt-[100%] transition-all duration-300 saturate-200 md:saturate-100 hover:saturate-100 ' 
+            ? `${showVideo ? 'pt-[136%]' : 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100'}`
             : 'pt-[175%]'}`}>
 
             {/* Text Container */}
