@@ -7,13 +7,18 @@ import PhotographyPage from '../components/photography';
 import Ghibli from '../works/ghibli/page';
 import CabinCrewStories from '../works/cabin/page.js';
 import Cocktail from '../works/cocktail/page';
+import Kris from '../works/kris/page';
+import TravelBig from '../works/travelbig/page';
+import Lounge from '../works/lounge/page';
 import BestWorkPage from '../bestwork/page';
 import BestWorkPage2 from '../bestwork2/page';
 import Resume from '../resume/page';
 import StreetPhotography from '../components/street-photo';
 import BBH from '../components/bbh';
-import Unshackle from '../components/unshackle'
-import BTS from '../components/bts'
+import Unshackle from '../components/unshackle';
+import BTS from '../components/bts';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
+import {useVideoContext, VideoProvider, videoProvider} from '../components/expandedGridContext';
 
 // Motion
 const scaleIn ={
@@ -84,136 +89,158 @@ const worksContainer = {
   exit: { opacity: 0 },
 };
 
-// VideoSquare
+const isMobileDevice = () => {
+  return typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches;
+};
+
+
 const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, role, selectedTags }) => {
 
-  const [showVideo, setShowVideo] = useState(false);
+  const { expandedVideo, setExpandedVideo } = useVideoContext();
+  
+  const isExpanded = expandedVideo === videoSrc; // Check if this square is expanded
+  
   const toggleVideo = () => {
-    setShowVideo((prevState) => !prevState);
+    setExpandedVideo((prev) => (prev === videoSrc ? null : videoSrc)); // Toggle expansion only for this video
   };
 
   return (
     <motion.div
-      lang='en'
-      className="drop-shadow-lg rounded-lg hover:drop-shadow-md cursor-pointer group-hover:z-50
-      "
-      initial="hidden"
-      animate="show"
-      whileHover={{scale:0.98}}
-      exit="fade"
-      variants={scaleIn}
-      onMouseEnter={() => {setHoveredWork(tags[0]); console.log(tags)}}
-      onMouseLeave={() => setHoveredWork(null)}
-      onClick={()=>
-        selectedTags.includes('all') 
-        ? (showVideo ? onClick() : toggleVideo())
+    lang='en'
+    className="drop-shadow-lg rounded-lg hover:drop-shadow-md cursor-pointer group-hover:z-50"
+    initial="hidden"
+    animate="show"
+    whileHover={{scale:0.98}}
+    exit="fade"
+    variants={scaleIn}
+    onMouseEnter={() => {setHoveredWork(tags[0]); console.log(tags)}}
+    onMouseLeave={() => setHoveredWork(null)}
+    onClick={() => {
+      if (isMobileDevice()) {
+        selectedTags.includes('all')
+        ? (isExpanded ? onClick() : toggleVideo())
         : onClick()
-      }>
+      } else {
+        onClick()
+      }
+    }}>
 
-          {/* Square */}
-          <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 
-            ${selectedTags.includes('all') 
-            ? `${showVideo ? 'pt-[136%]' : 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100'}`
-            : 'pt-[175%]'}`}>
-
-            {/* Text Container */}
-            <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-6 gap-1 lg:gap-4">
-
-              {/* Title of work */}
-              <h1 className={`md:text-4xl tracking-tight font-medium p-1 md:p-0 opacity-100 md:opacity-0 md:group-hover:opacity-100
-              transition-all duration-300 z-50 break-words hyphens-auto w-5/6 md:w-3/4 md:leading-11
-              ${selectedTags.includes('all') 
-              ? 'text-[20px] text-foreground group-hover:text-white group-hover:text-5xl md:group-hover:text-4.5xl' 
-              : 'text-5xl p-3 text-white leading-tighter'}`}>
-                {title}
-              </h1>
-
-              {/* Gradient */}
-              <div className={` ${selectedTags.includes('all') ? 'opacity-0 group-hover:opacity-75 transition-all duration-300 z-10' : 'opacity-100'}`}>
-                <div className={`absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
-                <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] -right-[0.2px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply "/>
-              </div>
-              {/* Details Container */}
-              <div className="z-50 flex flex-row justify-start w-full">
-
-                {/* Script Subheader */}
-                {/* <h3 className="z-10 text-white text-[10px] pl-2.5 pb-1 pr-2 md:pb-0 md:text-base tracking-tight
-                font-script opacity-100 lg:opacity-0 lg:group-hover:opacity-100 -rotate-1 text-right
-                transition-all duration-300 leading-6 md:leading-5 md:text-left w-2/3lg:w-1/2">
-                {subheader}</h3> */}
-
-                {/* Clean Subheader */}
-                <h3 className={`z-10 md:pb-0 md:text-base tracking-tight 
-                opacity-100 md:opacity-0 md:group-hover:opacity-100 ml-1
-                transition-opacity duration-300 leading-normal md:leading-5 text-left md:text-left lg:w-1/2
-                ${selectedTags.includes('all') 
-                ? 'text-[8px] text-foreground opacity-35 group-hover:text-white group-hover:opacity-100 w-5/6' 
-                : 'text-xxs p-1.5 pl-2.5 text-white w-full font-light'}`}>
-                {subheader}</h3>
-
-                {/* Role */}
-                <h3 className="hidden lg:block z-50 text-white text-sm tracking-tight opacity-0 group-hover:opacity-100
-                transition-all duration-300 leading-5 w-1/2">
-                {role}
-                </h3>
-              </div>
-            </div>
+      {/* Line */}
+      {/* <div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15"/> */}
       
-            {/* Corner Arrow */}
-            <button className="hidden lg:block absolute top-2 right-2 z-20 p-0 m-1 scale-100
-            rounded-full border-0 border-[rgba(255,255,255,0.5)] text-white backdrop-blur
-            group-hover:bg-white group-hover:text-black group-hover:scale-150 group-hover:m-2 group-hover:px-1
-            transition-all duration-200">
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7"
-                className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
+      {/* Square */}
+      <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-black/25 rounded-lg shadow
+        ${selectedTags.includes('all') 
+        ? `${isExpanded ? 'pt-[155%]' : 'pt-[18%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100'}`
+        : 'pt-[150%]'}`}>
 
-            {/* Mobile Corner Arrow */}
-            <button className={`lg:hidden absolute font-medium text-lg tracking-tighter p-0.5 px-1 rounded-full z-50 
-            flex items-center justify-center cursor-pointer group-hover:bg-white group-hover:text-black transition-all duration-300
-            ${selectedTags.includes('all') ? 'top-1 right-1 group-hover:-m-0 text-white/50 mix-blend-overlay group-hover:mix-blend-normal group-hover:scale-90' 
-            : 'top-6 right-6 scale-150 group-hover:-m-3 group-hover:scale-150 text-white'}`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-3 h-3">
-                <path d="M7 17L17 7"
-                className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
+        {/* Text Container */}
+        <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-4 lg:gap-4">
 
-            {/* Video */}
-            <video
-              className={`absolute inset-0 w-full h-full object-cover rounded-lg 
-              md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-500 
-              ${selectedTags.includes('all') 
-                ? 'blur-[0px] md:blur-none group-hover:blur-none opacity-0 md:opacity-100 group-hover:opacity-100' 
-                : 'blur-none opacity-100'}`}
-              style={{ clipPath: 'inset(0 round 0.5rem)' }}
-              autoPlay muted loop playsInline>
-              <source src={videoSrc} type="video/mp4" />
-            </video>
+          {/* Title of work */}
+          <h1 className={`tracking-tight font-medium md:p-0 transition-all duration-300 z-50 break-words hyphens-auto 
+          w-5/6 md:w-3/4 md:leading-8 md:text-4xl md:opacity-0 md:group-hover:opacity-100
+          ${selectedTags.includes('all') 
+          ? `${isExpanded ? 'text-white text-5xl leading-11 p-2' : 'p-1 text-[20px] text-white md:group-hover:text-4xl md:group-hover:leading-8'}` 
+          : 'text-5xl p-3 text-white leading-tighter'}`}>
+            {title}
+          </h1>
 
-            {/* Line */}
-            <motion.div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15 mt-1"/>
+          {/* Gradient */}
+          <div className={`transition-all duration-300 z-10 ${selectedTags.includes('all') 
+            ? `${isExpanded ? 'opacity-75' : 'opacity-0'}` 
+            : 'opacity-100'}`}>
+
+            <div className={`absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
+            <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] -right-[0.2px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply "/>
           </div>
+
+          {/* Details Container */}
+          <div className="z-50 flex flex-row justify-start w-full">
+
+            {/* Script Subheader */}
+            {/* <h3 className="z-10 text-white text-[10px] pl-2.5 pb-1 pr-2 md:pb-0 md:text-base tracking-tight
+            font-script opacity-100 lg:opacity-0 lg:group-hover:opacity-100 -rotate-1 text-right
+            transition-all duration-300 leading-6 md:leading-5 md:text-left w-2/3lg:w-1/2">
+            {subheader}</h3> */}
+
+            {/* Clean Subheader */}
+            <h3 className={`z-10 md:pb-0 md:text-sm tracking-normal
+            opacity-100 md:opacity-0 md:group-hover:opacity-100 ml-1 md:w-4/6
+            transition-opacity duration-300 leading-normal md:leading-4 text-left
+            ${selectedTags.includes('all') 
+            ? `${isExpanded ? 'text-white opacity-100' : 'text-[8px] text-white opacity-50'} w-5/6` 
+            : 'text-xxs p-1.5 pl-2.5 md:pl-0 text-white w-full font-light'}`}>
+            {subheader}</h3>
+
+            {/* Role */}
+            {/* <h3 className="hidden lg:block z-50 text-white text-sm tracking-tight opacity-0 group-hover:opacity-100
+            transition-all duration-300 leading-5 w-1/2">
+            {role}
+            </h3> */}
+          </div>
+        </div>
+  
+        {/* Corner Arrow */}
+        <button className="hidden lg:block absolute top-2 right-2 z-20 p-0 m-1 scale-100
+        rounded-full border-0 border-[rgba(255,255,255,0.5)] text-white backdrop-blur
+        group-hover:bg-white group-hover:text-black group-hover:scale-150 group-hover:m-2 group-hover:px-1
+        transition-all duration-200">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="2 2 20 20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-4 h-4">
+            <path d="M7 17L17 7"
+            className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <path d="M7 7h10v10" />
+            </svg>
+        </button>
+
+        {/* Mobile Corner Arrow */}
+        <button className={`md:hidden absolute p-0.5 px-1 rounded-full z-50 
+        flex items-center justify-center cursor-pointer group-hover:text-black transition-all duration-300
+        ${selectedTags.includes('all') 
+          ? `${isExpanded ? 'top-5 right-5 scale-150 text-black bg-white' : 'hidden'}` 
+          : 'top-7 right-7 scale-150 group-hover:-m-2 group-hover:scale-150 group-hover:bg-white text-white border-1'}`}>
+
+          <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="2 2 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`w-3 h-3 ${selectedTags.includes('all') ? (isExpanded ? 'block' : 'hidden') : 'block'}`}>
+          <path d="M7 17L17 7"/>
+          <path d="M7 7h10v10"/>
+          </svg>
+
+        </button>
+
+        {/* Mobile Dropdown Chevron */}     
+        <ChevronDownIcon 
+        className={`absolute z-50 top-3 right-4 text-white opacity-100 w-3.5 h-3.5 md:hidden
+        ${selectedTags.includes('all') ? (isExpanded ? 'hidden' : 'block') : 'hidden'}`}/>
+
+        {/* Video */}
+        <video
+          className={`absolute inset-0 w-full h-full object-cover rounded-lg 
+          md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-500 
+          ${selectedTags.includes('all') 
+            ? `${isExpanded ? 'opacity-100' : 'opacity-100 blur-[30px] md:blur-0'}`
+            : 'blur-none opacity-100'}`}
+          style={{ clipPath: 'inset(0 round 0.5rem)' }}
+          autoPlay muted loop playsInline>
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+
+      </div>
       
     </motion.div>
   );
@@ -221,21 +248,25 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
 
 const GridPage = () => {
 
-  const videoData = [
-    { src: '/ghibli/cover1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
-    { src: '/CCS/cover1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
-    { src: '/cocktail/cover1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', role:' Creative Direction | Motion Design', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
-    { src: '/kris/cover1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['kris', 'all', 'creative', 'sia'] },
-    { src: '/travelbig/cover.mp4', title:'Travel Like Never Before', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['travelbig', 'all', 'creative', 'sia'] },
-    { src: '/lounge/cover.mp4', title:'SilverKris Lounge', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design | Video Edit', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
-    { src: '/hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product campaign for IKEA', role:'Creative Direction', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
-    { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social content for Singapore Airlines', role:'Creative Direction', tags: ['ispy', 'all', 'creative', 'sia'] },
-    { src: '/jollieverafter/cover.mp4', title:'JolliEverAfter', subheader:'Social media campaign for Jollibee', role:'Motion Design | Video Edit', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
-    { src: '/photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', role:'Art Direction | Photography', tags: ['bbh', 'all', 'photography'] },
-    { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', role:'Art Direction | 3D Motion Design', tags: ['oneshow', 'all', 'motion', 'oneshow'] },
-    { src: '/leica/leica.mp4', title:'Leica M10-P', subheader:'Personal explorations', role:'3D Motion Design', tags: ['leica', 'all', 'motion'] },
-    { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', role:'3D Motion Design', tags: ['iphone', 'all', 'motion'] }, 
-  ];
+const videoData = [
+  { src: '/ghibli/cover1_1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
+  { src: '/CCS/cover1_1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+  { src: '/cocktail/cover1_1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', role:' Creative Direction | Motion Design', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+  { src: '/kris/cover1_1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['kris', 'all', 'creative', 'sia'] },
+  { src: '/travelbig/cover_1.mp4', title:'Travel Like Never Before', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['travelbig', 'all', 'creative', 'sia'] },
+  { src: '/lounge/cover_1.mp4', title:'SilverKris Lounge', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design | Video Edit', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
+  { src: '/hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product campaign for IKEA', role:'Creative Direction', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
+  { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social content for Singapore Airlines', role:'Creative Direction', tags: ['ispy', 'all', 'creative', 'sia'] },
+  { src: '/jollieverafter/cover.mp4', title:'JolliEverAfter', subheader:'Social media campaign for Jollibee', role:'Motion Design | Video Edit', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
+  { src: '/virtualsentosa/cover.mp4', title:'Virtual Sentosa', subheader:'Activation Campaign for Sentosa', role:'Edit | Motion Design', tags: ['virtualsentosa', 'all', 'motion', 'edit'] },
+  { src: '/3dpersonal/cover.mp4', title:'3D Motion Explorations', subheader:'Personal Explorations', role:'Motion Design', tags: ['3dpersonal', 'all', 'motion'] },
+  { src: '/uniqlo2/cover.mp4', title:'New Style Fresh Start', subheader:'Motion Design for Uniqlo', role:'Motion Design', tags: ['uniqlo2', 'all', 'motion'] },
+  { src: '/photography/street/cover2_2.mp4', title:'Personal Photography', subheader:'Photography', role:'Photography', tags: ['street', 'all', 'photography'] },
+  { src: '/photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', role:'Art Direction | Photography', tags: ['bbh', 'all', 'photography'] },
+  { src: '/photography/unshackle/cover.mp4', title:'Unshackle:', subheader:'Photography', role:'Photography', tags: ['unshackle', 'all', 'photography'] },
+  { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', role:'Art Direction | 3D Motion Design', tags: ['oneshow', 'all', 'motion'] },
+  { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', role:'3D Motion Design', tags: ['iphone', 'all', 'motion'] }, 
+];
 
 const [isMobile, setIsMobile] = useState(false);
 const [selectedTags, setSelectedTags] = useState('');
@@ -340,6 +371,11 @@ const toggleWork = (work) => {
   } else {
     setSelectedWork(work);
   }
+
+  window.scrollTo ({
+    top:0,
+    behavior:'smooth',
+  });
 };
 
 const toggleNav = () => {
@@ -380,25 +416,26 @@ const filteredVideos = videoData.filter((video) => {
 
   return (
     <>
-      {/* Entire Page column setup */}
+      <VideoProvider>
+        {/* Entire Page column setup */}
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12
         px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-2 md:top-0.5 lg:top-1.5 z-40 mb-4 text-sm lg:text-base font-medium w-screen pr-6">
+          <div className="col-span-full fixed top-2 md:top-1.5 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
 
             {/* Sidenav / Dropdown Button */}
             <motion.button 
               className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/0 backdrop-blur-lg 
-              flex items-center shadow lg:shadow-none lg:hover:bg-foreground lg:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
-              ${showNav ? "text-white dark:text-black bg-foreground right-8" : "bg-white dark:bg-black/20 lg:dark:bg-transparent right-8"}`}
+              flex items-center shadow md:shadow-none md:hover:bg-foreground md:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
+              ${showNav ? "text-white dark:text-black bg-foreground right-8" : "bg-white dark:bg-black/20 md:dark:bg-transparent right-8"}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
               layout="position"
               onClick={toggleNav}>
 
                 {/* Example of an SVG icon */}
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 lg:w-5 h-6 lg:h-5">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 md:w-5 h-6 md:h-5">
                   <path d={`${showNav ? 'M2 10h16' : 'M6 10h8'}`}
                   className='transition-all duration-200'/>
                   <path d={`${showNav ? 'M2 15h16' : 'M6 15h8'}`}
@@ -410,7 +447,7 @@ const filteredVideos = videoData.filter((video) => {
 
               {/* Top Navbar Contents */}
               <motion.div
-              className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-2 md:gap-10 mix-blend-difference text-white mt-[7px] lg:mt-0.5"
+              className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-2 md:gap-10 text-white mt-[7px] lg:mt-1"
               initial="hidden"
               animate="show"
               layout="position"
@@ -423,7 +460,7 @@ const filteredVideos = videoData.filter((video) => {
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap
                     ${selectedWork.includes('resume') 
                       ? ' border-black/100 dark:border-white/100 text-foreground' 
-                      : ' text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] '
+                      : ' text-[rgba(0,0,0,0.5)] dark:text-[rgba(255,255,255,0.5)] '
                     }`}
                   whileHover={{ scale: 0.94 }}
                   variants={animateInChild}
@@ -448,8 +485,9 @@ const filteredVideos = videoData.filter((video) => {
                     ${['all', 'creative', 'edit', 'motion', 'photography'].some(tag => selectedTags.includes(tag))
                     && isMobile
                     ? ' border-black/100 dark:border-white/100 text-foreground' 
-                    : ' text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                    : ' text-[rgba(0,0,0,0.5)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground border-black/100'
                   }`}
+
                 whileHover={{scale:1.03}}
                 variants={animateInChild}
                 layout="position"
@@ -475,7 +513,7 @@ const filteredVideos = videoData.filter((video) => {
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap
                     ${selectedWork.includes('bestwork') 
                       ? ' border-black/100 dark:border-white/100 text-foreground' 
-                      : ' text-[rgba(0,0,0,0.3)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                      : ' text-[rgba(0,0,0,0.5)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
                     }`}
                   whileHover={{ scale: 1.03 }}
                   variants={animateInChild}
@@ -508,8 +546,8 @@ const filteredVideos = videoData.filter((video) => {
               transform: "translateX(-50%)",
             }}
               animate={{ 
-                width: showNav? "17.5rem" : "11.1rem",
-                height: showNav ? "29.5rem" : "2.5rem",
+                width: showNav? "17rem" : "11.1rem",
+                height: showNav ? "28rem" : "2.5rem",
                 borderRadius: showNav ? "0.75rem" : "50rem"}}
               transition={{
                 width: { type: "spring", stiffness: showNav ? 500 : 500 , damping: showNav ? 28 : 26 },
@@ -596,7 +634,7 @@ const filteredVideos = videoData.filter((video) => {
 
                   {/* Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-2 items-start tracking-tighter text-[26px] leading-tighter font-medium mt-7 w-full max-w-[53%] mx-auto md:hidden"
+                  className="flex flex-col gap-2 items-start tracking-tighter text-[23px] leading-tighter font-medium mt-7 w-full max-w-[53%] mx-auto md:hidden"
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -615,7 +653,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleNav('false');
                       toggleWork('clear');}}><span className='hidden mr-1.5 font-light text-base align-top tracking-normal'>∞</span>
                       Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
-                      >It's quite a lot</span></motion.button>
+                      ></span></motion.button>
 
                     <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
@@ -636,62 +674,62 @@ const filteredVideos = videoData.filter((video) => {
                     onClick={() => {
                       toggleTag('creative');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>01 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>01 </span>
                       Creative</motion.button>
 
                     <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('motion');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>02 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>02 </span>
                       Motion</motion.button>
 
                     <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('edit');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>03 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>03 </span>
                       Edit</motion.button>
 
                     <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 whitespace-nowrap"
+                    className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 whitespace-nowrap"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('ixd');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>04 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
                       Interaction Design</motion.button>
 
                     <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('photography');
                       toggleNav('false');
                       toggleWork('photography');
-                      }}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>05 </span>
+                      }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>05 </span>
                       Photography</motion.button>
                       
                     <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                   className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
+                   className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
                    variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('content');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-light opacity-35 text-xxs align-top tracking-normal'>06 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>06 </span>
                       Content Creation</motion.button>
                   </motion.div>
                 </div>
@@ -921,37 +959,37 @@ const filteredVideos = videoData.filter((video) => {
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['creative', 'motion']) || hoveredWork ==='kris' 
+                    ${includesTags(['creative', 'motion']) || selectedWork.includes(['kris']) || hoveredWork ==='kris' 
                       ? 'text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                     } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['creative', 'motion']) ||
+                    includesTags(['creative', 'motion']) || selectedWork.includes(['kris']) ||
                     hoveredWork==='kris' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>Kris+ Brand Campaign</motion.button>
+                    toggleWork('kris')}}>Kris+ Brand Campaign</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['creative']) || hoveredWork ==='ispy' 
+                    ${includesTags(['creative']) || selectedWork.includes(['ispy']) || hoveredWork ==='ispy' 
                       ? 'text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                     } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['creative']) ||
+                    includesTags(['creative']) || selectedWork.includes(['ispy']) ||
                     hoveredWork==='ispy' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>I Spy in the Sky</motion.button>
+                    toggleWork('ispy')}}>I Spy in the Sky</motion.button>
 
                   <motion.h1
                   className={`text-xs mt-5 tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
@@ -961,88 +999,88 @@ const filteredVideos = videoData.filter((video) => {
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['creative', 'motion']) || hoveredWork ==='travelbig' 
+                    ${includesTags(['creative', 'motion']) || selectedWork.includes(['travelbig']) || hoveredWork ==='travelbig' 
                       ? 'text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                     } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['creative', 'motion']) ||
+                    includesTags(['creative', 'motion']) || selectedWork.includes(['travelbig']) ||
                     hoveredWork==='travelbig' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>Travel Like Never Before</motion.button>
+                    toggleWork('travelbig')}}>Travel Like Never Before</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['creative', 'motion', 'edit', 'graphic']) || hoveredWork ==='lounge' 
+                    ${includesTags(['creative', 'motion', 'edit', 'graphic']) || selectedWork.includes(['lounge']) || hoveredWork ==='lounge' 
                       ? 'text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                     } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['creative', 'motion', 'edit', 'graphic']) ||
+                    includesTags(['creative', 'motion', 'edit', 'graphic']) || selectedWork.includes(['lounge']) ||
                     hoveredWork==='lounge' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>SilverKris Lounge</motion.button>
+                    toggleWork('lounge')}}>SilverKris Lounge</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['creative']) || hoveredWork ==='hemsaker' 
+                    ${includesTags(['creative']) || selectedWork.includes(['hemsaker']) || hoveredWork ==='hemsaker' 
                       ? 'text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                     } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['creative']) ||
+                    includesTags(['creative']) || selectedWork.includes(['hemsaker']) ||
                     hoveredWork==='hemsaker' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>Oops Happens</motion.button>
+                    toggleWork('hemsaker')}}>Oops Happens</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion']) || hoveredWork ==='oneshow' 
+                    ${includesTags(['motion']) || selectedWork.includes(['oneshow']) || hoveredWork ==='oneshow' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion']) ||
+                    includesTags(['motion']) || selectedWork.includes(['oneshow']) ||
                     hoveredWork==='oneshow' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>TBWA One Show Shortlist</motion.button>
+                    toggleWork('oneshow')}}>TBWA One Show Shortlist</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion']) || hoveredWork ==='bybit' 
+                    ${includesTags(['motion']) || selectedWork.includes(['bybit']) || hoveredWork ==='bybit' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion']) ||
+                    includesTags(['motion']) || selectedWork.includes(['bybit']) ||
                     hoveredWork==='bybit' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>ByBit Moon Pillow</motion.button>
+                    toggleWork('bybit')}}>ByBit Moon Pillow</motion.button>
 
 
                   <motion.h1
@@ -1054,71 +1092,71 @@ const filteredVideos = videoData.filter((video) => {
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion', 'edit','best']) || hoveredWork ==='jolli' 
+                    ${includesTags(['motion', 'edit','best']) || selectedWork.includes(['jolli']) || hoveredWork ==='jolli' 
                       ? 'text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                     } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion', 'edit','best']) || selectedTags.includes('edit') ||
+                    includesTags(['motion', 'edit','best']) || selectedWork.includes(['jolli']) || selectedTags.includes('edit') ||
                     hoveredWork==='jolli' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>JolliEverAfter</motion.button>
+                    toggleWork('jolli')}}>JolliEverAfter</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion','edit']) || hoveredWork ==='virtualsentosa' 
+                    ${includesTags(['motion','edit']) || selectedWork.includes(['virtualsentosa']) || hoveredWork ==='virtualsentosa' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion', 'edit']) ||
+                    includesTags(['motion', 'edit']) || selectedWork.includes(['virtualsentosa']) ||
                     hoveredWork==='virtualsentosa' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>Virtual Sentosa</motion.button>
+                    toggleWork('virtualsentosa')}}>Virtual Sentosa</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion','edit']) || hoveredWork ==='samsung' 
+                    ${includesTags(['motion','edit']) || selectedWork.includes(['samsung']) || hoveredWork ==='samsung' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion','edit']) ||
+                    includesTags(['motion','edit']) || selectedWork.includes(['samsung']) ||
                     hoveredWork==='samsung' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>Samsung Lifestyle Displays</motion.button>
+                    toggleWork('samsung')}}>Samsung Lifestyle Displays</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion','edit']) || hoveredWork ==='sentosa' 
+                    ${includesTags(['motion','edit']) || selectedWork.includes(['sentosa']) || hoveredWork ==='sentosa' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion','edit']) ||
+                    includesTags(['motion','edit']) || selectedWork.includes(['sentosa']) ||
                     hoveredWork==='sentosa' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>Sentosa Island</motion.button>
+                    toggleWork('sentosa')}}>Sentosa Island</motion.button>
 
                   <motion.h1
                   className={`text-xs mt-5 tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
@@ -1129,30 +1167,30 @@ const filteredVideos = videoData.filter((video) => {
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion','edit']) || hoveredWork ==='nike' 
+                    ${includesTags(['motion','edit']) || selectedWork.includes(['nike']) || hoveredWork ==='nike' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion','edit']) ||
+                    includesTags(['motion','edit']) || selectedWork.includes(['nike']) ||
                     hoveredWork==='nike' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>Nike Athlete Stories: Koy & Toon</motion.button>
+                    toggleWork('nike')}}>Nike Athlete Stories: Koy & Toon</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesWorks(['bbh']) || hoveredWork ==='bbh' 
+                    ${includesWorks(['bbh']) || selectedWork.includes(['bbh']) || hoveredWork ==='bbh' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesWorks(['bbh']) ||
+                    includesWorks(['bbh']) || selectedWork.includes(['bbh']) ||
                     hoveredWork==='bbh' 
                     ? 1.02 : 1
                   }}
@@ -1163,20 +1201,20 @@ const filteredVideos = videoData.filter((video) => {
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion']) || hoveredWork ==='uniqlo2' 
+                    ${includesTags(['motion']) || selectedWork.includes(['uniqlo2']) || hoveredWork ==='uniqlo2' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion']) ||
+                    includesTags(['motion']) || selectedWork.includes(['uniqlo2']) ||
                     hoveredWork==='uniqlo2' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>New Style Fresh Start</motion.button>
+                    toggleWork('uniqlo2')}}>New Style Fresh Start</motion.button>
 
                   <motion.h1
                   className={`text-xs mt-6 tracking-tight transition-color " ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
@@ -1186,18 +1224,20 @@ const filteredVideos = videoData.filter((video) => {
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion', 'graphic']) || hoveredWork ==='uniqlo1' 
+                    ${includesTags(['motion', 'graphic']) || selectedWork.includes(['uniqlo1']) || hoveredWork ==='uniqlo1' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion', 'graphic']) ||
+                    includesTags(['motion', 'graphic']) || selectedWork.includes(['uniqlo1']) ||
                     hoveredWork==='uniqlo1' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
-                  onClick={() => toggleTag('motion', 'graphic')}>Your Stage Now Live</motion.button>
+                  onClick={() => {
+                    toggleTag('clear');
+                    toggleWork('uniqlo1')}}>Your Stage Now Live</motion.button>
 
                   <motion.h1
                   className={`text-xs mt-5 tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
@@ -1207,71 +1247,73 @@ const filteredVideos = videoData.filter((video) => {
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion']) || hoveredWork ==='iphone12' 
+                    ${includesTags(['motion']) || selectedWork.includes(['iphone12']) || hoveredWork ==='iphone12' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion']) ||
+                    includesTags(['motion']) || selectedWork.includes(['iphone12']) ||
                     hoveredWork==='iphone12' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>iPhone 12 Pro</motion.button>
+                    toggleWork('iphone12')}}>iPhone 12 Pro</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion']) || hoveredWork ==='iphone' 
+                    ${includesTags(['motion']) || selectedWork.includes(['iphone']) || hoveredWork ==='iphone' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion']) ||
+                    includesTags(['motion']) || selectedWork.includes(['iphone']) ||
                     hoveredWork==='iphone' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>iPhone 15 Pro</motion.button>
+                    toggleWork('iphone')}}>iPhone 15 Pro</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion']) || hoveredWork ==='leica' 
+                    ${includesTags(['motion']) || selectedWork.includes(['leica']) || hoveredWork ==='leica' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion']) ||
+                    includesTags(['motion']) || selectedWork.includes(['leica']) ||
                     hoveredWork==='leica' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
-                  onClick={() => toggleTag('Photography')}>Leica M10-P</motion.button>
+                  onClick={() => {
+                    toggleTag('clear');
+                    toggleWork('leica')}}>Leica M10-P</motion.button>
 
               
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion']) || hoveredWork ==='3d' 
+                    ${includesTags(['motion']) || selectedWork.includes(['3d']) || hoveredWork ==='3d' 
                     ? 'text-foreground' 
                     : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                   } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['motion']) ||
+                    includesTags(['motion']) || selectedWork.includes(['3d']) ||
                     hoveredWork==='3d' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('cabin')}}>3D Motion Exploration</motion.button>
+                    toggleWork('3d')}}>3D Motion Exploration</motion.button>
                 </motion.div>
               </>
             )} 
@@ -1307,10 +1349,17 @@ const filteredVideos = videoData.filter((video) => {
                   <CabinCrewStories key="cabin" className="col-span-full" isMobile={isMobile}/>
                 ) : selectedWork === 'cocktail' ? (
                   <Cocktail key="cocktail" className="col-span-full"/>
+                ) : selectedWork === 'kris' ? (
+                  <Kris key="kris" className="col-span-full"/>
+                ) : selectedWork === 'travelbig' ? (
+                  <TravelBig key="travelbig" className="col-span-full"/>
+                ) : selectedWork === 'lounge' ? (
+                  <Lounge key="lounge" className="col-span-full"/>
                 ) : selectedWork === 'bestwork' ? (
                   <BestWorkPage key="bestwork" className="col-span-full" setSelectedWork={setSelectedWork} setHoveredWork={setHoveredWork}/>
                 ) : (
                   filteredVideos.map((video) => (
+                  
                     <VideoSquare
                       key={video.src}
                       videoSrc={video.src}
@@ -1322,11 +1371,16 @@ const filteredVideos = videoData.filter((video) => {
                       setHoveredWork={setHoveredWork}
                       selectedTags={selectedTags}
                       onClick={() => { 
-                        const workTags = ['cabin', 'cocktail', 'ghibli', 'bbh'];
+                        const workTags = ['cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'travelbig', 'lounge'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));
                         if (matchedWork) {
                           setSelectedWork(matchedWork);
                         }
+                        
+                        window.scrollTo ({
+                          top:0,
+                          behavior:'smooth',
+                        });
                       }}
                     />
                   ))
@@ -1334,8 +1388,8 @@ const filteredVideos = videoData.filter((video) => {
               </AnimatePresence>
             </motion.div> 
           </motion.div>
-
         </div>
+      </VideoProvider>
     </>
   );
   

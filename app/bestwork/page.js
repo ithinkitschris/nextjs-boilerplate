@@ -121,7 +121,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <h1 className="text-6xl md:text-7xl -ml-1 font-medium tracking-tighter leading-tighter mb-1 mr-24">
                     Beyond The Cabin
                 </h1>
-                <h1 className="text-xl [word-spacing:-0.05em] font-script md:text-xl w-96 -rotate-1 tracking-tight mt-2 mb-5">Brand campaign for Singapore Airlines</h1>
+                <h1 className="text-lg tracking-tight mt-2 mb-5">Brand Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Singapore Airlines</span></h1>
                 <p className="mr-10 mb-4 md:w-3/4">
                     6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see
                     them on board, now follow their travels around the world.
@@ -192,7 +192,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 {/* Geist Uppercase subheader */}
                 {/* <h1 className="text-sm font-medium md:text-xl font-sans uppercase tracking-wider lg:-mt-1 mb-4"> */}
 
-                <h1 className="text-xl [word-spacing:-0.1em] font-script md:text-xl -rotate-1 tracking-tight lg:-mt-1 mb-5">Brand campaign for Singapore Airlines</h1>
+                <h1 className="text-lg tracking-tight mt-2 mb-5">Brand Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Singapore Airlines</span></h1>
                 <p className="mr-10 mb-4 md:mb-0">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -254,7 +254,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
                    The World of Studio Ghibli
                 </h1>
-                <h1 className="text-lg font-script md:text-xl -rotate-1 tracking-normal mt-2 mb-5">Marketing campaign for ArtScience Museum</h1>
+                <h1 className="text-lg tracking-tight mt-2 mb-5">Marketing Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">ArtScience Museum</span></h1>
                 <p className="mr-10 mb-4 md:w-3/4">Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -317,7 +317,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
                    JolliEverAfter
                 </h1>
-                <h1 className="text-xl [word-spacing:-0.05em] font-script md:text-xl w-96 -rotate-1 tracking-wide mt-2 mb-5">Social media campaign for Jollibee</h1>
+                <h1 className="text-lg tracking-tight mt-2 mb-5">Social Media Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Jollibee</span></h1>
                 <p className="mr-10 mb-4 md:w-3/4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam facilisis hendrerit. Integer pulvinar nibh erat, a iaculis nisi condimentum ac. Nam in cursus turpis, sed ullamcorper nisl. </p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -379,7 +379,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <h1 className="text-6xl leading-tighter md:text-7xl font-medium tracking-tighter mb-3 mr-10">
                    Your Stage Now Live
                 </h1>
-                <h1 className="text-xl [word-spacing:-0.05em] font-script md:text-xl w-96 -rotate-1 tracking-normal mt-2 mb-5">In - store displays for Uniqlo</h1>
+                <h1 className="text-lg tracking-tight mt-2 mb-5">In-Store Displays for<span className="ml-1.5 text-xl font-script -rotate-1">Uniqlo</span></h1>
                 <p className="mr-10 mb-4 md:w-3/4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam facilisis hendrerit. Integer pulvinar nibh erat, a iaculis nisi condimentum ac. Nam in cursus turpis, sed ullamcorper nisl. </p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">

@@ -45,7 +45,7 @@ const notoSerif = Noto_Serif({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       antialiased flex flex-col min-h-screen font-mono
       bg-background transition-all duration-300`}>
         {/* <DocumentationButton/> */}
-        <div className="fixed left-4 md:left-auto md:right-6 top-3 md:top-2 z-50">
+        <div className="fixed left-4 md:left-auto md:right-6 top-3 md:top-1 z-50">
           <div className="absolute right-12 top-1 hidden md:block w-24 tracking-tight
           font-medium text-lg font-[family-name:var(--font-geist-sans)]"></div>
           <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>

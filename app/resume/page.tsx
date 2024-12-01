@@ -535,7 +535,7 @@ export default function Resume({className=""}) {
                         </motion.div>
                         <motion.div variants={dropdownChild}>
                         <h1 className="mt-4 mb-4 ml-5 opacity-90">
-                            teamLab Future World: Where Art M9eets Science</h1>
+                            teamLab Future World: Where Art Meets Science</h1>
                         <p className="ml-5 opacity-50">
                         Creative direction and oversight on all marketing deliverables for Future World, ArtScience Museum's permanent exhibition in collaboration with teamLab.
                         </p>

@@ -24,7 +24,7 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 120 120"
-          className="w-6 lg:w-5 h-6 lg:h-5 text-foreground lg:group-hover:text-background  transition-colors duration-200"
+          className="w-6 h-6 text-foreground lg:group-hover:text-background  transition-colors duration-200"
         >
           <circle className="stroke-current fill-none" cx="60.9" cy="60.6" r="30.4" style={{ strokeWidth: '6' }}/>
           <g>

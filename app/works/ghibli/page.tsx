@@ -77,8 +77,8 @@ const animateIn ={
                 <h1 className="text-7xl text-center font-medium tracking-tighter leading-tighter -ml-2">The World of Studio Ghibli</h1>
 
                 {/* Subheader */}
-                <p className="text-xl -rotate-1 font-medium font-script tracking-tighter mt-3 
-                md:-rotate-1 md:mt-1 md:text-[27px] -ml-1 text-center md:text-left">Marketing campaign for ArtScience Museum</p>
+                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
+                Marketing Campaign for <span className='font-script -rotate-1 relative left-1.5 top-1'>ArtScience Museum</span></p>
                 </motion.div> 
 
                 {/* Banner Video */}
