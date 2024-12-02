@@ -48,7 +48,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Text */}
             <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
 
-                <h1 className="text-5xl text-white font-medium tracking-tight">
+                <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
                     Personal
                 </h1>
 
@@ -95,8 +95,8 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Text */}
         <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
-            <h1 className="text-5xl text-white font-medium tracking-tight">BBH</h1>
-            <p className="-mt-1 ml-1 text-2xl text-white font-medium tracking-tight">Profile Headshots</p>
+            <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">BBH</h1>
+            <p className="-mt-1 ml-1 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Profile Headshots</p>
             {/* <h2 className="text-xl text-white tracking-tight">Subheader</h2> */}
 
             <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
@@ -148,7 +148,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Text */}
             <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
 
-                <h1 className="text-5xl text-white font-medium tracking-tight">
+                <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
                     Behind the Scenes
                 </h1>
 
@@ -203,10 +203,10 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Text */}
             <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
 
-                <h1 className="text-5xl text-white font-medium tracking-tight">
+                <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
                     Unshackle:
                 </h1>
-                <p className="-mt-1 ml-0.5 text-2xl text-white font-medium tracking-tight">Behind the Scenes</p>
+                <p className="-mt-1 ml-0.5 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Behind the Scenes</p>
 
                 {/* <h2 className="text-xl text-white tracking-tight">
                     Subheader

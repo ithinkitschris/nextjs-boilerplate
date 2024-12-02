@@ -210,7 +210,7 @@ export default function Resume({className=""}) {
 
                     {/* Name */}
                     <motion.h1
-                    className="z-50 pl-5 pt-5 text-6xl tracking-tighter leading-15 font-base text-white"
+                    className="z-50 pl-5 pt-5 text-6xl tracking-tighter leading-15 font-base text-[#e9e9e9] dark:text-white"
                     variants={animateInChild}
                     >
                     I am <span className="font-script absolute top-10 tracking-tight text-7xl align-top ml-2">Chris</span>
@@ -230,11 +230,11 @@ export default function Resume({className=""}) {
 
                     {/* Details */}
                     <motion.div
-                    className="absolute bottom-0 pl-6 pb-14 text-white "
+                    className="absolute bottom-0 pl-6 pb-14 text-[#e9e9e9] dark:text-white"
                     variants={animateInChild}
                     >
                         {/* Circle Header */}
-                        <h1 className="flex items-center justify-center -ml-2 border-1 border-white/60  
+                        <h1 className="flex items-center justify-center -ml-2 border-1 border-[#e9e9e9] text-[#e9e9e9] dark:text-white
                         rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
                         
                         {/* Script Header */}
@@ -272,7 +272,7 @@ export default function Resume({className=""}) {
                 </motion.div>
 
                 <motion.h1 
-                className="mb-14 -mt-8 -ml-1 md:mt-0 text-[40px] px-2 font-script tracking-tight leading-11 mix-blend-difference text-white"
+                className="mb-14 -mt-8 -ml-1 md:mt-0 text-[40px] px-2 font-script tracking-tight leading-11 mix-blend-difference text-white dark:text-white"
                 animate={{rotate:-4}}
                 variants={animateInChild}>
                     And here are three <span className="ml-28 whitespace-nowrap">things about me:</span>
@@ -386,7 +386,7 @@ export default function Resume({className=""}) {
                 onClick={toggleCurriculum}>
                     
 
-                <h1 className="text-[23px] md:text-3xl mb-8 -ml-1 mt-6 tracking-normal font-script -rotate-3 w-[89vw]">Currently:</h1>
+                <h1 className="text-[23px] md:text-3xl mb-8 -ml-1 mt-6 tracking-normal font-script -rotate-3 w-[89vw] text-black dark:text-white">Currently:</h1>
                 {/* <h1 className="text-2xl md:text-3xl mb-8 -ml-1 mt-10 tracking-tight  w-20">Currently:</h1> */}
 
                 {/* Line */}
@@ -395,7 +395,7 @@ export default function Resume({className=""}) {
                 {/* Button Row */}
                 <div className="flex justify-between mt-4">
                     <div 
-                    className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-non-color duration-200
+                    className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-non-color duration-200 
                     rounded-full tracking-tight font-medium text-sm w-[125px] mb-2 font-mono whitespace-nowrap ${showCurriculum ? 'bg-foreground text-background scale-96' : ''}`}>
                         Master's Student
                     </div>

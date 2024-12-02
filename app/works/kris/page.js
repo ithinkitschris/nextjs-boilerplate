@@ -80,10 +80,10 @@ show: {
                 
                 {/* Desktop Header */}
                 <h1 className="sm:block text-7xl md:text-8xl text-center font-medium md:font-normal 
-                md:text-left tracking-tighter leading-tighter -ml-2">Kris+ Brand Campaign</h1>
+                md:text-left tracking-tighter leading-tighter lg:leading-[85px] -ml-2">Kris+ Brand Campaign</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0 md:text-[27px] -ml-1 text-center md:text-left">
+                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-3 md:text-[27px] -ml-1 text-center md:text-left">
                 Brand campaign for <span className='font-script -rotate-1 relative left-1.5 top-1'>Singapore Airlines</span></p>
             </motion.div> 
 

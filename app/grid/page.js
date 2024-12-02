@@ -131,7 +131,7 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
       {/* Square */}
       <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-black/25 rounded-lg shadow
         ${selectedTags.includes('all') 
-        ? `${isExpanded ? 'pt-[155%]' : 'pt-[18%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100'}`
+        ? `${isExpanded ? 'pt-[155%]' : 'pt-[15%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100'}`
         : 'pt-[150%]'}`}>
 
         {/* Text Container */}
@@ -139,10 +139,10 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
 
           {/* Title of work */}
           <h1 className={`tracking-tight font-medium md:p-0 transition-all duration-300 z-50 break-words hyphens-auto 
-          w-5/6 md:w-3/4 md:leading-8 md:text-4xl md:opacity-0 md:group-hover:opacity-100
+          w-5/6 md:w-3/4 md:leading-8 md:text-4xl md:opacity-0 md:group-hover:opacity-100 
           ${selectedTags.includes('all') 
-          ? `${isExpanded ? 'text-white text-5xl leading-11 p-2' : 'p-1 text-[20px] text-white md:group-hover:text-4xl md:group-hover:leading-8'}` 
-          : 'text-5xl p-3 text-white leading-tighter'}`}>
+          ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white text-5xl leading-11 p-2' : 'p-1 text-[18px] text-[#e9e9e9] dark:text-white md:group-hover:text-4xl md:group-hover:leading-8'}` 
+          : 'text-5xl p-3 text-[#e9e9e9] dark:text-white leading-tighter'}`}>
             {title}
           </h1>
 
@@ -265,6 +265,7 @@ const videoData = [
   { src: '/photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', role:'Art Direction | Photography', tags: ['bbh', 'all', 'photography'] },
   { src: '/photography/unshackle/cover.mp4', title:'Unshackle:', subheader:'Photography', role:'Photography', tags: ['unshackle', 'all', 'photography'] },
   { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', role:'Art Direction | 3D Motion Design', tags: ['oneshow', 'all', 'motion'] },
+  { src: '/moonpillow/cover.mp4', title:'ByBit Moon Pillow', subheader:'3D Motion Design', role:'', tags: ['bybit', 'all', 'motion'] },
   { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', role:'3D Motion Design', tags: ['iphone', 'all', 'motion'] }, 
 ];
 
@@ -428,7 +429,7 @@ const filteredVideos = videoData.filter((video) => {
             <motion.button 
               className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/0 backdrop-blur-lg 
               flex items-center shadow md:shadow-none md:hover:bg-foreground md:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
-              ${showNav ? "text-white dark:text-black bg-foreground right-8" : "bg-white dark:bg-black/20 md:dark:bg-transparent right-8"}`}
+              ${showNav ? "text-white dark:text-black bg-foreground right-8" : "bg-[#e9e9e9] dark:bg-black/20 md:dark:bg-transparent right-8"}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
               layout="position"
@@ -457,7 +458,7 @@ const filteredVideos = videoData.filter((video) => {
                 {/* Profile Button */}
                 <motion.button
                   className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
-                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap
+                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('resume') 
                       ? ' border-black/100 dark:border-white/100 text-foreground' 
                       : ' text-[rgba(0,0,0,0.5)] dark:text-[rgba(255,255,255,0.5)] '
@@ -475,17 +476,17 @@ const filteredVideos = videoData.filter((video) => {
                   }}
                     >
                   <span className="hidden md:block">Who am I?</span>
-                  <span className="block md:hidden">Who am I?</span>
+                  <span className="block md:hidden">Who?</span>
                 </motion.button>
 
                 {/* All Button */}
                 <motion.button 
                 className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
-                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap
+                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${['all', 'creative', 'edit', 'motion', 'photography'].some(tag => selectedTags.includes(tag))
                     && isMobile
                     ? ' border-black/100 dark:border-white/100 text-foreground' 
-                    : ' text-[rgba(0,0,0,0.5)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground border-black/100'
+                    : ' text-[rgba(0,0,0,0.5)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground border-black/0'
                   }`}
 
                 whileHover={{scale:1.03}}
@@ -502,7 +503,7 @@ const filteredVideos = videoData.filter((video) => {
                     }
                   }}>
 
-                  <span className="hidden md:block">Here's everything that I've got.</span>
+                  <span className="hidden md:block">Everything I've got</span>
                   <span className="block md:hidden">Work</span>
                   
                 </motion.button>
@@ -510,7 +511,7 @@ const filteredVideos = videoData.filter((video) => {
                 {/* Best Button */}
                 <motion.button 
                   className={`hidden md:block hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
-                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap
+                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('bestwork') 
                       ? ' border-black/100 dark:border-white/100 text-foreground' 
                       : ' text-[rgba(0,0,0,0.5)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
@@ -528,7 +529,7 @@ const filteredVideos = videoData.filter((video) => {
                   }}
                   >
 
-                  <span className="hidden md:block">These are my personal favourites</span>
+                  <span className="hidden md:block">My personal favourites</span>
                   <span className="block md:hidden">Favourites</span>
 
                 </motion.button>
@@ -546,7 +547,7 @@ const filteredVideos = videoData.filter((video) => {
               transform: "translateX(-50%)",
             }}
               animate={{ 
-                width: showNav? "17rem" : "11.1rem",
+                width: showNav? "17rem" : "9.1rem",
                 height: showNav ? "28rem" : "2.5rem",
                 borderRadius: showNav ? "0.75rem" : "50rem"}}
               transition={{
@@ -655,7 +656,7 @@ const filteredVideos = videoData.filter((video) => {
                       Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
                       ></span></motion.button>
 
-                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-backgroundround dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground mt-1 mb-1 px-5"
@@ -666,7 +667,7 @@ const filteredVideos = videoData.filter((video) => {
                       setShowNav(false)}}><span className='hidden mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
                       Favourites</motion.button>
                       
-                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
@@ -677,7 +678,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>01 </span>
                       Creative</motion.button>
 
-                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
@@ -688,7 +689,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>02 </span>
                       Motion</motion.button>
 
-                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
@@ -699,7 +700,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>03 </span>
                       Edit</motion.button>
 
-                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 whitespace-nowrap"
@@ -710,7 +711,7 @@ const filteredVideos = videoData.filter((video) => {
                       toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
                       Interaction Design</motion.button>
 
-                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
@@ -722,7 +723,7 @@ const filteredVideos = videoData.filter((video) => {
                       }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>05 </span>
                       Photography</motion.button>
                       
-                    <motion.div className="w-full bg-white dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                    className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "

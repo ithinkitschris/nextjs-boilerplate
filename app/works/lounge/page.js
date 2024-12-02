@@ -166,10 +166,10 @@ show: {
             <motion.div className='col-span-full mt-0 grid grid-cols-3 gap-1.5 md:gap-2' variants={animateInChild}>
 
                 <div className="col-span-full mb-8 md:mb-18">
-                    <h1 className="text-4.5xl md:text-[50px] font-script -rotate-3 text-center md:text-left tracking-tighter">Film</h1>
+                    <h1 className="text-4.5xl md:text-[40px] font-script -rotate-3 text-center md:text-left tracking-tighter">Film</h1>
                 </div>
 
-                <h1 className='text-center col-span-full tracking-tight text-sm px-4 mb-4'>A brand film centred around the concept of juxtaposing the expansive grandeur of the lounges against fine attention to detail.</h1>
+                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 mb-4'>A brand film centred around the concept of juxtaposing the expansive grandeur of the lounges against fine attention to detail.</h1>
                 <Image
                     src="/lounge/board.jpg"
                     alt=""
@@ -180,10 +180,10 @@ show: {
                     />
 
                 
-                <h1 className="mt-18 mb-8 text-3xl md:text-[50px] col-span-full 
+                <h1 className="mt-18 mb-8 text-3xl md:text-[35px] col-span-full 
                 font-script -rotate-3 text-center md:text-left tracking-tighter">Photo asset library</h1>
 
-                <h1 className='text-center col-span-full tracking-tight text-sm px-4 mb-4'>A set of 20 images across the 4 SilverKris Lounges for Singapore Airlines' marketing and communications asset library.</h1>
+                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4'>A set of 20 images across the 4 SilverKris Lounges for Singapore Airlines' marketing and communications asset library.</h1>
                 
                 <div className="col-span-full">
                     <Image
@@ -241,10 +241,10 @@ show: {
                         />
                 </div>
 
-                <h1 className="mt-18 mb-8 text-3xl md:text-[50px] col-span-full 
+                <h1 className="mt-18 mb-8 text-3xl md:text-[35px] col-span-full 
                 font-script -rotate-3 text-center md:text-left tracking-tighter">Digital Wall</h1>
 
-                <h1 className='text-center col-span-full tracking-tight text-sm px-4 mb-4'>A seamless looping backdrop to the entrance foyer of the SilverKris Lounges. 
+                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4 md:w-5/6'>A seamless looping backdrop to the entrance foyer of the SilverKris Lounges. 
                 The Batik Motif is separated into 4 distinct layers and animated to both grow on screen and sway in the wind.</h1>
 
                 <Image
@@ -264,7 +264,7 @@ show: {
                 // whileHover={{scale:1.01}}
                 ></motion.video>
 
-                <h1 className='text-center col-span-full font-medium tracking-tight text-sm mb-2'>Peak & Off-peak Variations</h1>
+                <h1 className='text-center md:text-left col-span-full font-medium tracking-tight text-sm mb-2'>Peak & Off-peak Variations</h1>
 
                 <motion.video 
                 src="/lounge/peak.mp4" 
@@ -282,7 +282,7 @@ show: {
                 // whileHover={{scale:1.01}}
                 ></motion.video>
 
-                <h1 className='text-center col-span-full font-medium tracking-tight text-sm mb-2'>Behind the scenes</h1>
+                <h1 className='text-center md:text-left col-span-full font-medium tracking-tight text-sm mb-2'>Behind the scenes</h1>
 
                 <div className="col-span-full flex gap-1.5 md:gap-2 w-full">
                     <div className="w-1/2">
@@ -309,10 +309,10 @@ show: {
 
                 
 
-                <h1 className="mt-18 mb-8 text-3xl md:text-[50px] col-span-full 
+                <h1 className="mt-18 mb-8 text-3xl md:text-[35px] col-span-full 
                 font-script -rotate-3 text-center md:text-left tracking-tighter">Entrance Facade</h1>
 
-                <h1 className='text-center col-span-full tracking-tight text-sm px-4 mb-4'>An 8 metre long glass installation of Singapore Airline’s Batik Motif serving as the grand facade to the SilverKris Lounge.</h1>
+                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4'>An 8 metre long glass installation of Singapore Airline’s Batik Motif serving as the grand facade to the SilverKris Lounge.</h1>
 
                 <Image
                 src="/lounge/1.jpg"
@@ -323,7 +323,7 @@ show: {
                 height={10}
                 />
 
-                <h1 className='text-center col-span-full font-medium tracking-tight text-sm mb-2'>Behind the scenes</h1>
+                <h1 className='text-center md:text-left col-span-full font-medium tracking-tight text-sm mb-2'>Behind the scenes</h1>
 
                 <div className="col-span-full flex gap-1.5 md:gap-2 w-full">
                     <div className="w-1/2">
