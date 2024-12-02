@@ -77,7 +77,7 @@ const Episodes = () => {
                           {/* <h2 className="font-sans tracking-wider uppercase font-semibold text-xs">{episode.title}</h2> */}
                         </div>
 
-                        <h3 className="text-sm lg:text-base font-normal md:mr-10 text-center md:text-left px-2 md:px-0 mb-6 md:mb-0">
+                        <h3 className="text-sm font-normal md:mr-10 text-center md:text-left px-2 md:px-0 mb-6 md:mb-0">
                         {episode.description}
                         </h3>
                     </div>

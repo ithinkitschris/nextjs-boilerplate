@@ -159,6 +159,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
                 onClick={() => {
                 setSelectedWork("cocktail");
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth", // Adds smooth scrolling effect
+                  });
                 }}
             >
                 <motion.div
@@ -219,14 +223,18 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 dark:border-[rgb(255,255,255,0.2)] md:dark:border-transparent md:dark:hover:border-[rgb(255,255,255,0.2)] mt-4 md:mt-3
                   md:hover:shadow-mild md:hover:scale-101 rounded-xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
-                setHoveredWork("cocktail");
+                setHoveredWork("ghibli");
                 }}
                 onMouseLeave={() => {
                 setHoveredWork(null);
                 }}
                 onClick={() => {
-                setSelectedWork("cocktail");
-                }}
+                    setSelectedWork("ghibli");
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth", // Adds smooth scrolling effect
+                    });
+                  }}
             >
                 <motion.div
                 className="col-span-3 rounded-lg p-4 2xl:p-6 relative"

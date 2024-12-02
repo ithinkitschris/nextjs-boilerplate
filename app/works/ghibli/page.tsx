@@ -2,6 +2,7 @@
 'use client'
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
+import Image from 'next/image';
 import Episodes from "@/app/components/episodes-cabin.js";
 
 export default function Ghibli({className=""}) {
@@ -74,7 +75,7 @@ const animateIn ={
                 className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
                 variants={animateInChild}>
                 {/* Mobile-only header */}
-                <h1 className="text-7xl text-center font-medium tracking-tighter leading-tighter -ml-2">The World of Studio Ghibli</h1>
+                <h1 className="text-7xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">The World of Studio Ghibli</h1>
 
                 {/* Subheader */}
                 <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
@@ -123,7 +124,7 @@ const animateIn ={
                 </div>
 
                 {/* Writeup */}
-                <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-10 mt-10 mb-14 md:mr-7">
+                <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-10 mt-10 mb-18 md:mr-7">
                     <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                     <p className="mb-2 font-mono text-sm ">Why?</p>
                         <p>An integrated Marketing campaign for the first official Studio Ghibli exhibition in Singapore, and one of the largest exhibitions to be shown at ArtScience Museum, transforming 11 galleries spanning two levels. The World of Studio Ghibli is organised by ArtScience Museum under the license of award-winning animation powerhouse Studio Ghibli.</p>
@@ -135,6 +136,141 @@ const animateIn ={
                     </motion.div>
                     
                 </div>
+
+                <motion.div className='col-span-full mt-0 grid grid-cols-3 gap-1.5 md:gap-2' variants={animateInChild}>
+                
+                    <div className="col-span-full mb-12 md:mb-18">
+                        <h1 className="text-4.5xl md:text-[50px] font-script -rotate-3 text-center md:text-left tracking-tighter">Key visuals</h1>
+                    </div>
+
+                    <Image
+                        src="/ghibli/kv.jpg"
+                        alt=""
+                        className="rounded-lg col-span-3 object-cover"
+                        layout="responsive"
+                        width={50}
+                        height={10}
+                    />
+
+
+                    <div className="col-span-full flex gap-1 md:gap-1.5 w-full mb-8">
+                        <div className="w-1/5">
+                            <Image
+                            src="/ghibli/kv1.jpg"
+                            alt=""
+                            className="rounded-lg object-cover"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            />
+                        </div>
+                        <div className="w-1/5">
+                            <Image
+                            src="/ghibli/kv2.jpg"
+                            alt=""
+                            className="rounded-lg object-cover"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            />
+                        </div>
+                        <div className="w-1/5">
+                            <Image
+                            src="/ghibli/kv3.jpg"
+                            alt=""
+                            className="rounded-lg object-cover"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            />
+                        </div>
+                        <div className="w-1/5">
+                            <Image
+                            src="/ghibli/kv4.jpg"
+                            alt=""
+                            className="rounded-lg object-cover"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            />
+                        </div>
+                        <div className="w-1/5">
+                            <Image
+                            src="/ghibli/kv5.jpg"
+                            alt=""
+                            className="rounded-lg object-cover"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            />
+                        </div>
+                        
+                    </div>
+
+                    <Image
+                        src="/ghibli/lobby.jpg"
+                        alt=""
+                        className="rounded-lg col-span-3 object-cover mb-8"
+                        layout="responsive"
+                        width={50}
+                        height={10}
+                    />
+
+                    <Image
+                        src="/ghibli/itsnicethat.jpg"
+                        alt=""
+                        className="rounded-lg col-span-3 object-cover mb-8"
+                        layout="responsive"
+                        width={50}
+                        height={10}
+                    />
+
+                    <Image
+                        src="/ghibli/facadefa.jpg"
+                        alt=""
+                        className="rounded-lg col-span-3 object-cover"
+                        layout="responsive"
+                        width={50}
+                        height={10}
+                    />
+
+                    <div className="col-span-full flex gap-1.5 md:gap-2 w-full mb-8 h-full">
+
+                        <motion.video 
+                        src="/ghibli/facade.mp4" 
+                        className="w-1/2 h-auto rounded-lg object-cover"
+                        autoPlay muted loop playsInline
+                        variants={animateInChild}
+                        // whileHover={{scale:1.01}}
+                        ></motion.video>
+
+                        <div className="w-1/2 relative">
+                            <Image
+                            src="/ghibli/facade.jpg"
+                            alt=""
+                            className="rounded-lg object-cover mb-8"
+                            layout="fill"
+                            />
+                        </div>
+                        
+                    </div>
+
+                    <motion.video 
+                    src="/ghibli/mrtentrance.mp4" 
+                    className="col-span-full shadow-standard rounded-lg w-full lg:w-full lg:h-auto object-cover mt-8"
+                    autoPlay muted loop playsInline
+                    variants={animateInChild}
+                    // whileHover={{scale:1.01}}
+                    ></motion.video>
+                    <motion.video 
+                    src="/ghibli/cinema.mp4" 
+                    className="col-span-full shadow-standard rounded-lg w-full lg:w-full lg:h-auto object-cover"
+                    autoPlay muted loop playsInline
+                    variants={animateInChild}
+                    // whileHover={{scale:1.01}}
+                    ></motion.video>
+                    
+                </motion.div>
                        
         </motion.div>
     )
