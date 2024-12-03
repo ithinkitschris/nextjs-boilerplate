@@ -164,7 +164,7 @@ const animateIn ={
                             />
                         </div>
                         <video 
-                        src="/Ghibli/kvanimated.mp4" 
+                        src="/Ghibli/KVanimated.mp4" 
                         className="rounded-lg md:w-1/2 w-full h-full object-cover -ml-2 md:ml-0"
                         autoPlay muted loop playsInline
                         variants={animateInChild}

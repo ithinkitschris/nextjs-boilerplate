@@ -63,7 +63,7 @@ const StreetPhotography = ({className}) => {
         {/* Two Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2">
             <motion.img
-                src="/Photography/street/new3.jpg"
+                src="/Photography/street/new3.JPG"
                 alt="Description of Image 2"
                 className="col-span-4 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
@@ -88,7 +88,7 @@ const StreetPhotography = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
-            src="/Photography/street/155.jpg"
+            src="/Photography/street/155.JPG"
             className="h-auto w-full object-cover rounded md:rounded-lg shadow-lg"
             />
         </motion.div>
@@ -199,7 +199,7 @@ const StreetPhotography = ({className}) => {
                 variants={animateInChild}
             />
             <motion.img
-                src="/Photography/street/new4.jpg"
+                src="/Photography/street/new4.JPG"
                 alt="Description of Image 3"
                 className="col-span-2 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg"
                 variants={animateInChild}

@@ -135,7 +135,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
         {/* <div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15"/> */}
         
         {/* Square */}
-        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-black/25 rounded-lg shadow
+        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-lg shadow
           ${selectedTags.includes('all') 
           ? `${isExpanded ? 'pt-[155%]' : 'pt-[15%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100'}`
           : 'pt-[150%]'}`}>
