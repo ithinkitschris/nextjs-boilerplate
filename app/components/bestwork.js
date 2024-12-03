@@ -206,7 +206,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </motion.div>
 
                 <motion.video
-                src="/cocktail/montage.mp4"
+                src="/Cocktail/montage.mp4"
                 ref={cocktailVideoRef}
                 className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
@@ -273,7 +273,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </motion.div>
 
                 <motion.video
-                src="/ghibli/banner.mp4"
+                src="/Ghibli/banner.mp4"
                 ref={ghibliVideoRef}
                 className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay

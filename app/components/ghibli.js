@@ -247,7 +247,7 @@ const animateIn ={
                     />
 
                     <Image
-                        src="/Ghibli/facadefa.jpg"
+                        src="/Ghibli/facadeartwork.jpg"
                         alt=""
                         className="rounded-lg col-span-3 object-cover"
                         layout="responsive"

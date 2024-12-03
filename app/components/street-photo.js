@@ -118,7 +118,7 @@ const StreetPhotography = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
-            src="/Photography/street/new2.jpg"
+            src="/Photography/street/new2.JPG"
             className="h-auto w-full object-cover rounded md:rounded-lg shadow-lg"
             />
         </motion.div>
