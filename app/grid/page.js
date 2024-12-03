@@ -4,12 +4,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import PhotographyPage from '../components/photography';
-import Ghibli from '../components/works/ghibli/page';
-import CabinCrewStories from '../components/works/cabin/page.js';
-import Cocktail from '../components/works/cocktail/page';
-import Kris from '../components/works/kris/page';
-import TravelBig from '../components/works/travelbig/page';
-import Lounge from '../components/works/lounge/page';
+import Ghibli from '../components/kris';
+import CabinCrewStories from '../components/cabin.js';
+import Cocktail from '../components/cocktail';
+import Kris from '../components/kris';
+import TravelBig from '../components/travelbig';
+import Lounge from '../components/lounge';
 import BestWorkPage from '../components/bestwork';
 import Resume from '../components/resume';
 import StreetPhotography from '../components/street-photo';
