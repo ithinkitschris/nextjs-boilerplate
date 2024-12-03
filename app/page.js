@@ -270,6 +270,7 @@ export default function Home(){
     { src: '/photography/street/cover2_2.mp4', title:'Personal Photography', subheader:'Photography', role:'Photography', tags: ['street', 'all', 'photography'] },
     { src: '/photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', role:'Art Direction | Photography', tags: ['bbh', 'all', 'photography'] },
     { src: '/photography/unshackle/cover.mp4', title:'Unshackle:', subheader:'Photography', role:'Photography', tags: ['unshackle', 'all', 'photography'] },
+    { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', role:'', tags: ['leica', 'all', 'motion'] },
     { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', role:'Art Direction | 3D Motion Design', tags: ['oneshow', 'all', 'motion'] },
     { src: '/moonpillow/cover.mp4', title:'ByBit Moon Pillow', subheader:'3D Motion Design', role:'', tags: ['bybit', 'all', 'motion'] },
     { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', role:'3D Motion Design', tags: ['iphone', 'all', 'motion'] }, 
