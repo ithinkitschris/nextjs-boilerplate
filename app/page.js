@@ -19,7 +19,6 @@ import BTS from './components/bts.js';
 import { ChevronDownIcon} from '@heroicons/react/24/solid';
 import {useVideoContext, VideoProvider} from './components/expandedGridContext.js';
 
-export default function Home(){
 
   // Motion
   const scaleIn ={
@@ -253,7 +252,7 @@ export default function Home(){
     );
   };
 
-
+export default function Home(){
 
   const videoData = [
     { src: '/ghibli/cover1_1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
