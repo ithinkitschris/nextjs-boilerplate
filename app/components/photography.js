@@ -39,7 +39,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Image */}
             <img 
             className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
-            src="/photography/street/cover2.jpg">
+            src="/Photography/street/cover2.jpg">
             </img>
 
             {/* Gradient */}
@@ -74,7 +74,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Background Glow */}
             {/* <img 
             className="absolute top-28 rounded-full h-screen left-14 scale-120 blur-3xl -z-50 opacity-0 dark:opacity-100"
-            src="/photography/street/cover2.jpg">
+            src="/Photography/street/cover2.jpg">
             </img> */}
 
         {/* BBH */}
@@ -88,7 +88,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         {/* Image */}
         <img 
             className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
-            src="/photography/bbh/cover.jpg"/>
+            src="/Photography/bbh/cover.jpg"/>
 
         {/* Gradient */}
         <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
@@ -118,14 +118,14 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         </div>
         <img 
             className="absolute top-24 h-screen scale-100 rounded-full blur-3xl -z-40 opacity-0 dark:opacity-100"
-            src="/photography/bbh/cover.jpg">
+            src="/Photography/bbh/cover.jpg">
         </img>
         </motion.div>
 
         {/* Background Glow */}
             {/* <img 
             className="absolute top-0 left-96 rounded-full blur- -z-40 opacity-70"
-            src="/photography/bbh/cover.jpg">
+            src="/Photography/bbh/cover.jpg">
             </img> */}
 
         {/* BTS */}
@@ -139,7 +139,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Image */}
             <img 
             className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
-            src="/photography/bts/cover.jpg">
+            src="/Photography/bts/cover.jpg">
             </img>
 
             {/* Gradient */}
@@ -179,7 +179,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
             {/* <img 
             className="absolute top-24 right-48 w-screen/4 h-screen scale-125 rounded-full blur-3xl -z-20 opacity-0 dark:opacity-50"
-            src="/photography/bts/cover.jpg">
+            src="/Photography/bts/cover.jpg">
             </img> */}
 
 
@@ -194,7 +194,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Image */}
             <img 
             className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300 object-[58%]"
-            src="/photography/unshackle/cover.jpg">
+            src="/Photography/unshackle/cover.jpg">
             </img>
 
             {/* Gradient */}

@@ -58,7 +58,7 @@ useEffect(() => {
             {/* Background Glow */}
             <video 
             ref={backgroundGlowRef}
-            src="/cocktail/montagelow.mp4" 
+            src="/Cocktail/montagelow.mp4" 
             className="absolute mt-20 w-screen h-screen/1.2 object-cover rounded-full -z-10 
             opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200"
             autoPlay 
@@ -82,7 +82,7 @@ useEffect(() => {
             </motion.div> 
 
             {/* Banner Video */}
-            <motion.video src="/cocktail/montagelow.mp4" 
+            <motion.video src="/Cocktail/montagelow.mp4" 
             className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
@@ -93,7 +93,7 @@ useEffect(() => {
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
                 <motion.div className="text-2xl lg:text-3xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
-                If there was a drink to match every personality, how would your bespoke cocktail look and taste like? 
+                If there was a drink to match every personality, how would your bespoke Cocktail look and taste like? 
                 </motion.div>
             </div>
 
@@ -132,18 +132,18 @@ useEffect(() => {
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm ">How?</p>
                 <p className="mb-3">Featuring a blend of notable customers & personalities who pass through the lounge, each episode stars a different guest where we learn about their craft and travel preferences.</p> 
-                <p>Through curated rapid-fire questions, the bartenders at the Crystal Bar then concoct bespoke cocktails named after them based on their answers.</p>
+                <p>Through curated rapid-fire questions, the bartenders at the Crystal Bar then concoct bespoke Cocktails named after them based on their answers.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm ">And?</p>
-                <p>The bespoke cocktails were available to order by any patron of the Crystal Bar the month following the episode, and recipe videos were edited and uploaded as content on social platforms.</p>
+                <p>The bespoke Cocktails were available to order by any patron of the Crystal Bar the month following the episode, and recipe videos were edited and uploaded as content on social platforms.</p>
                 </motion.div>
 
                 {/* <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm ">Personally...</p>
                 <p>This was a campaign where I oversaw the conceptualisation and overall Art Direction. All Motion Graphics and title sequences in the episodes were both designed and animated by me and passed to the production team for the final masters.
-                The sustenance cocktail recipe videos for social platforms were also edited on my end.</p>
+                The sustenance Cocktail recipe videos for social platforms were also edited on my end.</p>
                 </motion.div> */}
             </div>
 
@@ -154,7 +154,7 @@ useEffect(() => {
             <h1 className="font-base text-base mb-1 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
             
             <video
-                src='/cocktail/titlesequence.mp4'
+                src='/Cocktail/titlesequence.mp4'
                 className="shadow rounded-lg object-cover col-span-6 md:col-span-6 2xl:col-span-full w-full"
                 autoPlay
                 loop
@@ -167,7 +167,7 @@ useEffect(() => {
 
             <div className="col-span-full flex flex-wrap gap-1.5 mb-8 lg:gap-2">
                 <video
-                    src='/cocktail/drink2.mp4'
+                    src='/Cocktail/drink2.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
@@ -175,7 +175,7 @@ useEffect(() => {
                     playsInline
                 ></video>
                 <video
-                    src='/cocktail/drink3.mp4'
+                    src='/Cocktail/drink3.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
@@ -183,7 +183,7 @@ useEffect(() => {
                     playsInline
                 ></video>
                 <video
-                    src='/cocktail/drink4.mp4'
+                    src='/Cocktail/drink4.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
@@ -191,7 +191,7 @@ useEffect(() => {
                     playsInline
                 ></video>
                 <video
-                    src='/cocktail/drink5.mp4'
+                    src='/Cocktail/drink5.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
@@ -207,7 +207,7 @@ useEffect(() => {
             {/* <div className="col-span-full flex gap-1 md:gap-1.5 w-full mb-8">
                 <div className="w-1/4">
                     <Image
-                    src="/cocktail/thumbnail2.jpg"
+                    src="/Cocktail/thumbnail2.jpg"
                     alt=""
                     className="rounded-lg object-cover"
                     layout="responsive"
@@ -217,7 +217,7 @@ useEffect(() => {
                 </div>
                 <div className="w-1/4">
                     <Image
-                    src="/cocktail/thumbnail3.jpg"
+                    src="/Cocktail/thumbnail3.jpg"
                     alt=""
                     className="rounded-lg object-cover"
                     layout="responsive"
@@ -227,7 +227,7 @@ useEffect(() => {
                 </div>
                 <div className="w-1/4">
                     <Image
-                    src="/cocktail/thumbnail4.jpg"
+                    src="/Cocktail/thumbnail4.jpg"
                     alt=""
                     className="rounded-lg object-cover"
                     layout="responsive"
@@ -237,7 +237,7 @@ useEffect(() => {
                 </div>
                 <div className="w-1/4">
                     <Image
-                    src="/cocktail/thumbnail5.jpg"
+                    src="/Cocktail/thumbnail5.jpg"
                     alt=""
                     className="rounded-lg object-cover"
                     layout="responsive"
@@ -270,7 +270,7 @@ useEffect(() => {
                     </div>
 
                     <video
-                        src='/cocktail/episode2.mp4'
+                        src='/Cocktail/episode2.mp4'
                         className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
@@ -298,7 +298,7 @@ useEffect(() => {
                     </div>
 
                     <video
-                        src='/cocktail/episode3.mp4'
+                        src='/Cocktail/episode3.mp4'
                         className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
@@ -326,7 +326,7 @@ useEffect(() => {
                     </div>
 
                     <video
-                        src='/cocktail/episode4.mp4'
+                        src='/Cocktail/episode4.mp4'
                         className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
@@ -354,7 +354,7 @@ useEffect(() => {
                     </div>
 
                     <video
-                        src='/cocktail/episode5.mp4'
+                        src='/Cocktail/episode5.mp4'
                         className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop

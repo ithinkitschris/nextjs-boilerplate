@@ -61,7 +61,7 @@ const animateIn ={
                 {/* Background Glow */}
                 <video 
                 ref={backgroundGlowRef}
-                src="/ghibli/banner.mp4" 
+                src="/Ghibli/banner.mp4" 
                 className="absolute mt-20 w-screen h-screen/1.2 object-cover rounded-full -z-10 
                 opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200"
                 autoPlay 
@@ -85,7 +85,7 @@ const animateIn ={
                 {/* Banner Video */}
                 <motion.video 
                 ref={bannerVideoRef}
-                src="/ghibli/banner.mp4" 
+                src="/Ghibli/banner.mp4" 
                 className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
                 autoPlay muted loop playsInline
                 variants={animateInChild}
@@ -144,7 +144,7 @@ const animateIn ={
                     </div>
 
                     {/* <Image
-                        src="/ghibli/kv.jpg"
+                        src="/Ghibli/kv.jpg"
                         alt=""
                         className="rounded-lg object-cover"
                         layout="responsive"
@@ -155,7 +155,7 @@ const animateIn ={
                     <div className="col-span-full flex gap-1 md:gap-1.5 w-full h-full smb-8">
                         <div className="w-1/2 h-full ">
                             <Image
-                            src="/ghibli/kv.jpg"
+                            src="/Ghibli/kv.jpg"
                             alt=""
                             className="rounded-lg object-cover h-full"
                             layout="responsive"
@@ -164,7 +164,7 @@ const animateIn ={
                             />
                         </div>
                         <video 
-                        src="/ghibli/kvanimated.mp4" 
+                        src="/Ghibli/kvanimated.mp4" 
                         className="rounded-lg md:w-1/2 w-full h-full object-cover -ml-2 md:ml-0"
                         autoPlay muted loop playsInline
                         variants={animateInChild}
@@ -177,7 +177,7 @@ const animateIn ={
                     {/* <div className="col-span-full flex gap-0 md:gap-1.5 mb-8">
                         <div className="w-1/5">
                             <Image
-                            src="/ghibli/kv1.jpg"
+                            src="/Ghibli/kv1.jpg"
                             alt=""
                             className="rounded-lg object-cover"
                             layout="responsive"
@@ -187,7 +187,7 @@ const animateIn ={
                         </div>
                         <div className="w-1/5">
                             <Image
-                            src="/ghibli/kv2.jpg"
+                            src="/Ghibli/kv2.jpg"
                             alt=""
                             className="rounded-lg object-cover"
                             layout="responsive"
@@ -197,7 +197,7 @@ const animateIn ={
                         </div>
                         <div className="w-1/5">
                             <Image
-                            src="/ghibli/kv3.jpg"
+                            src="/Ghibli/kv3.jpg"
                             alt=""
                             className="rounded-lg object-cover"
                             layout="responsive"
@@ -207,7 +207,7 @@ const animateIn ={
                         </div>
                         <div className="w-1/5">
                             <Image
-                            src="/ghibli/kv4.jpg"
+                            src="/Ghibli/kv4.jpg"
                             alt=""
                             className="rounded-lg object-cover"
                             layout="responsive"
@@ -217,7 +217,7 @@ const animateIn ={
                         </div>
                         <div className="w-1/5">
                             <Image
-                            src="/ghibli/kv5.jpg"
+                            src="/Ghibli/kv5.jpg"
                             alt=""
                             className="rounded-lg object-cover"
                             layout="responsive"
@@ -229,7 +229,7 @@ const animateIn ={
                     </div> */}
 
                     <Image
-                        src="/ghibli/lobby.jpg"
+                        src="/Ghibli/lobby.jpg"
                         alt=""
                         className="rounded-lg col-span-3 object-cover mb-8"
                         layout="responsive"
@@ -238,7 +238,7 @@ const animateIn ={
                     />
 
                     <Image
-                        src="/ghibli/itsnicethat.jpg"
+                        src="/Ghibli/itsnicethat.jpg"
                         alt=""
                         className="rounded-lg col-span-3 object-cover mb-8"
                         layout="responsive"
@@ -247,7 +247,7 @@ const animateIn ={
                     />
 
                     <Image
-                        src="/ghibli/facadefa.jpg"
+                        src="/Ghibli/facadefa.jpg"
                         alt=""
                         className="rounded-lg col-span-3 object-cover"
                         layout="responsive"
@@ -258,7 +258,7 @@ const animateIn ={
                     <div className="col-span-full flex gap-1.5 md:gap-2 w-full mb-8">
 
                         <motion.video 
-                        src="/ghibli/facade.mp4" 
+                        src="/Ghibli/facade.mp4" 
                         className="w-1/2 rounded-lg object-cover"
                         autoPlay muted loop playsInline
                         variants={animateInChild}
@@ -267,7 +267,7 @@ const animateIn ={
 
                         <div className="w-1/2 relative">
                             <Image
-                            src="/ghibli/facade.jpg"
+                            src="/Ghibli/facade.jpg"
                             alt=""
                             className="rounded-lg object-cover mb-8"
                             layout="fill"
@@ -277,14 +277,14 @@ const animateIn ={
                     </div>
 
                     <motion.video 
-                    src="/ghibli/mrtentrance.mp4" 
+                    src="/Ghibli/mrtentrance.mp4" 
                     className="col-span-full shadow-standard rounded-lg w-full lg:w-full lg:h-auto object-cover mt-8"
                     autoPlay muted loop playsInline
                     variants={animateInChild}
                     // whileHover={{scale:1.01}}
                     ></motion.video>
                     <motion.video 
-                    src="/ghibli/cinema.mp4" 
+                    src="/Ghibli/cinema.mp4" 
                     className="col-span-full shadow-standard rounded-lg w-full lg:w-full lg:h-auto object-cover"
                     autoPlay muted loop playsInline
                     variants={animateInChild}
