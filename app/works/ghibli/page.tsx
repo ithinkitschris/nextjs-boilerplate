@@ -61,9 +61,10 @@ const animateIn ={
                 
                 {/* Background Glow */}
                 <video 
+                ref={backgroundGlowRef}
                 src="/ghibli/banner.mp4" 
-                className="absolute mt-20 w-full h-screen/1.2 max-w-9xl object-cover rounded-full -z-10 
-            opacity-0 dark:opacity-100 blur-3xl saturate-200"
+                className="absolute mt-20 w-screen h-screen/1.2 object-cover rounded-full -z-10 
+                opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200"
                 autoPlay 
                 muted 
                 loop
@@ -101,30 +102,30 @@ const animateIn ={
                 </div>
 
                 {/* Project Details */}
-                <div className="flex flex-row col-span-full sm:col-span-2 px-8 sm:px-0 justify-between font-mono text-xs tracking-tight ">
+                <div className="flex flex-row col-span-full sm:col-span-2 px-5 sm:px-0 justify-between font-mono text-xs tracking-tight ">
                     <motion.div variants={animateInChild}>
                         Role
-                        <ol className="mt-2 text-sm font-sans font-normal normal-case tracking-tight">
+                        <ol className="mt-2 text-sm flex-1 font-sans font-normal normal-case tracking-tight">
                             <li>Creative Direction</li>
                             <li>Visual Design</li>
                         </ol>
                     </motion.div>
                     <motion.div variants={animateInChild}>
                         Brand
-                        <ol className="mt-2 text-sm font-sans font-normal normal-case tracking-tight">
+                        <ol className="mt-2 text-sm flex-1 font-sans font-normal normal-case tracking-tight">
                             <li>ArtScience Museum</li>
                         </ol>
                     </motion.div>
                     <motion.div variants={animateInChild}>
                         Department
-                        <ol className="mt-2 text-sm font-sans font-normal normal-case tracking-tight">
+                        <ol className="mt-2 text-sm flex-1 font-sans font-normal normal-case tracking-tight">
                             <li>In-house Marketing</li>
                         </ol>
                     </motion.div>
                 </div>
 
                 {/* Writeup */}
-                <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-10 mt-10 mb-18 md:mr-7">
+                <div className="flex flex-col sm:flex-row col-span-full px-5 sm:px-0 gap-10 mt-10 mb-18 md:mr-7">
                     <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                     <p className="mb-2 font-mono text-sm ">Why?</p>
                         <p>An integrated Marketing campaign for the first official Studio Ghibli exhibition in Singapore, and one of the largest exhibitions to be shown at ArtScience Museum, transforming 11 galleries spanning two levels. The World of Studio Ghibli is organised by ArtScience Museum under the license of award-winning animation powerhouse Studio Ghibli.</p>
@@ -143,17 +144,38 @@ const animateIn ={
                         <h1 className="text-4.5xl md:text-[50px] font-script -rotate-3 text-center md:text-left tracking-tighter">Key visuals</h1>
                     </div>
 
-                    <Image
+                    {/* <Image
                         src="/ghibli/kv.jpg"
                         alt=""
-                        className="rounded-lg col-span-3 object-cover"
+                        className="rounded-lg object-cover"
                         layout="responsive"
                         width={50}
                         height={10}
-                    />
+                    /> */}
+
+                    <div className="col-span-full flex gap-1 md:gap-1.5 w-full h-full smb-8">
+                        <div className="w-1/2 h-full ">
+                            <Image
+                            src="/ghibli/kv.jpg"
+                            alt=""
+                            className="rounded-lg object-cover h-full"
+                            layout="responsive"
+                            width={500}
+                            height={600}
+                            />
+                        </div>
+                        <video 
+                        src="/ghibli/kvanimated.mp4" 
+                        className="rounded-lg md:w-1/2 w-full h-full object-cover -ml-2 md:ml-0"
+                        autoPlay muted loop playsInline
+                        variants={animateInChild}
+                        // whileHover={{scale:1.01}}
+                        ></video>
+                        
+                    </div>
 
 
-                    <div className="col-span-full flex gap-1 md:gap-1.5 w-full mb-8">
+                    {/* <div className="col-span-full flex gap-0 md:gap-1.5 mb-8">
                         <div className="w-1/5">
                             <Image
                             src="/ghibli/kv1.jpg"
@@ -205,7 +227,7 @@ const animateIn ={
                             />
                         </div>
                         
-                    </div>
+                    </div> */}
 
                     <Image
                         src="/ghibli/lobby.jpg"
@@ -234,11 +256,11 @@ const animateIn ={
                         height={10}
                     />
 
-                    <div className="col-span-full flex gap-1.5 md:gap-2 w-full mb-8 h-full">
+                    <div className="col-span-full flex gap-1.5 md:gap-2 w-full mb-8">
 
                         <motion.video 
                         src="/ghibli/facade.mp4" 
-                        className="w-1/2 h-auto rounded-lg object-cover"
+                        className="w-1/2 rounded-lg object-cover"
                         autoPlay muted loop playsInline
                         variants={animateInChild}
                         // whileHover={{scale:1.01}}

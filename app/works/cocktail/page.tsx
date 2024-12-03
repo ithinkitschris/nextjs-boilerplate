@@ -1,4 +1,5 @@
 // import { motion } from "framer-motion"
+import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
 import Image from 'next/image';
 
@@ -18,6 +19,33 @@ show: {
     transition: {duration:0.3, ease:"easeOut"}
     }
 }
+
+const backgroundGlowRef=useRef(null);
+const bannerVideoRef=useRef(null);
+
+useEffect(() => {
+    const backgroundGlow = backgroundGlowRef.current;
+    const bannerVideo = bannerVideoRef.current;
+
+    if (backgroundGlow && bannerVideo) {
+      // Ensure both videos start together
+      backgroundGlow.play();
+      bannerVideo.play();
+
+      // Synchronize the videos periodically
+      const syncVideos = () => {
+        if (Math.abs(backgroundGlow.currentTime - bannerVideo.currentTime) > 0.2) {
+          bannerVideo.currentTime = backgroundGlow.currentTime;
+        }
+      };
+
+      // Set an interval to check and sync the videos every 100ms
+      const syncInterval = setInterval(syncVideos, 100);
+
+      // Clean up the interval on component unmount
+      return () => clearInterval(syncInterval);
+    }
+  }, []);
     
     return(
         
@@ -29,12 +57,14 @@ show: {
 
             {/* Background Glow */}
             <video 
+            ref={backgroundGlowRef}
             src="/cocktail/montagelow.mp4" 
-            className="absolute mt-20 w-full h-screen/1.2 max-w-9xl object-cover rounded-full -z-10 
-            opacity-0 dark:opacity-100 blur-3xl saturate-200"
+            className="absolute mt-20 w-screen h-screen/1.2 object-cover rounded-full -z-10 
+            opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200"
             autoPlay 
             muted 
             loop
+            playsInline
             ></video>
             
             {/* Header */}
@@ -43,7 +73,7 @@ show: {
             variants={animateInChild}>
                 
 
-                <h1 className=" text-7xl md:text-8xl text-center font-medium md:font-normal 
+                <h1 className=" text-[65px] md:text-8xl text-center font-medium md:font-normal 
                 md:text-left tracking-tighter leading-tighter -ml-2">Cocktail Conversations</h1>
 
                 {/* Subheader */}
@@ -54,7 +84,7 @@ show: {
             {/* Banner Video */}
             <motion.video src="/cocktail/montagelow.mp4" 
             className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
-            autoPlay muted loop
+            autoPlay muted loop playsInline
             variants={animateInChild}
             // whileHover={{scale:1.01}}
             >
@@ -117,15 +147,15 @@ show: {
                 </motion.div> */}
             </div>
 
-            <div className="col-span-full mt-8 mb-8 md:mb-8 lg:mb-10 xl:mb-14">
+            <div className="col-span-full mt-12 mb-12 md:mb-8 lg:mb-10 xl:mb-14">
                 <h1 className="text-[40px] font-script -rotate-3 text-center md:text-left tracking-tighter">Motion Design</h1>
             </div>
 
-            <h1 className="font-medium mb-1 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
+            <h1 className="font-base text-base mb-1 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
             
             <video
                 src='/cocktail/titlesequence.mp4'
-                className="shadow rounded-lg object-cover col-span-6 md:col-span-6 2xl:col-span-full h-full w-full"
+                className="shadow rounded-lg object-cover col-span-6 md:col-span-6 2xl:col-span-full w-full"
                 autoPlay
                 loop
                 muted
@@ -133,9 +163,9 @@ show: {
                 playsInline
             ></video>
 
-            <h1 className="font-medium mb-1 mt-8 col-span-full text-center md:text-left tracking-tight">Cocktails</h1>
+            <h1 className="font-base text-base mb-1 mt-8 col-span-full text-center md:text-left tracking-tight">Cocktails</h1>
 
-            <div className="col-span-full flex flex-wrap gap-1.5 mb-8 lg:gap-2 lg:mr-6">
+            <div className="col-span-full flex flex-wrap gap-1.5 mb-8 lg:gap-2">
                 <video
                     src='/cocktail/drink2.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
@@ -241,7 +271,7 @@ show: {
 
                     <video
                         src='/cocktail/episode2.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-full w-full"
+                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
                         muted 
@@ -269,7 +299,7 @@ show: {
 
                     <video
                         src='/cocktail/episode3.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-full w-full"
+                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
                         muted
@@ -297,7 +327,7 @@ show: {
 
                     <video
                         src='/cocktail/episode4.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-full w-full"
+                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
                         muted
@@ -325,7 +355,7 @@ show: {
 
                     <video
                         src='/cocktail/episode5.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-full w-full"
+                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
                         muted

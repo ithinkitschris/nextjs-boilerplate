@@ -420,7 +420,7 @@ const filteredVideos = videoData.filter((video) => {
       <VideoProvider>
         {/* Entire Page column setup */}
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12
-        px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
+        px-3 sm:px-4 2xl:px-6 text-sm max-w-10xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
           {/* Top Navbar */}
           <div className="col-span-full fixed top-2 md:top-1.5 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
@@ -670,18 +670,18 @@ const filteredVideos = videoData.filter((video) => {
                     <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground font-normal dark:font-light mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal mt-1 mb-1 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('creative');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>01 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 opacity-35 text-xxs align-top tracking-normal'>01 </span>
                       Creative</motion.button>
 
                     <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal mt-1 mb-1 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('motion');
@@ -692,7 +692,7 @@ const filteredVideos = videoData.filter((video) => {
                     <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal mt-1 mb-1 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('edit');
@@ -703,7 +703,7 @@ const filteredVideos = videoData.filter((video) => {
                     <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 whitespace-nowrap"
+                    className="text-left text-foreground font-normal mt-1 mb-1 px-5 whitespace-nowrap"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('ixd');
@@ -714,7 +714,7 @@ const filteredVideos = videoData.filter((video) => {
                     <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal mt-1 mb-1 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('photography');
@@ -726,7 +726,7 @@ const filteredVideos = videoData.filter((video) => {
                     <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                   className="text-left text-foreground font-normal dark:font-base mt-1 mb-1 px-5 "
+                   className="text-left text-foreground font-normal mt-1 mb-1 px-5 "
                    variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('content');
