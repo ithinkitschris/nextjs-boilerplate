@@ -194,7 +194,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Image */}
             <img 
             className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300 object-[58%]"
-            src="/Photography/unshackle/cover.jpg">
+            src="/Photography/unshackle/cover.JPG">
             </img>
 
             {/* Gradient */}
