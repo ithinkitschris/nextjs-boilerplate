@@ -28,17 +28,6 @@ const modernLine = localFont({
   weight: "100",
 });
 
-// const playfairDisplay = Playfair_Display({
-//   subsets: ["latin"], // Load Latin characters
-//   variable: "--font-playfair", // CSS variable name for the font
-//   display: "swap", // Optimize font loading behavior
-// });
-
-const notoSerif = Noto_Serif({
-  subsets: ["latin"], // Load Latin characters
-  variable: "--font-noto-serif", // CSS variable name for the font
-  display: "swap", // Optimize font loading behavior
-});
 
 
 export default function RootLayout({ children }) {
