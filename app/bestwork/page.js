@@ -2,7 +2,6 @@
 
 import * as motion from "framer-motion/client"
 import {useEffect, useRef} from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes
 
 const animateIn ={
     hidden: {opacity:0, y:20},
