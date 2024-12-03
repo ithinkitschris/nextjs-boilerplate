@@ -155,9 +155,9 @@ const animateIn ={
                     <div className="col-span-full flex gap-1 md:gap-1.5 w-full h-full smb-8">
                         <div className="w-1/2 h-full ">
                             <Image
-                            src="/Ghibli/kv.jpg"
+                            src="/Ghibli/KV.jpg"
                             alt=""
-                            className="rounded-lg object-cover h-full"
+                        className="rounded-lg object-cover h-full"
                             layout="responsive"
                             width={500}
                             height={600}
