@@ -23,14 +23,14 @@ show: {
 const PhotographyPage = ({className, setSelectedWork}) => {
 
   return (
-    <motion.div className={`grid grid-cols-1 md:grid-cols-6 2xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] min-h-screen ${className}`}
+    <motion.div className={`grid grid-cols-1 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] min-h-screen ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
 
         {/* Personal */}
         <motion.div 
-        className="group col-span-3 mr-2 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg cursor-pointer" 
+        className="group col-span-3 h-[600px] 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg cursor-pointer md:mr-2" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -38,7 +38,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
             {/* Image */}
             <img 
-            className="w-auto h-full inset-0 object-cover rounded-lg blur-none group-hover:blur-sm transition-all duration-300"
+            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
             src="/photography/street/cover2.jpg">
             </img>
 
@@ -48,7 +48,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Text */}
             <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
 
-                <h1 className="text-5xl text-white font-medium tracking-tight">
+                <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
                     Personal
                 </h1>
 
@@ -72,14 +72,14 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         </motion.div>
 
             {/* Background Glow */}
-            <img 
+            {/* <img 
             className="absolute top-28 rounded-full h-screen left-14 scale-120 blur-3xl -z-50 opacity-0 dark:opacity-100"
             src="/photography/street/cover2.jpg">
-            </img>
+            </img> */}
 
         {/* BBH */}
         <motion.div 
-        className="group col-span-3 mr-2 2xl:h-5/6 mt-2 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-lg"
+        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-lg md:mr-2"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -87,7 +87,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         
         {/* Image */}
         <img 
-            className="w-auto h-full inset-0 object-cover rounded-lg blur-none group-hover:blur-sm transition-all duration-300"
+            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
             src="/photography/bbh/cover.jpg"/>
 
         {/* Gradient */}
@@ -95,8 +95,8 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Text */}
         <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
-            <h1 className="text-5xl text-white font-medium tracking-tight">BBH</h1>
-            <p className="-mt-1 ml-1 text-2xl text-white font-medium tracking-tight">Profile Headshots</p>
+            <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">BBH</h1>
+            <p className="-mt-1 ml-1 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Profile Headshots</p>
             {/* <h2 className="text-xl text-white tracking-tight">Subheader</h2> */}
 
             <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
@@ -130,7 +130,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BTS */}
         <motion.div 
-        className="group col-span-3 mr-2 h-screen/1.5 mt-2 2xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg" 
+        className="group col-span-3 h-[600px] mt-2 2xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg md:mr-2" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -138,7 +138,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
             {/* Image */}
             <img 
-            className="w-auto h-full inset-0 object-cover rounded-lg blur-none group-hover:blur-sm transition-all duration-300"
+            className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
             src="/photography/bts/cover.jpg">
             </img>
 
@@ -148,7 +148,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Text */}
             <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
 
-                <h1 className="text-5xl text-white font-medium tracking-tight">
+                <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
                     Behind the Scenes
                 </h1>
 
@@ -177,15 +177,15 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         
         </motion.div>
 
-        <img 
-        className="absolute top-24 right-48 w-screen/4 h-screen scale-125 rounded-full blur-3xl -z-20 opacity-0 dark:opacity-50"
-        src="/photography/bts/cover.jpg">
-        </img>
+            {/* <img 
+            className="absolute top-24 right-48 w-screen/4 h-screen scale-125 rounded-full blur-3xl -z-20 opacity-0 dark:opacity-50"
+            src="/photography/bts/cover.jpg">
+            </img> */}
 
 
         {/* Unshackle */}
         <motion.div 
-        className="group col-span-3 mr-2 h-screen/1.5 mt-2 2xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg" 
+        className="group col-span-3 h-[600px] mt-2 2xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg " 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -193,7 +193,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
             {/* Image */}
             <img 
-            className="w-auto h-full inset-0 object-cover rounded-lg blur-none group-hover:blur-sm transition-all duration-300 object-[58%]"
+            className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300 object-[58%]"
             src="/photography/unshackle/cover.jpg">
             </img>
 
@@ -203,10 +203,10 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Text */}
             <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
 
-                <h1 className="text-5xl text-white font-medium tracking-tight">
+                <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
                     Unshackle:
                 </h1>
-                <p className="-mt-1 ml-0.5 text-2xl text-white font-medium tracking-tight">Behind the Scenes</p>
+                <p className="-mt-1 ml-0.5 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Behind the Scenes</p>
 
                 {/* <h2 className="text-xl text-white tracking-tight">
                     Subheader

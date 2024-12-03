@@ -12,6 +12,8 @@ const config: Config = {
       width: {
         62: '15.5rem',
         '19' : '4.75rem',
+        '26' : '6.5rem',
+        '30' : '7.5rem',
         'screen/1.5': '75%',
         'screen/2': '50%',
         'screen/3': '33.33333%',
@@ -34,6 +36,7 @@ const config: Config = {
         1.7: '1.7px',
       },
       spacing: {
+        1.75: '0.4375rem',
         18: "4.5rem",
         54: "13.5rem",
       },
@@ -56,7 +59,27 @@ const config: Config = {
         90: '0.9',
       },
       fontSize: {
+        'xxs': '0.65rem',
         '7.5xl': '5.5rem',
+        '4.5xl': '2.5rem',
+      },
+      fontFamily: {
+        sans: ["var(--font-geist-sans)", "sans-serif"],
+        mono: ["var(--font-geist-sans)", "monospace"],
+        script: ["var(--font-breathing)", "script"],
+        script2: ["var(--font-modernline)", "script"],
+      },
+      wordSpacing: {
+        tighter: '-0.03em',
+        tight: '-0.05em',
+        normal: '0',
+        wide: '0.1em',
+      },
+      rotate: {
+        3: '3deg',
+      },
+      letterSpacing: {
+        tightest: '-0.08em', // Adjust the value as needed
       },
       scale: {
         '120': '1.20',
@@ -90,6 +113,9 @@ const config: Config = {
       margin: {
         '-mt-6': '-5rem',
         '-mt-[15vh]': '-15vh'
+      },
+      inset: {
+        '1/6': '16.6667%',
       },
       boxShadow: {
         'inner-standard': 'inset 5px 5px 20px rgba(0,0,0,0.1)',
