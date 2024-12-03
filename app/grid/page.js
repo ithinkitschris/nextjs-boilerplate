@@ -117,7 +117,11 @@ const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader
     onClick={() => {
       if (isMobileDevice()) {
         if (selectedTags.includes('all')) {
-          isExpanded ? onClick() : toggleVideo();
+          if (isExpanded) {
+            onClick();
+          } else {
+            toggleVideo();
+          }
         } else {
           onClick();
         }
