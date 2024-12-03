@@ -3,7 +3,6 @@
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
 import Image from 'next/image';
-import Episodes from "@/app/components/episodes-cabin.js";
 
 export default function Lounge({className="", isMobile}) {
     
@@ -183,7 +182,7 @@ show: {
                 <h1 className="mt-18 mb-8 text-3xl md:text-[35px] col-span-full 
                 font-script -rotate-3 text-center md:text-left tracking-tighter">Photo asset library</h1>
 
-                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4'>A set of 20 images across the 4 SilverKris Lounges for Singapore Airlines' marketing and communications asset library.</h1>
+                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4'>A set of 20 images across the 4 SilverKris Lounges for Singapore Airlines&apos; marketing and communications asset library.</h1>
                 
                 <div className="col-span-full">
                     <Image

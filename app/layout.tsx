@@ -1,8 +1,6 @@
 'use client';
 import {useState} from "react";
-import {Playfair_Display, Noto_Serif} from "next/font/google";
 import DarkModeToggle from "./components/dark-mode-toggle";
-import DocumentationButton from "./components/documentation";
 import localFont from "next/font/local";
 import "./globals.css";
 import SearchMenu from "./components/search-menu";

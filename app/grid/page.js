@@ -11,14 +11,13 @@ import Kris from '../works/kris/page';
 import TravelBig from '../works/travelbig/page';
 import Lounge from '../works/lounge/page';
 import BestWorkPage from '../bestwork/page';
-import BestWorkPage2 from '../bestwork2/page';
 import Resume from '../resume/page';
 import StreetPhotography from '../components/street-photo';
 import BBH from '../components/bbh';
 import Unshackle from '../components/unshackle';
 import BTS from '../components/bts';
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
-import {useVideoContext, VideoProvider, videoProvider} from '../components/expandedGridContext';
+import { ChevronDownIcon} from '@heroicons/react/24/solid';
+import {useVideoContext, VideoProvider} from '../components/expandedGridContext';
 
 // Motion
 const scaleIn ={
@@ -94,7 +93,7 @@ const isMobileDevice = () => {
 };
 
 
-const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, role, selectedTags }) => {
+const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, selectedTags }) => {
 
   const { expandedVideo, setExpandedVideo } = useVideoContext();
   
@@ -503,7 +502,7 @@ const filteredVideos = videoData.filter((video) => {
                     }
                   }}>
 
-                  <span className="hidden md:block">Everything I've got</span>
+                  <span className="hidden md:block">Everything I`&apos;`ve got</span>
                   <span className="block md:hidden">Work</span>
                   
                 </motion.button>

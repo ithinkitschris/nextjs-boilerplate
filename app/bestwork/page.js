@@ -1,7 +1,7 @@
 'use client'
 
 import * as motion from "framer-motion/client"
-import {useState, useEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes
 
 const animateIn ={
@@ -337,7 +337,6 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
                 <motion.video
                 src="/jollieverafter/teaser.mp4"
-                ref={''}
                 className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
                 muted
@@ -399,7 +398,6 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
                 <motion.video
                 src="/uniqlo1/montage.mp4"
-                ref={''}
                 className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
                 muted

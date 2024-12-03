@@ -1,6 +1,5 @@
 'use client';
 import { FC } from "react";
-import { Moon } from '@heroicons/react/24/solid';
 
 interface DarkModeToggleProps {
   toggleDarkMode: () => void;

@@ -2,7 +2,6 @@
 'use client'
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
-import Image from 'next/image';
 
 export default function Cocktail({className=""}) {
 
@@ -287,7 +286,7 @@ useEffect(() => {
                         </div>
 
                         <h3 className="text-sm font-normal md:mr-10 text-center md:text-left px-5 md:px-0 mb-3 md:mb-0">
-                        It's not every day that a multi-platinum music duo walks into our flagship Crystal Bar. Tune in with HONNE as they chat with us about their craft and how travel inspires their music.
+                        It&apos;s not every day that a multi-platinum music duo walks into our flagship Crystal Bar. Tune in with HONNE as they chat with us about their craft and how travel inspires their music.
                         </h3>
 
                         <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0 mt-auto">

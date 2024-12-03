@@ -2,8 +2,7 @@
 'use client'
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
-import Image from 'next/image';
-import Episodes from "@/app/components/episodes-cabin.js";
+
 
 export default function TravelBig({className="", isMobile}) {
     

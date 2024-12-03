@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, {useState, useEffect} from 'react';
 import Image from 'next/image';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
-import Carousel from '../components/profile-carousel.js'
 
 
 
@@ -109,7 +108,6 @@ export default function Resume({className=""}) {
       return () => clearInterval(timer);
     }, []);
 
-    const [showShort, setShowShort] = useState(true);
     const [showLong, setShowLong] = useState(false);
     const [showCurriculum, setShowCurriculum] = useState(false);
     const [showAsm, setShowAsm] = useState(false);
@@ -124,11 +122,6 @@ export default function Resume({className=""}) {
     const [showSentosa, setShowSentosa] = useState(false);
     const [showKinetic, setShowKinetic] = useState(false);
     const [showFreelance, setShowFreelance] = useState(false);
-    const [showOthers, setShowOthers] = useState(false);
-
-    const toggleShort = () => {
-        showShort ? setShowShort(false) : setShowShort(true)
-    };
 
     const toggleLong = () => {
         setShowLong((prevState) => !prevState);
@@ -301,7 +294,7 @@ export default function Resume({className=""}) {
                     className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-14" 
                     variants={animateInChild}>
                         {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
-                        <p className="text-[22px]  tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 ml-1">1</span> I don't take anything too seriously.</p>
+                        <p className="text-[22px]  tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 ml-1">1</span> I don&apos;t take anything too seriously.</p>
                         <p className="text-xxs ml-0.5 opacity-35 mb-10 tracking-normal font-light">Come on, script typeface on a portfolio website?</p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2">2</span> I aim to have fun in whatever I do.</p>
                         <p className="text-xxs ml-1 mt-1 opacity-35 mb-10 tacking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Masochistic? <i>Food for thought.</i></p>
@@ -476,7 +469,7 @@ export default function Resume({className=""}) {
                     <div 
                     className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-non-color duration-200 
                     rounded-full tracking-tight font-medium text-sm w-[125px] mb-2 font-mono whitespace-nowrap ${showCurriculum ? 'bg-foreground text-background scale-96' : ''}`}>
-                        Master's Student
+                        Master&apos;s Student
                     </div>
 
                     <div 
@@ -616,7 +609,7 @@ export default function Resume({className=""}) {
                         <h1 className="mt-4 mb-4 ml-5 opacity-90">
                             teamLab Future World: Where Art Meets Science</h1>
                         <p className="ml-5 opacity-50">
-                        Creative direction and oversight on all marketing deliverables for Future World, ArtScience Museum's permanent exhibition in collaboration with teamLab.
+                        Creative direction and oversight on all marketing deliverables for Future World, ArtScience Museum&apos;s permanent exhibition in collaboration with teamLab.
                         </p>
                         </motion.div>
                         <motion.div variants={dropdownChild}>
@@ -1032,7 +1025,7 @@ export default function Resume({className=""}) {
                             Offline and online edit and animation for a set of videos and a full film highlighting the stories of Bangkok based NIKE athletes Koy & toon, distributed on Nike’s Instagram feed, stories and TV.</p>
                         </motion.div>
                         <motion.div variants={dropdownChild}>
-                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Women's Instazine</h1>
+                            <h1 className="mt-6 ml-5 mb-4 opacity-90 font-base">Women&apos;s Instazine</h1>
                             <p className="mb-10 ml-5 opacity-50">
                             Edited and animated supporting assets for the campaign as well as the case study film for Women’s Instazine</p>
                         </motion.div>
