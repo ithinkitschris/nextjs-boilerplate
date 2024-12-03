@@ -1,111 +1,79 @@
 'use client';
 import { motion, AnimatePresence } from "framer-motion";
-import React, {useState, useEffect} from 'react';
-import Image from 'next/image';
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
-
-
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 
 const animateIn = {
     hidden: { opacity: 0, y: 20 },
     show: {
-        opacity: 1, y: 0,
-        transition: { staggerChildren: 0.06, duration: 0.2, ease: "easeOut" }
-    }
+        opacity: 1,
+        y: 0,
+        transition: { staggerChildren: 0.06, duration: 0.2, ease: "easeOut" },
+    },
 };
-const animateInChild ={
-    hidden: {opacity:0, y:20},
+
+const animateInChild = {
+    hidden: { opacity: 0, y: 20 },
     show: {
-        opacity:1, y:0, 
-        transition: {duration:0.3, ease:"easeOut"}
-        }
-    }
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.3, ease: "easeOut" },
+    },
+};
 
 const dropdown = {
     hidden: { opacity: 0, y: -20 },
     show: {
-        opacity: 1, y: 0,
-        transition: { staggerChildren: 0.05, duration: 0.25, ease: "easeOut" }
+        opacity: 1,
+        y: 0,
+        transition: { staggerChildren: 0.05, duration: 0.25, ease: "easeOut" },
     },
-    fade: { 
-        opacity:0,
-        transition: {duration:0.5, ease:"easeOut"}
-     },
-    
+    fade: {
+        opacity: 0,
+        transition: { duration: 0.5, ease: "easeOut" },
+    },
 };
 
 const dropdownChild = {
     hidden: { opacity: 0, y: -20 },
     show: {
-        opacity: 1, y: 0,
-        transition: { duration: 0.25, ease: "easeOut" }
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.25, ease: "easeOut" },
     },
-    fade: { 
-        opacity:0,
-        transition: {duration:0.5, ease:"easeOut"}
-     },
-    
+    fade: {
+        opacity: 0,
+        transition: { duration: 0.5, ease: "easeOut" },
+    },
 };
 
+export default function Resume({ className = "" }) {
+    const [timeNyc, setTimeNyc] = useState(null);
+    const [timeSg, setTimeSg] = useState(null);
 
-export default function Resume({className=""}) {
+    useEffect(() => {
+        const updateTime = (timezone, setTime) => {
+            const currentTime = new Date();
+            const timeInTimeZone = new Intl.DateTimeFormat("en-US", {
+                timeZone: timezone,
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: false,
+            }).format(currentTime);
+            setTime(timeInTimeZone);
+        };
 
-    const [timeNyc, setTimeNyc] = useState<string | null>(null);
-    useEffect(() => {
-      
-      const currentTime = new Date();
-      const timeInTimeZone = new Intl.DateTimeFormat('en-US', {
-        timeZone:'America/New_York',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false,
-      }).format(currentTime);
-      setTimeNyc(timeInTimeZone);
-  
-      const timer = setInterval(() => {
-        const updatedTime = new Date();
-        const updatedTimeInTimeZone = new Intl.DateTimeFormat('en-US', {
-          timeZone:'America/New_York',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: false,
-        }).format(updatedTime);
-  
-        setTimeNyc(updatedTimeInTimeZone);
-      }, 1000);
-  
-      return () => clearInterval(timer);
-    }, []);
-  
-    const [timeSg, setTimeSg] = useState<string | null>(null);
-    useEffect(() => {
-      
-      const currentTime = new Date();
-      const timeInTimeZone = new Intl.DateTimeFormat('en-US', {
-        timeZone:'Asia/Singapore',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false,
-      }).format(currentTime);
-      setTimeSg(timeInTimeZone);
-  
-      const timer = setInterval(() => {
-        const updatedTime = new Date();
-        const updatedTimeInTimeZone = new Intl.DateTimeFormat('en-US', {
-          timeZone:'Asia/Singapore',
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: false,
-        }).format(updatedTime);
-  
-        setTimeSg(updatedTimeInTimeZone);
-      }, 1000);
-  
-      return () => clearInterval(timer);
+        updateTime("America/New_York", setTimeNyc);
+        updateTime("Asia/Singapore", setTimeSg);
+
+        const timer = setInterval(() => {
+            updateTime("America/New_York", setTimeNyc);
+            updateTime("Asia/Singapore", setTimeSg);
+        }, 1000);
+
+        return () => clearInterval(timer);
     }, []);
 
     const [showLong, setShowLong] = useState(false);

@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/grid/page.js", "app/components/episodes-cabin.js", "app/components/backbutton.js", "app/components/cabin.js", "app/sandbox/page.js", "app/sandbox/page.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/page.js", "app/components/episodes-cabin.js", "app/components/backbutton.js", "app/components/cabin.js", "app/sandbox/page.js", "app/sandbox/page.js", "app/layout.js", "app/components/ghibli.js", "app/components/cocktail.js", "app/components/resume.js"],
   "exclude": ["node_modules"]
 }

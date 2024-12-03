@@ -3,422 +3,424 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import PhotographyPage from '../components/photography';
-import Ghibli from '../components/kris';
-import CabinCrewStories from '../components/cabin.js';
-import Cocktail from '../components/cocktail';
-import Kris from '../components/kris';
-import TravelBig from '../components/travelbig';
-import Lounge from '../components/lounge';
-import BestWorkPage from '../components/bestwork';
-import Resume from '../components/resume';
-import StreetPhotography from '../components/street-photo';
-import BBH from '../components/bbh';
-import Unshackle from '../components/unshackle';
-import BTS from '../components/bts';
+import PhotographyPage from './components/photography.js';
+import Ghibli from './components/ghibli.js';
+import CabinCrewStories from './components/cabin.js';
+import Cocktail from './components/cocktail.js';
+import Kris from './components/kris.js';
+import TravelBig from './components/travelbig.js';
+import Lounge from './components/lounge.js';
+import BestWorkPage from './components/bestwork.js';
+import Resume from './components/resume.js';
+import StreetPhotography from './components/street-photo.js';
+import BBH from './components/bbh.js';
+import Unshackle from './components/unshackle.js';
+import BTS from './components/bts.js';
 import { ChevronDownIcon} from '@heroicons/react/24/solid';
-import {useVideoContext, VideoProvider} from '../components/expandedGridContext';
+import {useVideoContext, VideoProvider} from './components/expandedGridContext.js';
 
-// Motion
-const scaleIn ={
-  hidden: {opacity:0, scale:0.90},
-  show: {
-      opacity:1, scale:1, 
-      transition: {staggerChildren: 0.1, duration:0.35, ease:"easeOut"},
-  },
-  fade: {
-    opacity:0,
-    transition: {duration: 0.1, ease: "easeOut"},
-  },
-};
-const animateIn ={
-  hidden: {opacity:0, x:-10},
-  show: {
-      opacity:1, x:0, 
-      transition: {staggerChildren: 0.02, duration:0.1, ease:"easeOut"},
-  },
-  fade: {
-    opacity:0,
-    transition: {duration: 0.1, ease: "easeOut"},
-  },
-};
-const animateInChild ={
-  hidden: {opacity:0, x:-20},
-  show: {
-    opacity:1, x:0,
-    transition: {duration:0.25, ease:"easeOut"},
+export default function Home(){
+
+  // Motion
+  const scaleIn ={
+    hidden: {opacity:0, scale:0.90},
+    show: {
+        opacity:1, scale:1, 
+        transition: {staggerChildren: 0.1, duration:0.35, ease:"easeOut"},
     },
-  fade: {
-    opacity:0,
-    transition: {duration: 0.5, ease: "easeOut"},
-  },
-};
-const animateInChildMobile ={
-  hidden: {opacity:0, y:-20},
-  show: {
-    opacity:1, y:0,
-    transition: {duration:0.2, ease:"easeOut"},
+    fade: {
+      opacity:0,
+      transition: {duration: 0.1, ease: "easeOut"},
     },
-  fade: {
-    opacity:0,
-    transition: {duration: 0.5, ease: "easeOut"},
-  },
-};
-const skillContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      //when: "beforeChildren",
-      staggerChildren: 0.015, // Stagger the children
+  };
+  const animateIn ={
+    hidden: {opacity:0, x:-10},
+    show: {
+        opacity:1, x:0, 
+        transition: {staggerChildren: 0.02, duration:0.1, ease:"easeOut"},
     },
-  },
-  exit: { opacity: 0 },
-};
-const worksContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      // delay: 0.05, // Delay to make Works fade in after Skillsets
-      when: "beforeChildren",
-      staggerChildren: 0.03,
+    fade: {
+      opacity:0,
+      transition: {duration: 0.1, ease: "easeOut"},
     },
-  },
-  exit: { opacity: 0 },
-};
-
-const isMobileDevice = () => {
-  return typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches;
-};
-
-
-const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, selectedTags }) => {
-
-  const { expandedVideo, setExpandedVideo } = useVideoContext();
-  
-  const isExpanded = expandedVideo === videoSrc; // Check if this square is expanded
-  
-  const toggleVideo = () => {
-    setExpandedVideo((prev) => (prev === videoSrc ? null : videoSrc)); // Toggle expansion only for this video
+  };
+  const animateInChild ={
+    hidden: {opacity:0, x:-20},
+    show: {
+      opacity:1, x:0,
+      transition: {duration:0.25, ease:"easeOut"},
+      },
+    fade: {
+      opacity:0,
+      transition: {duration: 0.5, ease: "easeOut"},
+    },
+  };
+  const animateInChildMobile ={
+    hidden: {opacity:0, y:-20},
+    show: {
+      opacity:1, y:0,
+      transition: {duration:0.2, ease:"easeOut"},
+      },
+    fade: {
+      opacity:0,
+      transition: {duration: 0.5, ease: "easeOut"},
+    },
+  };
+  const skillContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        //when: "beforeChildren",
+        staggerChildren: 0.015, // Stagger the children
+      },
+    },
+    exit: { opacity: 0 },
+  };
+  const worksContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        // delay: 0.05, // Delay to make Works fade in after Skillsets
+        when: "beforeChildren",
+        staggerChildren: 0.03,
+      },
+    },
+    exit: { opacity: 0 },
   };
 
-  return (
-    <motion.div
-    lang='en'
-    className="drop-shadow-lg rounded-lg hover:drop-shadow-md cursor-pointer group-hover:z-50"
-    initial="hidden"
-    animate="show"
-    whileHover={{scale:0.98}}
-    exit="fade"
-    variants={scaleIn}
-    onMouseEnter={() => {setHoveredWork(tags[0]); console.log(tags)}}
-    onMouseLeave={() => setHoveredWork(null)}
-    onClick={() => {
-      if (isMobileDevice()) {
-        if (selectedTags.includes('all')) {
-          if (isExpanded) {
-            onClick();
+  const isMobileDevice = () => {
+    return typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches;
+  };
+
+
+  const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, selectedTags }) => {
+
+    const { expandedVideo, setExpandedVideo } = useVideoContext();
+    
+    const isExpanded = expandedVideo === videoSrc; // Check if this square is expanded
+    
+    const toggleVideo = () => {
+      setExpandedVideo((prev) => (prev === videoSrc ? null : videoSrc)); // Toggle expansion only for this video
+    };
+
+    return (
+      <motion.div
+      lang='en'
+      className="drop-shadow-lg rounded-lg hover:drop-shadow-md cursor-pointer group-hover:z-50"
+      initial="hidden"
+      animate="show"
+      whileHover={{scale:0.98}}
+      exit="fade"
+      variants={scaleIn}
+      onMouseEnter={() => {setHoveredWork(tags[0]); console.log(tags)}}
+      onMouseLeave={() => setHoveredWork(null)}
+      onClick={() => {
+        if (isMobileDevice()) {
+          if (selectedTags.includes('all')) {
+            if (isExpanded) {
+              onClick();
+            } else {
+              toggleVideo();
+            }
           } else {
-            toggleVideo();
+            onClick();
           }
         } else {
           onClick();
         }
-      } else {
-        onClick();
-      }
-    }}>
+      }}>
 
-      {/* Line */}
-      {/* <div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15"/> */}
-      
-      {/* Square */}
-      <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-black/25 rounded-lg shadow
-        ${selectedTags.includes('all') 
-        ? `${isExpanded ? 'pt-[155%]' : 'pt-[15%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100'}`
-        : 'pt-[150%]'}`}>
-
-        {/* Text Container */}
-        <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-4 lg:gap-4">
-
-          {/* Title of work */}
-          <h1 className={`tracking-tight font-medium md:p-0 transition-all duration-300 z-50 break-words hyphens-auto 
-          w-5/6 md:w-3/4 md:leading-8 md:text-4xl md:opacity-0 md:group-hover:opacity-100 
+        {/* Line */}
+        {/* <div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15"/> */}
+        
+        {/* Square */}
+        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-black/25 rounded-lg shadow
           ${selectedTags.includes('all') 
-          ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white text-5xl leading-11 p-2' : 'p-1 text-[18px] text-[#e9e9e9] dark:text-white md:group-hover:text-4xl md:group-hover:leading-8'}` 
-          : 'text-5xl p-3 text-[#e9e9e9] dark:text-white leading-tighter'}`}>
-            {title}
-          </h1>
+          ? `${isExpanded ? 'pt-[155%]' : 'pt-[15%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100'}`
+          : 'pt-[150%]'}`}>
 
-          {/* Gradient */}
-          <div className={`transition-all duration-300 z-10 ${selectedTags.includes('all') 
-            ? `${isExpanded ? 'opacity-75' : 'opacity-0'}` 
-            : 'opacity-100'}`}>
+          {/* Text Container */}
+          <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-4 lg:gap-4">
 
-            <div className={`absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
-            <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] -right-[0.2px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply "/>
-          </div>
-
-          {/* Details Container */}
-          <div className="z-50 flex flex-row justify-start w-full">
-
-            {/* Script Subheader */}
-            {/* <h3 className="z-10 text-white text-[10px] pl-2.5 pb-1 pr-2 md:pb-0 md:text-base tracking-tight
-            font-script opacity-100 lg:opacity-0 lg:group-hover:opacity-100 -rotate-1 text-right
-            transition-all duration-300 leading-6 md:leading-5 md:text-left w-2/3lg:w-1/2">
-            {subheader}</h3> */}
-
-            {/* Clean Subheader */}
-            <h3 className={`z-10 md:pb-0 md:text-sm tracking-normal
-            opacity-100 md:opacity-0 md:group-hover:opacity-100 ml-1 md:w-4/6
-            transition-opacity duration-300 leading-normal md:leading-4 text-left
+            {/* Title of work */}
+            <h1 className={`tracking-tight font-medium md:p-0 transition-all duration-300 z-50 break-words hyphens-auto 
+            w-5/6 md:w-3/4 md:leading-8 md:text-4xl md:opacity-0 md:group-hover:opacity-100 
             ${selectedTags.includes('all') 
-            ? `${isExpanded ? 'text-white opacity-100' : 'text-[8px] text-white opacity-50'} w-5/6` 
-            : 'text-xxs p-1.5 pl-2.5 md:pl-0 text-white w-full font-light'}`}>
-            {subheader}</h3>
+            ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white text-5xl leading-11 p-2' : 'p-1 text-[18px] text-[#e9e9e9] dark:text-white md:group-hover:text-4xl md:group-hover:leading-8'}` 
+            : 'text-5xl p-3 text-[#e9e9e9] dark:text-white leading-tighter'}`}>
+              {title}
+            </h1>
 
-            {/* Role */}
-            {/* <h3 className="hidden lg:block z-50 text-white text-sm tracking-tight opacity-0 group-hover:opacity-100
-            transition-all duration-300 leading-5 w-1/2">
-            {role}
-            </h3> */}
+            {/* Gradient */}
+            <div className={`transition-all duration-300 z-10 ${selectedTags.includes('all') 
+              ? `${isExpanded ? 'opacity-75' : 'opacity-0'}` 
+              : 'opacity-100'}`}>
+
+              <div className={`absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
+              <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] -right-[0.2px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply "/>
+            </div>
+
+            {/* Details Container */}
+            <div className="z-50 flex flex-row justify-start w-full">
+
+              {/* Script Subheader */}
+              {/* <h3 className="z-10 text-white text-[10px] pl-2.5 pb-1 pr-2 md:pb-0 md:text-base tracking-tight
+              font-script opacity-100 lg:opacity-0 lg:group-hover:opacity-100 -rotate-1 text-right
+              transition-all duration-300 leading-6 md:leading-5 md:text-left w-2/3lg:w-1/2">
+              {subheader}</h3> */}
+
+              {/* Clean Subheader */}
+              <h3 className={`z-10 md:pb-0 md:text-sm tracking-normal
+              opacity-100 md:opacity-0 md:group-hover:opacity-100 ml-1 md:w-4/6
+              transition-opacity duration-300 leading-normal md:leading-4 text-left
+              ${selectedTags.includes('all') 
+              ? `${isExpanded ? 'text-white opacity-100' : 'text-[8px] text-white opacity-50'} w-5/6` 
+              : 'text-xxs p-1.5 pl-2.5 md:pl-0 text-white w-full font-light'}`}>
+              {subheader}</h3>
+
+              {/* Role */}
+              {/* <h3 className="hidden lg:block z-50 text-white text-sm tracking-tight opacity-0 group-hover:opacity-100
+              transition-all duration-300 leading-5 w-1/2">
+              {role}
+              </h3> */}
+            </div>
           </div>
-        </div>
-  
-        {/* Corner Arrow */}
-        <button className="hidden lg:block absolute top-2 right-2 z-20 p-0 m-1 scale-100
-        rounded-full border-0 border-[rgba(255,255,255,0.5)] text-white backdrop-blur
-        group-hover:bg-white group-hover:text-black group-hover:scale-150 group-hover:m-2 group-hover:px-1
-        transition-all duration-200">
+    
+          {/* Corner Arrow */}
+          <button className="hidden lg:block absolute top-2 right-2 z-20 p-0 m-1 scale-100
+          rounded-full border-0 border-[rgba(255,255,255,0.5)] text-white backdrop-blur
+          group-hover:bg-white group-hover:text-black group-hover:scale-150 group-hover:m-2 group-hover:px-1
+          transition-all duration-200">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="2 2 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4">
+              <path d="M7 17L17 7"
+              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <path d="M7 7h10v10" />
+              </svg>
+          </button>
+
+          {/* Mobile Corner Arrow */}
+          <button className={`md:hidden absolute p-0.5 px-1 rounded-full z-50 
+          flex items-center justify-center cursor-pointer group-hover:text-black transition-all duration-300
+          ${selectedTags.includes('all') 
+            ? `${isExpanded ? 'top-5 right-5 scale-150 text-black bg-white' : 'hidden'}` 
+            : 'top-7 right-7 scale-150 group-hover:-m-2 group-hover:scale-150 group-hover:bg-white text-white border-1'}`}>
+
             <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="2 2 20 20"
             fill="none"
             stroke="currentColor"
-            strokeWidth="1.5"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-4 h-4">
-            <path d="M7 17L17 7"
-            className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-            <path d="M7 7h10v10" />
+            className={`w-3 h-3 ${selectedTags.includes('all') ? (isExpanded ? 'block' : 'hidden') : 'block'}`}>
+            <path d="M7 17L17 7"/>
+            <path d="M7 7h10v10"/>
             </svg>
-        </button>
 
-        {/* Mobile Corner Arrow */}
-        <button className={`md:hidden absolute p-0.5 px-1 rounded-full z-50 
-        flex items-center justify-center cursor-pointer group-hover:text-black transition-all duration-300
-        ${selectedTags.includes('all') 
-          ? `${isExpanded ? 'top-5 right-5 scale-150 text-black bg-white' : 'hidden'}` 
-          : 'top-7 right-7 scale-150 group-hover:-m-2 group-hover:scale-150 group-hover:bg-white text-white border-1'}`}>
+          </button>
 
-          <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="2 2 20 20"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={`w-3 h-3 ${selectedTags.includes('all') ? (isExpanded ? 'block' : 'hidden') : 'block'}`}>
-          <path d="M7 17L17 7"/>
-          <path d="M7 7h10v10"/>
-          </svg>
+          {/* Mobile Dropdown Chevron */}     
+          <ChevronDownIcon 
+          className={`absolute z-50 top-3 right-4 text-white opacity-100 w-3.5 h-3.5 md:hidden
+          ${selectedTags.includes('all') ? (isExpanded ? 'hidden' : 'block') : 'hidden'}`}/>
 
-        </button>
+          {/* Video */}
+          <video
+            className={`absolute inset-0 w-full h-full object-cover rounded-lg 
+            md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-500 
+            ${selectedTags.includes('all') 
+              ? `${isExpanded ? 'opacity-100' : 'opacity-100 blur-[30px] md:blur-0'}`
+              : 'blur-none opacity-100'}`}
+            style={{ clipPath: 'inset(0 round 0.5rem)' }}
+            autoPlay muted loop playsInline>
+            <source src={videoSrc} type="video/mp4" />
+          </video>
 
-        {/* Mobile Dropdown Chevron */}     
-        <ChevronDownIcon 
-        className={`absolute z-50 top-3 right-4 text-white opacity-100 w-3.5 h-3.5 md:hidden
-        ${selectedTags.includes('all') ? (isExpanded ? 'hidden' : 'block') : 'hidden'}`}/>
+        </div>
+        
+      </motion.div>
+    );
+  };
 
-        {/* Video */}
-        <video
-          className={`absolute inset-0 w-full h-full object-cover rounded-lg 
-          md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-500 
-          ${selectedTags.includes('all') 
-            ? `${isExpanded ? 'opacity-100' : 'opacity-100 blur-[30px] md:blur-0'}`
-            : 'blur-none opacity-100'}`}
-          style={{ clipPath: 'inset(0 round 0.5rem)' }}
-          autoPlay muted loop playsInline>
-          <source src={videoSrc} type="video/mp4" />
-        </video>
 
-      </div>
-      
-    </motion.div>
-  );
-};
 
-const GridPage = () => {
+  const videoData = [
+    { src: '/ghibli/cover1_1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
+    { src: '/CCS/cover1_1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+    { src: '/cocktail/cover1_1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', role:' Creative Direction | Motion Design', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+    { src: '/kris/cover1_1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['kris', 'all', 'creative', 'sia'] },
+    { src: '/travelbig/cover_1.mp4', title:'Travel Like Never Before', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['travelbig', 'all', 'creative', 'sia'] },
+    { src: '/lounge/cover_1.mp4', title:'SilverKris Lounge', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design | Video Edit', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
+    { src: '/hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product campaign for IKEA', role:'Creative Direction', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
+    { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social content for Singapore Airlines', role:'Creative Direction', tags: ['ispy', 'all', 'creative', 'sia'] },
+    { src: '/jollieverafter/cover.mp4', title:'JolliEverAfter', subheader:'Social media campaign for Jollibee', role:'Motion Design | Video Edit', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
+    { src: '/virtualsentosa/cover.mp4', title:'Virtual Sentosa', subheader:'Activation Campaign for Sentosa', role:'Edit | Motion Design', tags: ['virtualsentosa', 'all', 'motion', 'edit'] },
+    { src: '/3dpersonal/cover.mp4', title:'3D Motion Explorations', subheader:'Personal Explorations', role:'Motion Design', tags: ['3dpersonal', 'all', 'motion'] },
+    { src: '/uniqlo2/cover.mp4', title:'New Style Fresh Start', subheader:'Motion Design for Uniqlo', role:'Motion Design', tags: ['uniqlo2', 'all', 'motion'] },
+    { src: '/photography/street/cover2_2.mp4', title:'Personal Photography', subheader:'Photography', role:'Photography', tags: ['street', 'all', 'photography'] },
+    { src: '/photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', role:'Art Direction | Photography', tags: ['bbh', 'all', 'photography'] },
+    { src: '/photography/unshackle/cover.mp4', title:'Unshackle:', subheader:'Photography', role:'Photography', tags: ['unshackle', 'all', 'photography'] },
+    { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', role:'Art Direction | 3D Motion Design', tags: ['oneshow', 'all', 'motion'] },
+    { src: '/moonpillow/cover.mp4', title:'ByBit Moon Pillow', subheader:'3D Motion Design', role:'', tags: ['bybit', 'all', 'motion'] },
+    { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', role:'3D Motion Design', tags: ['iphone', 'all', 'motion'] }, 
+  ];
 
-const videoData = [
-  { src: '/ghibli/cover1_1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
-  { src: '/CCS/cover1_1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
-  { src: '/cocktail/cover1_1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', role:' Creative Direction | Motion Design', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
-  { src: '/kris/cover1_1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['kris', 'all', 'creative', 'sia'] },
-  { src: '/travelbig/cover_1.mp4', title:'Travel Like Never Before', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['travelbig', 'all', 'creative', 'sia'] },
-  { src: '/lounge/cover_1.mp4', title:'SilverKris Lounge', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design | Video Edit', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
-  { src: '/hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product campaign for IKEA', role:'Creative Direction', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
-  { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social content for Singapore Airlines', role:'Creative Direction', tags: ['ispy', 'all', 'creative', 'sia'] },
-  { src: '/jollieverafter/cover.mp4', title:'JolliEverAfter', subheader:'Social media campaign for Jollibee', role:'Motion Design | Video Edit', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
-  { src: '/virtualsentosa/cover.mp4', title:'Virtual Sentosa', subheader:'Activation Campaign for Sentosa', role:'Edit | Motion Design', tags: ['virtualsentosa', 'all', 'motion', 'edit'] },
-  { src: '/3dpersonal/cover.mp4', title:'3D Motion Explorations', subheader:'Personal Explorations', role:'Motion Design', tags: ['3dpersonal', 'all', 'motion'] },
-  { src: '/uniqlo2/cover.mp4', title:'New Style Fresh Start', subheader:'Motion Design for Uniqlo', role:'Motion Design', tags: ['uniqlo2', 'all', 'motion'] },
-  { src: '/photography/street/cover2_2.mp4', title:'Personal Photography', subheader:'Photography', role:'Photography', tags: ['street', 'all', 'photography'] },
-  { src: '/photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', role:'Art Direction | Photography', tags: ['bbh', 'all', 'photography'] },
-  { src: '/photography/unshackle/cover.mp4', title:'Unshackle:', subheader:'Photography', role:'Photography', tags: ['unshackle', 'all', 'photography'] },
-  { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', role:'Art Direction | 3D Motion Design', tags: ['oneshow', 'all', 'motion'] },
-  { src: '/moonpillow/cover.mp4', title:'ByBit Moon Pillow', subheader:'3D Motion Design', role:'', tags: ['bybit', 'all', 'motion'] },
-  { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', role:'3D Motion Design', tags: ['iphone', 'all', 'motion'] }, 
-];
+  const [isMobile, setIsMobile] = useState(false);
+  const [selectedTags, setSelectedTags] = useState('');
+  const [selectedWork, setSelectedWork] = useState('');
+  const [showNav, setShowNav] = useState(false);
+  const [showReset, setShowReset] = useState(false);
+  const [hoveredWork, setHoveredWork] = useState(null);
 
-const [isMobile, setIsMobile] = useState(false);
-const [selectedTags, setSelectedTags] = useState('');
-const [selectedWork, setSelectedWork] = useState('');
-const [showNav, setShowNav] = useState(false);
-const [showReset, setShowReset] = useState(false);
-const [hoveredWork, setHoveredWork] = useState(null);
+  // Check if Mobile
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const mediaQuery = window.matchMedia("(max-width: 640px)");
 
-// Check if Mobile
-useEffect(() => {
-  if (typeof window !== "undefined") {
-    const mediaQuery = window.matchMedia("(max-width: 640px)");
+      setIsMobile(mediaQuery.matches);
 
-    setIsMobile(mediaQuery.matches);
+      const handleResize = () => setIsMobile(mediaQuery.matches);
+      mediaQuery.addEventListener("change", handleResize);
 
-    const handleResize = () => setIsMobile(mediaQuery.matches);
-    mediaQuery.addEventListener("change", handleResize);
+      return () => mediaQuery.removeEventListener("change", handleResize);
+    }
+  }, []);
 
-    return () => mediaQuery.removeEventListener("change", handleResize);
-  }
-}, []);
+  useEffect(() => {
+    if (isMobile) {
+      setSelectedTags('');
+      setSelectedWork('resume');
+    } else {
+      setSelectedTags('all');
+      setSelectedWork('');
+    }
+  }, [isMobile]);
 
-useEffect(() => {
-  if (isMobile) {
-    setSelectedTags('');
-    setSelectedWork('resume');
-  } else {
-    setSelectedTags('all');
-    setSelectedWork('');
-  }
-}, [isMobile]);
+  // const [touchStart, setTouchStart] = useState(0);
+  // const [touchEnd, setTouchEnd] = useState(0);
 
-// const [touchStart, setTouchStart] = useState(0);
-// const [touchEnd, setTouchEnd] = useState(0);
+  // const handleSwipe = () => {
+  //   if (touchStart - touchEnd > 60) {
+  //     // Swipe Left, IF prevWork is Resume, set All.
+  //     setSelectedWork((prevWork) => (prevWork === "resume" ? "all" : "resume"));
+  //   } else if (touchEnd - touchStart > 60) {
+  //     // Swipe Right, IF prevwork is All, set Resume.
+  //     setSelectedWork((prevWork) => (prevWork === "all" ? "resume" : "all"));
+  //   }
+  // };
 
-// const handleSwipe = () => {
-//   if (touchStart - touchEnd > 60) {
-//     // Swipe Left, IF prevWork is Resume, set All.
-//     setSelectedWork((prevWork) => (prevWork === "resume" ? "all" : "resume"));
-//   } else if (touchEnd - touchStart > 60) {
-//     // Swipe Right, IF prevwork is All, set Resume.
-//     setSelectedWork((prevWork) => (prevWork === "all" ? "resume" : "all"));
-//   }
-// };
+  // useEffect(() => {
+  //   const handleTouchStart = (e) => setTouchStart(e.touches[0].clientX);
+  //   const handleTouchEnd = (e) => {
+  //     setTouchEnd(e.changedTouches[0].clientX);
+  //     handleSwipe();
+  //   };
 
-// useEffect(() => {
-//   const handleTouchStart = (e) => setTouchStart(e.touches[0].clientX);
-//   const handleTouchEnd = (e) => {
-//     setTouchEnd(e.changedTouches[0].clientX);
-//     handleSwipe();
-//   };
+  //   // Add event listeners
+  //   document.addEventListener("touchstart", handleTouchStart);
+  //   document.addEventListener("touchend", handleTouchEnd);
 
-//   // Add event listeners
-//   document.addEventListener("touchstart", handleTouchStart);
-//   document.addEventListener("touchend", handleTouchEnd);
+  //   return () => {
+  //     // Cleanup event listeners
+  //     document.removeEventListener("touchstart", handleTouchStart);
+  //     document.removeEventListener("touchend", handleTouchEnd);
+  //   };
+  // }, [touchStart, touchEnd]);
 
-//   return () => {
-//     // Cleanup event listeners
-//     document.removeEventListener("touchstart", handleTouchStart);
-//     document.removeEventListener("touchend", handleTouchEnd);
-//   };
-// }, [touchStart, touchEnd]);
+  const includesTags = (tags) => {
+    return tags.some((tag) => selectedTags.includes(tag));
+  };
 
-const includesTags = (tags) => {
-  return tags.some((tag) => selectedTags.includes(tag));
-};
+  const includesWorks = (works) => {
+    return works.some((work) => selectedWork.includes(work));
+  };
 
-const includesWorks = (works) => {
-  return works.some((work) => selectedWork.includes(work));
-};
+  // const toggleTag = (tag) => {
+  //   if (tag === 'clear') {
+  //     setSelectedTags([]);
+  //   } else {
+  //     // Remove 'all' from the selectedTags array if it exists
+  //     const updatedTags = selectedTags.filter((t) => t !== 'all');
 
-// const toggleTag = (tag) => {
-//   if (tag === 'clear') {
-//     setSelectedTags([]);
-//   } else {
-//     // Remove 'all' from the selectedTags array if it exists
-//     const updatedTags = selectedTags.filter((t) => t !== 'all');
+  //     // Check if the tag is already in updatedTags
+  //     if (updatedTags.includes(tag)) {
+  //       // Remove the tag if it's already selected
+  //       setSelectedTags(updatedTags.filter((t) => t !== tag));
+  //     } else {
+  //       // Add the tag if it's not selected
+  //       setSelectedTags([...updatedTags, tag]);
+  //     }
+  //   }
+  // };
 
-//     // Check if the tag is already in updatedTags
-//     if (updatedTags.includes(tag)) {
-//       // Remove the tag if it's already selected
-//       setSelectedTags(updatedTags.filter((t) => t !== tag));
-//     } else {
-//       // Add the tag if it's not selected
-//       setSelectedTags([...updatedTags, tag]);
-//     }
-//   }
-// };
+  const toggleTag = (tag) => {
+    if (tag === 'clear') {
+      setSelectedTags([]); // Clear all tags
+    } else {
+      setSelectedTags([tag]); // Ensure selectedTags is always an array
+    }
+  };
 
-const toggleTag = (tag) => {
-  if (tag === 'clear') {
-    setSelectedTags([]); // Clear all tags
-  } else {
-    setSelectedTags([tag]); // Ensure selectedTags is always an array
-  }
-};
+  const toggleWork = (work) => {
+    if (work === 'clear') {
+      setSelectedWork([]);
+      //setSelectedWork(['all']);
+    } else {
+      setSelectedWork(work);
+    }
 
-const toggleWork = (work) => {
-  if (work === 'clear') {
-    setSelectedWork([]);
-    //setSelectedWork(['all']);
-  } else {
-    setSelectedWork(work);
-  }
+    window.scrollTo ({
+      top:0,
+      behavior:'smooth',
+    });
+  };
 
-  window.scrollTo ({
-    top:0,
-    behavior:'smooth',
+  const toggleNav = () => {
+    if (showNav) {
+      setShowNav(false);
+    } else {
+      setShowNav(true);
+    }
+  };
+
+  // Reset Button Logic
+  useEffect(() => {
+    if (selectedWork.includes('bestwork') || selectedWork.includes('resume')) {
+      setShowReset(false); 
+    } else if (selectedWork.length > 0) {
+      setShowReset(true); // Always show Reset button if there is any selected work
+    } else if (selectedTags.includes('all') || selectedTags.length === 0) {
+      setShowReset(false); // Hide Reset button if 'all' is selected or if there are no tags
+    } else {
+      setShowReset(true); // Show Reset button for other cases
+    }
+    console.log('selectedTags', selectedTags);
+    console.log('selectedWork:', selectedWork)
+    console.log('showReset:', showReset);
+    console.log('showNav', showNav);
+    console.log('showReset', showReset);
+    
+  }, [selectedTags, selectedWork]);
+
+  const filteredVideos = videoData.filter((video) => {
+    if (selectedTags.includes('all')) return true;
+
+    // Safeguard for when selectedTags is not an array
+    if (!Array.isArray(selectedTags)) return false;
+
+    return selectedTags.some((tag) => video.tags.includes(tag));
   });
-};
-
-const toggleNav = () => {
-  if (showNav) {
-    setShowNav(false);
-  } else {
-    setShowNav(true);
-  }
-};
-
-// Reset Button Logic
-useEffect(() => {
-  if (selectedWork.includes('bestwork') || selectedWork.includes('resume')) {
-    setShowReset(false); 
-  } else if (selectedWork.length > 0) {
-    setShowReset(true); // Always show Reset button if there is any selected work
-  } else if (selectedTags.includes('all') || selectedTags.length === 0) {
-    setShowReset(false); // Hide Reset button if 'all' is selected or if there are no tags
-  } else {
-    setShowReset(true); // Show Reset button for other cases
-  }
-  console.log('selectedTags', selectedTags);
-  console.log('selectedWork:', selectedWork)
-  console.log('showReset:', showReset);
-  console.log('showNav', showNav);
-  console.log('showReset', showReset);
-  
-}, [selectedTags, selectedWork]);
-
-const filteredVideos = videoData.filter((video) => {
-  if (selectedTags.includes('all')) return true;
-
-  // Safeguard for when selectedTags is not an array
-  if (!Array.isArray(selectedTags)) return false;
-
-  return selectedTags.some((tag) => video.tags.includes(tag));
-});
 
   return (
     <>
@@ -508,7 +510,7 @@ const filteredVideos = videoData.filter((video) => {
                     }
                   }}>
 
-                  <span className="hidden md:block">Everything I`&apos;`ve got</span>
+                  <span className="hidden md:block">Everything I&apos;ve got</span>
                   <span className="block md:hidden">Work</span>
                   
                 </motion.button>
@@ -1401,4 +1403,3 @@ const filteredVideos = videoData.filter((video) => {
   
 };
 
-export default GridPage;
