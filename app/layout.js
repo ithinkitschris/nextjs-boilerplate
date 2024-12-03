@@ -45,7 +45,6 @@ export default function RootLayout({ children }) {
       ${geistSans.variable} 
       ${geistMono.variable} 
       ${modernLine.variable} 
-      ${notoSerif.variable} 
       ${breathing.variable}
       antialiased flex flex-col min-h-screen font-mono
       bg-background transition-all duration-300`}>
