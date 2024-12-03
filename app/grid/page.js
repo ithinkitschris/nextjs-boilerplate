@@ -10,7 +10,7 @@ import Cocktail from '../works/cocktail/page';
 import Kris from '../works/kris/page';
 import TravelBig from '../works/travelbig/page';
 import Lounge from '../works/lounge/page';
-import BestWorkPage from '../bestwork/page';
+import BestWorkPage from '../components/bestwork';
 import Resume from '../resume/page';
 import StreetPhotography from '../components/street-photo';
 import BBH from '../components/bbh';
