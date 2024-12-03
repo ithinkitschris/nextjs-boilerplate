@@ -32,20 +32,20 @@ const BBH = ({className}) => {
         {/* Three Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full mb-1 lg:mb-2 gap-1 lg:gap-2">
             <motion.img
-                src="/photography/bbh/bbh1.jpg"
+                src="/Photography/bbh/bbh1.jpg"
                 alt="Description of Image 3"
                 className="col-span-2 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
-                src="/photography/bbh/bbh2.jpg"
+                src="/Photography/bbh/bbh2.jpg"
                 alt="Description of Image 3"
                 className="col-span-2 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
 
             <motion.img
-                src="/photography/bbh/bbh3.jpg"
+                src="/Photography/bbh/bbh3.jpg"
                 alt="Description of Image 3"
                 className="col-span-2 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
@@ -55,11 +55,11 @@ const BBH = ({className}) => {
         {/* Two Images */}
         <motion.div className="grid grid-cols-6 col-span-full mb-1 lg:mb-2 gap-1 lg:gap-2 h-96" variants={animateInChild} >
             <img
-            src="/photography/bbh/bbh11.jpg"
+            src="/Photography/bbh/bbh11.jpg"
             className="col-span-2 h-96 w-full object-cover rounded md:rounded-lg shadow-lg"
             />
             <img
-            src="/photography/bbh/bbh12.jpg"
+            src="/Photography/bbh/bbh12.jpg"
             className="col-span-4 h-96 w-full object-cover rounded md:rounded-lg shadow-lg object-[50%_30%]"
             />
         </motion.div>
@@ -67,20 +67,20 @@ const BBH = ({className}) => {
         {/* Three Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full mb-1 lg:mb-2 gap-1 lg:gap-2">
             <motion.img
-                src="/photography/bbh/bbh5.jpg"
+                src="/Photography/bbh/bbh5.jpg"
                 alt="Description of Image 4"
                 className="col-span-2 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
-                src="/photography/bbh/bbh4.jpg"
+                src="/Photography/bbh/bbh4.jpg"
                 alt="Description of Image 3"
                 className="col-span-2 h-auto w-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
 
             <motion.img
-                src="/photography/bbh/bbh6.jpg"
+                src="/Photography/bbh/bbh6.jpg"
                 alt="Description of Image 3"
                 className="col-span-2 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
@@ -90,7 +90,7 @@ const BBH = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="col-span-full mb-1 lg:mb-2 gap-1 lg:gap-2" variants={animateInChild} >
             <img
-            src="/photography/bbh/bbh8.jpg"
+            src="/Photography/bbh/bbh8.jpg"
             className="h-auto w-full object-cover rounded md:rounded-lg shadow-lg"
             />
         </motion.div>
@@ -98,20 +98,20 @@ const BBH = ({className}) => {
         {/* Three Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full mb-1 lg:mb-2 gap-1 lg:gap-2">
             <motion.img
-                src="/photography/bbh/bbh7.jpg"
+                src="/Photography/bbh/bbh7.jpg"
                 alt="Description of Image 3"
                 className="col-span-2 h-auto w-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
-                src="/photography/bbh/bbh9.jpg"
+                src="/Photography/bbh/bbh9.jpg"
                 alt="Description of Image 3"
                 className="col-span-2 h-auto w-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
 
             <motion.img
-                src="/photography/bbh/bbh10.jpg"
+                src="/Photography/bbh/bbh10.jpg"
                 alt="Description of Image 3"
                 className="col-span-2 h-auto w-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}

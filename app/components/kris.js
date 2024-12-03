@@ -63,7 +63,7 @@ show: {
             {/* Background Glow */}
             <video 
             ref={backgroundGlowRef}
-            src="/kris/video_1.mp4" 
+            src="/Kris/video_1.mp4" 
             className="absolute mt-20 w-screen h-screen/1.2 object-cover rounded-full -z-10 
             opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200"
             autoPlay 
@@ -89,7 +89,7 @@ show: {
             {/* Banner Video */}
             <motion.video 
             ref={bannerVideoRef}
-            src="/kris/video_1.mp4" 
+            src="/Kris/video_1.mp4" 
             className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
             autoPlay muted loop controls playsInline
             variants={animateInChild}
@@ -150,7 +150,7 @@ show: {
                 </div>
 
                 <Image
-                    src="/kris/1.jpg"
+                    src="/Kris/1.jpg"
                     alt=""
                     className="rounded-lg col-span-3 object-cover"
                     layout="responsive"
@@ -160,7 +160,7 @@ show: {
 
                 <div className="col-span-full">
                     <Image
-                        src="/kris/2.jpg"
+                        src="/Kris/2.jpg"
                         alt=""
                         className="rounded-lg object-cover"
                         layout="responsive"
@@ -172,7 +172,7 @@ show: {
                 <div className="col-span-full flex gap-1.5 md:gap-2 w-full">
                     <div className="w-1/2">
                         <Image
-                        src="/kris/3.jpg"
+                        src="/Kris/3.jpg"
                         alt=""
                         className="rounded-lg object-cover"
                         layout="responsive"
@@ -182,7 +182,7 @@ show: {
                     </div>
                     <div className="w-1/2">
                         <Image
-                        src="/kris/4.jpg"
+                        src="/Kris/4.jpg"
                         alt=""
                         className="rounded-lg object-cover"
                         layout="responsive"
@@ -195,7 +195,7 @@ show: {
                 <div className="col-span-full flex gap-1.5 md:gap-2 w-full">
                     <div className="w-1/3">
                         <Image
-                        src="/kris/5.jpg"
+                        src="/Kris/5.jpg"
                         alt=""
                         className="rounded-lg object-cover"
                         layout="responsive"
@@ -205,7 +205,7 @@ show: {
                     </div>
                     <div className="w-2/3">
                         <Image
-                        src="/kris/6.jpg"
+                        src="/Kris/6.jpg"
                         alt=""
                         className="rounded-lg object-cover"
                         layout="responsive"
