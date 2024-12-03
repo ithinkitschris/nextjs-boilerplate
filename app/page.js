@@ -268,7 +268,7 @@ export default function Home(){
     { src: '/3dpersonal/Cover.mp4', title:'3D Motion Explorations', subheader:'Personal Explorations', role:'Motion Design', tags: ['3dpersonal', 'all', 'motion'] },
     { src: '/uniqlo2/Cover.mp4', title:'New Style Fresh Start', subheader:'Motion Design for Uniqlo', role:'Motion Design', tags: ['uniqlo2', 'all', 'motion'] },
     { src: '/Photography/street/Cover2_2.mp4', title:'Personal Photography', subheader:'Photography', role:'Photography', tags: ['street', 'all', 'photography'] },
-    { src: '/Photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', role:'Art Direction | Photography', tags: ['bbh', 'all', 'photography'] },
+    { src: '/Photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', role:'Art Directio  | Photography', tags: ['bbh', 'all', 'photography'] },
     { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Photography', role:'Photography', tags: ['unshackle', 'all', 'photography'] },
     { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', role:'Art Direction | 3D Motion Design', tags: ['oneshow', 'all', 'motion'] },
     { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', role:'', tags: ['leica', 'all', 'motion'] },
