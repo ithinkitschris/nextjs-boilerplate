@@ -41,7 +41,7 @@ const notoSerif = Noto_Serif({
 });
 
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }) {
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -72,29 +72,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
-
-
-// return (
-//   <html className={isDarkMode ? "dark" : ""}>
-//     <body className={`${geistSans.variable} ${geistMono.variable} 
-//       antialiased  bg-background transition-all duration-300 saturate-0 dark:saturate-100`}>
-//       <main className="">
-//         <div className="sticky top-4 z-10">
-//           <div className="absolute right-6">
-//             <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
-//           </div>
-//         </div>
-//         <div className="fixed top-0 left-0 bg-red-500 text-white p-4 z-50">
-//           Test Fixed Positioning
-//         </div>
-
-//         <div className="">{children}</div>
-//       </main>
-
-//       {/* <footer className="fixed bottom-0 left-0 right-0 flex gap-3 flex-wrap items-center justify-between px-10 py-8 z-20">
-//         <DocumentationButton />
-//       </footer> */}
-//     </body>
-//   </html>
-// );
