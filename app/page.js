@@ -263,7 +263,7 @@ export default function Home(){
     { src: '/lounge/cover_1.mp4', title:'SilverKris Lounge', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design | Video Edit', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
     { src: '/Hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product campaign for IKEA', role:'Creative Direction', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
     { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social content for Singapore Airlines', role:'Creative Direction', tags: ['ispy', 'all', 'creative', 'sia'] },
-    { src: '/jollieverafter/cover.mp4', title:'JolliEverAfter', subheader:'Social media campaign for Jollibee', role:'Motion Design | Video Edit', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
+    { src: '/jollieverafter/cover_1.mp4', title:'JolliEverAfter', subheader:'Social media campaign for Jollibee', role:'Motion Design | Video Edit', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
     { src: '/virtualsentosa/Cover.mp4', title:'Virtual Sentosa', subheader:'Activation Campaign for Sentosa', role:'Edit | Motion Design', tags: ['virtualsentosa', 'all', 'motion', 'edit'] },
     { src: '/3dpersonal/Cover.mp4', title:'3D Motion Explorations', subheader:'Personal Explorations', role:'Motion Design', tags: ['3dpersonal', 'all', 'motion'] },
     { src: '/uniqlo2/Cover.mp4', title:'New Style Fresh Start', subheader:'Motion Design for Uniqlo', role:'Motion Design', tags: ['uniqlo2', 'all', 'motion'] },

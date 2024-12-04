@@ -135,7 +135,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </motion.div>
 
                 <motion.video
-                src="/CCS/montagelow.mp4"
+                src="/CCS/bestworkmontage.mp4"
                 ref={cabinVideoRef}
                 className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
@@ -206,7 +206,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </motion.div>
 
                 <motion.video
-                src="/Cocktail/montage.mp4"
+                src="/Cocktail/bestworkmontage_1.mp4"
                 ref={cocktailVideoRef}
                 className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
@@ -335,7 +335,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </motion.div>
 
                 <motion.video
-                src="/jollieverafter/teaser.mp4"
+                src="/jollieverafter/cover_1.mp4"
                 className="rounded-b-lg md:rounded-lg w-full h-96 md:group-hover:h-150 object-cover col-span-full md:col-span-6 transition-all duration-300"
                 autoPlay
                 muted
@@ -419,7 +419,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     ></motion.video>
 
                     <motion.video
-                    src="/cocktail/montage.mp4"
+                    src="/Cocktail/montage.mp4"
                     ref={cocktailBgRef}
                     className="rounded-full w-screen h-screen md:h-screen/2 object-cover saturate-200 opacity-70"
                     autoPlay
@@ -429,7 +429,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     ></motion.video>
 
                     <motion.video
-                    src="/ghibli/banner.mp4"
+                    src="/Ghibli/banner.mp4"
                     ref={ghibliBgRef}
                     className="rounded-full w-screen h-screen md:h-screen/2 object-cover saturate-200 opacity-70"
                     autoPlay

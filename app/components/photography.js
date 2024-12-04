@@ -79,7 +79,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BBH */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-lg md:mr-2"
+        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-lg md:mr-2"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -130,7 +130,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BTS */}
         <motion.div 
-        className="group col-span-3 h-[600px] mt-2 2xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg md:mr-2" 
+        className="group col-span-3 h-[600px] mt-2 xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg md:mr-2" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -185,7 +185,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Unshackle */}
         <motion.div 
-        className="group col-span-3 h-[600px] mt-2 2xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg " 
+        className="group col-span-3 h-[600px] mt-2 xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg " 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}

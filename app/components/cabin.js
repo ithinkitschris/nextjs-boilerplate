@@ -95,7 +95,7 @@ show: {
             autoPlay muted loop playsInline
             variants={animateInChild}
             // whileHover={{scale:1.01}}
-            >
+            >Loading...
             </motion.video>
 
             {/* Blurb */}
