@@ -174,8 +174,8 @@ const animateIn ={
                     </div>
 
 
-                    {/* <div className="col-span-full flex gap-0 md:gap-1.5 mb-8">
-                        <div className="w-1/5">
+                    <div className="col-span-full grid grid-cols-2 gap-1 md:gap-1.5 mb-8">
+                        <div className="col-span-2">
                             <Image
                             src="/Ghibli/kv1.jpg"
                             alt=""
@@ -185,7 +185,7 @@ const animateIn ={
                             height={500}
                             />
                         </div>
-                        <div className="w-1/5">
+                        <div className="col-span-1">
                             <Image
                             src="/Ghibli/kv2.jpg"
                             alt=""
@@ -195,7 +195,7 @@ const animateIn ={
                             height={500}
                             />
                         </div>
-                        <div className="w-1/5">
+                        <div className="col-span-1">
                             <Image
                             src="/Ghibli/kv3.jpg"
                             alt=""
@@ -205,7 +205,7 @@ const animateIn ={
                             height={500}
                             />
                         </div>
-                        <div className="w-1/5">
+                        <div className="col-span-1">
                             <Image
                             src="/Ghibli/kv4.jpg"
                             alt=""
@@ -215,7 +215,7 @@ const animateIn ={
                             height={500}
                             />
                         </div>
-                        <div className="w-1/5">
+                        <div className="col-span-1">
                             <Image
                             src="/Ghibli/kv5.jpg"
                             alt=""
@@ -226,7 +226,7 @@ const animateIn ={
                             />
                         </div>
                         
-                    </div> */}
+                    </div>
 
                     <Image
                         src="/Ghibli/lobby.jpg"

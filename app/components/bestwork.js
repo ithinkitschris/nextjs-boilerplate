@@ -142,6 +142,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 muted
                 loop
                 playsInline
+                loading="lazy"
                 ></motion.video>
             </div>
 
@@ -213,6 +214,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 muted
                 loop
                 playsInline
+                loading="lazy"
                 ></motion.video>
             </div>
 
@@ -280,6 +282,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 muted
                 loop
                 playsInline
+                loading="lazy"
                 ></motion.video>
             </div>
 
@@ -341,6 +344,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 muted
                 loop
                 playsInline
+                loading="lazy"
                 ></motion.video>
             </div>
 
@@ -402,6 +406,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 muted
                 loop
                 playsInline
+                loading="lazy"
                 ></motion.video>
             </div>
 

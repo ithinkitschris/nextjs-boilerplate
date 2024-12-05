@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import PhotographyPage from './components/photography.js';
+import ContentPage from './components/content.js';
 import Ghibli from './components/ghibli.js';
 import CabinCrewStories from './components/cabin.js';
 import Cocktail from './components/cocktail.js';
@@ -546,11 +547,11 @@ export default function Home(){
 
           {/* Mobile Navbar BG */}
           <motion.div
-            className={`md:hidden fixed dark:backdrop-blur-lg md:backdrop-blur-lg top-2 w-full max-w-[69%] shadow lg:shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.4)] z-20
+            className={`md:hidden fixed dark:backdrop-blur-lg md:backdrop-blur-lg top-2 w-full shadow lg:shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.4)] z-20
               border-white/80 dark:border-white/15 transition-colors bg-background dark:bg-black/20 blur-[0.2px]
               ${showNav ? " border-b-1 bg-background backdrop-blur-lg md:bg-white/0 dark:bg-black/45 shadow-standard" : ""}`}
             style={{
-              left: "50%",
+              left: "49%",
               transform: "translateX(-50%)",
             }}
               animate={{ 
@@ -642,7 +643,7 @@ export default function Home(){
 
                   {/* Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-2 items-start tracking-tighter text-[23px] leading-tighter font-medium mt-7 w-full max-w-[53%] mx-auto md:hidden"
+                  className="flex flex-col gap-2 items-start tracking-tighter text-[23px] leading-tighter font-medium mt-4 w-full max-w-[16rem] mx-auto md:hidden"
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -653,8 +654,10 @@ export default function Home(){
                   }}
                   variants={skillContainer}>
 
+                    {/* <motion.div className="w-full bg-backgroundround dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
+
                     <motion.button 
-                    className="text-left text-foreground mb-1 px-5"
+                    className="text-left text-foreground mt-2 mb-1 px-5"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('all');
@@ -663,21 +666,21 @@ export default function Home(){
                       Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
                       ></span></motion.button>
 
-                    <motion.div className="w-full bg-backgroundround dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    <motion.div className="mx-auto w-[90%] bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px] " variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground mt-1 mb-1 px-5"
+                    className="text-left text-foreground mt-1 mb-1 px-5 relative"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('creative');
                       toggleWork('bestwork');
                       setShowNav(false)}}><span className='hidden mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
-                      Favourites</motion.button>
+                      My <span className="font-script ml-1.5 relative top-1">favorites</span></motion.button>
                       
-                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    <motion.div className="mx-auto w-[90%] bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
-                    className="text-left text-foreground font-normal mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal mt-2.5 mb-3 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('creative');
@@ -685,10 +688,10 @@ export default function Home(){
                       toggleWork('clear');}}><span className='hidden mr-1 opacity-35 text-xxs align-top tracking-normal'>01 </span>
                       Creative</motion.button>
 
-                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
-                    className="text-left text-foreground font-normal mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('motion');
@@ -696,10 +699,10 @@ export default function Home(){
                       toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>02 </span>
                       Motion</motion.button>
 
-                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
-                    className="text-left text-foreground font-normal mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('edit');
@@ -707,10 +710,10 @@ export default function Home(){
                       toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>03 </span>
                       Edit</motion.button>
 
-                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
-                    className="text-left text-foreground font-normal mt-1 mb-1 px-5 whitespace-nowrap"
+                    className="text-left text-foreground font-normal mt-1 mb-3 px-5 whitespace-nowrap"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('ixd');
@@ -718,10 +721,10 @@ export default function Home(){
                       toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
                       Interaction Design</motion.button>
 
-                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
-                    className="text-left text-foreground font-normal mt-1 mb-1 px-5 "
+                    className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('photography');
@@ -730,14 +733,16 @@ export default function Home(){
                       }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>05 </span>
                       Photography</motion.button>
                       
-                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
-                   className="text-left text-foreground font-normal mt-1 mb-1 px-5 "
+                   className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                    variants={animateInChildMobile}
-                    onClick={() => {
-                      toggleTag('content');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>06 </span>
+                   onClick={() => {
+                    toggleTag('content');
+                    toggleNav('false');
+                    toggleWork('content');
+                    }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>06 </span>
                       Content Creation</motion.button>
                   </motion.div>
                 </div>
@@ -1341,6 +1346,8 @@ export default function Home(){
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
                   <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>
+                ) : selectedWork === 'content' ? (
+                  <ContentPage key="content" className="col-span-full"/>
                 ) : selectedWork === 'street' ? (
                   <StreetPhotography key="street" className="col-span-full"/>
                 ) : selectedWork === 'bbh' ? (
