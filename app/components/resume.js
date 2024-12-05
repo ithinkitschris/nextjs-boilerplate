@@ -181,7 +181,7 @@ export default function Resume({ className = "" }) {
                     {/* Image */}
                     <motion.div className="absolute top-0 left-0 w-full h-full -z-50" variants={animateInChild}>
                         <Image
-                        src="/profile/profile.jpg"
+                        src="/profile/profile1.jpg"
                         alt=""
                         className="rounded-lg object-cover"
                         layout="fill"

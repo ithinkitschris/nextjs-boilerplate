@@ -20,7 +20,7 @@ show: {
     }
 }
 
-const ContentPage = ({className, setSelectedWork}) => {
+const ContentPage = ({className}) => {
 
   return (
     <motion.div className={`grid grid-cols-3 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] ${className}`}
@@ -218,7 +218,7 @@ const ContentPage = ({className, setSelectedWork}) => {
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">POV: </span>The World's Longest Flight</h1>
+                    <h1><span className="opacity-50">POV: </span>The World&apos;s Longest Flight</h1>
                 </div>
                 
             </div>
@@ -424,7 +424,7 @@ const ContentPage = ({className, setSelectedWork}) => {
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">One man's trash, another man's questionable treasure: </span>IKEA Stool</h1>
+                    <h1><span className="opacity-50">One man&apos;s trash, another man&apos;s questionable treasure: </span>IKEA Stool</h1>
                 </div>
                 
             </div>
