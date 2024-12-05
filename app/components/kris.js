@@ -91,7 +91,7 @@ show: {
             ref={bannerVideoRef}
             src="/Kris/video_1.mp4" 
             className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
-            autoPlay muted loop controls playsInline
+            autoPlay muted loop controls playsInline loading="lazy"
             variants={animateInChild}
             // whileHover={{scale:1.01}}
             >

@@ -1376,6 +1376,7 @@ export default function Home(){
                       role={video.role}
                       link={video.link}
                       tags={video.tags}
+                      loading="lazy"
                       setHoveredWork={setHoveredWork}
                       selectedTags={selectedTags}
                       onClick={() => { 

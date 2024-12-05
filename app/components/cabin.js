@@ -70,6 +70,7 @@ show: {
             muted 
             loop
             playsInline
+            loading="lazy"
             ></video>
             
             {/* Header */}
@@ -92,10 +93,10 @@ show: {
             ref={bannerVideoRef}
             src="/CCS/montagelow.mp4" 
             className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
-            autoPlay muted loop playsInline
+            autoPlay muted loop playsInline loading="lazy"
             variants={animateInChild}
             // whileHover={{scale:1.01}}
-            >Loading...
+            >
             </motion.video>
 
             {/* Blurb */}
