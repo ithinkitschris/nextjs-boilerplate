@@ -86,6 +86,7 @@ useEffect(() => {
             className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
+            poster='/poster/cocktailbest.png'
             // whileHover={{scale:1.01}}
             >
             </motion.video>

@@ -9,14 +9,14 @@ const animateIn ={
     hidden: {opacity:0, y:20},
     show: {
         opacity:1, y:0, 
-        transition: {staggerChildren: 0.15, duration:0.5, ease:easeOut}
+        transition: {staggerChildren: 0.1, duration:0.5, ease:easeOut}
     }
 }
 const animateInChild ={
 hidden: {opacity:0, y:20},
 show: {
     opacity:1, y:0, 
-    transition: {duration:0.3, ease:easeOut}
+    transition: {duration:0.35, ease:easeOut}
     }
 }
 
@@ -37,11 +37,11 @@ const IxdPage = ({className}) => {
         variants={animateInChild}>
             Okay<span className="font-sans">,</span> not really<span className="font-sans">.</span><span className="text-sm align-top ml-1"></span></motion.h2>
        
-        <motion.div className="col-span-full mt-6 text-sm">
+        <motion.div className="col-span-full mt-6 text-sm" variants={animateInChild}>
             No, while this website is indeed, Interaction Design. It would be terribly disingenous of me to suggest that this is the entirety of Interaction Design <i className="opacity-50">(or worse still, my understanding of it).</i>
         </motion.div>
 
-        <motion.div className="col-span-full text-sm mt-4">
+        <motion.div className="col-span-full text-sm mt-4" variants={animateInChild}>
             Obviously, I am currently fresh on the path of Interaction Design and this page is very much a blank canvas, if you will, for what&apos;s to come in the years and possibly decades ahead.
         </motion.div>
 
@@ -49,7 +49,7 @@ const IxdPage = ({className}) => {
         variants={animateInChild}>
             But for now, this website is indeed, my proudest artefact of Interaction Design thus far.</motion.h1>
 
-        <motion.div className="col-span-full text-sm mt-10">
+        <motion.div className="col-span-full text-sm mt-10" variants={animateInChild}>
         It started off with a literal shower thought, one that turned into a manic passion project by the time I was out of the shower. With the guidance of my faculty, 
         I dove deep into the realm of web development with React, Next.js, Tailwind CSS and Vercel; the very backbone of what you are literally experiencing right now.
         </motion.div>
@@ -58,7 +58,7 @@ const IxdPage = ({className}) => {
         variants={animateInChild}>
         &quot;How do you code a website from ground up?&quot;<br/><span className="font-light italic tracking-tight text-xs relative -top-5">–aforementioned shower thought.</span></motion.h1>
 
-        <motion.div className="col-span-full text-sm mt-4">
+        <motion.div className="col-span-full text-sm mt-4" variants={animateInChild}>
         This website will always be a work-in-progress. If anything, I have designed for it to be ever-iterating; something I would be able to constantly return to with new insights from my journey as an Interaction Designer.
         Learnings, insights and perspectives that I will be able to both design implementations for and code into this very medium I have created for myself.
         </motion.div>
@@ -74,7 +74,7 @@ const IxdPage = ({className}) => {
             
                 <video 
                 src="/ixd/website/3.mp4" 
-                className=" rounded-lg h-auto object-cover"
+                className=" rounded-lg w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 variants={animateInChild}>
                 </video>
@@ -197,7 +197,7 @@ const IxdPage = ({className}) => {
             
                 <video 
                 src="/ixd/website/11_2.mp4" 
-                className=" rounded-lg h-auto object-cover"
+                className=" rounded-lg w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 variants={animateInChild}>
                 </video>

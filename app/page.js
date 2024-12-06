@@ -96,7 +96,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
   };
 
 
-  const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, selectedTags }) => {
+  const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, selectedTags, poster }) => {
 
     const { expandedVideo, setExpandedVideo } = useVideoContext();
     
@@ -242,9 +242,10 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
             md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-500 
             ${selectedTags.includes('all') 
               ? `${isExpanded ? 'opacity-100' : 'opacity-100 blur-[30px] md:blur-0'}`
-              : 'blur-none opacity-100'}`}
+              : 'blur-[0px] opacity-100'}`}
             style={{ clipPath: 'inset(0 round 0.5rem)' }}
-            autoPlay muted loop playsInline>
+            autoPlay muted loop playsInline
+            poster={poster}>
             <source src={videoSrc} type="video/mp4" />
           </video>
 
@@ -257,25 +258,25 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
 export default function Home(){
 
   const videoData = [
-    { src: '/Ghibli/cover1_1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', role:'Creative Direction | Motion Design | Visual Design', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
-    { src: '/CCS/cover1_1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
-    { src: '/Cocktail/cover1_1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', role:' Creative Direction | Motion Design', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
-    { src: '/Kris/cover1_1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['kris', 'all', 'creative', 'sia'] },
-    { src: '/travelbig/cover_1.mp4', title:'Travel Like Never Before', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction', tags: ['travelbig', 'all', 'creative', 'sia'] },
-    { src: '/lounge/cover_1.mp4', title:'SilverKris Lounge', subheader:'Brand campaign for Singapore Airlines', role:'Creative Direction | Motion Design | Visual Design | Video Edit', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
-    { src: '/Hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product campaign for IKEA', role:'Creative Direction', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
-    { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social content for Singapore Airlines', role:'Creative Direction', tags: ['ispy', 'all', 'creative', 'sia'] },
-    { src: '/jollieverafter/cover_1.mp4', title:'JolliEverAfter', subheader:'Social media campaign for Jollibee', role:'Motion Design | Video Edit', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
-    { src: '/virtualsentosa/Cover.mp4', title:'Virtual Sentosa', subheader:'Activation Campaign for Sentosa', role:'Edit | Motion Design', tags: ['virtualsentosa', 'all', 'motion', 'edit'] },
-    { src: '/3dpersonal/Cover.mp4', title:'3D Motion Explorations', subheader:'Personal Explorations', role:'Motion Design', tags: ['3dpersonal', 'all', 'motion'] },
-    { src: '/uniqlo2/Cover.mp4', title:'New Style Fresh Start', subheader:'Motion Design for Uniqlo', role:'Motion Design', tags: ['uniqlo2', 'all', 'motion'] },
-    { src: '/Photography/street/Cover2_2.mp4', title:'Personal Photography', subheader:'Photography', role:'Photography', tags: ['street', 'all', 'photography'] },
-    { src: '/Photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', role:'Art Directio  | Photography', tags: ['bbh', 'all', 'photography'] },
-    { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Photography', role:'Photography', tags: ['unshackle', 'all', 'photography'] },
-    { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', role:'Art Direction | 3D Motion Design', tags: ['oneshow', 'all', 'motion'] },
-    { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', role:'', tags: ['leica', 'all', 'motion'] },
-    { src: '/moonpillow/cover.mp4', title:'ByBit Moon Pillow', subheader:'3D Motion Design', role:'', tags: ['bybit', 'all', 'motion'] },
-    { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', role:'3D Motion Design', tags: ['iphone', 'all', 'motion'] }, 
+    { src: '/Ghibli/cover1_1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', poster:'/poster/ghibli.png', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
+    { src: '/CCS/cover1_1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/cabin.png', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+    { src: '/Cocktail/cover1_1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/cocktail.png', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+    { src: '/Kris/cover1_1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/kris.png', tags: ['kris', 'all', 'creative', 'sia'] },
+    { src: '/travelbig/cover_1.mp4', title:'Travel Like Never Before', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/travelbig.png', tags: ['travelbig', 'all', 'creative', 'sia'] },
+    { src: '/lounge/cover_1.mp4', title:'SilverKris Lounge', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/lounge.png', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
+    { src: '/Hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product campaign for IKEA', poster:'/poster/hemsaker.png', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
+    { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social content for Singapore Airlines', poster:'/poster/ispy.png', tags: ['ispy', 'all', 'creative', 'sia'] },
+    { src: '/jollieverafter/cover_1.mp4', title:'JolliEverAfter', subheader:'Social media campaign for Jollibee', poster:'/poster/jollieverafter.png', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
+    { src: '/virtualsentosa/Cover.mp4', title:'Virtual Sentosa', subheader:'Activation Campaign for Sentosa', poster:'/poster/virtualsentosa.png', tags: ['virtualsentosa', 'all', 'motion', 'edit'] },
+    { src: '/3dpersonal/Cover.mp4', title:'3D Motion Explorations', subheader:'Personal Explorations', poster:'/poster/3d.png', tags: ['3dpersonal', 'all', 'motion'] },
+    { src: '/uniqlo2/Cover.mp4', title:'New Style Fresh Start', subheader:'Motion Design for Uniqlo', poster:'/poster/uniqlo2.png', tags: ['uniqlo2', 'all', 'motion'] },
+    { src: '/Photography/street/Cover2_2.mp4', title:'Personal Photography', subheader:'Photography', poster:'/poster/street.png', tags: ['street', 'all', 'photography'] },
+    { src: '/Photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', poster:'', tags: ['bbh', 'all', 'photography'] },
+    { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Photography', poster:'', tags: ['unshackle', 'all', 'photography'] },
+    { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', poster:'/poster/oneshow.png', tags: ['oneshow', 'all', 'motion'] },
+    { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', poster:'/poster/leica.png', tags: ['leica', 'all', 'motion'] },
+    { src: '/moonpillow/cover.mp4', title:'ByBit Moon Pillow', subheader:'3D Motion Design', poster:'/poster/bybit.png', tags: ['bybit', 'all', 'motion'] },
+    { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', poster:'/poster/iphone15.png', tags: ['iphone', 'all', 'motion'] }, 
   ];
 
   const [isMobile, setIsMobile] = useState(false);
@@ -1383,7 +1384,7 @@ export default function Home(){
                       videoSrc={video.src}
                       title={video.title}
                       subheader={video.subheader}
-                      role={video.role}
+                      poster={video.poster}
                       link={video.link}
                       tags={video.tags}
                       loading="lazy"

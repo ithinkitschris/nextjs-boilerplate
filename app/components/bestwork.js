@@ -143,6 +143,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 loop
                 playsInline
                 loading="lazy"
+                poster='/poster/cabinbest.png'
                 ></motion.video>
             </div>
 
@@ -215,6 +216,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 loop
                 playsInline
                 loading="lazy"
+                poster='/poster/cocktailbest.png'
                 ></motion.video>
             </div>
 
@@ -283,6 +285,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 loop
                 playsInline
                 loading="lazy"
+                poster='/poster/ghiblibest.png'
                 ></motion.video>
             </div>
 
@@ -345,6 +348,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 loop
                 playsInline
                 loading="lazy"
+                poster='/poster/jollibest.png'
                 ></motion.video>
             </div>
 
@@ -407,6 +411,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 loop
                 playsInline
                 loading="lazy"
+                poster='/poster/uniqlobest.png'
                 ></motion.video>
             </div>
 
