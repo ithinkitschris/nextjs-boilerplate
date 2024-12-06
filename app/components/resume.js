@@ -186,6 +186,7 @@ export default function Resume({ className = "" }) {
                         className="rounded-lg transform translate-y-12 scale-120 absolute "
                         layout="fill"
                         objectFit="cover"
+                        poster='/poster/profile.jpeg'
                         />
                     </motion.div>
 
