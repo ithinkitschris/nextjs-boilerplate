@@ -216,7 +216,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 loop
                 playsInline
                 loading="lazy"
-                poster='/poster/cocktailbest.jpeg'
+                poster='/poster/cocktailpage.jpeg'
                 ></motion.video>
             </div>
 

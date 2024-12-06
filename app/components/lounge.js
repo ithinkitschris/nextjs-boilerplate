@@ -93,7 +93,7 @@ show: {
             className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
             autoPlay muted loop controls playsInline
             variants={animateInChild}
-            poster='/poster/lounge.jpeg'
+            poster='/poster/loungepage.jpeg'
             >
             </motion.video>
 
