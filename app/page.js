@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import PhotographyPage from './components/photography.js';
 import ContentPage from './components/content.js';
+import IxdPage from './components/ixd.js';
 import Ghibli from './components/ghibli.js';
 import CabinCrewStories from './components/cabin.js';
 import Cocktail from './components/cocktail.js';
@@ -718,7 +719,7 @@ export default function Home(){
                     onClick={() => {
                       toggleTag('ixd');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
+                      toggleWork('ixd');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
                       Interaction Design</motion.button>
 
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
@@ -858,7 +859,7 @@ export default function Home(){
                   layout="position"
                   onClick={() => {
                     toggleTag('ixd');
-                    toggleWork('clear');}}>Interaction Design</motion.button>
+                    toggleWork('ixd');}}>Interaction Design</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left md:mr-8
@@ -884,7 +885,7 @@ export default function Home(){
                   layout="position"
                   onClick={() => {
                     toggleTag('content');
-                    toggleWork('clear');}}>Content Creation</motion.button>
+                    toggleWork('content');}}>Content Creation</motion.button>
                 </motion.div>
 
                 {/* Desktop Side Navbar All Work */}
@@ -1348,6 +1349,8 @@ export default function Home(){
                   <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>
                 ) : selectedWork === 'content' ? (
                   <ContentPage key="content" className="col-span-full"/>
+                ) : selectedWork === 'ixd' ? (
+                  <IxdPage key="ixd" className="col-span-full"/>
                 ) : selectedWork === 'street' ? (
                   <StreetPhotography key="street" className="col-span-full"/>
                 ) : selectedWork === 'bbh' ? (

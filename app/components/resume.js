@@ -179,11 +179,11 @@ export default function Resume({ className = "" }) {
                     </motion.h1>
 
                     {/* Image */}
-                    <motion.div className="absolute top-0 left-0 w-full h-full -z-50" variants={animateInChild}>
+                    <motion.div className="absolute top-0 left-0 w-full h-full -z-50 overflow-hidden rounded-xl"  variants={animateInChild}>
                         <Image
                         src="/profile/profile1.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-lg transform translate-y-12 scale-120 absolute "
                         layout="fill"
                         objectFit="cover"
                         />
