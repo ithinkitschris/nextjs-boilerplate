@@ -42,7 +42,7 @@ const IxdPage = ({className}) => {
         </motion.div>
 
         <motion.div className="col-span-full text-sm mt-4">
-            Obviously, I am currently fresh on the path of Interaction Design and this page is very much a blank canvas, if you will, for what's to come in the years and possibly decades ahead.
+            Obviously, I am currently fresh on the path of Interaction Design and this page is very much a blank canvas, if you will, for what&apos;s to come in the years and possibly decades ahead.
         </motion.div>
 
         <motion.h1 className="col-span-full text-4xl tracking-tighter font-medium mb-4 leading-10 relative mt-12" 
@@ -56,7 +56,7 @@ const IxdPage = ({className}) => {
 
         <motion.h1 className="col-span-full text-lg tracking-tighter font-medium leading-10 relative mt-8" 
         variants={animateInChild}>
-        "How do you code a website from ground up?"<br/><span className="font-light italic tracking-tight text-xs relative -top-5">–aforementioned shower thought.</span></motion.h1>
+        &quot;How do you code a website from ground up?&quot;<br/><span className="font-light italic tracking-tight text-xs relative -top-5">–aforementioned shower thought.</span></motion.h1>
 
         <motion.div className="col-span-full text-sm mt-4">
         This website will always be a work-in-progress. If anything, I have designed for it to be ever-iterating; something I would be able to constantly return to with new insights from my journey as an Interaction Designer.
@@ -103,7 +103,7 @@ const IxdPage = ({className}) => {
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1>Implemented the "Background Glow" art direction.</h1>
+                    <h1>Implemented the frosted glass art direction.</h1>
                 </div>
                 
             </motion.div>
