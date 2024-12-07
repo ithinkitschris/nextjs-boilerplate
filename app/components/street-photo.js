@@ -226,13 +226,13 @@ const StreetPhotography = ({className}) => {
         {/* Two Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2 mt-1 md:mt-2">
             <motion.img
-                src="/Photography/street/2_8.jpg"
+                src="/Photography/street/2_8.JPG"
                 alt="Description of Image 3"
                 className="col-span-3 h-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
-                src="/Photography/street/2_1.jpg"
+                src="/Photography/street/2_1.JPG"
                 alt="Description of Image 3"
                 className="col-span-3 h-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
@@ -242,7 +242,7 @@ const StreetPhotography = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="mt-1 md:mt-2 col-span-full " variants={animateInChild} >
             <img
-            src="/Photography/street/2_2.jpg"
+            src="/Photography/street/2_2.JPG"
             className="col-span-6 w-full h-auto object-cover rounded-lg shadow-lg"
             />
         </motion.div>
@@ -256,7 +256,7 @@ const StreetPhotography = ({className}) => {
                 variants={animateInChild}
             />
             <motion.img
-                src="/Photography/street/2_6.jpg"
+                src="/Photography/street/2_6.JPG"
                 alt="Description of Image 3"
                 className="col-span-3 h-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
@@ -266,7 +266,7 @@ const StreetPhotography = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="mt-1 md:mt-2 col-span-full " variants={animateInChild} >
             <img
-            src="/Photography/street/2_10.jpg"
+            src="/Photography/street/2_10.JPG"
             className="col-span-6 w-full h-auto object-cover rounded-lg shadow-lg"
             />
         </motion.div>
@@ -274,7 +274,7 @@ const StreetPhotography = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="mt-1 md:mt-2 col-span-full " variants={animateInChild} >
             <img
-            src="/Photography/street/2_3.jpg"
+            src="/Photography/street/2_3.JPG"
             className="col-span-6 w-full h-auto object-cover rounded-lg shadow-lg"
             />
         </motion.div>
@@ -282,7 +282,7 @@ const StreetPhotography = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="mt-1 md:mt-2 col-span-full " variants={animateInChild} >
             <img
-            src="/Photography/street/2_7.jpg"
+            src="/Photography/street/2_7.JPG"
             className="col-span-6 w-full h-auto object-cover rounded-lg shadow-lg"
             />
         </motion.div>
