@@ -24,10 +24,15 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
 
   // Motion
   const scaleIn ={
-    hidden: {opacity:0, scale:0.90},
+    hidden: {opacity:0, scale:0.9},
     show: {
         opacity:1, scale:1, 
-        transition: {staggerChildren: 0.1, duration:0.35, ease:"easeOut"},
+        transition: {
+          staggerChildren: 0.1, 
+          type: "spring",
+          stiffness: 600,
+          damping: 20, 
+        },
     },
     fade: {
       opacity:0,
@@ -262,7 +267,7 @@ export default function Home(){
     { src: '/CCS/cover1_1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/cabin.jpeg', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
     { src: '/Cocktail/cover1_1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/cocktail.jpeg', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
     { src: '/Kris/cover1_1.mp4', title:'Kris+ Brand Campaign', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/kris.jpeg', tags: ['kris', 'all', 'creative', 'sia'] },
-    { src: '/travelbig/cover_1.mp4', title:'Travel Like Never Before', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/travelbig.jpeg', tags: ['travelbig', 'all', 'creative', 'sia'] },
+    { src: '/travelbig/cover_1.mp4', title:'Travel Like Never Before', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/travelbig.jpg', tags: ['travelbig', 'all', 'creative', 'sia'] },
     { src: '/lounge/cover_1.mp4', title:'SilverKris Lounge', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/lounge.jpeg', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
     { src: '/Hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product campaign for IKEA', poster:'/poster/hemsaker.jpeg', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
     { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social content for Singapore Airlines', poster:'/poster/ispy.jpeg', tags: ['ispy', 'all', 'creative', 'sia'] },
@@ -438,8 +443,8 @@ export default function Home(){
             {/* Sidenav / Dropdown Button */}
             <motion.button 
               className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/0 backdrop-blur-lg 
-              flex items-center shadow md:shadow-none md:hover:bg-foreground md:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
-              ${showNav ? "text-white dark:text-black bg-foreground right-8" : "bg-[#e9e9e9] dark:bg-black/20 md:dark:bg-transparent right-8"}`}
+              flex items-center shadow md:shadow-none md:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
+              ${showNav ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground" : "bg-[#e9e9e9] dark:bg-black/20 md:hover:bg-foreground right-8"}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
               layout="position"
@@ -549,11 +554,11 @@ export default function Home(){
 
           {/* Mobile Navbar BG */}
           <motion.div
-            className={`md:hidden fixed dark:backdrop-blur-lg md:backdrop-blur-lg top-2 w-full shadow lg:shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.4)] z-20
-              border-white/80 dark:border-white/15 transition-colors bg-background dark:bg-black/20 blur-[0.2px]
-              ${showNav ? " border-b-1 bg-background backdrop-blur-lg md:bg-white/0 dark:bg-black/45 shadow-standard" : ""}`}
+            className={`md:hidden fixed dark:backdrop-blur-lg top-2 w-full shadow z-2 z-30 backdrop-blur
+              border-white/20 blur-[0.5px] transition-colors bg-background dark:bg-black/40 blur-[0.2px] border-b-1 
+              ${showNav ? "" : ""}`}
             style={{
-              left: "49%",
+              left: "50%",
               transform: "translateX(-50%)",
             }}
               animate={{ 
@@ -569,7 +574,7 @@ export default function Home(){
 
           {/* Desktop Navbar BG */}
           <div
-            className="hidden md:block fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20 h-12"
+            className="hidden md:block fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20 h-12 border-b-1 border-white/30 mix-blend-overlay"
           ></div>
 
           {/* Side Navbar / Mobile Dropdown */}
@@ -668,7 +673,7 @@ export default function Home(){
                       Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
                       ></span></motion.button>
 
-                    <motion.div className="mx-auto w-[90%] bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px] " variants={animateInChildMobile}/>
+                    <motion.div className="mx-auto mr-2 w-[90%] bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px] " variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground mt-1 mb-1 px-5 relative"
@@ -679,7 +684,7 @@ export default function Home(){
                       setShowNav(false)}}><span className='hidden mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
                       My <span className="font-script ml-1.5 relative top-1">favorites</span></motion.button>
                       
-                    <motion.div className="mx-auto w-[90%] bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
+                    <motion.div className="mx-auto mr-2 w-[90%] bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
 
                     <motion.button 
                     className="text-left text-foreground font-normal mt-2.5 mb-3 px-5 "
@@ -715,17 +720,6 @@ export default function Home(){
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
-                    className="text-left text-foreground font-normal mt-1 mb-3 px-5 whitespace-nowrap"
-                    variants={animateInChildMobile}
-                    onClick={() => {
-                      toggleTag('ixd');
-                      toggleNav('false');
-                      toggleWork('ixd');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
-                      Interaction Design</motion.button>
-
-                    {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
-
-                    <motion.button 
                     className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
@@ -734,7 +728,15 @@ export default function Home(){
                       toggleWork('photography');
                       }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>05 </span>
                       Photography</motion.button>
-                      
+
+                    <motion.button 
+                    className="text-left text-foreground font-normal mt-1 mb-3 px-5 whitespace-nowrap"
+                    variants={animateInChildMobile}
+                    onClick={() => {
+                      toggleTag('ixd');
+                      toggleNav('false');
+                      toggleWork('ixd');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
+                      Interaction Design</motion.button>                      
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
@@ -751,7 +753,7 @@ export default function Home(){
 
                 {/* Desktop Side Navbar Reset Button */}
                 <motion.div 
-                  className="sticky top-14 mt-4 z-50 hidden md:block">
+                  className="sticky top-18 mt-4 z-50 hidden md:block">
                   {showReset && (
                     <motion.button
                       className="group hover:text-background font-medium flex gap-1.5
@@ -852,18 +854,6 @@ export default function Home(){
 
                   <motion.button 
                   className={`hover:text-foreground text-left md:mr-8
-                    ${selectedTags.includes('ixd') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
-                      : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                  whileHover={{scale:1.06}}
-                  animate={{scale: selectedTags.includes('ixd') ? 1.06 : 1}}
-                  variants={animateInChild}
-                  layout="position"
-                  onClick={() => {
-                    toggleTag('ixd');
-                    toggleWork('ixd');}}>Interaction Design</motion.button>
-
-                  <motion.button 
-                  className={`hover:text-foreground text-left md:mr-8
                     ${selectedWork.includes('photography') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
                   whileHover={{scale:1.06}}
@@ -875,6 +865,17 @@ export default function Home(){
                     toggleWork('photography');
                     }}>Photography</motion.button>
                     
+                  <motion.button 
+                  className={`hover:text-foreground text-left md:mr-8
+                    ${selectedTags.includes('ixd') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
+                      : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
+                  whileHover={{scale:1.06}}
+                  animate={{scale: selectedTags.includes('ixd') ? 1.06 : 1}}
+                  variants={animateInChild}
+                  layout="position"
+                  onClick={() => {
+                    toggleTag('ixd');
+                    toggleWork('ixd');}}>Interaction Design</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left md:mr-8
@@ -891,7 +892,7 @@ export default function Home(){
 
                 {/* Desktop Side Navbar All Work */}
                 <motion.div
-                className={`hidden md:flex flex-col items-start gap-1 mt-12 dark:text-neutral-500 sticky z-10 ${showReset ? "top-28" : "top-16"}`}
+                className={`hidden md:flex flex-col items-start gap-1 mt-12 dark:text-neutral-500 sticky z-10 ${showReset ? "top-32" : "top-16"}`}
                 initial="hidden"
                 animate="show"
                 exit="exit"

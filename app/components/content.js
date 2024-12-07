@@ -51,6 +51,7 @@ const ContentPage = ({className}) => {
                 src="/content/ontheroad1_1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/roadbay.png'
                 variants={animateInChild}>
                 </video>
 
@@ -70,6 +71,7 @@ const ContentPage = ({className}) => {
                 src="/content/ontheroad3_1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/roadkl.png'
                 variants={animateInChild}>
                 </video>
 
@@ -89,6 +91,7 @@ const ContentPage = ({className}) => {
                 src="/content/ontheroad4_1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/roadmelbourne.png'
                 variants={animateInChild}>
                 </video>
 
@@ -112,6 +115,7 @@ const ContentPage = ({className}) => {
                 src="/content/rangefinder1_1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/klleica.png'
                 variants={animateInChild}>
                 </video>
 
@@ -131,6 +135,7 @@ const ContentPage = ({className}) => {
                 src="/content/rangefinder2_1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/shanghaileica.png'
                 variants={animateInChild}>
                 </video>
 
@@ -150,6 +155,7 @@ const ContentPage = ({className}) => {
                 src="/content/rangefinder3_1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/shanghaifilm.png'
                 variants={animateInChild}>
                 </video>
 
@@ -173,6 +179,7 @@ const ContentPage = ({className}) => {
                 src="/content/pov2.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/12a.png'
                 variants={animateInChild}>
                 </video>
 
@@ -192,6 +199,7 @@ const ContentPage = ({className}) => {
                 src="/content/pov3_1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/15a.png'
                 variants={animateInChild}>
                 </video>
 
@@ -211,6 +219,7 @@ const ContentPage = ({className}) => {
                 src="/content/pov4_1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/nonstop.png'
                 variants={animateInChild}>
                 </video>
 
@@ -234,6 +243,7 @@ const ContentPage = ({className}) => {
                 src="/content/filmvsdigital1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/filmhanoi.png'
                 variants={animateInChild}>
                 </video>
 
@@ -253,6 +263,7 @@ const ContentPage = ({className}) => {
                 src="/content/filmvsdigital2.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/filmmarinabay.png'
                 variants={animateInChild}>
                 </video>
 
@@ -272,6 +283,7 @@ const ContentPage = ({className}) => {
                 src="/content/filmvsdigital3.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/filmshanghai.png'
                 variants={animateInChild}>
                 </video>
 
@@ -295,6 +307,7 @@ const ContentPage = ({className}) => {
                 src="/content/blender1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/iphoneblender.png'
                 variants={animateInChild}>
                 </video>
 
@@ -314,6 +327,7 @@ const ContentPage = ({className}) => {
                 src="/content/blender2.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/iphoneblender2.png'
                 variants={animateInChild}>
                 </video>
 
@@ -333,6 +347,7 @@ const ContentPage = ({className}) => {
                 src="/content/blender3.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/leicablender.png'
                 variants={animateInChild}>
                 </video>
 
@@ -356,6 +371,7 @@ const ContentPage = ({className}) => {
                 src="/content/blender4.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/leicablender2.png'
                 variants={animateInChild}>
                 </video>
 
@@ -375,6 +391,7 @@ const ContentPage = ({className}) => {
                 src="/content/24hours1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/24hourkl.png'
                 variants={animateInChild}>
                 </video>
 
@@ -394,6 +411,7 @@ const ContentPage = ({className}) => {
                 src="/content/24hours2.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/24hourmelbourne.png'
                 variants={animateInChild}>
                 </video>
 
@@ -417,6 +435,7 @@ const ContentPage = ({className}) => {
                 src="/content/16.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/stool.png'
                 variants={animateInChild}>
                 </video>
 
@@ -436,6 +455,7 @@ const ContentPage = ({className}) => {
                 src="/content/15.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/lounge.png'
                 variants={animateInChild}>
                 </video>
 
@@ -455,6 +475,7 @@ const ContentPage = ({className}) => {
                 src="/content/14.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/shanghaibrands.png'
                 variants={animateInChild}>
                 </video>
 
@@ -474,6 +495,7 @@ const ContentPage = ({className}) => {
                 src="/content/11.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/prints.png'
                 variants={animateInChild}>
                 </video>
 
@@ -493,6 +515,7 @@ const ContentPage = ({className}) => {
                 src="/content/4_1.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/jaguar.png'
                 variants={animateInChild}>
                 </video>
 
@@ -512,6 +535,7 @@ const ContentPage = ({className}) => {
                 src="/content/3.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/chicago.png'
                 variants={animateInChild}>
                 </video>
 
@@ -531,6 +555,7 @@ const ContentPage = ({className}) => {
                 src="/content/17.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/dia.png'
                 variants={animateInChild}>
                 </video>
 
@@ -550,6 +575,7 @@ const ContentPage = ({className}) => {
                 src="/content/5.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/manhattanbridge.png'
                 variants={animateInChild}>
                 </video>
 
@@ -569,6 +595,7 @@ const ContentPage = ({className}) => {
                 src="/content/2.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/muir.png'
                 variants={animateInChild}>
                 </video>
 

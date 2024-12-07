@@ -148,11 +148,11 @@ useEffect(() => {
                 </motion.div> */}
             </div>
 
-            <div className="col-span-full mt-12 mb-12 md:mb-8 lg:mb-10 xl:mb-14">
-                <h1 className="text-[40px] font-script -rotate-3 text-center md:text-left tracking-tighter">Motion Design</h1>
+            <div className="col-span-full mt-12 mb-8 md:mb-8 lg:mb-10 xl:mb-14">
+                <h1 className="text-4xl lg:text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Motion Design</h1>
             </div>
 
-            <h1 className="font-base text-base mb-1 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
+            <h1 className="font-base text-base md:text-2xl font-medium mb-1 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
             
             <video
                 src='/Cocktail/titlesequence.mp4'
@@ -164,7 +164,7 @@ useEffect(() => {
                 playsInline
             ></video>
 
-            <h1 className="font-base text-base mb-1 mt-8 col-span-full text-center md:text-left tracking-tight">Cocktails</h1>
+            <h1 className="font-base text-base md:text-2xl font-medium mb-1 mt-8 col-span-full text-center md:text-left tracking-tight">Cocktails</h1>
 
             <div className="col-span-full flex flex-wrap gap-1.5 mb-8 lg:gap-2">
                 <video
@@ -201,53 +201,9 @@ useEffect(() => {
                 ></video>
             </div>
 
-            <div className="col-span-full mt-18 mb-10 md:mb-18">
-                <h1 className="text-[50px] font-script -rotate-3 text-center md:text-left tracking-tighter">Episodes</h1>
+            <div className="col-span-full mt-18 mb-8 md:mb-18">
+                <h1 className="text-5xl lg:text-7xl font-script -rotate-3 text-center md:text-left tracking-tighter">Episodes</h1>
             </div>
-
-            {/* <div className="col-span-full flex gap-1 md:gap-1.5 w-full mb-8">
-                <div className="w-1/4">
-                    <Image
-                    src="/Cocktail/thumbnail2.jpg"
-                    alt=""
-                    className="rounded-lg object-cover"
-                    layout="responsive"
-                    width={500}
-                    height={500}
-                    />
-                </div>
-                <div className="w-1/4">
-                    <Image
-                    src="/Cocktail/thumbnail3.jpg"
-                    alt=""
-                    className="rounded-lg object-cover"
-                    layout="responsive"
-                    width={500}
-                    height={500}
-                    />
-                </div>
-                <div className="w-1/4">
-                    <Image
-                    src="/Cocktail/thumbnail4.jpg"
-                    alt=""
-                    className="rounded-lg object-cover"
-                    layout="responsive"
-                    width={500}
-                    height={500}
-                    />
-                </div>
-                <div className="w-1/4">
-                    <Image
-                    src="/Cocktail/thumbnail5.jpg"
-                    alt=""
-                    className="rounded-lg object-cover"
-                    layout="responsive"
-                    width={500}
-                    height={500}
-                    />
-                </div>
-                
-            </div> */}
 
             <div className="grid grid-cols-6 col-span-full mb-3 xl:mb-5 gap-0 md:gap-2">
                 

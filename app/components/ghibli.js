@@ -139,43 +139,41 @@ const animateIn ={
                 </div>
 
                 <motion.div className='col-span-full mt-0 grid grid-cols-3 gap-1.5 md:gap-2' variants={animateInChild}>
-                
+   
                     <div className="col-span-full mb-12 md:mb-18">
-                        <h1 className="text-4.5xl md:text-[50px] font-script -rotate-3 text-center md:text-left tracking-tighter">Key visuals</h1>
+                        <h1 className="text-4.5xl md:text-[50px] font-script -rotate-3 text-center md:text-left tracking-tighter">
+                            Key visuals
+                        </h1>
                     </div>
 
-                    {/* <Image
-                        src="/Ghibli/kv.jpg"
-                        alt=""
-                        className="rounded-lg object-cover"
-                        layout="responsive"
-                        width={50}
-                        height={10}
-                    /> */}
-
-                    <div className="col-span-full flex gap-1 md:gap-1.5 w-full h-full smb-8">
-                        <div className="w-1/2 h-full ">
+                    <div className="col-span-full flex gap-1 md:gap-1.5 w-full h-auto">
+                        {/* Image Wrapper */}
+                        <div className="w-1/2">
                             <Image
-                            src="/Ghibli/KV.jpg"
-                            alt=""
-                        className="rounded-lg object-cover h-full"
-                            layout="responsive"
-                            width={500}
-                            height={600}
+                                src="/Ghibli/KV.jpg"
+                                alt=""
+                                className="rounded-lg object-cover h-full"
+                                layout="responsive"
+                                width={500}
+                                height={600}
                             />
                         </div>
-                        <video 
-                        src="/Ghibli/KVanimated.mp4" 
-                        className="rounded-lg md:w-1/2 w-full h-full object-cover -ml-2 md:ml-0"
-                        autoPlay muted loop playsInline
-                        variants={animateInChild}
-                        // whileHover={{scale:1.01}}
-                        ></video>
-                        
+
+                        {/* Video Element */}
+                        <div className="w-1/2 h-full">
+                            <video
+                                src="/Ghibli/KVanimated.mp4"
+                                className="rounded-lg object-cover"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                            ></video>
+                        </div>
                     </div>
 
-
-                    <div className="col-span-full grid grid-cols-2 gap-1 md:gap-1.5 mb-8">
+                    {/* Mobile KVs */}
+                    <div className="col-span-full grid grid-cols-2 gap-1 md:gap-1.5 mb-8 md:hidden">
                         <div className="col-span-2">
                             <Image
                             src="/Ghibli/kv1.jpg"
@@ -228,6 +226,62 @@ const animateIn ={
                         </div>
                         
                     </div>
+
+                    {/* Desktop KVs */}
+                    <div className="col-span-full grid-cols-5 gap-1 md:gap-1.5 mb-8 hidden md:grid mt-8">
+                        <div className="col-span-1">
+                            <Image
+                            src="/Ghibli/kv1.jpg"
+                            alt=""
+                            className="rounded-lg object-cover"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            />
+                        </div>
+                        <div className="col-span-1">
+                            <Image
+                            src="/Ghibli/kv2.jpg"
+                            alt=""
+                            className="rounded-lg object-cover"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            />
+                        </div>
+                        <div className="col-span-1">
+                            <Image
+                            src="/Ghibli/kv3.jpg"
+                            alt=""
+                            className="rounded-lg object-cover"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            />
+                        </div>
+                        <div className="col-span-1">
+                            <Image
+                            src="/Ghibli/kv4.jpg"
+                            alt=""
+                            className="rounded-lg object-cover"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            />
+                        </div>
+                        <div className="col-span-1">
+                            <Image
+                            src="/Ghibli/kv5.jpg"
+                            alt=""
+                            className="rounded-lg object-cover"
+                            layout="responsive"
+                            width={500}
+                            height={500}
+                            />
+                        </div>
+                        
+                    </div>
+
 
                     <Image
                         src="/Ghibli/lobby.jpg"
