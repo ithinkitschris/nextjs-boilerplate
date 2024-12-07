@@ -12,7 +12,7 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
       onClick={toggleDarkMode}
       className="
       group transition-all duration-200 -mt-0.5 lg:mt-0 ml-1 bg-background shadow backdrop-blur dark:bg-black/20 lg:dark:bg-transparent
-      p-1.5 rounded-full border-1 border-black/0 dark:border-white/0 lg:hover:border-transparent  
+      p-1.5 rounded-full border-1 border-black/0 dark:border-white/0 lg:hover:border-transparent lg:hover:text-white
       lg:dark:hover:bg-foreground lg:dark:hover:border-transparent text-foreground lg:hover:bg-foreground lg:hover:scale-90
       z-20
       "

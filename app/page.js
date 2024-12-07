@@ -438,12 +438,12 @@ export default function Home(){
         px-3 sm:px-4 2xl:px-6 text-sm max-w-10xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-2 md:top-1.5 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
+          <div className="col-span-full fixed top-2 md:top-2.5 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
 
             {/* Sidenav / Dropdown Button */}
             <motion.button 
-              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/0 backdrop-blur-lg 
-              flex items-center shadow md:shadow-none md:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
+              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/20 backdrop-blur-lg 
+              flex items-center shadow md:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
               ${showNav ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground" : "bg-[#e9e9e9] dark:bg-black/20 md:hover:bg-foreground right-8"}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
@@ -463,7 +463,7 @@ export default function Home(){
 
               {/* Top Navbar Contents */}
               <motion.div
-              className="flex flex-row justify-center md:justify-start md:pl-20 md:mr-0 gap-2 md:gap-10 text-white mt-[7px] lg:mt-1"
+              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-8 text-white mt-[7px] lg:mt-1"
               initial="hidden"
               animate="show"
               layout="position"
@@ -472,11 +472,11 @@ export default function Home(){
 
                 {/* Profile Button */}
                 <motion.button
-                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent mix-blend-difference
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('resume') 
-                      ? ' border-black/100 dark:border-white/100 text-foreground' 
-                      : ' text-[rgba(0,0,0,0.5)] dark:text-[rgba(255,255,255,0.5)] '
+                      ? ' border-foreground dark:border-white text-foreground' 
+                      : ' text-black dark:text-white '
                     }`}
                   whileHover={{ scale: 0.94 }}
                   variants={animateInChild}
@@ -498,10 +498,10 @@ export default function Home(){
                 <motion.button 
                 className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
-                    ${['all', 'creative', 'edit', 'motion', 'photography'].some(tag => selectedTags.includes(tag))
-                    && isMobile
-                    ? ' border-black/100 dark:border-white/100 text-foreground' 
-                    : ' text-[rgba(0,0,0,0.5)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground border-black/0'
+                    ${['all', 'creative', 'edit', 'motion', 'photography', 'content', 'ixd'].some(tag => selectedTags.includes(tag))
+                    
+                    ? ' border-foreground dark:border-white text-foreground' 
+                    : ' text-black dark:text-white dark:hover:text-foreground border-black/0'
                   }`}
 
                 whileHover={{scale:1.03}}
@@ -529,7 +529,7 @@ export default function Home(){
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('bestwork') 
                       ? ' border-black/100 dark:border-white/100 text-foreground' 
-                      : ' text-[rgba(0,0,0,0.5)] dark:text-[rgba(255,255,255,0.5)] dark:hover:text-foreground'
+                      : ' text-black dark:text-white dark:hover:text-foreground'
                     }`}
                   whileHover={{ scale: 1.03 }}
                   variants={animateInChild}
@@ -555,7 +555,7 @@ export default function Home(){
           {/* Mobile Navbar BG */}
           <motion.div
             className={`md:hidden fixed dark:backdrop-blur-lg top-2 w-full shadow z-2 z-30 backdrop-blur
-              border-white/20 blur-[0.5px] transition-colors bg-background dark:bg-black/40 blur-[0.2px] border-b-1 
+              border-white/20 transition-colors bg-background dark:bg-black/40 blur-[0.2px] border-b-1 
               ${showNav ? "" : ""}`}
             style={{
               left: "50%",
@@ -574,7 +574,8 @@ export default function Home(){
 
           {/* Desktop Navbar BG */}
           <div
-            className="hidden md:block fixed backdrop-blur-lg left-0 top-0 w-full shadow-[0px_0px_15px_-8px_rgba(0,0,0,0.2)] z-20 h-12 border-b-1 border-white/30 mix-blend-overlay"
+            className="hidden md:block fixed backdrop-blur-lg top-2 left-1/2 transform -translate-x-1/2 w-[506px] ml-[12px] rounded-full 
+            drop-shadow bg-background dark:bg-transparent z-20 h-[38px] border-b-1 border-white/30 dark:mix-blend-overlay"
           ></div>
 
           {/* Side Navbar / Mobile Dropdown */}
