@@ -147,16 +147,6 @@ export default function Resume({ className = "" }) {
         setShowFreelance((prevState) => !prevState);
     }
 
-    const images = [
-        '/profile/profile1.jpg',
-        '/profile/profile2.jpg',
-        '/profile/profile3.jpg',
-        '/profile/profile6.jpg',
-        '/profile/profile9.JPG',
-
-    ]
-
-    const profileImage = images[Math.floor(Math.random() * images.length)];
 
     return (
         
