@@ -228,13 +228,13 @@ const StreetPhotography = ({className}) => {
             <motion.img
                 src="/Photography/street/2_8.JPG"
                 alt="Description of Image 3"
-                className="col-span-3 h-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-3 w-full h-[300px] md:h-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/street/2_1.JPG"
                 alt="Description of Image 3"
-                className="col-span-3 h-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-3 w-full h-[300px] md:h-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
         </div>
@@ -252,13 +252,13 @@ const StreetPhotography = ({className}) => {
             <motion.img
                 src="/Photography/street/2_9.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 h-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-3 w-full h-[350px] md:h-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/street/2_6.JPG"
                 alt="Description of Image 3"
-                className="col-span-3 h-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-3 w-full h-[350px] md:h-full object-cover rounded md:rounded-lg shadow-lg"
                 variants={animateInChild}
             />
         </div>

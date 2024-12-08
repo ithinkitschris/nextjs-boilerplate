@@ -1,6 +1,6 @@
 'use client';
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, } from "react";
 import Image from "next/image";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 
@@ -147,6 +147,17 @@ export default function Resume({ className = "" }) {
         setShowFreelance((prevState) => !prevState);
     }
 
+    const images = [
+        '/profile/profile1.jpg',
+        '/profile/profile2.jpg',
+        '/profile/profile3.jpg',
+        '/profile/profile6.jpg',
+        '/profile/profile9.JPG',
+
+    ]
+
+    const profileImage = images[Math.floor(Math.random() * images.length)];
+
     return (
         
     <>
@@ -175,14 +186,13 @@ export default function Resume({ className = "" }) {
                     </motion.h1>
 
                     {/* Image */}
-                    <motion.div className="absolute top-0 left-0 w-full h-full -z-50 overflow-hidden rounded-xl"  variants={animateInChild}>
+                    <motion.div className="absolute top-0 left-0 w-full h-full -z-50 overflow-hidden rounded-xl" variants={animateInChild}>
                         <Image
-                        src="/profile/profile1.jpg"
+                        src='/profile/profile1.jpg'
                         alt=""
-                        className="rounded-lg transform translate-y-12 scale-120 absolute "
+                        className="rounded-lg transform scale-120 translate-y-12"
                         layout="fill"
                         objectFit="cover"
-                        poster='/poster/cabin.jpeg'
                         />
                     </motion.div>
 
@@ -232,7 +242,7 @@ export default function Resume({ className = "" }) {
 
                     {/* Mobile Subheader */}
                     <motion.h1 
-                    className="block lg:hidden mb-14 -mt-8 -ml-1 md:mt-0 text-[40px] px-2 font-script tracking-tight leading-11 mix-blend-difference text-white dark:text-white"
+                    className="block lg:hidden mb-14 -mt-8 -ml-1 md:mt-0 text-[40px] px-2 font-script tracking-tight leading-11 mix-blend-difference dark:mix-blend-normal text-white dark:text-white"
                     animate={{rotate:-4}}
                     variants={animateInChild}>
                     

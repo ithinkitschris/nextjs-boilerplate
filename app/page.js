@@ -16,6 +16,7 @@ import BestWorkPage from './components/bestwork.js';
 import Resume from './components/resume.js';
 import StreetPhotography from './components/street-photo.js';
 import BBH from './components/bbh.js';
+import StressedLa from './components/stressed.js';
 import Unshackle from './components/unshackle.js';
 import BTS from './components/bts.js';
 import { ChevronDownIcon} from '@heroicons/react/24/solid';
@@ -442,7 +443,7 @@ export default function Home(){
 
             {/* Sidenav / Dropdown Button */}
             <motion.button 
-              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 dark:border-white/20 backdrop-blur-lg 
+              className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 md:dark:border-white/20 backdrop-blur-lg 
               flex items-center shadow md:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
               ${showNav ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground" : "bg-[#e9e9e9] dark:bg-black/20 md:hover:bg-foreground right-8"}`}
               whileHover={{ scale: 0.9 }}
@@ -554,8 +555,8 @@ export default function Home(){
 
           {/* Mobile Navbar BG */}
           <motion.div
-            className={`md:hidden fixed dark:backdrop-blur-lg top-2 w-full shadow z-2 z-30 backdrop-blur
-              border-white/20 transition-colors bg-background dark:bg-black/40 blur-[0.2px] border-b-1 
+            className={`md:hidden fixed dark:backdrop-blur-lg top-2 w-full shadow z-2 z-30
+              border-white/10 transition-colors bg-background dark:bg-black/20 blur-[0.2px] border-b-1 
               ${showNav ? "" : ""}`}
             style={{
               left: "50%",
@@ -1358,6 +1359,8 @@ export default function Home(){
                   <StreetPhotography key="street" className="col-span-full"/>
                 ) : selectedWork === 'bbh' ? (
                   <BBH key="bbh" className="col-span-full"/>
+                ) : selectedWork === 'stressed' ? (
+                  <StressedLa key="stressed" className="col-span-full"/>
                 ) : selectedWork === 'unshackle' ? (
                   <Unshackle key="unshackle" className="col-span-full"/>
                 ) : selectedWork === 'bts' ? (

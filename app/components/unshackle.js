@@ -29,49 +29,49 @@ const Unshackle = ({className}) => {
         
         
       {/* Full-Width Image */}
-        <motion.div className="col-span-full mb-2" variants={animateInChild} >
+        <motion.div className="col-span-full mb-1 md:mb-2" variants={animateInChild} >
             <img
             src="/Photography/unshackle/1.JPG"
             className="h-auto w-full object-cover rounded-lg shadow-lg"
             />
         </motion.div>
 
-        <motion.div className="col-span-full mb-2" variants={animateInChild} >
+        <motion.div className="col-span-full mb-1 md:mb-2" variants={animateInChild} >
             <img
             src="/Photography/unshackle/3.JPG"
             className="h-auto w-full object-cover rounded-lg shadow-lg"
             />
         </motion.div>
 
-        <motion.div className="col-span-full mb-2" variants={animateInChild} >
+        <motion.div className="col-span-full mb-1 md:mb-2" variants={animateInChild} >
             <img
             src="/Photography/unshackle/5.JPG"
             className="h-auto w-full object-cover rounded-lg shadow-lg"
             />
         </motion.div>
 
-        <motion.div className="col-span-full mb-2" variants={animateInChild} >
+        <motion.div className="col-span-full mb-1 md:mb-2" variants={animateInChild} >
             <img
             src="/Photography/unshackle/4.JPG"
             className="h-auto w-full object-cover rounded-lg shadow-lg"
             />
         </motion.div>
 
-        <motion.div className="col-span-full mb-2" variants={animateInChild} >
+        <motion.div className="col-span-full mb-1 md:mb-2" variants={animateInChild} >
             <img
             src="/Photography/unshackle/6.JPG"
             className="h-auto w-full object-cover rounded-lg shadow-lg"
             />
         </motion.div>
 
-        <motion.div className="col-span-full mb-2" variants={animateInChild} >
+        <motion.div className="col-span-full mb-1 md:mb-2" variants={animateInChild} >
             <img
             src="/Photography/unshackle/7.JPG"
             className="h-auto w-full object-cover rounded-lg shadow-lg"
             />
         </motion.div>
 
-        <motion.div className="col-span-full mb-2" variants={animateInChild} >
+        <motion.div className="col-span-full mb-1 md:mb-2" variants={animateInChild} >
             <img
             src="/Photography/unshackle/2.JPG"
             className="h-auto w-full object-cover rounded-lg shadow-lg"
