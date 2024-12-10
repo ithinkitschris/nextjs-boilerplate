@@ -264,6 +264,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
 export default function Home(){
 
   const videoData = [
+    { src: '/website/cover_1.mp4', title:'Literally this website.', subheader:'Product Design & Software Engineering', poster:'/poster/website.jpeg', tags: ['ixd', 'all'] },
     { src: '/Ghibli/cover1_1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', poster:'/poster/ghibli.jpeg', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
     { src: '/CCS/cover1_1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/cabin.jpeg', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
     { src: '/Cocktail/cover1_1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/cocktail.jpeg', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
@@ -592,64 +593,6 @@ export default function Home(){
                 {/* Mobile Dropdown Container */}
                 <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-50 fixed w-screen -ml-4 font-medium ">
 
-                  {/* Header */}
-                  {/* <motion.h1
-                    className="text-4xl font-medium tracking-tighter mt-1.5 text-center text-foreground sm:hidden -ml-1"
-                    initial={{ opacity: 0, y:-20 }} 
-                      animate={{ opacity: 1, y:0 }}  
-                      transition={{
-                        type: "spring",
-                        stiffness: 500, 
-                        damping: 15, 
-                        }} 
-                    layout="position">
-                      Skillsets
-                  </motion.h1>  */}
-
-                  {/* Reset Button */}
-                  {/* <motion.div 
-                  className={`z-50 ${showReset ? "mt-2" : "-mt-5"}`}>
-                  {showReset && (
-                    <motion.button
-                      className="group font-medium flex gap-1.5
-                      -ml-1 pt-1 pb-1 pr-2 pl-2.5 -mb-4 mr-5
-                      items-center text-white 
-                      rounded-full border-1 border-white"
-                      initial={{ opacity: 0, y:-20 }} 
-                      animate={{ opacity: 1, y:0 }}  
-                      transition={{
-                        type: "spring",
-                        stiffness: 500, 
-                        damping: 15, 
-                        }} 
-                      whileHover={{ scale: 0.97 }} 
-                      onClick={() => {
-                        setSelectedTags(['all']);
-                        setSelectedWork([]);
-                        window.scrollTo({
-                          top: 0,
-                          behavior: 'smooth' // Enables smooth scrolling to the top
-                        });
-                      }}
-                    >Lets rewind
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 100 105"
-                        className="w-4 h-4"
-                      >
-                        <path
-                          d="M50,96.7c-20.3,0-38-14.4-42.1-34.3-.4-2.2,1-4.3,3.1-4.7,2.2-.4,4.3,1,4.7,3.1,3.3,16.2,17.7,27.9,34.2,27.9s35-15.7,35-35-15.7-35-35-35-14.9,2.4-21,7c-1.8,1.3-4.3,1-5.6-.8-1.3-1.8-1-4.3.8-5.6,7.5-5.6,16.4-8.6,25.8-8.6,23.7,0,43,19.3,43,43s-19.3,43-43,43Z"
-                          fill="currentColor"
-                        />
-                        <path
-                          d="M42.6,44.4H11c-1.1,0-2.1-.4-2.8-1.2-.8-.8-1.2-1.8-1.2-2.9l.4-32.8c0-2.2,1.8-4,4-4s0,0,0,0c2.2,0,4,1.8,4,4l-.3,28.7h27.5c2.2,0,4,1.8,4,4s-1.8,4-4,4Z"
-                          fill="currentColor"
-                        />
-                      </svg> 
-                    </motion.button>
-                  )}
-                  </motion.div>  */}
-
                   {/* Dropdown Menu */}    
                   <motion.div 
                   className="flex flex-col gap-2 items-start tracking-tighter text-[23px] leading-tighter font-medium mt-4 w-full max-w-[16rem] mx-auto md:hidden"
@@ -864,19 +807,21 @@ export default function Home(){
                   layout="position"      
                   onClick={() => {
                     toggleTag('clear');
+                    setSelectedTags([]);
                     toggleWork('photography');
                     }}>Photography</motion.button>
                     
                   <motion.button 
                   className={`hover:text-foreground text-left md:mr-8
-                    ${selectedTags.includes('ixd') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
+                    ${selectedWork.includes('ixd') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
                   whileHover={{scale:1.06}}
-                  animate={{scale: selectedTags.includes('ixd') ? 1.06 : 1}}
+                  animate={{scale: selectedWork.includes('ixd') ? 1.06 : 1}}
                   variants={animateInChild}
                   layout="position"
                   onClick={() => {
-                    toggleTag('ixd');
+                    toggleTag('clear');
+                    setSelectedTags([]);
                     toggleWork('ixd');}}>Interaction Design</motion.button>
 
                   <motion.button 
@@ -888,7 +833,8 @@ export default function Home(){
                   variants={animateInChild}
                   layout="position"
                   onClick={() => {
-                    toggleTag('content');
+                    toggleTag('clear');
+                    setSelectedTags([]);
                     toggleWork('content');}}>Content Creation</motion.button>
                 </motion.div>
 
@@ -918,6 +864,23 @@ export default function Home(){
                   variants={animateInChild}>
                     2024
                   </motion.h1>
+
+                  <motion.button 
+                  className={`hover:text-foreground text-left mr-8
+                    ${includesTags(['creative']) || selectedWork.includes(['ixd']) || hoveredWork ==='ixd' 
+                      ? 'text-foreground' 
+                      : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
+                    } transition-colors duration-100`}
+                  whileHover={{scale:1.06}}
+                  animate={{scale: 
+                    includesTags(['creative']) || selectedWork.includes(['ixd']) ||
+                    hoveredWork==='ixd' 
+                    ? 1.02 : 1
+                  }}
+                  variants={animateInChild}
+                  onClick={() => {
+                    toggleTag('clear');
+                    toggleWork('ixd')}}>Portfolio Website</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
@@ -1396,9 +1359,10 @@ export default function Home(){
                       setHoveredWork={setHoveredWork}
                       selectedTags={selectedTags}
                       onClick={() => { 
-                        const workTags = ['cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'travelbig', 'lounge'];
+                        const workTags = ['ixd', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'travelbig', 'lounge'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));
                         if (matchedWork) {
+                          toggleTag('clear');
                           setSelectedWork(matchedWork);
                         }
                         

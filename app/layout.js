@@ -1,5 +1,6 @@
 'use client';
 import {useState} from "react";
+import Link from "next/link";
 import DarkModeToggle from "./components/dark-mode-toggle";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -29,10 +30,10 @@ const modernLine = localFont({
 });
 
 
-
 export default function RootLayout({ children }) {
 
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isFooterHovered, setIsFooterHovered] = useState(false);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -56,10 +57,25 @@ export default function RootLayout({ children }) {
         </div>        
         <SearchMenu />
         <main className="">{children}</main>
-        <div className="text-black/15 shadow-sm dark:text-white fixed bottom-2 left-1/2 transform -translate-x-1/2 
-        whitespace-nowrap tracking-tight text-xs rounded-full p-0.5 px-1.5 z-50 dark:backdrop-blur-md bg-background dark:bg-transparent dark:mix-blend-soft-light">
-          Website masochistically designed and coded by yours truly.</div>
-        {/* <div className="fixed bottom-0 w-full bg-gradient-to-t h-[100px] from-white to-transparent z-40"></div> */}
+
+        <div 
+          className="fixed bottom-3 inset-x-0 mx-auto z-50 w-200 flex justify-center"
+          onMouseEnter={() => setIsFooterHovered(true)}
+          onMouseLeave={() => setIsFooterHovered(false)}
+        >
+          <div
+            className={`transition-all duration-300 text-center backdrop-blur-md rounded-full border-1 whitespace-nowrap tracking-tighter text-xs font-medium
+              ${isFooterHovered 
+                ? ' w-44 bg-foreground dark:bg-transparent border-foreground text-white dark:border-white cursor-pointer scale-125' 
+                : ' text-black/40 dark:text-white/60 w-80 border-transparent scale-100'}`}
+          >
+            {isFooterHovered
+              ? <Link href='https://ithinkitschris.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f'
+              target="blank"
+              rel="noopener noreferrer">Read the Documentation here.</Link>
+              : 'Website masochistically designed and coded by yours truly.'}
+          </div>
+        </div>
       </body>
     </html>
   );
