@@ -169,14 +169,14 @@ export default function Resume({ className = "" }) {
                     {/* Name */}
                     <motion.h1
                     className="z-50 pl-5 pt-5 text-6xl tracking-tighter leading-15 font-base text-[#e9e9e9] dark:text-white"
-                    variants={animateInChild}
+                    variants={animateInChild} layout
                     >
                     I am <span className="font-script absolute top-10 tracking-tight text-7xl align-top ml-2">Chris</span>
                     {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
                     </motion.h1>
 
                     {/* Image */}
-                    <motion.div className="absolute top-0 left-0 w-full h-full -z-50 overflow-hidden rounded-xl" variants={animateInChild}>
+                    <motion.div className="absolute top-0 left-0 w-full h-full -z-50 overflow-hidden rounded-xl" variants={animateInChild} layout>
                         <Image
                         src='/profile/profile1.jpg'
                         alt=""
@@ -213,7 +213,8 @@ export default function Resume({ className = "" }) {
                     {/* Desktop Name */}
                     <motion.h1
                     className="hidden lg:block pt-0 text-3xl tracking-tighter text-foreground"
-                    variants={animateInChild}>
+                    variants={animateInChild}
+                    layout="position">
                     I am
                     <p className="font-script absolute tracking-tight text-9xl mt-3 -rotate-3"  style={{ wordSpacing: "-0.25em" }}>Chris Leow</p>
                     </motion.h1>
@@ -223,7 +224,8 @@ export default function Resume({ className = "" }) {
                     <motion.h1 
                     className="hidden lg:block mt-[145px] pr-8 text-[26px] font-script tracking-tight leading-10 text-foreground text-right"
                     animate={{rotate:-1}}
-                    variants={animateInChild}>
+                    variants={animateInChild}
+                    layout>
                         
                         {/* <p className="">And here are three<br/><span className="ml-36">things about me:</span></p> */}
                         <p className="-rotate-2">And here are three things about me:</p>
@@ -243,7 +245,7 @@ export default function Resume({ className = "" }) {
                     {/* Desktop Three Things */}
                     <motion.div 
                     className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-14 hidden md:block" 
-                    variants={animateInChild}>
+                    variants={animateInChild} layout="position">
                         {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                         <p className="text-[24px]  tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
                         <p className="text-xxs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Come on, script typeface on a portfolio website?</p>
@@ -284,7 +286,7 @@ export default function Resume({ className = "" }) {
                 {/* Desktop Photo Card */}
                 <div className="hidden lg:block relative flex-1 h-[620px]">
                     {/* Image */}
-                    <motion.div className="h-full w-auto -z-10 relative overflow-hidden" variants={animateInChild}>
+                    <motion.div className="h-full w-auto -z-10 relative overflow-hidden" variants={animateInChild} layout>
 
                         <Image
                         src="/profile/profile1.jpg"

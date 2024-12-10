@@ -108,7 +108,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
     
     const isExpanded = expandedVideo === videoSrc; // Check if this square is expanded
     
-    const toggleVideo = () => {
+    const toggleExpand = () => {
       setExpandedVideo((prev) => (prev === videoSrc ? null : videoSrc)); // Toggle expansion only for this video
     };
 
@@ -129,7 +129,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
             if (isExpanded) {
               onClick();
             } else {
-              toggleVideo();
+              toggleExpand();
             }
           } else {
             onClick();
@@ -375,9 +375,9 @@ export default function Home(){
 
   const toggleTag = (tag) => {
     if (tag === 'clear') {
-      setSelectedTags([]); // Clear all tags
+      setSelectedTags([]); 
     } else {
-      setSelectedTags([tag]); // Ensure selectedTags is always an array
+      setSelectedTags([tag]); 
     }
   };
 
@@ -464,7 +464,7 @@ export default function Home(){
 
               {/* Top Navbar Contents */}
               <motion.div
-              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-8 text-white mt-[7px] lg:mt-1"
+              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-4 text-white mt-[7px] lg:mt-1"
               initial="hidden"
               animate="show"
               layout="position"
@@ -473,7 +473,7 @@ export default function Home(){
 
                 {/* Profile Button */}
                 <motion.button
-                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent mix-blend-difference
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent md:mr-1
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('resume') 
                       ? ' border-foreground dark:border-white text-foreground' 
@@ -495,6 +495,32 @@ export default function Home(){
                   <span className="block md:hidden">Who?</span>
                 </motion.button>
 
+                {/* Best Button */}
+                <motion.button 
+                  className={`hidden md:block hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
+                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
+                    ${selectedWork.includes('bestwork') 
+                      ? ' border-black/100 dark:border-white/100 text-foreground' 
+                      : ' text-black dark:text-white dark:hover:text-foreground'
+                    }`}
+                  whileHover={{ scale: 0.94 }}
+                  variants={animateInChild}
+                  layout="position"
+                  onClick={() => {
+                    toggleTag('clear');
+                    toggleWork('bestwork');
+                    setSelectedTags(['']);
+                    if (window.matchMedia('(max-width: 640px)').matches) {
+                      setShowNav(false);
+                    }
+                  }}
+                  >
+
+                  <span className="hidden md:block">My personal favourites</span>
+                  <span className="block md:hidden">Favourites</span>
+
+                </motion.button>
+
                 {/* All Button */}
                 <motion.button 
                 className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
@@ -505,7 +531,7 @@ export default function Home(){
                     : ' text-black dark:text-white dark:hover:text-foreground border-black/0'
                   }`}
 
-                whileHover={{scale:1.03}}
+                whileHover={{scale:0.94}}
                 variants={animateInChild}
                 layout="position"
                 onClick={() => {
@@ -522,32 +548,6 @@ export default function Home(){
                   <span className="hidden md:block">Everything I&apos;ve got</span>
                   <span className="block md:hidden">Work</span>
                   
-                </motion.button>
-
-                {/* Best Button */}
-                <motion.button 
-                  className={`hidden md:block hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
-                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
-                    ${selectedWork.includes('bestwork') 
-                      ? ' border-black/100 dark:border-white/100 text-foreground' 
-                      : ' text-black dark:text-white dark:hover:text-foreground'
-                    }`}
-                  whileHover={{ scale: 1.03 }}
-                  variants={animateInChild}
-                  layout="position"
-                  onClick={() => {
-                    toggleTag('clear');
-                    toggleWork('bestwork');
-                    setSelectedTags(['']);
-                    if (window.matchMedia('(max-width: 640px)').matches) {
-                      setShowNav(false);
-                    }
-                  }}
-                  >
-
-                  <span className="hidden md:block">My personal favourites</span>
-                  <span className="block md:hidden">Favourites</span>
-
                 </motion.button>
 
               </motion.div>
@@ -575,7 +575,7 @@ export default function Home(){
 
           {/* Desktop Navbar BG */}
           <div
-            className="hidden md:block fixed backdrop-blur-lg top-2 left-1/2 transform -translate-x-1/2 w-[506px] ml-[12px] rounded-full 
+            className="hidden md:block fixed backdrop-blur-lg top-2 left-1/2 transform -translate-x-1/2 w-[480px] ml-[12px] rounded-full 
             drop-shadow bg-background dark:bg-transparent z-20 h-[38px] border-b-1 border-white/30 dark:mix-blend-overlay"
           ></div>
 

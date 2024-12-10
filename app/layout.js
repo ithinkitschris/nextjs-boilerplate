@@ -56,6 +56,10 @@ export default function RootLayout({ children }) {
         </div>        
         <SearchMenu />
         <main className="">{children}</main>
+        <div className="text-black/15 shadow-sm dark:text-white fixed bottom-2 left-1/2 transform -translate-x-1/2 
+        whitespace-nowrap tracking-tight text-xs rounded-full p-0.5 px-1.5 z-50 dark:backdrop-blur-md bg-background dark:bg-transparent dark:mix-blend-soft-light">
+          Website masochistically designed and coded by yours truly.</div>
+        {/* <div className="fixed bottom-0 w-full bg-gradient-to-t h-[100px] from-white to-transparent z-40"></div> */}
       </body>
     </html>
   );
