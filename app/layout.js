@@ -64,10 +64,10 @@ export default function RootLayout({ children }) {
           onMouseLeave={() => setIsFooterHovered(false)}
         >
           <div
-            className={`transition-all duration-300 text-center backdrop-blur-md rounded-full border-1 whitespace-nowrap tracking-tighter text-xs font-medium
+            className={`transition-all duration-300 text-center backdrop-blur-sm rounded-full border-1 whitespace-nowrap tracking-tighter text-xs font-medium
               ${isFooterHovered 
                 ? ' md:w-44 md:bg-foreground md:dark:bg-transparent md:border-foreground md:text-white md:dark:border-white cursor-pointer md:scale-110' 
-                : ' text-black/40 dark:text-white/60 w-80 border-transparent scale-100'}`}
+                : ' text-black/15 md:text-black/40 dark:text-white/20 md:dark:text-white/60 w-80 border-transparent scale-100'}`}
           >
             {isFooterHovered
               ? <Link href='https://ithinkitschris.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f'
