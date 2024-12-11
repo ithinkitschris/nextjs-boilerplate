@@ -264,7 +264,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
 export default function Home(){
 
   const videoData = [
-    { src: '/website/cover_1.mp4', title:'Literally this website.', subheader:'Product Design & Software Engineering', poster:'/poster/website.jpeg', tags: ['ixd', 'all'] },
+    { src: '/website/cover_1.mp4', title:'Literally this website.', subheader:'Interaction Design & Development', poster:'/poster/website.jpeg', tags: ['ixd', 'all'] },
     { src: '/Ghibli/cover1_1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', poster:'/poster/ghibli.jpeg', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
     { src: '/CCS/cover1_1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/cabin.jpeg', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
     { src: '/Cocktail/cover1_1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/cocktail.jpeg', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
@@ -618,10 +618,10 @@ export default function Home(){
                       Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
                       ></span></motion.button>
 
-                    <motion.div className="mx-auto mr-2 w-[90%] bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px] " variants={animateInChildMobile}/>
+                    {/* <motion.div className="mx-auto mr-2 w-[90%] bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px] " variants={animateInChildMobile}/> */}
 
                     <motion.button 
-                    className="text-left text-foreground mt-1 mb-1 px-5 relative"
+                    className="text-left text-foreground mt-2 mb-3 px-5 relative"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('creative');

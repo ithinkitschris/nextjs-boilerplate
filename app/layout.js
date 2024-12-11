@@ -59,14 +59,14 @@ export default function RootLayout({ children }) {
         <main className="">{children}</main>
 
         <div 
-          className="fixed bottom-3 inset-x-0 mx-auto z-50 w-200 flex justify-center"
+          className="fixed bottom-3 inset-x-0 mx-auto z-50 md:w-200 flex justify-center"
           onMouseEnter={() => setIsFooterHovered(true)}
           onMouseLeave={() => setIsFooterHovered(false)}
         >
           <div
             className={`transition-all duration-300 text-center backdrop-blur-md rounded-full border-1 whitespace-nowrap tracking-tighter text-xs font-medium
               ${isFooterHovered 
-                ? ' w-44 bg-foreground dark:bg-transparent border-foreground text-white dark:border-white cursor-pointer scale-125' 
+                ? ' md:w-44 md:bg-foreground md:dark:bg-transparent md:border-foreground md:text-white md:dark:border-white cursor-pointer md:scale-110' 
                 : ' text-black/40 dark:text-white/60 w-80 border-transparent scale-100'}`}
           >
             {isFooterHovered
