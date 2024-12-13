@@ -228,13 +228,13 @@ export default function Resume({ className = "" }) {
                     variants={animateInChild}
                     layout="position">
                     I am
-                    <p className="font-script absolute tracking-tight text-9xl mt-3 -rotate-3"  style={{ wordSpacing: "-0.25em" }}>Chris Leow</p>
+                    <p className="font-script  tracking-tight text-9xl mt-3 -rotate-3"  style={{ wordSpacing: "-0.25em" }}>Chris Leow</p>
                     </motion.h1>
 
 
                     {/* Desktop Subheader */}
                     <motion.h1 
-                    className="hidden lg:block mt-[145px] pr-8 text-[26px] font-script tracking-tight leading-10 text-foreground text-right"
+                    className="hidden lg:block mt-5 pr-8 text-[26px] font-script tracking-tight leading-10 text-foreground text-right"
                     animate={{rotate:-1}}
                     variants={animateInChild}
                     layout>
@@ -429,8 +429,8 @@ export default function Resume({ className = "" }) {
                             variants={dropdownChild}
                             layout="position">
                                 <p className="mb-3 font-script text-sm">Who</p>
-                                <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
-                                <p>With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.</p>
+                                <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, he finds himself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
+                                <p>With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in creating visually compelling work across various mediums.</p>
                             </motion.div>
 
                             <motion.div 
@@ -439,7 +439,7 @@ export default function Resume({ className = "" }) {
                             variants={dropdownChild}
                             layout="position">
                                 <p className="mb-3 font-script text-sm">What</p>
-                                As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; eight years of experience in the Advertising and Design industry is what I find myself with–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
+                                As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; he finds himself with eight years of experience in the Advertising and Design industry–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
                             </motion.div>
 
                             <motion.div 
@@ -448,8 +448,8 @@ export default function Resume({ className = "" }) {
                             variants={dropdownChild}
                             layout="position">
                                 <p className="mb-3 font-script text-sm">And</p>
-                                <p className="mb-3">In my spare time after work <i>(which, realistically, isn&apos;t much)</i>, I do... even more work, but for myself—creating content through photography, videography, editing and motion design.</p>
-                                <p className="">When I am finally, actually, not working, you will find me thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. I do love building my living space up, though I wouldn&apos;t go so far as to call it interior design.</p>
+                                <p className="mb-3">In his spare time <i>(which, realistically, isn&apos;t much)</i>, he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
+                                <p className="">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, though he wouldn&apos;t go so far as to call it interior design.</p>
                             </motion.div>
 
                         </motion.div>
@@ -457,7 +457,7 @@ export default function Resume({ className = "" }) {
                     )}
 
                     {/* Long Toggle Bar */}
-                    <motion.div className="lg:hidden flex justify-between mt-1 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-8 lg:mb-4 col-span-full w-full" 
+                    <motion.div className="lg:hidden flex justify-between mt-3 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-8 lg:mb-4 col-span-full w-full" 
                     onClick={toggleLong} 
                     key='what' 
                     layout="position" 
@@ -568,8 +568,8 @@ export default function Resume({ className = "" }) {
                 variants={animateInChild}
                 layout="position">
                     <p className="mb-3 font-script text-sm">Who ?</p>
-                    <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
-                    <p>With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.</p>
+                    <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, he finds himself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
+                    <p>With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in creating visually compelling work across various mediums.</p>
                 </motion.div>
 
                 <motion.div 
@@ -577,7 +577,7 @@ export default function Resume({ className = "" }) {
                 variants={animateInChild}
                 layout="position">
                     <p className="mb-3 font-script text-sm">What ?</p>
-                    As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; eight years of experience in the Advertising and Design industry is what I find myself with–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
+                    As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; he finds himself with eight years of experience in the Advertising and Design industry–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
                 </motion.div>
 
                 <motion.div 
@@ -585,8 +585,8 @@ export default function Resume({ className = "" }) {
                 variants={animateInChild}
                 layout="position">
                     <p className="mb-3 font-script text-sm">And ?</p>
-                    <p className="mb-3">In my spare time after work <i>(which, realistically, isn&apos;t much)</i>, I do... even more work, but for myself—creating content through photography, videography, editing and motion design.</p>
-                    <p className="">When I am finally, actually, not working, you will find me thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. I do love building my living space up, though I wouldn&apos;t go so far as to call it interior design.</p>
+                    <p className="mb-3">In his spare time <i>(which, realistically, isn&apos;t much)</i>, he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
+                    <p className="">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, though he wouldn&apos;t go so far as to call it interior design.</p>
                 </motion.div>
             </div>
 
