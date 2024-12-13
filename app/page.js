@@ -116,7 +116,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
     return (
       <motion.div
       lang='en'
-      className="drop-shadow-lg rounded-lg hover:drop-shadow-md cursor-pointer group-hover:z-50"
+      className="drop-shadow-md rounded-lg hover:drop-shadow-md cursor-pointer group-hover:z-50"
       initial="hidden"
       animate="show"
       whileHover={{scale:0.98}}
@@ -144,10 +144,10 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
         {/* <div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15"/> */}
         
         {/* Square */}
-        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-lg shadow
+        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-lg border-1
           ${selectedTags.includes('all') 
-          ? `${isExpanded ? 'pt-[155%]' : 'pt-[15%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100'}`
-          : 'pt-[150%]'}`}>
+          ? `${isExpanded ? 'pt-[155%] border-transparent' : 'pt-[13%] md:hover:pt-[100%] border-white/15 saturate-200 md:saturate-100 hover:saturate-100'}`
+          : 'pt-[150%] border-transparent'}`}>
 
           {/* Text Container */}
           <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-4 lg:gap-4">
@@ -156,7 +156,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
             <h1 className={`tracking-tight font-medium md:p-0 transition-all duration-300 z-50 break-words hyphens-auto 
             w-5/6 md:w-3/4 md:leading-8 md:text-4xl md:opacity-0 md:group-hover:opacity-100 
             ${selectedTags.includes('all') 
-            ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white text-5xl leading-11 p-2' : 'p-1 text-[18px] text-[#e9e9e9] dark:text-white md:group-hover:text-4xl md:group-hover:leading-8'}` 
+            ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white text-5xl leading-11 p-2' : 'p-1 -mt-1 text-[18px] text-black/80 dark:text-white md:group-hover:text-4xl md:group-hover:leading-8'}` 
             : 'text-5xl p-3 text-[#e9e9e9] dark:text-white leading-tighter'}`}>
               {title}
             </h1>
@@ -173,26 +173,15 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
             {/* Details Container */}
             <div className="z-50 flex flex-row justify-start w-full">
 
-              {/* Script Subheader */}
-              {/* <h3 className="z-10 text-white text-[10px] pl-2.5 pb-1 pr-2 md:pb-0 md:text-base tracking-tight
-              font-script opacity-100 lg:opacity-0 lg:group-hover:opacity-100 -rotate-1 text-right
-              transition-all duration-300 leading-6 md:leading-5 md:text-left w-2/3lg:w-1/2">
-              {subheader}</h3> */}
-
-              {/* Clean Subheader */}
+              {/* Subheader */}
               <h3 className={`z-10 md:pb-0 md:text-sm tracking-normal
               opacity-100 md:opacity-0 md:group-hover:opacity-100 ml-1 md:w-4/6
               transition-opacity duration-300 leading-normal md:leading-4 text-left
               ${selectedTags.includes('all') 
-              ? `${isExpanded ? 'text-white opacity-100' : 'text-[8px] text-white opacity-50'} w-5/6` 
+              ? `${isExpanded ? 'text-white opacity-100' : 'text-[8px] text-black dark:text-white opacity-50'} w-5/6` 
               : 'text-xxs p-1.5 pl-2.5 md:pl-0 text-white w-full font-light'}`}>
               {subheader}</h3>
 
-              {/* Role */}
-              {/* <h3 className="hidden lg:block z-50 text-white text-sm tracking-tight opacity-0 group-hover:opacity-100
-              transition-all duration-300 leading-5 w-1/2">
-              {role}
-              </h3> */}
             </div>
           </div>
     
@@ -240,21 +229,23 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
 
           {/* Mobile Dropdown Chevron */}     
           <ChevronDownIcon 
-          className={`absolute z-50 top-3 right-4 text-white opacity-100 w-3.5 h-3.5 md:hidden
+          className={`absolute z-50 top-3 right-4 text-black/80 dark:text-white opacity-100 w-3.5 h-3.5 md:hidden
           ${selectedTags.includes('all') ? (isExpanded ? 'hidden' : 'block') : 'hidden'}`}/>
 
           {/* Video */}
-          <video
-            className={`absolute inset-0 w-full h-full object-cover rounded-lg 
-            md:group-hover:blur-xl md:group-hover:opacity-80 transition-all duration-500 
-            ${selectedTags.includes('all') 
-              ? `${isExpanded ? 'opacity-100' : 'opacity-100 blur-[30px] md:blur-0'}`
-              : 'blur-[0px] opacity-100'}`}
-            style={{ clipPath: 'inset(0 round 0.5rem)' }}
-            autoPlay muted loop playsInline
-            poster={poster}>
-            <source src={videoSrc} type="video/mp4" />
-          </video>
+          {(!isMobileDevice() || (isMobileDevice() && (['creative', 'motion', 'edit'].some(tag => selectedTags.includes(tag)) || isExpanded ) )) && (
+            <video
+              className="absolute inset-0 w-full h-full object-cover rounded-lg opacity-100 transition-all duration-500"
+              style={{ clipPath: 'inset(0 round 0.5rem)' }}
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={poster}
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          )}
 
         </div>
         
