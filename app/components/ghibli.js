@@ -127,12 +127,17 @@ const animateIn ={
                 {/* Writeup */}
                 <div className="flex flex-col sm:flex-row col-span-full px-5 sm:px-0 gap-10 mt-10 mb-18 md:mr-7">
                     <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                    <p className="mb-2 font-mono text-sm ">Why?</p>
+                    <p className="mb-2 font-mono text-sm "></p>
                         <p>An integrated Marketing campaign for the first official Studio Ghibli exhibition in Singapore, and one of the largest exhibitions to be shown at ArtScience Museum, transforming 11 galleries spanning two levels. The World of Studio Ghibli is organised by ArtScience Museum under the license of award-winning animation powerhouse Studio Ghibli.</p>
+                    </motion.div>
+
+                    <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
+                    <p className="mb-2 font-mono text-sm "></p>
+                        <p>I provided creative direction over the campaign for the exhibition as the Creative Lead. This involved designing the Key Visual for the exhibition through multiple iterations, oversight on the marketing deliverables, and facilitated collaboration with both the museum and curatorial team, internal stakeholders and external marketing partners.</p>
                     </motion.div>
                     
                     <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                    <p className="mb-2 font-mono text-sm ">How?</p>
+                    <p className="mb-2 font-mono text-sm "></p>
                         <p>Deliverables spanned a massive spectrum from On-property Banners, Digital Signages, Posters, Exhibition Guides. Merchandise to Digital OOH, Cinema pre-roll ads, In-cabin train OOHs and marketing partner with Klook as a platform.</p>
                     </motion.div>
                     

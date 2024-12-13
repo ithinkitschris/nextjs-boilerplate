@@ -123,21 +123,21 @@ useEffect(() => {
             </div>
 
             {/* Writeup */}
-            <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-10 mt-10 mb-14 md:mr-7">
+            <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-10 mt-8 mb-14 md:mr-7">
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono text-sm ">Why?</p>
+                <p className="mb-2 font-mono text-sm "></p>
                 <p className="mb-3">The Flagship SilverKris Lounge at Singapore Changi Airport Terminal 3 was rebuilt from ground up and opened in 2022.</p>
                 <p>Post-launch, there was a need for a sustenance campaign for the lounge. One that would showcase not only its class-leading interior design but also most importantly, its meticulous service.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono text-sm ">How?</p>
+                <p className="mb-2 font-mono text-sm "></p>
                 <p className="mb-3">Featuring a blend of notable customers & personalities who pass through the lounge, each episode stars a different guest where we learn about their craft and travel preferences.</p> 
                 <p>Through curated rapid-fire questions, the bartenders at the Crystal Bar then concoct bespoke Cocktails named after them based on their answers.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono text-sm ">And?</p>
+                <p className="mb-2 font-mono text-sm "></p>
                 <p>The bespoke Cocktails were available to order by any patron of the Crystal Bar the month following the episode, and recipe videos were edited and uploaded as content on social platforms.</p>
                 </motion.div>
 
@@ -217,7 +217,7 @@ useEffect(() => {
                         Matthew pays a visit to our flagship Crystal Bar and shares his food philosophy and take on local Singaporean food. 
                         </h3>
 
-                        <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0 mt-auto">
+                        <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0 mt-2">
                         Watch it
                         <a href="https://www.youtube.com/watch?v=RMyGwODz048" 
                         className="px-1.5 border-1 border-foreground rounded-full ml-1.5 hover:bg-foreground hover:text-background"
@@ -246,7 +246,7 @@ useEffect(() => {
                         It&apos;s not every day that a multi-platinum music duo walks into our flagship Crystal Bar. Tune in with HONNE as they chat with us about their craft and how travel inspires their music.
                         </h3>
 
-                        <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0 mt-auto">
+                        <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0 mt-2">
                         Watch it
                         <a href="https://www.youtube.com/watch?v=KiWDGCULcV4" 
                         className="px-1.5 border-1 border-foreground rounded-full ml-1.5 hover:bg-foreground hover:text-background"
@@ -274,7 +274,7 @@ useEffect(() => {
                         In episode 4 of Cocktail Conversations, we had a tee-rific time chatting with professional golfer Danielle Kang where she shares her love of golf and travel. 
                         </h3>
 
-                        <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0 mt-auto">
+                        <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0 mt-2">
                         Watch it
                         <a href="https://www.youtube.com/watch?v=aGnyJamxpxg" 
                         className="px-1.5 border-1 border-foreground rounded-full ml-1.5 hover:bg-foreground hover:text-background"
@@ -302,7 +302,7 @@ useEffect(() => {
                         Raise your glass to our latest episode of Cocktail Conversations, where we have an exclusive chat about wine and travel with our Wine Consultant, Jeannie Cho Lee. ​
                         </h3>
 
-                        <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0 mt-auto">
+                        <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0 mt-2">
                         Watch it
                         <a href="https://www.youtube.com/watch?v=WhUwFR-KN9w" 
                         className="px-1.5 border-1 border-foreground rounded-full ml-1.5 hover:bg-foreground hover:text-background"
@@ -312,7 +312,7 @@ useEffect(() => {
 
                     <video
                         src='/Cocktail/episode5.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
+                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full mb-40"
                         autoPlay
                         loop
                         muted

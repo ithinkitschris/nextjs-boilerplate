@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
           <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
         </div>        
         <SearchMenu />
-        <main className="">{children}</main>
+        <main className="overflow-x-hidden">{children}</main>
 
         <div 
           className="fixed bottom-3 inset-x-0 mx-auto z-50 md:w-200 flex justify-center"

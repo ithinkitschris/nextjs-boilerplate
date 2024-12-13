@@ -23,6 +23,7 @@ import { ChevronDownIcon} from '@heroicons/react/24/solid';
 import {useVideoContext, VideoProvider} from './components/expandedGridContext.js';
 
 
+
   // Motion
   const scaleIn ={
     hidden: {opacity:0, scale:0.9},
@@ -867,7 +868,7 @@ export default function Home(){
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['creative']) || selectedWork.includes(['ixd']) || hoveredWork ==='ixd' 
+                    ${selectedWork.includes(['ixd']) || hoveredWork ==='ixd' 
                       ? 'text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                     } transition-colors duration-100`}

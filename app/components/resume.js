@@ -4,6 +4,7 @@ import React, { useState, useEffect, } from "react";
 import Image from "next/image";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 
+
 const animateIn = {
     hidden: { opacity: 0, y: 20 },
     show: {
@@ -76,6 +77,8 @@ export default function Resume({ className = "" }) {
         return () => clearInterval(timer);
     }, []);
 
+    const [showStory, setShowStory] = useState(false);
+    const [showShort, setShowShort] = useState(false);
     const [showLong, setShowLong] = useState(false);
     const [showCurriculum, setShowCurriculum] = useState(false);
     const [showAsm, setShowAsm] = useState(false);
@@ -90,6 +93,15 @@ export default function Resume({ className = "" }) {
     const [showSentosa, setShowSentosa] = useState(false);
     const [showKinetic, setShowKinetic] = useState(false);
     const [showFreelance, setShowFreelance] = useState(false);
+
+
+    const toggleStory = () => {
+        setShowStory((prevState) => !prevState);
+    };
+
+    const toggleShort = () => {
+        setShowShort((prevState) => !prevState);
+    };
 
     const toggleLong = () => {
         setShowLong((prevState) => !prevState);
@@ -334,18 +346,18 @@ export default function Resume({ className = "" }) {
             <motion.div className="hidden lg:block col-span-full w-full h-[1px] dark:bg-white/10 bg-black/10 mt-4 mb-8" variants={animateInChild} layout='position' key='alamak'/>
 
             {/* Mobile FAQ Button Row */}
-            <motion.div className="lg:hidden flex justify-between mt-1 px-5 lg:px-0 cursor-pointer mb-6 lg:mb-4 ml-1 col-span-full w-full" onClick={toggleLong} key='wtf' variants={animateInChild}>
+            <motion.div className="lg:hidden flex justify-between mt-1 px-5 lg:px-0 cursor-pointer mb-2 lg:mb-4 ml-1 col-span-full w-full" onClick={toggleStory} key='wtf' variants={animateInChild}>
                 <div 
-                className={`flex items-center justify-center -ml-3 transition-non-color duration-200 w-[55px]
-                rounded-full tracking-normal text-xl ${showLong ? 'bg-foreground text-background scale-90' : ''}`}>
-                    FAQ
+                className={`flex items-center justify-center -ml-[14px] transition-non-color duration-200 w-[100px]
+                rounded-full tracking-tight text-xl ${showStory ? 'bg-foreground text-background scale-90' : ''}`}>
+                    My Story
                 </div>
 
                 <div 
                 className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
-                rounded-full mb-2 px-1 ${showLong ? 'bg-foreground text-background scale-90' : ''}`}>
+                rounded-full mb-2 px-1 ${showStory ? 'bg-foreground text-background scale-90' : ''}`}>
                 
-                {showLong ? (
+                {showStory ? (
                     <ChevronUpIcon className="h-4 w-4" />
                 ) : (
                     <ChevronDownIcon className="h-4 w-4" />
@@ -353,47 +365,204 @@ export default function Resume({ className = "" }) {
                 </div>
             </motion.div> 
 
-            {/* Mobile FAQ Dropdown */}
-            {showLong && (
+            
+
+            {/* Mobile Story Dropdown */}
+            {showStory && (
+
                 <motion.div 
-                key="dropdown-long"
+                key="dropdown-story"
                 initial="hidden"
                 animate="show"
                 layout="position"
                 variants={dropdown}
                 className="lg:flex gap-5 w-full col-span-full">
-                    <motion.div 
-                    className="mb-10 px-5 md:px-0 flex-1"
+
+                    {/* Short Toggle Bar */}
+                    <motion.div className="lg:hidden flex justify-between mt-3 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-3 lg:mb-4 col-span-full w-full" 
+                    onClick={toggleShort} 
+                    key='wtf' 
+                    layout="position" 
                     variants={dropdownChild}
-                    layout="position">
-                        <p className="mb-3 font-script text-sm">Who </p>
-                        <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
-                        <p>With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.</p>
+                    transition={{
+                        type: "spring",
+                        stiffness: 300, 
+                        damping: 26, 
+                        }}>
+
+                        <div 
+                        className={`flex items-center justify-center transition-non-color duration-200 w-[195px]
+                        rounded-full tracking-tight text-base ${showShort ? 'border-1 scale-95' : ''}`}>
+                            The <span className="font-script tracking-tightest ml-2 mr-1 relative top-0.5">'professional '</span>  writeup
+                        </div>
+
+                        <div 
+                        className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
+                        rounded-full mb-2 px-1`}>
+                        
+                        {showShort ? (
+                            <ChevronUpIcon className="h-4 w-4" />
+                        ) : (
+                            <ChevronDownIcon className="h-4 w-4" />
+                        )}
+                        </div>
                     </motion.div>
 
-                    <motion.div 
-                    className="mb-10 px-5 md:px-0 flex-1"
+                    {/* Short Dropdown */}
+                    {showShort && (
+                        <motion.div 
+                        key="dropdown-short"
+                        initial="hidden"
+                        animate="show"
+                        layout="position"
+                        variants={dropdown}
+                        className="lg:flex gap-5 w-full col-span-full"
+                        transition={{
+                            type: "spring",
+                            stiffness: 300, 
+                            damping: 26, 
+                            }}>
+
+                            <motion.div 
+                            key="dropdown-who"
+                            className="mb-10 px-5 md:px-0 flex-1 mt-8"
+                            variants={dropdownChild}
+                            layout="position">
+                                <p className="mb-3 font-script text-sm">Who</p>
+                                <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, I was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, I find myself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
+                                <p>With a fervor for craft and a meticulous eye for finesse, I do take a possibly unhealthy pride in creating visually compelling work across various mediums.</p>
+                            </motion.div>
+
+                            <motion.div 
+                            key="dropdown-what"
+                            className="mb-10 px-5 md:px-0 flex-1"
+                            variants={dropdownChild}
+                            layout="position">
+                                <p className="mb-3 font-script text-sm">What</p>
+                                As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; eight years of experience in the Advertising and Design industry is what I find myself with–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
+                            </motion.div>
+
+                            <motion.div 
+                            key="dropdown-and"
+                            className="mb-8 px-5 md:px-0 flex-1"
+                            variants={dropdownChild}
+                            layout="position">
+                                <p className="mb-3 font-script text-sm">And</p>
+                                <p className="mb-3">In my spare time after work <i>(which, realistically, isn&apos;t much)</i>, I do... even more work, but for myself—creating content through photography, videography, editing and motion design.</p>
+                                <p className="">When I am finally, actually, not working, you will find me thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. I do love building my living space up, though I wouldn&apos;t go so far as to call it interior design.</p>
+                            </motion.div>
+
+                        </motion.div>
+
+                    )}
+
+                    {/* Long Toggle Bar */}
+                    <motion.div className="lg:hidden flex justify-between mt-1 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-8 lg:mb-4 col-span-full w-full" 
+                    onClick={toggleLong} 
+                    key='what' 
+                    layout="position" 
                     variants={dropdownChild}
-                    layout="position">
-                        <p className="mb-3 font-script text-sm">What </p>
-                        As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; eight years of experience in the Advertising and Design industry is what I find myself with–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
+                    transition={{
+                        type: "spring",
+                        stiffness: 300, 
+                        damping: 28, 
+                        }}>
+
+                        <div 
+                        className={`flex items-center justify-center transition-non-color duration-200 w-[170px]
+                        rounded-full tracking-tight text-base ${showLong ? 'border-1 scale-95' : ''}`}>
+                            The <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">really long</span>  story
+                        </div>
+
+                        <div 
+                        className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
+                        rounded-full mb-2 px-1 `}>
+                        {showLong ? (
+                            <ChevronUpIcon className="h-4 w-4" />
+                        ) : (
+                            <ChevronDownIcon className="h-4 w-4" />
+                        )}
+                        </div>
                     </motion.div>
 
-                    <motion.div 
-                    className="mb-8 px-5 md:px-0 flex-1"
-                    variants={dropdownChild}
-                    layout="position">
-                        <p className="mb-3 font-script text-sm">And </p>
-                        <p className="mb-3">In my spare time after work <i>(which, realistically, isn&apos;t much)</i>, I do... even more work, but for myself—creating content through photography, videography, editing and motion design.</p>
-                        <p className="">When I am finally, actually, not working, you will find me thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. I do love building my living space up, though I wouldn&apos;t go so far as to call it interior design.</p>
-                    </motion.div>
+                    {/* Long Dropdown */}
+                    {showLong && (
+                        <motion.div 
+                        key="dropdown-long"
+                        initial="hidden"
+                        animate="show"
+                        layout="position"
+                        variants={dropdown}
+                        className="lg:flex gap-5 w-full col-span-full mb-8"
+                        transition={{
+                            type: "spring",
+                            stiffness: 300, 
+                            damping: 28, 
+                            }}>
+
+                            <motion.div 
+                            className="mb-6 px-5 md:px-0 flex-1"
+                            variants={dropdownChild}
+                            layout="position">
+                                {/* <p className="mb-3 font-script text-sm">How it all started: </p> */}
+                                {/* <p className="font-light text-3xl -mb-3">"</p> */}
+                                <p className="mb-3 italic text-xs opacity-50">If everyone is busy making everything, how can anyone perfect anything? We start to confuse convenience with joy. Abundance with choice.</p>
+                                <p className="mb-3 italic text-xs opacity-50">Designing something requires focus. The first thing we ask is: What do we want people to feel. Surprise. Love. Connection. Then we begin to craft around our intention.</p>
+                                <p className="mb-3 italic text-xs opacity-50">It takes time. There are a thousand no’s for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.</p>
+                                <p className="mb-3 italic text-xs opacity-50">Only then do we sign our work: Designed by Apple in California</p>
+                                {/* <p className="font-light text-3xl -mt-4 text-right -mb-4">"</p> */}
+                            </motion.div>
+
+                            <motion.div 
+                            className=" px-5 md:px-0 flex-1"
+                            variants={dropdownChild}
+                            layout="position">
+                                <a className="-ml-1 flex justify-center rounded-full mb-6 border-1 w-[130px] pl-1"
+                                href="https://www.youtube.com/watch?v=LcGPI2tV2yY"
+                                target='blank'>Intention – Apple <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="2 2 20 20"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="w-2.5 h-2.5 mt-0.5 ml-0.5">
+                                <path d="M7 1717 7" />
+                                <path d="M7 7h10v10" />
+                                </svg></a>
+
+                                <p className="mb-3 font-script text-sm"></p>
+                                <p className="mb-3">It all started from this very film. I remember the first time I watched it–it was very much a lightbulb moment for me. I was a student pursuing Communication Design then, a freshman back in 2014.</p>
+                                <p className="mb-3">It was at a school-wide convention, the entire design school, that is. We were in a massive auditorium, the director of our school played the film for all to watch on a screen that could've possibly been what is two floors high.</p>
+                                <p className="mb-3">That was the first time I had watched anything like that. In retrospect, the message conveyed in the film likely didn't even register within me. But the execution absolutely did, even though the concept of Motion Graphics couldn't be more foreign to me then.</p>
+                                <p className="mb-3">Serendipitously, I found myself in a class on Motion Graphics a few months later, and I daresay it all intuitively clicked within me the first time I opened After Effects. It set me down a manic path driven by passion for crafting visuals that engaged by movement.</p>
+                                <p className="mb-3">With a combination of sheer luck and my skillset in Motion Graphics, I found myself with a foot in the Advertising industry as a young creative. After 8 years, and as I ever fervently sought the next step throughout that led me from starting out as a Motion Designer to eventually being a Creative Lead; I found myself with the startling ability to tell a story behind my craft. </p>
+                                <p className="mb-3">One thing that remained absolute however, was that I never stopped <i>doing</i>. Just because I found myself an Art Director, didn’t mean that I no longer needed to get my hands dirty with Illustrator and After Effects. <i className="opacity-50 mr-1.5 hidden">(along with a disproportionate amount of Powerpoint, Keynote and Teams).</i> Crafting was the one North Star that got me where I was, and kept me doing what I did, and I wasn’t about to leave that behind.</p>
+                                <p className="mb-3">Every piece of work on this site went through a thousand no's for the final yes. It was crafted amidst busyness, with focus and the aim for perfection <i className="opacity-50 mr-1.5">(not that I personally believe in perfection; I don't).</i>
+                                As such, the decision to keep as many of my pieces of work on my portfolio is a deliberate one; this is my journey as a creative.</p>
+                                <p className="mb-3 font-script text-sm"></p>
+                                <p className="mb-6">Today, an entire decade later, as I sit here writing this, the very message of the film that started it all could not be more poignant. What was once the visuals that resonated so deeply, it is now the message that strikes a deeper chord:</p>
+                                <i className="font- opacity-60">"The first thing we ask is: What do we want people to feel? Delight. Surprise. Love. Connection. Then we begin to craft around our intention."</i>             
+                                <p className="mt-6 mb-3">As an Advertising Creative who grew the muscle to tell stories, and now a Graduate Student currently pursuing a Masters in Interaction Design; the above message is almost existential. It's one thing to be able to tell stories, but a completely different discipline to 
+                                    craft stories that people <i>want</i> to listen to.</p>
+                                <p className="mb-3">Am I capable of craft? <i className="mr-1">Well, gosh, after all this while; I sure hope so.</i> Am I able to tell stories? <i>I certainly have lots of fun doing it.</i></p>
+                                <p className="">Am I able to discern what people want to feel?</p>
+                                <p className="font- mb-3">That is precisely the question I'm onto right now–in the very field of Interaction Design, and where I am at now as a Creative.</p>
+                                <p className="">More to come, as always.</p>
+                            </motion.div>
+
+                        </motion.div>
+                    )}
                 </motion.div>
+
             )}
 
             {/* Desktop FAQ */}
             <div 
             key='desktop'
             className="lg:flex gap-5 w-full col-span-full hidden">
+                
                 <motion.div 
                 className="mb-10 px-5 md:px-0 flex-1"
                 variants={animateInChild}
@@ -423,7 +592,7 @@ export default function Resume({ className = "" }) {
 
             {/* Mobile Contact */}
             <motion.div 
-                className="lg:hidden mt-4 mb-8 px-5 md:px-0 col-span-full tracking-tight"
+                className="lg:hidden mt-10 mb-8 px-5 md:px-0 col-span-full tracking-tight"
                 layout="position"
                 variants={animateInChild}
                 transition={{

@@ -134,20 +134,26 @@ show: {
             </div>
 
             {/* Writeup */}
-            <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-10 mt-10 mb-14 md:mr-7">
+            <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-8 md:gap-10 mt-10 mb-14 md:mr-7">
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono text-sm ">Why?</p>
-                    <p>Singapore Airlines Cabin Crew are commonly seen as being one-dimensional - from misconceptions of misogyny to them being just “servants of the cabin”. As part of the Welcome to World Class brand campaign, we want to dimensionalise Cabin Crew by “freeing” them in their portrayals, going from just “servants of the cabin” to modern, informed and relatable travelers of the world outside of the cabin.</p>
+                <p className="mb-0 font-mono text-sm "></p>
+                    <p>Singapore Airlines Cabin Crew are commonly seen as being one-dimensional - from misconceptions of misogyny to them being just “servants of the cabin”. As part of the Welcome to World Class brand campaign, we wanted to dimensionalise Cabin Crew in their portrayals; as modern, informed and relatable travelers of the world outside of the cabin.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono text-sm ">How?</p>
-                    <p>We create travel guides fronted by our Cabin Crew, who are casted for their expertise in destinations they fly to frequently and are passionate for. Allowing them to showcase a depth of understanding they have for the destinations Singapore Airlines flies to and the unique and novel, experiences of the different destinations through their insights.</p>
+                <p className="mb-0 font-mono text-sm "></p>
+                    <p>We created travel guides fronted by our Cabin Crew, who are casted for their expertise in destinations they fly to frequently and are passionate in. Allowing them to showcase a depth of understanding they have for the destinations Singapore Airlines flies to and the unique and novel, experiences of the different destinations through their personal insights.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono text-sm ">And...</p>
-                    <p className="mb-2">This was a campaign that I had the opportunity to oversee from conceptualisation to overall art direction, pre production, shoot, post production and execution of the motion graphics for the opening and end sequences.</p>
+                <p className="mb-0 font-mono text-sm "></p>
+                    <p className="mb-0">This was a campaign that I had the opportunity to direct from conceptualisation to overall art direction, pre production, shoot, post production and execution of the motion graphics for the opening and end sequences.</p>
+                    {/* <p>A 9:16 portrait film for social platforms was also adapted by me from the 16:9 main film for all 6 episodes. Using B-roll footage captured from the shoots, the 9:16 film incorporated a multi panelled approach to certain scenes to ensure the film was still watchable in a vertical format and provided additional content as well as context to the film for social consumption.</p> */}
+                </motion.div>
+
+                <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
+                <p className="mb-0 font-mono text-sm "></p>
+                    <p className="mb-0">From the bottom of my heart; this campaign still is dearest to me. A massive team of immense talent from both us as the agency and Singapore Airlines as our account came together for this–and I can confidently say that we collectively delivered a product of pure passion.</p>
                     {/* <p>A 9:16 portrait film for social platforms was also adapted by me from the 16:9 main film for all 6 episodes. Using B-roll footage captured from the shoots, the 9:16 film incorporated a multi panelled approach to certain scenes to ensure the film was still watchable in a vertical format and provided additional content as well as context to the film for social consumption.</p> */}
                 </motion.div>
             </div>
@@ -156,103 +162,138 @@ show: {
                 <Episodes />
             </motion.div>
 
-            <div className="col-span-full">
-                <h1 className="text-4xl font-medium tracking-tighter mt-10 mb-4">Key Visual  &  Motion Design</h1>
+            <div className="col-span-full mt-12 mb-6 lg:mb-10 xl:mb-20">
+                <h1 className="text-3xl lg:text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Art Direction</h1>
             </div>
+
             <motion.img 
                 src="/CCS/End Frame KV.jpg"
-                className="col-span-full
-                w-full drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                object-cover transition-scale duration-200"
-                variants={animateInChild}
-                whileHover={{scale:1.01}}>
+                className="col-span-full w-full drop-shadow-lg rounded md:rounded-lg object-cover -mb-1"
+                variants={animateInChild}>
             </motion.img>
-            
 
-            {/* <div className="col-span-full">
-                <h1 className="text-4xl font-medium tracking-tighter mt-18 mb-2">Motion Design</h1>
-            </div> */}
+            <div className='col-span-full grid grid-cols-5 md:grid-cols-10 gap-1 md:gap-2'>
 
-                <div className="flex flex-col gap-2 col-span-full lg:col-span-3">
-                    {/* <h1 className="text-xl tracking-tight">Title Sequence</h1> */}
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-3'
+                src='/CCS/Teaser Pin.jpg'>
+                </img>
+
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-2'
+                src='/CCS/thumbnail1.jpg'>
+                </img>   
+
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-3'
+                src='/CCS/Teaser Fadzil.jpg'>
+                </img>
+
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-2'
+                src='/CCS/thumbnail6.jpg'>
+                </img>  
+                
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-3'
+                src='/CCS/Teaser Mitchelle.jpg'>
+                </img>
+
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-2'
+                src='/CCS/thumbnail5.jpg'>
+                </img>  
+
+                <img className='hidden md:block rounded md:rounded-lg object-cover h-80 md:h-135 col-span-3'
+                src='/CCS/Teaser Moon.jpg'>
+                </img>
+
+                <img className='hidden md:block rounded md:rounded-lg object-cover h-80 md:h-135 col-span-2'
+                src='/CCS/thumbnail2.jpg'>
+                </img>
+
+            </div>
+
+            <div className="col-span-full mt-14 md:mt-18 mb-6 md:mb-8 lg:mb-10 xl:mb-20">
+                <h1 className="text-3xl lg:text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Motion Design</h1>
+            </div>
+
+            <div className="gap-1 md:gap-2 col-span-full grid grid-cols-1 md:grid-cols-2">
+                
+                <div className='col-span-1 relative'>
                     <motion.video
                         src="/CCS/Title Sequence (New York City) 16-9.mp4"
-                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                        object-cover transition-scale"
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded md:rounded-lg 
+                        object-cover"
                         variants={animateInChild}
-                        autoPlay loop muted playsInline
-                        whileHover={{scale:1.02}}>
+                        autoPlay loop muted playsInline>
                     </motion.video>
-                </div>
-                <div className="flex flex-col gap-2 col-span-full lg:col-span-3 mb-40">
-                    {/* <h1 className="text-xl tracking-tight">End Sequence</h1> */}
 
+                    <div className='absolute rounded-b md:rounded-b-lg bg-gradient-to-t from-black/60 to-transparent bottom-0 h-1/5 w-full'/>
+                    <div className='absolute bottom-0 w-full pl-2 md:p-2 md:pl-3 tracking-tighter font-medium text-xxs md:text-sm text-white'>Title Sequence</div>
+                </div>
+
+                <div className='col-span-1 relative'>
                     <motion.video
                         src="/CCS/End Frame (Paris) 16-9.mp4"
-                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                        object-cover transition-scale"
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded md:rounded-lg 
+                        object-cover"
                         variants={animateInChild}
-                        autoPlay loop muted playsInline
-                        whileHover={{scale:1.02}}>
+                        autoPlay loop muted playsInline>
                     </motion.video>
+
+                    <div className='absolute rounded-b md:rounded-b-lg bg-gradient-to-t from-black/60 to-transparent bottom-0 h-1/5 w-full'/>
+                    <div className='absolute bottom-0 w-full pl-2 md:p-2 md:pl-3 tracking-tighter font-medium text-xxs md:text-sm text-white'>End Sequence</div>
                 </div>
-            
-            
-
-
+                
+            </div>
 
             {/* Behind the Scenes */}
-            {/* <div className="col-span-full">
-                <h1 className="text-4xl font-medium tracking-tighter mt-18 mb-2">Behind the Scenes</h1>
+            <div className="col-span-full mt-14 md:mt-18 mb-6 lg:mb-10 xl:mb-20">
+                <h1 className="text-3xl lg:text-4.5xl font-script -rotate-3 text-center md:text-left tracking-tighter">Behind the Scenes</h1>
             </div>
+
+            <div className='col-span-full grid md:grid-cols-3 gap-1 md:gap-2 mb-40'>
                 <motion.img
                     src="/CCS/bts1.jpg"
-                    className="col-span-3 sm:col-span-2
-                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale duration-200 w-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
+                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts2.jpg"
-                    className="col-span-3 sm:col-span-2
-                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale duration-200 w-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
+                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts3.jpg"
-                    className="col-span-3 sm:col-span-2
-                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale duration-200 w-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
+                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts4.jpg"
-                    className="col-span-3 sm:col-span-2
-                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale duration-200 w-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
+                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts5.jpg"
-                    className="col-span-3 sm:col-span-2
-                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale duration-200 w-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
+                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts6.jpg"
-                    className="col-span-3 sm:col-span-2
-                    drop-shadow-lg hover:drop-shadow-xl rounded-lg 
-                    object-cover transition-scale duration-200 w-full"
-                    variants={animateInChild}
-                    whileHover={{scale:1.02}}>
-                </motion.img> */}
+                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    variants={animateInChild}>
+                </motion.img>
+                <motion.img
+                    src="/CCS/bts7.jpg"
+                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    variants={animateInChild}>
+                </motion.img>
+                <motion.img
+                    src="/CCS/bts9.jpg"
+                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    variants={animateInChild}>
+                </motion.img>
+                <motion.img
+                    src="/CCS/bts8.jpg"
+                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    variants={animateInChild}>
+                </motion.img>
+            </div>
             
             
                 

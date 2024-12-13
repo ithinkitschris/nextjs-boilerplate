@@ -331,7 +331,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                    JolliEverAfter
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Social Media Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Jollibee</span></h1>
-                <p className="mr-10 mb-4 md:w-3/4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam facilisis hendrerit. Integer pulvinar nibh erat, a iaculis nisi condimentum ac. Nam in cursus turpis, sed ullamcorper nisl. </p>
+                <p className="mr-10 mb-4 md:w-3/4">An interactive social media campaign that brought Jollibee’s annual Kwentong film to TikTok for the first time in 2020.</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
@@ -394,7 +394,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                    Your Stage Now Live
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">In-Store Displays for<span className="ml-1.5 text-xl font-script -rotate-1">Uniqlo</span></h1>
-                <p className="mr-10 mb-4 md:w-3/4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam facilisis hendrerit. Integer pulvinar nibh erat, a iaculis nisi condimentum ac. Nam in cursus turpis, sed ullamcorper nisl. </p>
+                <p className="mr-10 mb-4 md:w-3/4">A set of In-Store Motion Graphics for the launch of the first Uniqlo Flagship store in Singapore at Orchard Central.</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
@@ -402,6 +402,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                         <p className="">Visual Design</p>
                 </div>
                 </motion.div>
+
+                {/* Occupying the panoramic displays between the floors of the store, the displays looped a 4 minute long kinetic typography which were both graphically designed and animated by me. */}
 
                 <motion.video
                 src="/uniqlo1/montage.mp4"
