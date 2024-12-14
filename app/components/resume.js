@@ -496,12 +496,12 @@ export default function Resume({ className = "" }) {
                             variants={dropdownChild}
                             layout="position">
                                 {/* <p className="mb-3 font-script text-sm">How it all started: </p> */}
-                                <p className="font-light text-2xl opacity-50 -mb-3">"</p>
+                                <p className="font-light text-2xl opacity-50 -mb-3">&quot;</p>
                                 <p className="mb-3 italic text-sm opacity-50">If everyone is busy making everything, how can anyone perfect anything? We start to confuse convenience with joy. Abundance with choice.</p>
                                 <p className="mb-3 italic text-sm opacity-50">Designing something requires focus. The first thing we ask is: What do we want people to feel. Surprise. Love. Connection. Then we begin to craft around our intention.</p>
                                 <p className="mb-3 italic text-sm opacity-50">It takes time. There are a thousand no’s for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.</p>
                                 <p className="mb-3 italic text-sm opacity-50">Only then do we sign our work: Designed by Apple in California</p>
-                                <p className="font-light text-2xl opacity-50 -mt-7 text-right -mb-4">"</p>
+                                <p className="font-light text-2xl opacity-50 -mt-7 text-right -mb-4">&quot;</p>
                             </motion.div>
 
                             <motion.div 
