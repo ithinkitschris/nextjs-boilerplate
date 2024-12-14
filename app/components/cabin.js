@@ -174,35 +174,35 @@ show: {
 
             <div className='col-span-full grid grid-cols-5 md:grid-cols-10 gap-1 md:gap-2'>
 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-3'
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Pin.jpg'>
                 </img>
 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-2'
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail1.jpg'>
                 </img>   
 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-3'
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Fadzil.jpg'>
                 </img>
 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-2'
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail6.jpg'>
                 </img>  
                 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-3'
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Mitchelle.jpg'>
                 </img>
 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 col-span-2'
+                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail5.jpg'>
                 </img>  
 
-                <img className='hidden md:block rounded md:rounded-lg object-cover h-80 md:h-135 col-span-3'
+                <img className='hidden md:block rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Moon.jpg'>
                 </img>
 
-                <img className='hidden md:block rounded md:rounded-lg object-cover h-80 md:h-135 col-span-2'
+                <img className='hidden md:block rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail2.jpg'>
                 </img>
 

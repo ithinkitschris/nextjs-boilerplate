@@ -12,6 +12,8 @@ import Cocktail from './components/cocktail.js';
 import Kris from './components/kris.js';
 import TravelBig from './components/travelbig.js';
 import Lounge from './components/lounge.js';
+import Hemsaker from './components/hemsaker.js';
+import ISpy from './components/ispy.js';
 import BestWorkPage from './components/bestwork.js';
 import Resume from './components/resume.js';
 import StreetPhotography from './components/street-photo.js';
@@ -146,17 +148,17 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
         {/* Square */}
         <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-lg shadow
           ${selectedTags.includes('all') 
-          ? `${isExpanded ? 'pt-[155%]' : 'pt-[15%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100'}`
+          ? `${isExpanded ? 'pt-[155%]' : 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100 bg-black/25'}`
           : 'pt-[150%]'}`}>
 
           {/* Text Container */}
           <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-4 lg:gap-4">
 
             {/* Title of work */}
-            <h1 className={`tracking-tight font-medium md:p-0 transition-all duration-300 z-50 break-words hyphens-auto 
+            <h1 className={`tracking-tight -mt-1 md:mt-0 font-medium md:p-0 transition-all duration-300 z-50 break-words hyphens-auto 
             w-5/6 md:w-3/4 md:leading-8 md:text-4xl md:opacity-0 md:group-hover:opacity-100 
             ${selectedTags.includes('all') 
-            ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white text-5xl leading-11 p-2' : 'p-1 text-[18px] text-[#e9e9e9] dark:text-white md:group-hover:text-4xl md:group-hover:leading-8'}` 
+            ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white text-5xl leading-11 p-2 ' : 'p-1 text-[18px] text-[#e9e9e9] dark:text-white md:group-hover:text-4xl md:group-hover:leading-8 dark:mix-blend-overlay md:dark:mix-blend-normal'}` 
             : 'text-5xl p-3 text-[#e9e9e9] dark:text-white leading-tighter'}`}>
               {title}
             </h1>
@@ -251,7 +253,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
               ? `${isExpanded ? 'opacity-100' : 'opacity-100 blur-[30px] md:blur-0'}`
               : 'blur-[0px] opacity-100'}`}
             style={{ clipPath: 'inset(0 round 0.5rem)' }}
-            autoPlay muted loop playsInline
+            autoPlay muted loop playsInline loading='lazy'
             poster={poster}>
             <source src={videoSrc} type="video/mp4" />
           </video>
@@ -827,10 +829,10 @@ export default function Home(){
 
                   <motion.button 
                   className={`hover:text-foreground text-left md:mr-8
-                    ${selectedTags.includes('content') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
+                    ${selectedWork.includes('content') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
                   whileHover={{scale:1.06}}
-                  animate={{scale: selectedTags.includes('content') ? 1.06 : 1}}
+                  animate={{scale: selectedWork.includes('content') ? 1.06 : 1}}
                   variants={animateInChild}
                   layout="position"
                   onClick={() => {
@@ -1222,10 +1224,27 @@ export default function Home(){
                     toggleWork('uniqlo1')}}>Your Stage Now Live</motion.button>
 
                   <motion.h1
-                  className={`text-xs mt-5 tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  className={`text-sm mt-5 tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
                   variants={animateInChild}>
                     Personal
                   </motion.h1>
+
+                  <motion.button 
+                  className={`hover:text-foreground text-left mr-8
+                    ${includesWorks(['photography']) || selectedWork.includes(['street']) || hoveredWork ==='street' 
+                    ? 'text-foreground' 
+                    : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
+                  } transition-colors duration-100`}
+                  whileHover={{scale:1.06}}
+                  animate={{scale: 
+                    includesWorks(['photography']) || selectedWork.includes(['street']) ||
+                    hoveredWork==='street' 
+                    ? 1.02 : 1
+                  }}
+                  variants={animateInChild}
+                  onClick={() => {
+                    toggleTag('clear');
+                    toggleWork('street')}}>Photography</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
@@ -1296,6 +1315,24 @@ export default function Home(){
                   onClick={() => {
                     toggleTag('clear');
                     toggleWork('3d')}}>3D Motion Exploration</motion.button>
+
+                  <motion.button 
+                  className={`hover:text-foreground text-left mr-8
+                    ${includesWorks(['photography']) || selectedWork.includes(['unshackle']) || hoveredWork ==='unshackle' 
+                    ? 'text-foreground' 
+                    : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
+                  } transition-colors duration-100`}
+                  whileHover={{scale:1.06}}
+                  animate={{scale: 
+                    includesWorks(['photography']) || selectedWork.includes(['unshackle']) ||
+                    hoveredWork==='unshackle' 
+                    ? 1.02 : 1
+                  }}
+                  variants={animateInChild}
+                  onClick={() => {
+                    toggleTag('clear');
+                    toggleWork('unshackle')}}>Unshackle: BTS</motion.button>
+
                 </motion.div>
               </>
             )} 
@@ -1339,8 +1376,12 @@ export default function Home(){
                   <Cocktail key="cocktail" className="col-span-full"/>
                 ) : selectedWork === 'kris' ? (
                   <Kris key="kris" className="col-span-full"/>
+                ) : selectedWork === 'hemsaker' ? (
+                  <Hemsaker key="hemsaker" className="col-span-full"/>
                 ) : selectedWork === 'travelbig' ? (
                   <TravelBig key="travelbig" className="col-span-full"/>
+                ) : selectedWork === 'ispy' ? (
+                  <ISpy key="ispy" className="col-span-full"/>
                 ) : selectedWork === 'lounge' ? (
                   <Lounge key="lounge" className="col-span-full"/>
                 ) : selectedWork === 'bestwork' ? (
@@ -1360,7 +1401,7 @@ export default function Home(){
                       setHoveredWork={setHoveredWork}
                       selectedTags={selectedTags}
                       onClick={() => { 
-                        const workTags = ['ixd', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'travelbig', 'lounge'];
+                        const workTags = ['ixd', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'travelbig', 'lounge', 'hemsaker', 'ispy'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));
                         if (matchedWork) {
                           toggleTag('clear');

@@ -234,7 +234,7 @@ export default function Resume({ className = "" }) {
 
                     {/* Desktop Subheader */}
                     <motion.h1 
-                    className="hidden lg:block mt-5 pr-8 text-[26px] font-script tracking-tight leading-10 text-foreground text-right"
+                    className="hidden lg:block mt-0 pr-8 text-[26px] font-script tracking-tight leading-10 text-foreground text-center ml-40"
                     animate={{rotate:-1}}
                     variants={animateInChild}
                     layout>
@@ -296,9 +296,9 @@ export default function Resume({ className = "" }) {
                 </div>
 
                 {/* Desktop Photo Card */}
-                <div className="hidden lg:block relative flex-1 h-[620px]">
+                <div className="hidden xl:flex relative flex-2 h-[650px] justify-between">
                     {/* Image */}
-                    <motion.div className="h-full w-auto -z-10 relative overflow-hidden" variants={animateInChild} layout>
+                    <motion.div className="h-full w-[650px] -z-10 relative overflow-hidden" variants={animateInChild} layout>
 
                         <Image
                         src="/profile/profile1.jpg"
@@ -328,15 +328,6 @@ export default function Resume({ className = "" }) {
                             <i className="-ml-0.5">From Singapore</i>
                             <span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide">{timeSg}</span>
                         </motion.div>
-
-                        {/* <motion.div 
-                            className="absolute bottom-5 left-5 z-50 col-span-full tracking-tight"
-                            variants={animateInChild}>
-                                <p className="mb-2 text-xl ">Contact</p>
-                                <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
-                                <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
-                                <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
-                        </motion.div> */}
                     </motion.div>
                 </div>
             
@@ -391,7 +382,7 @@ export default function Resume({ className = "" }) {
                         }}>
 
                         <div 
-                        className={`flex items-center justify-center transition-non-color duration-200 w-[195px]
+                        className={`flex items-center justify-center transition-non-color duration-200 w-[195px] border-foreground
                         rounded-full tracking-tight text-base ${showShort ? 'border-1 scale-95' : ''}`}>
                             The <span className="font-script tracking-tightest ml-2 mr-1 relative top-0.5">&apos;professional &apos;</span>  writeup
                         </div>
@@ -457,7 +448,7 @@ export default function Resume({ className = "" }) {
                     )}
 
                     {/* Long Toggle Bar */}
-                    <motion.div className="lg:hidden flex justify-between mt-3 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-8 lg:mb-4 col-span-full w-full" 
+                    <motion.div className="lg:hidden flex justify-between mt-4 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-8 lg:mb-4 col-span-full w-full" 
                     onClick={toggleLong} 
                     key='what' 
                     layout="position" 
@@ -469,7 +460,7 @@ export default function Resume({ className = "" }) {
                         }}>
 
                         <div 
-                        className={`flex items-center justify-center transition-non-color duration-200 w-[170px]
+                        className={`flex items-center justify-center transition-non-color duration-200 w-[170px] border-foreground
                         rounded-full tracking-tight text-base ${showLong ? 'border-1 scale-95' : ''}`}>
                             The <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">really long</span>  story
                         </div>
@@ -505,21 +496,25 @@ export default function Resume({ className = "" }) {
                             variants={dropdownChild}
                             layout="position">
                                 {/* <p className="mb-3 font-script text-sm">How it all started: </p> */}
-                                {/* <p className="font-light text-3xl -mb-3">"</p> */}
-                                <p className="mb-3 italic text-xs opacity-50">If everyone is busy making everything, how can anyone perfect anything? We start to confuse convenience with joy. Abundance with choice.</p>
-                                <p className="mb-3 italic text-xs opacity-50">Designing something requires focus. The first thing we ask is: What do we want people to feel. Surprise. Love. Connection. Then we begin to craft around our intention.</p>
-                                <p className="mb-3 italic text-xs opacity-50">It takes time. There are a thousand no’s for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.</p>
-                                <p className="mb-3 italic text-xs opacity-50">Only then do we sign our work: Designed by Apple in California</p>
-                                {/* <p className="font-light text-3xl -mt-4 text-right -mb-4">"</p> */}
+                                <p className="font-light text-2xl opacity-50 -mb-3">"</p>
+                                <p className="mb-3 italic text-sm opacity-50">If everyone is busy making everything, how can anyone perfect anything? We start to confuse convenience with joy. Abundance with choice.</p>
+                                <p className="mb-3 italic text-sm opacity-50">Designing something requires focus. The first thing we ask is: What do we want people to feel. Surprise. Love. Connection. Then we begin to craft around our intention.</p>
+                                <p className="mb-3 italic text-sm opacity-50">It takes time. There are a thousand no’s for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.</p>
+                                <p className="mb-3 italic text-sm opacity-50">Only then do we sign our work: Designed by Apple in California</p>
+                                <p className="font-light text-2xl opacity-50 -mt-7 text-right -mb-4">"</p>
                             </motion.div>
 
                             <motion.div 
                             className=" px-5 md:px-0 flex-1"
                             variants={dropdownChild}
                             layout="position">
-                                <a className="-ml-1 flex justify-center rounded-full mb-6 border-1 w-[130px] pl-1"
+                                <a className="-ml-1 flex justify-center rounded-full mb-6 border-1 w-[130px] pl-1 border-foreground"
                                 href="https://www.youtube.com/watch?v=LcGPI2tV2yY"
-                                target='blank'>Intention – Apple <svg
+                                target='blank'>
+                                    
+                                Intention – Apple 
+                                
+                                <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="2 2 20 20"
                                 fill="none"
