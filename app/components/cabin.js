@@ -153,7 +153,7 @@ show: {
 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-0 font-mono text-sm "></p>
-                    <p className="mb-0">From the bottom of my heart; this campaign still is dearest to me. A massive team of immense talent from both us as the agency and Singapore Airlines as our account came together for this–and I can confidently say that we collectively delivered a product of pure passion.</p>
+                    <p className="mb-0">From the bottom of my heart; this campaign still is dearest to me. A massive team of immense talent from both us as the agency and Singapore Airlines as our brand came together for this–and I can confidently say that we collectively delivered a product of pure passion.</p>
                     {/* <p>A 9:16 portrait film for social platforms was also adapted by me from the 16:9 main film for all 6 episodes. Using B-roll footage captured from the shoots, the 9:16 film incorporated a multi panelled approach to certain scenes to ensure the film was still watchable in a vertical format and provided additional content as well as context to the film for social consumption.</p> */}
                 </motion.div>
             </div>
@@ -162,47 +162,50 @@ show: {
                 <Episodes />
             </motion.div>
 
-            <div className="col-span-full mt-12 mb-6 lg:mb-10 xl:mb-20">
-                <h1 className="text-3xl lg:text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Art Direction</h1>
+            <div className="col-span-full mt-14 mb-6 lg:mb-10 xl:mb-20">
+                <h1 className="text-4xl lg:text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Art Direction</h1>
             </div>
+
+            <h1 className="font-base text-base md:text-2xl font-medium mb-1 col-span-full text-center md:text-left tracking-tight">Key Visual</h1>
 
             <motion.img 
                 src="/CCS/End Frame KV.jpg"
-                className="col-span-full w-full drop-shadow-lg rounded md:rounded-lg object-cover -mb-1"
+                className="col-span-full w-full shadow rounded-xl md:rounded-lg object-cover -mb-1"
                 variants={animateInChild}>
             </motion.img>
 
             <div className='col-span-full grid grid-cols-5 md:grid-cols-10 gap-1 md:gap-2'>
 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
+                <h1 className="font-base text-base md:text-2xl font-medium mb-1 col-span-full text-center md:text-left tracking-tight mt-8">In-Cabin & Episodes</h1>
+                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Pin.jpg'>
                 </img>
 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
+                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail1.jpg'>
                 </img>   
 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
+                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Fadzil.jpg'>
                 </img>
 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
+                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail6.jpg'>
                 </img>  
                 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
+                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Mitchelle.jpg'>
                 </img>
 
-                <img className='rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
+                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail5.jpg'>
                 </img>  
 
-                <img className='hidden md:block rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
+                <img className='hidden md:block rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Moon.jpg'>
                 </img>
 
-                <img className='hidden md:block rounded md:rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
+                <img className='hidden md:block rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail2.jpg'>
                 </img>
 
@@ -215,82 +218,84 @@ show: {
             <div className="gap-1 md:gap-2 col-span-full grid grid-cols-1 md:grid-cols-2">
                 
                 <div className='col-span-1 relative'>
+                    <h1 className="font-base text-base md:text-2xl font-medium mb-2 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
                     <motion.video
                         src="/CCS/Title Sequence (New York City) 16-9.mp4"
-                        className="drop-shadow-lg hover:drop-shadow-xl rounded md:rounded-lg 
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
                         object-cover"
                         variants={animateInChild}
                         autoPlay loop muted playsInline>
                     </motion.video>
 
-                    <div className='absolute rounded-b md:rounded-b-lg bg-gradient-to-t from-black/60 to-transparent bottom-0 h-1/5 w-full'/>
-                    <div className='absolute bottom-0 w-full pl-2 md:p-2 md:pl-3 tracking-tighter font-medium text-xxs md:text-sm text-white'>Title Sequence</div>
+                    {/* <div className='absolute rounded-b md:rounded-b-lg bg-gradient-to-t from-black/60 to-transparent bottom-0 h-1/5 w-full'/>
+                    <div className='absolute bottom-0 w-full pl-2 md:p-2 md:pl-3 tracking-tighter font-medium text-xxs md:text-sm text-white'>Title Sequence</div> */}
                 </div>
 
                 <div className='col-span-1 relative'>
+                    <h1 className="font-base text-base md:text-2xl font-medium mb-2 col-span-full text-center md:text-left tracking-tight mt-4 md:mt-0">End Sequence</h1>
                     <motion.video
                         src="/CCS/End Frame (Paris) 16-9.mp4"
-                        className="drop-shadow-lg hover:drop-shadow-xl rounded md:rounded-lg 
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
                         object-cover"
                         variants={animateInChild}
                         autoPlay loop muted playsInline>
                     </motion.video>
 
-                    <div className='absolute rounded-b md:rounded-b-lg bg-gradient-to-t from-black/60 to-transparent bottom-0 h-1/5 w-full'/>
-                    <div className='absolute bottom-0 w-full pl-2 md:p-2 md:pl-3 tracking-tighter font-medium text-xxs md:text-sm text-white'>End Sequence</div>
+                    {/* <div className='absolute rounded-b md:rounded-b-lg bg-gradient-to-t from-black/60 to-transparent bottom-0 h-1/5 w-full'/>
+                    <div className='absolute bottom-0 w-full pl-2 md:p-2 md:pl-3 tracking-tighter font-medium text-xxs md:text-sm text-white'>End Sequence</div> */}
                 </div>
                 
             </div>
 
             {/* Behind the Scenes */}
-            <div className="col-span-full mt-14 md:mt-18 mb-6 lg:mb-10 xl:mb-20">
+            <div className="col-span-full mt-18 md:mt-18 mb-6 lg:mb-10 xl:mb-20">
                 <h1 className="text-3xl lg:text-4.5xl font-script -rotate-3 text-center md:text-left tracking-tighter">Behind the Scenes</h1>
             </div>
 
             <div className='col-span-full grid md:grid-cols-3 gap-1 md:gap-2 mb-40'>
                 <motion.img
                     src="/CCS/bts1.jpg"
-                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-lg object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts2.jpg"
-                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-lg object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts3.jpg"
-                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-lg object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts4.jpg"
-                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-lg object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts5.jpg"
-                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-lg object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts6.jpg"
-                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-lg object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts7.jpg"
-                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-lg object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts9.jpg"
-                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-lg object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts8.jpg"
-                    className="drop-shadow-lg rounded md:rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-lg object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
             </div>

@@ -188,11 +188,11 @@ export default function Resume({ className = "" }) {
                     </motion.h1>
 
                     {/* Image */}
-                    <motion.div className="absolute top-0 left-0 w-full h-full -z-50 overflow-hidden rounded-xl" variants={animateInChild} layout>
+                    <motion.div className="absolute top-0 left-0 w-full h-full -z-50 overflow-hidden rounded-3xl drop-shadow-md" variants={animateInChild} layout>
                         <Image
                         src='/profile/profile1.jpg'
                         alt=""
-                        className="rounded-lg transform scale-120 translate-y-12"
+                        className="transform scale-120 translate-y-12"
                         layout="fill"
                         objectFit="cover"
                         />
@@ -303,7 +303,7 @@ export default function Resume({ className = "" }) {
                         <Image
                         src="/profile/profile1.jpg"
                         alt=""
-                        className="rounded-lg saturate"
+                        className="rounded-2xl"
                         layout="fill"
                         objectFit="cover"
                         objectPosition="50% 35%"
@@ -355,8 +355,6 @@ export default function Resume({ className = "" }) {
                 )}
                 </div>
             </motion.div> 
-
-            
 
             {/* Mobile Story Dropdown */}
             {showStory && (

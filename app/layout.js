@@ -67,13 +67,26 @@ export default function RootLayout({ children }) {
             className={`transition-all duration-300 text-center backdrop-blur-sm rounded-full border-1 whitespace-nowrap tracking-tighter text-xs font-medium
               ${isFooterHovered 
                 ? ' md:w-44 md:bg-foreground md:dark:bg-transparent md:border-foreground md:text-white md:dark:border-white cursor-pointer md:scale-110' 
-                : ' text-black/15 md:text-black/40 dark:text-white/20 md:dark:text-white/60 w-80 border-transparent scale-100'}`}
+                : ' text-black/30 md:text-black/40 dark:text-white/35 md:dark:text-white/60 w-80 border-transparent scale-100'}`}
           >
             {isFooterHovered
               ? <Link href='https://ithinkitschris.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f'
               target="blank"
               rel="noopener noreferrer">Read the Documentation here.</Link>
-              : 'Website masochistically designed and coded by yours truly.'}
+              : <div className="inline-flex">Website masochistically designed and coded by yours truly. 
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="2 2 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-2.5 h-2.5 mt-0.5 ml-0.5">
+                    <path d="M7 1717 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </div>}
           </div>
         </div>
       </body>

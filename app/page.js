@@ -127,11 +127,21 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
       onMouseEnter={() => {setHoveredWork(tags[0]); console.log(tags)}}
       onMouseLeave={() => setHoveredWork(null)}
       onClick={() => {
+
+        // Checks if Mobile, Else default to Desktop Behaviour
         if (isMobileDevice()) {
+
+          // Checks if Mobile Homepage, Else it means it is a Skillset Page
           if (selectedTags.includes('all')) {
+
+            // Checks if Mobile Homepage tile is expanded
             if (isExpanded) {
+
+              // If isExpanded is True, Click through to the page
               onClick();
             } else {
+
+              // If isExpanded is False, Click to expand the tile
               toggleExpand();
             }
           } else {
@@ -146,7 +156,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
         {/* <div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15"/> */}
         
         {/* Square */}
-        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-lg shadow
+        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-2xl md:rounded-xl shadow
           ${selectedTags.includes('all') 
           ? `${isExpanded ? 'pt-[155%]' : 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100 bg-black/25'}`
           : 'pt-[150%]'}`}>
@@ -155,7 +165,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
           <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-4 lg:gap-4">
 
             {/* Title of work */}
-            <h1 className={`tracking-tight -mt-1 md:mt-0 font-medium md:p-0 transition-all duration-300 z-50 break-words hyphens-auto 
+            <h1 className={`tracking-tight font-medium -mt-1 md:mt-0 pl-2 md:pl-0 transition-all duration-300 z-50 break-words hyphens-auto 
             w-5/6 md:w-3/4 md:leading-8 md:text-4xl md:opacity-0 md:group-hover:opacity-100 
             ${selectedTags.includes('all') 
             ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white text-5xl leading-11 p-2 ' : 'p-1 text-[18px] text-[#e9e9e9] dark:text-white md:group-hover:text-4xl md:group-hover:leading-8 dark:mix-blend-overlay md:dark:mix-blend-normal'}` 
@@ -174,12 +184,6 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
 
             {/* Details Container */}
             <div className="z-50 flex flex-row justify-start w-full">
-
-              {/* Script Subheader */}
-              {/* <h3 className="z-10 text-white text-[10px] pl-2.5 pb-1 pr-2 md:pb-0 md:text-base tracking-tight
-              font-script opacity-100 lg:opacity-0 lg:group-hover:opacity-100 -rotate-1 text-right
-              transition-all duration-300 leading-6 md:leading-5 md:text-left w-2/3lg:w-1/2">
-              {subheader}</h3> */}
 
               {/* Clean Subheader */}
               <h3 className={`z-10 md:pb-0 md:text-sm tracking-normal
@@ -560,7 +564,7 @@ export default function Home(){
           {/* Mobile Navbar BG */}
           <motion.div
             className={`md:hidden fixed dark:backdrop-blur-lg top-2 w-full shadow z-2 z-30
-              border-white/10 transition-colors bg-background dark:bg-black/20 blur-[0.2px] border-b-1 
+              border-white/20 transition-colors bg-background dark:bg-black/20 blur-[0.2px] border-b-1 
               ${showNav ? "" : ""}`}
             style={{
               left: "50%",
@@ -568,8 +572,8 @@ export default function Home(){
             }}
               animate={{ 
                 width: showNav? "17rem" : "9.1rem",
-                height: showNav ? "28rem" : "2.5rem",
-                borderRadius: showNav ? "0.75rem" : "50rem"}}
+                height: showNav ? "25rem" : "2.5rem",
+                borderRadius: showNav ? "1.25rem" : "50rem"}}
               transition={{
                 width: { type: "spring", stiffness: showNav ? 500 : 500 , damping: showNav ? 28 : 26 },
                 height: { type: "spring", stiffness: showNav ? 500 : 500 , damping: showNav ? 26 : 36 }, // Faster or bouncier for height
@@ -656,14 +660,14 @@ export default function Home(){
 
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
-                    <motion.button 
+                    {/* <motion.button 
                     className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('edit');
                       toggleNav('false');
                       toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>03 </span>
-                      Edit</motion.button>
+                      Edit</motion.button> */}
 
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 

@@ -58,7 +58,7 @@ useEffect(() => {
             {/* Background Glow */}
             <video 
             ref={backgroundGlowRef}
-            src="/hemsaker/video1_1.mp4" 
+            src="/Hemsaker/video1_1.mp4" 
             className="absolute mt-20 w-screen h-screen/1.2 object-cover rounded-full -z-10 
             opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200"
             autoPlay 
@@ -82,7 +82,7 @@ useEffect(() => {
             </motion.div> 
 
             {/* Banner Video */}
-            <motion.video src="/hemsaker/video1_1.mp4" 
+            <motion.video src="/Hemsaker/video1_1.mp4" 
             className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop controls playsInline
             variants={animateInChild}
@@ -141,16 +141,16 @@ useEffect(() => {
 
             <div className='col-span-full grid grid-cols-4 gap-1 lg:gap-2'>
 
-                <img src='/hemsaker/2.png' 
+                <img src='/Hemsaker/2.png' 
                 className='rounded-md col-span-full object-cover w-full'/>
                 
-                <img src='/hemsaker/4.png' 
+                <img src='/Hemsaker/4.png' 
                 className='rounded-md col-span-full md:col-span-1 object-cover w-full'/>
 
-                <img src='/hemsaker/1.png' 
+                <img src='/Hemsaker/1.png' 
                 className='rounded-md col-span-full md:col-span-2 object-cover w-full'/>
 
-                <img src='/hemsaker/5.png' 
+                <img src='/Hemsaker/5.png' 
                 className='rounded-md col-span-full md:col-span-1 object-cover w-full'/>    
             </div>
 
@@ -160,7 +160,7 @@ useEffect(() => {
             
             <div className='col-span-full grid md:grid-cols-2 gap-1 lg:gap-2'>
                 <video
-                    src='/hemsaker/video1_1.mp4'
+                    src='/Hemsaker/video1_1.mp4'
                     className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay
                     loop
@@ -170,7 +170,7 @@ useEffect(() => {
                 ></video>
 
                 <video
-                    src='/hemsaker/video2_1.mp4'
+                    src='/Hemsaker/video2_1.mp4'
                     className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay
                     loop
@@ -187,7 +187,7 @@ useEffect(() => {
         
             <div className="col-span-full grid grid-cols-3 md:grid-cols-6 gap-1 mb-8 lg:gap-2">
                 <video
-                    src='/hemsaker/1.mp4'
+                    src='/Hemsaker/1.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
@@ -195,7 +195,7 @@ useEffect(() => {
                     playsInline
                 ></video>
                 <video
-                    src='/hemsaker/2.mp4'
+                    src='/Hemsaker/2.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
@@ -203,7 +203,7 @@ useEffect(() => {
                     playsInline
                 ></video>
                 <video
-                    src='/hemsaker/3.mp4'
+                    src='/Hemsaker/3.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
@@ -211,7 +211,7 @@ useEffect(() => {
                     playsInline
                 ></video>
                 <video
-                    src='/hemsaker/4.mp4'
+                    src='/Hemsaker/4.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
@@ -219,7 +219,7 @@ useEffect(() => {
                     playsInline
                 ></video>
                 <video
-                    src='/hemsaker/5.mp4'
+                    src='/Hemsaker/5.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
@@ -227,7 +227,7 @@ useEffect(() => {
                     playsInline
                 ></video>
                 <video
-                    src='/hemsaker/6.mp4'
+                    src='/Hemsaker/6.mp4'
                     className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop

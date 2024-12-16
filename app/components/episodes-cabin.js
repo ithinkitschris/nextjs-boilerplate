@@ -61,7 +61,7 @@ const Episodes = () => {
                     <button key={index}>
                       <img
                       src={`/CCS/thumbnail${index + 1}.jpg`}
-                      className="transition-all duration-200 drop-shadow-md hover:shadow-standard-hover lg:hover:scale-107 ease-out rounded md:rounded-lg object-cover lg:h-full"
+                      className="transition-all duration-200 drop-shadow-md hover:shadow-standard-hover lg:hover:scale-107 ease-out rounded-lg object-cover lg:h-full"
                       onClick={() => scrollToEpisode(index)} // Scroll to the episode on click
                       />    
                     </button>
@@ -97,7 +97,7 @@ const Episodes = () => {
 
                     <video
                         src={episode.videoSrc}
-                        className="shadow rounded-md md:rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-full w-full"
+                        className="shadow rounded-xl md:rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-full w-full"
                         autoPlay
                         loop
                         muted
