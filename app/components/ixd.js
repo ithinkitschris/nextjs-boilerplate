@@ -72,6 +72,12 @@ const IxdPage = ({className}) => {
             Learnings, insights and perspectives that I will be able to both design implementations for and code into this very medium I have created for myself.
             </motion.div>
 
+            <motion.div className="text-sm mt-10 2xl:mt-8 2xl:w-1/2 md:mr-14 px-4 lg:px-0" variants={animateInChild}>
+            Read the documentation for this website 
+            <a className="relative border-1 ml-1 px-1 rounded-full border-foreground hover:bg-foreground hover:text-background transition-all" 
+            href='https://ithinkitschris.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f' target="blank">here</a>
+            </motion.div>
+
             {/* <motion.h1 className="text-4xl tracking-tighter font-medium mb-4 leading-10 relative mt-12 md:hidden" 
             variants={animateInChild}>
             That was a whole bunch of off-brand airy-fairy words, time for visuals.</motion.h1> */}
@@ -191,7 +197,7 @@ const IxdPage = ({className}) => {
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-black tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1>First implementation of responsive layout for mobile optimization.</h1>
+                    <h1>First implementation of the responsive layout during mobile optimization.</h1>
                 </div>
                 
             </motion.div>

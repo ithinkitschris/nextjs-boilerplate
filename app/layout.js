@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
         <main className="">{children}</main>
 
         <div 
-          className="fixed bottom-3 inset-x-0 mx-auto z-50 md:w-200 flex justify-center"
+          className="fixed bottom-4 left-2 inset-x-0 mx-auto z-50 md:w-200 flex justify-center"
           onMouseEnter={() => setIsFooterHovered(true)}
           onMouseLeave={() => setIsFooterHovered(false)}
         >

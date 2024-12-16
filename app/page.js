@@ -472,7 +472,7 @@ export default function Home(){
 
               {/* Top Navbar Contents */}
               <motion.div
-              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-4 text-white mt-[7px] lg:mt-1"
+              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-5 text-white mt-[7px] lg:mt-1"
               initial="hidden"
               animate="show"
               layout="position"
@@ -524,8 +524,8 @@ export default function Home(){
                   }}
                   >
 
-                  <span className="hidden md:block">My personal favourites</span>
-                  <span className="block md:hidden">Favourites</span>
+                  <div className="hidden md:block">My personal favorites</div>
+                  <div className="block md:hidden">Favourites</div>
 
                 </motion.button>
 

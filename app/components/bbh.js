@@ -96,7 +96,7 @@ const BBH = ({className}) => {
         </motion.div>
 
         {/* Three Images Side by Side */}
-        <div className="grid grid-cols-6 col-span-full mb-1 lg:mb-2 gap-1 lg:gap-2">
+        <div className="grid grid-cols-6 col-span-full lg:mb-2 gap-1 lg:gap-2 mb-24">
             <motion.img
                 src="/Photography/bbh/bbh7.jpg"
                 alt="Description of Image 3"

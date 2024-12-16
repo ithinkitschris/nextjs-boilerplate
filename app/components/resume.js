@@ -262,9 +262,9 @@ export default function Resume({ className = "" }) {
                         <p className="text-[24px]  tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
                         <p className="text-xxs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Come on, script typeface on a portfolio website?</p>
                         <p className="text-[24px] tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in whatever I do.</p>
-                        <p className="text-xxs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Masochistic? <i>Food for thought.</i></p>
+                        <p className="text-xxs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
                         <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> I am all about craft.</p>
-                        <p className="text-xxs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I hope you keep this in mind as you peruse my work.</p>
+                        <p className="text-xxs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
                     </motion.div>
 
                     {/* Mobile Three Things */}
@@ -273,11 +273,11 @@ export default function Resume({ className = "" }) {
                     variants={animateInChild}>
                         {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                         <p className="text-[22px]  tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2 ml-1">1</span> I don&apos;t take anything too seriously.</p>
-                        <p className="text-xxs ml-2.5 opacity-35 mb-10 tracking-normal font-light">Come on, script typeface on a portfolio website?</p>
+                        <p className="text-xxs ml-2.5 opacity-35 mb-14 tracking-normal font-light"></p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">2</span> I aim to have fun in whatever I do.</p>
-                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tacking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Masochistic? <i>Food for thought.</i></p>
+                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">3</span> I am all about craft.</p>
-                        <p className="text-xxs ml-2.5 opacity-35 mb-10 tracking-normal font-light">Truly. I hope you keep this in mind as you peruse my work.</p>
+                        <p className="text-xxs ml-2.5 opacity-35 mb-10 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
                     </motion.div>
 
                     {/* Desktop Contact */}
@@ -382,7 +382,7 @@ export default function Resume({ className = "" }) {
                         <div 
                         className={`flex items-center justify-center transition-non-color duration-200 w-[195px] border-foreground
                         rounded-full tracking-tight text-base ${showShort ? 'border-1 scale-95' : ''}`}>
-                            The <span className="font-script tracking-tightest ml-2 mr-1 relative top-0.5">&apos;professional &apos;</span>  writeup
+                            The <span className="font-script tracking-tightest ml-2 mr-1 relative top-0.5">&apos;professional &apos;</span>  writeup.
                         </div>
 
                         <div 
@@ -437,7 +437,7 @@ export default function Resume({ className = "" }) {
                             variants={dropdownChild}
                             layout="position">
                                 <p className="mb-3 font-script text-sm">And</p>
-                                <p className="mb-3">In his spare time <i>(which, realistically, isn&apos;t much)</i>, he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
+                                <p className="mb-3">In his spare time <i>(which, realistically, isn&apos;t much)</i>, he does... even more work, but for himself—creating content through photography, videography, editing and motion design<i className="opacity-50 ml-1">(you will find this work under Content Creation on this website).</i></p>
                                 <p className="">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, though he wouldn&apos;t go so far as to call it interior design.</p>
                             </motion.div>
 
@@ -460,7 +460,7 @@ export default function Resume({ className = "" }) {
                         <div 
                         className={`flex items-center justify-center transition-non-color duration-200 w-[170px] border-foreground
                         rounded-full tracking-tight text-base ${showLong ? 'border-1 scale-95' : ''}`}>
-                            The <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">really long</span>  story
+                            A <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">love letter</span>  to myself.
                         </div>
 
                         <div 
@@ -494,12 +494,12 @@ export default function Resume({ className = "" }) {
                             variants={dropdownChild}
                             layout="position">
                                 {/* <p className="mb-3 font-script text-sm">How it all started: </p> */}
-                                <p className="font-light text-2xl opacity-50 -mb-3">&quot;</p>
+                                {/* <p className="font-light text-2xl opacity-50 -mb-3">&quot;</p> */}
                                 <p className="mb-3 italic text-sm opacity-50">If everyone is busy making everything, how can anyone perfect anything? We start to confuse convenience with joy. Abundance with choice.</p>
                                 <p className="mb-3 italic text-sm opacity-50">Designing something requires focus. The first thing we ask is: What do we want people to feel. Surprise. Love. Connection. Then we begin to craft around our intention.</p>
                                 <p className="mb-3 italic text-sm opacity-50">It takes time. There are a thousand no’s for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.</p>
                                 <p className="mb-3 italic text-sm opacity-50">Only then do we sign our work: Designed by Apple in California</p>
-                                <p className="font-light text-2xl opacity-50 -mt-7 text-right -mb-4">&quot;</p>
+                                {/* <p className="font-light text-2xl opacity-50 -mt-7 text-right -mb-4">&quot;</p> */}
                             </motion.div>
 
                             <motion.div 
@@ -537,7 +537,7 @@ export default function Resume({ className = "" }) {
                                 <p className="mb-3 font-script text-sm"></p>
                                 <p className="mb-6">Today, an entire decade later, as I sit here writing this, the very message of the film that started it all could not be more poignant. What was once the visuals that resonated so deeply, it is now the message that strikes a deeper chord:</p>
                                 <i className="font- opacity-60">&quot;The first thing we ask is: What do we want people to feel? Delight. Surprise. Love. Connection. Then we begin to craft around our intention.&quot;</i>             
-                                <p className="mt-6 mb-3">As an Advertising Creative who grew the muscle to tell stories, and now a Graduate Student currently pursuing a Masters in Interaction Design; the above message is almost existential. It&apos;s one thing to be able to tell stories, but a completely different discipline to 
+                                <p className="mt-6 mb-3">As an Advertising Creative who grew the muscle to tell stories, and now a Graduate Student currently pursuing a Masters in Interaction Design; the above message resonates immensely. It&apos;s one thing to be able to tell stories, but a completely different discipline to 
                                     craft stories that people <i>want</i> to listen to.</p>
                                 <p className="mb-3">Am I capable of craft? <i className="mr-1">Well, gosh, after all this while; I sure hope so.</i> Am I able to tell stories? <i>I certainly have lots of fun doing it.</i></p>
                                 <p className="">Am I able to discern what people want to feel?</p>
@@ -1419,8 +1419,8 @@ export default function Resume({ className = "" }) {
                     <div className="flex justify-between mt-4">
                         <div 
                         className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-non-color duration-200
-                        rounded-full tracking-tight font-medium text-sm w-[80px] mb-2 font-mono whitespace-nowrap ${showFreelance ? 'bg-foreground text-background scale-96' : ''}`}>
-                            Freelance
+                        rounded-full tracking-tight font-medium text-sm w-[120px] mb-2 font-mono whitespace-nowrap ${showFreelance ? 'bg-foreground text-background scale-96' : ''}`}>
+                            Motion Designer
                         </div>
 
                         <div 
@@ -1435,7 +1435,7 @@ export default function Resume({ className = "" }) {
                         </div>
                     </div> 
 
-                    <p>Motion Designer</p>
+                    <p>Freelance</p>
                     <i className="-ml-[1px] opacity-75">November 2015 – January 2019</i>
 
                   

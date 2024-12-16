@@ -218,7 +218,7 @@ show: {
             <div className="gap-1 md:gap-2 col-span-full grid grid-cols-1 md:grid-cols-2">
                 
                 <div className='col-span-1 relative'>
-                    <h1 className="font-base text-base md:text-2xl font-medium mb-2 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
+                    <h1 className="font-base text-base md:text-lg font-medium mb-2 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
                     <motion.video
                         src="/CCS/Title Sequence (New York City) 16-9.mp4"
                         className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
@@ -232,7 +232,7 @@ show: {
                 </div>
 
                 <div className='col-span-1 relative'>
-                    <h1 className="font-base text-base md:text-2xl font-medium mb-2 col-span-full text-center md:text-left tracking-tight mt-4 md:mt-0">End Sequence</h1>
+                    <h1 className="font-base text-base md:text-lg font-medium mb-2 col-span-full text-center md:text-left tracking-tight mt-4 md:mt-0">End Sequence</h1>
                     <motion.video
                         src="/CCS/End Frame (Paris) 16-9.mp4"
                         className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 

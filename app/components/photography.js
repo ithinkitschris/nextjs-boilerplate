@@ -146,12 +146,12 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Text */}
         <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
-            <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Class of 2016</h1>
+            <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight w-5/6">Class of 2016</h1>
             {/* <p className="-mt-1 ml-1 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Profile Headshots</p> */}
             {/* <h2 className="text-xl text-white tracking-tight">Subheader</h2> */}
 
             <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
-                flex items-center justify-center border-1 border-white text-white cursor-pointer
+                flex items-center justify-center border-1 text-white cursor-pointer backdrop-blur-sm
                 group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
                     <svg
                     xmlns="http://www.w3.org/2000/svg"

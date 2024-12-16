@@ -81,7 +81,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
             {/* Beyond The Cabin */}
             <div
                 className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
-                 dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20
+                 dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 
                  md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cabin");
