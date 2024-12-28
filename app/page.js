@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import PhotographyPage from './components/photography.js';
 import ContentPage from './components/content.js';
-import IxdPage from './components/ixd.js';
+import WebsitePage from './components/website.js';
 import Ghibli from './components/ghibli.js';
 import CabinCrewStories from './components/cabin.js';
 import Cocktail from './components/cocktail.js';
@@ -14,6 +14,8 @@ import TravelBig from './components/travelbig.js';
 import Lounge from './components/lounge.js';
 import Hemsaker from './components/hemsaker.js';
 import ISpy from './components/ispy.js';
+import Jolli from './components/jolli.js';
+import Uniqlo1 from './components/uniqlo1.js'
 import BestWorkPage from './components/bestwork.js';
 import Resume from './components/resume.js';
 import StreetPhotography from './components/street-photo.js';
@@ -271,7 +273,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
 export default function Home(){
 
   const videoData = [
-    { src: '/website/cover_1.mp4', title:'Literally this website.', subheader:'Interaction Design & Development', poster:'/poster/website.jpeg', tags: ['ixd', 'all'] },
+    { src: '/website/cover_1.mp4', title:'This website, literally.', subheader:'UI Design & Web Development', poster:'/poster/website.jpeg', tags: ['website', 'all'] },
     { src: '/Ghibli/cover1_1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing campaign for ArtScience Museum', poster:'/poster/ghibli.jpeg', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
     { src: '/CCS/cover1_1.mp4', title:'Beyond the Cabin', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/cabin.jpeg', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
     { src: '/Cocktail/cover1_1.mp4', title:'Cocktail Conversations', subheader:'Brand campaign for Singapore Airlines', poster:'/poster/cocktail.jpeg', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
@@ -284,6 +286,7 @@ export default function Home(){
     { src: '/virtualsentosa/Cover.mp4', title:'Virtual Sentosa', subheader:'Activation Campaign for Sentosa', poster:'/poster/virtualsentosa.jpeg', tags: ['virtualsentosa', 'all', 'motion', 'edit'] },
     { src: '/3dpersonal/Cover.mp4', title:'3D Motion Explorations', subheader:'Personal Explorations', poster:'/poster/3d.jpeg', tags: ['3dpersonal', 'all', 'motion'] },
     { src: '/uniqlo2/Cover.mp4', title:'New Style Fresh Start', subheader:'Motion Design for Uniqlo', poster:'/poster/uniqlo2.jpeg', tags: ['uniqlo2', 'all', 'motion'] },
+    { src: '/uniqlo1/cover.mp4', title:'Your Stage Now Live', subheader:'Motion Design for Uniqlo', poster:'/poster/uniqlo2.jpeg', tags: ['uniqlo1', 'all', 'motion'] },
     { src: '/Photography/street/Cover2_2.mp4', title:'Personal Photography', subheader:'Photography', poster:'/poster/street.jpeg', tags: ['street', 'all', 'photography'] },
     { src: '/Photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', poster:'', tags: ['bbh', 'all', 'photography'] },
     { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Photography', poster:'', tags: ['unshackle', 'all', 'photography'] },
@@ -874,20 +877,20 @@ export default function Home(){
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
-                    ${selectedWork.includes(['ixd']) || hoveredWork ==='ixd' 
+                    ${selectedWork.includes(['website']) || hoveredWork ==='website' 
                       ? 'text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                     } transition-colors duration-100`}
                   whileHover={{scale:1.06}}
                   animate={{scale: 
-                    includesTags(['creative']) || selectedWork.includes(['ixd']) ||
-                    hoveredWork==='ixd' 
+                    includesTags(['creative']) || selectedWork.includes(['website']) ||
+                    hoveredWork==='website' 
                     ? 1.02 : 1
                   }}
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('ixd')}}>Portfolio Website</motion.button>
+                    toggleWork('website')}}>Portfolio Website</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
@@ -1358,8 +1361,8 @@ export default function Home(){
                   <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>
                 ) : selectedWork === 'content' ? (
                   <ContentPage key="content" className="col-span-full"/>
-                ) : selectedWork === 'ixd' ? (
-                  <IxdPage key="ixd" className="col-span-full"/>
+                ) : selectedWork === 'website' ? (
+                  <WebsitePage key="website" className="col-span-full"/>
                 ) : selectedWork === 'street' ? (
                   <StreetPhotography key="street" className="col-span-full"/>
                 ) : selectedWork === 'bbh' ? (
@@ -1382,6 +1385,10 @@ export default function Home(){
                   <Kris key="kris" className="col-span-full"/>
                 ) : selectedWork === 'hemsaker' ? (
                   <Hemsaker key="hemsaker" className="col-span-full"/>
+                ) : selectedWork === 'jolli' ? (
+                  <Jolli key="jolli" className="col-span-full"/>
+                ) : selectedWork === 'uniqlo1' ? (
+                  <Uniqlo1 key="uniqlo1" className="col-span-full"/>
                 ) : selectedWork === 'travelbig' ? (
                   <TravelBig key="travelbig" className="col-span-full"/>
                 ) : selectedWork === 'ispy' ? (
@@ -1405,7 +1412,7 @@ export default function Home(){
                       setHoveredWork={setHoveredWork}
                       selectedTags={selectedTags}
                       onClick={() => { 
-                        const workTags = ['ixd', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'travelbig', 'lounge', 'hemsaker', 'ispy'];
+                        const workTags = ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'travelbig', 'lounge', 'hemsaker', 'ispy', 'jolli', 'uniqlo1'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));
                         if (matchedWork) {
                           toggleTag('clear');

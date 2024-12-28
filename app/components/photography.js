@@ -30,7 +30,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Personal */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-2xl cursor-pointer md:mr-2" 
+        className="group col-span-3 h-[600px] 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-2xl cursor-pointer md:mr-2 shadow-standard" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -38,7 +38,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
             {/* Image */}
             <img 
-            className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-300"
+            className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-300 "
             src="/Photography/street/cover2.jpg">
             </img>
 
@@ -71,15 +71,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             </div>
         </motion.div>
 
-            {/* Background Glow */}
-            {/* <img 
-            className="absolute top-28 rounded-full h-screen left-14 scale-120 blur-3xl -z-50 opacity-0 dark:opacity-100"
-            src="/Photography/street/cover2.jpg">
-            </img> */}
-
         {/* BBH */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-2xl md:mr-2"
+        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-2xl md:mr-2 shadow-standard"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -122,15 +116,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         </img>
         </motion.div>
 
-        {/* Background Glow */}
-            {/* <img 
-            className="absolute top-0 left-96 rounded-full blur- -z-40 opacity-70"
-            src="/Photography/bbh/cover.jpg">
-            </img> */}
-
         {/* Stressed */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 lg:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-2xl md:mr-2"
+        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 lg:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-2xl md:mr-2 shadow-standard"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -215,7 +203,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Unshackle */}
         <motion.div 
-        className="group col-span-3 h-[600px] mt-2 xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-2xl " 
+        className="group col-span-3 h-[600px] mt-2 xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-2xl shadow-standard" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}

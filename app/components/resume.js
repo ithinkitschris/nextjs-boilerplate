@@ -260,11 +260,11 @@ export default function Resume({ className = "" }) {
                     variants={animateInChild} layout="position">
                         {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                         <p className="text-[24px]  tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
-                        <p className="text-xxs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Come on, script typeface on a portfolio website?</p>
+                        <p className="text-xxs ml-[16px] opacity-35 mb-14 tracking-normal font-light"></p>
                         <p className="text-[24px] tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in whatever I do.</p>
-                        <p className="text-xxs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
+                        <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
                         <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> I am all about craft.</p>
-                        <p className="text-xxs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
+                        <p className="text-xs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
                     </motion.div>
 
                     {/* Mobile Three Things */}
@@ -296,9 +296,9 @@ export default function Resume({ className = "" }) {
                 </div>
 
                 {/* Desktop Photo Card */}
-                <div className="hidden xl:flex relative flex-2 h-[650px] justify-between">
+                <div className="hidden xl:flex relative flex-2 h-[650px] justify-between ">
                     {/* Image */}
-                    <motion.div className="h-full w-[650px] -z-10 relative overflow-hidden" variants={animateInChild} layout>
+                    <motion.div className="h-full w-[650px] -z-10 relative overflow-hidden rounded-2xl shadow-standard" variants={animateInChild} layout>
 
                         <Image
                         src="/profile/profile1.jpg"

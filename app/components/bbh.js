@@ -100,20 +100,20 @@ const BBH = ({className}) => {
             <motion.img
                 src="/Photography/bbh/bbh7.jpg"
                 alt="Description of Image 3"
-                className="col-span-2 h-full w-full object-cover rounded-lg"
+                className="col-span-2 h-full w-full object-cover rounded-lg "
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/bbh/bbh9.jpg"
                 alt="Description of Image 3"
-                className="col-span-2 h-full w-full object-cover rounded-lg"
+                className="col-span-2 h-full w-full object-cover rounded-lg "
                 variants={animateInChild}
             />
 
             <motion.img
                 src="/Photography/bbh/bbh10.jpg"
                 alt="Description of Image 3"
-                className="col-span-2 h-full w-full object-cover rounded-lg"
+                className="col-span-2 h-full w-full object-cover rounded-lg "
                 variants={animateInChild}
             />
         </div>
