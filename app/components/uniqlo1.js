@@ -141,7 +141,7 @@ useEffect(() => {
                 </motion.div>
             </div>
 
-            <div className="col-span-full mb-8 mt-20 md:mt-28">
+            <div className="col-span-full mb-3 md:mb-8 mt-20 md:mt-28">
                 <h1 className="text-2xl md:text-4xl font-script -rotate-1 text-center md:text-left tracking-tighter">Proposed Transitions</h1>
             </div>
 
@@ -151,40 +151,49 @@ useEffect(() => {
                 <img src='/uniqlo1/transition2.png' className='w-full col-span-full rounded md:rounded-lg'/>
                 <img src='/uniqlo1/transition3.png' className='w-full col-span-full rounded md:rounded-lg'/>
 
-                <video
-                    src='/uniqlo1/transition0.mp4'
-                    className="shadow object-cover col-span-full w-full rounded md:rounded-lg"
-                    autoPlay loop muted playsInline
-                ></video>
+                <div className='col-span-full rounded md:rounded-lg overflow-hidden'>
+                    <video
+                        src='/uniqlo1/transition0.mp4'
+                        className="shadow rounded md:rounded-lg object-cover col-span-full w-full scale-102"
+                        autoPlay loop muted playsInline
+                    ></video>
+                </div>
             </div>
 
-            <div className="col-span-full mb-8">
+            <div className="col-span-full mb-3 md:mb-8">
                 <h1 className="text-2xl md:text-4xl font-script -rotate-1 text-center md:text-left tracking-tighter">Final Transitions</h1>
             </div>
 
-            <div className='col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 lg:gap-2 mb-20'>
+            <div className='col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 lg:gap-2 mb-20 overflow-hidden'>
 
-                <video
-                    src='/uniqlo1/transition1.mp4'
-                    className="shadow rounded md:rounded-lg object-cover col-span-full w-full"
-                    autoPlay loop muted playsInline
-                ></video>
-                <video
-                    src='/uniqlo1/transition2.mp4'
-                    className="shadow rounded md:rounded-lg object-cover col-span-full w-full"
-                    autoPlay loop muted playsInline
-                ></video>
-                <video
-                    src='/uniqlo1/transition3.mp4'
-                    className="shadow rounded md:rounded-lg object-cover col-span-full w-full"
-                    autoPlay loop muted playsInline
-                ></video>
                 <div className='col-span-full rounded md:rounded-lg overflow-hidden'>
-                <video
-                    src='/uniqlo1/transition4.mp4'
-                    className="shadow rounded md:rounded-lg object-cover col-span-full w-full scale-102"
-                    autoPlay loop muted playsInline
-                ></video>
+                    <video
+                        src='/uniqlo1/transition1.mp4'
+                        className="shadow rounded md:rounded-lg object-cover col-span-full w-full scale-102"
+                        autoPlay loop muted playsInline
+                    ></video>
+                </div>
+                <div className='col-span-full rounded md:rounded-lg overflow-hidden'>
+                    <video
+                        src='/uniqlo1/transition2.mp4'
+                        className="shadow rounded md:rounded-lg object-cover col-span-full w-full scale-102"
+                        autoPlay loop muted playsInline
+                    ></video>
+                </div>
+                <div className='col-span-full rounded md:rounded-lg overflow-hidden'>
+                    <video
+                        src='/uniqlo1/transition3.mp4'
+                        className="shadow rounded md:rounded-lg object-cover col-span-full w-full scale-102"
+                        autoPlay loop muted playsInline
+                    ></video>
+                </div>
+
+                <div className='col-span-full rounded md:rounded-lg overflow-hidden'>
+                    <video
+                        src='/uniqlo1/transition4.mp4'
+                        className="shadow rounded md:rounded-lg object-cover col-span-full w-full scale-102"
+                        autoPlay loop muted playsInline
+                    ></video>
                 </div>
             </div>
 

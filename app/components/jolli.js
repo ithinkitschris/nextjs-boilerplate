@@ -199,90 +199,90 @@ useEffect(() => {
 
                 <video
                     src='/jollieverafter/2.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/3.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/3.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
                 <video
                     src='/jollieverafter/4.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/4.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/5.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/5.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/6.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/6.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/7.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/7.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/8.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/8.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/9.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/9.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full h-full"
+                    className="shadow rounded-lg object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 

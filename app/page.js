@@ -688,9 +688,9 @@ export default function Home(){
                     className="text-left text-foreground font-normal mt-1 mb-3 px-5 whitespace-nowrap"
                     variants={animateInChildMobile}
                     onClick={() => {
-                      toggleTag('ixd');
+                      toggleTag('website');
                       toggleNav('false');
-                      toggleWork('ixd');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
+                      toggleWork('website');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
                       Interaction Design</motion.button>                      
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 

@@ -137,8 +137,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video
                 src="/CCS/bestworkmontage.mp4"
                 ref={cabinVideoRef}
-                className="rounded-2xl md:rounded-r-3xl w-full h-96 md:group-hover:h-150 object-cover relative right-0 col-span-full md:col-span-6 
-                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:m-4 md:group-hover:right-8 md:group-hover:rounded-2xl"
+                className="rounded-2xl md:rounded-r-3xl w-full h-120 2xl:h-96 md:group-hover:h-150 object-cover relative right-0 col-span-full md:col-span-6 
+                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
                 autoPlay
                 muted
                 loop
@@ -209,7 +209,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 src="/Cocktail/bestworkmontage_1.mp4"
                 ref={cocktailVideoRef}
                 className="rounded-2xl md:rounded-r-3xl w-full h-96 md:group-hover:h-150 object-cover relative right-0 col-span-full md:col-span-6 
-                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:m-4 md:group-hover:right-8 md:group-hover:rounded-2xl"
+                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
                 autoPlay
                 muted
                 loop
@@ -279,7 +279,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 src="/Ghibli/banner.mp4"
                 ref={ghibliVideoRef}
                 className="rounded-2xl md:rounded-r-3xl w-full h-96 md:group-hover:h-150 object-cover relative right-0 col-span-full md:col-span-6 
-                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:m-4 md:group-hover:right-8 md:group-hover:rounded-2xl"
+                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
                 autoPlay
                 muted
                 loop
@@ -302,6 +302,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
                 onClick={() => {
                 setSelectedWork("jolli");
+                window.scrollTo ({
+                    top: 0,
+                    behavior:'smooth',
+                    });
                 }}
             >
                 <motion.div
@@ -343,7 +347,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video
                 src="/jollieverafter/cover_1.mp4"
                 className="rounded-2xl md:rounded-r-3xl w-full h-96 md:group-hover:h-150 object-cover relative right-0 col-span-full md:col-span-6 
-                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:m-4 md:group-hover:right-8 md:group-hover:rounded-2xl"
+                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
                 autoPlay
                 muted
                 loop
@@ -366,6 +370,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
                 onClick={() => {
                 setSelectedWork("uniqlo1");
+                window.scrollTo ({
+                    top: 0,
+                    behavior:'smooth',
+                    });
                 }}
             >
                 <motion.div
@@ -409,7 +417,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <motion.video
                 src="/uniqlo1/montage.mp4"
                 className="rounded-2xl md:rounded-r-3xl w-full h-96 md:group-hover:h-150 object-cover relative right-0 col-span-full md:col-span-6 
-                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:m-4 md:group-hover:right-8 md:group-hover:rounded-2xl"
+                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
                 autoPlay
                 muted
                 loop
