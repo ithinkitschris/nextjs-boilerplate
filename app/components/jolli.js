@@ -112,7 +112,7 @@ useEffect(() => {
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
                 <motion.div className="text-2xl lg:text-4xl lg:w-5/6 font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
-                An interactive social media campaign that brought Jollibee's annual Kwentong film to TikTok for the first time in 2020.
+                An interactive social media campaign that brought Jollibee&apos;s annual Kwentong film to TikTok for the first time in 2020.
                 </motion.div>
             </div>
 

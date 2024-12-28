@@ -132,7 +132,7 @@ useEffect(() => {
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm "></p>
-                <p className="mb-3">The displays were primarily utilised to showcase photos and outfit shots submitted by the public through the hashtag #yourstagenowlive on Uniqlo Singapore's social media platforms. </p> 
+                <p className="mb-3">The displays were primarily utilised to showcase photos and outfit shots submitted by the public through the hashtag #yourstagenowlive on Uniqlo Singapore&apos;s social media platforms. </p> 
                 </motion.div>
 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
