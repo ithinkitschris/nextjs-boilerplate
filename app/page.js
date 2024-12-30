@@ -1347,14 +1347,14 @@ export default function Home(){
 
           {/* Page Container */}
           <motion.div
-            className={`${showNav ? "col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8" : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className={`${showNav ? "col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-6" : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 400, damping: 24 }}  
           > 
             {/* Grid / Page */}
             <motion.div 
-            className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full md:gap-1.5 mt-4 md:mt-4
+            className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 col-span-full md:gap-1.5 mt-4 md:mt-4
             ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1 gap-2' : 'grid-cols-1 gap-1'}`}>
               <AnimatePresence>
                 {selectedWork === 'photography' ? (

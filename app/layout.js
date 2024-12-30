@@ -4,7 +4,6 @@ import Link from "next/link";
 import DarkModeToggle from "./components/dark-mode-toggle";
 import localFont from "next/font/local";
 import "./globals.css";
-import SearchMenu from "./components/search-menu";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
