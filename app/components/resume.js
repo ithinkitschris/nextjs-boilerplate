@@ -288,7 +288,7 @@ export default function Resume({ className = "", showNav }) {
                             <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
                             <p className="text-xxs ml-[16px] opacity-35 mb-14 tracking-normal font-light"></p>
                             <p className="text-[24px] tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in whatever I do.</p>
-                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
+                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[13px] w-1/3">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
                             <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> I am all about craft.</p>
                             <p className="text-xs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
                         </motion.div>
@@ -321,14 +321,15 @@ export default function Resume({ className = "", showNav }) {
                         </motion.div>
 
                         <motion.div className="col-span-full flex justify-between px-5 mix-blend-screen opacity-25" layout>
-                            <p>ArtScience Museum</p>
                             <p>Singapore Airlines</p>
+                            <p>ArtScience Museum</p>
                             <p>IKEA</p>
                             <p>Samsung</p>
                             <p>Uniqlo</p>
-                            <p>Nike</p>
+                            <p>Nike</p>            
                             <p>Studio Ghibli</p>
                             <p>Standard Chartered</p>
+                            <p>Singapore Tourism Board</p>
                             <p>Jollibee</p>
                             <p>MINI</p>
 
