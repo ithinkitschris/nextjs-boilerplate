@@ -256,10 +256,11 @@ export default function Resume({ className = "", showNav }) {
                 />
 
                 {/* Desktop Write-up Container */}
-                <div className="col-span-full -ml-2 mb-10 border-0 hidden md:flex relative w-full">
-
+                <div className="col-span-full -ml-2 mb-10 border-0 hidden md:block relative w-full h-[75vh] xl:h-[65vh]">
+                    
+                    {/* Image */}
                     <motion.img src='/profile/profilelandscape.jpg'
-                    className="rounded-3xl w-full shadow-standard" variants={animateInChild} layout/>
+                    className="rounded-3xl h-[75vh] xl:h-[65vh] w-full shadow-standard object-cover" variants={animateInChild} layout/>
 
                     <div className="absolute inset-0 pt-6 pb-4 pl-10 text-white flex flex-col justify-between">
 
