@@ -130,7 +130,7 @@ show: {
             </div>
 
             {/* Writeup */}
-            <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-5 mt-10 mb-24 md:mb-14 md:mr-7">
+            {/* <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-5 mt-10 mb-24 md:mb-14 md:mr-7">
                 <motion.div className="tracking-tight sm:w-1/2" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm "></p>
                     <p>A brand campaign for the recovery efforts of Singapore Airlines as travel restrictions lifted across the world in 2022. </p>
@@ -141,7 +141,7 @@ show: {
                     <p>With the strategy of travelling bigger and better than ever before, the campaign was centred around travelling for the big milestone and sentimental moments now that travel is back on the table.</p>
                 </motion.div>
                 
-            </div>
+            </div> */}
 
         </motion.div>
     )

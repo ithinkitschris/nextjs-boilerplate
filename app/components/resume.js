@@ -219,57 +219,22 @@ export default function Resume({ className = "" }) {
                     </motion.div>
                 </div> 
 
-                {/* Write-up Container */}
-                <div className="flex-1 lg:mb-10 border-0">
-
-                    {/* Desktop Name */}
-                    <motion.h1
-                    className="hidden lg:block pt-0 text-3xl tracking-tighter text-foreground"
-                    variants={animateInChild}
-                    layout="position">
-                    I am
-                    <p className="font-script  tracking-tight text-9xl mt-3 -rotate-3"  style={{ wordSpacing: "-0.25em" }}>Chris Leow</p>
-                    </motion.h1>
-
-
-                    {/* Desktop Subheader */}
-                    <motion.h1 
-                    className="hidden lg:block mt-0 pr-8 text-[26px] font-script tracking-tight leading-10 text-foreground text-center ml-40"
-                    animate={{rotate:-1}}
-                    variants={animateInChild}
-                    layout>
-                        
-                        {/* <p className="">And here are three<br/><span className="ml-36">things about me:</span></p> */}
-                        <p className="-rotate-2">And here are three things about me:</p>
-                        
-                    </motion.h1>
+                {/* Mobile Write-up Container */}
+                <div className="flex-1 lg:mb-10 border-0 lg:hidden">
 
                     {/* Mobile Subheader */}
                     <motion.h1 
-                    className="block lg:hidden mb-14 -mt-8 -ml-1 md:mt-0 text-[40px] px-2 font-script tracking-tight leading-11 mix-blend-difference dark:mix-blend-normal text-white dark:text-white"
+                    className="mb-14 -mt-8 -ml-1 md:mt-0 text-[40px] px-2 font-script tracking-tight leading-11 mix-blend-difference dark:mix-blend-normal text-white dark:text-white"
                     animate={{rotate:-4}}
                     variants={animateInChild}>
                     
                         <p className="">And here are three <span className="ml-28 whitespace-nowrap">things about me:</span></p>
 
                     </motion.h1>
-                    
-                    {/* Desktop Three Things */}
-                    <motion.div 
-                    className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-14 hidden md:block" 
-                    variants={animateInChild} layout="position">
-                        {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
-                        <p className="text-[24px]  tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
-                        <p className="text-xxs ml-[16px] opacity-35 mb-14 tracking-normal font-light"></p>
-                        <p className="text-[24px] tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in whatever I do.</p>
-                        <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
-                        <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> I am all about craft.</p>
-                        <p className="text-xs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
-                    </motion.div>
 
                     {/* Mobile Three Things */}
                     <motion.div 
-                    className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-14 md:hidden" 
+                    className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-14" 
                     variants={animateInChild}>
                         {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                         <p className="text-[22px]  tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2 ml-1">1</span> I don&apos;t take anything too seriously.</p>
@@ -280,61 +245,92 @@ export default function Resume({ className = "" }) {
                         <p className="text-xxs ml-2.5 opacity-35 mb-10 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
                     </motion.div>
 
-                    {/* Desktop Contact */}
-                    <motion.div 
-                    className="hidden lg:block z-50 col-span-full tracking-tight"
-                    variants={animateInChild}>
-                        <p className="mb-2 text-xl ">Contact</p>
-                        <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
-                        <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
-                        <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
-                    </motion.div>
-
-                    {/* Mobile Line */}
-                    {/* <motion.div className="lg:hidden col-span-full ml-4 w-[89vw] h-[1px] dark:bg-white/15 shadow mt-4" variants={dropdownChild} layout='position' key='alamak'/> */}
-
                 </div>
+                
+                {/* Background Glow */}
+                <motion.img src='/profile/profilelandscape.jpg'
+                className="absolute -z-10 blur-3xl -ml-24 mt-10 saturate-200 w-full opacity-0 dark:opacity-40"
+                // initial={{ opacity: 0 }} 
+                // animate={{ opacity: 0.4 }}
+                // transition={{ duration: 1.5, ease: "easeInOut" }} 
+                />
 
-                {/* Desktop Photo Card */}
-                <div className="hidden xl:flex relative flex-2 h-[650px] justify-between ">
-                    {/* Image */}
-                    <motion.div className="h-full w-[650px] -z-10 relative overflow-hidden rounded-2xl shadow-standard" variants={animateInChild} layout>
+                {/* Desktop Write-up Container */}
+                <div className="col-span-full -ml-2 mb-10 border-0 hidden md:flex relative w-full">
 
-                        <Image
-                        src="/profile/profile1.jpg"
-                        alt=""
-                        className="rounded-2xl"
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="50% 35%"
-                        />
+                    <motion.img src='/profile/profilelandscape.jpg'
+                    className="rounded-3xl w-full shadow-standard" variants={animateInChild} layout/>
 
-                        {/* Details */}
-                        <motion.div
-                        className="absolute bottom-0 pl-8 pb-6 text-[#e9e9e9] dark:text-white"
+                    <div className="absolute inset-0 p-6 pl-10 text-white flex flex-col justify-between">
+
+                        {/* Desktop Name */}
+                        <motion.h1
+                        className="pt-0 text-4xl font-medium tracking-tighter"
                         variants={animateInChild}
-                        >
-                            {/* Circle Header */}
-                            <h1 className="flex items-center justify-center -ml-2 border-1 border-[#e9e9e9] text-[#e9e9e9] dark:text-white
-                            rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
-                            
-                            {/* Script Header */}
-                            {/* <h1 className="flex items-center justify-start -rotate-2
-                            rounded-full tracking-tighter whitespace-nowrap text-2xl -ml-1.5 font-script mb-2">Senior Creative</h1> */}
+                        layout="position">
+                        I am
+                        <p className="font-script  tracking-tight text-[160px] mt-14 -rotate-3"  style={{ wordSpacing: "-0.25em" }}>Chris Leow</p>
+                        </motion.h1>
 
-                            Based in New York City
-                            <span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide">{timeNyc}</span>
-                            <br />
-                            <i className="-ml-0.5">From Singapore</i>
-                            <span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide">{timeSg}</span>
+                        {/* Desktop Subheader */}
+                        <motion.h1 
+                        className="mt-16 pr-8 text-[30px] font-script tracking-tight leading-10 ml-[350px] flex-1"
+                        animate={{rotate:-1}}
+                        variants={animateInChild}
+                        layout>
+                            
+                        {/* <p className="">And here are three<br/><span className="ml-36">things about me:</span></p> */}
+                        <p className="-rotate-2">And here are three things about me:</p>
+                            
+                        </motion.h1>
+                        
+                        {/* Desktop Three Things */}
+                        <motion.div 
+                        className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-20" 
+                        variants={animateInChild} layout="position">
+                            {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
+                            <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
+                            <p className="text-xxs ml-[16px] opacity-35 mb-14 tracking-normal font-light"></p>
+                            <p className="text-[24px] tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in whatever I do.</p>
+                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
+                            <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> I am all about craft.</p>
+                            <p className="text-xs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
                         </motion.div>
-                    </motion.div>
+
+                        {/* Desktop Details Container */}
+                        <motion.div className="col-span-full flex justify-between px-5 pb-6" layout>
+                           
+                           {/* Desktop Contact */} 
+                           <motion.div 
+                            className="z-50 tracking-tight text-white"
+                            variants={animateInChild}>
+                                <p className="mb-2 text-xl">Contact</p>
+                                <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
+                                <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
+                                <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
+                            </motion.div>
+
+                            {/* Details */}
+                            <motion.div
+                            className="text-[#e9e9e9] dark:text-white text-right flex flex-col items-end self-end"
+                            variants={animateInChild}>
+
+                            {/* Circle Header */}
+                            <h1 className="flex items-center justify-center border-1 border-[#e9e9e9] text-[#e9e9e9] dark:text-white
+                            rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
+                            <p><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeNyc}</span>Based in New York City</p>
+                            <i className="-ml-0.5"><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span>From Singapore</i>
+                                
+                            </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
-            
+
+                
             </div>
 
             {/* Line */}
-            <motion.div className="hidden lg:block col-span-full w-full h-[1px] dark:bg-white/10 bg-black/10 mt-4 mb-8" variants={animateInChild} layout='position' key='alamak'/>
+            {/* <motion.div className="hidden lg:block col-span-full w-full h-[1px] dark:bg-white/10 bg-black/10 mt-4 mb-8" variants={animateInChild} layout='position' key='alamak'/> */}
 
             {/* Mobile FAQ Button Row */}
             <motion.div className="lg:hidden flex justify-between mt-4 px-5 lg:px-0 cursor-pointer mb-2 lg:mb-4 ml-1 col-span-full w-full" onClick={toggleStory} key='wtf' variants={animateInChild}>
@@ -554,7 +550,7 @@ export default function Resume({ className = "" }) {
             className="lg:flex gap-5 w-full col-span-full hidden">
                 
                 <motion.div 
-                className="mb-10 px-5 md:px-0 flex-1"
+                className="mb-10 px-5 md:px-0 flex-1 mr-10"
                 variants={animateInChild}
                 layout="position">
                     <p className="mb-3 font-script text-sm">Who ?</p>
@@ -563,7 +559,7 @@ export default function Resume({ className = "" }) {
                 </motion.div>
 
                 <motion.div 
-                className="mb-10 px-5 md:px-0 flex-1"
+                className="mb-10 px-5 md:px-0 flex-1 mr-10"
                 variants={animateInChild}
                 layout="position">
                     <p className="mb-3 font-script text-sm">What ?</p>
@@ -571,7 +567,7 @@ export default function Resume({ className = "" }) {
                 </motion.div>
 
                 <motion.div 
-                className="mb-8 px-5 md:px-0 flex-1"
+                className="mb-8 px-5 md:px-0 flex-1 mr-10"
                 variants={animateInChild}
                 layout="position">
                     <p className="mb-3 font-script text-sm">And ?</p>

@@ -75,7 +75,7 @@ const WebsitePage = ({className}) => {
                 <h1 className="md:hidden text-3xl lg:text-5xl font-script -rotate-2 text-center md:text-left tracking-tighter">Documentation</h1>
             </div>
 
-            <motion.div className="text-sm mt-8 md:mt-12 2xl:w-1/2 md:mr-14 px-4 lg:px-0" variants={animateInChild}>
+            <motion.div className="text-sm mt-8 md:mt-12  md:mr-14 px-4 lg:px-0" variants={animateInChild}>
             <p>As I have had zero experience with web development prior to this project with only a basic knowledge of HTML and CSS,
             it was a conscious decision to document every step of the process right from the beginning to what we have here today.</p>
 

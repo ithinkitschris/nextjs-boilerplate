@@ -23,7 +23,7 @@ show: {
 const ContentPage = ({className}) => {
 
   return (
-    <motion.div className={`grid grid-cols-3 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] max-w-7xl ${className}`}
+    <motion.div className={`grid grid-cols-3 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
@@ -44,7 +44,28 @@ const ContentPage = ({className}) => {
 
 
         {/* On The Road */}
-        <motion.div className="col-span-full grid grid-cols-3 gap-0.5 md:gap-1 md:mb-1 mb-0.5 " variants={animateInChild}>
+        <motion.div className="col-span-full grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-0.5 md:gap-1 md:mb-1 mb-0.5 " variants={animateInChild}>
+
+            <motion.div className="relative">
+                
+                <video 
+                src="/content/ontheroadc43.mp4" 
+                className=" rounded w-full h-auto object-cover"
+                autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/c43.jpg'
+                variants={animateInChild}>
+                </video>
+
+                {/* Gradient */}
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+
+                {/* Title */}
+                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
+                    <h1><span className="opacity-50">On The Road:</span> New York</h1>
+                </div>
+                
+            </motion.div>
+
             <motion.div className="relative">
             
                 <video 
@@ -105,10 +126,6 @@ const ContentPage = ({className}) => {
                 
             </motion.div>
             
-        </motion.div>
-
-        {/* Rangefinder */}
-        <motion.div className="col-span-full grid grid-cols-3 gap-0.5 mb-0.5 md:gap-1 md:mb-1" variants={animateInChild}>
             <div className="relative">
             
                 <video 
@@ -169,10 +186,6 @@ const ContentPage = ({className}) => {
                 
             </div>
             
-        </motion.div>
-
-        {/* POV */}
-        <motion.div className="col-span-full grid grid-cols-3 gap-0.5 mb-0.5 md:gap-1 md:mb-1" variants={animateInChild}>
             <div className="relative">
             
                 <video 
@@ -233,10 +246,6 @@ const ContentPage = ({className}) => {
                 
             </div>
             
-        </motion.div>
-
-        {/* Film vs Digital */}
-        <motion.div className="col-span-full grid grid-cols-3 gap-0.5 mb-0.5 md:gap-1 md:mb-1" variants={animateInChild}>
             <div className="relative">
             
                 <video 
@@ -296,11 +305,7 @@ const ContentPage = ({className}) => {
                 </div>
                 
             </div>
-            
-        </motion.div>
-
-        {/* Blender */}
-        <motion.div className="col-span-full grid grid-cols-3 gap-0.5 mb-0.5 md:gap-1 md:mb-1" variants={animateInChild}>
+        
             <div className="relative">
             
                 <video 
@@ -361,10 +366,6 @@ const ContentPage = ({className}) => {
                 
             </div>
             
-        </motion.div>
-
-         {/* Blender + 24 Hours */}
-         <motion.div className="col-span-full grid grid-cols-3 gap-0.5 mb-0.5 md:gap-1 md:mb-1" variants={animateInChild}>
             <div className="relative">
             
                 <video 
@@ -424,11 +425,7 @@ const ContentPage = ({className}) => {
                 </div>
                 
             </div>
-            
-        </motion.div>
-
-         {/* Everything else */}
-         <div className="col-span-full grid grid-cols-3 gap-0.5 mb-0.5 md:gap-1 md:mb-1">
+        
             <div className="relative">
             
                 <video 
@@ -609,7 +606,7 @@ const ContentPage = ({className}) => {
 
             </div>
             
-        </div>
+        </motion.div>
 
         
 

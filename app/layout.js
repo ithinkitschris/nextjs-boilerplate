@@ -55,7 +55,7 @@ export default function RootLayout({ children }) {
           font-medium text-lg font-[family-name:var(--font-geist-sans)]"></div>
           <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
         </div>        
-        <SearchMenu />
+        {/* <SearchMenu /> */}
         <main className="">{children}</main>
 
         <div 

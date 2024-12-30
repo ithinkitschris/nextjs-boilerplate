@@ -132,32 +132,35 @@ show: {
 
             {/* Writeup */}
             <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-5 mt-4 mb-18 md:mb-14 md:mr-7">
+
+                <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
+                <div className="md:mb-[26px] font-mono text-sm "></div>
+                    
+                    <ol className='text-sm font-script'>Film</ol>
+                    <ol className='mb-4'>Creative Direction and complete offline, online to final delivery edit of the brand film for the lounge.</ol>
+
+                </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <div className="md:mb-[26px] font-mono text-sm "></div>
-                    <ol className='text-xs font-light'>01.</ol>
-                    <ol className='mb-4'>Brand oversight on an eight-metre long glass installation artwork that served as the facade of the lounge,</ol>
-
-                </motion.div>
-                <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
-                <div className="md:mb-[26px] font-mono text-sm "></div>
-                  
-                    <ol className='text-xs font-light'>02.</ol>
-                    <ol className='mb-4'>Motion Design oversight on the panoramic digital display that served as the backdrop of the entrance of the lounge.</ol>
-
-                </motion.div>
-                <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
-                <div className="md:mb-[26px] font-mono text-sm "></div>
                     
-                    <ol className='text-xs font-light'>03.</ol>
+                    <ol className='text-sm font-script'>Photo Asset Library</ol>
                     <ol className='mb-4'>Creative Direction on the photo asset library shoot for the lounge.</ol>
                    
                 </motion.div>
+                
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <div className="md:mb-[26px] font-mono text-sm "></div>
-                    
-                    <ol className='text-xs font-light'>04.</ol>
-                    <ol className='mb-4'>Creative Direction and complete offline, online to final delivery edit of the brand film for the lounge.</ol>
+                  
+                    <ol className='text-sm font-script'>Digital Wall</ol>
+                    <ol className='mb-4'>Motion Design oversight on the panoramic digital display that served as the backdrop of the entrance of the lounge.</ol>
+
+                </motion.div>
+                
+                <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
+                <div className="md:mb-[26px] font-mono text-sm "></div>
+                    <ol className='text-sm font-script'>Entrance Facade</ol>
+                    <ol className='mb-4'>Brand oversight on an eight-metre long glass installation artwork that served as the facade of the lounge,</ol>
 
                 </motion.div>
             </div>

@@ -361,7 +361,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
             <div
                 className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
                 dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 mt-4 md:mt-3
-                  md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer"
+                  md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer mb-32"
                 onMouseEnter={() => {
                 setHoveredWork("uniqlo1");
                 }}

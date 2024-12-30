@@ -832,7 +832,7 @@ export default function Home(){
                   onClick={() => {
                     toggleTag('clear');
                     setSelectedTags([]);
-                    toggleWork('ixd');}}>Interaction Design</motion.button>
+                    toggleWork('website');}}>Interaction Design</motion.button>
 
                   <motion.button 
                   className={`hover:text-foreground text-left md:mr-8
