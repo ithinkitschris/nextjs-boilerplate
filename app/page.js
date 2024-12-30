@@ -323,7 +323,7 @@ export default function Home(){
       setSelectedWork('resume');
     } else {
       setSelectedTags('all');
-      setSelectedWork('');
+      setSelectedWork('resume');
     }
   }, [isMobile]);
 
@@ -1374,7 +1374,7 @@ export default function Home(){
                 ) : selectedWork === 'bts' ? (
                   <BTS key="bts" className="col-span-full"/>
                 ) : selectedWork === 'resume' ? (
-                  <Resume key="resume" className="col-span-full"/>
+                  <Resume key="resume" className="col-span-full" showNav={showNav}/>
                 ) : selectedWork === 'ghibli' ? (
                   <Ghibli key="ghibli" className="col-span-full"/>
                 ) : selectedWork === 'cabin' ? (

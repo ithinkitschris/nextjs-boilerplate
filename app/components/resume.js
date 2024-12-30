@@ -49,7 +49,7 @@ const dropdownChild = {
     },
 };
 
-export default function Resume({ className = "" }) {
+export default function Resume({ className = "", showNav }) {
     const [timeNyc, setTimeNyc] = useState(null);
     const [timeSg, setTimeSg] = useState(null);
 
@@ -261,27 +261,23 @@ export default function Resume({ className = "" }) {
                     <motion.img src='/profile/profilelandscape.jpg'
                     className="rounded-3xl w-full shadow-standard" variants={animateInChild} layout/>
 
-                    <div className="absolute inset-0 p-6 pl-10 text-white flex flex-col justify-between">
+                    <div className="absolute inset-0 pt-6 pb-4 pl-10 text-white flex flex-col justify-between">
 
                         {/* Desktop Name */}
                         <motion.h1
                         className="pt-0 text-4xl font-medium tracking-tighter"
                         variants={animateInChild}
-                        layout="position">
+                        layout>
                         I am
-                        <p className="font-script  tracking-tight text-[160px] mt-14 -rotate-3"  style={{ wordSpacing: "-0.25em" }}>Chris Leow</p>
+                        <p className={`font-script tracking-tight mt-14 -rotate-3 ${showNav ? 'text-[130px]' : 'text-[160px]'}`} style={{ wordSpacing: "-0.25em" }}>Chris Leow</p>
                         </motion.h1>
 
                         {/* Desktop Subheader */}
                         <motion.h1 
-                        className="mt-16 pr-8 text-[30px] font-script tracking-tight leading-10 ml-[350px] flex-1"
+                        className={` pr-8 font-script tracking-tight leading-10 flex-1 ${showNav ? 'mt-12 ml-[280px] text-[26px]' : 'mt-16 ml-[350px] text-[30px]'}`}
                         animate={{rotate:-1}}
-                        variants={animateInChild}
-                        layout>
-                            
-                        {/* <p className="">And here are three<br/><span className="ml-36">things about me:</span></p> */}
-                        <p className="-rotate-2">And here are three things about me:</p>
-                            
+                        variants={animateInChild}>                       
+                            <p className="-rotate-2">And here are three things about me:</p>     
                         </motion.h1>
                         
                         {/* Desktop Three Things */}
@@ -298,7 +294,7 @@ export default function Resume({ className = "" }) {
                         </motion.div>
 
                         {/* Desktop Details Container */}
-                        <motion.div className="col-span-full flex justify-between px-5 pb-6" layout>
+                        <motion.div className={`col-span-full flex justify-between px-5 ${showNav ? 'pb-6' : 'pb-10'}`} layout>
                            
                            {/* Desktop Contact */} 
                            <motion.div 
@@ -322,6 +318,20 @@ export default function Resume({ className = "" }) {
                             <i className="-ml-0.5"><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span>From Singapore</i>
                                 
                             </motion.div>
+                        </motion.div>
+
+                        <motion.div className="col-span-full flex justify-between px-5 mix-blend-screen opacity-25" layout>
+                            <p>ArtScience Museum</p>
+                            <p>Singapore Airlines</p>
+                            <p>IKEA</p>
+                            <p>Samsung</p>
+                            <p>Uniqlo</p>
+                            <p>Nike</p>
+                            <p>Studio Ghibli</p>
+                            <p>Standard Chartered</p>
+                            <p>Jollibee</p>
+                            <p>MINI</p>
+
                         </motion.div>
                     </div>
                 </div>
