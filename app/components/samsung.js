@@ -95,7 +95,7 @@ useEffect(() => {
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
                 <motion.div className="text-2xl lg:text-4.5xl font-base tracking-tight text-center leading-7 md:leading-11 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
-                Content Creation for Samsung's Lifestyle Display's global social platforms. 
+                Content Creation for Samsung&apos;s Lifestyle Display&apos;s global social platforms. 
                 </motion.div>
             </div>
 
