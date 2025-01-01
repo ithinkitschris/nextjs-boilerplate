@@ -315,13 +315,14 @@ export default function Resume({ className = "", showNav }) {
                             {/* Circle Header */}
                             <h1 className="flex items-center justify-center border-1 border-[#e9e9e9] text-[#e9e9e9] dark:text-white
                             rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
-                            <p><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeNyc}</span>Based in New York City</p>
+                            <p><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2 italic">{timeNyc}</span>Based in New York City</p>
                             <i className="-ml-0.5"><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span>From Singapore</i>
                                 
                             </motion.div>
                         </motion.div>
 
-                        <motion.div className="col-span-full flex justify-between px-5 mix-blend-screen opacity-25" layout>
+                        {/* Brands */}
+                        <motion.div className="col-span-full flex justify-between px-5 mix-blend-screen opacity-40" layout>
                             <p>Singapore Airlines</p>
                             <p>ArtScience Museum</p>
                             <p>IKEA</p>

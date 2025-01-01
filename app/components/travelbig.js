@@ -98,13 +98,11 @@ show: {
             </motion.video>
 
             {/* Blurb */}
-            {/* <div className="col-span-full sm:col-span-4 lg:mr-16 ">
+            <div className="col-span-full sm:col-span-4 lg:mr-16 ">
                 <motion.div className="text-2xl lg:text-3xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
-                With the Kris+ app, you’re one tap away from everything. 
-                One tap away from the plus side of life.
-                One tap away from a getaway.
+                A brand campaign for the recovery efforts of Singapore Airlines as travel restrictions lifted across the world in 2022. 
                 </motion.div>
-            </div> */}
+            </div>
 
             {/* Project Details */}
             <div className="flex flex-row col-span-full sm:col-span-2 px-8 sm:px-0 justify-between font-mono text-xs tracking-tight w-full">
