@@ -368,7 +368,7 @@ export default function Resume({ className = "", showNav }) {
                 <img src='/brandlogos/samsung.png' className="w-[95px] h-[23px] object-cover"/>
                 <img src='/brandlogos/uniqlo.png' className="w-[80px] h-[32px] object-cover"/>
                 <img src='/brandlogos/ghibli.png' className="w-[100px] h-[35px] scale-110 object-cover"/>
-                <img src='/brandlogos/nike.png' className="w-[70px] h-[30px] object-cover"/>
+                <img src='/brandlogos/nike.png' className="w-[75px] h-[30px] object-cover"/>
                 {/* <img src='/brandlogos/sc.png' className="w-[80px] h-[35px]  object-cover"/> */}
                 {/* <img src='/brandlogos/stb.png' className="w-[90px] h-[30px] object-cover"/> */}
                 <img src='/brandlogos/mckinsey.png' className="w-[90px] h-[30px] object-cover"/>
@@ -376,7 +376,7 @@ export default function Resume({ className = "", showNav }) {
             </motion.div>
 
             {/* Mobile FAQ Button Row */}
-            <motion.div className="lg:hidden flex justify-between mt-4 px-5 lg:px-0 cursor-pointer mb-2 lg:mb-4 ml-1 col-span-full w-full" onClick={toggleStory} key='wtf' variants={animateInChild}>
+            <motion.div className="lg:hidden flex justify-between mt-4 px-5 lg:px-0 cursor-pointer mb-2 lg:mb-4 ml-1 col-span-full w-full" key='wtf' variants={animateInChild}>
                 
                 <div 
                 className={`flex items-center justify-center -ml-[15px] transition-non-color duration-200 w-[100px] font-medium 
@@ -456,7 +456,7 @@ export default function Resume({ className = "", showNav }) {
                         variants={dropdownChild}
                         layout="position">
                             <p className="mb-3 font-script text-sm">Who</p>
-                            <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, he finds himself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
+                            <p className="mb-3">Born and raised in sunny <i className="mr-0.5 ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, he finds himself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
                             <p>With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in creating visually compelling work across various mediums.</p>
                         </motion.div>
 
@@ -475,7 +475,7 @@ export default function Resume({ className = "", showNav }) {
                         variants={dropdownChild}
                         layout="position">
                             <p className="mb-3 font-script text-sm">And</p>
-                            <p className="mb-3">In his spare time <i>(which, realistically, isn&apos;t much)</i>, he does... even more work, but for himself—creating content through photography, videography, editing and motion design<i className="opacity-50 ml-1">(you will find this work under Content Creation on this website).</i></p>
+                            <p className="mb-3">In his spare time <i className="">(which, realistically, isn&apos;t much), </i> he does... even more work, but for himself—creating content through photography, videography, editing and motion design<i className="ml-1">(you will find this work under Content Creation on this website).</i></p>
                             <p className="">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, though he wouldn&apos;t go so far as to call it interior design.</p>
                         </motion.div>
 
