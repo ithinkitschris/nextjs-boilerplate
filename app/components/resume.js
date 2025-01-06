@@ -248,8 +248,7 @@ export default function Resume({ className = "", showNav }) {
                 </div>
                 
                 {/* Background Glow */}
-                <motion.img src='/profile/profilelandscape.jpg'
-                className="absolute -z-10 blur-3xl -ml-24 mt-10 saturate-200 w-full opacity-0 dark:opacity-40"
+                <motion.img src='/profile/profilelandscape.jpg' className="absolute -z-10 blur-3xl -ml-24 mt-10 saturate-200 w-full opacity-0 dark:opacity-70"
                 // initial={{ opacity: 0 }} 
                 // animate={{ opacity: 0.4 }}
                 // transition={{ duration: 1.5, ease: "easeInOut" }} 
@@ -322,7 +321,7 @@ export default function Resume({ className = "", showNav }) {
                         </motion.div>
 
                         {/* Brands */}
-                        <motion.div className="col-span-full flex justify-between px-5 mix-blend-screen opacity-40" layout>
+                        {/* <motion.div className="col-span-full flex justify-between px-5 mix-blend-screen opacity-40" layout>
                             <p>Singapore Airlines</p>
                             <p>ArtScience Museum</p>
                             <p>IKEA</p>
@@ -335,7 +334,21 @@ export default function Resume({ className = "", showNav }) {
                             <p>Jollibee</p>
                             <p>MINI</p>
 
-                        </motion.div>
+                        </motion.div> */}
+
+                        {/* <motion.div className="col-span-full flex justify-between items-center pl-2 pr-5 mix-blend-screen opacity-40" layout>
+                            <img src='/brandlogos/sia.png' className="w-[80px] h-[30px] object-cover"/>
+                            <img src='/brandlogos/asm.png' className="w-[100px] h-[30px] object-cover"/>
+                            <img src='/brandlogos/ikea.png' className="w-[65px] h-[20px]  object-cover"/>
+                            <img src='/brandlogos/samsung.png' className="w-[80px] h-[22px] object-cover"/>
+                            <img src='/brandlogos/uniqlo.png' className="w-[70px] h-[28px] object-cover"/>
+                            <img src='/brandlogos/ghibli.png' className="w-[90px] h-[30px] object-cover"/>
+                            <img src='/brandlogos/nike.png' className="w-[70px] h-[25px] object-cover"/>
+                            <img src='/brandlogos/sc.png' className="w-[70px] h-[30px]  object-cover"/>
+                            <img src='/brandlogos/stb.png' className="w-[85px] h-[30px] object-cover"/>
+                            <img src='/brandlogos/mckinsey.png' className="w-[75px] h-[28px] object-cover"/>
+                            <img src='/brandlogos/jollibee.png' className="w-[70px] h-[25px] object-cover"/>
+                        </motion.div> */}
                     </div>
                 </div>
 
@@ -344,6 +357,23 @@ export default function Resume({ className = "", showNav }) {
 
             {/* Line */}
             {/* <motion.div className="hidden lg:block col-span-full w-full h-[1px] dark:bg-white/10 bg-black/10 mt-4 mb-8" variants={animateInChild} layout='position' key='alamak'/> */}
+
+            {/* Mobile Brands Container */}
+            {/* <h1 className="mt-4 mb-3 font-script col-span-full text-lg -rotate-1 px-5 md:px-0" key='aiya'>Worked with:</h1> */}
+            <h1 className="mt-4 mb-4 font-medium col-span-full text-xl px-5" key='aiya'>Worked with:</h1>
+            <motion.div className="col-span-full w-full px-4 mix-blend-difference mb-12 grid grid-cols-4 items-center gap-4 opacity-60" layout key='whatever'>
+                <img src='/brandlogos/sia.png' className="w-[90px] h-[30px] object-cover"/>
+                <img src='/brandlogos/asm.png' className="w-[110px] h-[30px] scale-120 object-cover"/>
+                <img src='/brandlogos/ikea.png' className="w-[85px] h-[25px] scale-75 object-cover"/>
+                <img src='/brandlogos/samsung.png' className="w-[95px] h-[23px] object-cover"/>
+                <img src='/brandlogos/uniqlo.png' className="w-[80px] h-[32px] object-cover"/>
+                <img src='/brandlogos/ghibli.png' className="w-[100px] h-[35px] scale-110 object-cover"/>
+                <img src='/brandlogos/nike.png' className="w-[70px] h-[30px] object-cover"/>
+                {/* <img src='/brandlogos/sc.png' className="w-[80px] h-[35px]  object-cover"/> */}
+                {/* <img src='/brandlogos/stb.png' className="w-[90px] h-[30px] object-cover"/> */}
+                <img src='/brandlogos/mckinsey.png' className="w-[90px] h-[30px] object-cover"/>
+                {/* <img src='/brandlogos/jollibee.png' className="w-[80px] h-[28px] object-cover"/> */}
+            </motion.div>
 
             {/* Mobile FAQ Button Row */}
             <motion.div className="lg:hidden flex justify-between mt-4 px-5 lg:px-0 cursor-pointer mb-2 lg:mb-4 ml-1 col-span-full w-full" onClick={toggleStory} key='wtf' variants={animateInChild}>
@@ -576,7 +606,7 @@ export default function Resume({ className = "", showNav }) {
                 variants={animateInChild}
                 layout="position">
                     <p className="mb-3 font-script text-sm">What ?</p>
-                    As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; he finds himself with eight years of experience in the Advertising and Design industry–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
+                    As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; he finds himself with eight years of experience in the Advertising and Design industry–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo. 
                 </motion.div>
 
                 <motion.div 
@@ -588,6 +618,8 @@ export default function Resume({ className = "", showNav }) {
                     <p className="">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, though he wouldn&apos;t go so far as to call it interior design.</p>
                 </motion.div>
             </div>
+
+            
 
             {/* Mobile Contact */}
             <motion.div 
@@ -606,9 +638,27 @@ export default function Resume({ className = "", showNav }) {
                     <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
                     <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
             </motion.div>
+            
+            {/* Desktop Brands Container */}
+            <h1 className="mt-4 mb-3 font-script col-span-full text-lg -rotate-1 px-4 md:px-0 hidden md:block" key='no'>Worked with:</h1>
+            <motion.div className="md:col-span-full md:w-full justify-between items-center -ml-1 pr-2 mix-blend-difference mb-10 hidden md:flex" layout key='test'>
+                <img src='/brandlogos/sia.png' className="w-[90px] h-[35px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+                <img src='/brandlogos/asm.png' className="w-[120px] h-[35px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+                <img src='/brandlogos/ikea.png' className="w-[75px] h-[25px]  object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+                <img src='/brandlogos/samsung.png' className="w-[95px] h-[28px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+                <img src='/brandlogos/uniqlo.png' className="w-[70px] h-[35px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+                <img src='/brandlogos/ghibli.png' className="w-[105px] h-[40px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+                <img src='/brandlogos/nike.png' className="w-[70px] h-[32px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+                <img src='/brandlogos/sc.png' className="w-[80px] h-[35px]  object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+                <img src='/brandlogos/stb.png' className="w-[85px] h-[32px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+                <img src='/brandlogos/mckinsey.png' className="w-[85px] h-[32px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+                <img src='/brandlogos/jollibee.png' className="w-[80px] h-[30px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
+            </motion.div>
+
+            
 
             {/* Line */}
-            <motion.div className="hidden lg:block col-span-full w-full h-[1px] dark:bg-white/10 bg-black/10 mt-4 mb-4" variants={animateInChild} layout='position' key='alamak2'/>
+            <motion.div className="hidden lg:block col-span-full w-full h-[1px] dark:bg-white/10 bg-black/10 mt-4 mb-4" variants={animateInChild} layout='position' key='alamak3'/>
             
             {/* Currently: */}
             <motion.div 

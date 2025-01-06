@@ -1103,7 +1103,7 @@ export default function Home(){
                     toggleTag('clear');
                     toggleWork('jolli')}}>JolliEverAfter</motion.button>
 
-                  <motion.button 
+                  {/* <motion.button 
                   className={`hover:text-foreground text-left mr-8
                     ${includesTags(['motion','edit']) || selectedWork.includes(['virtualsentosa']) || hoveredWork ==='virtualsentosa' 
                     ? 'text-foreground' 
@@ -1118,7 +1118,7 @@ export default function Home(){
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('virtualsentosa')}}>Virtual Sentosa</motion.button>
+                    toggleWork('virtualsentosa')}}>Virtual Sentosa</motion.button> */}
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
