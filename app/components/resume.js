@@ -357,8 +357,8 @@ export default function Resume({ className = "", showNav }) {
 
             {/* Mobile Brands Container */}
             {/* <h1 className="mt-4 mb-3 font-script col-span-full text-lg -rotate-1 px-5 md:px-0" key='aiya'>Worked with:</h1> */}
-            <h1 className="mt-4 mb-4 font-medium col-span-full text-xl px-5" key='aiya'>Worked with:</h1>
-            <motion.div className="col-span-full w-full px-4 mix-blend-difference mb-12 grid grid-cols-4 items-center gap-4 opacity-60" layout key='whatever'>
+            <h1 className="mt-4 mb-4 font-medium col-span-full text-xl px-5 md:hidden" key='aiya'>Worked with:</h1>
+            <motion.div className="col-span-full w-full px-4 mix-blend-difference mb-12 grid grid-cols-4 items-center gap-4 opacity-60 md:hidden" layout key='whatever'>
                 <img src='/brandlogos/sia.png' className="w-[90px] h-[30px] object-cover"/>
                 <img src='/brandlogos/asm.png' className="w-[110px] h-[30px] scale-120 object-cover"/>
                 <img src='/brandlogos/ikea.png' className="w-[85px] h-[25px] scale-75 object-cover"/>
