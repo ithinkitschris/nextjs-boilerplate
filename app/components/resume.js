@@ -77,7 +77,6 @@ export default function Resume({ className = "", showNav }) {
         return () => clearInterval(timer);
     }, []);
 
-    const [showStory, setShowStory] = useState(false);
     const [showShort, setShowShort] = useState(false);
     const [showLong, setShowLong] = useState(false);
     const [showCurriculum, setShowCurriculum] = useState(false);
