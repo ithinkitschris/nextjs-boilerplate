@@ -95,9 +95,7 @@ export default function Resume({ className = "", showNav }) {
     const [showFreelance, setShowFreelance] = useState(false);
 
 
-    const toggleStory = () => {
-        setShowStory((prevState) => !prevState);
-    };
+
 
     const toggleShort = () => {
         setShowShort((prevState) => !prevState);
