@@ -377,19 +377,14 @@ export default function Resume({ className = "", showNav }) {
                 
                 <div 
                 className={`flex items-center justify-center -ml-[15px] transition-non-color duration-200 w-[100px] font-medium 
-                rounded-full tracking-tight text-xl ${showStory ? 'bg-foreground text-background scale-90' : ''}`}>
+                rounded-full tracking-tight text-xl bg-foreground text-background scale-90`}>
                     My Story
                 </div>
 
                 <div 
                 className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
-                rounded-full mb-2 px-1 ${showStory ? 'bg-foreground text-background scale-90' : ''}`}>
-                
-                {/* {showStory ? (
-                    <ChevronUpIcon className="h-4 w-4" />
-                ) : (
-                    <ChevronDownIcon className="h-4 w-4" />
-                )} */}
+                rounded-full mb-2 px-1 bg-foreground text-background scale-90`}>
+            
                 </div>
             </motion.div> 
 
