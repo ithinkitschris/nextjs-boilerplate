@@ -216,7 +216,7 @@ export default function Resume({ className = "", showNav }) {
                     </motion.div>
                 </div> 
 
-                {/* Mobile Write-up Container */}
+                {/* Mobile Container */}
                 <div className="flex-1 lg:mb-10 border-0 lg:hidden">
 
                     {/* Mobile Subheader */}
@@ -243,20 +243,13 @@ export default function Resume({ className = "", showNav }) {
                     </motion.div>
 
                 </div>
-                
-                {/* Background Glow */}
-                <motion.img src='/profile/profilelandscape.jpg' className="absolute -z-10 blur-3xl -ml-24 mt-10 saturate-200 w-full opacity-0 dark:opacity-70"
-                // initial={{ opacity: 0 }} 
-                // animate={{ opacity: 0.4 }}
-                // transition={{ duration: 1.5, ease: "easeInOut" }} 
-                />
 
-                {/* Desktop Write-up Container */}
-                <div className="col-span-full -ml-2 mb-10 border-0 hidden md:block relative w-full h-[75vh] xl:h-[65vh]">
+                {/* Desktop Container */}
+                <div className="col-span-full -ml-2 mb-10 border-0 hidden md:block relative w-full h-[75vh]">
                     
                     {/* Image */}
                     <motion.img src='/profile/profilelandscape.jpg'
-                    className="rounded-3xl h-[75vh] xl:h-[65vh] w-full shadow-standard object-cover" variants={animateInChild} layout/>
+                    className="rounded-3xl h-[75vh] w-full shadow-standard object-cover" variants={animateInChild} layout/>
 
                     <div className="absolute inset-0 pt-6 pb-4 pl-10 text-white flex flex-col justify-between">
 
@@ -291,7 +284,7 @@ export default function Resume({ className = "", showNav }) {
                         </motion.div>
 
                         {/* Desktop Details Container */}
-                        <motion.div className={`col-span-full flex justify-between px-5 ${showNav ? 'pb-6' : 'pb-10'}`} layout>
+                        <motion.div className={`col-span-full flex justify-between px-5 pb-4`} layout>
                            
                            {/* Desktop Contact */} 
                            <motion.div 
@@ -349,14 +342,13 @@ export default function Resume({ className = "", showNav }) {
                     </div>
                 </div>
 
-                
+                {/* Background Glow */}
+                <motion.img src='/profile/profilelandscape.jpg' className="absolute -z-10 blur-3xl -ml-24 mt-10 saturate-200 w-full opacity-0 dark:opacity-70"
+                />
+
             </div>
 
-            {/* Line */}
-            {/* <motion.div className="hidden lg:block col-span-full w-full h-[1px] dark:bg-white/10 bg-black/10 mt-4 mb-8" variants={animateInChild} layout='position' key='alamak'/> */}
-
             {/* Mobile Brands Container */}
-            {/* <h1 className="mt-4 mb-3 font-script col-span-full text-lg -rotate-1 px-5 md:px-0" key='aiya'>Worked with:</h1> */}
             <h1 className="mt-4 mb-4 font-medium col-span-full text-xl px-5 md:hidden" key='aiya'>Worked with:</h1>
             <motion.div className="col-span-full w-full px-4 mix-blend-difference mb-12 grid grid-cols-4 items-center gap-4 opacity-60 md:hidden" layout key='whatever'>
                 <img src='/brandlogos/sia.png' className="w-[90px] h-[30px] object-cover"/>
@@ -611,8 +603,6 @@ export default function Resume({ className = "", showNav }) {
                 </motion.div>
             </div>
 
-            
-
             {/* Mobile Contact */}
             <motion.div 
                 className="lg:hidden mt-10 mb-8 px-5 md:px-0 col-span-full tracking-tight"
@@ -632,7 +622,7 @@ export default function Resume({ className = "", showNav }) {
             </motion.div>
             
             {/* Desktop Brands Container */}
-            <h1 className="mt-4 mb-3 font-script col-span-full text-lg -rotate-1 px-4 md:px-0 hidden md:block" key='no'>Worked with:</h1>
+            <motion.h1 className="mt-4 mb-3 font-script col-span-full text-lg -rotate-1 px-4 md:px-0 hidden md:block" layout key='no1'>Worked with:</motion.h1>
             <motion.div className="md:col-span-full md:w-full justify-between items-center -ml-1 pr-2 mix-blend-difference mb-10 hidden md:flex" layout key='test'>
                 <img src='/brandlogos/sia.png' className="w-[90px] h-[35px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
                 <img src='/brandlogos/asm.png' className="w-[120px] h-[35px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
