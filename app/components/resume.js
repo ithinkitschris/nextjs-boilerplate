@@ -376,7 +376,7 @@ export default function Resume({ className = "", showNav }) {
             <motion.div className="lg:hidden flex justify-between mt-4 px-5 lg:px-0 cursor-pointer mb-2 lg:mb-4 ml-1 col-span-full w-full" key='wtf' variants={animateInChild}>
                 
                 <div 
-                className={`flex items-center justify-center -ml-[15px] transition-non-color duration-200 w-[100px] font-medium 
+                className={`flex items-center justify-center -ml-[15px] w-[100px] font-medium 
                 rounded-full tracking-tight text-xl text-foreground`}>
                     My Story
                 </div>
