@@ -15,8 +15,9 @@ import Lounge from './components/lounge.js';
 import Hemsaker from './components/hemsaker.js';
 import ISpy from './components/ispy.js';
 import Jolli from './components/jolli.js';
-import Uniqlo1 from './components/uniqlo1.js'
-import Oneshow from './components/oneshow.js'
+import Uniqlo1 from './components/uniqlo1.js';
+import Uniqlo2 from './components/uniqlo2.js';
+import Oneshow from './components/oneshow.js';
 import BestWorkPage from './components/bestwork.js';
 import Resume from './components/resume.js';
 import StreetPhotography from './components/street-photo.js';
@@ -26,6 +27,8 @@ import Unshackle from './components/unshackle.js';
 import BTS from './components/bts.js';
 import Samsung from './components/samsung.js';
 import Nike from './components/nike.js';
+import Iphone from './components/iphone.js';
+import ThreeD from './components/3d.js';
 import { ChevronDownIcon} from '@heroicons/react/24/solid';
 import {useVideoContext, VideoProvider} from './components/expandedGridContext.js';
 
@@ -289,7 +292,7 @@ export default function Home(){
     { src: '/samsung/cover.mp4', title:'Samsung Lifestyle Displays', subheader:'Content Creation for Samsung', poster:'/poster/samsung.jpeg', tags: ['samsung', 'all', 'motion', 'edit'] },
     { src: '/nike/cover.mp4', title:'Nike Athlete Stories: Koy & Toon', subheader:'Social Media Campaign for Nike', poster:'/poster/samsung.jpeg', tags: ['nike', 'all', 'motion', 'edit'] },
     // { src: '/virtualsentosa/Cover.mp4', title:'Virtual Sentosa', subheader:'Activation Campaign for Sentosa', poster:'/poster/virtualsentosa.jpeg', tags: ['virtualsentosa', 'all', 'motion', 'edit'] },
-    { src: '/3dpersonal/Cover.mp4', title:'3D Motion Explorations', subheader:'Personal Explorations', poster:'/poster/3d.jpeg', tags: ['3dpersonal', 'all', 'motion'] },
+    { src: '/3dpersonal/Cover.mp4', title:'3D Motion Explorations', subheader:'Personal Explorations', poster:'/poster/3d.jpeg', tags: ['3d', 'all', 'motion'] },
     { src: '/uniqlo2/Cover.mp4', title:'New Style Fresh Start', subheader:'Motion Design for Uniqlo', poster:'/poster/uniqlo2.jpeg', tags: ['uniqlo2', 'all', 'motion'] },
     { src: '/uniqlo1/cover.mp4', title:'Your Stage Now Live', subheader:'Motion Design for Uniqlo', poster:'/poster/uniqlo2.jpeg', tags: ['uniqlo1', 'all', 'motion'] },
     { src: '/Photography/street/Cover2_2.mp4', title:'Personal Photography', subheader:'Photography', poster:'/poster/street.jpeg', tags: ['street', 'all', 'photography'] },
@@ -1258,7 +1261,7 @@ export default function Home(){
                     toggleTag('clear');
                     toggleWork('street')}}>Photography</motion.button>
 
-                  <motion.button 
+                  {/* <motion.button 
                   className={`hover:text-foreground text-left mr-8
                     ${includesTags(['motion']) || selectedWork.includes(['iphone12']) || hoveredWork ==='iphone12' 
                     ? 'text-foreground' 
@@ -1273,7 +1276,7 @@ export default function Home(){
                   variants={animateInChild}
                   onClick={() => {
                     toggleTag('clear');
-                    toggleWork('iphone12')}}>iPhone 12 Pro</motion.button>
+                    toggleWork('iphone12')}}>iPhone 12 Pro</motion.button> */}
 
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
@@ -1396,6 +1399,8 @@ export default function Home(){
                   <Jolli key="jolli" className="col-span-full"/>
                 ) : selectedWork === 'uniqlo1' ? (
                   <Uniqlo1 key="uniqlo1" className="col-span-full"/>
+                ) : selectedWork === 'uniqlo2' ? (
+                  <Uniqlo2 key="uniqlo2" className="col-span-full"/>
                 ) : selectedWork === 'travelbig' ? (
                   <TravelBig key="travelbig" className="col-span-full"/>
                 ) : selectedWork === 'ispy' ? (
@@ -1404,6 +1409,10 @@ export default function Home(){
                   <Lounge key="lounge" className="col-span-full"/>
                 ) : selectedWork === 'oneshow' ? (
                   <Oneshow key="oneshow" className="col-span-full"/>
+                ) : selectedWork === '3d' ? (
+                  <ThreeD key="3d" className="col-span-full"/>
+                ) : selectedWork === 'iphone' ? (
+                  <Iphone key="iphone" className="col-span-full"/>
                 ) : selectedWork === 'nike' ? (
                   <Nike key="nike" className="col-span-full"/>
                 ) : selectedWork === 'bestwork' ? (
@@ -1424,8 +1433,8 @@ export default function Home(){
                       selectedTags={selectedTags}
                       onClick={() => { 
                         const workTags = 
-                        ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 
-                          'travelbig', 'lounge', 'hemsaker', 'ispy', 'jolli', 'uniqlo1', 'oneshow', 'samsung', 
+                        ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'iphone', '3d',
+                          'travelbig', 'lounge', 'hemsaker', 'ispy', 'jolli', 'uniqlo1', 'uniqlo2', 'oneshow', 'samsung', 
                           'nike'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));
                         if (matchedWork) {

@@ -91,6 +91,54 @@ useEffect(() => {
             >
             </motion.video>
 
+            <div className="col-span-full grid grid-cols-2 md:grid-cols-5 gap-1.5 mb-8 lg:gap-2 hidden md:grid">
+                <motion.video
+                    src='/ispy/1.mp4'
+                    className="shadow rounded-lg object-cover h-auto col-span-2 md:col-span-1"
+                    variants={animateInChild}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                ></motion.video>
+                <motion.video
+                    src='/ispy/2.mp4'
+                    className="shadow rounded-lg object-cover h-auto "
+                    variants={animateInChild}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                ></motion.video>
+                <motion.video
+                    src='/ispy/3.mp4'
+                    className="shadow rounded-lg object-cover h-auto "
+                    variants={animateInChild}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                ></motion.video>
+                <motion.video
+                    src='/ispy/4.mp4'
+                    className="shadow rounded-lg object-cover h-auto "
+                    variants={animateInChild}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                ></motion.video>
+                <motion.video
+                    src='/ispy/5.mp4'
+                    className="shadow rounded-lg object-cover h-auto "
+                    variants={animateInChild}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                ></motion.video>
+            </div>
+
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
                 <motion.div className="text-2xl lg:text-3xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
@@ -139,11 +187,11 @@ useEffect(() => {
                 </motion.div>
             </div>
 
-            <div className="col-span-full mt-12 mb-8 md:mb-8 lg:mb-10">
+            <div className="col-span-full mt-12 mb-8 md:mb-8 lg:mb-10 md:hidden">
                 <motion.h1 className="text-4xl lg:text-5xl font-script -rotate-3 text-center md:text-left tracking-tighter" variants={animateInChild}>A set of Five</motion.h1>
             </div>
 
-            <div className="col-span-full grid grid-cols-2 md:grid-cols-5 gap-1.5 mb-8 lg:gap-2">
+            <div className="col-span-full grid grid-cols-2 md:grid-cols-5 gap-1.5 mb-8 lg:gap-2 md:hidden">
                 <motion.video
                     src='/ispy/1.mp4'
                     className="shadow rounded-lg object-cover h-auto col-span-2 md:col-span-1"
@@ -190,6 +238,8 @@ useEffect(() => {
                     playsInline
                 ></motion.video>
             </div>
+
+            
 
         </motion.div>
     )
