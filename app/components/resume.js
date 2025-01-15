@@ -196,7 +196,7 @@ export default function Resume({ className = "", showNav }) {
                     </motion.div>
 
                     {/* Mobile Background Glow */}
-                    <motion.img src='/profile/profile.jpg' className="absolute -z-50 blur-[150px] mt-0 saturate-200 w-full opacity-0 dark:opacity-100"/>
+                    {/* <motion.img src='/profile/profile.jpg' className="absolute -z-50 blur-[150px] mt-0 saturate-200 w-full opacity-0 dark:opacity-100"/> */}
 
                     {/* Details */}
                     <motion.div
