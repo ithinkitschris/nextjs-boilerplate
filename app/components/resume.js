@@ -185,7 +185,7 @@ export default function Resume({ className = "", showNav }) {
                     </motion.h1>
 
                     {/* Image */}
-                    <motion.div className="absolute top-0 left-0 w-full h-full -z-40 overflow-hidden rounded-3xl drop-shadow-md" variants={animateInChild} layout>
+                    <motion.div className="absolute top-0 left-0 w-full h-full -z-40 overflow-hidden rounded-3xl shadow-standard" variants={animateInChild} layout>
                         <Image
                         src='/profile/profile.jpg'
                         alt=""
@@ -196,7 +196,7 @@ export default function Resume({ className = "", showNav }) {
                     </motion.div>
 
                     {/* Mobile Background Glow */}
-                    <motion.img src='/profile/profile.jpg' className="absolute -z-50 blur-[100px] -mt-20 scale-150 saturate-200 w-full opacity-0 dark:opacity-100"/>
+                    <motion.img src='/profile/profile.jpg' className="absolute -z-50 blur-[150px] mt-0 saturate-200 w-full opacity-0 dark:opacity-100"/>
 
                     {/* Details */}
                     <motion.div
