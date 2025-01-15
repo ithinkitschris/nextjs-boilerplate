@@ -195,8 +195,26 @@ useEffect(() => {
                 >
                 </motion.video>
 
+                <motion.video src="/iphone/5.mp4" 
+                className="md:hidden col-span-2 shadow-standard rounded-lg w-full lg:w-full lg:h-full object-cover md:mb-12"
+                autoPlay muted loop playsInline
+                variants={animateInChild}
+                poster='/poster/.jpeg'
+
+                >
+                </motion.video>
+
                 <motion.video src="/iphone/4.mp4" 
-                className="col-span-2 shadow-standard rounded-lg w-full lg:w-full lg:h-full object-cover md:mb-12"
+                className="hidden md:block col-span-2 shadow-standard rounded-lg w-full lg:w-full lg:h-full object-cover md:mb-12"
+                autoPlay muted loop playsInline
+                variants={animateInChild}
+                poster='/poster/.jpeg'
+
+                >
+                </motion.video>
+
+                <motion.video src="/iphone/4.mp4" 
+                className="md:hidden col-span-full shadow-standard rounded-lg w-full lg:w-full lg:h-full object-cover md:mb-12"
                 autoPlay muted loop playsInline
                 variants={animateInChild}
                 poster='/poster/.jpeg'

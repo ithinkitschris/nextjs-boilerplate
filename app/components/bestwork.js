@@ -121,7 +121,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     Beyond The Cabin
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Brand Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Singapore Airlines</span></h1>
-                <p className="mr-10 mb-4 md:w-3/4">
+                <p className="mr-10 md:mb-4 md:w-3/4">
                     6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see
                     them on board, now follow their travels around the world.
                 </p>
@@ -196,7 +196,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </h1>
 
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Brand Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Singapore Airlines</span></h1>
-                <p className="mr-10 mb-4 md:mb-0">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
+                <p className="mr-10 md:mb-4 md:mb-0">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
@@ -265,7 +265,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                    The World of Studio Ghibli
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Marketing Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">ArtScience Museum</span></h1>
-                <p className="mr-10 mb-4 md:w-3/4">Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
+                <p className="mr-10 md:mb-4 md:w-3/4">Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
@@ -417,7 +417,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                    JolliEverAfter
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Social Media Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Jollibee</span></h1>
-                <p className="mr-10 mb-4 md:w-3/4">An interactive social media campaign that brought Jollibee’s annual Kwentong film to TikTok for the first time in 2020.</p>
+                <p className="mr-10 md:mb-4 md:w-3/4">An interactive social media campaign that brought Jollibee’s annual Kwentong film to TikTok for the first time in 2020.</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
