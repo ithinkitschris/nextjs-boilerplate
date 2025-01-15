@@ -49,6 +49,26 @@ const ContentPage = ({className}) => {
             <motion.div className="relative">
                 
                 <video 
+                src="/content/m3.mp4" 
+                className=" rounded w-full h-auto object-cover"
+                autoPlay muted loop playsInline loading="lazy"
+                poster='/poster/content/m3.jpg'
+                variants={animateInChild}>
+                </video>
+
+                {/* Gradient */}
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+
+                {/* Title */}
+                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
+                    <h1><span className="opacity-50">On The Road:</span> BMW M3</h1>
+                </div>
+                
+            </motion.div>
+
+            <motion.div className="relative">
+                
+                <video 
                 src="/content/ontheroadc43.mp4" 
                 className=" rounded w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"

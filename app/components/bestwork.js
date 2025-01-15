@@ -289,19 +289,19 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 ></motion.video>
             </div>
 
-            {/* JolliEverAfter */}
+            {/* Nike */}
             <div
                 className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
                 dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 mt-4 md:mt-3
-                  md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer"
+                  md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer gap-0 md:gap-3"
                 onMouseEnter={() => {
-                setHoveredWork("jolli");
+                setHoveredWork("nike");
                 }}
                 onMouseLeave={() => {
                 setHoveredWork(null);
                 }}
                 onClick={() => {
-                setSelectedWork("jolli");
+                setSelectedWork("nike");
                 window.scrollTo ({
                     top: 0,
                     behavior:'smooth',
@@ -331,6 +331,88 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
+                <h1 className="text-6xl leading-tighter md:text-7xl font-medium tracking-tighter mb-3 mr-10">
+                    Nike Athlete Stories: <span className="font-normal">Koy & Toon</span>
+                </h1>
+                <h1 className="text-lg tracking-tight mt-2 mb-5">Social Media Campaign for<span className="ml-1.5 text-xl font-script -rotate-1 relative top-1.5">Nike</span></h1>
+                <p className="mr-10 md:mb-4 md:w-3/4">A set of Instagram Stories videos and a full film featuring Thai NIKE athletes Koy Ratchawin and Artiwara Kongmalai.</p>
+                <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className=" font-semibold">Role:</p>
+                        <p className="">Motion Design</p>
+                        <p className="">Video Editing</p>
+                </div>
+                </motion.div>
+
+                {/* Occupying the panoramic displays between the floors of the store, the displays looped a 4 minute long kinetic typography which were both graphically designed and animated by me. */}
+
+                <motion.video
+                src="/nike/trailer2.mp4"
+                className="rounded-2xl md:rounded-r-3xl w-full h-[725px] md:h-[440px] md:group-hover:h-[850px] object-cover relative right-0 col-span-full md:col-span-3 -mb-2 md:mb-0
+                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
+                autoPlay
+                muted
+                loop
+                playsInline
+                loading="lazy"
+                poster='/poster/nikepage1.png'
+                ></motion.video>
+
+                <motion.video
+                src="/nike/trailer3.mp4"
+                className="rounded-2xl md:rounded-r-3xl w-full h-150 md:h-[440px] md:group-hover:h-[850px] object-cover relative right-0 col-span-full md:col-span-3 hidden md:block
+                transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
+                autoPlay
+                muted
+                loop
+                playsInline
+                loading="lazy"
+                poster='/poster/nikepage1.png'
+                ></motion.video>
+            </div>
+
+            {/* JolliEverAfter */}
+            <div
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
+                dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 mt-4 md:mt-3 mb-20
+                  md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer"
+                onMouseEnter={() => {
+                setHoveredWork("jolli");
+                }}
+                onMouseLeave={() => {
+                setHoveredWork(null);
+                }}
+                onClick={() => {
+                setSelectedWork("jolli");
+                window.scrollTo ({
+                    top: 0,
+                    behavior:'smooth',
+                    });
+                }}
+            >
+                <motion.div
+                className="col-span-3 rounded-3xl p-4 2xl:p-6 relative"
+                variants={animateInChild}
+                >
+                <button
+                    className="font-base font-mono text-base tracking-tighter w-11 h-6 rounded-full 
+                    flex items-center justify-center border-1 border-foreground mb-2 
+                    group-hover:bg-foreground group-hover:text-background group-hover:scale-90 transition-non-color">
+                    05
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 3 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-4 h-4"
+                    >
+                    <path d="M7 17L17 7" />
+                    <path d="M7 7h10v10" />
+                    </svg>
+                </button>
                 <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
                    JolliEverAfter
                 </h1>
@@ -340,13 +422,13 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
                         <p className="">Motion Design</p>
-                        <p className="">Video Edit</p>
+                        <p className="">Video Editing</p>
                 </div>
                 </motion.div>
 
                 <motion.video
                 src="/jollieverafter/cover_1.mp4"
-                className="rounded-2xl md:rounded-r-3xl w-full h-96 md:group-hover:h-150 object-cover relative right-0 col-span-full md:col-span-6 
+                className="rounded-2xl md:rounded-r-3xl w-full h-96 md:group-hover:h-[850px] object-cover relative right-0 col-span-full md:col-span-6 
                 transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
                 autoPlay
                 muted
@@ -357,8 +439,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 ></motion.video>
             </div>
 
+            
+
             {/* Uniqlo */}
-            <div
+            {/* <div
                 className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
                 dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 mt-4 md:mt-3
                   md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer mb-32"
@@ -411,9 +495,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                         <p className="">Visual Design</p>
                 </div>
                 </motion.div>
-
-                {/* Occupying the panoramic displays between the floors of the store, the displays looped a 4 minute long kinetic typography which were both graphically designed and animated by me. */}
-
+                
                 <motion.video
                 src="/uniqlo1/montage.mp4"
                 className="rounded-2xl md:rounded-r-3xl w-full h-96 md:group-hover:h-150 object-cover relative right-0 col-span-full md:col-span-6 
@@ -425,7 +507,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 loading="lazy"
                 poster='/poster/uniqlobest.jpeg'
                 ></motion.video>
-            </div>
+            </div> */}
 
             {/* Background Glow */}
             <div className="absolute -z-50 top-0">

@@ -234,8 +234,8 @@ useEffect(() => {
             {/* Lady Statue */}
             <div className='col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 lg:gap-2 md:mt-20'>
 
-                <img src='/3dpersonal/statue5.jpeg' className='w-full h-full object-cover col-span-1 rounded-xl'/>
-                <img src='/3dpersonal/statue3.jpeg' className='w-full col-span-1 rounded-xl'/>
+                <img src='/3dpersonal/statue5.jpeg' className='w-full h-full object-cover col-span-1 md:col-span-2 rounded-xl'/>
+                <img src='/3dpersonal/statue3.jpeg' className='w-full col-span-1 md:col-span-2 rounded-xl'/>
                 <img src='/3dpersonal/statue4.jpeg' className='w-full h-full object-cover col-span-2 rounded-xl'/>
 
             </div>

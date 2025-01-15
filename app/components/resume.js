@@ -185,15 +185,18 @@ export default function Resume({ className = "", showNav }) {
                     </motion.h1>
 
                     {/* Image */}
-                    <motion.div className="absolute top-0 left-0 w-full h-full -z-50 overflow-hidden rounded-3xl drop-shadow-md" variants={animateInChild} layout>
+                    <motion.div className="absolute top-0 left-0 w-full h-full -z-40 overflow-hidden rounded-3xl drop-shadow-md" variants={animateInChild} layout>
                         <Image
-                        src='/profile/profile1.jpg'
+                        src='/profile/profile.jpg'
                         alt=""
-                        className="transform scale-120 translate-y-12"
+                        className="transform scale-110 translate-y-2"
                         layout="fill"
                         objectFit="cover"
                         />
                     </motion.div>
+
+                    {/* Mobile Background Glow */}
+                    <motion.img src='/profile/profile.jpg' className="absolute -z-50 blur-[100px] -mt-20 scale-150 saturate-200 w-full opacity-0 dark:opacity-100"/>
 
                     {/* Details */}
                     <motion.div
@@ -248,7 +251,7 @@ export default function Resume({ className = "", showNav }) {
                 <div className="col-span-full -ml-2 mb-10 border-0 hidden md:block relative w-full h-[75vh]">
                     
                     {/* Image */}
-                    <motion.img src='/profile/profilelandscape.jpg'
+                    <motion.img src='/profile/profilelandscape2.jpg'
                     className="rounded-3xl h-[75vh] w-full shadow-standard object-cover" variants={animateInChild} layout/>
 
                     <div className="absolute inset-0 pt-6 pb-4 pl-10 text-white flex flex-col justify-between">
@@ -342,8 +345,8 @@ export default function Resume({ className = "", showNav }) {
                     </div>
                 </div>
 
-                {/* Background Glow */}
-                <motion.img src='/profile/profilelandscape.jpg' className="absolute -z-10 blur-3xl -ml-24 mt-10 saturate-200 w-full opacity-0 dark:opacity-70"
+                {/* Desktop Background Glow */}
+                <motion.img src='/profile/profilelandscape2.jpg' className="hidden md:block absolute -z-10 blur-3xl -ml-24 mt-10 saturate-200 w-full opacity-0 dark:opacity-100"
                 />
 
             </div>

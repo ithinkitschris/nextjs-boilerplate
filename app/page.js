@@ -29,6 +29,7 @@ import Samsung from './components/samsung.js';
 import Nike from './components/nike.js';
 import Iphone from './components/iphone.js';
 import ThreeD from './components/3d.js';
+import Leica from './components/leica.js';
 import { ChevronDownIcon} from '@heroicons/react/24/solid';
 import {useVideoContext, VideoProvider} from './components/expandedGridContext.js';
 
@@ -297,11 +298,13 @@ export default function Home(){
     { src: '/uniqlo1/cover.mp4', title:'Your Stage Now Live', subheader:'Motion Design for Uniqlo', poster:'/poster/uniqlo2.jpeg', tags: ['uniqlo1', 'all', 'motion'] },
     { src: '/Photography/street/Cover2_2.mp4', title:'Personal Photography', subheader:'Photography', poster:'/poster/street.jpeg', tags: ['street', 'all', 'photography'] },
     { src: '/Photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', poster:'', tags: ['bbh', 'all', 'photography'] },
-    { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Photography', poster:'', tags: ['unshackle', 'all', 'photography'] },
     { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', poster:'/poster/oneshow.jpeg', tags: ['oneshow', 'all', 'motion'] },
+    { src: '/iphone/intro.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', poster:'/poster/iphone15.jpeg', tags: ['iphone', 'all', 'motion'] },
     { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', poster:'/poster/leica.jpeg', tags: ['leica', 'all', 'motion'] },
+    { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Photography', poster:'', tags: ['unshackle', 'all', 'photography'] },
+    
     // { src: '/moonpillow/cover.mp4', title:'ByBit Moon Pillow', subheader:'3D Motion Design', poster:'/poster/bybit.jpeg', tags: ['bybit', 'all', 'motion'] },
-    { src: '/iphone/iphone.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', poster:'/poster/iphone15.jpeg', tags: ['iphone', 'all', 'motion'] }, 
+     
   ];
 
   const [isMobile, setIsMobile] = useState(false);
@@ -1415,6 +1418,8 @@ export default function Home(){
                   <Iphone key="iphone" className="col-span-full"/>
                 ) : selectedWork === 'nike' ? (
                   <Nike key="nike" className="col-span-full"/>
+                ) : selectedWork === 'leica' ? (
+                  <Leica key="leica" className="col-span-full"/>
                 ) : selectedWork === 'bestwork' ? (
                   <BestWorkPage key="bestwork" className="col-span-full" setSelectedWork={setSelectedWork} setHoveredWork={setHoveredWork}/>
                 ) : (
@@ -1434,7 +1439,7 @@ export default function Home(){
                       onClick={() => { 
                         const workTags = 
                         ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'iphone', '3d',
-                          'travelbig', 'lounge', 'hemsaker', 'ispy', 'jolli', 'uniqlo1', 'uniqlo2', 'oneshow', 'samsung', 
+                          'travelbig', 'lounge', 'hemsaker', 'ispy', 'jolli', 'uniqlo1', 'uniqlo2', 'oneshow', 'samsung', 'leica', 
                           'nike'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));
                         if (matchedWork) {
