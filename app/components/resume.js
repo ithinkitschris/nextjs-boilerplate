@@ -189,7 +189,7 @@ export default function Resume({ className = "", showNav }) {
                         <Image
                         src='/profile/profile.jpg'
                         alt=""
-                        className="transform scale-100 translate-y-2"
+                        className="transform scale-105 translate-y-4"
                         layout="fill"
                         objectFit="cover"
                         />
