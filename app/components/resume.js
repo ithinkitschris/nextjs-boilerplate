@@ -189,14 +189,14 @@ export default function Resume({ className = "", showNav }) {
                         <Image
                         src='/profile/profile.jpg'
                         alt=""
-                        className="transform scale-110 translate-y-2"
+                        className="transform scale-100 translate-y-2"
                         layout="fill"
                         objectFit="cover"
                         />
                     </motion.div>
 
                     {/* Mobile Background Glow */}
-                    {/* <motion.img src='/profile/profile.jpg' className="absolute -z-50 blur-[150px] mt-0 saturate-200 w-full opacity-0 dark:opacity-100"/> */}
+                    <motion.img src='/profile/profile.jpg' className="absolute -z-50 blur-[150px] saturate-200 opacity-0 dark:opacity-100 overflow-x-hidden"/>
 
                     {/* Details */}
                     <motion.div
