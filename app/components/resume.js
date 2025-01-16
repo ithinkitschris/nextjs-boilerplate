@@ -196,7 +196,7 @@ export default function Resume({ className = "", showNav }) {
                     </motion.div>
 
                     {/* Mobile Background Glow */}
-                    <motion.img src='/profile/profile.jpg' className="absolute -z-50 blur-[150px] saturate-200 opacity-0 dark:opacity-100 overflow-x-hidden"/>
+                    {/* <motion.img src='/profile/profilelowres.jpg' className="absolute -z-50 blur-2xl saturate-200 opacity-0 dark:opacity-100"/> */}
 
                     {/* Details */}
                     <motion.div
@@ -248,7 +248,7 @@ export default function Resume({ className = "", showNav }) {
                 </div>
 
                 {/* Desktop Container */}
-                <div className="col-span-full -ml-2 mb-10 border-0 hidden md:block relative w-full h-[75vh]">
+                <div className="col-span-full -ml-2 mb-10 border-0 hidden lg:block relative w-full h-[75vh]">
                     
                     {/* Image */}
                     <motion.img src='/profile/profilelandscape2.jpg'
