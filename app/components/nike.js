@@ -83,7 +83,7 @@ useEffect(() => {
 
             {/* Banner Video */}
             <motion.video src="/nike/trailer1.mp4" 
-            className="col-span-full md:col-span-2 shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="col-span-full md:col-span-2 shadow-standard rounded-lg w-full h-screen/1.5 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/nikepage1.png'
