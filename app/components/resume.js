@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect, } from "react";
 import Image from "next/image";
+import BestWorkPage from "./bestwork";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 
 
@@ -92,9 +93,6 @@ export default function Resume({ className = "", showNav }) {
     const [showSentosa, setShowSentosa] = useState(false);
     const [showKinetic, setShowKinetic] = useState(false);
     const [showFreelance, setShowFreelance] = useState(false);
-
-
-
 
     const toggleShort = () => {
         setShowShort((prevState) => !prevState);
@@ -206,10 +204,6 @@ export default function Resume({ className = "", showNav }) {
                         {/* Circle Header */}
                         <h1 className="flex items-center justify-center -ml-2 border-1 border-[#e9e9e9] text-[#e9e9e9] dark:text-white
                         rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
-                        
-                        {/* Script Header */}
-                        {/* <h1 className="flex items-center justify-start -rotate-2
-                        rounded-full tracking-tighter whitespace-nowrap text-2xl -ml-1.5 font-script mb-2">Senior Creative</h1> */}
 
                         Based in New York City
                         <span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide">{timeNyc}</span>
@@ -220,7 +214,7 @@ export default function Resume({ className = "", showNav }) {
                 </div> 
 
                 {/* Mobile Container */}
-                <div className="flex-1 lg:mb-10 border-0 lg:hidden">
+                <div className="flex-1 lg:mb-10 border-0 lg:hidden -mb-10">
 
                     {/* Mobile Subheader */}
                     <motion.h1 
@@ -228,27 +222,26 @@ export default function Resume({ className = "", showNav }) {
                     animate={{rotate:-4}}
                     variants={animateInChild}>
                     
-                        <p className="">And here are three <span className="ml-28 whitespace-nowrap">things about me:</span></p>
+                        <p className="">And here are five <span className="ml-28 whitespace-nowrap">pieces of work</span></p>
 
                     </motion.h1>
 
                     {/* Mobile Three Things */}
-                    <motion.div 
+                    {/* <motion.div 
                     className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-14" 
                     variants={animateInChild}>
-                        {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                         <p className="text-[22px]  tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2 ml-1">1</span> I don&apos;t take anything too seriously.</p>
                         <p className="text-xxs ml-2.5 opacity-35 mb-14 tracking-normal font-light"></p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">2</span> I aim to have fun in whatever I do.</p>
                         <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">3</span> I am all about craft.</p>
                         <p className="text-xxs ml-2.5 opacity-35 mb-10 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
-                    </motion.div>
+                    </motion.div> */}
 
                 </div>
 
                 {/* Desktop Container */}
-                <div className="col-span-full -ml-2 mb-10 border-0 hidden lg:block relative w-full h-[75vh]">
+                <div className="col-span-full -ml-2 mb-0 border-0 hidden lg:block relative w-full h-[75vh]">
                     
                     {/* Image */}
                     <motion.img src='/profile/profilelandscape2.jpg'
@@ -344,6 +337,8 @@ export default function Resume({ className = "", showNav }) {
                         </motion.div> */}
                     </div>
                 </div>
+
+                <BestWorkPage/>
 
                 {/* Desktop Background Glow */}
                 <motion.img src='/profile/profilelandscape2.jpg' className="hidden md:block absolute -z-10 blur-3xl -ml-24 mt-10 saturate-200 w-full opacity-0 dark:opacity-100"
