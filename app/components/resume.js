@@ -206,10 +206,6 @@ export default function Resume({ className = "", showNav }) {
                         {/* Circle Header */}
                         <h1 className="flex items-center justify-center -ml-2 border-1 border-[#e9e9e9] text-[#e9e9e9] dark:text-white
                         rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
-                        
-                        {/* Script Header */}
-                        {/* <h1 className="flex items-center justify-start -rotate-2
-                        rounded-full tracking-tighter whitespace-nowrap text-2xl -ml-1.5 font-script mb-2">Senior Creative</h1> */}
 
                         Based in New York City
                         <span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide">{timeNyc}</span>
@@ -281,35 +277,34 @@ export default function Resume({ className = "", showNav }) {
                             <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
                             <p className="text-xxs ml-[16px] opacity-35 mb-14 tracking-normal font-light"></p>
                             <p className="text-[24px] tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in whatever I do.</p>
-                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[13px] w-1/3">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
+                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[1r4px] w-1/3">I coded and designed this website from ground-up on VScode with React and Next.js. <br/>Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
                             <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> I am all about craft.</p>
-                            <p className="text-xs ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
+                            <p className="text-xs mt-1 ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
                         </motion.div>
 
                         {/* Desktop Details Container */}
                         <motion.div className={`col-span-full flex justify-between px-5 pb-4`} layout>
-                           
-                           {/* Desktop Contact */} 
+
+                            {/* Details */}
+                            <motion.div
+                            className="text-[#e9e9e9] dark:text-white flex flex-col items-start self-end"
+                            variants={animateInChild}>
+
+                            {/* Circle Header */}
+                            <h1 className="flex items-center justify-center border-1 rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 whitespace-nowrap -ml-2">Senior Creative</h1>
+                            <p>Based in New York City<span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2 italic">{timeNyc}</span></p>
+                            <i className="-ml-0.5">From Singapore<span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span></i>
+                                
+                            </motion.div>
+
+                            {/* Desktop Contact */} 
                            <motion.div 
-                            className="z-50 tracking-tight text-white"
+                            className="z-50 tracking-tight text-white text-right"
                             variants={animateInChild}>
                                 <p className="mb-2 text-xl">Contact</p>
                                 <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
                                 <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
                                 <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
-                            </motion.div>
-
-                            {/* Details */}
-                            <motion.div
-                            className="text-[#e9e9e9] dark:text-white text-right flex flex-col items-end self-end"
-                            variants={animateInChild}>
-
-                            {/* Circle Header */}
-                            <h1 className="flex items-center justify-center border-1 border-[#e9e9e9] text-[#e9e9e9] dark:text-white
-                            rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 font-mono whitespace-nowrap">Senior Creative</h1>
-                            <p><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2 italic">{timeNyc}</span>Based in New York City</p>
-                            <i className="-ml-0.5"><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span>From Singapore</i>
-                                
                             </motion.div>
                         </motion.div>
 
@@ -346,8 +341,7 @@ export default function Resume({ className = "", showNav }) {
                 </div>
 
                 {/* Desktop Background Glow */}
-                <motion.img src='/profile/profilelandscape2.jpg' className="hidden md:block absolute -z-10 blur-3xl -ml-24 mt-10 saturate-200 w-full opacity-0 dark:opacity-100"
-                />
+                <motion.img src='/profile/profilelandscape2.jpg' className="hidden md:block absolute -z-10 blur-3xl -ml-24 mt-10 saturate-200 w-full opacity-0 dark:opacity-100"/>
 
             </div>
 

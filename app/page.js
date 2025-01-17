@@ -538,7 +538,7 @@ export default function Home(){
                   }}
                   >
 
-                  <div className="hidden md:block">My personal favorites</div>
+                  <div className="hidden md:block">Favorite works of mine</div>
                   <div className="block md:hidden">Favourites</div>
 
                 </motion.button>
@@ -674,14 +674,14 @@ export default function Home(){
 
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
-                    {/* <motion.button 
+                    <motion.button 
                     className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('edit');
                       toggleNav('false');
                       toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>03 </span>
-                      Edit</motion.button> */}
+                      Video Editing</motion.button>
 
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
@@ -695,14 +695,14 @@ export default function Home(){
                       }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>05 </span>
                       Photography</motion.button>
 
-                    <motion.button 
+                    {/* <motion.button 
                     className="text-left text-foreground font-normal mt-1 mb-3 px-5 whitespace-nowrap"
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('website');
                       toggleNav('false');
                       toggleWork('website');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
-                      Interaction Design</motion.button>                      
+                      Interaction Design</motion.button>                       */}
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
@@ -832,7 +832,7 @@ export default function Home(){
                     toggleWork('photography');
                     }}>Photography</motion.button>
                     
-                  <motion.button 
+                  {/* <motion.button 
                   className={`hover:text-foreground text-left md:mr-8
                     ${selectedWork.includes('ixd') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
@@ -843,7 +843,7 @@ export default function Home(){
                   onClick={() => {
                     toggleTag('clear');
                     setSelectedTags([]);
-                    toggleWork('website');}}>Interaction Design</motion.button>
+                    toggleWork('website');}}>Interaction Design</motion.button> */}
 
                   <motion.button 
                   className={`hover:text-foreground text-left md:mr-8
@@ -1421,7 +1421,7 @@ export default function Home(){
                 ) : selectedWork === 'leica' ? (
                   <Leica key="leica" className="col-span-full"/>
                 ) : selectedWork === 'bestwork' ? (
-                  <BestWorkPage key="bestwork" className="col-span-full" setSelectedWork={setSelectedWork} setHoveredWork={setHoveredWork}/>
+                  <BestWorkPage key="bestwork" className="col-span-full w-full" setSelectedWork={setSelectedWork} setHoveredWork={setHoveredWork}/>
                 ) : (
                   filteredVideos.map((video) => (
                   
