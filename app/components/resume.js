@@ -347,18 +347,19 @@ export default function Resume({ className = "", showNav }) {
 
             {/* Mobile Brands Container */}
             <h1 className="mt-4 mb-4 font-medium col-span-full text-xl px-5 md:hidden" key='aiya'>Worked with:</h1>
-            <motion.div className="col-span-full w-full px-4 mix-blend-difference mb-12 grid grid-cols-4 items-center gap-4 opacity-60 md:hidden" layout key='whatever'>
+            <motion.div className="col-span-full w-full px-4 mix-blend-difference mb-12 grid grid-cols-4 items-center gap-5 opacity-60 md:hidden" layout key='whatever'>
                 <img src='/brandlogos/sia.png' className="w-[90px] h-[30px] object-cover"/>
                 <img src='/brandlogos/asm.png' className="w-[110px] h-[30px] scale-120 object-cover"/>
                 <img src='/brandlogos/ikea.png' className="w-[85px] h-[25px] scale-75 object-cover"/>
                 <img src='/brandlogos/samsung.png' className="w-[95px] h-[23px] object-cover"/>
                 <img src='/brandlogos/uniqlo.png' className="w-[80px] h-[32px] object-cover"/>
                 <img src='/brandlogos/ghibli.png' className="w-[100px] h-[35px] scale-110 object-cover"/>
-                <img src='/brandlogos/nike.png' className="w-[75px] h-[30px] object-cover"/>
-                {/* <img src='/brandlogos/sc.png' className="w-[80px] h-[35px]  object-cover"/> */}
-                {/* <img src='/brandlogos/stb.png' className="w-[90px] h-[30px] object-cover"/> */}
+                <img src='/brandlogos/nike.png' className="w-[75px] h-[28px] object-cover"/>
+                <img src='/brandlogos/teamlab.png' className="w-[84px] h-[18px] object-cover"/>
+                <img src='/brandlogos/sc.png' className="w-[80px] h-[30px]  object-cover"/>
+                <img src='/brandlogos/stb.png' className="w-[90px] h-[30px] object-cover"/>
                 <img src='/brandlogos/mckinsey.png' className="w-[90px] h-[30px] object-cover"/>
-                {/* <img src='/brandlogos/jollibee.png' className="w-[80px] h-[28px] object-cover"/> */}
+                <img src='/brandlogos/jollibee.png' className="w-[78px] h-[26px] object-cover"/>
             </motion.div>
 
             {/* Mobile FAQ Button Row */}
