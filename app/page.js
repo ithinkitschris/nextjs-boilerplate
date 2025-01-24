@@ -670,7 +670,7 @@ export default function Home(){
                       toggleTag('motion');
                       toggleNav('false');
                       toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>02 </span>
-                      Motion</motion.button>
+                      Motion Design</motion.button>
 
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
