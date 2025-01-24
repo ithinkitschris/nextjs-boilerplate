@@ -58,15 +58,15 @@ export default function RootLayout({ children }) {
         <main className="">{children}</main>
 
         <div 
-          className="fixed bottom-4 left-2 inset-x-0 mx-auto z-50 md:w-200 flex justify-center"
+          className="fixed bottom-6 left-2 inset-x-0 mx-auto z-50 md:w-200 flex justify-center"
           onMouseEnter={() => setIsFooterHovered(true)}
           onMouseLeave={() => setIsFooterHovered(false)}
         >
           <div
-            className={`transition-all duration-300 text-center backdrop-blur-sm rounded-full border-1 whitespace-nowrap tracking-tighter text-xs font-medium
+            className={`transition-all duration-300 text-center backdrop-blur-sm rounded-full border-1 whitespace-nowrap tracking-tighter text-xs font-
               ${isFooterHovered 
                 ? ' md:w-44 md:bg-foreground md:dark:bg-transparent md:border-foreground md:text-white md:dark:border-white cursor-pointer md:scale-110' 
-                : ' text-black/30 md:text-black/40 dark:text-white/35 md:dark:text-white/60 w-80 border-transparent scale-100'}`}
+                : ' text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60 w-80 border-transparent scale-100'}`}
           >
             {isFooterHovered
               ? <Link href='https://ithinkitschris.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f'
@@ -82,8 +82,8 @@ export default function RootLayout({ children }) {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     className="w-2.5 h-2.5 mt-0.5 ml-0.5">
-                    <path d="M7 1717 7" />
-                    <path d="M7 7h10v10" />
+                    <path className='opacity-0' d="M6 17L15 7"/>
+                    <path d="M4 7h10v10"/>
                   </svg>
                 </div>}
           </div>

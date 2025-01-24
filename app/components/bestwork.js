@@ -427,8 +427,8 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </motion.div>
 
                 <motion.video
-                src="/jollieverafter/cover_1.mp4"
-                className="rounded-2xl md:rounded-r-3xl w-full h-96 md:group-hover:h-[850px] object-cover relative right-0 col-span-full md:col-span-6 
+                src="/jollieverafter/favpagecover.mp4"
+                className="rounded-2xl md:rounded-r-3xl w-full h-full md:group-hover:h-[850px] object-cover relative right-0 col-span-full md:col-span-6 
                 transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
                 autoPlay
                 muted

@@ -233,12 +233,12 @@ export default function Resume({ className = "", showNav }) {
                     className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-14" 
                     variants={animateInChild}>
                         {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
-                        <p className="text-[22px]  tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2 ml-1">1</span> I don&apos;t take anything too seriously.</p>
+                        <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2 ml-1">1</span> I don&apos;t take anything too seriously.</p>
                         <p className="text-xxs ml-2.5 opacity-35 mb-14 tracking-normal font-light"></p>
-                        <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">2</span> I aim to have fun in whatever I do.</p>
-                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">I coded and designed this website from ground-up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
+                        <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">2</span> I aim to have fun in everything I do.</p>
+                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">I coded and designed this website from ground up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">3</span> I am all about craft.</p>
-                        <p className="text-xxs ml-2.5 opacity-35 mb-10 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
+                        <p className="text-xxs ml-2.5 opacity-35 mb-10 tracking-normal font-light">Truly. I do hope this comes across as you peruse my work.</p>
                     </motion.div>
 
                 </div>
@@ -351,7 +351,7 @@ export default function Resume({ className = "", showNav }) {
                 <img src='/brandlogos/sia.png' className="w-[90px] h-[30px] object-cover"/>
                 <img src='/brandlogos/asm.png' className="w-[110px] h-[30px] scale-120 object-cover"/>
                 <img src='/brandlogos/ikea.png' className="w-[85px] h-[25px] scale-75 object-cover"/>
-                <img src='/brandlogos/samsung.png' className="w-[95px] h-[23px] object-cover"/>
+                <img src='/brandlogos/samsung.png' className="w-[95px] h-[20px] object-cover"/>
                 <img src='/brandlogos/uniqlo.png' className="w-[80px] h-[32px] object-cover"/>
                 <img src='/brandlogos/ghibli.png' className="w-[100px] h-[35px] scale-110 object-cover"/>
                 <img src='/brandlogos/nike.png' className="w-[75px] h-[28px] object-cover"/>
@@ -439,7 +439,7 @@ export default function Resume({ className = "", showNav }) {
                         layout="position">
                             <p className="mb-3 font-script text-sm">Who</p>
                             <p className="mb-3">Born and raised in sunny <i className="mr-0.5 ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, he finds himself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
-                            <p>With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in creating visually compelling work across various mediums.</p>
+                            <p>With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in crafting visually compelling work across various mediums.</p>
                         </motion.div>
 
                         <motion.div 
@@ -549,8 +549,8 @@ export default function Resume({ className = "", showNav }) {
                             <p className="mb-3">It all started from this very film. I remember the first time I watched it–it was very much a lightbulb moment for me. I was a student pursuing Communication Design then, a freshman back in 2014.</p>
                             <p className="mb-3">It was at a school-wide convention, the entire design school, that is. We were in a massive auditorium, the director of our school played the film for all to watch on a screen that could&apos;ve possibly been what is two floors high.</p>
                             <p className="mb-3">That was the first time I had watched anything like that. In retrospect, the message conveyed in the film likely didn&apos;t even register within me. But the execution absolutely did, even though the concept of Motion Graphics couldn&apos;t be more foreign to me then.</p>
-                            <p className="mb-3">Serendipitously, I found myself in a class on Motion Graphics a few months later, and I daresay it all intuitively clicked within me the first time I opened After Effects. It set me down a manic path driven by passion for crafting visuals that engaged by movement.</p>
-                            <p className="mb-3">With a combination of sheer luck and my skillset in Motion Graphics, I found myself with a foot in the Advertising industry as a young creative. After 8 years, and as I ever fervently sought the next step throughout that led me from starting out as a Motion Designer to eventually being a Creative Lead; I found myself with the startling ability to tell a story behind my craft. </p>
+                            <p className="mb-3">Serendipitously, I found myself in a class on Motion Graphics a few months later, and I daresay it all intuitively clicked within me the first time I opened After Effects. It set me down a path driven by manic passion for crafting visuals that engaged by movement.</p>
+                            <p className="mb-3">With a combination of sheer luck and my skillset in Motion Graphics, I found myself with a foot in the Advertising industry as a young creative. After 8 years, and as I ever fervently sought the next step throughout that led me from starting out as a Motion Designer to eventually being a Creative Lead; I found myself with a startling ability to tell a story behind my craft.</p>
                             <p className="mb-3">One thing that remained absolute however, was that I never stopped <i>doing</i>. Just because I found myself an Art Director, didn’t mean that I no longer needed to get my hands dirty with Illustrator and After Effects. <i className="opacity-50 mr-1.5 hidden">(along with a disproportionate amount of Powerpoint, Keynote and Teams).</i> Crafting was the one North Star that got me where I was, and kept me doing what I did, and I wasn’t about to leave that behind.</p>
                             <p className="mb-3">Every piece of work on this site went through a thousand no&apos;s for the final yes. It was crafted amidst busyness, with focus and the aim for perfection <i className="opacity-50 mr-1.5">(not that I personally believe in perfection; I don&apos;t).</i>
                             As such, the decision to keep as many of my pieces of work on my portfolio is a deliberate one; this is my journey as a creative.</p>
@@ -695,22 +695,24 @@ export default function Resume({ className = "", showNav }) {
                     variants={dropdown}>
                         <h1 className="mt-8 text-lg">Curriculum</h1>
                         <div className="">
-                            <p className="mt-4">Research Methodologies</p>
+                            <p className="mt-4">Research Methodology</p>
                             <p>Service Design</p>
+                            <p>Inclusive Design</p>
                             <p>UX Content Writing</p>
+                            <p>Framing User Experiences</p>
                             <p>Programming <i>(C, Python, JavaScript)</i></p>
                             <p>Human Interaction & Ergonomics</p>
+                            <p>Intellectual Property & the Law</p>
                             <p>Physical Computing</p>
+                            <p>Smart Objects</p>
+                            <p>Game Design</p>
+
                         </div>
 
                         <div className=" text-black/25 dark:text-white/25">
-                            <p className="mt-0">Inclusive Design</p>
-                            <p>Inclusive Design II</p>
+                            <p className="mt-0">Inclusive Design II</p>
                             <p>Spatial Computing</p>
                             <p>Advanced Fundamentals of UX</p>
-                            <p>Intellectual Property & the Law</p>
-                            <p>Framing User Experiences</p>
-                            <p>Smart Objects</p>
                             <p>Professional Practices</p>
                             <p>Digital Accessibility</p>
                             <p>Design for Cities</p>
