@@ -63,9 +63,9 @@ export default function RootLayout({ children }) {
           onMouseLeave={() => setIsFooterHovered(false)}
         >
           <div
-            className={`transition-all duration-300 text-center backdrop-blur-sm rounded-full border-1 whitespace-nowrap tracking-tighter text-xs font-
+            className={`transition-all duration-300 text-center backdrop-blur-sm rounded-full border-1 whitespace-nowrap tracking-tight text-xs font-
               ${isFooterHovered 
-                ? ' md:w-44 md:bg-foreground md:dark:bg-transparent md:border-foreground md:text-white md:dark:border-white cursor-pointer md:scale-110' 
+                ? ' w-44 md:bg-foreground md:dark:bg-transparent md:border-foreground md:text-white md:dark:border-white cursor-pointer md:scale-110' 
                 : ' text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60 w-80 border-transparent scale-100'}`}
           >
             {isFooterHovered

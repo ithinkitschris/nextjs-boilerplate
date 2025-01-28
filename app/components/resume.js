@@ -276,10 +276,10 @@ export default function Resume({ className = "", showNav }) {
                             {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                             <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
                             <p className="text-xxs ml-[16px] opacity-35 mb-14 tracking-normal font-light"></p>
-                            <p className="text-[24px] tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in whatever I do.</p>
+                            <p className="text-[24px] tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in everything I do.</p>
                             <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[1r4px] w-1/3">I coded and designed this website from ground-up on VScode with React and Next.js. <br/>Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
                             <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> I am all about craft.</p>
-                            <p className="text-xs mt-1 ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope ths comes across as you peruse my work.</p>
+                            <p className="text-xs mt-1 ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope this comes across as you peruse my work.</p>
                         </motion.div>
 
                         {/* Desktop Details Container */}
@@ -305,6 +305,7 @@ export default function Resume({ className = "", showNav }) {
                                 <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
                                 <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
                                 <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
+                                <p className="">Resume – <a href="/resume/resume.pdf" download="Chris Leow.pdf" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Here!</a></p>
                             </motion.div>
                         </motion.div>
 
@@ -617,6 +618,8 @@ export default function Resume({ className = "", showNav }) {
                     <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
                     <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
                     <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
+                    <p className="">Resume – <a href="/resume/resume.pdf" download="Chris Leow.pdf" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Here!</a></p>
+                    
             </motion.div>
             
             {/* Desktop Brands Container */}
