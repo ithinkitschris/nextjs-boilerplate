@@ -305,7 +305,7 @@ export default function Resume({ className = "", showNav }) {
                                 <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
                                 <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
                                 <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
-                                <p className="">Resume – <a href="/resume/resume.pdf" download="Chris Leow.pdf" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Here!</a></p>
+                                <p className="">Resume – <a href="/resume/Chris Leow.pdf" download="Chris Leow.pdf" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Here!</a></p>
                             </motion.div>
                         </motion.div>
 
@@ -618,7 +618,7 @@ export default function Resume({ className = "", showNav }) {
                     <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
                     <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
                     <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
-                    <p className="">Resume – <a href="/resume/resume.pdf" download="Chris Leow.pdf" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Here!</a></p>
+                    <p className="">Resume – <a href="/resume/Chris Leow.pdf" download="Chris Leow.pdf" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Here!</a></p>
                     
             </motion.div>
             
