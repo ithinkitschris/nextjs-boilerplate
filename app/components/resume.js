@@ -271,7 +271,7 @@ export default function Resume({ className = "", showNav }) {
                         
                         {/* Desktop Three Things */}
                         <motion.div 
-                        className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-20" 
+                        className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-10" 
                         variants={animateInChild} layout="position">
                             {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                             <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>

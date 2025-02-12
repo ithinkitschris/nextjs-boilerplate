@@ -513,7 +513,7 @@ export default function Home(){
                     }
                   }}
                     >
-                  <span className="hidden md:block">Who am I?</span>
+                  <span className="hidden md:block">Who?</span>
                   <span className="block md:hidden">Who?</span>
                 </motion.button>
 
@@ -538,7 +538,7 @@ export default function Home(){
                   }}
                   >
 
-                  <div className="hidden md:block">Favorite works of mine</div>
+                  <div className="hidden md:block">Work</div>
                   <div className="block md:hidden">Favourites</div>
 
                 </motion.button>
@@ -567,7 +567,7 @@ export default function Home(){
                     }
                   }}>
 
-                  <span className="hidden md:block">Everything I&apos;ve got</span>
+                  <span className="hidden md:block">Archive</span>
                   <span className="block md:hidden">Work</span>
                   
                 </motion.button>
@@ -597,7 +597,7 @@ export default function Home(){
 
           {/* Desktop Navbar BG */}
           <div
-            className="hidden md:block fixed backdrop-blur-lg top-2 left-1/2 transform -translate-x-1/2 w-[480px] ml-[12px] rounded-full 
+            className="hidden md:block fixed backdrop-blur-lg top-2 left-1/2 transform -translate-x-1/2 w-[265px] ml-[12px] rounded-full 
             drop-shadow bg-background dark:bg-transparent z-20 h-[38px] border-b-1 border-white/30 dark:mix-blend-overlay"
           ></div>
 
