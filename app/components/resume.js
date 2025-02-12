@@ -234,9 +234,9 @@ export default function Resume({ className = "", showNav }) {
                     variants={animateInChild}>
                         {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2 ml-1">1</span> I don&apos;t take anything too seriously.</p>
-                        <p className="text-xxs ml-2.5 opacity-35 mb-14 tracking-normal font-light"></p>
+                        <p className="text-xxs ml-2.5 opacity-35 mb-14 tracking-normal font-light">A bold statement; but really.</p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">2</span> I aim to have fun in everything I do.</p>
-                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">I coded and designed this website from ground up on VScode with React and Next.js. Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
+                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">This website was coded and designed from scratch on VScode and JavaScript. Fun? Curiosity? Masochism? <i>Possibly.</i></p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">3</span> I am all about craft.</p>
                         <p className="text-xxs ml-2.5 opacity-35 mb-10 tracking-normal font-light">Truly. I do hope this comes across as you peruse my work.</p>
                     </motion.div>
@@ -275,11 +275,11 @@ export default function Resume({ className = "", showNav }) {
                         variants={animateInChild} layout="position">
                             {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                             <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
-                            <p className="text-xxs ml-[16px] opacity-35 mb-14 tracking-normal font-light"></p>
+                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tracking-normal font-light leading-[1r4px] w-1/3">A bold statement; but really.</p>
                             <p className="text-[24px] tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in everything I do.</p>
-                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tacking-normal font-light leading-[1r4px] w-1/3">I coded and designed this website from ground-up on VScode with React and Next.js. <br/>Fun? Curiosity? Masochism? <i>Food for thought.</i></p>
+                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tracking-normal font-light leading-[1r4px] w-1/3">This website was coded and designed from scratch on VScode and JavaScript.<br/>Fun? Curiosity? Masochism? <i>Possibly.</i></p>
                             <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> I am all about craft.</p>
-                            <p className="text-xs mt-1 ml-[16px] opacity-35 mb-11 tracking-normal font-light">Truly. I do hope this comes across as you peruse my work.</p>
+                            <p className="text-xs mt-1 ml-[16px] opacity-35 mb-11 tracking-normal font-light">I do hope this comes across as you peruse my work.</p>
                         </motion.div>
 
                         {/* Desktop Details Container */}
@@ -357,10 +357,10 @@ export default function Resume({ className = "", showNav }) {
                 <img src='/brandlogos/ghibli.png' className="w-[100px] h-[35px] scale-110 object-cover"/>
                 <img src='/brandlogos/nike.png' className="w-[75px] h-[28px] object-cover"/>
                 <img src='/brandlogos/teamlab.png' className="w-[84px] h-[18px] object-cover"/>
-                <img src='/brandlogos/sc.png' className="w-[80px] h-[30px]  object-cover"/>
+                {/* <img src='/brandlogos/sc.png' className="w-[80px] h-[30px]  object-cover"/>
                 <img src='/brandlogos/stb.png' className="w-[90px] h-[30px] object-cover"/>
                 <img src='/brandlogos/mckinsey.png' className="w-[90px] h-[30px] object-cover"/>
-                <img src='/brandlogos/jollibee.png' className="w-[78px] h-[26px] object-cover"/>
+                <img src='/brandlogos/jollibee.png' className="w-[78px] h-[26px] object-cover"/> */}
             </motion.div>
 
             {/* Mobile FAQ Button Row */}
@@ -576,29 +576,41 @@ export default function Resume({ className = "", showNav }) {
             className="lg:flex gap-5 w-full col-span-full hidden">
                 
                 <motion.div 
-                className="mb-10 px-5 md:px-0 flex-1 mr-10"
+                className="mb-10 px-5 md:px-0 flex-1 mr-10 group"
                 variants={animateInChild}
                 layout="position">
                     <p className="mb-3 font-script text-sm">Who ?</p>
-                    <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, he finds himself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
-                    <p>With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in creating visually compelling work across various mediums.</p>
+                    <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">the romanticized image of beret-wearing, palette-wielding </span>artists. 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"> Now, </span> he finds himself living the surreal reality of conceptualizing, designing, and directing what is essentially art for the world.</p>
+                    <p><span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">With a </span>fervor for craft and a meticulous eye for finesse, 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"> he takes a possibly </span>unhealthy pride in crafting visually compelling work across various mediums.</p>
                 </motion.div>
 
                 <motion.div 
-                className="mb-10 px-5 md:px-0 flex-1 mr-10"
+                className="mb-10 px-5 md:px-0 flex-1 mr-10 group"
                 variants={animateInChild}
                 layout="position">
                     <p className="mb-3 font-script text-sm">What ?</p>
-                    As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; he finds himself with eight years of experience in the Advertising and Design industry–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo. 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">As a </span>Multidisciplinary Creative and formerly the Creative Lead at ArtScience Museum in Singapore; 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"> he finds himself with </span> 
+                     eight years of experience in Advertising and Design
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">–having notably worked on multiple </span>brand campaigns 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"> for</span> Singapore Airlines as an Art Director 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"> and</span> global brands 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"> the likes of</span> IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo. 
                 </motion.div>
 
                 <motion.div 
-                className="mb-8 px-5 md:px-0 flex-1 mr-10"
+                className="mb-8 px-5 md:px-0 flex-1 mr-10 group"
                 variants={animateInChild}
                 layout="position">
                     <p className="mb-3 font-script text-sm">And ?</p>
-                    <p className="mb-3">In his spare time <i>(which, realistically, isn&apos;t much)</i>, he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
-                    <p className="">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, though he wouldn&apos;t go so far as to call it interior design.</p>
+                    <p className="mb-3">In his spare time 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"><i>(which, realistically, isn&apos;t much)</i>, he does... even more work, but for himself—</span>creating content through photography, videography, editing and motion design.</p>
+                    <p className=""><span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">When he is finally, actually, not working, you will find him </span>
+                    thrifting for furniture 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">or, for a more colloquial term, stooping </span>on the streets of New York City. He does love building his living space up, though he wouldn&apos;t go so far as to call it interior design.</p>
                 </motion.div>
             </div>
 
