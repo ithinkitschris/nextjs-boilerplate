@@ -57,22 +57,32 @@ export default function RootLayout({ children }) {
         {/* <SearchMenu /> */}
         <main className="">{children}</main>
 
+        {/* <div 
+          className="fixed bottom-6 left-6 z-50 flex justify-center text-right backdrop-blur-sm rounded-full whitespace-nowrap tracking-tight text-xs text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60">
+            4.12
+        </div> */}
+
         <div 
-          className="fixed bottom-6 left-2 inset-x-0 mx-auto z-50 md:w-200 flex justify-center"
+          className="hidden md:flex fixed bottom-6 right-6 z-50 justify-center text-right backdrop-blur-sm rounded-full whitespace-nowrap tracking-tight text-[8.5pt] text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60">
+            Last meddled with on 02.14.25 for the 215th time.
+        </div>
+
+        <div 
+          className="fixed bottom-6 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center"
           onMouseEnter={() => setIsFooterHovered(true)}
           onMouseLeave={() => setIsFooterHovered(false)}
         >
           <div
-            className={`transition-all duration-300 text-center backdrop-blur-sm rounded-full border-1 whitespace-nowrap tracking-tight text-xs font-
+            className={`transition-all duration-300 text-center backdrop-blur-sm rounded-full border-1 whitespace-nowrap tracking-tight text-[8.5pt]
               ${isFooterHovered 
                 ? ' w-44 md:bg-foreground md:dark:bg-transparent md:border-foreground md:text-white md:dark:border-white cursor-pointer md:scale-110' 
-                : ' text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60 w-80 border-transparent scale-100'}`}
+                : ' text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60 ml-2.5 w-88 border-transparent scale-100'}`}
           >
             {isFooterHovered
               ? <Link href='https://ithinkitschris.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f'
               target="blank"
-              rel="noopener noreferrer">Read the Documentation here.</Link>
-              : <div className="inline-flex">Website masochistically designed and coded by yours truly. 
+              rel="noopener noreferrer">Read my documentation here.</Link>
+              : <div className="inline-flex ml-1">Website masochistically designed and coded with React and Next.js.
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="2 2 20 20"
@@ -87,6 +97,7 @@ export default function RootLayout({ children }) {
                   </svg>
                 </div>}
           </div>
+          
         </div>
       </body>
     </html>

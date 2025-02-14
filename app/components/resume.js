@@ -77,6 +77,7 @@ export default function Resume({ className = "", showNav }) {
         return () => clearInterval(timer);
     }, []);
 
+    const [showAI, setShowAI] = useState(false);
     const [showShort, setShowShort] = useState(false);
     const [showLong, setShowLong] = useState(false);
     const [showCurriculum, setShowCurriculum] = useState(false);
@@ -94,7 +95,9 @@ export default function Resume({ className = "", showNav }) {
     const [showFreelance, setShowFreelance] = useState(false);
 
 
-
+    const toggleAI = () => {
+        setShowAI((prevState) => !prevState);
+    };
 
     const toggleShort = () => {
         setShowShort((prevState) => !prevState);
@@ -234,11 +237,11 @@ export default function Resume({ className = "", showNav }) {
                     variants={animateInChild}>
                         {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2 ml-1">1</span> I don&apos;t take anything too seriously.</p>
-                        <p className="text-xxs ml-2.5 opacity-35 mb-14 tracking-normal font-light">A bold statement; but really.</p>
+                        <p className="text-xxs ml-2.5 opacity-35 mb-11 tracking-normal font-light">A bold opening statement; I know.</p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">2</span> I aim to have fun in everything I do.</p>
-                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">This website was coded and designed from scratch on VScode and JavaScript. Fun? Curiosity? Masochism? <i>Possibly.</i></p>
-                        <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">3</span> I am all about craft.</p>
-                        <p className="text-xxs ml-2.5 opacity-35 mb-10 tracking-normal font-light">Truly. I do hope this comes across as you peruse my work.</p>
+                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">{"<p>I designed and coded this site from ground up.<br/>"}<br/>{"Fun? Curiosity? Self-hatred? <i>Possibly.</i></p>"}</p>
+                        <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">3</span> Craft. Craft. Craft.</p>
+                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">Craft means everything to me. I have to <i>do</i>.<br/>I hope this comes across as you peruse my work.</p>
                     </motion.div>
 
                 </div>
@@ -271,15 +274,15 @@ export default function Resume({ className = "", showNav }) {
                         
                         {/* Desktop Three Things */}
                         <motion.div 
-                        className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-10" 
+                        className="mb-12 lg:-mb-10 px-5 md:px-0 ml-1 mt-10" 
                         variants={animateInChild} layout="position">
                             {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                             <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
-                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tracking-normal font-light leading-[1r4px] w-1/3">A bold statement; but really.</p>
+                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tracking-normal font-light leading-[1r4px] w-1/3">A bold opening statement; I know.</p>
                             <p className="text-[24px] tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in everything I do.</p>
-                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tracking-normal font-light leading-[1r4px] w-1/3">This website was coded and designed from scratch on VScode and JavaScript.<br/>Fun? Curiosity? Masochism? <i>Possibly.</i></p>
-                            <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> I am all about craft.</p>
-                            <p className="text-xs mt-1 ml-[16px] opacity-35 mb-11 tracking-normal font-light">I do hope this comes across as you peruse my work.</p>
+                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tracking-normal font-light leading-[1r4px] w-1/3">{"<p>I designed and coded this site from ground up.<br/>"}<br/>{"Fun? Curiosity? Self-hatred? <i>Possibly.</i></p>"}</p>
+                            <p className="text-[24px] tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> Craft. Craft. Craft.</p>
+                            <p className="text-xs ml-[18px] mt-1 opacity-35 mb-11 tracking-normal font-light leading-[1r4px] w-1/3">Craft means everything to me. I have to <i>do</i>.<br/>I hope this comes across as you peruse my work.</p>
                         </motion.div>
 
                         {/* Desktop Details Container */}
@@ -388,6 +391,123 @@ export default function Resume({ className = "", showNav }) {
             variants={dropdown}
             className="lg:flex gap-5 w-full col-span-full">
 
+                {/* AI Toggle Bar */}
+                <motion.div className="lg:hidden flex justify-between mt-0 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-4 lg:mb-4 col-span-full w-full" 
+                onClick={toggleAI} 
+                key='AI' 
+                layout="position" 
+                variants={dropdownChild}
+                transition={{
+                    type: "spring",
+                    stiffness: 300, 
+                    damping: 26, 
+                    }}>
+
+                    <div 
+                    className={`flex items-center justify-center transition-non-color duration-200 w-[72px] border-foreground
+                    rounded-full tracking-tight text-base ${showAI ? 'border-1 scale-95' : ''}`}>
+                        For<span className="font-script tracking-tightest ml-1.5 relative top-0.5">AI</span>
+                    </div>
+
+                    <div 
+                    className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
+                    rounded-full mb-2 px-1`}>
+                    
+                    {showAI ? (
+                        <ChevronUpIcon className="h-4 w-4" />
+                    ) : (
+                        <ChevronDownIcon className="h-4 w-4" />
+                    )}
+                    </div>
+                </motion.div>
+
+                {/* AI Dropdown */}
+                {showAI && (
+                    <motion.div 
+                    key="dropdown-AI"
+                    initial="hidden"
+                    animate="show"
+                    layout="position"
+                    variants={dropdown}
+                    className="lg:flex gap-5 w-full col-span-full"
+                    transition={{
+                        type: "spring",
+                        stiffness: 300, 
+                        damping: 26, 
+                        }}>
+
+                        <motion.div 
+                        key="experience"
+                        className="mb-10 px-5 md:px-0 flex-1 mt-8"
+                        variants={dropdownChild}
+                        layout="position">
+                            <h1 className="mt-8 text-base font-script">Experience</h1>
+                                <div className="">
+                                    <p className="mt-4">Senior Creative</p>
+                                    <p>8+ Years of Experience</p>
+                                    <p>Design + Advertising</p>
+                                </div>
+                        </motion.div>
+
+                        <motion.div 
+                        key="skills"
+                        className="mb-10 px-5 md:px-0 flex-1 mt-8"
+                        variants={dropdownChild}
+                        layout="position">
+                            <h1 className="mt-8 text-base font-script">Skills</h1>
+                                <div className="grid grid-cols-3">
+                                    
+                                    <p className="mt-6">Creative Direction</p>
+                                    <p className="mt-6">Motion Design</p>
+                                    <p className="mt-6">Interaction Design</p>
+                                    <p>Video Editing</p>
+                                    <p>Photography</p>
+                                    <p>Content Creation</p>
+                                
+
+                                    <p className="mt-6">Photoshop</p>
+                                    <p className="mt-6">Illustrator</p>
+                                    <p className="mt-6">InDesign</p>
+                                    <p>Lightroom</p>
+                                    <p>Premiere Pro</p>
+                                    <p>After Effects</p>
+                                    <p>Figma</p>
+                                    <p>Blender</p>
+                                    <p>VSCode</p>
+                                    <p>JavaScript</p>
+                                    <p>Python</p>
+                                    <p>HTML</p>
+                                    <p>Tailwind CSS</p>
+                                    <p>React.js</p>
+                                    <p>Next.js</p>
+                                    
+                                </div>
+                        </motion.div>
+                        
+                        <motion.div 
+                        key="education"
+                        className="mb-10 px-5 md:px-0 flex-1 mt-8"
+                        variants={dropdownChild}
+                        layout="position">
+                            <h1 className="mt-8 text-base font-script">Education</h1>
+                                <div className="">
+                                    <p className="mt-4">MFA Interaction Design</p>
+                                    <p>School of Visual Arts</p>
+                                    <i>2024 – 2026</i>
+
+                                    <p className="mt-4">Diploma in Communication Design</p>
+                                    <p>Temasek Polytechnic</p>
+                                    <i>2013 – 2016</i>
+                                    
+                                </div>
+                        </motion.div>
+
+                        
+
+                    </motion.div>
+
+                )}
+
                 {/* Short Toggle Bar */}
                 <motion.div className="lg:hidden flex justify-between mt-0 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-3 lg:mb-4 col-span-full w-full" 
                 onClick={toggleShort} 
@@ -400,10 +520,16 @@ export default function Resume({ className = "", showNav }) {
                     damping: 26, 
                     }}>
 
-                    <div 
+                    {/* <div 
                     className={`flex items-center justify-center transition-non-color duration-200 w-[195px] border-foreground
                     rounded-full tracking-tight text-base ${showShort ? 'border-1 scale-95' : ''}`}>
                         The <span className="font-script tracking-tightest ml-2 mr-1 relative top-0.5">&apos;professional &apos;</span>  writeup.
+                    </div> */}
+
+                    <div 
+                    className={`flex items-center justify-center transition-non-color duration-200 w-[138px] border-foreground
+                    rounded-full tracking-tight text-base ${showShort ? 'border-1 scale-95' : ''}`}>
+                        For the <span className="font-script tracking-tightest ml-1.5 relative top-0.5">Recruiter</span>
                     </div>
 
                     <div 
@@ -449,7 +575,7 @@ export default function Resume({ className = "", showNav }) {
                         variants={dropdownChild}
                         layout="position">
                             <p className="mb-3 font-script text-sm">What</p>
-                            As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; he finds himself with eight years of experience in the Advertising and Design industry–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
+                            As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; he finds himself with eight years of experience in Advertising and Design–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
                         </motion.div>
 
                         <motion.div 
@@ -479,9 +605,10 @@ export default function Resume({ className = "", showNav }) {
                     }}>
 
                     <div 
-                    className={`flex items-center justify-center transition-non-color duration-200 w-[170px] border-foreground
+                    className={`flex items-center justify-center transition-non-color duration-200 w-[190px] border-foreground
                     rounded-full tracking-tight text-base ${showLong ? 'border-1 scale-95' : ''}`}>
-                        A <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">love letter</span>  to myself.
+                        {/* A <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">love letter</span>  to myself. */}
+                        For the <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">Hiring Manager</span>
                     </div>
 
                     <div 
@@ -553,7 +680,7 @@ export default function Resume({ className = "", showNav }) {
                             <p className="mb-3">Serendipitously, I found myself in a class on Motion Graphics a few months later, and I daresay it all intuitively clicked within me the first time I opened After Effects. It set me down a path driven by manic passion for crafting visuals that engaged by movement.</p>
                             <p className="mb-3">With a combination of sheer luck and my skillset in Motion Graphics, I found myself with a foot in the Advertising industry as a young creative. After 8 years, and as I ever fervently sought the next step throughout that led me from starting out as a Motion Designer to eventually being a Creative Lead; I found myself with a startling ability to tell a story behind my craft.</p>
                             <p className="mb-3">One thing that remained absolute however, was that I never stopped <i>doing</i>. Just because I found myself an Art Director, didn’t mean that I no longer needed to get my hands dirty with Illustrator and After Effects. <i className="opacity-50 mr-1.5 hidden">(along with a disproportionate amount of Powerpoint, Keynote and Teams).</i> Crafting was the one North Star that got me where I was, and kept me doing what I did, and I wasn’t about to leave that behind.</p>
-                            <p className="mb-3">Every piece of work on this site went through a thousand no&apos;s for the final yes. It was crafted amidst busyness, with focus and the aim for perfection <i className="opacity-50 mr-1.5">(not that I personally believe in perfection; I don&apos;t).</i>
+                            <p className="mb-3">Every piece of work on this site went through a thousand no&apos;s for the final yes. It was crafted amidst busyness, with focus and the aim for perfection <i className="opacity-50 mr-1.5">(not that I personally believe in the conventional understanding of perfection; I don&apos;t).</i>
                             As such, the decision to keep as many of my pieces of work on my portfolio is a deliberate one; this is my journey as a creative.</p>
                             <p className="mb-3 font-script text-sm"></p>
                             <p className="mb-6">Today, an entire decade later, as I sit here writing this, the very message of the film that started it all could not be more poignant. What was once the visuals that resonated so deeply, it is now the message that strikes a deeper chord:</p>
@@ -570,7 +697,7 @@ export default function Resume({ className = "", showNav }) {
                 )}
             </motion.div>
 
-            {/* Desktop FAQ */}
+            {/* Desktop Story */}
             <div 
             key='desktop'
             className="lg:flex gap-5 w-full col-span-full hidden">
@@ -607,7 +734,7 @@ export default function Resume({ className = "", showNav }) {
                 layout="position">
                     <p className="mb-3 font-script text-sm">And ?</p>
                     <p className="mb-3">In his spare time 
-                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"><i>(which, realistically, isn&apos;t much)</i>, he does... even more work, but for himself—</span>creating content through photography, videography, editing and motion design.</p>
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"><i> (which, realistically, isn&apos;t much)</i>,  he does... even more work, but for himself—</span>creating content through photography, videography, editing and motion design.</p>
                     <p className=""><span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">When he is finally, actually, not working, you will find him </span>
                     thrifting for furniture 
                     <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">or, for a more colloquial term, stooping </span>on the streets of New York City. He does love building his living space up, though he wouldn&apos;t go so far as to call it interior design.</p>
@@ -1538,7 +1665,13 @@ export default function Resume({ className = "", showNav }) {
                 )}
             </motion.div>
 
-            <div className={`${showFreelance ? 'h-[400px]' : 'h-[200px]'}`} key='whateverdude'/>
+            <div className={`${showFreelance ? 'h-[50px]' : 'h-[50px]'}`} key='whateverdude'/>
+
+            <div 
+                key='footer'
+                className="md:hidden mb-14 mx-auto z-50 justify-center text-center tracking-tight text-[8.5pt] text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60">
+                    Last meddled with on 02.14.25 for the 215th time.
+            </div>
             </AnimatePresence>    
         </motion.div>
     </>
