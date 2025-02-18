@@ -21,6 +21,7 @@ import Oneshow from './components/oneshow.js';
 import BestWorkPage from './components/bestwork.js';
 import Resume from './components/resume.js';
 import StreetPhotography from './components/street-photo.js';
+import Film from './components/film.js';
 import BBH from './components/bbh.js';
 import StressedLa from './components/stressed.js';
 import Unshackle from './components/unshackle.js';
@@ -1376,6 +1377,8 @@ export default function Home(){
                   <WebsitePage key="website" className="col-span-full"/>
                 ) : selectedWork === 'street' ? (
                   <StreetPhotography key="street" className="col-span-full"/>
+                ) : selectedWork === 'film' ? (
+                  <Film key="film" className="col-span-full"/>
                 ) : selectedWork === 'bbh' ? (
                   <BBH key="bbh" className="col-span-full"/>
                 ) : selectedWork === 'stressed' ? (
@@ -1440,7 +1443,7 @@ export default function Home(){
                         const workTags = 
                         ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'iphone', '3d',
                           'travelbig', 'lounge', 'hemsaker', 'ispy', 'jolli', 'uniqlo1', 'uniqlo2', 'oneshow', 'samsung', 'leica', 
-                          'nike'];
+                          'nike', 'film'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));
                         if (matchedWork) {
                           toggleTag('clear');
