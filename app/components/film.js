@@ -69,7 +69,7 @@ const Film = ({className}) => {
                 variants={animateInChild}
             /> */}
             <motion.img
-                src="/Photography/film/shanghai2.JPG"
+                src="/Photography/film/shanghai2.jpg"
                 alt="Description of Image 2"
                 className="col-span-3 h-full w-full object-cover rounded-lg"
                 variants={animateInChild}

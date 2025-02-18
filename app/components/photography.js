@@ -82,7 +82,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         
         <img 
             className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
-            src="/Photography/film/cover3.jpg"/>
+            src="/Photography/film/cover4.png"/>
 
         
         <div className="absolute top-0 left-0 right-0 h-120 bg-gradient-to-b from-black/90 to-transparent rounded-t-lg"></div>
