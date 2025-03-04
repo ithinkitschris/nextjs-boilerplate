@@ -1,7 +1,6 @@
 'use client';
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
 import DarkModeToggle from "./components/dark-mode-toggle";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -45,7 +44,6 @@ const modernLine = localFont({
 export default function RootLayout({ children }) {
 
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [isFooterHovered, setIsFooterHovered] = useState(false);
   const [changelog, setChangelog] = useState(false);
   const changelogRef = useRef(null);
 
@@ -138,7 +136,7 @@ const toggleDarkMode = () => {
               <div className="px-4">
 
                 <h1 className="font-medium text-base text-foreground">About this site</h1>
-                <p className="mt-2 leading-[130%]">Having being once told that my previous site on Squarespace was 'boy scout' for someone who takes pride in his craft, this site was thus designed and coded from ground up with React and Next.js by yours truly.</p>
+                <p className="mt-2 leading-[130%]">Having being once told that my previous site on Squarespace was &apos;boy scout&apos; for someone who takes pride in his craft, this site was thus designed and coded from ground up with React and Next.js by yours truly.</p>
                 <p className="mt-2 leading-[130%]">As I have had little to no experience with web dev prior to this, it was a conscious decision to document every step of the process from the start.</p>
                 <p className='mt-4 -ml-1.5 leading-[130%]'>
                   <a className="relative border-1 px-1.5 py-0.5 rounded-full border-black/30 dark:border-white/65 hover:bg-foreground hover:text-background transition-all" 
