@@ -98,9 +98,9 @@ export default function RootLayout({ children }) {
 
                 <p className='mt-4 text-foreground'>To do:</p>
                 <p className="mt-2 leading-4">#ShotOniPhone photography album.</p>
-                <p className="leading-4">'What I'm currently up to' section under the profile page.</p>
+                <p className="leading-4">&apos;What I&apos;m currently up to&apos; section under the profile page.</p>
                 <p className="leading-4">Prototype placing works under the mobile profile /intro page.</p>
-                <p className="leading-4">Rebuild the 'Portfolio Website' page.</p>
+                <p className="leading-4">Rebuild the &apos;Portfolio Website&apos; page.</p>
 
                 <p className='mt-4 text-foreground'>v217</p>
                 {/* <div className="mt-2 h-[0.5px] w-full bg-foreground opacity-25"></div> */}
