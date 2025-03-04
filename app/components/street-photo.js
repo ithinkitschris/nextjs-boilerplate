@@ -77,43 +77,45 @@ const StreetPhotography = ({className}) => {
         </div>
 
         {/* Full-Width Image */}
-        <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
+        <motion.div className="mt-1 md:mt-2 col-span-full mb-1" variants={animateInChild} >
             <img
             src="/Photography/street/new1.jpg"
             className="h-auto w-full object-cover rounded-lg"
             />
         </motion.div>
 
+        {/* Three Images Side by Side */}
+        <div className="grid grid-cols-6 col-span-full mb-1 mt-1 gap-1 lg:gap-2 h-auto">
+            <motion.img
+                src="/Photography/street/nyc02.jpg"
+                alt="Description of Image 3"
+                className="col-span-2 h-screen/3 md:h-auto w-auto object-cover rounded-lg shadow-lg hidden md:block"
+                variants={animateInChild}
+            />
+            <motion.img
+                src="/Photography/street/nyc06.JPG"
+                alt="Description of Image 3"
+                className="md:col-span-2 h-screen/3 md:h-auto w-full object-cover rounded-lg shadow-lg col-span-full"
+                variants={animateInChild}
+            />
+            <motion.img
+                src="/Photography/street/nyc05.JPG"
+                alt="Description of Image 3"
+                className="col-span-2 h-screen/3 md:h-auto w-full object-cover rounded-lg shadow-lg hidden md:block"
+                variants={animateInChild}
+            />
+        </div>
+
         
         {/* Full-Width Image */}
-        <motion.div className="col-span-full mb-1 lg:mb-2" variants={animateInChild} >
+        <motion.div className="col-span-full mb-1 mt-1 mb:mt-2 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/street/155.JPG"
             className="h-auto w-full object-cover rounded-lg"
             />
         </motion.div>
-
-        {/* Three Images Side by Side */}
-        {/* <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2 mb-2">
-            <motion.img
-                src="/Photography/street/245.jpg"
-                alt="Description of Image 3"
-                className="col-span-2 h-full w-auto object-cover rounded-lg"
-                variants={animateInChild}
-            />
-            <motion.img
-                src="/Photography/street/23.jpg"
-                alt="Description of Image 3"
-                className="col-span-2 h-full w-auto object-cover rounded-lg"
-                variants={animateInChild}
-            />
-            <motion.img
-                src="/Photography/street/21.jpg"
-                alt="Description of Image 3"
-                className="col-span-2 h-full w-auto object-cover rounded-lg"
-                variants={animateInChild}
-            />
-        </div> */}
+        
+        
 
         {/* Full-Width Image */}
         <motion.div className="col-span-full mb-1 lg:mb-2" variants={animateInChild} >
@@ -122,19 +124,20 @@ const StreetPhotography = ({className}) => {
             className="h-auto w-full object-cover rounded-lg"
             />
         </motion.div>
+        
 
         {/* Two Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2">
             <motion.img
                 src="/Photography/street/22.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 w-full w-full object-cover rounded-lg"
+                className="col-span-3 w-full object-cover rounded-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/street/21.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 w-full w-full object-cover rounded-lg"
+                className="col-span-3 w-full object-cover rounded-lg"
                 variants={animateInChild}
             />
         </div>
@@ -185,26 +188,7 @@ const StreetPhotography = ({className}) => {
                 variants={animateInChild}
             />
         </div>
-
-
-
-        
-
-        {/* Two Images Side by Side */}
-        <div className="grid grid-cols-6 col-span-full mt-1 md:mt-2 gap-1 lg:gap-2">
-            <motion.img
-                src="/Photography/street/13.jpg"
-                alt="Description of Image 3"
-                className="md:col-span-4 h-screen/3 md:h-full w-full object-cover rounded-lg shadow-lg col-span-full"
-                variants={animateInChild}
-            />
-            <motion.img
-                src="/Photography/street/new4.JPG"
-                alt="Description of Image 3"
-                className="col-span-2 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg hidden md:block"
-                variants={animateInChild}
-            />
-        </div>
+ 
 
         {/* Full-Width Image */}
         <motion.div className="mt-1 md:mt-2 col-span-full " variants={animateInChild} >
@@ -271,6 +255,22 @@ const StreetPhotography = ({className}) => {
             />
         </motion.div>
 
+        {/* Two Images Side by Side */}
+        <div className="grid grid-cols-6 col-span-full mt-1 md:mt-2 gap-1 lg:gap-2">
+            <motion.img
+                src="/Photography/street/nyc03.JPG"
+                alt="Description of Image 3"
+                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg hidden md:block"
+                variants={animateInChild}
+            />
+            <motion.img
+                src="/Photography/street/nyc04.jpg"
+                alt="Description of Image 3"
+                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg hidden md:block"
+                variants={animateInChild}
+            />
+        </div>
+
         {/* Full-Width Image */}
         <motion.div className="mt-1 md:mt-2 col-span-full " variants={animateInChild} >
             <img
@@ -286,6 +286,8 @@ const StreetPhotography = ({className}) => {
             className="col-span-6 w-full h-auto object-cover rounded-lg shadow-lg"
             />
         </motion.div>
+
+        
 
     </motion.div>
   );

@@ -76,17 +76,17 @@ export default function RootLayout({ children }) {
 
         {/* Changelog Footer */}
         <div 
-          className="hidden md:flex fixed bottom-6 right-6 z-50 justify-center text-right backdrop-blur-sm rounded-full whitespace-nowrap tracking-tight 
+          className="hidden md:flex fixed bottom-6 right-8 z-50 justify-center text-right backdrop-blur-sm rounded-full whitespace-nowrap tracking-tight 
           bg-background dark:bg-transparent shadow text-[8.5pt] text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60 cursor-pointer 
           hover:dark:text-white transition-all duration-200 w-[270px] hover:bg-foreground hover:text-background border-1 border-white/0 dark:hover:border-white/70"
           onClick={toggleChangelog}>
-            Last meddled with on 03.04.25 for the 217th time.
+            Last meddled with on 03.04.25 for the 218th time.
         </div>
 
         {/* Changelog Window */}
         {changelog && (
           <motion.div 
-            className="hidden md:grid fixed bottom-14 right-6 z-50 items-start p-4 backdrop-blur-xl rounded-xl 
+            className="hidden md:grid fixed bottom-14 right-8 z-50 items-start p-4 backdrop-blur-xl rounded-xl 
             h-120 w-[270px] tracking-tight bg-background dark:bg-black/20 shadow-md border-b-1 border-white/20
             text-[8.5pt] text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60"
             initial="hidden"
@@ -96,17 +96,20 @@ export default function RootLayout({ children }) {
               <div>
                 <h1 className="font-medium text-base text-foreground">Changelog</h1>
 
-                <p className='mt-4 text-foreground'>To do:</p>
-                <p className="mt-2 leading-4">#ShotOniPhone photography album.</p>
-                <p className="leading-4">&apos;What I&apos;m currently up to&apos; section under the profile page.</p>
-                <p className="leading-4">Prototype placing works under the mobile profile /intro page.</p>
-                <p className="leading-4">Rebuild the &apos;Portfolio Website&apos; page.</p>
+                <p className='mt-4 text-foreground'>v218</p>
+                <p className="mt-2 leading-4">Added new photos to digital and film photography albums.</p>
 
                 <p className='mt-4 text-foreground'>v217</p>
-                {/* <div className="mt-2 h-[0.5px] w-full bg-foreground opacity-25"></div> */}
                 <p className="mt-2 leading-4">Implemented this exact changelog feature; all updates will now be reflected here as I continue to iterate upon this site.</p>
                 <p className="mt-2 leading-4">Changed BG of light mode footer notes from frosted glass to opaque white with drop shadow.</p>
                 <p className="mt-2 leading-4">Changed the cover photo of the film photography album.</p>
+
+                <div className="mt-5 h-[0.5px] w-full bg-foreground opacity-25"></div>
+                <p className='mt-3 text-foreground'>To do:</p>
+                <p className="mt-2 leading-4">#ShotOniPhone photography album.</p>
+                <p className="leading-4">&apos;What I&apos;m currently up to&apos; section under the profile page.</p>
+                <p className="leading-4">Prototype placing works under the mobile profile /intro page.</p>
+                <p className="leading-4">Rebuild &apos;Portfolio Website&apos; page.</p>
               </div>
           </motion.div>
         )}

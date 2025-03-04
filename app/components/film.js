@@ -115,7 +115,7 @@ const Film = ({className}) => {
         </motion.div>
 
         {/* Two Images Side by Side */}
-        <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2">
+        {/* <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2">
             <motion.img
                 src="/Photography/film/allan3.jpg"
                 alt="Description of Image 2"
@@ -128,15 +128,7 @@ const Film = ({className}) => {
                 className="col-span-3 h-full w-full object-cover rounded-lg"
                 variants={animateInChild}
             />
-        </div>
-
-        {/* Full-Width Image */}
-        <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
-            <img
-            src="/Photography/film/seoul.jpg"
-            className="h-auto w-full object-cover rounded-lg"
-            />
-        </motion.div>
+        </div> */}
 
         {/* Two Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2">
@@ -157,7 +149,39 @@ const Film = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
+            src="/Photography/film/seoul.jpg"
+            className="h-auto w-full object-cover rounded-lg"
+            />
+        </motion.div>
+
+        {/* Full-Width Image */}
+        {/* <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
+            <img
             src="/Photography/film/london3.jpg"
+            className="h-auto w-full object-cover rounded-lg"
+            />
+        </motion.div> */}
+
+        {/* Two Images Side by Side */}
+        <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2">
+            <motion.img
+                src="/Photography/film/NYC06-20.jpg"
+                alt="Description of Image 2"
+                className="col-span-3 h-full w-full object-cover rounded-lg"
+                variants={animateInChild}
+            />
+            <motion.img
+                src="/Photography/film/NYC06-22.jpg"
+                alt="Description of Image 3"
+                className="col-span-3 h-full w-full object-cover rounded-lg"
+                variants={animateInChild}
+            />
+        </div>
+
+        {/* Full-Width Image */}
+        <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
+            <img
+            src="/Photography/film/NYC06-13.jpg"
             className="h-auto w-full object-cover rounded-lg"
             />
         </motion.div>
