@@ -1670,7 +1670,7 @@ export default function Resume({ className = "", showNav }) {
             <div 
                 key='footer'
                 className="md:hidden mb-14 mx-auto z-50 justify-center text-center tracking-tight text-[8.5pt] text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60">
-                    Last meddled with on 02.18.25 for the 216th time.
+                    Last meddled with on 03.04.25 for the 217th time.
             </div>
             </AnimatePresence>    
         </motion.div>

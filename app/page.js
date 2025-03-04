@@ -31,6 +31,7 @@ import Nike from './components/nike.js';
 import Iphone from './components/iphone.js';
 import ThreeD from './components/3d.js';
 import Leica from './components/leica.js';
+import NycSubway from './components/nycsubway.js';
 import { ChevronDownIcon} from '@heroicons/react/24/solid';
 import {useVideoContext, VideoProvider} from './components/expandedGridContext.js';
 
@@ -881,8 +882,31 @@ export default function Home(){
                     Work
                   </motion.h1>
 
-                  <motion.h1
+                  {/* <motion.h1
                   className={`text-xs tracking-tighter transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  variants={animateInChild}>
+                    2025
+                  </motion.h1>
+
+                  <motion.button 
+                  className={`hover:text-foreground text-left mr-8
+                    ${selectedWork.includes(['nycsubway']) || hoveredWork ==='nycsubway' 
+                      ? 'text-foreground' 
+                      : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
+                    } transition-colors duration-100`}
+                  whileHover={{scale:1.06}}
+                  animate={{scale: 
+                    includesTags(['nycsubway']) || selectedWork.includes(['nycsubway']) ||
+                    hoveredWork==='nycsubway' 
+                    ? 1.02 : 1
+                  }}
+                  variants={animateInChild}
+                  onClick={() => {
+                    toggleTag('clear');
+                    toggleWork('nycsubway')}}>Apple Maps x NYC Subway [WIP]</motion.button> */}
+
+                  <motion.h1
+                  className={`text-xs mt-5 tracking-tighter transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
                   variants={animateInChild}>
                     2024
                   </motion.h1>
@@ -1423,6 +1447,8 @@ export default function Home(){
                   <Nike key="nike" className="col-span-full"/>
                 ) : selectedWork === 'leica' ? (
                   <Leica key="leica" className="col-span-full"/>
+                ) : selectedWork === 'nycsubway' ? (
+                  <NycSubway key="nycsubway" className="col-span-full"/>
                 ) : selectedWork === 'bestwork' ? (
                   <BestWorkPage key="bestwork" className="col-span-full w-full" setSelectedWork={setSelectedWork} setHoveredWork={setHoveredWork}/>
                 ) : (

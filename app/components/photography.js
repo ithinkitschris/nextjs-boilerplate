@@ -43,7 +43,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             </img>
 
             {/* Gradient */}
-            <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
+            <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/90 to-transparent rounded-t-lg"></div>
 
             {/* Text */}
             <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
@@ -82,12 +82,8 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         
         <img 
             className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
-            src="/Photography/film/cover4.png"/>
-
-        
-        <div className="absolute top-0 left-0 right-0 h-120 bg-gradient-to-b from-black/90 to-transparent rounded-t-lg"></div>
-
-        
+            src="/Photography/film/cover4.jpg"/>
+        <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/70 to-transparent rounded-t-lg"></div>
         <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
             <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Film</h1>
             
