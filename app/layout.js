@@ -129,7 +129,7 @@ export default function RootLayout({ children }) {
             {isFooterHovered
               ? <Link href='https://ithinkitschris.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f'
               target="blank"
-              rel="noopener noreferrer">Read my documentation here.</Link>
+              rel="noopener noreferrer">Read my documentation here</Link>
               : <div className="inline-flex ml-1">Website masochistically designed and coded with React and Next.js.
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
