@@ -174,7 +174,7 @@ const toggleDarkMode = () => {
                 <p className='mt-2 text-foreground font-medium text-xxs'>3</p>
                 <p className="leading-[130%]">Prototype placing works under the mobile profile /intro page.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>4</p>
-                <p className="leading-[130%]">Adapt this About-Site window to mobile–currently does not work on mobile.</p>
+                <p className="leading-[130%] line-through">Adapt this About-Site window to mobile–currently does not work on mobile.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>5</p>
                 <p className="leading-[130%]">Rebuild &apos;Portfolio Website&apos; project page–port website documentation from Notion onto this site.</p>
                 {/* <p className='mt-2 text-foreground font-medium text-xxs'>Completed</p>
