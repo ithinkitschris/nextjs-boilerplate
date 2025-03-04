@@ -83,7 +83,7 @@ const toggleDarkMode = () => {
       bg-background transition-all duration-300`}>
 
         {/* Backdrop Blur */}
-        <div className={`${changelog ? 'backdrop-blur-lg dark:bg-black/30' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-200`} />
+        <div className={`${changelog ? 'backdrop-blur-sm dark:bg-black/30' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-200`} />
 
         {/* <Dark Mode Button/> */}
         <div className="fixed left-4 md:left-auto md:right-6 top-3 md:top-2 z-50">
@@ -122,15 +122,31 @@ const toggleDarkMode = () => {
         {changelog && (
           <motion.div 
             ref={changelogRef}
-            className="hidden md:grid fixed bottom-14 left-0 inset-x-0 mx-auto z-50 items-start p-4 pt-6 backdrop-blur-xl rounded-xl 
-            h-[35%] w-screen/1.5 tracking-tight bg-background dark:bg-black/20 shadow-md border-b-1 border-white/20 grid-cols-4
-            text-[9pt] text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60"
+            className="grid grid-cols-1 md:grid-cols-4 fixed bottom-18 left-0 inset-x-0 mx-auto z-50 p-4 pt-6 backdrop-blur-xl rounded-xl 
+            h-[70%] md:h-[35%] w-[80%] md:w-screen/1.5 tracking-tight bg-background dark:bg-black/20 shadow-md border-b-1 border-white/20
+            text-[9pt] text-black/50 md:text-black/40 dark:text-white/80 md:dark:text-white/60 overflow-y-auto"
             initial="hidden"
             animate="show"
             variants={animateIn}
             layout>
 
-              <div className="absolute bg-gradient-to-t from-background dark:from-transparent to-transparent z-50 top-80 bottom-0 left-0 right-0 rounded-b-xl"/>
+              {/* Bottom Blur */}
+              {/* <div className="absolute bg-gradient-to-t from-background dark:from-transparent to-transparent z-50 top-80 bottom-0 left-0 right-0 rounded-b-xl"/> */}
+
+              <div className="fixed top-6 right-5 cursor-pointer hover:opacity-20 transition-opacity" onClick={toggleChangelog}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="black"
+                  className="w-5 h-5"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M6.225 5.225a.75.75 0 0 1 1.06 0L12 9.94l4.715-4.715a.75.75 0 1 1 1.06 1.06L13.06 11l4.715 4.715a.75.75 0 1 1-1.06 1.06L12 12.06l-4.715 4.715a.75.75 0 1 1-1.06-1.06L10.94 11 6.225 6.285a.75.75 0 0 1 0-1.06z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
 
               {/* About */}
               <div className="px-4">
@@ -144,8 +160,11 @@ const toggleDarkMode = () => {
 
               </div>
 
+              {/* Line */}
+              <div className="mx-auto h-[1px] w-[92%] bg-black/15 dark:bg-white/20 mt-8 mb-4 md:hidden"/>
+
               {/* To Do */}
-              <div className="px-4 overflow-y-auto max-h-[100%]">
+              <div className="px-4 md:overflow-y-auto max-h-[100%]">
 
                 <h1 className="font-medium text-base text-foreground">To do:</h1>
                 <p className='mt-2 text-foreground font-medium text-xxs'>1</p>
@@ -162,27 +181,34 @@ const toggleDarkMode = () => {
                 <p className="leading-[130%] line-through">Changelog feature tracking iterations on the site.</p> */}
 
               </div>
+
+              {/* Line */}
+              <div className="mx-auto h-[1px] w-[92%] bg-black/15 dark:bg-white/20 mt-8 mb-4 md:hidden"/>
               
               {/* Changelog Column 1 */}
-              <div className="px-4 overflow-y-auto max-h-[100%] hover:scroll-y">
+              <div className="px-4 md:overflow-y-auto max-h-[100%] hover:scroll-y">
 
                 <h1 className="font-medium text-base text-foreground">Changelog <span className="text-xxs font-normal italic opacity-50">(version number based off git commits)</span></h1>
-                <p className='mt-2 text-foreground font-medium'>v220</p>
+
+                <p className='mt-4 text-foreground font-medium'>v221</p>
+                <p className="leading-[130%]">Adapted and optimized this About-Site window for mobile–now works on mobile.</p>
+
+                <p className='mt-4 text-foreground font-medium'>v220</p>
                 <p className="leading-[130%]">Moved changelog window to the center of the screen–now opens upon clicking the middle footer, background blurs as well.</p>
                 <p className="leading-[130%]">Combined link to documentation with changelog window–new four columned layout.</p>
                 <p className="leading-[130%]">Will be referring to this window as the About-Site window from here on as it no longer houses just the changelog.</p>
 
-                <p className='mt-4 text-foreground font-medium'>v219</p>
-                <p className="leading-[130%]">This changelog window now scrolls!</p>
-                <p className="leading-[130%]">Refined the opening animation for this changelog window–now has a rebound effect.</p>
-                <p className="leading-[130%]">This changelog window now closes upon clicking outside of it.</p>
-
               </div>
 
               {/* Changelog Column 2 */}
-              <div className="px-4 overflow-y-auto max-h-[100%]">
+              <div className="px-4 md:overflow-y-auto max-h-[100%]">
+
+                <p className='mt-4 md:mt-8 text-foreground font-medium'>v219</p>
+                <p className="leading-[130%]">This changelog window now scrolls!</p>
+                <p className="leading-[130%]">Refined the opening animation for this changelog window–now has a rebound effect.</p>
+                <p className="leading-[130%]">This changelog window now closes upon clicking outside of it.</p>
               
-                <p className='mt-8 text-foreground font-medium'>v218</p>
+                <p className='mt-4 text-foreground font-medium'>v218</p>
                 <p className="leading-[130%]">Added new photos to digital and film photography albums.</p>
 
                 <p className='mt-4 text-foreground font-medium'>v217</p>
@@ -200,7 +226,7 @@ const toggleDarkMode = () => {
           bg-background dark:bg-transparent shadow text-[8.5pt] text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60 
           w-[270px]"
           >
-            Last meddled with on 03.04.25 for the 220th time.
+            Last meddled with on 03.04.25 for the 221st time.
         </div>
 
       </body>
