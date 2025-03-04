@@ -468,7 +468,7 @@ export default function Home(){
             {/* Sidenav / Dropdown Button */}
             <motion.button 
               className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 md:dark:border-white/20 backdrop-blur-lg 
-              flex items-center shadow md:hover:text-background transition-colors duration-100 z-50 md:right-auto md:left-0.5 mt-0.5 md:mt-0
+              flex items-center shadow md:hover:text-background transition-colors duration-100 z-30 md:right-auto md:left-0.5 mt-0.5 md:mt-0
               ${showNav ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground" : "bg-[#e9e9e9] dark:bg-black/20 md:hover:bg-foreground right-8"}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
@@ -488,7 +488,7 @@ export default function Home(){
 
               {/* Top Navbar Contents */}
               <motion.div
-              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-5 text-white mt-[7px] lg:mt-1"
+              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-5 text-white mt-[7px] lg:mt-1 z-40"
               initial="hidden"
               animate="show"
               layout="position"
@@ -497,7 +497,7 @@ export default function Home(){
 
                 {/* Profile Button */}
                 <motion.button
-                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent md:mr-1
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full  px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent md:mr-1
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('resume') 
                       ? ' border-foreground dark:border-white text-foreground' 
@@ -600,7 +600,7 @@ export default function Home(){
           {/* Desktop Navbar BG */}
           <div
             className="hidden md:block fixed backdrop-blur-lg top-2 left-1/2 transform -translate-x-1/2 w-[265px] ml-[12px] rounded-full 
-            drop-shadow bg-background dark:bg-transparent z-20 h-[38px] border-b-1 border-white/30 dark:mix-blend-overlay"
+            drop-shadow bg-background z-30 dark:bg-transparent z-0 h-[38px] border-b-1 border-white/30 dark:mix-blend-overlay"
           ></div>
 
           {/* Side Navbar / Mobile Dropdown */}
@@ -721,7 +721,7 @@ export default function Home(){
 
                 {/* Desktop Side Navbar Reset Button */}
                 <motion.div 
-                  className="sticky top-18 mt-4 z-50 hidden md:block">
+                  className="sticky top-18 mt-4 z-40 hidden md:block">
                   {showReset && (
                     <motion.button
                       className="group hover:text-background font-medium flex gap-1.5

@@ -89,19 +89,19 @@ const StreetPhotography = ({className}) => {
             <motion.img
                 src="/Photography/street/nyc02.jpg"
                 alt="Description of Image 3"
-                className="col-span-2 h-screen/3 md:h-auto w-auto object-cover rounded-lg shadow-lg hidden md:block"
+                className="md:col-span-2 col-span-3 h-screen/3 md:h-auto w-auto object-cover rounded-lg shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/street/nyc06.JPG"
                 alt="Description of Image 3"
-                className="md:col-span-2 h-screen/3 md:h-auto w-full object-cover rounded-lg shadow-lg col-span-full"
+                className="md:col-span-2 h-screen/3 md:h-auto w-full object-cover rounded-lg shadow-lg col-span-3"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/street/nyc05.JPG"
                 alt="Description of Image 3"
-                className="col-span-2 h-screen/3 md:h-auto w-full object-cover rounded-lg shadow-lg hidden md:block"
+                className="md:col-span-2 col-span-3 h-screen/3 md:h-auto w-full object-cover rounded-lg shadow-lg hidden md:block"
                 variants={animateInChild}
             />
         </div>
@@ -260,13 +260,13 @@ const StreetPhotography = ({className}) => {
             <motion.img
                 src="/Photography/street/nyc03.JPG"
                 alt="Description of Image 3"
-                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg hidden md:block"
+                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/street/nyc04.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg hidden md:block"
+                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg"
                 variants={animateInChild}
             />
         </div>

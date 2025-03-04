@@ -15,6 +15,7 @@ const config: Config = {
         '26' : '6.5rem',
         '30' : '7.5rem',
         'screen/1.5': '75%',
+        'screen/1.75': '65%',
         'screen/2': '50%',
         'screen/3': '33.33333%',
         'screen/4': '25%',
