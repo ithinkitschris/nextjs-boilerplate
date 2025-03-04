@@ -606,7 +606,7 @@ export default function Home(){
           {/* Side Navbar / Mobile Dropdown */}
           <motion.div
             className={`${showNav ? "col-span-1 flex flex-col tracking-tight " : "opacity-0 pointer-events-none"}
-            relative transition-opacity duration-300 `} 
+            relative transition-opacity duration-300`} 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }}
             variants={animateInChildMobile}>
