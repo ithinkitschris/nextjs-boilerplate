@@ -47,6 +47,7 @@ export default function RootLayout({ children }) {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [changelog, setChangelog] = useState(false);
   const changelogRef = useRef(null);
+  const footerRef = useRef(null);
 
   const toggleChangelog = () => {
     setChangelog((prevState) => !prevState);
@@ -54,7 +55,12 @@ export default function RootLayout({ children }) {
 
 useEffect(() => {
   function handleClickOutside(event) {
-    if (changelogRef.current && !changelogRef.current.contains(event.target)) {
+    if (
+      changelogRef.current &&
+      !changelogRef.current.contains(event.target) &&
+      footerRef.current &&
+      !footerRef.current.contains(event.target)
+    ) {
       setChangelog(false);
     }
   }
@@ -84,7 +90,7 @@ const toggleDarkMode = () => {
       bg-background transition-all duration-300`}>
 
         {/* Backdrop Blur */}
-        <div className={`${changelog ? 'backdrop-blur-md md:backdrop-blur-md dark:bg-black/30' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-200`} />
+        <div className={`${changelog ? 'backdrop-blur md:backdrop-blur-md dark:bg-black/30' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-200`} />
 
         {/* <Dark Mode Button/> */}
         <div className="fixed left-4 md:left-auto md:right-6 top-3 md:top-2 z-50">
@@ -100,20 +106,22 @@ const toggleDarkMode = () => {
         >
           {/* Desktop */}
           <div
-              className={`hidden md:block transition-all text-center backdrop-blur-sm rounded-full border-1 border-transparent dark:hover:border-white whitespace-nowrap tracking-tight text-[8.5pt]
-                bg-background dark:bg-transparent shadow w-52 cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-white dark:text-white/80`}
-              onClick={toggleChangelog}>
-              <div className="inline-flex ml-1">How I designed and coded this site
-                {changelog ? (
-                    <ChevronDownIcon className="h-3 w-3 ml-1 mt-[3px]" />
-                ) : (
-                    <ChevronUpIcon className="h-3 w-3 ml-1 mt-[3px]" />
-                )}
-              </div>
+            ref={footerRef}
+            className={`transition-all text-center backdrop-blur-sm rounded-full border-1 border-transparent md:dark:hover:border-white whitespace-nowrap tracking-tight text-[8.5pt]
+              bg-background dark:bg-transparent shadow w-52 cursor-pointer md:hover:bg-foreground md:dark:hover:bg-transparent md:hover:text-white dark:text-white/90
+              ${changelog ?'bg-foreground text-white dark:border-white' :''}`}
+            onClick={toggleChangelog}>
+            <div className="inline-flex ml-1">Website built with React and Next.js
+              {changelog ? (
+                  <ChevronDownIcon className="h-3 w-3 ml-1 mt-[3px]" />
+              ) : (
+                  <ChevronUpIcon className="h-3 w-3 ml-1 mt-[3px]" />
+              )}
+            </div>
           </div>
 
           {/* Mobile */}
-          <div
+          {/* <div
               className={`md:hidden transition-all text-center backdrop-blur-xl rounded-full border-1 border-transparent dark:hover:border-white whitespace-nowrap tracking-tight text-[8.5pt]
                 bg-background dark:bg-transparent shadow w-52 cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-white dark:text-white/90`}
               onClick={toggleChangelog}>
@@ -124,15 +132,15 @@ const toggleDarkMode = () => {
                     <ChevronUpIcon className="h-3 w-3 ml-1 mt-[3px]" />
                 )}
               </div>
-          </div>
+          </div> */}
         </div>
 
         {/* About Site Window */}
         {changelog && (
           <motion.div 
             ref={changelogRef}
-            className="grid grid-cols-1 md:grid-cols-4 fixed bottom-18 left-0 inset-x-0 mx-auto z-50 p-4 pt-6 backdrop-blur-2xl rounded-xl 
-            h-[70%] md:h-[35%] w-[80%] md:w-screen/1.5 tracking-tight bg-background dark:bg-black/20 shadow-md border-b-1 border-white/20
+            className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 left-0 inset-x-0 mx-auto z-50 p-4 pt-6 backdrop-blur-2xl rounded-xl 
+            h-[80%] md:h-[35%] w-[80%] md:w-screen/1.5 tracking-tight bg-background dark:bg-black/20 shadow-md border-b-1 border-white/20
             text-[9pt] text-black/50 md:text-black/40 dark:text-white/50 overflow-y-auto"
             initial="hidden"
             animate="show"
@@ -142,7 +150,8 @@ const toggleDarkMode = () => {
               {/* Bottom Blur */}
               {/* <div className="absolute bg-gradient-to-t from-background dark:from-transparent to-transparent z-50 top-80 bottom-0 left-0 right-0 rounded-b-xl"/> */}
 
-              <div className="fixed top-6 right-5 cursor-pointer hover:opacity-20 transition-opacity" onClick={toggleChangelog}>
+              {/* Close Button */}
+              <div className="hidden md:block fixed top-6 right-5 cursor-pointer hover:opacity-20 transition-opacity" onClick={toggleChangelog}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -160,11 +169,11 @@ const toggleDarkMode = () => {
               {/* About */}
               <div className="px-4">
 
-                <h1 className="font-medium text-base text-foreground">You built this site yourself?!</h1>
-                <p className="mt-2 leading-[130%]">Well, having being once told that my previous site on Squarespace was &apos;boy scout&apos; for someone who takes pride in his craft, this site was thus masochistically designed and coded from ground up with React and Next.js by yours truly.</p>
-                <p className="mt-4 leading-[130%]">As I have had little to no experience with web dev prior to this, it was a conscious decision to document every step of the process from the start.</p>
-                <p className='mt-4 -ml-1.5 leading-[130%]'>
-                <a className="relative inline-flex border-1 pl-2 px-1 py-0.5 rounded-full text-black dark:text-white border-black/25 dark:border-white/65 hover:bg-foreground hover:text-background transition-all" 
+                <h1 className="font-medium text-base text-foreground">About this site.</h1>
+                <p className="mt-2 leading-[135%]">Having being once told that my previous site on Squarespace was &apos;boy scout&apos; for someone who takes pride in his craft, this site was thus masochistically designed and coded from ground up with React and Next.js by yours truly.</p>
+                <p className="mt-4 leading-[135%]">As I have had little to no experience with web dev prior to this, it was a conscious decision to document every step of the process from the start.</p>
+                <a className="relative inline-flex mt-6 -ml-1.5 border-1 pl-2 px-1 py-0.5 rounded-full text-black dark:text-white border-black/25 dark:border-white/65 
+                hover:bg-foreground hover:text-background dark:hover:text-black transition-all" 
                 href='https://ithinkitschris.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f' target="blank">
                   Read the documentation here
                   <svg
@@ -179,32 +188,34 @@ const toggleDarkMode = () => {
                     <path className='opacity-0' d="M6 17L15 7"/>
                     <path d="M4 7h10v10"/>
                   </svg> 
-                  
-                </a></p>
+                </a>
+
+                {/* Last Updated */}
+                <p className="md:fixed mt-6 leading-[135%] italic bottom-4">Last meddled with on 03.05.25 for the 222nd time.</p>
 
               </div>
 
               {/* Line */}
-              <div className="mx-auto h-[1px] w-[92%] bg-black/15 dark:bg-white/20 mt-8 mb-4 md:hidden"/>
+              <div className="mx-auto h-[1px] w-[92%] bg-black/15 dark:bg-white/20 mt-5 mb-4 md:hidden"/>
 
               {/* To Do */}
-              <div className="px-4 md:overflow-y-auto max-h-[100%]">
+              <div className="px-4 md:overflow-y-auto max-h-[100%] leading-[135%]">
 
                 <h1 className="font-medium text-base text-foreground">To do:</h1>
                 <p className='mt-2 text-foreground font-medium text-xxs'>01</p>
-                <p className="leading-[130%]">#ShotOniPhone photography album.</p>
+                <p className="">#ShotOniPhone photography album.</p>
                 <p className='mt-3.5 text-foreground font-medium text-xxs'>02</p>
-                <p className="leading-[130%]">&apos;What I&apos;m currently up to&apos; section under the profile page.</p>
+                <p className="">&apos;What I&apos;m currently up to&apos; section under the profile page.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>03</p>
-                <p className="leading-[130%]">Prototype placing works under the mobile profile /intro page.</p>
+                <p className="">Prototype placing works under the mobile profile /intro page.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>04</p>
-                <p className="leading-[130%] line-through">Adapt this About-Site window to mobile–currently does not work on mobile.</p>
+                <p className="leading-[135%] line-through">Adapt this About-Site window to mobile–currently does not work on mobile.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>05</p>
-                <p className="leading-[130%]">Rebuild &apos;Portfolio Website&apos; project page–port website documentation from Notion onto this site.</p>
+                <p className="">Rebuild &apos;Portfolio Website&apos; project page–port website documentation from Notion onto this site.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>06</p>
-                <p className="leading-[130%]">Think of p5.js integration down the road.</p>
+                <p className="">Consider p5.js integration down the road.</p>
                 {/* <p className='mt-2 text-foreground font-medium text-xxs'>Completed</p>
-                <p className="leading-[130%] line-through">Changelog feature tracking iterations on the site.</p> */}
+                <p className="leading-[135%] line-through">Changelog feature tracking iterations on the site.</p> */}
 
               </div>
 
@@ -212,48 +223,53 @@ const toggleDarkMode = () => {
               <div className="mx-auto h-[1px] w-[92%] bg-black/15 dark:bg-white/20 mt-8 mb-4 md:hidden"/>
               
               {/* Changelog Column 1 */}
-              <div className="px-4 md:overflow-y-auto max-h-[100%] hover:scroll-y">
+              <div className="px-4 md:overflow-y-auto max-h-[100%] hover:scroll-y leading-[135%]">
 
                 <h1 className="font-medium text-base text-foreground">Changelog <span className="text-xxs font-normal italic opacity-50">(version number based off git commits)</span></h1>
 
+                <p className='mt-4 text-foreground font-medium'>v222</p>
+                <p>This window now also closes upon clicking on the footer button–previously only closed upon clicking outside of the window.</p>
+                <p>Tweaked copy on the footer button and this window.</p>
+                <p>Fixed minor bugs on the hover states in this window.</p>
+
                 <p className='mt-4 text-foreground font-medium'>v221</p>
-                <p className="leading-[130%]">Adapted and optimized this About-Site window for mobile–now works on mobile.</p>
+                <p>Adapted and optimized this window for mobile.</p>
 
                 <p className='mt-4 text-foreground font-medium'>v220</p>
-                <p className="leading-[130%]">Moved changelog window to the center of the screen–now opens upon clicking the middle footer, background blurs as well.</p>
-                <p className="leading-[130%]">Combined link to documentation with changelog window–new four columned layout.</p>
-                <p className="leading-[130%]">Will be referring to this window as the About-Site window from here on as it no longer houses just the changelog.</p>
+                <p>Moved this window to the center of the screen–now opens upon clicking the middle footer, background blurs as well.</p>
+                <p>Combined link to documentation with changelog window–new four columned layout.</p>
+                <p>Will be referring to this window as the About-Site window from here on as it no longer houses just the changelog.</p>
 
               </div>
 
               {/* Changelog Column 2 */}
-              <div className="px-4 md:overflow-y-auto max-h-[100%]">
+              <div className="px-4 md:overflow-y-auto max-h-[100%] leading-[135%]">
 
                 <p className='mt-4 md:mt-11 text-foreground font-medium'>v219</p>
-                <p className="leading-[130%]">This changelog window now scrolls!</p>
-                <p className="leading-[130%]">Refined the opening animation for this changelog window–now has a rebound effect.</p>
-                <p className="leading-[130%]">This changelog window now closes upon clicking outside of it.</p>
+                <p>This changelog window now scrolls!</p>
+                <p>Refined the opening animation for this changelog window–now has a rebound effect.</p>
+                <p>This changelog window now closes upon clicking outside of it.</p>
               
                 <p className='mt-4 text-foreground font-medium'>v218</p>
-                <p className="leading-[130%]">Added new photos to digital and film photography albums.</p>
+                <p>Added new photos to digital and film photography albums.</p>
 
                 <p className='mt-4 text-foreground font-medium'>v217</p>
-                <p className="leading-[130%]">Implemented this exact changelog feature; all updates will now be reflected here as I continue to iterate upon this site.</p>
-                <p className="leading-[130%]">Changed BG of light mode footer notes from frosted glass to opaque white with drop shadow.</p>
-                <p className="leading-[130%]">Changed the cover photo of the film photography album.</p>
+                <p>Implemented this exact changelog feature; all updates will now be reflected here as I continue to iterate upon this site.</p>
+                <p>Changed BG of light mode footer notes from frosted glass to opaque white with drop shadow.</p>
+                <p>Changed the cover photo of the film photography album.</p>
 
               </div>
           </motion.div>
         )}
 
         {/* Last Updated Footer */}
-        <div 
+        {/* <div 
           className="hidden md:flex fixed bottom-6 right-8 z-30 justify-center text-right backdrop-blur-sm rounded-full whitespace-nowrap tracking-tight select-none
           bg-background dark:bg-transparent shadow text-[8.5pt] text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60 
           w-[270px]"
           >
-            Last meddled with on 03.04.25 for the 221st time.
-        </div>
+            Last meddled with on 03.05.25 for the 222nd time.
+        </div> */}
 
       </body>
     </html>
