@@ -614,7 +614,7 @@ export default function Home(){
             {showNav && (
               <>
                 {/* Mobile Dropdown Container */}
-                <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-50 fixed w-screen -ml-4 font-medium ">
+                <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-40 fixed w-screen -ml-4 font-medium ">
 
                   {/* Dropdown Menu */}    
                   <motion.div 

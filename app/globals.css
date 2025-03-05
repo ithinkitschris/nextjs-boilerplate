@@ -48,3 +48,11 @@ video {
   -webkit-playsinline: true;   /* Ensure inline playback on Safari/iOS */
   playsinline: true;           /* Ensure inline playback across modern browsers */
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}

@@ -85,11 +85,11 @@ const StreetPhotography = ({className}) => {
         </motion.div>
 
         {/* Three Images Side by Side */}
-        <div className="grid grid-cols-6 col-span-full mb-1 mt-1 gap-1 lg:gap-2 h-auto">
+        <div className="grid grid-cols-6 col-span-full gap-1 lg:gap-2 h-auto">
             <motion.img
                 src="/Photography/street/nyc02.jpg"
                 alt="Description of Image 3"
-                className="md:col-span-2 col-span-3 h-screen/3 md:h-auto w-auto object-cover rounded-lg shadow-lg"
+                className="md:col-span-2 col-span-3 h-screen/3 md:h-auto w-full object-cover rounded-lg shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
@@ -106,6 +106,7 @@ const StreetPhotography = ({className}) => {
             />
         </div>
 
+
         
         {/* Full-Width Image */}
         <motion.div className="col-span-full mb-1 mt-1 mb:mt-2 lg:mb-2" variants={animateInChild} >
@@ -115,13 +116,23 @@ const StreetPhotography = ({className}) => {
             />
         </motion.div>
         
-        
 
         {/* Full-Width Image */}
         <motion.div className="col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/street/new2.JPG"
             className="h-auto w-full object-cover rounded-lg"
+            />
+        </motion.div>
+
+    
+        {/* Full-Width Image */}
+        <motion.div className="mt-0.5 md:mt-2 col-span-full mb-1" variants={animateInChild} >
+            <motion.img
+                src="/Photography/street/nyc04.jpg"
+                alt="Description of Image 3"
+                className="md:col-span-2 col-span-full h-full md:h-auto w-full object-cover rounded-lg shadow-lg md:hidden"
+                variants={animateInChild}
             />
         </motion.div>
         
@@ -149,6 +160,7 @@ const StreetPhotography = ({className}) => {
             className="h-auto w-full object-cover rounded-lg"
             />
         </motion.div>
+        
 
          {/* Two Images Side by Side
          <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2">
@@ -260,13 +272,13 @@ const StreetPhotography = ({className}) => {
             <motion.img
                 src="/Photography/street/nyc03.JPG"
                 alt="Description of Image 3"
-                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg"
+                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg hidden md:block"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/street/nyc04.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg"
+                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-lg shadow-lg hidden md:block"
                 variants={animateInChild}
             />
         </div>
@@ -280,7 +292,17 @@ const StreetPhotography = ({className}) => {
         </motion.div>
 
         {/* Full-Width Image */}
-        <motion.div className="mt-1 md:mt-2 col-span-full mb-40" variants={animateInChild} >
+        <motion.div className="mt-0.5 md:mt-2 col-span-full mb-1" variants={animateInChild} >
+            <motion.img
+                src="/Photography/street/nyc03.jpg"
+                alt="Description of Image 3"
+                className="md:col-span-2 col-span-full h-full md:h-auto w-full object-cover rounded-lg shadow-lg md:hidden"
+                variants={animateInChild}
+            />
+        </motion.div>
+
+        {/* Full-Width Image */}
+        <motion.div className="mt-1 md:mt-2 col-span-full mb-16" variants={animateInChild} >
             <img
             src="/Photography/street/2_7.JPG"
             className="col-span-6 w-full h-auto object-cover rounded-lg shadow-lg"

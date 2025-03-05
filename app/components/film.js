@@ -167,13 +167,13 @@ const Film = ({className}) => {
             <motion.img
                 src="/Photography/film/NYC06-20.jpg"
                 alt="Description of Image 2"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-lg hidden md:block"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/NYC06-22.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-full md:col-span-3 h-full w-full object-cover rounded-lg"
                 variants={animateInChild}
             />
         </div>
@@ -239,13 +239,13 @@ const Film = ({className}) => {
             <motion.img
                 src="/Photography/film/london4.jpg"
                 alt="Description of Image 2"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-full md:col-span-3 h-auto w-full object-cover rounded-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/nyc3.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-full md:col-span-3 h-auto w-full object-cover rounded-lg"
                 variants={animateInChild}
             />
         </div>

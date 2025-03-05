@@ -113,7 +113,7 @@ const toggleDarkMode = () => {
       bg-background transition-all duration-300`}>
 
         {/* Backdrop Blur */}
-        <div className={`${changelog ? 'backdrop-blur-md  md:backdrop-blur-md' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
+        <div className={`${changelog ? 'backdrop-blur-md md:backdrop-blur-md' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
 
         {/* <Dark Mode Button/> */}
         <div className="fixed left-4 md:left-auto md:right-6 top-3 md:top-2 z-50">
@@ -130,9 +130,9 @@ const toggleDarkMode = () => {
           {/* Desktop */}
           <div
             ref={footerRef}
-            className={`transition-all text-center backdrop-blur-sm rounded-full dark:border-b-1 border-transparent md:dark:hover:border-white md:dark:hover:border-1 whitespace-nowrap tracking-tight text-[8.5pt]
+            className={`transition-all text-center backdrop-blur-lg rounded-full dark:border-b-1 border-transparent md:dark:hover:border-white md:dark:hover:border-1 whitespace-nowrap tracking-tight text-[8.5pt]
               bg-background dark:bg-transparent shadow w-52 cursor-pointer md:hover:bg-foreground md:dark:hover:bg-transparent md:hover:text-white dark:text-white/90 py-0.5 md:hover:scale-95
-              ${changelog ?'bg-foreground text-white dark:border-white/75 border-1' :'dark:border-white/15 md:dark:border-white/35'}`}
+              ${changelog ?'bg-foreground text-white dark:border-white/75 border-1' :'dark:border-white/15 md:dark:border-white/15'}`}
             onClick={toggleChangelog}>
             <div className="inline-flex ml-1">Website built with React and Next.js
               {changelog ? (
@@ -162,12 +162,12 @@ const toggleDarkMode = () => {
         {changelog && (
           <motion.div 
             ref={changelogRef}
-            className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 left-0 inset-x-0 mx-auto z-50 rounded-2xl overflow-y-auto md:p-2 md:pt-4
-            h-[82.5%] md:h-[40%] w-[78%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
+            className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 left-0 inset-x-0 mx-auto z-50 rounded-2xl overflow-y-auto md:p-2 md:pt-4 no-scrollbar
+            h-[82.5%] md:h-[40%] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
 
               {/* About */}
-              <motion.div className="p-6 mt-4 md:mt-0 md:mr-2 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background dark:bg-black/10 border-b-1 border-transparent 
-              dark:border-white/25 backdrop-blur-xl rounded-2xl drop-shadow-md" 
+              <motion.div className="p-6 mt-4 md:mt-0 md:mr-2 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background dark:bg-black/10 border-b-1 border-r-1 border-transparent 
+              dark:border-white/15 md:dark:border-white/10 backdrop-blur-2xl rounded-2xl drop-shadow-md" 
               initial="hidden"
               animate="show"
               variants={animateIn}>
@@ -199,8 +199,8 @@ const toggleDarkMode = () => {
               </motion.div>
 
               {/* To Do */}
-              <motion.div className="p-6 mt-4 md:mt-0 md:ml-2 max-h-[100%] md:overflow-y-auto leading-[145%] bg-background dark:bg-black/10 border-b-1 border-transparent 
-              dark:border-white/25 backdrop-blur-xl rounded-2xl drop-shadow-md" 
+              <motion.div className="p-6 mt-4 md:mt-0 md:ml-2 max-h-[100%] md:overflow-y-auto leading-[145%] bg-background dark:bg-black/10 border-b-1 border-r-1 border-transparent 
+              dark:border-white/15 md:dark:border-white/10 backdrop-blur-2xl rounded-2xl drop-shadow-md" 
               initial="hidden"
               animate="show"
               variants={animateInToDo}>
@@ -226,7 +226,7 @@ const toggleDarkMode = () => {
               
               {/* Changelog Column 1 */}
               <motion.div className="grid md:grid-cols-2 md:gap-10 md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background 
-              dark:bg-black/10 border-b-1 border-transparent dark:border-white/25 backdrop-blur-xl rounded-2xl drop-shadow-md"
+              dark:border-white/20 dark:bg-black/10 border-b-1 border-r-1 border-transparent md:dark:border-white/10 backdrop-blur-2xl rounded-2xl drop-shadow-md"
               initial="hidden"
               animate="show"
               variants={animateInChangelog}>
