@@ -124,10 +124,7 @@ const toggleDarkMode = () => {
         <main className="">{children}</main>
 
         {/* About Site Footer */}
-        <div 
-          className="fixed bottom-6 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center"
-        >
-          {/* Desktop */}
+        <div className="fixed bottom-6 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center">
           <div
             ref={footerRef}
             className={`transition-all text-center backdrop-blur-lg rounded-full dark:border-b-1 border-transparent md:dark:hover:border-white md:dark:hover:border-1 whitespace-nowrap tracking-tight text-[8.5pt]
@@ -142,20 +139,6 @@ const toggleDarkMode = () => {
               )}
             </div>
           </div>
-
-          {/* Mobile */}
-          {/* <div
-              className={`md:hidden transition-all text-center backdrop-blur-xl rounded-full border-1 border-transparent dark:hover:border-white whitespace-nowrap tracking-tight text-[8.5pt]
-                bg-background dark:bg-transparent shadow w-52 cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-white dark:text-white/90`}
-              onClick={toggleChangelog}>
-              <div className="inline-flex ml-1">How I designed and coded this site
-                {changelog ? (
-                    <ChevronDownIcon className="h-3 w-3 ml-1 mt-[3px]" />
-                ) : (
-                    <ChevronUpIcon className="h-3 w-3 ml-1 mt-[3px]" />
-                )}
-              </div>
-          </div> */}
         </div>
 
         {/* About Site Window */}
@@ -224,17 +207,20 @@ const toggleDarkMode = () => {
 
               </motion.div>
               
-              {/* Changelog Column 1 */}
+              {/* Changelog */}
               <motion.div className="grid md:grid-cols-2 md:gap-10 md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background 
               dark:border-white/20 dark:bg-black/10 border-b-1 border-r-1 border-transparent md:dark:border-white/10 backdrop-blur-2xl rounded-2xl drop-shadow-md"
               initial="hidden"
               animate="show"
               variants={animateInChangelog}>
 
-                <div className="md:overflow-y-auto -mt-1">
-                  <h1 className="font-medium text-xl text-foreground font-script pt-1">Changelog <span className="text-xxs font-normal italic opacity-50 font-sans">(version number based off git commits)</span></h1>
+              <h1 className="font-medium text-xl text-foreground font-script pt-1 col-span-2 mb-4 md:-mb-6">
+                Changelog <span className="text-xxs font-normal italic opacity-50 font-sans -ml-1">(version number based off git commits)</span>
+              </h1>
 
-                  <p className='mt-4 text-foreground font-medium'>v223</p>
+                <div className="md:overflow-y-auto col-span-full md:col-span-1">
+
+                  <p className='mt-0 text-foreground font-medium'>v223</p>
                   <p>Broke this About-Site window up into separate bubbles per section–optimized for light/dark mode and mobile/web experience.</p>
                   <p>Optimized some hover states for this window on desktop–buttons now scale down to 95% upon hover.</p>
                   <p>Fine-tuned the opening animation for this window–reworked stagger and rebound values.</p>
@@ -246,14 +232,15 @@ const toggleDarkMode = () => {
 
                   <p className='mt-4 text-foreground font-medium'>v221</p>
                   <p>Adapted and optimized this window for mobile.</p>
+                </div>
+                
+                <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
-                  <p className='mt-4 text-foreground font-medium'>v220</p>
+                  <p className='mt-4 md:mt-0 text-foreground font-medium'>v220</p>
                   <p>Moved this window to the center of the screen–now opens upon clicking the middle footer, background blurs as well.</p>
                   <p>Combined link to documentation with changelog window–new four columned layout.</p>
                   <p>Will be referring to this window as the About-Site window from here on as it no longer houses just the changelog.</p>
-                </div>
-                
-                <div className="md:overflow-y-auto md:mt-8">
+
                   <p className='mt-4 text-foreground font-medium'>v219</p>
                   <p>This changelog window now scrolls!</p>
                   <p>Refined the opening animation for this changelog window–now has a rebound effect.</p>
@@ -269,24 +256,6 @@ const toggleDarkMode = () => {
                 </div>
 
               </motion.div>
-
-              {/* Changelog Column 2 */}
-              {/* <motion.div className="px-4 md:overflow-y-auto max-h-[100%] leading-[135%]" variants={animateInChild}>
-
-                <p className='mt-4 md:mt-11 text-foreground font-medium'>v219</p>
-                <p>This changelog window now scrolls!</p>
-                <p>Refined the opening animation for this changelog window–now has a rebound effect.</p>
-                <p>This changelog window now closes upon clicking outside of it.</p>
-              
-                <p className='mt-4 text-foreground font-medium'>v218</p>
-                <p>Added new photos to digital and film photography albums.</p>
-
-                <p className='mt-4 text-foreground font-medium'>v217</p>
-                <p>Implemented this exact changelog feature; all updates will now be reflected here as I continue to iterate upon this site.</p>
-                <p>Changed BG of light mode footer notes from frosted glass to opaque white with drop shadow.</p>
-                <p>Changed the cover photo of the film photography album.</p>
-
-              </motion.div> */}
           </motion.div>
         )}
 
