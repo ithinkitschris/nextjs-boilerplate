@@ -113,7 +113,7 @@ const toggleDarkMode = () => {
       bg-background transition-all duration-300`}>
 
         {/* Backdrop Blur */}
-        <div className={`${changelog ? 'backdrop-blur-md md:backdrop-blur-md' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
+        <div className={`${changelog ? 'backdrop-blur-md' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
 
         {/* <Dark Mode Button/> */}
         <div className="fixed left-4 md:left-auto md:right-6 top-3 md:top-2 z-50">
@@ -145,12 +145,12 @@ const toggleDarkMode = () => {
         {changelog && (
           <motion.div 
             ref={changelogRef}
-            className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 left-0 inset-x-0 mx-auto z-50 rounded-2xl overflow-y-auto md:p-2 md:pt-4 no-scrollbar
-            h-[82.5%] md:h-[40%] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
+            className="grid grid-cols-1 md:grid-cols-4 fixed bottom-10 left-0 inset-x-0 mx-auto z-50 rounded-2xl overflow-y-auto md:p-2 md:pt-4 md:pb-10 no-scrollbar
+            h-[82.5%] md:h-[42%] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
 
               {/* About */}
               <motion.div className="p-6 mt-4 md:mt-0 md:mr-2 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background dark:bg-black/10 border-b-1 border-r-1 border-transparent 
-              dark:border-white/15 md:dark:border-white/10 backdrop-blur-2xl rounded-2xl drop-shadow-md" 
+              dark:border-white/15 md:dark:border-white/10 backdrop-blur-2xl rounded-2xl drop-shadow-xl" 
               initial="hidden"
               animate="show"
               variants={animateIn}>
@@ -183,7 +183,7 @@ const toggleDarkMode = () => {
 
               {/* To Do */}
               <motion.div className="p-6 mt-4 md:mt-0 md:ml-2 max-h-[100%] md:overflow-y-auto leading-[145%] bg-background dark:bg-black/10 border-b-1 border-r-1 border-transparent 
-              dark:border-white/15 md:dark:border-white/10 backdrop-blur-2xl rounded-2xl drop-shadow-md" 
+              dark:border-white/15 md:dark:border-white/10 backdrop-blur-2xl rounded-2xl drop-shadow-xl" 
               initial="hidden"
               animate="show"
               variants={animateInToDo}>
@@ -194,21 +194,19 @@ const toggleDarkMode = () => {
                 <p className='mt-3.5 text-foreground font-medium text-xxs'>02</p>
                 <p className="">&apos;What I&apos;m currently up to&apos; section under the profile page.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>03</p>
-                <p className="">Rework profile page–GSAP integration + integrating works for a one-page user flow.</p>
+                <p className="">Rebuild profile page–GSAP integration + integrating works for a one-page user flow. <span className="italic">In the works–currently turning out to be a massive undertaking.</span></p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>04</p>
-                <p className="leading-[135%] italic"><span className="line-through mr-1 not-italic">Adapt this About-Site window to mobile–currently does not work on mobile. </span>Done.</p>
-                <p className='mt-2 text-foreground font-medium text-xxs'>05</p>
                 <p className="">Rebuild &apos;Portfolio Website&apos; project page–port website documentation from Notion onto this site.</p>
-                <p className='mt-2 text-foreground font-medium text-xxs'>06</p>
+                <p className='mt-2 text-foreground font-medium text-xxs'>05</p>
                 <p className="">Explore p5.js integration.</p>
+                <p className='mt-2 text-foreground font-medium text-xxs'>06</p>
+                <p className="leading-[135%] italic"><span className="line-through mr-1 not-italic">Adapt this About-Site window to mobile–currently does not work on mobile. </span>Done.</p>
                 
-              
-
               </motion.div>
               
               {/* Changelog */}
               <motion.div className="grid md:grid-cols-2 md:gap-10 md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background 
-              dark:border-white/20 dark:bg-black/10 border-b-1 border-r-1 border-transparent md:dark:border-white/10 backdrop-blur-2xl rounded-2xl drop-shadow-md"
+              dark:border-white/20 dark:bg-black/10 border-b-1 border-r-1 border-transparent md:dark:border-white/10 backdrop-blur-2xl rounded-2xl drop-shadow-xl"
               initial="hidden"
               animate="show"
               variants={animateInChangelog}>
@@ -220,14 +218,15 @@ const toggleDarkMode = () => {
                 <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
                   <p className='mt-0 text-foreground font-medium'>v224</p>
-                  <p>Added a padding value of 12 along the x-axis for profile and works page.</p>
-                  {/* <p>Added a mention to check out light mode + mobile experience under 'About this site'.</p> */}
+                  <p>Added a padding value of 12 along the x-axis for profile and works page for desktop experience.</p>
+                  <p>Fixed bug with profile page header image container –height is now absolute and not based off viewport height.</p>
+                  <p>Tweaked proportions of writeup in the profile page image container. Contact information also now placed at the bottom of the container.</p>
                  
 
                   <p className='mt-4 text-foreground font-medium'>v223</p>
-                  <p>Broke this About-Site window up into separate bubbles per section–optimized for light/dark mode and mobile/web experience.</p>
+                  <p>Broke this About-Site window up into separate bubbles per section–optimized for light/dark mode and mobile/desktop experience.</p>
                   <p>Optimized some hover states for this window on desktop–buttons now scale down to 95% upon hover.</p>
-                  <p>Fine-tuned the opening animation for this window–reworked stagger and rebound values.</p>
+                  <p>Fine-tuned opening animation for this window–reworked stagger and rebound values.</p>
 
                   
                 </div>

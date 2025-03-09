@@ -294,7 +294,7 @@ const StreetPhotography = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="mt-0.5 md:mt-2 col-span-full mb-1" variants={animateInChild} >
             <motion.img
-                src="/Photography/street/nyc03.jpg"
+                src="/Photography/street/nyc03.JPG"
                 alt="Description of Image 3"
                 className="md:col-span-2 col-span-full h-full md:h-auto w-full object-cover rounded-lg shadow-lg md:hidden"
                 variants={animateInChild}

@@ -126,7 +126,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     them on board, now follow their travels around the world.
                 </p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
-                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <p className="font-semibold">Role:</p>
                     <p>Creative Direction</p>
                     <p>Motion Design</p>
@@ -200,8 +200,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
-                        <p className="">Creative Direction</p>
-                        <p className="">Motion Design</p>
+                        <p>Creative Direction</p>
+                        <p>Motion Design</p>
+                        <p>Visual Design</p>
                 </div>
                 </motion.div>
 
@@ -428,7 +429,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
                 <motion.video
                 src="/jollieverafter/favpagecover.mp4"
-                className="rounded-2xl md:rounded-r-3xl w-full h-full md:group-hover:h-[850px] object-cover relative right-0 col-span-full md:col-span-6 
+                className="rounded-2xl md:rounded-r-3xl w-full h-[400px] md:group-hover:h-[850px] object-cover relative right-0 col-span-full md:col-span-6 
                 transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
                 autoPlay
                 muted
