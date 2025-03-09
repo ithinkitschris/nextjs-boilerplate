@@ -145,7 +145,7 @@ const toggleDarkMode = () => {
         {changelog && (
           <motion.div 
             ref={changelogRef}
-            className="grid grid-cols-1 md:grid-cols-4 fixed bottom-10 left-0 inset-x-0 mx-auto z-50 rounded-2xl overflow-y-auto md:p-2 md:pt-4 md:pb-10 no-scrollbar
+            className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 md:bottom-10 left-0 inset-x-0 mx-auto z-50 rounded-2xl overflow-y-auto md:p-2 md:pt-4 md:pb-10 no-scrollbar
             h-[82.5%] md:h-[42%] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
 
               {/* About */}
@@ -217,8 +217,8 @@ const toggleDarkMode = () => {
 
                 <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
-                  <p className='mt-0 text-foreground font-medium'>v224</p>
-                  <p>Added a padding value of 12 along the x-axis for profile and works page for desktop experience.</p>
+                  <p className='mt-0 text-foreground font-medium'>v224 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
+                  <p>Added a padding value of 12 along the x-axis for profile and works page.</p>
                   <p>Fixed bug with profile page header image container –height is now absolute and not based off viewport height.</p>
                   <p>Tweaked proportions of writeup in the profile page image container. Contact information also now placed at the bottom of the container.</p>
                  
