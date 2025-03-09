@@ -155,7 +155,7 @@ const toggleDarkMode = () => {
               animate="show"
               variants={animateIn}>
 
-                <h1 className="font-medium text-xl text-foreground font-script">About this site</h1>
+                <h1 className="font-medium text-lg mb-4 -mt-1 tracking-tight text-foreground font-">About this site</h1>
                 <p className="mt-2">Having being once told that my previous site on Squarespace was &apos;boy scout&apos; for someone who takes pride in his craft, this site was thus masochistically designed and coded from ground up with React and Next.js by yours truly.</p>
                 <p className="mt-4">As I have had little to no experience with web dev prior to this project, I also made a conscious decision to document every step of the process from the start to the first MVP iteration of this site–check it out if you happen to be curious on the process of creating a site from scratch with no prior knowledge.</p>
                 <a className="relative inline-flex mt-6 -ml-1.5 border-1 pl-2 px-1 py-0.5 rounded-full text-black dark:text-white border-black/25 dark:border-white/65 
@@ -188,7 +188,7 @@ const toggleDarkMode = () => {
               animate="show"
               variants={animateInToDo}>
 
-                <h1 className="font-medium text-xl text-foreground font-script">To do:</h1>
+                <h1 className="font-medium text-lg text-foreground font- tracking-tight">To do:</h1>
                 <p className='mt-2 text-foreground font-medium text-xxs'>01</p>
                 <p className="">#ShotOniPhone photography album.</p>
                 <p className='mt-3.5 text-foreground font-medium text-xxs'>02</p>
@@ -214,8 +214,8 @@ const toggleDarkMode = () => {
               animate="show"
               variants={animateInChangelog}>
 
-              <h1 className="font-medium text-xl text-foreground font-script pt-1 col-span-2 mb-4 md:-mb-6">
-                Changelog <span className="text-xxs font-normal italic opacity-50 font-sans -ml-1">(version number based off git commits)</span>
+              <h1 className="font-medium text-lg tracking-tight text-foreground font- pt-1 col-span-2 mb-4 md:-mb-6">
+                Changelog <span className="text-xxs font-normal italic opacity-50 font-sans"> (version number based off git commits)</span>
               </h1>
 
                 <div className="md:overflow-y-auto col-span-full md:col-span-1">
