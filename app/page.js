@@ -1450,7 +1450,7 @@ export default function Home(){
                 ) : selectedWork === 'nycsubway' ? (
                   <NycSubway key="nycsubway" className="col-span-full"/>
                 ) : selectedWork === 'bestwork' ? (
-                  <BestWorkPage key="bestwork" className="col-span-full w-full" setSelectedWork={setSelectedWork} setHoveredWork={setHoveredWork}/>
+                  <BestWorkPage key="bestwork" className={`col-span-full w-full ${showNav ? 'px-0' : 'px-10'}`} setSelectedWork={setSelectedWork} setHoveredWork={setHoveredWork}/>
                 ) : (
                   filteredVideos.map((video) => (
                   

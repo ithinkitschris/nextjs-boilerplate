@@ -177,7 +177,7 @@ const toggleDarkMode = () => {
                 </a>
 
                 {/* Last Updated */}
-                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 03.05.25 for the 223rd time.</p>
+                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 03.09.25 for the 224th time.</p>
 
               </motion.div>
 
@@ -194,15 +194,14 @@ const toggleDarkMode = () => {
                 <p className='mt-3.5 text-foreground font-medium text-xxs'>02</p>
                 <p className="">&apos;What I&apos;m currently up to&apos; section under the profile page.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>03</p>
-                <p className="">Prototype placing works under the mobile profile /intro page.</p>
+                <p className="">Rework profile page–GSAP integration + integrating works for a one-page user flow.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>04</p>
-                <p className="leading-[135%] line-through">Adapt this About-Site window to mobile–currently does not work on mobile.</p>
+                <p className="leading-[135%] italic"><span className="line-through mr-1 not-italic">Adapt this About-Site window to mobile–currently does not work on mobile. </span>Done.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>05</p>
                 <p className="">Rebuild &apos;Portfolio Website&apos; project page–port website documentation from Notion onto this site.</p>
                 <p className='mt-2 text-foreground font-medium text-xxs'>06</p>
                 <p className="">Explore p5.js integration.</p>
-                <p className='mt-3 text-foreground font-medium text-xxs'>07</p>
-                <p className="">Explore GSAP integration.</p>
+                
               
 
               </motion.div>
@@ -220,10 +219,20 @@ const toggleDarkMode = () => {
 
                 <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
-                  <p className='mt-0 text-foreground font-medium'>v223</p>
+                  <p className='mt-0 text-foreground font-medium'>v224</p>
+                  <p>Added a padding value of 12 along the x-axis for profile and works page.</p>
+                  {/* <p>Added a mention to check out light mode + mobile experience under 'About this site'.</p> */}
+                 
+
+                  <p className='mt-4 text-foreground font-medium'>v223</p>
                   <p>Broke this About-Site window up into separate bubbles per section–optimized for light/dark mode and mobile/web experience.</p>
                   <p>Optimized some hover states for this window on desktop–buttons now scale down to 95% upon hover.</p>
                   <p>Fine-tuned the opening animation for this window–reworked stagger and rebound values.</p>
+
+                  
+                </div>
+                
+                <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
                   <p className='mt-4 text-foreground font-medium'>v222</p>
                   <p>This window now also closes upon clicking on the footer button–previously only closed upon clicking outside of the window.</p>
@@ -232,11 +241,8 @@ const toggleDarkMode = () => {
 
                   <p className='mt-4 text-foreground font-medium'>v221</p>
                   <p>Adapted and optimized this window for mobile.</p>
-                </div>
-                
-                <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
-                  <p className='mt-4 md:mt-0 text-foreground font-medium'>v220</p>
+                  <p className='mt-4 md:mt-4 text-foreground font-medium'>v220</p>
                   <p>Moved this window to the center of the screen–now opens upon clicking the middle footer, background blurs as well.</p>
                   <p>Combined link to documentation with changelog window–new four columned layout.</p>
                   <p>Will be referring to this window as the About-Site window from here on as it no longer houses just the changelog.</p>

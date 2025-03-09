@@ -302,7 +302,7 @@ export default function Resume({ className = "", showNav }) {
 
                             {/* Desktop Contact */} 
                            <motion.div 
-                            className="z-30 tracking-tight text-white text-right"
+                            className="z-30 tracking-tight text-white text-right pr-3"
                             variants={animateInChild}>
                                 <p className="mb-2 text-xl">Contact</p>
                                 <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
@@ -700,7 +700,7 @@ export default function Resume({ className = "", showNav }) {
             {/* Desktop Story */}
             <div 
             key='desktop'
-            className="lg:flex gap-5 w-full col-span-full hidden">
+            className="lg:flex gap-5 w-full col-span-full hidden md:pl-12 md:pr-6">
                 
                 <motion.div 
                 className="mb-10 px-5 md:px-0 flex-1 mr-10 group"
@@ -762,8 +762,8 @@ export default function Resume({ className = "", showNav }) {
             </motion.div>
             
             {/* Desktop Brands Container */}
-            <motion.h1 className="mt-4 mb-3 font-script col-span-full text-lg -rotate-1 px-4 md:px-0 hidden md:block" layout key='no1'>Worked with:</motion.h1>
-            <motion.div className="md:col-span-full md:w-full justify-between items-center -ml-1 pr-2 mix-blend-difference mb-10 hidden md:flex" layout key='test'>
+            <motion.h1 className="mt-4 mb-3 font-script col-span-full text-lg -rotate-1 px-4 md:px-0 hidden md:block md:pl-12" layout key='no1'>Worked with:</motion.h1>
+            <motion.div className="md:col-span-full md:w-full justify-between items-center -ml-1 pr-2 mix-blend-difference mb-10 hidden md:flex md:px-12 md:pr-16" layout key='test'>
                 <img src='/brandlogos/sia.png' className="w-[90px] h-[35px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
                 <img src='/brandlogos/asm.png' className="w-[120px] h-[35px] object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
                 <img src='/brandlogos/ikea.png' className="w-[75px] h-[25px]  object-cover opacity-50 hover:opacity-100 hover:scale-125 transition-transform duration-300"/>
@@ -780,11 +780,10 @@ export default function Resume({ className = "", showNav }) {
             
 
             {/* Line */}
-            <motion.div className="hidden lg:block col-span-full w-full h-[1px] dark:bg-white/10 bg-black/10 mt-4 mb-4" variants={animateInChild} layout='position' key='alamak3'/>
+            <motion.div className="hidden lg:block col-span-full w-[94.5%] md:mx-auto h-[1px] dark:bg-white/10 bg-black/10 mt-4 mb-4" variants={animateInChild} layout='position' key='alamak3'/>
             
             {/* Currently: */}
-            <motion.div 
-                className="col-span-full pl-5 md:pl-0 md:col-span-2 md:w-full relative mt-4 md:mt-10 group cursor-pointer sm:pr-10"
+            <motion.div className="col-span-full pl-5 md:pl-12 md:col-span-2 md:w-full relative mt-4 md:mt-10 group cursor-pointer sm:pr-2"
                 variants={animateInChild}
                 key="Currently"
                 layout="position"
@@ -866,7 +865,7 @@ export default function Resume({ className = "", showNav }) {
             </motion.div>
 
             {/* ArtScience Museum */}
-            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-10 md:mt-12 w-full group"
+            <motion.div className="col-span-full pl-5 md:pl-6 md:col-span-2 sm:pr-10 md:mt-12 w-full group"
             variants={animateInChild}
             key="ASM"
             layout="position"
@@ -972,7 +971,7 @@ export default function Resume({ className = "", showNav }) {
             </motion.div>
 
             {/* TBWA */}
-            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-10 mt-3 md:mt-[93px] w-full group"
+            <motion.div className="col-span-full pl-5 md:pl-2 md:col-span-2 sm:pr-10 mt-3 md:mt-[93px] w-full group"
             variants={animateInChild}
             key="TBWA"
             layout="position"
@@ -1200,7 +1199,7 @@ export default function Resume({ className = "", showNav }) {
             </motion.div>
 
             {/* BBH */}
-            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-10 mt-3 md:mt-[93px] w-full group"
+            <motion.div className="col-span-full pl-5 md:pl-2 md:col-span-2 sm:pr-10 mt-3 md:mt-[93px] w-full group"
             variants={animateInChild}
             key="BBH"
             layout="position"
@@ -1493,7 +1492,7 @@ export default function Resume({ className = "", showNav }) {
             </motion.div>
 
             {/* Kinetic */}
-            <motion.div className="col-span-full pl-5 md:pl-0 md:col-span-2 sm:pr-10 mt-3 md:mt-[93px] w-full group" 
+            <motion.div className="col-span-full pl-5 md:pl-2 md:col-span-2 sm:pr-10 mt-3 md:mt-[93px] w-full group" 
             variants={animateInChild}
             key="Kinetic"
             layout="position"
