@@ -169,7 +169,7 @@ export default function Resume({ className = "", showNav }) {
         
     <>
         {/* Page Container */}
-        <motion.div className={`grid grid-cols-1 lg:grid-cols-10 w-full px-20
+        <motion.div className={`grid grid-cols-1 lg:grid-cols-10 w-full md:px-20
         items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
         gap-2 text-sm tracking-tight ${className}`}>
         <AnimatePresence>
