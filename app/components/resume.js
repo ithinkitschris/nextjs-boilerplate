@@ -1534,7 +1534,7 @@ export default function Resume({ className = "", showNav }) {
                             New Style Fresh Start
                         </h1>
                         <p className=" opacity-50">
-                        Produced a set of videos distributed on displays in stores around South East Asia as part of the 2019 Chinese New Year season.
+                        Produced a set of videos distributed on displays in stores around South East Asia as part of the 2019 Chinese New Year season
                         </p>
                     </motion.div>
 
