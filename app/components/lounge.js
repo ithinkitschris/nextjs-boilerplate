@@ -247,7 +247,7 @@ show: {
                 font-script -rotate-3 text-center md:text-left tracking-tighter">Digital Wall</h1>
 
                 <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4 md:w-5/6'>A seamless looping backdrop to the entrance foyer of the SilverKris Lounges. 
-                The Batik Motif is separated into 4 distinct layers and animated to both grow on screen and sway in the wind.</h1>
+                The Batik Motif is separated into 4 distinct layers and animated to both grow on screen and sway in the wind</h1>
 
                 <Image
                 src="/lounge/entrance.jpg"
