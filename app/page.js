@@ -488,7 +488,7 @@ export default function Home(){
 
               {/* Top Navbar Contents */}
               <motion.div
-              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-5 text-white mt-[7px] lg:mt-1 z-40"
+              className="flex flex-row justify-center max-w-10xl gap-2 text-white mt-[7px] lg:mt-1 z-40"
               initial="hidden"
               animate="show"
               layout="position"
@@ -521,7 +521,7 @@ export default function Home(){
                 </motion.button>
 
                 {/* Best Button */}
-                <motion.button 
+                {/* <motion.button 
                   className={`hidden md:block hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('bestwork') 
@@ -545,7 +545,7 @@ export default function Home(){
                   <div className="hidden md:block">Work</div>
                   <div className="block md:hidden">Favourites</div>
 
-                </motion.button>
+                </motion.button> */}
 
                 {/* All Button */}
                 <motion.button 
@@ -561,17 +561,16 @@ export default function Home(){
                 variants={animateInChild}
                 layout="position"
                 onClick={() => {
+                  toggleTag('clear');
+                  toggleWork('bestwork');
+                  setSelectedTags(['']);
+                  setShowNav(true);
                   if (window.matchMedia('(max-width: 640px)').matches) {
-                    toggleNav(true);
-                    } else {
-                      toggleTag('clear');
-                      toggleWork('clear');
-                      setSelectedTags(['all']);
-                      setShowNav(true);
-                    }
-                  }}>
+                    setShowNav(false);
+                  }
+                }}>
 
-                  <span className="hidden md:block">Archive</span>
+                  <span className="hidden md:block">Work</span>
                   <span className="block md:hidden">Work</span>
                   
                 </motion.button>
@@ -601,7 +600,7 @@ export default function Home(){
 
           {/* Desktop Navbar BG */}
           <div
-            className="hidden md:block fixed backdrop-blur-lg top-2 left-1/2 transform -translate-x-1/2 w-[265px] ml-[12px] rounded-full 
+            className="hidden md:block fixed backdrop-blur-lg top-2 left-1/2 transform -translate-x-1/2 w-[154px] ml-[12px] rounded-full 
             drop-shadow bg-background z-30 dark:bg-transparent h-[38px] border-b-1 border-white/30 dark:mix-blend-overlay"
           ></div>
 
