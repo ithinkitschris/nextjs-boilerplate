@@ -86,7 +86,7 @@ const animateIn ={
                 <motion.video 
                 ref={bannerVideoRef}
                 src="/Ghibli/banner.mp4" 
-                className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
+                className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
                 autoPlay muted loop playsInline
                 variants={animateInChild}
                 poster='/poster/ghiblibest.jpeg'
@@ -157,7 +157,7 @@ const animateIn ={
                             <Image
                                 src="/Ghibli/KV.jpg"
                                 alt=""
-                                className="rounded-lg object-cover h-full"
+                                className="rounded-2xl object-cover h-full"
                                 layout="responsive"
                                 width={500}
                                 height={600}
@@ -168,7 +168,7 @@ const animateIn ={
                         <div className="w-1/2 h-full">
                             <video
                                 src="/Ghibli/KVanimated.mp4"
-                                className="rounded-lg object-cover"
+                                className="rounded-2xl object-cover"
                                 autoPlay
                                 muted
                                 loop

@@ -177,7 +177,7 @@ const toggleDarkMode = () => {
                 </a>
 
                 {/* Last Updated */}
-                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 03.09.25 for the 224th time.</p>
+                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 03.09.25 for the 225th time.</p>
 
               </motion.div>
 
@@ -217,7 +217,10 @@ const toggleDarkMode = () => {
 
                 <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
-                  <p className='mt-0 text-foreground font-medium'>v224 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
+                 <p className='mt-0 text-foreground font-medium'>v224 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
+                  <p>Side navbar now opens upon clicking to the Work page, and closes when clicking to Profile page.</p>
+
+                  <p className='mt-4 text-foreground font-medium'>v224 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
                   <p>Added a padding value of 12 along the x-axis for profile and works page.</p>
                   <p>Fixed bug with profile page header image container –height is now absolute and not based off viewport height.</p>
                   <p>Tweaked proportions of writeup in the profile page image container. Contact information also now placed at the bottom of the container.</p>

@@ -83,7 +83,7 @@ useEffect(() => {
 
             {/* Banner Video */}
             <motion.video src="/Cocktail/montagelow.mp4" 
-            className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/cocktailpage.jpeg'
@@ -156,7 +156,7 @@ useEffect(() => {
             
             <video
                 src='/Cocktail/titlesequence.mp4'
-                className="shadow rounded-lg object-cover col-span-6 md:col-span-6 2xl:col-span-full w-full"
+                className="shadow rounded-xl md:rounded-3xl object-cover col-span-6 md:col-span-6 2xl:col-span-full w-full"
                 autoPlay
                 loop
                 muted
@@ -169,7 +169,7 @@ useEffect(() => {
             <div className="col-span-full flex flex-wrap gap-1.5 mb-8 lg:gap-2">
                 <video
                     src='/Cocktail/drink2.mp4'
-                    className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
+                    className="shadow rounded-2xl md:rounded-3xl md:rounded-2xl object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
                     muted
@@ -177,7 +177,7 @@ useEffect(() => {
                 ></video>
                 <video
                     src='/Cocktail/drink3.mp4'
-                    className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
+                    className="shadow rounded-2xl md:rounded-3xl md:rounded-2xl object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
                     muted
@@ -185,7 +185,7 @@ useEffect(() => {
                 ></video>
                 <video
                     src='/Cocktail/drink4.mp4'
-                    className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
+                    className="shadow rounded-2xl md:rounded-3xl md:rounded-2xl object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
                     muted
@@ -193,7 +193,7 @@ useEffect(() => {
                 ></video>
                 <video
                     src='/Cocktail/drink5.mp4'
-                    className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
+                    className="shadow rounded-2xl md:rounded-3xl md:rounded-2xl object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
                     muted
@@ -228,7 +228,7 @@ useEffect(() => {
 
                     <video
                         src='/Cocktail/episode2.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
+                        className="shadow rounded-2xl md:rounded-3xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
                         muted 
@@ -256,7 +256,7 @@ useEffect(() => {
 
                     <video
                         src='/Cocktail/episode3.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
+                        className="shadow rounded-2xl md:rounded-3xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
                         muted
@@ -284,7 +284,7 @@ useEffect(() => {
 
                     <video
                         src='/Cocktail/episode4.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
+                        className="shadow rounded-2xl md:rounded-3xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
                         muted
@@ -312,7 +312,7 @@ useEffect(() => {
 
                     <video
                         src='/Cocktail/episode5.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full mb-40"
+                        className="shadow rounded-2xl md:rounded-3xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full mb-40"
                         autoPlay
                         loop
                         muted

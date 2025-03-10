@@ -56,12 +56,12 @@ const Episodes = () => {
             </div>
 
             {/* Episode Thumbnails */}
-            <div className="gap-1 2xl:gap-3 grid grid-cols-3 lg:grid-cols-6 mb-10 lg:mb-24 w-full h-auto">
+            <div className="gap-1 2xl:gap-2 grid grid-cols-3 lg:grid-cols-6 mb-10 lg:mb-24 w-full h-auto">
                 {episodeData.map((_, index) => (
                     <button key={index}>
                       <img
                       src={`/CCS/thumbnail${index + 1}.jpg`}
-                      className="transition-all duration-200 drop-shadow-md hover:shadow-standard-hover lg:hover:scale-107 ease-out rounded-lg object-cover lg:h-full"
+                      className="transition-all duration-200 drop-shadow-md hover:shadow-standard-hover lg:hover:scale-104 ease-out rounded-2xl object-cover lg:h-full"
                       onClick={() => scrollToEpisode(index)} // Scroll to the episode on click
                       />    
                     </button>
@@ -97,7 +97,7 @@ const Episodes = () => {
 
                     <video
                         src={episode.videoSrc}
-                        className="shadow rounded-xl md:rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-full w-full"
+                        className="shadow rounded-xl md:rounded-2xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-full w-full"
                         autoPlay
                         loop
                         muted

@@ -510,6 +510,7 @@ export default function Home(){
                     toggleTag('clear');
                     toggleWork('resume');
                     setSelectedTags(['']);
+                    setShowNav(false);
                     if (isMobile) {
                       setShowNav(false);
                     }
@@ -534,6 +535,7 @@ export default function Home(){
                     toggleTag('clear');
                     toggleWork('bestwork');
                     setSelectedTags(['']);
+                    setShowNav(true);
                     if (window.matchMedia('(max-width: 640px)').matches) {
                       setShowNav(false);
                     }
