@@ -218,7 +218,7 @@ const toggleDarkMode = () => {
                 <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
                   <p className='mt-0 text-foreground font-medium'>v226 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
-                  <p>Removed 'Archive' tab from top navbar–now only has Profile and Work tabs.</p>
+                  <p>Removed &apos;Archive&apos; tab from top navbar–now only has Profile and Work tabs.</p>
 
                   <p className='mt-4 text-foreground font-medium'>v225 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
                   <p>Side navbar now opens upon clicking to the Work page, and closes when clicking to Profile page.</p>
