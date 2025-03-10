@@ -80,9 +80,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Beyond The Cabin */}
             <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
-                 dark:border-white/20 md:dark:border-white/10 md:dark:hover:border-white/25 
-                 md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer"
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild
+                 dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 
+                 md:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("cabin");
                 }}
@@ -117,16 +117,16 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     </svg>
                 </button>
                 
-                <h1 className="text-6xl md:text-7xl -ml-1 font-medium tracking-tighter leading-tighter mb-1 mr-24">
+                <h1 className="text-6xl -ml-1 font-medium tracking-tighter leading-tighter mb-1 mr-24">
                     Beyond The Cabin
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Brand Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Singapore Airlines</span></h1>
-                <p className="mr-10 md:mb-4 md:w-3/ opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="mr-10 md:mb-4 md:w-3/4">
                     6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see
                     them on board, now follow their travels around the world.
                 </p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
-                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <p className="font-semibold">Role:</p>
                     <p>Creative Direction</p>
                     <p>Motion Design</p>
@@ -150,9 +150,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Cocktail Conversations */}
             <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
-              dark:border-white/20 md:dark:border-white/10 md:dark:hover:border-white/25 mt-4 md:mt-6
-                md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color duration-300 cursor-pointer "
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild
+              dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 mt-4 md:mt-3
+                md:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color duration-300 cursor-pointer "
                 onMouseEnter={() => {
                 setHoveredWork("cocktail");
                 }}
@@ -196,12 +196,13 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </h1>
 
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Brand Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Singapore Airlines</span></h1>
-                <p className="mr-10 md:mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
+                <p className="mr-10 md:mb-4 md:mb-0">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
-                        <p className="">Creative Direction</p>
-                        <p className="">Motion Design</p>
+                        <p>Creative Direction</p>
+                        <p>Motion Design</p>
+                        <p>Visual Design</p>
                 </div>
                 </motion.div>
 
@@ -221,9 +222,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Ghibli */}
             <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
-                dark:border-white/20 md:dark:border-white/10 md:dark:hover:border-white/25 mt-4 md:mt-6
-                  md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer"
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild
+                dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 mt-4 md:mt-3
+                  md:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("ghibli");
                 }}
@@ -261,11 +262,11 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
+                <h1 className="text-6xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
                    The World of Studio Ghibli
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Marketing Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">ArtScience Museum</span></h1>
-                <p className="mr-10 md:mb-4 md:w-3/4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
+                <p className="mr-10 md:mb-4 md:w-3/4">Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
@@ -291,9 +292,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Nike */}
             <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
-                dark:border-white/20 md:dark:border-white/10 md:dark:hover:border-white/25 mt-4 md:mt-6
-                  md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer gap-0 md:gap-3"
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild
+                dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 mt-4 md:mt-3
+                  md:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer gap-0 md:gap-3"
                 onMouseEnter={() => {
                 setHoveredWork("nike");
                 }}
@@ -331,11 +332,11 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl leading-tighter md:text-7xl font-medium tracking-tighter mb-3 mr-10">
+                <h1 className="text-6xl leading-tighter font-medium tracking-tighter mb-3 mr-10">
                     Nike Athlete Stories: <span className="font-normal">Koy & Toon</span>
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Social Media Campaign for<span className="ml-1.5 text-xl font-script -rotate-1 relative top-1.5">Nike</span></h1>
-                <p className="mr-10 md:mb-4 md:w-3/4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">A set of Instagram Stories videos and a full film featuring Thai NIKE athletes Koy Ratchawin and Artiwara Kongmalai.</p>
+                <p className="mr-10 md:mb-4 md:w-3/4">A set of Instagram Stories videos and a full film featuring Thai NIKE athletes Koy Ratchawin and Artiwara Kongmalai.</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
@@ -373,9 +374,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* JolliEverAfter */}
             <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
-                dark:border-white/20 md:dark:border-white/10 md:dark:hover:border-white/25 mt-4 md:mt-6
-                  md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer gap-0 md:gap-3"
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild
+                dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 mt-4 md:mt-3 mb-20
+                  md:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer"
                 onMouseEnter={() => {
                 setHoveredWork("jolli");
                 }}
@@ -413,11 +414,11 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
+                <h1 className="text-6xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
                    JolliEverAfter
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Social Media Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Jollibee</span></h1>
-                <p className="mr-10 md:mb-4 md:w-3/4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">An interactive social media campaign that brought Jollibee’s annual Kwentong film to TikTok for the first time in 2020.</p>
+                <p className="mr-10 md:mb-4 md:w-3/4">An interactive social media campaign that brought Jollibee’s annual Kwentong film to TikTok for the first time in 2020.</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <p className=" font-semibold">Role:</p>
@@ -428,7 +429,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
                 <motion.video
                 src="/jollieverafter/favpagecover.mp4"
-                className="rounded-2xl md:rounded-r-3xl w-full md:h-[440px] md:group-hover:h-[850px] object-cover relative right-0 col-span-full md:col-span-6 
+                className="rounded-2xl md:rounded-r-3xl w-full h-[400px] md:group-hover:h-[850px] object-cover relative right-0 col-span-full md:col-span-6 
                 transition-all duration-300 scale-[94%] md:scale-100 md:group-hover:scale-97 xl:group-hover:scale-100 md:group-hover:mb-1 xl:group-hover:m-4 xl:group-hover:right-8 md:group-hover:rounded-2xl"
                 autoPlay
                 muted
@@ -443,9 +444,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
             {/* Uniqlo */}
             {/* <div
-                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild md:shadow-none
-                dark:border-white/20 md:dark:border-white/10 md:dark:hover:border-white/25 mt-4 md:mt-6
-                  md:hover:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer mb-32"
+                className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild
+                dark:border-white/20 md:dark:border-transparent md:dark:hover:border-white/20 mt-4 md:mt-3
+                  md:shadow-mild md:hover:scale-101 rounded-3xl transition-non-color cursor-pointer mb-32"
                 onMouseEnter={() => {
                 setHoveredWork("uniqlo1");
                 }}
@@ -483,7 +484,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl leading-tighter md:text-7xl font-medium tracking-tighter mb-3 mr-10">
+                <h1 className="text-6xl leading-tighter font-medium tracking-tighter mb-3 mr-10">
                    Your Stage Now Live
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">In-Store Displays for<span className="ml-1.5 text-xl font-script -rotate-1">Uniqlo</span></h1>
@@ -510,7 +511,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
             </div> */}
 
             {/* Background Glow */}
-            <div className="absolute -z-50 top-0">
+            {/* <div className="absolute -z-50 top-0">
                 <div className="min-w-screen flex-col blur-3xl opacity-0 dark:opacity-100">
                     <motion.video
                     src="/CCS/montagelow.mp4"
@@ -542,7 +543,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     playsInline
                     ></motion.video>
                 </div>
-            </div>
+            </div> */}
 
         </motion.div>
 

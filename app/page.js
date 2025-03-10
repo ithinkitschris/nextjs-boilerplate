@@ -463,7 +463,7 @@ export default function Home(){
         px-3 sm:px-4 2xl:px-6 text-sm max-w-10xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-2 md:top-2.5 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
+          <div className="col-span-full fixed top-2 md:top-5 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
 
             {/* Sidenav / Dropdown Button */}
             <motion.button 
@@ -599,7 +599,7 @@ export default function Home(){
 
           {/* Desktop Navbar BG */}
           <div
-            className="hidden md:block fixed backdrop-blur-lg top-2 left-1/2 transform -translate-x-1/2 w-[265px] ml-[12px] rounded-full 
+            className="hidden md:block fixed backdrop-blur-lg top-2 md:top-[18px] left-1/2 transform -translate-x-1/2 w-[265px] ml-[12px] rounded-full 
             drop-shadow bg-background z-30 dark:bg-transparent h-[38px] border-b-1 border-white/30 dark:mix-blend-overlay"
           ></div>
 
