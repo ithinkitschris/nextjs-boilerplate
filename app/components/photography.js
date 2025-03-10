@@ -30,7 +30,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Personal */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-2xl cursor-pointer md:mr-2 shadow-standard" 
+        className="group col-span-3 h-[600px] 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-2xl cursor-pointer md:mr-2 hover:shadow-mild" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -46,9 +46,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/90 to-transparent rounded-t-lg"></div>
 
             {/* Text */}
-            <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
+            <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
 
-                <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
+                <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
                     Digital
                 </h1>
 
@@ -73,7 +73,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Film */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-2xl md:mr-2 shadow-standard"
+        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-2xl md:mr-2 hover:shadow-mild"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -84,8 +84,8 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
             src="/Photography/film/cover4.jpg"/>
         <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/70 to-transparent rounded-t-lg"></div>
-        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
-            <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Film</h1>
+        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
+            <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Film</h1>
             
 
             <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
@@ -113,7 +113,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BBH */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-2xl md:mr-2 shadow-standard"
+        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-2xl md:mr-2 hover:shadow-mild"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -128,9 +128,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
 
         
-        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
-            <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">BBH</h1>
-            <p className="-mt-1 ml-1 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Profile Headshots</p>
+        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
+            <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">BBH</h1>
+            <p className="mt-1 ml-0.5 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Profile Headshots</p>
             
 
             <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
@@ -158,7 +158,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Stressed */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 lg:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-2xl md:mr-2 shadow-standard"
+        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 lg:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-2xl md:mr-2 hover:shadow-mild"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -173,8 +173,8 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
 
         {/* Text */}
-        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
-            <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight w-5/6">Class of 2016</h1>
+        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
+            <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight w-5/6">Class of 2016</h1>
             {/* <p className="-mt-1 ml-1 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Profile Headshots</p> */}
             {/* <h2 className="text-xl text-white tracking-tight">Subheader</h2> */}
 
@@ -215,9 +215,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             </img>
 
             <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
-            <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
+            <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
 
-                <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
+                <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
                     Behind the Scenes
                 </h1>
 
@@ -242,7 +242,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Unshackle */}
         {/* <motion.div 
-        className="group col-span-3 h-[600px] mt-2 xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-2xl shadow-standard" 
+        className="group col-span-3 h-[600px] mt-2 xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-2xl hover:shadow-mild" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -258,9 +258,9 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
 
             
-            <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-6">
+            <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
 
-                <h1 className="text-5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
+                <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
                     Unshackle:
                 </h1>
                 <p className="-mt-1 ml-0.5 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Behind the Scenes</p>

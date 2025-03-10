@@ -29,7 +29,7 @@ const ContentPage = ({className}) => {
     variants={animateIn}>
 
         
-        <motion.h1 className="col-span-full text-5xl lg:text-6xl tracking-tight font-medium mb-4 leading-11 relative px-4 md:px-0 mt-6 md:w-5/6" variants={animateInChild}>This here is essentially my Instagram feed, & basically my life.
+        {/* <motion.h1 className="col-span-full text-5xl lg:text-6xl tracking-tight font-medium mb-4 leading-11 relative px-4 md:px-0 mt-6 md:w-5/6" variants={animateInChild}>This here is essentially my Instagram feed, & basically my life.
         <span className="font-script text-2xl -rotate-2 ml-3 mb-6 hidden md:inline"> Wait woahI have one ?</span></motion.h1>
         <motion.h2 className="col-span-full font-script text-2xl ml-3 -rotate-2 -mt-2 mb-6 md:hidden" variants={animateInChild}> Wait woahI have one ?</motion.h2>
         <motion.h3 className="col-span-full text-xs lg:text-base font-medium tracking-tight mb-10 md:mb-6 px-4 lg:px-0 -mt-1" variants={animateInChild}>You may also alternatively, find it natively here: 
@@ -38,7 +38,7 @@ const ContentPage = ({className}) => {
             target="blank"
             rel="noopener noreferrer">@khristurtle</a>
             
-            </motion.h3>
+            </motion.h3> */}
 
         {/* <h2 className="col-span-full tracking-wider text-xs px-4 font-semibold -mt-2 mb-2">REELS</h2> */}
 
@@ -50,14 +50,14 @@ const ContentPage = ({className}) => {
                 
                 <video 
                 src="/content/taycan.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/taycan.jpg'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
@@ -70,14 +70,14 @@ const ContentPage = ({className}) => {
                 
                 <video 
                 src="/content/m3.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/m3.jpg'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
@@ -90,14 +90,14 @@ const ContentPage = ({className}) => {
                 
                 <video 
                 src="/content/ontheroadc43.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/c43.jpg'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
@@ -110,14 +110,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/ontheroad1_1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/roadbay.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
@@ -130,14 +130,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/ontheroad3_1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/roadkl.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
@@ -150,14 +150,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/ontheroad4_1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/roadmelbourne.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
@@ -170,14 +170,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/rangefinder1_1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/klleica.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px] md:leading-4">
@@ -190,14 +190,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/rangefinder2_1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/shanghaileica.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px] md:leading-4">
@@ -210,14 +210,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/rangefinder3_1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/shanghaifilm.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px] md:leading-4">
@@ -230,14 +230,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/pov2.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/12a.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -250,14 +250,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/pov3_1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/15a.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -270,14 +270,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/pov4_1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/nonstop.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -290,14 +290,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/filmvsdigital1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/filmhanoi.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
@@ -310,14 +310,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/filmvsdigital2.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/filmmarinabay.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
@@ -330,14 +330,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/filmvsdigital3.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/filmshanghai.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
@@ -350,14 +350,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/blender1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/iphoneblender.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -370,14 +370,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/blender2.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/iphoneblender2.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -390,14 +390,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/blender3.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/leicablender.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -410,14 +410,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/blender4.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/leicablender2.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -430,14 +430,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/24hours1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/24hourkl.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -450,14 +450,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/24hours2.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/24hourmelbourne.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -470,14 +470,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/16.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/stool.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px] md:leading-4 md:w-2/3">
@@ -490,14 +490,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/15.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/lounge.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -510,14 +510,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/14.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/shanghaibrands.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -530,14 +530,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/11.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/prints.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -550,14 +550,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/4_1.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/jaguar.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -570,14 +570,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/3.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/chicago.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -590,14 +590,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/17.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/dia.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -610,14 +610,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/5.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/manhattanbridge.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
@@ -630,14 +630,14 @@ const ContentPage = ({className}) => {
             
                 <video 
                 src="/content/2.mp4" 
-                className=" rounded w-full h-auto object-cover"
+                className=" rounded-2xl w-full h-auto object-cover"
                 autoPlay muted loop playsInline loading="lazy"
                 poster='/poster/content/muir.png'
                 variants={animateInChild}>
                 </video>
 
                 {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b"/>
+                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
                 {/* Title */}
                 <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">

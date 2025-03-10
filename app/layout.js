@@ -67,7 +67,7 @@ const modernLine = localFont({
 
 export default function RootLayout({ children }) {
 
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [changelog, setChangelog] = useState(false);
   const changelogRef = useRef(null);
   const footerRef = useRef(null);

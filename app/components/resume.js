@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect, } from "react";
 import Image from "next/image";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
-import BestWorkPage from "./bestwork";
+import BestWorkPage2 from "./bestworkv2";
 import CabinCrewStories from "./cabin";
 import PhotographyPage from "./photography";
+import ContentPage from "./content";
 
 
 const animateIn = {
@@ -254,64 +255,68 @@ export default function Resume({ className = "", showNav }) {
                     <motion.img src='/profile/profilelandscape2.jpg'
                     className="rounded-3xl h-full w-full drop-shadow-xl object-cover transition-all" variants={animateInChild}/>
 
-                    <div className="absolute inset-0 pt-6 pb-4 pl-10 text-white flex flex-col justify-between">
+                        <div className="absolute inset-0 pt-6 pb-4 pl-10 text-white grid grid-cols-2 group">
 
-                        {/* Desktop Name */}
-                        <motion.h1
-                        className="pt-0 text-4xl font-medium tracking-tighter"
-                        variants={animateInChild}>
-                        I am
-                        <p className={`font-script tracking-tight mt-12 -rotate-3 ${showNav ? 'text-[140px]' : 'text-[140px]'}`} style={{ wordSpacing: "-0.25em" }}>Chris Leow</p>
-                        </motion.h1>
-
-                        {/* Desktop Subheader */}
-                        <motion.h1 
-                        className={`pr-8 font-script tracking-tight leading-10 flex-1 -rotate-1 ${showNav ? 'mt-12 ml-[280px] text-[28px]' : 'mt-12 ml-[280px] text-[28px]'}`}
-                        variants={animateInChild}>                       
-                            <p className="-rotate-2">And here are three things about me:</p>     
-                        </motion.h1>
-                        
-                        {/* Desktop Three Things */}
-                        <motion.div 
-                        className="mb-12 lg:-mb-10 px-5 md:px-0 ml-1 mt-18 col-span-1" 
-                        variants={animateInChild}>
-                            {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
-                            <p className="text-2xl tracking-tight -ml-4"><span className="text-[24px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">01</span> I don&apos;t take anything too seriously.</p>
-                            <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3">A bold opening statement; I know.</p>
-                            <p className="text-2xl tracking-tight -ml-[18px]"><span className="text-[24px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">02</span> I aim to have fun in everything I do.</p>
-                            <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3">{"<p>I designed and coded this site from ground up.<br/>"}<br/>{"Fun? Curiosity? Masochism? <i>Possibly.</i></p>"}</p>
-                            <p className="text-2xl tracking-tight -ml-4"><span className="text-[24px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">03</span> Craft. Craft. Craft.</p>
-                            <p className="text-xs ml-[18px] opacity-25 mb-12 tracking-normal font-light leading-[16px] w-1/3">Craft means everything to me. I have to <i>do</i>.<br/>I hope this comes across as you peruse my work.</p>
-                        </motion.div>
-
-                        {/* Desktop Details Container */}
-                        <motion.div className={`col-span-4 flex justify-end px-5 pb-4 -mt-18`}>
-
-                            {/* Details */}
-                            <motion.div
-                            className="text-[#e9e9e9] dark:text-white flex flex-col items-end self-end mr-4"
+                            {/* Desktop Name */}
+                            <motion.h1
+                            className="pt-3 text-4xl font-medium tracking-tighter -ml-2"
                             variants={animateInChild}>
+                            I am
+                            <p className={`font-script tracking-tight ml-6 mt-16 -rotate-3 ${showNav ? 'text-[150px]' : 'text-[150px]'}`} 
+                            style={{ wordSpacing: "-0.25em" }}>Chris <span className=" relative bottom-7 text-[110px]">Leow</span></p>
+                            </motion.h1>
+
+
+                            {/* Desktop Subheader */}
+                            <motion.h1 
+                            className={`absolute top-54 font-script tracking-tight leading-8 col-span-full ml-[245px] text-[28px]`}
+                            animate={{rotate:-3}}
+                            variants={animateInChild}>                       
+                                <p className="-rotate-2">And here are three things about me:</p>     
+                            </motion.h1>
+
+                            {/* Desktop Three Things */}
+                            <motion.div 
+                            className="absolute left-10 bottom-8 w-full" 
+                            variants={animateInChild} layout="position">
+                                {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
+                                <p className="text-2xl tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
+                                <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3">A bold opening statement; I know.</p>
+                                <p className="text-2xl tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in everything I do.</p>
+                                <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3">{"<p>I designed and coded this site from ground up.<br/>"}<br/>{"Fun? Curiosity? Masochism? Take your pick.</p>"}</p>
+                                <p className="text-2xl tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> Craft. Craft. Craft.</p>
+                                <p className="text-xs ml-[18px] opacity-25 mb-12 tracking-normal font-light leading-[16px] w-1/3">Craft means everything to me. I have to <i>do</i>.<br/>I hope this comes across as you peruse my work.</p>
+                            </motion.div>
+
+                            {/* Desktop Details Container */}
+                            <motion.div className={`col-span-1 absolute right-12 bottom-18`} layout="position">
+
+                                {/* Details */}
+                                <motion.div
+                                className="text-[#e9e9e9] dark:text-white flex flex-col items-end self-end"
+                                variants={animateInChild} layout>
 
                                 {/* Circle Header */}
-                                <h1 className="flex items-center justify-center border-1 rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 whitespace-nowrap -mr-2">Senior Creative</h1>
+                                <h1 className="flex items-center justify-center border-1 rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 whitespace-nowrap -ml-2">Senior Creative</h1>
                                 <p><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2 italic">{timeNyc}</span>Based in New York City</p>
                                 <i className="-ml-0.5"><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span>From Singapore</i>
+                                    
+                                </motion.div>
+
                                 
                             </motion.div>
 
                             {/* Desktop Contact */} 
-                           {/* <motion.div 
-                            className="z-30 tracking-tight text-white text-right"
-                            variants={animateInChild}>
-                                <p className="mb-2 text-xl">Contact</p>
-                                <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
-                                <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
-                                <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
-                                <p className="">Resume – <a href="/resume/Chris Leow.pdf" download="Chris Leow.pdf" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Here!</a></p>
-                            </motion.div> */}
-                        </motion.div>
-
-                    </div>
+                            <motion.div 
+                                className="z-30 tracking-tight text-white flex w-full justify-between px-4 pr-12 absolute bottom-6 col-span-full"
+                                variants={animateInChild} layout>
+                                    {/* <p className="mb-2 text-xl">Contact</p> */}
+                                    <p className="text-white opacity-25 group-hover:opacity-100 transition-all duration-300">Email – <span className="transition-all duration-300 hover:text-white">ithinkitschristopher@gmail.com</span></p>
+                                    <p className="text-white opacity-25 group-hover:opacity-100 transition-all duration-300">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-all duration-300 hover:text-white" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
+                                    <p className="text-white opacity-25 group-hover:opacity-100 transition-all duration-300">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-all duration-300 hover:text-white" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
+                                    <p className="text-white opacity-25 group-hover:opacity-100 transition-all duration-300"><a href="/resume/Chris Leow.pdf" download="Chris Leow.pdf" className="font-normal underline transition-all duration-300 hover:text-white" target="_blank" rel="noopener noreferrer">Resume</a></p>
+                                </motion.div>
+                        </div>
                 </div>
 
                 {/* Desktop Background Glow */}
@@ -320,7 +325,8 @@ export default function Resume({ className = "", showNav }) {
             </div>
 
             {/* Header */}
-            <div className="font-medium tracking-[-3px] text-8xl ml-4 mt-36 mb-4 col-span-full">Story time.</div>
+            {/* <div className="font-medium tracking-[1.5pt] text-[12pt] ml-9 mt-36 mb-6 col-span-full uppercase">About</div> */}
+            <div className="font-medium tracking-[-2pt] text-[64pt] ml-10 mt-36 mb-12 col-span-full">Story time.</div>
 
             {/* Story Container */}
             <motion.div className={`col-span-full w-full grid grid-cols-9 gap-4 mt-4 mb-10`}>  
@@ -364,7 +370,8 @@ export default function Resume({ className = "", showNav }) {
                         >A Hiring Manager?</p>
                     </motion.div>
 
-                    <div className="absolute h-[80%] w-[1px] bg-black left-72 top-7 opacity-5"/>
+                    {/* Line */}
+                    <div className="absolute h-[80%] w-[1px] bg-black/5 dark:bg-white/5 left-72 top-7"/>
                     
                     {/* AI */}
                     {showDesktopAI && (
@@ -428,6 +435,7 @@ export default function Resume({ className = "", showNav }) {
                                         <p>Tailwind CSS</p>
                                         <p>React.js</p>
                                         <p>Next.js</p>
+                                        <p>p5.js</p>
                                     </div>   
                                 </div>
                             </div>
@@ -472,7 +480,7 @@ export default function Resume({ className = "", showNav }) {
                                 </p>
                                 <p className="italic text-sm opacity-50 mt-4 pr-8">Only then do we sign our work:<br/> Designed by Apple in California</p>
 
-                                <a className="mt-6 -ml-1 flex justify-center rounded-full border-1 w-[135px] pl-1 border-foreground mb-2"
+                                <a className="mt-6 -ml-1 flex justify-center rounded-full border-1 w-[135px] pl-1 border-black/20 dark:border-white/50 mb-2"
                                 href="https://www.youtube.com/watch?v=LcGPI2tV2yY"
                                 target='blank'>
                                     
@@ -526,9 +534,9 @@ export default function Resume({ className = "", showNav }) {
             </motion.div>
 
             {/* Header */}
-            <div className="font-medium tracking-[-3px] text-8xl ml-4 mt-36 col-span-full">My favorite work.</div>
-
-            
+            <div className="font-medium tracking-[0pt] text-[12pt] ml-8 mt-36 mb-7 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-1.5">Work</div>
+            <div className="font-medium tracking-[-2pt] text-[62pt] ml-8 mb-8 col-span-full">Works of passion.</div>
+          
             {/* Work Selector */}
             {/* <motion.div className="border-1 border-white/25 h-full w-full rounded-3xl col-span-full bg-background dark:bg-transparent leading-[150%]
                 transition-non-color shadow-mild p-6 px-12 text-sm grid grid-cols-9 relative" 
@@ -545,11 +553,17 @@ export default function Resume({ className = "", showNav }) {
             </motion.div> */}
 
             {/* Works */}
-            <BestWorkPage className='col-span-full mt-8'/>
+            <BestWorkPage2 className='col-span-full mt-8' key='bestwork'/>
 
-            {/* Header */}
-            <div className="font-medium tracking-tight text-8xl ml-4 mt-32 mb-8 hover:scale-105 hover:drop-shadow-md transition-all duration-200 cursor-default">Photography</div>
-            <PhotographyPage className='col-span-full mt-8'/>
+            {/* Photography */}
+            <div className="font-medium tracking-[-0.2pt] text-[12pt] ml-3 mt-36 mb-3 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Photography</div>
+            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-3 mb-3 col-span-full leading-[87%] w-1/2">Fifteen years through<br/> the viewfinder.</div>
+            <PhotographyPage className='col-span-full mt-8' key='bsstwork'/>
+            
+            {/* Content */}
+            <div className="font-medium tracking-[-0.2pt] text-[12pt] ml-2 mt-32 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>
+            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-3 mb-8 col-span-full leading-[87%] w-1/2">Life viewed through a short attention span.</div>
+            <ContentPage className='col-span-full mt-8' key='bestworkte'/>
 
             {/* Mobile Brands Container */}
             <h1 className="mt-4 mb-4 font-medium col-span-full text-xl px-5 md:hidden" key='aiya'>Worked with:</h1>
@@ -606,7 +620,7 @@ export default function Resume({ className = "", showNav }) {
                     }}>
 
                     <div 
-                    className={`flex items-center justify-center transition-non-color duration-200 w-[72px] border-foreground
+                    className={`flex items-center justify-center transition-non-color duration-200 w-[72px] border-black/20 dark:border-white/50
                     rounded-full tracking-tight text-base ${showAI ? 'border-1 scale-95' : ''}`}>
                         For<span className="font-script tracking-tightest ml-1.5 relative top-0.5">AI</span>
                     </div>
@@ -723,13 +737,13 @@ export default function Resume({ className = "", showNav }) {
                     }}>
 
                     {/* <div 
-                    className={`flex items-center justify-center transition-non-color duration-200 w-[195px] border-foreground
+                    className={`flex items-center justify-center transition-non-color duration-200 w-[195px] border-black/20 dark:border-white/50
                     rounded-full tracking-tight text-base ${showShort ? 'border-1 scale-95' : ''}`}>
                         The <span className="font-script tracking-tightest ml-2 mr-1 relative top-0.5">&apos;professional &apos;</span>  writeup.
                     </div> */}
 
                     <div 
-                    className={`flex items-center justify-center transition-non-color duration-200 w-[138px] border-foreground
+                    className={`flex items-center justify-center transition-non-color duration-200 w-[138px] border-black/20 dark:border-white/50
                     rounded-full tracking-tight text-base ${showShort ? 'border-1 scale-95' : ''}`}>
                         For the <span className="font-script tracking-tightest ml-1.5 relative top-0.5">Recruiter</span>
                     </div>
@@ -807,7 +821,7 @@ export default function Resume({ className = "", showNav }) {
                     }}>
 
                     <div 
-                    className={`flex items-center justify-center transition-non-color duration-200 w-[190px] border-foreground
+                    className={`flex items-center justify-center transition-non-color duration-200 w-[190px] border-black/20 dark:border-white/50
                     rounded-full tracking-tight text-base ${showLong ? 'border-1 scale-95' : ''}`}>
                         {/* A <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">love letter</span>  to myself. */}
                         For the <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">Hiring Manager</span>
@@ -856,7 +870,7 @@ export default function Resume({ className = "", showNav }) {
                         className=" px-5 md:px-0 flex-1"
                         variants={dropdownChild}
                         layout="position">
-                            <a className="-ml-1 flex justify-center rounded-full mb-6 border-1 w-[130px] pl-1 border-foreground"
+                            <a className="-ml-1 flex justify-center rounded-full mb-6 border-1 w-[130px] pl-1 border-black/20 dark:border-white/50"
                             href="https://www.youtube.com/watch?v=LcGPI2tV2yY"
                             target='blank'>
                                 
@@ -937,13 +951,6 @@ export default function Resume({ className = "", showNav }) {
                 <img src='/brandlogos/mckinsey.png' className="w-[85px] h-[32px] object-cover opacity-50 hover:opacity-100 scale-90 hover:scale-110 transition-transform duration-300"/>
                 <img src='/brandlogos/jollibee.png' className="w-[80px] h-[30px] object-cover opacity-50 hover:opacity-100 scale-90 hover:scale-110 transition-transform duration-300"/>
             </motion.div>
-
-            
-
-            {/* Line */}
-            {/* <motion.div className="hidden lg:block col-span-full w-full h-[1px] dark:bg-white/10 bg-black/10 mt-4 mb-4" variants={animateInChild} layout='position' key='alamak3'/> */}
-            
-            
                 
             {/* Currently: */}
             <motion.div className="col-span-full p-7 md:col-span-2 md:w-full relative mt-4 md:mt-10 group cursor-pointer rounded-3xl shadow-lg" 

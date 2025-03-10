@@ -488,7 +488,7 @@ export default function Home(){
 
               {/* Top Navbar Contents */}
               <motion.div
-              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-5 text-white mt-[7px] lg:mt-1 z-40"
+              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-1 text-white mt-[7px] lg:mt-1 z-40"
               initial="hidden"
               animate="show"
               layout="position"
@@ -510,6 +510,7 @@ export default function Home(){
                     toggleTag('clear');
                     toggleWork('resume');
                     setSelectedTags(['']);
+                    setShowNav(false);
                     if (isMobile) {
                       setShowNav(false);
                     }
@@ -520,7 +521,7 @@ export default function Home(){
                 </motion.button>
 
                 {/* Best Button */}
-                <motion.button 
+                {/* <motion.button 
                   className={`hidden md:block hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('bestwork') 
@@ -543,14 +544,13 @@ export default function Home(){
                   <div className="hidden md:block">Work</div>
                   <div className="block md:hidden">Favourites</div>
 
-                </motion.button>
+                </motion.button> */}
 
                 {/* All Button */}
                 <motion.button 
                 className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${['all', 'creative', 'edit', 'motion', 'photography', 'content', 'ixd'].some(tag => selectedTags.includes(tag))
-                    
                     ? ' border-foreground dark:border-white text-foreground' 
                     : ' text-black dark:text-white dark:hover:text-foreground border-black/0'
                   }`}
@@ -569,7 +569,7 @@ export default function Home(){
                     }
                   }}>
 
-                  <span className="hidden md:block">Archive</span>
+                  <span className="hidden md:block">Everything.</span>
                   <span className="block md:hidden">Work</span>
                   
                 </motion.button>
@@ -599,7 +599,7 @@ export default function Home(){
 
           {/* Desktop Navbar BG */}
           <div
-            className="hidden md:block fixed backdrop-blur-lg top-2 md:top-[18px] left-1/2 transform -translate-x-1/2 w-[265px] ml-[12px] rounded-full 
+            className="hidden md:block fixed backdrop-blur-lg top-2 md:top-[18px] left-1/2 transform -translate-x-1/2 w-[190px] ml-[12px] rounded-full 
             drop-shadow bg-background z-30 dark:bg-transparent h-[38px] border-b-1 border-white/30 dark:mix-blend-overlay"
           ></div>
 
@@ -661,7 +661,7 @@ export default function Home(){
                       toggleTag('creative');
                       toggleNav('false');
                       toggleWork('clear');}}><span className='hidden mr-1 opacity-35 text-xxs align-top tracking-normal'>01 </span>
-                      Creative</motion.button>
+                      Creative Direction</motion.button>
 
                     {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
