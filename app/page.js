@@ -551,7 +551,7 @@ export default function Home(){
                 className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
                     hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${['all', 'creative', 'edit', 'motion', 'photography', 'content', 'ixd'].some(tag => selectedTags.includes(tag))
-                    ? ' border-foreground dark:border-white text-foreground' 
+                    ? ' border- dark:border-white text-foreground' 
                     : ' text-black dark:text-white dark:hover:text-foreground border-black/0'
                   }`}
 
@@ -569,7 +569,7 @@ export default function Home(){
                     }
                   }}>
 
-                  <span className="hidden md:block">Everything.</span>
+                  <span className="hidden md:block">Everything</span>
                   <span className="block md:hidden">Work</span>
                   
                 </motion.button>
