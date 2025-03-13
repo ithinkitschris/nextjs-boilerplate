@@ -565,7 +565,7 @@ export default function Resume({ className = "", showNav }) {
             </motion.div> */}
 
             {/* Creative Direction */}
-            <div className="font-medium tracking-[0pt] text-[12pt] ml-28 mt-36 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-1.5">Creative Direction</div>
+            <div className="font-medium tracking-[0pt] text-[12pt] ml-28 mt-36 mb-0 col-span-full border-black/20 dark:border-white/50 p-0.5 rounded-full px-0">Creative Direction</div>
             <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-4 mb-3 col-span-full leading-[87%] w-2/3 px-24">Telling stories.</div>
             <BestWorkPage2 className='col-span-full mt-8 px-20' key='bestwork'/>
 

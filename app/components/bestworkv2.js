@@ -55,7 +55,7 @@ return (
             </button>
             
             {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[40%] group-hover:w-[28%] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
+            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[23%] group-hover:w-[28%] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
 
               <button className="font-mono text-base tracking-tight p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
                 01
@@ -104,7 +104,7 @@ return (
           <div className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild  duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98">
             
             {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[45%] group-hover:w-[34%] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
+            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[28%] group-hover:w-[34%] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
 
               <button className="font-mono text-base tracking-tighter w-11 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
                 02
@@ -153,7 +153,7 @@ return (
           <div className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild  duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98">
             
             {/* Side Container */}
-            <div className="absolute z-50 p-10 pt-8 w-[50%] group-hover:w-[33%] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
+            <div className="absolute z-50 p-10 pt-8 w-[26%] group-hover:w-[33%] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
 
               <button className="font-mono text-base tracking-tighter w-11 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
                 03
