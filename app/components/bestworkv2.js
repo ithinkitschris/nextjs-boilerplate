@@ -1,7 +1,7 @@
 'use client'
 
 import * as motion from "framer-motion/client"
-import {useEffect, useRef} from 'react';
+// import {useEffect, useRef} from 'react';
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -10,16 +10,10 @@ const animateIn ={
         transition: {staggerChildren: 0.2, duration:0.5, ease:"easeOut"}
     }
 }
-const animateInChild ={
-hidden: {opacity:0, y:20},
-show: {
-    opacity:1, y:0, 
-    transition: {duration:0.3, ease:"easeOut"}
-    }
-}
 
 
-const BestWorkPage2 = ({className, setSelectedWork, setHoveredWork}) => {
+
+const BestWorkPage2 = ({className}) => {
 
  
 return (

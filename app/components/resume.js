@@ -9,14 +9,7 @@ import PhotographyPage from "./photography";
 import ContentPage from "./content";
 
 
-const animateIn = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-        opacity: 1,
-        y: 0,
-        transition: { staggerChildren: 0.06, duration: 0.2, ease: "easeOut" },
-    },
-};
+
 
 const animateInChild = {
     hidden: { opacity: 0, y: 20 },
@@ -53,7 +46,7 @@ const dropdownChild = {
     },
 };
 
-export default function Resume({ className = "", showNav }) {
+export default function Resume({ className = ""}) {
     const [timeNyc, setTimeNyc] = useState(null);
     const [timeSg, setTimeSg] = useState(null);
 
@@ -480,7 +473,7 @@ export default function Resume({ className = "", showNav }) {
                                 <h1 className="text-xl font-medium tracking-tight mb-4">And?</h1>
                                 <p className="mb-3">In his spare time (which, realistically, isn't much), he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
                                 <p>When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, 
-                                though he wouldn't go so far as to call it interior design.</p>
+                                though he wouldn&apos;t go so far as to call it interior design.</p>
                             </div>
                         </div>
                     )}
