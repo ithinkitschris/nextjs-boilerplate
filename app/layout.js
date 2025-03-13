@@ -177,7 +177,7 @@ const toggleDarkMode = () => {
                 </a>
 
                 {/* Last Updated */}
-                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 03.10.25 for the 226th time.</p>
+                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 03.13.25 for the 227th time.</p>
 
               </motion.div>
 
@@ -217,7 +217,10 @@ const toggleDarkMode = () => {
 
                 <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
-                  <p className='mt-0 text-foreground font-medium'>v226 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
+                  <p className='mt-0 text-foreground font-medium'>v227 <span className="ml-0.5 opacity-20 font-normal">(Mobile)</span></p>
+                  <p>Fixed bug from previous change in v226–mobile navbar now opens when tapping on &apos;Work&apos;.</p>
+
+                  <p className='mt-4 text-foreground font-medium'>v226 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
                   <p>Removed &apos;Archive&apos; tab from top navbar–now only has Profile and Work tabs.</p>
 
                   <p className='mt-4 text-foreground font-medium'>v225 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
@@ -239,7 +242,7 @@ const toggleDarkMode = () => {
                 
                 <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
-                  <p className='mt-4 text-foreground font-medium'>v222</p>
+                  <p className='mt-0 text-foreground font-medium'>v222</p>
                   <p>This window now also closes upon clicking on the footer button–previously only closed upon clicking outside of the window.</p>
                   <p>Tweaked copy on the footer button and this window.</p>
                   <p>Fixed minor bugs on the hover states in this window.</p>

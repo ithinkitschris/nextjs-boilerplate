@@ -90,7 +90,7 @@ show: {
 
             {/* Banner Video */}
             <motion.video 
-            ref={bannerVideoRef}
+            // ref={bannerVideoRef}
             src="/CCS/montagelow.mp4" 
             className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
             autoPlay muted loop playsInline loading="lazy"

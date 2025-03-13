@@ -562,11 +562,13 @@ export default function Home(){
                 layout="position"
                 onClick={() => {
                   toggleTag('clear');
-                  toggleWork('bestwork');
                   setSelectedTags(['']);
                   setShowNav(true);
                   if (window.matchMedia('(max-width: 640px)').matches) {
-                    setShowNav(false);
+                    
+                    setShowNav(true);
+                  } else {
+                    toggleWork('bestwork')
                   }
                 }}>
 
