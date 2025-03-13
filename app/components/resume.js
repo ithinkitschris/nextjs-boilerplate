@@ -471,7 +471,7 @@ export default function Resume({ className = ""}) {
 
                             <div className="col-span-1">
                                 <h1 className="text-xl font-medium tracking-tight mb-4">And?</h1>
-                                <p className="mb-3">In his spare time (which, realistically, isn't much), he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
+                                <p className="mb-3">In his spare time (which, realistically, isn&apos;t much), he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
                                 <p>When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, 
                                 though he wouldn&apos;t go so far as to call it interior design.</p>
                             </div>

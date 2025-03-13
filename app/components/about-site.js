@@ -1,6 +1,5 @@
 
 'use client'
-import { easeOut } from "framer-motion";
 import * as motion from "framer-motion/client"
 import React from 'react';
 
