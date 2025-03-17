@@ -7,6 +7,7 @@ import BestWorkPage2 from "./bestworkv2";
 import MotionDesignPage from "./motion";
 import PhotographyPage from "./photography";
 import ContentPage from "./content";
+import ProductPage from "./product";
 
 
 
@@ -242,11 +243,11 @@ export default function Resume({ className = ""}) {
                 </div>
 
                 {/* Desktop Container */}
-                <div className="col-span-full mb-4 border-0 hidden lg:block relative w-full h-[680px] group">
+                <div className="col-span-full mb-4 border-0 hidden lg:block relative w-full h-[650px] group scale-100 hover:scale-101 transition-all duration-500">
                     
                     {/* Image */}
                     <motion.img src='/profile/profilelandscape2.jpg'
-                    className="rounded-3xl h-full w-full drop-shadow-xl object-cover transition-all" variants={animateInChild}/>
+                    className="rounded-3xl h-full w-full group-hover:drop-shadow-xl object-cover transition-all" variants={animateInChild}/>
 
                         <div className="absolute inset-0 pt-1 pb-4 pl-10 text-white grid grid-cols-2 group">
 
@@ -261,7 +262,7 @@ export default function Resume({ className = ""}) {
 
                             {/* Desktop Name */}
                             <motion.h1
-                            className="pt-5 text-xl font-script tracking-tight whitespace-nowrap"
+                            className="pt-6 text-xl font-script tracking-tight whitespace-nowrap"
                             variants={animateInChild}>
                             I am
                             <p className={`font-medium font-sans tracking-[-4.5pt] text-9xl -ml-3 -mt-3.5`}>
@@ -277,7 +278,7 @@ export default function Resume({ className = ""}) {
 
                             {/* Desktop Subheader */}
                             <motion.h1 
-                            className={`absolute top-[160px] font-script tracking-tight leading-8 col-span-full ml-[270px] text-[24px]`}
+                            className={`absolute top-[164px] font-script tracking-tight leading-8 col-span-full ml-[270px] text-[24px]`}
                             animate={{rotate:-0}}
                             variants={animateInChild}>                       
                                 <p className="-rotate-2">And here are three things about me:</p>     
@@ -335,7 +336,7 @@ export default function Resume({ className = ""}) {
             {/* Header */}
             {/* <div className="font-medium tracking-[1.5pt] text-[12pt] ml-9 mt-36 mb-6 col-span-full uppercase">About</div> */}
             {/* <div className="font-medium tracking-[-2pt] text-[64pt] ml-10 mt-36 mb-12 col-span-full md:px-20">Story time.</div> */}
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 mt-36 ml-4 mb-3 col-span-full leading-[87%] w-2/3 px-24">Who?</div>
+            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 mt-36 ml-4 mb-3 col-span-full leading-[87%] w-2/3 px-24">Story time.</div>
 
             {/* Story Container */}
             <motion.div className={`col-span-full w-full grid grid-cols-9 gap-4 mt-4 mb-10 md:px-20`}>  
@@ -349,7 +350,7 @@ export default function Resume({ className = ""}) {
                     {/* Story Selector */}
                     <motion.div className="col-span-2 transition-non-color text-sm">
 
-                        <p className=" font-medium text-2xl tracking-tight mb-4">Are you<span className="font-thin ml-0.5 tracking-normal">...</span></p>
+                        <p className=" font-medium text-2xl tracking-tight mb-4">But first, are you<span className="font-thin ml-0.5 tracking-normal">...</span></p>
                         
                         <p className={`flex justify-center items-center text-xl cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                         border-1 border-transparent hover:border-foreground transition-non-color rounded-full w-[80px] hover:scale-95 -ml-3 mb-1.5
@@ -465,7 +466,7 @@ export default function Resume({ className = ""}) {
                             <div className="col-span-1">
                                 <h1 className="text-xl font-medium tracking-tight mb-4">What?</h1>
                                 <p className="mb-3">As a Multidisciplinary Creative and formerly the Creative Lead at ArtScience Museum in Singapore; 
-                                    he finds himself with eight years of experience in Advertising and Design–having notably worked on multiple brand campaigns for Singapore Airlines 
+                                    he finds himself with eight years of experience in Advertising – having worked in the two leading agencies Singapore at the time: BBH and TBWA and working on multiple brand campaigns for Singapore Airlines 
                                     as an Art Director and global brands the likes of IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo.</p>
                             </div>
 
@@ -558,18 +559,26 @@ export default function Resume({ className = ""}) {
             </motion.div> */}
 
             {/* Creative Direction */}
-            <div className="font-medium tracking-[0pt] text-[12pt] ml-28 mt-36 mb-0 col-span-full border-black/20 dark:border-white/50 p-0.5 rounded-full px-0">Creative Direction</div>
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-4 mb-3 col-span-full leading-[87%] w-2/3 px-24">Telling stories.</div>
-            <BestWorkPage2 className='col-span-full mt-8 px-20' key='bestwork'/>
+            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-36 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Creative Direction</div>
+            {/* <div className="font-script tracking-[0pt] text-[14pt] ml-28 mt-36 mb-2 whitespace-nowrap -rotate-0">Creative Direction</div> */}
+            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-4 mb-3 col-span-full leading-[87%] w-2/3 px-24">The ones that had legs.</div>
+            <BestWorkPage2 className='col-span-full -mt-10' key='bestwork'/>
+
+            {/* Product Design */}
+            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-36 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Product Design</div>
+            {/* <div className="font-script tracking-[0pt] text-[16pt] ml-28 mt-36 mb-1 whitespace-nowrap -rotate-0">Motion Design</div> */}
+            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-0 mb-3 col-span-full leading-[87%] w-2/3 px-28">The thinking behind <br/>Design Thinking.</div>
+            <ProductPage className='col-span-full -mt-10' key='bestwork'/>
 
             {/* Motion Design */}
-            <div className="font-medium tracking-[0pt] text-[12pt] ml-28 mt-36 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-1.5">Motion Design</div>
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-4 mb-3 col-span-full leading-[87%] w-2/3 px-24">Breathing life into visuals.</div>
-            <MotionDesignPage className='col-span-full mt-8 px-20' key='bestwork'/>
+            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-36 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Motion Design</div>
+            {/* <div className="font-script tracking-[0pt] text-[16pt] ml-28 mt-36 mb-1 whitespace-nowrap -rotate-0">Motion Design</div> */}
+            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-0 mb-3 col-span-full leading-[87%] w-2/3 px-24">.blend-ing .ai, .ae and .js</div>
+            <MotionDesignPage className='col-span-full -mt-10 px-20' key='bestwork'/>
 
             {/* Photography */}
             <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-36 mb-3 col-span-full border-1 ml-[100px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Photography</div>
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[87%] w-[55%] md:px-20">Framing my life.</div>
+            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[87%] w-[50%] md:px-20">Photographic Memories.</div>
             <PhotographyPage className='col-span-full mt-8 md:px-20' key='bsstwork'/>
             
             {/* Content */}

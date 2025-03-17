@@ -335,7 +335,7 @@ export default function Home(){
       setSelectedTags('');
       setSelectedWork('resume');
     } else {
-      setSelectedTags('all');
+      setSelectedTags('');
       setSelectedWork('resume');
     }
   }, [isMobile]);
@@ -460,7 +460,7 @@ export default function Home(){
       <VideoProvider>
         {/* Entire Page column setup */}
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12
-        px-3 sm:px-4 2xl:px-6 text-sm max-w-10xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
+        px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
           {/* Top Navbar */}
           <div className="col-span-full fixed top-2 md:top-5 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
@@ -497,11 +497,11 @@ export default function Home(){
 
                 {/* Profile Button */}
                 <motion.button
-                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full  px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent md:mr-1
-                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full  px-3 py-0.5 border-1 dark:hover:bg-transparent md:mr-1
+                    hover:border-black hover:bg-foreground  dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('resume') 
                       ? ' border-foreground dark:border-white text-foreground' 
-                      : ' text-black dark:text-white '
+                      : ' text-black dark:text-white dark:border-white/0'
                     }`}
                   whileHover={{ scale: 0.94 }}
                   variants={animateInChild}
@@ -549,10 +549,10 @@ export default function Home(){
                 {/* All Button */}
                 <motion.button 
                 className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
-                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
+                    hover:border-black hover:bg-foreground dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${['all', 'creative', 'edit', 'motion', 'photography', 'content', 'ixd'].some(tag => selectedTags.includes(tag))
-                    ? ' border- dark:border-white text-foreground' 
-                    : ' text-black dark:text-white dark:hover:text-foreground border-black/0'
+                    ? ' border-foreground dark:border-white text-foreground' 
+                    : ' text-black dark:text-white dark:border-white/0'
                   }`}
 
                 whileHover={{scale:0.94}}
@@ -569,7 +569,7 @@ export default function Home(){
                     }
                   }}>
 
-                  <span className="hidden md:block">Everything</span>
+                  <span className="hidden md:block">Archive</span>
                   <span className="block md:hidden">Work</span>
                   
                 </motion.button>
@@ -599,7 +599,7 @@ export default function Home(){
 
           {/* Desktop Navbar BG */}
           <div
-            className="hidden md:block fixed backdrop-blur-lg top-2 md:top-[18px] left-1/2 transform -translate-x-1/2 w-[190px] ml-[12px] rounded-full 
+            className="hidden md:block fixed backdrop-blur-lg top-2 md:top-[18px] left-1/2 transform -translate-x-1/2 w-[165px] ml-[12px] rounded-full 
             drop-shadow bg-background z-30 dark:bg-transparent h-[38px] border-b-1 border-white/30 dark:mix-blend-overlay"
           ></div>
 
