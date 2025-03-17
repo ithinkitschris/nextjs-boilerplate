@@ -169,8 +169,8 @@ return (
               </button>
   
 
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-[85%] group-hover:leading-12 mb-1 transition-all duration-300 -ml-1 w-[90%]">
-                A study into Time Management in College Students
+              <h1 className="text-4.5xl group-hover:text-5xl font-medium tracking-tighter leading-[85%] group-hover:leading-11 mb-1 transition-all duration-300 -ml-1 w-[95%]">
+                A study into Time Management techniques of College Students
               </h1>
 
               <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -270,76 +270,11 @@ return (
               poster="/poster/cabinbest1.jpeg"/>
           </div>
 
-          {/* Cocktail Conversations */}
-          <div 
-          ref={(el) => (itemsRef.current[2] = el)}
-          className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
-          >
-            
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[28%] group-hover:w-[34%] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
-
-              <button className="font-mono text-base tracking-tighter w-11 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                03
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                  <path d="M7 17L17 7" />
-                  <path d="M7 7h10v10" />
-                </svg>
-              </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-[85%] group-hover:leading-12 mb-1 transition-all duration-300 -ml-1">
-                Cocktail<br/> Conversations
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Brand Campaign for Singapore Airlines
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[360px]">
-              If there was a drink to match every personality, how would your bespoke cocktail look and taste like?
-              </p>
-
-              <div className="col-span-3">
-                  <div className="absolute bottom-10 -ml-1 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Role:</div>
-                  <div className="absolute bottom-5 -ml-1 gap-6 tracking-tight hidden 2xl:flex
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-                      <p>Creative Direction</p>
-                      <p>Motion Design</p>
-                      <p>Visual Design</p>
-                  </div>
-              </div>
-
-            </div>
-
-            {/* Video */}
-            <video src="/Cocktail/bestworkmontage_1.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster='/poster/cocktailpage.jpeg'/>
-          </div>
+      
 
         </div>
 
-        {/* Simple Navigation Dots Bottom */}
-        {/* <div className="mt-4 z-20 flex justify-center gap-0 mb-3 scale-90">
-            {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations'].map((title,index) => (
-              <button
-                key={index}
-                onClick={() => scrollToIndex(index)}
-                className={`text-[7pt] font-semibold rounded-full transition-all duration-300 flex items-center justify-center w-3.5 h-3.5  ${
-                  activeIndex === index
-                    ? "bg-white scale-75 mx-1 px-1.5"
-                    : "bg-white/35 text-white hover:bg-white hover:scale-75 scale-50"
-                }`}
-              >
-                {activeIndex === index ? '' : ''}
-              </button>
-            ))}
-          </div> */}
+      
       </div>
     </motion.div>  
 

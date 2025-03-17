@@ -4,6 +4,7 @@ import React, { useState, useEffect, } from "react";
 import Image from "next/image";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import BestWorkPage2 from "./bestworkv2";
+import BestWorkPage3 from "./bestworkv3";
 import MotionDesignPage from "./motion";
 import PhotographyPage from "./photography";
 import ContentPage from "./content";
@@ -243,7 +244,7 @@ export default function Resume({ className = ""}) {
                 </div>
 
                 {/* Desktop Container */}
-                <div className="col-span-full mb-4 border-0 hidden lg:block relative w-full h-[650px] group scale-100 hover:scale-101 transition-all duration-500">
+                <div className="col-span-full mb-4 border-0 hidden lg:block relative w-full h-[650px] group scale-100 hover:scale-101 transition-all duration-300">
                     
                     {/* Image */}
                     <motion.img src='/profile/profilelandscape2.jpg'
@@ -562,7 +563,7 @@ export default function Resume({ className = ""}) {
             <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-36 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Creative Direction</div>
             {/* <div className="font-script tracking-[0pt] text-[14pt] ml-28 mt-36 mb-2 whitespace-nowrap -rotate-0">Creative Direction</div> */}
             <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-4 mb-3 col-span-full leading-[87%] w-2/3 px-24">The ones that had legs.</div>
-            <BestWorkPage2 className='col-span-full -mt-10' key='bestwork'/>
+            <BestWorkPage3 className='col-span-full -mt-10' key='bestwork'/>
 
             {/* Product Design */}
             <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-36 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Product Design</div>
