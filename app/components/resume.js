@@ -813,12 +813,12 @@ export default function Resume({ className = "", showNav }) {
                             <p>Service Design</p>
                             <p>Inclusive Design</p>
                             <p>UX Content Writing</p>
-                            <p>Framing User Experiences</p>
+                            <p>User Experiences</p>
                             <p>Programming <i>(C, Python, JavaScript)</i></p>
                             <p>Human Interaction & Ergonomics</p>
                             <p>Intellectual Property & the Law</p>
                             <p>Physical Computing</p>
-                            <p>Smart Objects</p>
+                            <p>LLMs & AI Agents</p>
                             <p>Game Design</p>
 
                         </div>
