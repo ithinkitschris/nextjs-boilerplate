@@ -124,7 +124,7 @@ const toggleDarkMode = () => {
         <main className="">{children}</main>
 
         {/* About Site Footer */}
-        <div className="fixed bottom-6 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center">
+        <div className="fixed bottom-9 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center scale-110">
           <div
             ref={footerRef}
             className={`transition-all text-center backdrop-blur-lg rounded-full dark:border-b-1 border-transparent md:dark:hover:border-white md:dark:hover:border-1 whitespace-nowrap tracking-tight text-[8.5pt]
