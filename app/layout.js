@@ -124,7 +124,7 @@ const toggleDarkMode = () => {
         <main className="">{children}</main>
 
         {/* About Site Footer */}
-        <div className="fixed bottom-7 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center scale-110">
+        <div className="fixed bottom-6 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center scale-110">
           <div
             ref={footerRef}
             className={`transition-all text-center backdrop-blur-lg rounded-full dark:border-b-1 border-transparent md:dark:hover:border-white md:dark:hover:border-1 whitespace-nowrap tracking-tight text-[8.5pt]
@@ -177,7 +177,7 @@ const toggleDarkMode = () => {
                 </a>
 
                 {/* Last Updated */}
-                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 03.13.25 for the 227th time.</p>
+                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 04.03.25 for the 228th time.</p>
 
               </motion.div>
 
@@ -217,7 +217,10 @@ const toggleDarkMode = () => {
 
                 <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
-                  <p className='mt-0 text-foreground font-medium'>v227 <span className="ml-0.5 opacity-20 font-normal">(Mobile)</span></p>
+                  <p className='mt-0 text-foreground font-medium'>v228 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
+                  <p>Fixed minor bugs, reduced size of the numbers of the three points about me, changed the font of 'who', 'what', 'and' from script to sans-serif.</p>
+
+                  <p className='mt-4 text-foreground font-medium'>v227 <span className="ml-0.5 opacity-20 font-normal">(Mobile)</span></p>
                   <p>Fixed bug from previous change in v226–mobile navbar now opens when tapping on &apos;Work&apos;.</p>
 
                   <p className='mt-4 text-foreground font-medium'>v226 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>

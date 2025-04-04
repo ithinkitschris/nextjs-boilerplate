@@ -267,8 +267,8 @@ export default function Resume({ className = "", showNav }) {
 
                         {/* Desktop Subheader */}
                         <motion.h1 
-                        className={`absolute top-54 font-script tracking-tight leading-8 col-span-full ml-[245px] text-[28px]`}
-                        animate={{rotate:-3}}
+                        className={`absolute top-56 font-script tracking-tight leading-8 col-span-full ml-[240px] text-[26px]`}
+                        animate={{rotate:-2}}
                         variants={animateInChild}>                       
                             <p className="-rotate-2">And here are three things about me:</p>     
                         </motion.h1>
@@ -278,11 +278,11 @@ export default function Resume({ className = "", showNav }) {
                         className="absolute left-10 bottom-8 w-full" 
                         variants={animateInChild} layout="position">
                             {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
-                            <p className="text-2xl tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
+                            <p className="text-2xl tracking-tight -ml-4"><span className="text-[32px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-2">1</span> I don&apos;t take anything too seriously.</p>
                             <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3">A bold opening statement; I know.</p>
-                            <p className="text-2xl tracking-tight -ml-[18px]"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in everything I do.</p>
+                            <p className="text-2xl tracking-tight -ml-[18px]"><span className="text-[32px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">2</span> I aim to have fun in everything I do.</p>
                             <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3">{"<p>I designed and coded this site from ground up.<br/>"}<br/>{"Fun? Curiosity? Masochism? Take your pick.</p>"}</p>
-                            <p className="text-2xl tracking-tight -ml-4"><span className="text-[42px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> Craft. Craft. Craft.</p>
+                            <p className="text-2xl tracking-tight -ml-4"><span className="text-[32px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">3</span> Craft. Craft. Craft.</p>
                             <p className="text-xs ml-[18px] opacity-25 mb-12 tracking-normal font-light leading-[16px] w-1/3">Craft means everything to me. I have to <i>do</i>.<br/>I hope this comes across as you peruse my work.</p>
                         </motion.div>
 
@@ -679,9 +679,9 @@ export default function Resume({ className = "", showNav }) {
                 className="mb-10 px-5 md:px-0 flex-1 mr-10 group"
                 variants={animateInChild}
                 layout="position">
-                    <p className="mb-3 font-script text-sm">Who ?</p>
+                    <p className="mb-3 font-sans font-semibold tracking-tight text-md">Who?</p>
                     <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with 
-                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">the romanticized image of beret-wearing, palette-wielding </span>artists. 
+                    <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"> the romanticized image of beret-wearing, palette-wielding </span>artists. 
                     <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"> Now, </span> he finds himself living the surreal reality of conceptualizing, designing, and directing what is essentially art for the world.</p>
                     <p><span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">With a </span>fervor for craft and a meticulous eye for finesse, 
                     <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"> he takes a possibly </span>unhealthy pride in crafting visually compelling work across various mediums.</p>
@@ -691,7 +691,7 @@ export default function Resume({ className = "", showNav }) {
                 className="mb-10 px-5 md:px-0 flex-1 mr-10 group"
                 variants={animateInChild}
                 layout="position">
-                    <p className="mb-3 font-script text-sm">What ?</p>
+                    <p className="mb-3 font-sans font-semibold tracking-tight text-md">What?</p>
                     <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">As a </span>Multidisciplinary Creative and formerly the Creative Lead at ArtScience Museum in Singapore; 
                     <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"> he finds himself with </span> 
                      eight years of experience in Advertising and Design
@@ -705,7 +705,7 @@ export default function Resume({ className = "", showNav }) {
                 className="mb-8 px-5 md:px-0 flex-1 mr-10 group"
                 variants={animateInChild}
                 layout="position">
-                    <p className="mb-3 font-script text-sm">And ?</p>
+                    <p className="mb-3 font-sans font-semibold tracking-tight text-md">And?</p>
                     <p className="mb-3">In his spare time 
                     <span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300"><i> (which, realistically, isn&apos;t much)</i>,  he does... even more work, but for himself—</span>creating content through photography, videography, editing and motion design.</p>
                     <p className=""><span className="opacity-100 group-hover:opacity-20 transition-opacity duration-300">When he is finally, actually, not working, you will find him </span>
