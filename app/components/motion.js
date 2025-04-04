@@ -138,7 +138,8 @@ return (
 
           {/* Nike */}
           <div 
-          ref={(el) => (itemsRef.current[0] = el)}
+          ref={(el) => (itemsRef.current[-1] = el)}
+          onMouseEnter={() => scrollToIndex(-1)}
           className="min-w-[450px] h-full snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group  duration-300 rounded-3xl transition-all cursor-pointer relative hover:scale-98">
             
             {/* Side Container */}
@@ -187,7 +188,8 @@ return (
 
           {/* Jollibee */}
           <div 
-          ref={(el) => (itemsRef.current[-1] = el)}
+          ref={(el) => (itemsRef.current[0] = el)}
+          onMouseEnter={() => scrollToIndex(0)}
           className="min-w-[610px] h-full snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group  duration-300 rounded-3xl transition-all cursor-pointer relative hover:scale-98">
             
             {/* Side Container */}
@@ -255,6 +257,7 @@ return (
           {/* Samsung */}
           <div 
           ref={(el) => (itemsRef.current[1] = el)}
+          onMouseEnter={() => scrollToIndex(1)}
           className="min-w-[90%] h-full snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98">
             
             {/* Side Action Button */}
@@ -323,6 +326,7 @@ return (
           {/* 3D */}
           <div 
           ref={(el) => (itemsRef.current[2] = el)}
+          onMouseEnter={() => scrollToIndex(2)}
           className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98">
             
             {/* Side Action Button */}

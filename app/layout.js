@@ -113,10 +113,10 @@ const toggleDarkMode = () => {
       bg-background transition-all duration-300`}>
 
         {/* Backdrop Blur */}
-        <div className={`${changelog ? 'backdrop-blur-md md:backdrop-blur-md' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
+        <div className={`${changelog ? 'backdrop-blur-md md:backdrop-blur-lg' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
 
         {/* <Dark Mode Button/> */}
-        <div className="fixed left-4 md:left-auto md:right-6 top-3 md:top-2 z-50">
+        <div className="fixed left-4 md:left-auto md:right-8 top-3 md:top-6 z-50">
           <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
         </div>   
 
@@ -124,18 +124,18 @@ const toggleDarkMode = () => {
         <main className="">{children}</main>
 
         {/* About Site Footer */}
-        <div className="fixed bottom-6 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center">
+        <div className="fixed bottom-6 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center scale-105">
           <div
             ref={footerRef}
-            className={`transition-all text-center backdrop-blur-lg rounded-full dark:border-b-1 border-transparent md:dark:hover:border-white md:dark:hover:border-1 whitespace-nowrap tracking-tight text-[8.75pt]
-              bg-background dark:bg-transparent shadow px-1.5 cursor-pointer md:hover:bg-foreground md:dark:hover:bg-transparent md:hover:text-white dark:text-white/90 py-0.5 md:hover:scale-95 font-medium
+            className={`transition-all text-center backdrop-blur-lg rounded-full dark:border-b-1 border-transparent md:dark:hover:border-white md:dark:hover:border-1 whitespace-nowrap tracking-tight text-[9.5pt]
+              bg-background dark:bg-transparent shadow px-1.5 pr-2 cursor-pointer md:hover:bg-foreground md:dark:hover:bg-transparent md:hover:text-white dark:text-white/90 py-0.5 md:hover:scale-95 font-medium
               ${changelog ?'bg-foreground text-white dark:border-white/75 border-1' :'dark:border-white/15 md:dark:border-white/15'}`}
             onClick={toggleChangelog}>
-            <div className="inline-flex ml-1">Website built with React and Next.js
+            <div className="inline-flex ml-1.5">Website built with React and Next.js
               {changelog ? (
-                  <ChevronDownIcon className="h-3 w-3 ml-1 mt-[3px]" />
+                  <ChevronDownIcon className="h-3.5 w-auto ml-1.5 mt-[3px]" />
               ) : (
-                  <ChevronUpIcon className="h-3 w-3 ml-1 mt-[3px]"  />
+                  <ChevronUpIcon className="h-3.5 w-auto ml-1.5 mt-[3px]"  />
               )}
             </div>
           </div>

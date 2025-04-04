@@ -54,7 +54,7 @@ show: {
 
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
             sm:gap-3 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
@@ -64,8 +64,8 @@ show: {
             <video 
             ref={backgroundGlowRef}
             src="/CCS/montageglow_1.mp4" 
-            className="absolute mt-20 w-screen h-screen/1.2 object-cover rounded-full -z-10 
-            opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200"
+            className="absolute mt-52 w-screen h-screen/1.2 object-cover rounded-full -z-10 
+            opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200 left-3"
             autoPlay 
             muted 
             loop

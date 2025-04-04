@@ -468,15 +468,15 @@ export default function Home(){
             {/* Sidenav / Dropdown Button */}
             <motion.button 
               className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 md:dark:border-white/20 backdrop-blur-lg 
-              flex items-center shadow md:hover:text-background transition-colors duration-100 z-30 md:right-auto md:left-0.5 mt-0.5 md:mt-0
-              ${showNav ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground" : "bg-[#f3f3f3] dark:bg-black/20 md:hover:bg-foreground right-8"}`}
+              flex items-center shadow md:hover:text-background transition-colors duration-100 z-30 md:right-auto mt-0.5 md:mt-0 
+              ${showNav ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground md:left-0 md:-ml-1" : "bg-[#f3f3f3] dark:bg-black/20 md:hover:bg-foreground right-8 md:left-2"}`}
               whileHover={{ scale: 0.9 }}
               variants={animateInChild}
               layout="position"
               onClick={toggleNav}>
 
                 {/* Example of an SVG icon */}
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-6 md:w-5 h-6 md:h-5">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" className="w-6 md:w-7 h-6 md:h-7">
                   <path d={`${showNav ? 'M2 10h16' : 'M6 10h8'}`}
                   className='transition-all duration-200'/>
                   <path d={`${showNav ? 'M2 15h16' : 'M6 15h8'}`}
@@ -721,7 +721,7 @@ export default function Home(){
 
                 {/* Desktop Side Navbar Reset Button */}
                 <motion.div 
-                  className="sticky top-18 mt-4 z-40 hidden md:block">
+                  className="sticky top-20 mt-10 z-40 hidden md:block">
                   {showReset && (
                     <motion.button
                       className="group hover:text-background font-medium flex gap-1.5
@@ -863,7 +863,7 @@ export default function Home(){
 
                 {/* Desktop Side Navbar All Work */}
                 <motion.div
-                className={`hidden md:flex flex-col items-start gap-1 mt-12 dark:text-neutral-500 sticky z-10 ${showReset ? "top-32" : "top-16"}`}
+                className={`hidden md:flex flex-col items-start gap-1 mt-12  sticky z-10 ${showReset ? "top-32" : "top-24"}`}
                 initial="hidden"
                 animate="show"
                 exit="exit"
@@ -883,7 +883,7 @@ export default function Home(){
                   </motion.h1>
 
                   {/* <motion.h1
-                  className={`text-xs tracking-tighter transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  className={`text-xs tracking-tighter"`}
                   variants={animateInChild}>
                     2025
                   </motion.h1>
@@ -906,7 +906,7 @@ export default function Home(){
                     toggleWork('nycsubway')}}>Apple Maps x NYC Subway [WIP]</motion.button> */}
 
                   <motion.h1
-                  className={`text-xs mt-5 tracking-tighter transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white"`}
                   variants={animateInChild}>
                     2024
                   </motion.h1>
@@ -946,7 +946,7 @@ export default function Home(){
                     toggleWork('ghibli')}}>The World of Studio Ghibli</motion.button>
 
                   <motion.h1
-                  className={`text-xs mt-5 tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  className={`text-xs mt-5 tracking-tight font-medium "`}
                   variants={animateInChild}>
                     2023
                   </motion.h1>
@@ -1019,7 +1019,7 @@ export default function Home(){
                     toggleWork('ispy')}}>I Spy in the Sky</motion.button>
 
                   <motion.h1
-                  className={`text-xs mt-5 tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  className={`text-xs mt-5 tracking-tight font-medium "`}
                   variants={animateInChild}>
                     2022
                   </motion.h1>
@@ -1111,7 +1111,7 @@ export default function Home(){
 
 
                   <motion.h1
-                  className={`text-xs mt-5 tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  className={`text-xs mt-5 tracking-tight font-medium "`}
                   variants={animateInChild}>
                     2021
                   </motion.h1>
@@ -1186,7 +1186,7 @@ export default function Home(){
                     toggleWork('sentosa')}}>Sentosa Island</motion.button> */}
 
                   <motion.h1
-                  className={`text-xs mt-5 tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  className={`text-xs mt-5 tracking-tight font-medium "`}
                   variants={animateInChild}>
                     2019
                   </motion.h1>
@@ -1244,7 +1244,7 @@ export default function Home(){
                     toggleWork('uniqlo2')}}>New Style Fresh Start</motion.button>
 
                   <motion.h1
-                  className={`text-xs mt-6 tracking-tight transition-color " ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  className={`text-xs mt-6 tracking-tight font-medium`}
                   variants={animateInChild}>
                     2017
                   </motion.h1>
@@ -1267,7 +1267,7 @@ export default function Home(){
                     toggleWork('uniqlo1')}}>Your Stage Now Live</motion.button>
 
                   <motion.h1
-                  className={`text-sm mt-5 tracking-tight transition-color" ${selectedTags.includes('all') ? 'text-foreground' : 'text-midground'}`}
+                  className={`text-sm mt-5 tracking-tight font-medium`}
                   variants={animateInChild}>
                     Personal
                   </motion.h1>
@@ -1383,7 +1383,7 @@ export default function Home(){
 
           {/* Page Container */}
           <motion.div
-            className={`${showNav ? "col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8" : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className={`${showNav ? `col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8 ${selectedWork === 'resume' ? 'md:-mx-14' : ''}` : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 400, damping: 24 }}  

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect, } from "react";
 import Image from "next/image";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
-import BestWorkPage2 from "./bestworkv2";
+import BestWorkPage4 from "./bestworkv4";
 import BestWorkPage3 from "./bestworkv3";
 import MotionDesignPage from "./motion";
 import PhotographyPage from "./photography";
@@ -365,6 +365,7 @@ export default function Resume({ className = ""}) {
                         <p className={`flex justify-center items-center text-xl cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                         border-1 border-transparent hover:border-foreground transition-non-color rounded-full w-[135px] hover:scale-95 -ml-3 mb-1.5
                         ${showDesktopShort ? 'border-white bg-foreground dark:bg-transparent text-white' : ''}`}
+
                         onClick={() => {
                             setShowDesktopAI(false);
                             setShowDesktopShort(true);
@@ -374,6 +375,7 @@ export default function Resume({ className = ""}) {
                         <p className={`flex justify-center items-center text-xl cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                         border-1 border-transparent hover:border-foreground transition-non-color rounded-full w-[190px] hover:scale-95 -ml-3 mb-1.5
                         ${showDesktopLong ? 'border-white bg-foreground dark:bg-transparent text-white' : ''}`}
+
                         onClick={() => {
                             setShowDesktopAI(false);
                             setShowDesktopShort(false);
@@ -560,25 +562,25 @@ export default function Resume({ className = ""}) {
             </motion.div> */}
 
             {/* Creative Direction */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-36 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Creative Direction</div>
-            {/* <div className="font-script tracking-[0pt] text-[14pt] ml-28 mt-36 mb-2 whitespace-nowrap -rotate-0">Creative Direction</div> */}
+            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-44 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Creative Direction</div>
+            {/* <div className="font-script tracking-[0pt] text-[14pt] ml-28 mt-44 mb-2 whitespace-nowrap -rotate-0">Creative Direction</div> */}
             <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-4 mb-3 col-span-full leading-[87%] w-2/3 px-24">The ones that had legs.</div>
             <BestWorkPage3 className='col-span-full -mt-10' key='bestwork'/>
 
             {/* Product Design */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-36 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Product Design</div>
-            {/* <div className="font-script tracking-[0pt] text-[16pt] ml-28 mt-36 mb-1 whitespace-nowrap -rotate-0">Motion Design</div> */}
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-0 mb-3 col-span-full leading-[87%] w-2/3 px-28">The thinking behind <br/>Design Thinking.</div>
+            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full border-1 ml-[110px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Product Design</div>
+            {/* <div className="font-script tracking-[0pt] text-[16pt] ml-28 mt-72 mb-1 whitespace-nowrap -rotate-0">Motion Design</div> */}
+            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-0 mb-3 col-span-full leading-[87%] w-2/3 px-28">Products of Design.</div>
             <ProductPage className='col-span-full -mt-10' key='bestwork'/>
 
             {/* Motion Design */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-36 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Motion Design</div>
-            {/* <div className="font-script tracking-[0pt] text-[16pt] ml-28 mt-36 mb-1 whitespace-nowrap -rotate-0">Motion Design</div> */}
+            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Motion Design</div>
+            {/* <div className="font-script tracking-[0pt] text-[16pt] ml-28 mt-72 mb-1 whitespace-nowrap -rotate-0">Motion Design</div> */}
             <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-0 mb-3 col-span-full leading-[87%] w-2/3 px-24">.blend-ing .ai, .ae and .js</div>
             <MotionDesignPage className='col-span-full -mt-10 px-20' key='bestwork'/>
 
             {/* Photography */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-36 mb-3 col-span-full border-1 ml-[100px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Photography</div>
+            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1 ml-[100px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Photography</div>
             <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[87%] w-[50%] md:px-20">Photographic Memories.</div>
             <PhotographyPage className='col-span-full mt-8 md:px-20' key='bsstwork'/>
             
