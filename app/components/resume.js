@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect, } from "react";
 import Image from "next/image";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
-import BestWorkPage4 from "./bestworkv4";
 import BestWorkPage3 from "./bestworkv3";
 import MotionDesignPage from "./motion";
 import PhotographyPage from "./photography";
@@ -343,7 +342,7 @@ export default function Resume({ className = ""}) {
             <motion.div className={`col-span-full w-full grid grid-cols-9 gap-4 mt-4 mb-10 md:px-20`}>  
 
                 {/* Story Container */}
-                <motion.div className="border-1 border-white/25 h-full w-full rounded-3xl col-span-full bg-background dark:bg-transparent leading-[150%]
+                <motion.div className="border-r-[1.5px] border-b-[2px] border-t-[0.1px] border-l-[0.1px] border-white/15 h-full w-full rounded-3xl col-span-full bg-background dark:bg-transparent leading-[150%]
                 transition-non-color shadow-mild p-6 px-12 text-sm grid grid-cols-9 relative" 
                 animate={{ height: showDesktopAI ? "270px" : showDesktopShort ? "320px" : "800px" }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
@@ -562,7 +561,8 @@ export default function Resume({ className = ""}) {
             </motion.div> */}
 
             {/* Creative Direction */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-44 mb-2 col-span-full border-1 ml-[105px] border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Creative Direction</div>
+            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-44 mb-2 col-span-full dark:border-r-1 dark:border-b-1 ml-[105px] border-black/20 dark:border-white/30 
+            p-0.5 rounded-full px-2 bg-background dark:bg-transparent drop-shadow-md">Creative Direction</div>
             {/* <div className="font-script tracking-[0pt] text-[14pt] ml-28 mt-44 mb-2 whitespace-nowrap -rotate-0">Creative Direction</div> */}
             <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-4 mb-3 col-span-full leading-[87%] w-2/3 px-24">The ones that had legs.</div>
             <BestWorkPage3 className='col-span-full -mt-10' key='bestwork'/>

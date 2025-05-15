@@ -38,7 +38,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
             {/* Image */}
             <img 
-            className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-300 "
+            className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-lg"
             src="/Photography/street/cover2.jpg">
             </img>
 
@@ -48,8 +48,12 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Text */}
             <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
 
-                <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
+                <h1 className="text-4.5xl group-hover:text-6xl font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-300">
                     Digital
+                </h1>
+
+                <h1 className="text-lg ml-1 text-white tracking-tight opacity-0 group-hover:opacity-100 transition-all duration-200">
+                    Lorem ipseum dolor sit amet.
                 </h1>
 
                 <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
@@ -68,6 +72,12 @@ const PhotographyPage = ({className, setSelectedWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
+
+                <h1 className="absolute opacity-0 group-hover:opacity-100 text-md text-white tracking-tight bottom-5 gap-4 flex transition-all duration-300">
+                    <p className="font-medium">Equipment:</p>
+                    <p>Leica M10-P</p>
+                </h1>
+
             </div>
         </motion.div>
 
@@ -81,11 +91,18 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         
         
         <img 
-            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
+            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300"
             src="/Photography/film/cover4.jpg"/>
         <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/70 to-transparent rounded-t-lg"></div>
         <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
-            <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Film</h1>
+
+            <h1 className="text-4.5xl group-hover:text-6xl font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-300">
+                Film
+            </h1>
+
+            <h1 className="text-lg ml-1 text-white tracking-tight opacity-0 group-hover:opacity-100 transition-all duration-200">
+                Lorem ipseum dolor sit amet.
+            </h1>
             
 
             <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
@@ -121,7 +138,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         
         
         <img 
-            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
+            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300"
             src="/Photography/bbh/cover.jpg"/>
 
         
@@ -166,7 +183,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         
         {/* Image */}
         <img 
-            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300 object-[42%]"
+            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300 object-[42%]"
             src="/Photography/stressed/4.jpg"/>
 
         {/* Gradient */}
@@ -210,7 +227,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         onClick={() => setSelectedWork('bts')}> 
 
             <img 
-            className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300"
+            className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300"
             src="/Photography/bts/cover.jpg">
             </img>
 
@@ -250,7 +267,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
             
             <img 
-            className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-300 object-[58%]"
+            className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300 object-[58%]"
             src="/Photography/unshackle/cover.JPG">
             </img>
 

@@ -175,7 +175,7 @@ return (
               </h1>
 
               <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                User Research
+                Ethnographic User Research
               </h1>
 
               <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[360px]">

@@ -23,44 +23,38 @@ show: {
 const WebsitePage = ({className}) => {
 
   return (
-    <motion.div className={`grid grid-cols-3 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] ${className}`}
+    <motion.div className={`grid grid-cols-3 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] ${className} mx-14`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
 
         
-        <motion.h1 className="col-span-full text-8xl md:text-9xl tracking-tighter font-medium mb-4 leading-[80px] relative mt-6 px-4 md:px-0" 
+        <motion.h1 className="col-span-full text-8xl md:text-9xl tracking-tighter font-medium relative mt-6 px-4 md:px-0 -ml-4" 
         variants={animateInChild}>
-            This<span className="font-thin">...</span> website.
+            This website. <span className="text-lg tracking-tight align-top relative top-3 -ml-10">Literally.</span>
         </motion.h1>
 
-        
-        <motion.h2 className="col-span-full font-script text-6xl md:text-6xl -rotate-3 mt-1 mb-6 px-4 md:px-3 lg:px-0 w-52" 
-        variants={animateInChild}
-        initial={{ rotate: -5 }}>
-            Literally<span className="font-sans">.</span>
-        </motion.h2>
-
-
+        {/* Writeup */}
         <div className="col-span-full grid grid-cols-1 md:grid-cols-3 relative">
 
+            <div className="mr-2">
+                {/* <motion.h1 
+                className="text-lg xl:text-2xl tracking-tight mt-10 px-4 lg:px-0 -ml-2 text-center md:text-left font-medium mr-12" 
+                variants={animateInChild}>
+                    &quot;How do you code a website from ground up ?&quot;
+                </motion.h1>
 
-            <motion.h1 className="text-lg xl:text-3xl tracking-tight mt-12 md:mt-20 px-4 lg:px-0 col-span-full font-script -ml-2 text-center md:text-left" 
-            variants={animateInChild}>
-            &quot;How do you code a website from ground up ?&quot;
-            </motion.h1>
-            
-
-            <motion.div className="text-sm mt-3 md:mr-8 px-4 lg:px-0 col-span-full" variants={animateInChild}>
-            It all started off with this literal shower thought, one that turned into a manic passion project by the time I was out of the shower. 
-            </motion.div>
-            
-            <motion.div className="text-sm mt-16 md:mt-12 md:mr-8 px-4 lg:px-0" variants={animateInChild}>
-            <p>Over the recent years, I&apos;ve found myself increasingly discontent with both the state and experience of my pre-existing portfolio website.</p>
-            
-            <p className="mt-5 md:mt-4">And having found myself learning Javascript as part of my curriculum as a Master&apos;s Student in Interaction Design, the decision to rebuild my entire portfolio website and code it from ground-up made 
-            complete sense as the perfect trial by fire application of my then still-very-abstract learnings on programming languages.</p>
-            </motion.div>
+                <motion.div className="text-sm md:mr-8 px-4 lg:px-0 mt-4" variants={animateInChild}>
+                It all started off with this literal shower thought, one that turned into a manic passion project by the time I was out of the shower. 
+                </motion.div> */}
+                
+                <motion.div className="text-sm mt-16 md:mt-12 md:mr-8 px-4 lg:px-0" variants={animateInChild}>
+                <p>Over the recent years, I&apos;ve found myself increasingly discontent with both the state and experience of my pre-existing portfolio website.</p>
+                
+                <p className="mt-5 md:mt-4">And having found myself learning Javascript as part of my curriculum as a Master&apos;s Student in Interaction Design, the decision to rebuild my entire portfolio website and code it from ground-up made 
+                complete sense as the perfect trial by fire application of my then still-very-abstract learnings on programming languages.</p>
+                </motion.div>
+            </div>
           
             <motion.div className="text-sm mt-5 md:mt-12 md:mr-8 px-4 lg:px-0" variants={animateInChild}>
             <p>With the guidance of my faculty, I dove deep into the realm of web development with <b>React, Next.js, Tailwind CSS and Vercel; </b> 
@@ -90,195 +84,136 @@ const WebsitePage = ({className}) => {
             href='https://ithinkitschris.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f' target="blank">here</a>
             </motion.div>
 
-            <div className="col-span-full mt-24 mb-8 xl:mb-20">
-                <h1 className="text-3xl lg:text-4.5xl font-script -rotate-2 text-center md:text-left tracking-tighter">Desktop</h1>
-            </div>
-
         </div>
 
-        <div className="col-span-full grid grid-cols-2 gap-1.5 md:gap-2">
-
-            <motion.img src='/website/desktop3.png' className="rounded-lg drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/>
-            <motion.img src='/website/desktop1.png' className="rounded-lg drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/>
-            <motion.img src='/website/desktop4.png' className="rounded-lg drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/>
-            <motion.img src='/website/desktop2.png' className="rounded-lg drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/>
-
-        </div>
-
-        <div className="col-span-full mt-14 md:mt-18 mb-6 md:mb-8 lg:mb-10 xl:mb-20">
-            <h1 className="text-3xl lg:text-4.5xl font-script -rotate-2 text-center md:text-left tracking-tighter">Mobile</h1>
-        </div>
-
-        <div className="col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 md:gap-2">
-
-            <motion.img src='/website/mobile1.png' className="rounded-lg drop-shadow-lg col-span-1" variants={animateInChild}/>
-            <motion.img src='/website/mobile2.png' className="rounded-lg drop-shadow-lg col-span-1" variants={animateInChild}/>
-            <motion.img src='/website/mobile3.png' className="rounded-lg drop-shadow-lg col-span-1" variants={animateInChild}/>
-            <motion.img src='/website/mobile4.png' className="rounded-lg drop-shadow-lg col-span-1" variants={animateInChild}/>
-            <motion.img src='/website/mobile5.png' className="rounded-lg drop-shadow-lg col-span-1" variants={animateInChild}/>
-            <motion.img src='/website/mobile6.png' className="rounded-lg drop-shadow-lg col-span-1" variants={animateInChild}/>
-
-        </div>
-
-
-        <div className="col-span-full mt-18 mb-10 xl:mb-20">
-            <h1 className="text-3xl lg:text-5xl font-script -rotate-2 text-center md:text-left tracking-tighter">Early builds / Iterations</h1>
-        </div>
-
-        {/* Visuals */}
-        <motion.div className="col-span-full grid grid-cols-2 gap-1 md:gap-2 md:mb-1 mb-0.5" variants={animateInChild}>
-            <motion.div className="relative overflow-hidden">
+        {/* Early Builds */}
+        <div className="col-span-full mt-18 mb-10 xl:mb-10">
+            <h1 className="text-3xl lg:text-5xl text-center md:text-left tracking-tighter font-medium">Early Builds</h1>
             
-                <video 
-                src="/ixd/website/3.mp4" 
-                className=" rounded-lg w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                variants={animateInChild}>
-                </video>
+            {/* Visuals */}
+            <motion.div className="col-span-full grid grid-cols-6 gap-1 md:gap-2 md:mb-1 mb-0.5 md:mt-10" variants={animateInChild}>
 
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-white/100 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-lg"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-black tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1>One of the earliest builds.</h1>
-                </div>
+                <motion.div className="relative object-cover h-full w-auto drop-shadow-md">
                 
-            </motion.div>
+                    <video 
+                    src="/ixd/website/4_1.mp4" 
+                    className=" rounded-2xl h-full w-auto object-cover"
+                    autoPlay muted loop playsInline loading="lazy"
+                    variants={animateInChild}>
+                    </video>
 
-            <motion.div className="relative">
-            
-                <video 
-                src="/ixd/website/4_1.mp4" 
-                className=" rounded-lg w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                variants={animateInChild}>
-                </video>
+                    {/* Gradient */}
+                    <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-lg"/>
+                    {/* Title */}
+                    <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[11px] md:p-3 pl-2 pb-0.5">
+                        <h1>First implementation of page routing.</h1>
+                    </div>
+                    
+                </motion.div>
 
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1>Implemented the frosted glass art direction.</h1>
-                </div>
+                <motion.div className="relative drop-shadow-md" >
                 
-            </motion.div>
+                    <img src="/ixd/website/10.png" className="rounded-2xl h-full w-auto object-cover"/>
 
-            <motion.div className="relative col-span-full mt-4">
-            
-                <video 
-                src="/ixd/website/5.mp4" 
-                className=" rounded-lg w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                variants={animateInChild}>
-                </video>
+                    {/* Gradient */}
+                    <div className="bg-gradient-to-t from-black/100 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-white/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-lg"/>
+                    {/* Title */}
+                    <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[11px] md:p-3 pl-2 pb-0.5">
+                        <h1>Early design of mobile homepage.</h1>
+                    </div>
+                    
+                </motion.div>
 
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-black tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1>First implementation of the video grid and sorting system.</h1>
-                </div>
+                <motion.div className="relative col-span-4 drop-shadow-md">
                 
-            </motion.div>
+                    <video 
+                    src="/ixd/website/5.mp4" 
+                    className=" rounded-2xl h-full w-auto object-cover "
+                    autoPlay muted loop playsInline loading="lazy"
+                    variants={animateInChild}>
+                    </video>
 
-            <motion.div className="relative col-span-full mt-4">
-            
-                <img src="/ixd/website/7.png" className="rounded-lg"/>
+                    {/* Gradient */}
+                    <div className="bg-gradient-to-t from-white/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-white/90 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-lg"/>
+                    {/* Title */}
+                    <div className="absolute bottom-0 w-full text-black tracking-tight font-medium text-[8px] md:text-[11px] md:p-3 md:ml-2 pl-4 pb-0.5">
+                        <h1>First prototype of the video grid and sorting function.</h1>
+                    </div>
+                    
+                </motion.div>
 
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-black tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1>Alternate Design of the Favorites page.</h1>
-                </div>
+                {/* <motion.div className="relative col-span-2 drop-shadow-md">
                 
-            </motion.div>
+                    <img src="/ixd/website/7.png" className="rounded-2xl h-full w-auto object-cover"/> */}
 
-            <motion.div className="relative col-span-full mt-4">
-            
-                <video 
-                src="/ixd/website/8.mp4" 
-                className=" rounded-lg w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                variants={animateInChild}>
-                </video>
+                    {/* Gradient */}
+                    {/* <div className="bg-gradient-to-t from-white/90 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/> */}
 
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-lg"/>
+                    {/* Title */}
+                    {/* <div className="absolute bottom-0 w-full text-black tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
+                        <h1>Alternate Design of the Favorites page.</h1>
+                    </div> */}
+                    
+                {/* </motion.div> */}
 
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1>First implementation of the hover-state for the homepage grid.</h1>
-                </div>
                 
-            </motion.div>
 
-            <motion.div className="relative col-span-full mt-4">
-            
-                <video 
-                src="/ixd/website/9.mp4" 
-                className=" rounded-lg w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                variants={animateInChild}>
-                </video>
 
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-white to-transparent absolute bottom-0 w-full h-1/4 rounded-b-lg"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-black tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1>First implementation of the responsive layout during mobile optimization.</h1>
-                </div>
-                
-            </motion.div>
-
-            <motion.div className="relative mt-4">
-            
-                <img src="/ixd/website/10.png" className="rounded-lg"/>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/100 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-lg"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1>Early design of mobile homepage.</h1>
-                </div>
-                
-            </motion.div>
-
-            <motion.div className="relative mt-4">
-            
-                <video 
-                src="/ixd/website/11_2.mp4" 
-                className=" rounded-lg w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-white to-transparent absolute bottom-0 w-full h-1/4 rounded-b-lg"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-black tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1>Dropdown Menus practice on profile page.</h1>
-                </div>
-                
-            </motion.div>
 
             <div className="mb-24"></div>
 
             
         </motion.div>
+        </div>
 
-    
+        {/* v1 */}
+        <div className="col-span-full mt-0 mb-8 xl:mb-20">
+            <h1 className="text-3xl lg:text-5xl font-mono text-center md:text-left tracking-tightest font-medium">v1</h1>
 
-            
+            <div className="col-span-full grid grid-cols-2 gap-1.5 md:gap-2 mt-10">
+            <motion.img src='/website/desktop3.png' className="rounded-2xl drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/>
+            <motion.img src='/website/desktop1.png' className="rounded-2xl drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/>
+            {/* <motion.img src='/website/desktop4.png' className="rounded-2xl drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/>
+            <motion.img src='/website/desktop2.png' className="rounded-2xl drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/> */}
+            </div>
+
+            <div className="col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 md:gap-2 mt-2">
+                <motion.img src='/website/mobile1.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+                <motion.img src='/website/mobile2.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+                <motion.img src='/website/mobile3.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+                <motion.img src='/website/mobile4.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+                <motion.img src='/website/mobile5.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+                <motion.img src='/website/mobile6.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+            </div>
+        </div>
+
+        {/* v2 */}
+        <div className="col-span-full mt-0 mb-8 xl:mb-20">
+            <h1 className="text-3xl lg:text-5xl text-center md:text-left tracking-tightest font-mono">v2</h1>
+
+            <div className="col-span-full grid grid-cols-2 gap-1.5 md:gap-2 mt-10">
+            <motion.img src='/website/desktop3.png' className="rounded-2xl drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/>
+            <motion.img src='/website/desktop1.png' className="rounded-2xl drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/>
+            {/* <motion.img src='/website/desktop4.png' className="rounded-2xl drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/>
+            <motion.img src='/website/desktop2.png' className="rounded-2xl drop-shadow-lg col-span-full md:col-span-1" variants={animateInChild}/> */}
+            </div>
+
+            <div className="col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 md:gap-2 mt-2">
+                <motion.img src='/website/mobile1.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+                <motion.img src='/website/mobile2.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+                <motion.img src='/website/mobile3.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+                <motion.img src='/website/mobile4.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+                <motion.img src='/website/mobile5.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+                <motion.img src='/website/mobile6.png' className="rounded-2xl drop-shadow-lg col-span-1" variants={animateInChild}/>
+            </div>
+        </div>
+
 
         
+
     </motion.div>
   );
 };

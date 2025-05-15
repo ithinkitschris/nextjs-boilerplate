@@ -465,8 +465,8 @@ export default function Home(){
           {/* Top Navbar */}
           <div className="col-span-full fixed top-2 md:top-5 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
 
-            {/* Sidenav / Dropdown Button */}
-            <motion.button 
+              {/* Sidenav / Dropdown Button */}
+              <motion.button 
               className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-black/0 md:dark:border-white/20 backdrop-blur-lg 
               flex items-center shadow md:hover:text-background transition-colors duration-100 z-30 md:right-auto mt-0.5 md:mt-0 
               ${showNav ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground md:left-0 md:-ml-1" : "bg-[#f3f3f3] dark:bg-black/20 md:hover:bg-foreground right-8 md:left-2"}`}
@@ -574,6 +574,14 @@ export default function Home(){
                   
                 </motion.button>
 
+                {/* Desktop Navbar BG */}
+                <div className='hidden md:flex justify-center max-w-10xl w-screen fixed -z-10 -mt-1.5'>
+                  <div
+                    className="backdrop-blur-2xl w-[165px] rounded-full fixed 
+                    drop-shadow-md bg-background dark:bg-transparent h-[38px] border-b-1 border-white/30 "
+                  />
+                </div>
+
               </motion.div>
           </div>  
 
@@ -596,12 +604,6 @@ export default function Home(){
                 borderRadius: { duration: showNav ? 0.01 : 10 } // Separate easing for smooth border-radius transition
               }}
           ></motion.div>
-
-          {/* Desktop Navbar BG */}
-          <div
-            className="hidden md:block fixed backdrop-blur-lg top-2 md:top-[18px] left-1/2 transform -translate-x-1/2 w-[165px] ml-[12px] rounded-full 
-            drop-shadow bg-background z-30 dark:bg-transparent h-[38px] border-b-1 border-white/30 dark:mix-blend-overlay"
-          ></div>
 
           {/* Side Navbar / Mobile Dropdown */}
           <motion.div
@@ -765,7 +767,7 @@ export default function Home(){
 
                 {/* Desktop Side Navbar Skillsets */}    
                 <motion.div 
-                className="hidden md:flex flex-col items-start gap-1 mt-4 dark:text-neutral-500 sticky z-10"
+                className="hidden md:flex flex-col items-start gap-1 mt-4 dark:text-neutral-500 sticky"
                 initial="hidden"
                 animate="show"
                 exit="fade"

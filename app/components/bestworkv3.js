@@ -54,7 +54,7 @@ const BestWorkPage3 = ({className}) => {
   const handleMouseEnter = (index) => {
     const hoverTimer = setTimeout(() => {
       scrollToIndex(index);
-    }, 100); // Increased delay to allow for hover transition to start
+    }, 200); // Increased delay to allow for hover transition to start
     
     // Store the timer ID so we can clear it if needed
     return () => clearTimeout(hoverTimer);
@@ -110,7 +110,7 @@ return (
               scrollToIndex(newIndex);
             }}
             className={`w-7 h-7 pr-[1.5px] text-sm font-semibold rounded-full transition-all duration-200 backdrop-blur-2xl flex items-center justify-center
-              dark:border-1 bg-background drop-shadow-md dark:border-white/50 text-foreground hover:text-white dark:text-white hover:bg-foreground dark:hover:bg-white dark:hover:text-black hover:scale-90 
+              dark:border-r-1 dark:border-b-1 bg-background drop-shadow-md dark:border-white/20 text-foreground hover:text-white dark:text-white hover:bg-foreground dark:hover:bg-white dark:hover:text-black hover:scale-90 
               ${activeIndex === 0 ? 'opacity-35 drop-shadow-none pointer-events-none' : 'opacity-100'}`}
           >
             <ChevronLeftIcon className="w-[18px] h-[18px]" />
@@ -123,7 +123,7 @@ return (
               scrollToIndex(newIndex);
             }}
             className={`w-7 h-7 pl-[1px] text-sm font-semibold rounded-full transition-all duration-200 backdrop-blur-2xl flex items-center justify-center
-              dark:border-1 bg-background drop-shadow-md dark:border-white/50 text-foreground hover:text-white dark:text-white hover:bg-foreground dark:hover:bg-white dark:hover:text-black hover:scale-90 
+              dark:border-r-1 dark:border-b-1 bg-background drop-shadow-md dark:border-white/20 text-foreground hover:text-white dark:text-white hover:bg-foreground dark:hover:bg-white dark:hover:text-black hover:scale-90 
               ${activeIndex === 3 ? 'opacity-35 drop-shadow-none pointer-events-none' : 'opacity-100'}`}
           >
             <ChevronRightIcon className="w-[18px] h-[18px]" />
@@ -131,19 +131,21 @@ return (
 
         </div>
 
+        
+
         {/* Horizontal Carousel Wrapper */}
         <div className="flex overflow-x-auto gap-4 rounded-3xl mx-20" ref={containerRef}>
 
-          {/* Simple Navigation Dots */}
-          <div className="absolute bottom-3 left-0 right-0 z-20 flex justify-center gap-1 mb-3 scale-90">
+        {/* Navigation Dots */}
+        <div className="absolute left-0 right-0 bottom-2 z-20 flex justify-center gap-1 mb-3 scale-90">
             {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations', 'hemsaker'].map((title,index) => (
               <button
                 key={index}
                 onClick={() => scrollToIndex(index)}
-                className={`text-[7pt] font-semibold rounded-full transition-all duration-300 flex items-center justify-center w-3.5 h-3.5  ${
+                className={`text-[7pt] font-semibold rounded-full transition-all duration-300 flex items-center justify-center w-3.5 h-3.5 backdrop-blur-xl mix-blend-overlay ${
                   activeIndex === index
-                    ? "bg-white scale-75 -mx-1 px-6"
-                    : "bg-white/35 text-white hover:bg-white hover:scale-100 scale-[60%]"
+                    ? "bg-white/75 scale-75 -mx-1 px-6 backdrop-blur-xl border-b-2 border-r-[1px] border-white drop-shadow-lg"
+                    : "bg-white/35 text-white hover:bg-white/80 hover:scale-100 scale-[60%] drop-shadow-lg"
                 }`}
               >
                 {activeIndex === index ? '' : ''}
@@ -154,12 +156,12 @@ return (
           {/* Beyond The Cabin */}
           <div 
               ref={(el) => (itemsRef.current[0] = el)}
-              // onMouseEnter={() => {
-              //   setHoveredIndex(0);
-              //   handleMouseEnter(0);
-              // }}
-              // onMouseLeave={() => setHoveredIndex(null)}
-              className={`${hoveredIndex === 0 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 0 ? 'scale-98' : ''}`}
+              onMouseEnter={() => {
+                setHoveredIndex(0);
+                // handleMouseEnter(0);
+              }}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className={`${hoveredIndex === 0 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative ${hoveredIndex === 0 ? 'scale-99' : ''}`}
             >
             
             {/* Gradient */}
@@ -183,7 +185,9 @@ return (
             </button>
             
             {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[300px] group-hover:w-[370px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
+            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[400px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
+            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
+            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
 
               <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
                 01
@@ -207,7 +211,7 @@ return (
 
               <div className="col-span-3">
                   <div className="absolute bottom-10 -ml-1 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Role:</div>
-                  <div className="absolute bottom-5 -ml-1 gap-3 tracking-tight hidden 2xl:flex
+                  <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight hidden 2xl:flex
                       opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
 
                       <p>Creative Direction</p>
@@ -217,6 +221,23 @@ return (
               </div>
 
             </div>
+
+            {/* <div className="absolute z-40 left-96 bottom-2 w-[300px] group-hover:w-[400px] h-[50%] text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
+            backdrop-blur-none group-hover:backdrop-blur-2xl border-r-1.5 border-b-1 border-white/0 group-hover:border-white/10 group-hover:scale-95 group-hover:ml-2 rounded-3xl group-hover:shadow-lg transition-all duration-300">
+
+
+              <div className="col-span-3">
+                  <div className="absolute bottom-10 -ml-1 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Role:</div>
+                  <div className="absolute bottom-5 -ml-1 gap-3 tracking-tight hidden 2xl:flex
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+
+                      <p>Creative Direction</p>
+                      <p>Motion Design</p>
+                      <p>Visual Design</p>
+                  </div>
+              </div>
+
+            </div> */}
 
             {/* Video */}
             <video src="/CCS/bestworkmontage.mp4"
@@ -231,12 +252,12 @@ return (
           {/* Ghibli */}
           <div 
               ref={(el) => (itemsRef.current[1] = el)}
-              // onMouseEnter={() => {
-              //   setHoveredIndex(1);
-              //   handleMouseEnter(1);
-              // }}
-              // onMouseLeave={() => setHoveredIndex(null)}
-              className={`${hoveredIndex === 1 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 1 ? 'scale-98' : ''}`}
+              onMouseEnter={() => {
+                setHoveredIndex(1);
+                // handleMouseEnter(1);
+              }}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className={`${hoveredIndex === 1 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 1 ? 'scale-99' : ''}`}
             >
 
             {/* Gradient */}
@@ -261,7 +282,9 @@ return (
             </button>
 
             {/* Side Container */}
-            <div className="absolute z-50 p-10 pt-8 w-[26%] group-hover:w-[450px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
+            <div className="absolute z-50 p-10 pt-8 w-[26%] group-hover:w-[450px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
+            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
+            border-r-1.5 border-b-1 border-white/0 group-hover:border-white/10 group-hover:scale-95 group-hover:ml-2.5">
 
               <button className="font-mono text-base tracking-tight -ml-2 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
                 02
@@ -310,19 +333,21 @@ return (
           {/* Cocktail Conversations */}
           <div 
               ref={(el) => (itemsRef.current[2] = el)}
-              // onMouseEnter={() => {
-              //   setHoveredIndex(2);
-              //   handleMouseEnter(2);
-              // }}
-              // onMouseLeave={() => setHoveredIndex(null)}
-              className={`${hoveredIndex === 2 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 2 ? 'scale-98' : ''}`}
+              onMouseEnter={() => {
+                setHoveredIndex(2);
+                // handleMouseEnter(2);
+              }}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className={`${hoveredIndex === 2 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 2 ? 'scale-99' : ''}`}
             >
 
             {/* Gradient */}
             {/* <div className="absolute top-0 left-0 right-0 bottom-0 rounded-3xl bg-gradient-to-b from-black/70 to-transparent h-[30%] group-hover:opacity-0 transition-all duration-300"/> */}
             
             {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[28%] group-hover:w-[460px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
+            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[28%] group-hover:w-[460px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
+            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
+            border-r-1.5 border-b-1 border-white/0 group-hover:border-white/10 group-hover:scale-95 group-hover:ml-2.5">
 
               <button className="font-mono text-base tracking-tighter w-11 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
                 03
@@ -370,19 +395,21 @@ return (
           {/* IKEA */}
           <div 
               ref={(el) => (itemsRef.current[3] = el)}
-              // onMouseEnter={() => {
-              //   setHoveredIndex(3);
-              //   handleMouseEnter(3);
-              // }}
-              // onMouseLeave={() => setHoveredIndex(null)}
-              className={`${hoveredIndex === 3 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 3 ? 'scale-98' : ''}`}
+              onMouseEnter={() => {
+                setHoveredIndex(3);
+                // handleMouseEnter(3);
+              }}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className={`${hoveredIndex === 3 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 3 ? 'scale-99' : ''}`}
             >
 
             {/* Gradient */}
             {/* <div className="absolute top-0 left-0 right-0 bottom-0 rounded-3xl bg-gradient-to-b from-black/70 to-transparent h-[30%] group-hover:opacity-0 transition-all duration-300"/> */}
             
             {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[300px] group-hover:w-[350px] h-full text-white group-hover:bg-black/10 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
+            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[300px] group-hover:w-[350px] h-full text-white group-hover:bg-black/10 
+            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
+            border-r-1.5 border-b-1 border-white/0 group-hover:border-white/10 group-hover:scale-95 group-hover:ml-2.5">
 
               <button className="font-mono text-base tracking-tighter w-11 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
                 04
@@ -429,21 +456,23 @@ return (
         </div>
 
         {/* Simple Navigation Dots Bottom */}
-        {/* <div className="mt-4 z-20 flex justify-center gap-0 mb-3 scale-90">
-            {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations'].map((title,index) => (
+        {/* <div className="mt-4 z-20 flex justify-center gap-1 mb-3 scale-90">
+            {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations', 'hemsaker'].map((title,index) => (
               <button
                 key={index}
                 onClick={() => scrollToIndex(index)}
                 className={`text-[7pt] font-semibold rounded-full transition-all duration-300 flex items-center justify-center w-3.5 h-3.5  ${
                   activeIndex === index
-                    ? "bg-white scale-75 mx-1 px-1.5"
-                    : "bg-white/35 text-white hover:bg-white hover:scale-75 scale-50"
+                    ? "bg-black/35 dark:bg-white scale-75 -mx-1 px-6"
+                    : "bg-black/10 dark:bg-white/35 text-white hover:bg-black/50 dark:hover:bg-white hover:scale-100 scale-[60%]"
                 }`}
               >
                 {activeIndex === index ? '' : ''}
               </button>
             ))}
           </div> */}
+
+        
       </div>
     </motion.div>  
 

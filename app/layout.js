@@ -109,7 +109,7 @@ const toggleDarkMode = () => {
       ${geistMono.variable} 
       ${modernLine.variable} 
       ${breathing.variable}
-      antialiased flex flex-col min-h-screen font-mono
+      antialiased flex flex-col min-h-screen font-sans
       bg-background transition-all duration-300`}>
 
         {/* Backdrop Blur */}

@@ -37,6 +37,11 @@ const config: Config = {
         1.6: '1.6px',
         1.7: '1.7px',
       },
+      borderRadius: {
+        '3xl' : '30px',
+        '4xl' : '40px',
+        '5xl' : '45px',
+      },
       spacing: {
         1.75: '0.4375rem',
         18: "4.5rem",
@@ -67,7 +72,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "sans-serif"],
-        mono: ["var(--font-geist-sans)", "monospace"],
+        mono: ["var(--font-geist-mono)", "monospace"],
         script: ["var(--font-breathing)", "script"],
         script2: ["var(--font-modernline)", "script"],
       },
@@ -122,9 +127,9 @@ const config: Config = {
       boxShadow: {
         'inner-standard': 'inset 5px 5px 20px rgba(0,0,0,0.1)',
         'mild': '5px 1px 15px rgba(0,0,0,0.1)',
-        'standard': '1px 1px 12px rgba(0,0,0,0.3)',
+        'standard': '3px 3px 20px rgba(0,0,0,0.2)',
         'strong': '2px 2px 8px rgba(0,0,0,0.8)',
-        'standard-hover': '0px 5px 20px rgba(0,0,0,0.3)',
+        'standard-hover': '4px 4px 20px rgba(0,0,0,0.2)',
       },
       lineHeight: {
         'tighter' : '0.92',

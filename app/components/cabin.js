@@ -84,8 +84,8 @@ show: {
                 md:text-left tracking-tighter leading-tighter -ml-2">Beyond The Cabin</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Brand campaign for <span className='font-script -rotate-1 relative left-1.5 top-1'>Singapore Airlines</span></p>
+                <p className="text-xl md:text-3xl font-base tracking-[-0.9px] mt-4 md:mt-0.5 md:text-[27px] text-center md:text-left">
+                Brand campaign for Singapore Airlines</p>
             </motion.div> 
 
             {/* Banner Video */}
@@ -158,7 +158,7 @@ show: {
                 </motion.div>
             </div>
 
-            <motion.div className='col-span-full mt-6' variants={animateInChild}>
+            <motion.div className='col-span-full mt-40' variants={animateInChild}>
                 <Episodes />
             </motion.div>
 
@@ -170,42 +170,42 @@ show: {
 
             <motion.img 
                 src="/CCS/End Frame KV.jpg"
-                className="col-span-full w-full shadow rounded-xl md:rounded-lg object-cover -mb-1"
+                className="col-span-full w-full shadow rounded-xl md:rounded-2xl object-cover -mb-1"
                 variants={animateInChild}>
             </motion.img>
 
             <div className='col-span-full grid grid-cols-5 md:grid-cols-10 gap-1 md:gap-2'>
 
                 <h1 className="font-base text-base md:text-2xl font-medium mb-1 col-span-full text-center md:text-left tracking-tight mt-8">In-Cabin & Episodes</h1>
-                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
+                <img className='rounded-2xl object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Pin.jpg'>
                 </img>
 
-                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
+                <img className='rounded-2xl object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail1.jpg'>
                 </img>   
 
-                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
+                <img className='rounded-2xl object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Fadzil.jpg'>
                 </img>
 
-                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
+                <img className='rounded-2xl object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail6.jpg'>
                 </img>  
                 
-                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
+                <img className='rounded-2xl object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Mitchelle.jpg'>
                 </img>
 
-                <img className='rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
+                <img className='rounded-2xl object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail5.jpg'>
                 </img>  
 
-                <img className='hidden md:block rounded-lg object-cover h-80 md:h-135 w-full col-span-3'
+                <img className='hidden md:block rounded-2xl object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Moon.jpg'>
                 </img>
 
-                <img className='hidden md:block rounded-lg object-cover h-80 md:h-135 w-full col-span-2'
+                <img className='hidden md:block rounded-2xl object-cover h-80 md:h-135 w-full col-span-2'
                 src='/CCS/thumbnail2.jpg'>
                 </img>
 
@@ -221,7 +221,7 @@ show: {
                     <h1 className="font-base text-base md:text-lg font-medium mb-2 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
                     <motion.video
                         src="/CCS/Title Sequence (New York City) 16-9.mp4"
-                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-2xl 
                         object-cover"
                         variants={animateInChild}
                         autoPlay loop muted playsInline>
@@ -235,7 +235,7 @@ show: {
                     <h1 className="font-base text-base md:text-lg font-medium mb-2 col-span-full text-center md:text-left tracking-tight mt-4 md:mt-0">End Sequence</h1>
                     <motion.video
                         src="/CCS/End Frame (Paris) 16-9.mp4"
-                        className="drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                        className="drop-shadow-lg hover:drop-shadow-xl rounded-2xl 
                         object-cover"
                         variants={animateInChild}
                         autoPlay loop muted playsInline>
@@ -255,47 +255,47 @@ show: {
             <div className='col-span-full grid md:grid-cols-3 gap-1 md:gap-2 mb-40'>
                 <motion.img
                     src="/CCS/bts1.jpg"
-                    className="drop-shadow-lg rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-2xl object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts2.jpg"
-                    className="drop-shadow-lg rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-2xl object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts3.jpg"
-                    className="drop-shadow-lg rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-2xl object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts4.jpg"
-                    className="drop-shadow-lg rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-2xl object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts5.jpg"
-                    className="drop-shadow-lg rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-2xl object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts6.jpg"
-                    className="drop-shadow-lg rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-2xl object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts7.jpg"
-                    className="drop-shadow-lg rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-2xl object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts9.jpg"
-                    className="drop-shadow-lg rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-2xl object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
                 <motion.img
                     src="/CCS/bts8.jpg"
-                    className="drop-shadow-lg rounded-lg object-cover w-full"
+                    className="drop-shadow-lg rounded-2xl object-cover w-full"
                     variants={animateInChild}>
                 </motion.img>
             </div>
@@ -314,7 +314,7 @@ show: {
 {/* <motion.img 
                 src="/CCS/End Frame KV.jpg"
                 className="col-span-full px-4 sm:px-0 mt-10
-                w-full drop-shadow-lg hover:drop-shadow-xl rounded-lg 
+                w-full drop-shadow-lg hover:drop-shadow-xl rounded-2xl 
                 object-cover transition-scale duration-200"
                 variants={animateInChild}
                 whileHover={{scale:1.01}}>
@@ -330,37 +330,37 @@ show: {
 //     {/* Episode Thumbnails */}
 //     <motion.div className="gap-2 2xl:gap-3 grid grid-cols-6 col-span-full mb-8" variants={animateInChild}>
 //         <motion.img src="/CCS/thumbnail1.jpg" 
-//             className="shadow-standard hover:shadow-standard-hover rounded-lg
+//             className="shadow-standard hover:shadow-standard-hover rounded-2xl
 //             object-cover transition-scale h-full"
 //             variants={animateInChild}
 //             whileHover={{scale:1.05}}>
 //         </motion.img>
 //         <motion.img src="/CCS/thumbnail2.jpg" 
-//             className="shadow-standard hover:shadow-standard-hover rounded-lg
+//             className="shadow-standard hover:shadow-standard-hover rounded-2xl
 //             object-cover transition-scale h-full"
 //             variants={animateInChild}
 //             whileHover={{scale:1.05}}>
 //         </motion.img>
 //         <motion.img src="/CCS/thumbnail3.jpg" 
-//             className="shadow-standard hover:shadow-standard-hover rounded-lg
+//             className="shadow-standard hover:shadow-standard-hover rounded-2xl
 //             object-cover transition-scale h-full"
 //             variants={animateInChild}
 //             whileHover={{scale:1.05}}>
 //         </motion.img>
 //         <motion.img src="/CCS/thumbnail4.jpg" 
-//             className="shadow-standard hover:shadow-standard-hover rounded-lg
+//             className="shadow-standard hover:shadow-standard-hover rounded-2xl
 //             object-cover transition-scale h-full"
 //             variants={animateInChild}
 //             whileHover={{scale:1.05}}>
 //         </motion.img>
 //         <motion.img src="/CCS/thumbnail5.jpg" 
-//             className="shadow-standard hover:shadow-standard-hover rounded-lg
+//             className="shadow-standard hover:shadow-standard-hover rounded-2xl
 //             object-cover transition-scale h-full"
 //             variants={animateInChild}
 //             whileHover={{scale:1.05}}>
 //         </motion.img>
 //         <motion.img src="/CCS/thumbnail6.jpg" 
-//             className="shadow-standard hover:shadow-standard-hover rounded-lg
+//             className="shadow-standard hover:shadow-standard-hover rounded-2xl
 //             object-cover transition-scale h-full"
 //             variants={animateInChild}
 //             whileHover={{scale:1.05}}>
@@ -379,7 +379,7 @@ show: {
         
 //         <motion.video
 //             src="/CCS/montage1.mp4"
-//             className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+//             className="drop-shadow-lg hover:drop-shadow-xl rounded-2xl
 //             object-cover col-span-4 xl:col-span-5 w-full"
 //             variants={animateInChild}
 //             autoPlay loop muted drag
@@ -398,7 +398,7 @@ show: {
         
 //         <motion.video
 //             src="/CCS/montage2.mp4"
-//             className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+//             className="drop-shadow-lg hover:drop-shadow-xl rounded-2xl
 //             object-cover transition-scale col-span-4 xl:col-span-5 w-full"
 //             variants={animateInChild}
 //             autoPlay loop muted drag
@@ -417,7 +417,7 @@ show: {
         
 //         <motion.video
 //             src="/CCS/montage3.mp4"
-//             className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+//             className="drop-shadow-lg hover:drop-shadow-xl rounded-2xl
 //             object-cover transition-scale col-span-4 xl:col-span-5 w-full"
 //             variants={animateInChild}
 //             autoPlay loop muted drag
@@ -436,7 +436,7 @@ show: {
         
 //         <motion.video
 //             src="/CCS/montage4.mp4"
-//             className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+//             className="drop-shadow-lg hover:drop-shadow-xl rounded-2xl
 //             object-cover transition-scale col-span-4 xl:col-span-5 w-full"
 //             variants={animateInChild}
 //             autoPlay loop muted drag
@@ -455,7 +455,7 @@ show: {
         
 //         <motion.video
 //             src="/CCS/montage5.mp4"
-//             className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+//             className="drop-shadow-lg hover:drop-shadow-xl rounded-2xl
 //             object-cover transition-scale col-span-4 xl:col-span-5 w-full"
 //             variants={animateInChild}
 //             autoPlay loop muted drag
@@ -474,7 +474,7 @@ show: {
         
 //         <motion.video
 //             src="/CCS/montage6.mp4"
-//             className="drop-shadow-lg hover:drop-shadow-xl rounded-lg
+//             className="drop-shadow-lg hover:drop-shadow-xl rounded-2xl
 //             object-cover transition-scale col-span-4 xl:col-span-5 w-full"
 //             variants={animateInChild}
 //             autoPlay loop muted drag
