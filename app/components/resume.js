@@ -47,7 +47,7 @@ const dropdownChild = {
     },
 };
 
-export default function Resume({ className = "", setHoveredWork, toggleWork, isDarkMode}) {
+export default function Resume({ className = "", setHoveredWork, toggleWork}) {
     const [timeNyc, setTimeNyc] = useState(null);
     const [timeSg, setTimeSg] = useState(null);
 
@@ -410,11 +410,11 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
                                 <div className="text-sm">
                                     <p className="mt-4">MFA Interaction Design</p>
                                     <p>School of Visual Arts</p>
-                                    <i>2024 – 2026</i>
+                                    <i>2024 – 2026</i>
 
                                     <p className="mt-4">Diploma in Communication Design</p>
                                     <p>Temasek Polytechnic</p>
-                                    <i>2013 – 2016</i>
+                                    <i>2013 – 2016</i>
                                     
                                 </div>
                             </div>
@@ -492,7 +492,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
                             <div className="col-span-1">
                                 <p className="italic text-sm opacity-50 pr-8">If everyone is busy making everything, how can anyone perfect anything? We start to confuse convenience with joy. Abundance with choice.</p>
                                 <p className="italic text-sm opacity-50 mt-4 pr-8">Designing something requires focus. The first thing we ask is: What do we want people to feel. Surprise. Love. Connection.</p>
-                                <p className="italic text-sm opacity-50 mt-4 pr-8">Then we begin to craft around our intention. It takes time. There are a thousand no’s for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.
+                                <p className="italic text-sm opacity-50 mt-4 pr-8">Then we begin to craft around our intention. It takes time. There are a thousand no's for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.
                                 </p>
                                 <p className="italic text-sm opacity-50 mt-4 pr-8">Only then do we sign our work:<br/> Designed by Apple in California</p>
 
@@ -527,7 +527,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
 
                             <div className="col-span-1">
                                 <p className="mb-3">After 8 years, and as I ever fervently sought the next step throughout that led me from starting out as a Motion Designer to eventually being a Creative Lead; I found myself with a startling ability to tell a story behind my craft.</p>
-                                <p className="mb-3">One thing that remained absolute however, was that I never stopped <i>doing</i>. Just because I found myself an Art Director, didn’t mean that I no longer needed to get my hands dirty with Illustrator and After Effects. <i className="opacity-50 mr-1.5 hidden">(along with a disproportionate amount of Powerpoint, Keynote and Teams).</i> Crafting was the one North Star that got me where I was, and kept me doing what I did, and I wasn’t about to leave that behind.</p>
+                                <p className="mb-3">One thing that remained absolute however, was that I never stopped <i>doing</i>. Just because I found myself an Art Director, didn't mean that I no longer needed to get my hands dirty with Illustrator and After Effects. <i className="opacity-50 mr-1.5 hidden">(along with a disproportionate amount of Powerpoint, Keynote and Teams).</i> Crafting was the one North Star that got me where I was, and kept me doing what I did, and I wasn't about to leave that behind.</p>
                                 <p className="mb-3">Every piece of work on this site went through a thousand no&apos;s for the final yes. It was crafted amidst busyness, with focus and the aim for perfection <i className="opacity-50 mr-1.5 hidden ">(not that I personally believe in the conventional understanding of perfection; I don&apos;t).</i></p>
                                 <p className="mb-6">Today, an entire decade later, as I sit here writing this, the very message of the film that started it all could not be more poignant. What was once the visuals that resonated so deeply, it is now the message that strikes a deeper chord:</p>
                             </div>
@@ -553,7 +553,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
             <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-44 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 ml-6 px-2
             p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">Creative Direction</div>
             <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 mb-3 col-span-full leading-[87%] w-2/3 ml-8">The ones that had legs.</div>
-            <BestWorkPage3 className='col-span-full -mt-12' key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <BestWorkPage3 className='col-span-full -mt-12'key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Product Design */}
             <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full ml-8 px-2">Product Design</div>
@@ -568,380 +568,12 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
             {/* Photography */}
             <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-6 px-2">Photography</div>
             <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[87%] w-[50%] ">Photographic Memories.</div>
-            <PhotographyPage className='col-span-full mt-8 ' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <PhotographyPage className='col-span-full mt-8' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
             
             {/* Content */}
             <div className="font-medium tracking-[-0.2pt] text-[12pt] ml-4 mt-32 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>
             <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-3 mb-8 col-span-full leading-[87%] w-[70%] ">A life of mine viewed through a short attention span.</div>
-            <ContentPage className='col-span-full mt-8 ' key='content'/>
-
-            {/* Mobile Brands Container */}
-            <h1 className="mt-4 mb-4 font-medium col-span-full text-xl px-5 md:hidden" key='aiya'>Worked with:</h1>
-            <motion.div className="col-span-full w-full px-4 mix-blend-difference mb-12 grid grid-cols-4 items-center gap-5 opacity-60 md:hidden" layout key='whatever'>
-                <img src='/brandlogos/sia.png' className="w-[90px] h-[30px] object-cover"/>
-                <img src='/brandlogos/asm.png' className="w-[110px] h-[30px] scale-120 object-cover"/>
-                <img src='/brandlogos/ikea.png' className="w-[85px] h-[25px] scale-75 object-cover"/>
-                <img src='/brandlogos/samsung.png' className="w-[95px] h-[20px] object-cover"/>
-                <img src='/brandlogos/uniqlo.png' className="w-[80px] h-[32px] object-cover"/>
-                <img src='/brandlogos/ghibli.png' className="w-[100px] h-[35px] scale-110 object-cover"/>
-                <img src='/brandlogos/nike.png' className="w-[75px] h-[28px] object-cover"/>
-                <img src='/brandlogos/teamlab.png' className="w-[84px] h-[18px] object-cover"/>
-                {/* <img src='/brandlogos/sc.png' className="w-[80px] h-[30px]  object-cover"/>
-                <img src='/brandlogos/stb.png' className="w-[90px] h-[30px] object-cover"/>
-                <img src='/brandlogos/mckinsey.png' className="w-[90px] h-[30px] object-cover"/>
-                <img src='/brandlogos/jollibee.png' className="w-[78px] h-[26px] object-cover"/> */}
-            </motion.div>
-
-            {/* Mobile FAQ Button Row */}
-            <motion.div className="lg:hidden flex justify-between mt-4 px-5 lg:px-0 cursor-pointer mb-2 lg:mb-4 ml-1 col-span-full w-full" key='wtf' variants={animateInChild}>
-                
-                <div 
-                className={`flex items-center justify-center -ml-[15px] w-[100px] font-medium 
-                rounded-full tracking-tight text-xl text-foreground`}>
-                    My Story
-                </div>
-
-                <div 
-                className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
-                rounded-full mb-2 px-1 text-foreground`}>
-            
-                </div>
-            </motion.div> 
-
-            {/* Mobile Story Dropdown */}
-            <motion.div 
-            key="dropdown-story"
-            initial="hidden"
-            animate="show"
-            layout="position"
-            variants={dropdown}
-            className="lg:flex gap-5 w-full col-span-full">
-
-                {/* AI Toggle Bar */}
-                <motion.div className="lg:hidden flex justify-between mt-0 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-4 lg:mb-4 col-span-full w-full" 
-                onClick={toggleAI} 
-                key='AI' 
-                layout="position" 
-                variants={dropdownChild}
-                transition={{
-                    type: "spring",
-                    stiffness: 300, 
-                    damping: 26, 
-                    }}>
-
-                    <div 
-                    className={`flex items-center justify-center transition-non-color duration-200 w-[72px] border-black/20 dark:border-white/50
-                    rounded-full tracking-tight text-base ${showAI ? 'border-1 scale-95' : ''}`}>
-                        For<span className="font-script tracking-tightest ml-1.5 relative top-0.5">AI</span>
-                    </div>
-
-                    <div 
-                    className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
-                    rounded-full mb-2 px-1`}>
-                    
-                    {showAI ? (
-                        <ChevronUpIcon className="h-4 w-4" />
-                    ) : (
-                        <ChevronDownIcon className="h-4 w-4" />
-                    )}
-                    </div>
-                </motion.div>
-
-                {/* AI Dropdown */}
-                {showAI && (
-                    <motion.div 
-                    key="dropdown-AI"
-                    initial="hidden"
-                    animate="show"
-                    layout="position"
-                    variants={dropdown}
-                    className="lg:flex gap-5 w-full col-span-full"
-                    transition={{
-                        type: "spring",
-                        stiffness: 300, 
-                        damping: 26, 
-                        }}>
-
-                        <motion.div 
-                        key="experience"
-                        className="mb-10 px-5 md:px-0 flex-1 mt-8"
-                        variants={dropdownChild}
-                        layout="position">
-                            <h1 className="mt-8 text-base font-script">Experience</h1>
-                                <div className="">
-                                    <p className="mt-4">Senior Creative</p>
-                                    <p>8+ Years of Experience</p>
-                                    <p>Design + Advertising</p>
-                                </div>
-                        </motion.div>
-
-                        <motion.div 
-                        key="skills"
-                        className="mb-10 px-5 md:px-0 flex-1 mt-8"
-                        variants={dropdownChild}
-                        layout="position">
-                            <h1 className="mt-8 text-base font-script">Skills</h1>
-                                <div className="grid grid-cols-3">
-                                    
-                                    <p className="mt-6">Creative Direction</p>
-                                    <p className="mt-6">Motion Design</p>
-                                    <p className="mt-6">Interaction Design</p>
-                                    <p>Video Editing</p>
-                                    <p>Photography</p>
-                                    <p>Content Creation</p>
-                                
-
-                                    <p className="mt-6">Photoshop</p>
-                                    <p className="mt-6">Illustrator</p>
-                                    <p className="mt-6">InDesign</p>
-                                    <p>Lightroom</p>
-                                    <p>Premiere Pro</p>
-                                    <p>After Effects</p>
-                                    <p>Figma</p>
-                                    <p>Blender</p>
-                                    <p>VSCode</p>
-                                    <p>JavaScript</p>
-                                    <p>Python</p>
-                                    <p>HTML</p>
-                                    <p>Tailwind CSS</p>
-                                    <p>React.js</p>
-                                    <p>Next.js</p>
-                                    
-                                </div>
-                        </motion.div>
-                        
-                        <motion.div 
-                        key="education"
-                        className="mb-10 px-5 md:px-0 flex-1 mt-8"
-                        variants={dropdownChild}
-                        layout="position">
-                            <h1 className="mt-8 text-base font-script">Education</h1>
-                                <div className="">
-                                    <p className="mt-4">MFA Interaction Design</p>
-                                    <p>School of Visual Arts</p>
-                                    <i>2024 – 2026</i>
-
-                                    <p className="mt-4">Diploma in Communication Design</p>
-                                    <p>Temasek Polytechnic</p>
-                                    <i>2013 – 2016</i>
-                                    
-                                </div>
-                        </motion.div>
-
-                        
-
-                    </motion.div>
-
-                )}
-
-                {/* Short Toggle Bar */}
-                <motion.div className="lg:hidden flex justify-between mt-0 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-3 lg:mb-4 col-span-full w-full" 
-                onClick={toggleShort} 
-                key='wtf' 
-                layout="position" 
-                variants={dropdownChild}
-                transition={{
-                    type: "spring",
-                    stiffness: 300, 
-                    damping: 26, 
-                    }}>
-
-                    {/* <div 
-                    className={`flex items-center justify-center transition-non-color duration-200 w-[195px] border-black/20 dark:border-white/50
-                    rounded-full tracking-tight text-base ${showShort ? 'border-1 scale-95' : ''}`}>
-                        The <span className="font-script tracking-tightest ml-2 mr-1 relative top-0.5">&apos;professional &apos;</span>  writeup.
-                    </div> */}
-
-                    <div 
-                    className={`flex items-center justify-center transition-non-color duration-200 w-[138px] border-black/20 dark:border-white/50
-                    rounded-full tracking-tight text-base ${showShort ? 'border-1 scale-95' : ''}`}>
-                        For the <span className="font-script tracking-tightest ml-1.5 relative top-0.5">Recruiter</span>
-                    </div>
-
-                    <div 
-                    className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
-                    rounded-full mb-2 px-1`}>
-                    
-                    {showShort ? (
-                        <ChevronUpIcon className="h-4 w-4" />
-                    ) : (
-                        <ChevronDownIcon className="h-4 w-4" />
-                    )}
-                    </div>
-                </motion.div>
-
-                {/* Short Dropdown */}
-                {showShort && (
-                    <motion.div 
-                    key="dropdown-short"
-                    initial="hidden"
-                    animate="show"
-                    layout="position"
-                    variants={dropdown}
-                    className="lg:flex gap-5 w-full col-span-full"
-                    transition={{
-                        type: "spring",
-                        stiffness: 300, 
-                        damping: 26, 
-                        }}>
-
-                        <motion.div 
-                        key="dropdown-who"
-                        className="mb-10 px-5 md:px-0 flex-1 mt-8"
-                        variants={dropdownChild}
-                        layout="position">
-                            <p className="mb-3 font-script text-sm">Who</p>
-                            <p className="mb-3">Born and raised in sunny <i className="mr-0.5 ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. Now, he finds himself living the surreal reality of professionally conceptualizing, creating, and directing what is essentially art for the world.</p>
-                            <p>With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in crafting visually compelling work across various mediums.</p>
-                        </motion.div>
-
-                        <motion.div 
-                        key="dropdown-what"
-                        className="mb-10 px-5 md:px-0 flex-1"
-                        variants={dropdownChild}
-                        layout="position">
-                            <p className="mb-3 font-script text-sm">What</p>
-                            As a multidisciplinary creative and formerly the Creative Lead at ArtScience Museum in Singapore; he finds himself with eight years of experience in Advertising and Design–having notably worked on multiple brand campaigns for Singapore Airlines as an Art Director and global brands the likes of Nike, Samsung, IKEA, Studio Ghibli, Uniqlo and MINI. 
-                        </motion.div>
-
-                        <motion.div 
-                        key="dropdown-and"
-                        className="mb-8 px-5 md:px-0 flex-1"
-                        variants={dropdownChild}
-                        layout="position">
-                            <p className="mb-3 font-script text-sm">And</p>
-                            <p className="mb-3">In his spare time <i className="">(which, realistically, isn&apos;t much), </i> he does... even more work, but for himself—creating content through photography, videography, editing and motion design<i className="ml-1">(you will find this work under Content Creation on this website).</i></p>
-                            <p className="">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, though he wouldn&apos;t go so far as to call it interior design.</p>
-                        </motion.div>
-
-                    </motion.div>
-
-                )}
-
-                {/* Long Toggle Bar */}
-                <motion.div className="lg:hidden flex justify-between mt-4 pl-2.5 pr-4 lg:pl-0 lg:pr-0 cursor-pointer mb-8 lg:mb-4 col-span-full w-full" 
-                onClick={toggleLong} 
-                key='what' 
-                layout="position" 
-                variants={dropdownChild}
-                transition={{
-                    type: "spring",
-                    stiffness: 300, 
-                    damping: 28, 
-                    }}>
-
-                    <div 
-                    className={`flex items-center justify-center transition-non-color duration-200 w-[190px] border-black/20 dark:border-white/50
-                    rounded-full tracking-tight text-base ${showLong ? 'border-1 scale-95' : ''}`}>
-                        {/* A <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">love letter</span>  to myself. */}
-                        For the <span className="font-script tracking-tightest ml-1.5 mr-1 relative top-0.5">Hiring Manager</span>
-                    </div>
-
-                    <div 
-                    className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-non-color duration-200
-                    rounded-full mb-2 px-1 `}>
-                    {showLong ? (
-                        <ChevronUpIcon className="h-4 w-4" />
-                    ) : (
-                        <ChevronDownIcon className="h-4 w-4" />
-                    )}
-                    </div>
-                </motion.div>
-
-                {/* Long Dropdown */}
-                {showLong && (
-                    <motion.div 
-                    key="dropdown-long"
-                    initial="hidden"
-                    animate="show"
-                    layout="position"
-                    variants={dropdown}
-                    className="lg:flex gap-5 w-full col-span-full mb-8"
-                    transition={{
-                        type: "spring",
-                        stiffness: 300, 
-                        damping: 28, 
-                        }}>
-
-                        <motion.div 
-                        className="mb-6 px-5 md:px-0 flex-1"
-                        variants={dropdownChild}
-                        layout="position">
-                            {/* <p className="mb-3 font-script text-sm">How it all started: </p> */}
-                            {/* <p className="font-light text-2xl opacity-50 -mb-3">&quot;</p> */}
-                            <p className="mb-3 italic text-sm opacity-50">If everyone is busy making everything, how can anyone perfect anything? We start to confuse convenience with joy. Abundance with choice.</p>
-                            <p className="mb-3 italic text-sm opacity-50">Designing something requires focus. The first thing we ask is: What do we want people to feel. Surprise. Love. Connection. Then we begin to craft around our intention.</p>
-                            <p className="mb-3 italic text-sm opacity-50">It takes time. There are a thousand no’s for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.</p>
-                            <p className="mb-3 italic text-sm opacity-50">Only then do we sign our work: Designed by Apple in California</p>
-                            {/* <p className="font-light text-2xl opacity-50 -mt-7 text-right -mb-4">&quot;</p> */}
-                        </motion.div>
-
-                        <motion.div 
-                        className=" px-5 md:px-0 flex-1"
-                        variants={dropdownChild}
-                        layout="position">
-                            <a className="-ml-1 flex justify-center rounded-full mb-6 border-1 w-[130px] pl-1 border-black/20 dark:border-white/50"
-                            href="https://www.youtube.com/watch?v=LcGPI2tV2yY"
-                            target='blank'>
-                                
-                            Intention – Apple 
-                            
-                            <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="2 2 20 20"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="w-2.5 h-2.5 mt-0.5 ml-0.5">
-                            <path d="M7 1717 7" />
-                            <path d="M7 7h10v10" />
-                            </svg></a>
-
-                            <p className="mb-3 font-script text-sm"></p>
-                            <p className="mb-3">It all started from this very film. I remember the first time I watched it–it was very much a lightbulb moment for me. I was a student pursuing Communication Design then, a freshman back in 2014.</p>
-                            <p className="mb-3">It was at a school-wide convention, the entire design school, that is. We were in a massive auditorium, the director of our school played the film for all to watch on a screen that could&apos;ve possibly been what is two floors high.</p>
-                            <p className="mb-3">That was the first time I had watched anything like that. In retrospect, the message conveyed in the film likely didn&apos;t even register within me. But the execution absolutely did, even though the concept of Motion Graphics couldn&apos;t be more foreign to me then.</p>
-                            <p className="mb-3">Serendipitously, I found myself in a class on Motion Graphics a few months later, and I daresay it all intuitively clicked within me the first time I opened After Effects. It set me down a path driven by manic passion for crafting visuals that engaged by movement.</p>
-                            <p className="mb-3">With a combination of sheer luck and my skillset in Motion Graphics, I found myself with a foot in the Advertising industry as a young creative. After 8 years, and as I ever fervently sought the next step throughout that led me from starting out as a Motion Designer to eventually being a Creative Lead; I found myself with a startling ability to tell a story behind my craft.</p>
-                            <p className="mb-3">One thing that remained absolute however, was that I never stopped <i>doing</i>. Just because I found myself an Art Director, didn’t mean that I no longer needed to get my hands dirty with Illustrator and After Effects. <i className="opacity-50 mr-1.5 hidden">(along with a disproportionate amount of Powerpoint, Keynote and Teams).</i> Crafting was the one North Star that got me where I was, and kept me doing what I did, and I wasn’t about to leave that behind.</p>
-                            <p className="mb-3">Every piece of work on this site went through a thousand no&apos;s for the final yes. It was crafted amidst busyness, with focus and the aim for perfection <i className="opacity-50 mr-1.5">(not that I personally believe in the conventional understanding of perfection; I don&apos;t).</i>
-                            As such, the decision to keep as many of my pieces of work on my portfolio is a deliberate one; this is my journey as a creative.</p>
-                            <p className="mb-3 font-script text-sm"></p>
-                            <p className="mb-6">Today, an entire decade later, as I sit here writing this, the very message of the film that started it all could not be more poignant. What was once the visuals that resonated so deeply, it is now the message that strikes a deeper chord:</p>
-                            <i className="font- opacity-60">&quot;The first thing we ask is: What do we want people to feel? Delight. Surprise. Love. Connection. Then we begin to craft around our intention.&quot;</i>             
-                            <p className="mt-6 mb-3">As an Advertising Creative who grew the muscle to tell stories, and now a Graduate Student currently pursuing a Masters in Interaction Design; the above message resonates immensely. It&apos;s one thing to be able to tell stories, but a completely different discipline to 
-                                craft stories that people <i>want</i> to listen to.</p>
-                            <p className="mb-3">Am I capable of craft? <i className="mr-1">Well, gosh, after all this while; I sure hope so.</i> Am I able to tell stories? <i>I certainly have lots of fun doing it.</i></p>
-                            <p className="">Am I able to discern what people want to feel?</p>
-                            <p className="font- mb-3">That is precisely the question I&apos;m onto right now–in the very field of Interaction Design, and where I am at now as a Creative.</p>
-                            <p className="">More to come, as always.</p>
-                        </motion.div>
-
-                    </motion.div>
-                )}
-            </motion.div>
-
-            {/* Mobile Contact */}
-            <motion.div 
-                className="lg:hidden mt-10 mb-8 px-5 md:px-0 col-span-full tracking-tight"
-                layout="position"
-                variants={animateInChild}
-                transition={{
-                    type: "spring",
-                    stiffness: 300, 
-                    damping: 26, 
-                    }}
-                key="Contact">
-                    <p className="mb-2 text-xl font-medium">Contact</p>
-                    {/* <p className="mb-1 font-script w-12 whitespace-nowrap -ml-0.5 -rotate-3 text-sm italic tracking-">Drop me a hello!</p> */}
-                    <p className="">Email – <span className="font-normal">ithinkitschristopher@gmail.com</span></p>
-                    <p className="">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
-                    <p className="">Instagram – <a href="https://www.instagram.com/khristurtle/" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">@khristurtle</a></p>
-                    <p className="">Resume – <a href="/resume/Chris Leow.pdf" download="Chris Leow.pdf" className="font-normal underline transition-colors hover:text-midground" target="_blank" rel="noopener noreferrer">Here!</a></p>
-                    
-            </motion.div>
+            <ContentPage className='col-span-full mt-8' key='content'/>
             
             {/* CV */}
             <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-60 mb-3 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Curriculum Vitae</div>
@@ -1122,7 +754,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
                             <h1 className="mt-4 mb-4  opacity-90">
                                 Frida Kahlo: The Life of an Icon</h1>
                             <p className=" opacity-50">
-                            Creative direction and strategic positioning for the marketing campaign of Frida Kahlo: Life of an Icon, an exhibition at the ArtScience Museum on Mexican artist Frida Kahlo, alongside the companion exhibition Laid Bare: Frida’s Inner World. Managed and produced visuals and assets across the campaign titled Frida Forever for the lineup of activities held at the museum.
+                            Creative direction and strategic positioning for the marketing campaign of Frida Kahlo: Life of an Icon, an exhibition at the ArtScience Museum on Mexican artist Frida Kahlo, alongside the companion exhibition Laid Bare: Frida's Inner World. Managed and produced visuals and assets across the campaign titled Frida Forever for the lineup of activities held at the museum.
                             </p>
                             </motion.div>
                             <motion.div variants={dropdownChild}>
@@ -1243,7 +875,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">Beyond The Cabin</h1>
                                 <p className="mb-4  opacity-50">
-                                Lead Creative and Motion Designer for Beyond The Cabin, an episodic brand campaign and content series that was centred around Singapore Airline’s Cabin Crew’s as World Class travellers with worldly passions.</p>
+                                Lead Creative and Motion Designer for Beyond The Cabin, an episodic brand campaign and content series that was centred around Singapore Airline's Cabin Crew's as World Class travellers with worldly passions.</p>
                                 <p className="mb-4  opacity-50">
                                 Produced travel guides featuring Cabin Crew, casted for their expertise and passion for destinations flown to by Singapore Airlines. Showcasing a depth of understanding they have for the destinations and novel experiences through 
                                 their insights
@@ -1289,7 +921,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">Cargo THRUCOOL</h1>
                                 <p className="mb-4  opacity-50">
-                                Conceptualized and art directed a film for Singapore Airlines Cargo’s THRUCOOL product, that boasts a seamless cold chain cargo service for temperature critical products that can shipped across the world with Singapore Airline’s global destinations network.
+                                Conceptualized and art directed a film for Singapore Airlines Cargo's THRUCOOL product, that boasts a seamless cold chain cargo service for temperature critical products that can shipped across the world with Singapore Airline's global destinations network.
                                 </p>
                             </motion.div>
                         </motion.div>
@@ -1330,7 +962,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
                             }}>
                             <h1 className="mt-4  mb-4 opacity-90 font-base">Oops Happens <i className="text-neutral-500">(HEMSÄKER)</i></h1>
                             <p className="mb-4  opacity-50">
-                            Art directed and conceptualised a campaign for IKEA Singapore & Malaysia’s insurance product, HEMSAKER. A set of 9 videos that went live across IKEA’s social platforms, web pages and various other platforms.
+                            Art directed and conceptualised a campaign for IKEA Singapore & Malaysia's insurance product, HEMSAKER. A set of 9 videos that went live across IKEA's social platforms, web pages and various other platforms.
                             </p>
                         </motion.div>
                         )}
@@ -1477,7 +1109,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">CES 2020</h1>
                                 <p className="mb-4  opacity-50">
-                                Art directed & executed on site social coverage of Samsung’s Visual display’s new releases and technology at CES 2020 in Las Vegas. </p>
+                                Art directed & executed on site social coverage of Samsung's Visual display's new releases and technology at CES 2020 in Las Vegas. </p>
                                 <p className="mb-4  opacity-50">
                                 Content produced involved short form video series distributed on Facebook and Instagram feed, day to day event coverage on Instagram stories and long form event recap videos for Youtube.
                                 </p>
@@ -1542,12 +1174,12 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">Athlete Stories: Koy & Toon</h1>
                                 <p className="mb-4  opacity-50">
-                                Offline and online edit and animation for a set of videos and a full film highlighting the stories of Bangkok based NIKE athletes Koy & toon, distributed on Nike’s Instagram feed, stories and TV.</p>
+                                Offline and online edit and animation for a set of videos and a full film highlighting the stories of Bangkok based NIKE athletes Koy & toon, distributed on Nike's Instagram feed, stories and TV.</p>
                             </motion.div>
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">Women&apos;s Instazine</h1>
                                 <p className="mb-10  opacity-50">
-                                Edited and animated supporting assets for the campaign as well as the case study film for Women’s Instazine</p>
+                                Edited and animated supporting assets for the campaign as well as the case study film for Women's Instazine</p>
                             </motion.div>
                         </motion.div>
                         
@@ -1634,7 +1266,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">Virtual Sentosa</h1>
                                 <p className="mb-4  opacity-50">
-                                Compiled footage of Virtual Sentosa and edited + animated a set of launch and PR videos for the campaign. The videos were then distributed on Sentosa’s social media platforms as well as news outlets and channels both locally and globally.</p>
+                                Compiled footage of Virtual Sentosa and edited + animated a set of launch and PR videos for the campaign. The videos were then distributed on Sentosa's social media platforms as well as news outlets and channels both locally and globally.</p>
                                 <p className="mb-4  opacity-50">
                                 The campaign was covered by news outlets worldwide including Campaign Asia, Hypebeast, Conde Nast, NHK Japan.
 
@@ -1644,7 +1276,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">#BehindSentosa</h1>
                                 <p className="mb-4  opacity-50">
-                                Filmed and directed a video covering the efforts undertaken by the staff of Sentosa in response to the COVID-19 outbreak. The video went live on Sentosa’s Facebook and Instagram channels.</p>
+                                Filmed and directed a video covering the efforts undertaken by the staff of Sentosa in response to the COVID-19 outbreak. The video went live on Sentosa's Facebook and Instagram channels.</p>
                             </motion.div>
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">Motion Design</h1>
@@ -1847,12 +1479,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork, isD
             </div>
 
             <div className="col-span-full w-full h-[250px]" key='whateverdude'/>
-
-            {/* <div 
-                key='footer'
-                className="md:hidden mb-14 mx-auto z-50 justify-center text-center tracking-tight text-[8.5pt] text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60">
-                    Last meddled with on 03.05.25 for the 222nd time.
-            </div> */}
+            
             </AnimatePresence>    
         </motion.div>
     </>

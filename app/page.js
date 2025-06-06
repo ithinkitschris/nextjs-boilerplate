@@ -541,88 +541,13 @@ export default function Home(){
                     variants={animateInChild}
                     layout="position"
                     onClick={() => {
-                      toggleShowWork(true);
+                      toggleNav(true);
+                      // toggleShowWork(true);
                     }}
                     >
 
                     <div>Work</div>
                   </motion.button>
-
-                  <AnimatePresence initial={false}>
-                  {showWork && (
-                    <motion.div
-                    className="flex gap-1.5"
-                    layout
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 0 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    >
-                      <motion.button 
-                        className={`hidden md:block tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0  
-                           transition-colors duration-300 whitespace-nowrap font-medium
-                          ${selectedWork.includes('bestwork') 
-                            ? ' border-black/100 dark:border-white/100 text-foreground' 
-                            : ' text-black dark:text-white dark:hover:text-foreground'
-                          }`}
-                        whileHover={{ scale: 0.94 }}
-                        // variants={animateInChild}
-                        layout
-                        onClick={() => {
-                          
-                        }}
-                        >
-
-                        <div>Creative Direction</div>
-                      </motion.button>
-                      
-                      <motion.button 
-                      className={`hidden md:block tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0  
-                         transition-colors duration-300 whitespace-nowrap font-medium
-                        ${selectedWork.includes('bestwork') 
-                          ? ' border-black/100 dark:border-white/100 text-foreground' 
-                          : ' text-black dark:text-white dark:hover:text-foreground'
-                        }`}
-                      whileHover={{ scale: 0.94 }}
-                      // variants={animateInChild}
-                      layout
-                      onClick={() => {
-                        
-                      }}
-                      >
-
-                      <div>Product Design</div>
-                      </motion.button>
-
-                      <motion.button 
-                      className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
-                          hover:border-black hover:bg-foreground dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
-                          ${['all', 'creative', 'edit', 'motion', 'photography', 'content', 'ixd'].some(tag => selectedTags.includes(tag))
-                          ? ' border-foreground dark:border-white text-foreground' 
-                          : ' text-black dark:text-white dark:border-white/0'
-                        }`}
-                      whileHover={{scale:0.94}}
-                      // variants={animateInChild}
-                      layout="position"
-                      onClick={() => {
-                        if (window.matchMedia('(max-width: 640px)').matches) {
-                          toggleNav(true);
-                          } else {
-                            toggleTag('clear');
-                            toggleWork('clear');
-                            toggleShowWork(false);
-                            setSelectedTags(['all']);
-                            setShowNav(true);
-                          }
-                        }}>
-                        <span className="hidden md:block">Archive</span>
-                        <span className="block md:hidden">Work</span>
-                        
-                      </motion.button>
-
-                  </motion.div>
-                  )}
-                </AnimatePresence>
                 </div>
 
                 {/* All Button */}

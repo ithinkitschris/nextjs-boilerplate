@@ -12,7 +12,7 @@ const animateIn ={
     }
 }
 
-const ProductPage = ({className, setHoveredWork, toggleWork, isDarkMode}) => {
+const ProductPage = ({className, setHoveredWork, toggleWork}) => {
 
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
@@ -200,7 +200,7 @@ return (
             {/* Video */}
             {/* <img src="/subway/cover2.png"
             className="rounded-3xl w-full col-span-full h-[760px] object-cover"/> */}
-            <video src={isDarkMode ? "/subway/cover.mp4" : "/subway/cover.mp4"}
+            <video src="/subway/cover.mp4"
               className="rounded-3xl w-full col-span-full h-[760px] object-cover"
               autoPlay
               muted
