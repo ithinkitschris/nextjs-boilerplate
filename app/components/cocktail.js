@@ -49,8 +49,8 @@ useEffect(() => {
     
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 
-            sm:gap-3 max-w-full -mt-8 font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -73,17 +73,17 @@ useEffect(() => {
             variants={animateInChild}>
                 
 
-                <h1 className=" text-[65px] md:text-8xl text-center font-medium md:font-normal 
+                <h1 className="hidden sm:block text-7xl md:text-8xl text-center font-medium md:font-medium 
                 md:text-left tracking-tighter leading-tighter -ml-2">Cocktail Conversations</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Brand campaign for <span className='font-script -rotate-1 relative left-1.5 top-1'>Singapore Airlines</span></p>
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Brand campaign for Singapore Airlines</p>
             </motion.div> 
 
             {/* Banner Video */}
             <motion.video src="/Cocktail/montagelow.mp4" 
-            className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/cocktailpage.jpeg'
@@ -93,7 +93,7 @@ useEffect(() => {
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
-                <motion.div className="text-2xl lg:text-3xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                <motion.div className="text-2xl lg:text-3xl font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 If there was a drink to match every personality, how would your bespoke Cocktail look and taste like? 
                 </motion.div>
             </div>
@@ -148,15 +148,15 @@ useEffect(() => {
                 </motion.div> */}
             </div>
 
-            <div className="col-span-full mt-12 mb-8 md:mb-8 lg:mb-10 xl:mb-14">
-                <h1 className="text-4xl lg:text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Motion Design</h1>
+            <div className="col-span-full mt-40 mb-8">
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">Motion Design</h1>
             </div>
 
-            <h1 className="font-base text-base md:text-2xl font-medium mb-1 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
+            <h1 className="font-base text-base md:text-[16pt] font-medium mb-2 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
             
             <video
                 src='/Cocktail/titlesequence.mp4'
-                className="shadow rounded-lg object-cover col-span-6 md:col-span-6 2xl:col-span-full w-full"
+                className="shadow rounded-3xl object-cover col-span-6 md:col-span-6 2xl:col-span-full w-full"
                 autoPlay
                 loop
                 muted
@@ -164,12 +164,12 @@ useEffect(() => {
                 playsInline
             ></video>
 
-            <h1 className="font-base text-base md:text-2xl font-medium mb-1 mt-8 col-span-full text-center md:text-left tracking-tight">Cocktails</h1>
+            <h1 className="font-base text-base md:text-2xl font-medium mb-1 mt-20 col-span-full text-center md:text-left tracking-tight">Cocktails</h1>
 
             <div className="col-span-full flex flex-wrap gap-1.5 mb-8 lg:gap-2">
                 <video
                     src='/Cocktail/drink2.mp4'
-                    className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
+                    className="shadow rounded-2xl object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
                     muted
@@ -177,7 +177,7 @@ useEffect(() => {
                 ></video>
                 <video
                     src='/Cocktail/drink3.mp4'
-                    className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
+                    className="shadow rounded-2xl object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
                     muted
@@ -185,7 +185,7 @@ useEffect(() => {
                 ></video>
                 <video
                     src='/Cocktail/drink4.mp4'
-                    className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
+                    className="shadow rounded-2xl object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
                     muted
@@ -193,7 +193,7 @@ useEffect(() => {
                 ></video>
                 <video
                     src='/Cocktail/drink5.mp4'
-                    className="shadow rounded-lg object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
+                    className="shadow rounded-2xl object-cover h-auto flex-1 min-w-[49%] lg:min-w-[24%]"
                     autoPlay
                     loop
                     muted
@@ -201,14 +201,14 @@ useEffect(() => {
                 ></video>
             </div>
 
-            <div className="col-span-full mt-18 mb-8 md:mb-18">
-                <h1 className="text-5xl lg:text-7xl font-script -rotate-3 text-center md:text-left tracking-tighter">Episodes</h1>
+            <div className="col-span-full mt-44 mb-8 md:mb-18">
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">Episodes</h1>
             </div>
 
-            <div className="grid grid-cols-6 col-span-full mb-3 xl:mb-5 gap-0 md:gap-2">
+            <div className="grid grid-cols-6 col-span-full mb-3 xl:mb-5 gap-0 md:gap-6">
                 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1 flex flex-col relative">
-                        <div className="text-xl lg:text-2xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
+                        <div className="text-xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
                             <h1 className="font-medium mb-1">Episode 2: <span className="md:hidden ml-1 text-base font-script">Matt Moran</span></h1>
                             <h2 className="hidden md:block font-script tracking-wide -rotate-1 text-base md:text-xl md:tracking-tight">Matt Moran</h2>
                         </div>
@@ -228,7 +228,7 @@ useEffect(() => {
 
                     <video
                         src='/Cocktail/episode2.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
+                        className="shadow rounded-3xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
                         muted 
@@ -237,7 +237,7 @@ useEffect(() => {
                     ></video>
 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1 mt-4 flex flex-col">
-                        <div className="text-xl lg:text-2xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
+                        <div className="text-xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
                           <h1 className="font-medium mb-1">Episode 3: <span className="md:hidden ml-1 text-sm font-script">HONNE</span></h1>
                           <h2 className="hidden md:block font-script tracking-wide -rotate-1 text-base md:text-xl md:tracking-tight">HONNE</h2>
                         </div>
@@ -256,7 +256,7 @@ useEffect(() => {
 
                     <video
                         src='/Cocktail/episode3.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
+                        className="shadow rounded-3xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
                         muted
@@ -265,7 +265,7 @@ useEffect(() => {
                     ></video>
 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1 mt-4 flex flex-col">
-                        <div className="text-xl lg:text-2xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
+                        <div className="text-xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
                             <h1 className="font-medium mb-1">Episode 4: <span className="md:hidden ml-1 text-base font-script">Danielle Kang</span></h1>
                             <h2 className="hidden md:block font-script tracking-wide -rotate-1 text-base md:text-xl md:tracking-tight">Danielle Kang</h2>
                         </div>
@@ -284,7 +284,7 @@ useEffect(() => {
 
                     <video
                         src='/Cocktail/episode4.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
+                        className="shadow rounded-3xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full"
                         autoPlay
                         loop
                         muted
@@ -293,7 +293,7 @@ useEffect(() => {
                     ></video>   
 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1 mt-4 flex flex-col">
-                        <div className="text-xl lg:text-2xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
+                        <div className="text-xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
                             <h1 className="font-medium mb-1">Episode 5: <span className="md:hidden ml-1 text-base font-script">Jeannie Cho Lee</span></h1>
                             <h2 className="hidden md:block font-script tracking-wide -rotate-1 text-base md:text-xl md:tracking-tight">Jeannie Cho Lee</h2>
                         </div>
@@ -312,7 +312,7 @@ useEffect(() => {
 
                     <video
                         src='/Cocktail/episode5.mp4'
-                        className="shadow rounded-lg object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full mb-40"
+                        className="shadow rounded-3xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 w-full mb-40"
                         autoPlay
                         loop
                         muted

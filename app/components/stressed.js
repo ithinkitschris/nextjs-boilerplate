@@ -21,7 +21,7 @@ show: {
 
 const StressedLa = ({className}) => {
   return (
-    <motion.div className={`grid grid-cols-6 ${className}`}
+    <motion.div className={`grid grid-cols-6 md:pt-14 ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
@@ -31,13 +31,13 @@ const StressedLa = ({className}) => {
             <motion.img
                 src="/Photography/stressed/2.jpg"
                 alt="Description of Image 2"
-                className="col-span-1 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-1 h-full w-full object-cover rounded-[18pt] shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/stressed/3.jpg"
                 alt="Description of Image 3"
-                className="col-span-1 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-1 h-full w-full object-cover rounded-[18pt] shadow-lg"
                 variants={animateInChild}
             />
         </div>
@@ -46,7 +46,7 @@ const StressedLa = ({className}) => {
         <motion.div className="col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/stressed/4.jpg"
-            className="h-auto w-full object-cover rounded md:rounded-lg shadow-lg"
+            className="h-auto w-full object-cover rounded-[18pt] shadow-lg"
             />
         </motion.div>
 
@@ -55,13 +55,13 @@ const StressedLa = ({className}) => {
             <motion.img
                 src="/Photography/stressed/5.jpg"
                 alt="Description of Image 2"
-                className="col-span-1 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-1 h-full w-full object-cover rounded-[18pt] shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/stressed/13.jpg"
                 alt="Description of Image 3"
-                className="col-span-1 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-1 h-full w-full object-cover rounded-[18pt] shadow-lg"
                 variants={animateInChild}
             />
         </div>
@@ -70,7 +70,7 @@ const StressedLa = ({className}) => {
         <motion.div className="col-span-full mb-1 lg:mb-2 md:hidden" variants={animateInChild} >
             <img
             src="/Photography/stressed/6.jpg"
-            className="h-auto w-full object-cover rounded md:rounded-lg shadow-lg"
+            className="h-auto w-full object-cover rounded-[18pt] shadow-lg"
             />
         </motion.div>
 
@@ -79,13 +79,13 @@ const StressedLa = ({className}) => {
             <motion.img
                 src="/Photography/stressed/8.jpg"
                 alt="Description of Image 2"
-                className="col-span-1 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-1 h-full w-full object-cover rounded-[18pt] shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/stressed/16.jpg"
                 alt="Description of Image 3"
-                className="col-span-1 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-1 h-full w-full object-cover rounded-[18pt] shadow-lg"
                 variants={animateInChild}
             />
         </div>
@@ -94,7 +94,7 @@ const StressedLa = ({className}) => {
         <motion.div className="col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/stressed/10.jpg"
-            className="h-auto w-full object-cover rounded md:rounded-lg shadow-lg"
+            className="h-auto w-full object-cover rounded-[18pt] shadow-lg"
             />
         </motion.div>
 
@@ -103,37 +103,37 @@ const StressedLa = ({className}) => {
             <motion.img
                 src="/Photography/stressed/7.jpg"
                 alt="Description of Image 2"
-                className="col-span-1 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-1 h-full w-full object-cover rounded-[18pt] shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/stressed/9.jpg"
                 alt="Description of Image 3"
-                className="col-span-1 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-1 h-full w-full object-cover rounded-[18pt] shadow-lg"
                 variants={animateInChild}
             />
         </div>
 
         {/* Full-Width Image */}
-        <motion.div className="col-span-full mb-1 lg:mb-2 overflow-hidden rounded md:rounded-lg" variants={animateInChild} >
+        <motion.div className="col-span-full mb-1 lg:mb-2 overflow-hidden rounded-[18pt]" variants={animateInChild} >
             <img
             src="/Photography/stressed/14.jpg"
-            className="h-auto w-full object-cover rounded md:rounded-lg shadow-lg scale-105"
+            className="h-auto w-full object-cover rounded-[18pt] shadow-lg scale-105"
             />
         </motion.div>
 
         {/* Two Images Side by Side */}
-        <div className="grid grid-cols-2 col-span-full mb-1 gap-1 md:gap-2">
+        <div className="grid grid-cols-2 col-span-full mb-1 gap-1 md:gap-2 mb-32">
             <motion.img
                 src="/Photography/stressed/11.jpg"
                 alt="Description of Image 2"
-                className="col-span-1 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-1 h-full w-full object-cover rounded-[18pt] shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/stressed/12.jpg"
                 alt="Description of Image 3"
-                className="col-span-1 h-full w-full object-cover rounded md:rounded-lg shadow-lg"
+                className="col-span-1 h-full w-full object-cover rounded-[18pt] shadow-lg"
                 variants={animateInChild}
             />
         </div>

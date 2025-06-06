@@ -44,7 +44,7 @@ const ContentPage = ({className}) => {
 
 
         {/* On The Road */}
-        <motion.div className="col-span-full grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-0.5 md:gap-1 md:mb-1 mb-0.5 " variants={animateInChild}>
+        <motion.div className="col-span-full grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-0.5 md:gap-1 dark:md:gap-2 md:mb-1 mb-0.5 transition-all duration-300" variants={animateInChild}>
 
             <motion.div className="relative">
                 

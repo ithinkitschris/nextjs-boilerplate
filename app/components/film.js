@@ -21,7 +21,7 @@ show: {
 
 const Film = ({className}) => {
   return (
-    <motion.div className={`grid grid-cols-6 ${className}`}
+    <motion.div className={`grid grid-cols-6 md:pt-14 ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
@@ -32,7 +32,7 @@ const Film = ({className}) => {
         <motion.div className="col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/film/honne.jpg"
-            className="h-auto w-full object-cover rounded-lg"
+            className="h-auto w-full object-cover rounded-3xl"
             />
         </motion.div>
 
@@ -41,13 +41,13 @@ const Film = ({className}) => {
             <motion.img
                 src="/Photography/film/shanghai1.jpg"
                 alt="Description of Image 2"
-                className="relative col-span-2 h-full w-full object-cover rounded-lg]"
+                className="relative col-span-2 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/2.jpg"
                 alt="Description of Image 3"
-                className="col-span-4 h-full w-full object-cover rounded-lg"
+                className="col-span-4 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
         </div>
@@ -56,7 +56,7 @@ const Film = ({className}) => {
         <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/film/nyc1.jpg"
-            className="h-auto w-full object-cover rounded-lg"
+            className="h-auto w-full object-cover rounded-3xl"
             />
         </motion.div>
 
@@ -65,19 +65,19 @@ const Film = ({className}) => {
             {/* <motion.img
                 src="/Photography/film/shanghai1.jpg"
                 alt="Description of Image 2"
-                className="col-span-2 h-full w-full object-cover rounded-lg"
+                className="col-span-2 h-full w-full object-cover rounded-3xl"
                 variants={animateInChild}
             /> */}
             <motion.img
                 src="/Photography/film/shanghai2.jpg"
                 alt="Description of Image 2"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/shanghai3.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
         </div>
@@ -86,7 +86,7 @@ const Film = ({className}) => {
         <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/film/aurora.jpg"
-            className="h-auto w-full object-cover rounded-lg"
+            className="h-auto w-full object-cover rounded-3xl"
             />
         </motion.div>
 
@@ -95,13 +95,13 @@ const Film = ({className}) => {
             <motion.img
                 src="/Photography/film/london1.jpeg"
                 alt="Description of Image 2"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/london2.jpeg"
                 alt="Description of Image 3"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
         </div>
@@ -110,7 +110,7 @@ const Film = ({className}) => {
         <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/film/1.jpg"
-            className="h-auto w-full object-cover rounded-lg"
+            className="h-auto w-full object-cover rounded-3xl"
             />
         </motion.div>
 
@@ -119,13 +119,13 @@ const Film = ({className}) => {
             <motion.img
                 src="/Photography/film/allan3.jpg"
                 alt="Description of Image 2"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-3xl"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/allan4.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-3xl"
                 variants={animateInChild}
             />
         </div> */}
@@ -135,13 +135,13 @@ const Film = ({className}) => {
             <motion.img
                 src="/Photography/film/seoul3.jpg"
                 alt="Description of Image 2"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/seoul4.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
         </div>
@@ -150,7 +150,7 @@ const Film = ({className}) => {
         <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/film/seoul.jpg"
-            className="h-auto w-full object-cover rounded-lg"
+            className="h-auto w-full object-cover rounded-3xl"
             />
         </motion.div>
 
@@ -158,7 +158,7 @@ const Film = ({className}) => {
         {/* <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/film/london3.jpg"
-            className="h-auto w-full object-cover rounded-lg"
+            className="h-auto w-full object-cover rounded-3xl"
             />
         </motion.div> */}
 
@@ -167,13 +167,13 @@ const Film = ({className}) => {
             <motion.img
                 src="/Photography/film/NYC06-20.jpg"
                 alt="Description of Image 2"
-                className="col-span-3 h-full w-full object-cover rounded-lg hidden md:block"
+                className="col-span-3 h-full w-full object-cover rounded-2xl hidden md:block"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/NYC06-22.jpg"
                 alt="Description of Image 3"
-                className="col-span-full md:col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-full md:col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
         </div>
@@ -182,7 +182,7 @@ const Film = ({className}) => {
         <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/film/NYC06-13.jpg"
-            className="h-auto w-full object-cover rounded-lg"
+            className="h-auto w-full object-cover rounded-3xl"
             />
         </motion.div>
 
@@ -191,13 +191,13 @@ const Film = ({className}) => {
             <motion.img
                 src="/Photography/film/shanghai4.jpg"
                 alt="Description of Image 2"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/shanghai5.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
         </div>
@@ -206,7 +206,7 @@ const Film = ({className}) => {
         <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/film/3.jpg"
-            className="h-auto w-full object-cover rounded-lg"
+            className="h-auto w-full object-cover rounded-3xl"
             />
         </motion.div>
 
@@ -215,13 +215,13 @@ const Film = ({className}) => {
             <motion.img
                 src="/Photography/film/airport1.jpg"
                 alt="Description of Image 2"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/airport2.jpg"
                 alt="Description of Image 3"
-                className="col-span-3 h-full w-full object-cover rounded-lg"
+                className="col-span-3 h-full w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
         </div>
@@ -230,7 +230,7 @@ const Film = ({className}) => {
         <motion.div className="mt-1 md:mt-2 col-span-full mb-1 lg:mb-2" variants={animateInChild} >
             <img
             src="/Photography/film/london5.jpg"
-            className="h-auto w-full object-cover rounded-lg"
+            className="h-auto w-full object-cover rounded-3xl"
             />
         </motion.div>
 
@@ -239,13 +239,13 @@ const Film = ({className}) => {
             <motion.img
                 src="/Photography/film/london4.jpg"
                 alt="Description of Image 2"
-                className="col-span-full md:col-span-3 h-auto w-full object-cover rounded-lg"
+                className="col-span-full md:col-span-3 h-auto w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/film/nyc3.jpg"
                 alt="Description of Image 3"
-                className="col-span-full md:col-span-3 h-auto w-full object-cover rounded-lg"
+                className="col-span-full md:col-span-3 h-auto w-full object-cover rounded-2xl"
                 variants={animateInChild}
             />
         </div>

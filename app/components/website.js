@@ -23,7 +23,7 @@ show: {
 const WebsitePage = ({className}) => {
 
   return (
-    <motion.div className={`grid grid-cols-3 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] ${className} mx-14`}
+    <motion.div className={`grid grid-cols-3 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] ${className} md:mt-14`}
     initial="hidden"
     animate="show"
     variants={animateIn}>

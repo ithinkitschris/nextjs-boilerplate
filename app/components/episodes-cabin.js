@@ -77,9 +77,9 @@ const Episodes = () => {
                 >
                 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1 relative">
-                        <div className="text-xl lg:text-2xl tracking-tight mb-2 md:mb-4 md:mr-10 text-center md:text-left mt-4 md:mt-0 leading-3">
-                          <h1 className="font- text-base mb-2 tracking-tightx">Episode {index + 1}</h1>
-                          <h2 className="text-2xl leading-7 font-medium md:tracking-tight">{episode.title}</h2>
+                        <div className="text-xl lg:text-xl tracking-tight mb-2 md:mb-4 md:mr-10 text-center md:text-left mt-4 md:mt-0 leading-3">
+                          <h1 className="font-medium mb-3 tracking-tight">Episode {index + 1}</h1>
+                          <h2 className="text-[15pt] font-script">{episode.title}</h2>
                           {/* <h2 className="font-sans tracking-wider uppercase font-semibold text-xs">{episode.title}</h2> */}
                         </div>
 
@@ -90,7 +90,7 @@ const Episodes = () => {
                         <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0">
                         Watch it
                         <a href={episode.link} 
-                        className="px-1.5 border-1 border-foreground rounded-full ml-1.5 hover:bg-foreground hover:text-background"
+                        className="px-[5px] border-1 border-foreground rounded-full ml-1.5 hover:bg-foreground hover:text-background relative top-[0.4px] transition-all duration-200"
                         target="blank">here</a>
                         </h3>
                     </div>

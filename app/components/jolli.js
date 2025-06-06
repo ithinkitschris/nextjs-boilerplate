@@ -49,8 +49,8 @@ useEffect(() => {
     
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 
-            sm:gap-3 max-w-full -mt-8 font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -73,7 +73,7 @@ useEffect(() => {
             variants={animateInChild}>
                 
 
-                <h1 className=" text-[65px] md:text-8xl text-center font-medium md:font-normal 
+                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
                 md:text-left tracking-tighter leading-tighter -ml-2">JolliEverAfter</h1>
 
                 {/* Subheader */}
@@ -83,7 +83,7 @@ useEffect(() => {
 
             {/* Banner Video */}
             <motion.video src="/jollieverafter/teaser1.mp4" 
-            className="col-span-full md:col-span-2 shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="col-span-full md:col-span-2 shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/.jpeg'
@@ -92,7 +92,7 @@ useEffect(() => {
             </motion.video>
 
             <motion.video src="/jollieverafter/teaser2.mp4" 
-            className="hidden md:block col-span-2 shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="hidden md:block col-span-2 shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/.jpeg'
@@ -101,7 +101,7 @@ useEffect(() => {
             </motion.video>
             
             <motion.video src="/jollieverafter/teaser3.mp4" 
-            className="hidden md:block col-span-2 shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="hidden md:block col-span-2 shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/.jpeg'
@@ -111,7 +111,7 @@ useEffect(() => {
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
-                <motion.div className="text-2xl lg:text-4xl lg:w-5/6 font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                <motion.div className="text-2xl lg:text-4xl lg:w-5/6 font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 An interactive social media campaign that brought Jollibee&apos;s annual Kwentong film to TikTok for the first time in 2020.
                 </motion.div>
             </div>
@@ -154,7 +154,7 @@ useEffect(() => {
             </div>
 
             <div className="col-span-full mb-8 md:mb-4">
-                <h1 className="text-5xl lg:text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Teaser</h1>
+                <h1 className="text-4xl md:text-7xl text-center md:text-left tracking-[-2pt] font-medium mt-28">Teaser</h1>
                 <h2 className='mt-12 font-medium tracking-tight w-full md:w-1/3 text-center md:text-left'>A 60 second trailer teasing the premise and setup for the 9 challenges, released on Facebook, Instagram and TikTok.</h2>
             </div>
             
@@ -162,7 +162,7 @@ useEffect(() => {
             <div className='col-span-full grid md:grid-cols-2 gap-1 lg:gap-2'>
                 <video
                     src='/jollieverafter/teaser.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-3xl object-cover col-span-1 w-full"
                     autoPlay
                     loop
                     muted
@@ -173,7 +173,7 @@ useEffect(() => {
             </div>
 
             <div className="col-span-full mb-8 mt-20">
-                <h1 className="text-4xl lg:text-5xl font-script -rotate-1 text-center md:text-left tracking-tighter">Challenges</h1>
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium mt-28">Challenges</h1>
                 <h2 className='mt-12 font-medium tracking-tight w-full text-center md:text-left'>The full 9 TikTok challenges, each representing a critical plot point in the rom-com.</h2>
             </div>
 
@@ -181,108 +181,108 @@ useEffect(() => {
 
                 <video
                     src='/jollieverafter/1.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/1.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/2.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/2.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/3.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/3.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
                 <video
                     src='/jollieverafter/4.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/4.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/5.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/5.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/6.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/6.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/7.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/7.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/8.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/8.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/9.2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/jollieverafter/9.1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-2xl object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 

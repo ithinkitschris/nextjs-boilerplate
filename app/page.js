@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import PhotographyPage from './components/photography.js';
 import ContentPage from './components/content.js';
@@ -129,7 +129,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
     return (
       <motion.div
       lang='en'
-      className="drop-shadow-lg rounded-lg hover:drop-shadow-md cursor-pointer group-hover:z-50"
+      className="drop-shadow-lg rounded-3xl hover:drop-shadow-md cursor-pointer group-hover:z-50"
       initial="hidden"
       animate="show"
       whileHover={{scale:0.98}}
@@ -167,7 +167,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
         {/* <div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15"/> */}
         
         {/* Square */}
-        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-2xl md:rounded-xl drop-shadow-lg
+        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-2xl md:rounded-[5%] drop-shadow-lg
           ${selectedTags.includes('all') 
           ? `${isExpanded ? 'pt-[155%]' : 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100 bg-black/25'}`
           : 'pt-[150%]'}`}>
@@ -315,6 +315,7 @@ export default function Home(){
   const [showNav, setShowNav] = useState(false);
   const [showReset, setShowReset] = useState(false);
   const [hoveredWork, setHoveredWork] = useState(null);
+  const [showWork, setShowWork] = useState(false);
 
   // Check if Mobile
   useEffect(() => {
@@ -396,6 +397,9 @@ export default function Home(){
   //     }
   //   }
   // };
+  const toggleShowWork = () => {
+    setShowWork((prevState) => !prevState);
+  }
 
   const toggleTag = (tag) => {
     if (tag === 'clear') {
@@ -463,7 +467,7 @@ export default function Home(){
         px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-2 md:top-5 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
+          <div className="col-span-full fixed top-2 md:top-8 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
 
               {/* Sidenav / Dropdown Button */}
               <motion.button 
@@ -488,7 +492,7 @@ export default function Home(){
 
               {/* Top Navbar Contents */}
               <motion.div
-              className="flex flex-row justify-center max-w-10xl gap-2 md:gap-1 text-white mt-[7px] lg:mt-1 z-40"
+              className={`flex flex-row items-center justify-center max-w-10xl gap-2 text-white z-40 ${showWork ? ' md:gap-3' : ' md:gap-1'}`}
               initial="hidden"
               animate="show"
               layout="position"
@@ -497,11 +501,11 @@ export default function Home(){
 
                 {/* Profile Button */}
                 <motion.button
-                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full  px-3 py-0.5 border-1 dark:hover:bg-transparent md:mr-1
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 dark:hover:bg-transparent md:mr-1
                     hover:border-black hover:bg-foreground  dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('resume') 
                       ? ' border-foreground dark:border-white text-foreground' 
-                      : ' text-black dark:text-white dark:border-white/0'
+                      : ' text-black dark:text-white border-background dark:border-white/0'
                     }`}
                   whileHover={{ scale: 0.94 }}
                   variants={animateInChild}
@@ -509,6 +513,7 @@ export default function Home(){
                   onClick={() => {
                     toggleTag('clear');
                     toggleWork('resume');
+                    setShowWork(false);
                     setSelectedTags(['']);
                     setShowNav(false);
                     if (isMobile) {
@@ -516,38 +521,112 @@ export default function Home(){
                     }
                   }}
                     >
-                  <span className="hidden md:block">Who?</span>
-                  <span className="block md:hidden">Who?</span>
+                  <span className="hidden md:block">Home</span>
+                  <span className="block md:hidden">Home</span>
                 </motion.button>
 
-                {/* Best Button */}
-                {/* <motion.button 
-                  className={`hidden md:block hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
-                    hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
-                    ${selectedWork.includes('bestwork') 
-                      ? ' border-black/100 dark:border-white/100 text-foreground' 
-                      : ' text-black dark:text-white dark:hover:text-foreground'
-                    }`}
-                  whileHover={{ scale: 0.94 }}
-                  variants={animateInChild}
-                  layout="position"
-                  onClick={() => {
-                    toggleTag('clear');
-                    toggleWork('bestwork');
-                    setSelectedTags(['']);
-                    if (window.matchMedia('(max-width: 640px)').matches) {
-                      setShowNav(false);
-                    }
-                  }}
-                  >
 
-                  <div className="hidden md:block">Work</div>
-                  <div className="block md:hidden">Favourites</div>
 
-                </motion.button> */}
+                {/* Work Button */}
+                <div className='relative inline-flex group gap-1.5'>
+
+                  <motion.button 
+                    className={`hidden md:block hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
+                      hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
+                      ${selectedWork.includes('bestwork') 
+                        ? ' border-black/100 dark:border-white/100 text-foreground' 
+                        : ' text-black dark:text-white dark:hover:text-foreground'
+                      }`}
+                    whileHover={{ scale: 0.94 }}
+                    variants={animateInChild}
+                    layout="position"
+                    onClick={() => {
+                      toggleShowWork(true);
+                    }}
+                    >
+
+                    <div>Work</div>
+                  </motion.button>
+
+                  <AnimatePresence initial={false}>
+                  {showWork && (
+                    <motion.div
+                    className="flex gap-1.5"
+                    layout
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                      <motion.button 
+                        className={`hidden md:block tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0  
+                           transition-colors duration-300 whitespace-nowrap font-medium
+                          ${selectedWork.includes('bestwork') 
+                            ? ' border-black/100 dark:border-white/100 text-foreground' 
+                            : ' text-black dark:text-white dark:hover:text-foreground'
+                          }`}
+                        whileHover={{ scale: 0.94 }}
+                        // variants={animateInChild}
+                        layout
+                        onClick={() => {
+                          
+                        }}
+                        >
+
+                        <div>Creative Direction</div>
+                      </motion.button>
+                      
+                      <motion.button 
+                      className={`hidden md:block tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0  
+                         transition-colors duration-300 whitespace-nowrap font-medium
+                        ${selectedWork.includes('bestwork') 
+                          ? ' border-black/100 dark:border-white/100 text-foreground' 
+                          : ' text-black dark:text-white dark:hover:text-foreground'
+                        }`}
+                      whileHover={{ scale: 0.94 }}
+                      // variants={animateInChild}
+                      layout
+                      onClick={() => {
+                        
+                      }}
+                      >
+
+                      <div>Product Design</div>
+                      </motion.button>
+
+                      <motion.button 
+                      className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
+                          hover:border-black hover:bg-foreground dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
+                          ${['all', 'creative', 'edit', 'motion', 'photography', 'content', 'ixd'].some(tag => selectedTags.includes(tag))
+                          ? ' border-foreground dark:border-white text-foreground' 
+                          : ' text-black dark:text-white dark:border-white/0'
+                        }`}
+                      whileHover={{scale:0.94}}
+                      // variants={animateInChild}
+                      layout="position"
+                      onClick={() => {
+                        if (window.matchMedia('(max-width: 640px)').matches) {
+                          toggleNav(true);
+                          } else {
+                            toggleTag('clear');
+                            toggleWork('clear');
+                            toggleShowWork(false);
+                            setSelectedTags(['all']);
+                            setShowNav(true);
+                          }
+                        }}>
+                        <span className="hidden md:block">Archive</span>
+                        <span className="block md:hidden">Work</span>
+                        
+                      </motion.button>
+
+                  </motion.div>
+                  )}
+                </AnimatePresence>
+                </div>
 
                 {/* All Button */}
-                <motion.button 
+                {/* <motion.button 
                 className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
                     hover:border-black hover:bg-foreground dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
                     ${['all', 'creative', 'edit', 'motion', 'photography', 'content', 'ixd'].some(tag => selectedTags.includes(tag))
@@ -572,15 +651,24 @@ export default function Home(){
                   <span className="hidden md:block">Archive</span>
                   <span className="block md:hidden">Work</span>
                   
-                </motion.button>
+                </motion.button> */}
 
                 {/* Desktop Navbar BG */}
-                <div className='hidden md:flex justify-center max-w-10xl w-screen fixed -z-10 -mt-1.5'>
-                  <div
-                    className="backdrop-blur-2xl w-[165px] rounded-full fixed 
-                    drop-shadow-md bg-background dark:bg-transparent h-[38px] border-b-1 border-white/30 "
-                  />
-                </div>
+                <motion.div className='hidden md:flex items-center justify-center max-w-10xl w-screen fixed -z-10'>
+                  <motion.div
+                    className={`backdrop-blur-2xl rounded-full flex items-center justify-end
+                    drop-shadow-md bg-background dark:bg-transparent h-[40px] border-b-1 border-white/30
+                    ${showWork ? 'w-[550px]' : 'w-[152px] '}`}
+                    layout
+                  >
+                    <motion.div
+                      className={`rounded-full shadow-inner-standard h-[30px] mr-2
+                      ${showWork ? 'w-[450px] opacity-100' : 'w-[230px] opacity-0'}`}
+                      layout
+                    />
+                  </motion.div>
+                  
+                </motion.div>
 
               </motion.div>
           </div>  
@@ -1385,14 +1473,14 @@ export default function Home(){
 
           {/* Page Container */}
           <motion.div
-            className={`${showNav ? `col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8 ${selectedWork === 'resume' ? 'md:-mx-14' : ''}` : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className={`${showNav ? `col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8 -mx-12` : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 400, damping: 24 }}  
           > 
             {/* Grid / Page */}
             <motion.div 
-            className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full md:gap-1.5 mt-4 md:mt-4
+            className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full md:gap-3 mt-4 md:mt-14 md:px-20
             ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1 gap-2' : 'grid-cols-1 gap-1'}`}>
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
@@ -1414,7 +1502,7 @@ export default function Home(){
                 ) : selectedWork === 'bts' ? (
                   <BTS key="bts" className="col-span-full"/>
                 ) : selectedWork === 'resume' ? (
-                  <Resume key="resume" className="col-span-full" showNav={showNav}/>
+                  <Resume key="resume" className="col-span-full" showNav={showNav} setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
                 ) : selectedWork === 'samsung' ? (
                   <Samsung key="samsung" className="col-span-full"/>
                 ) : selectedWork === 'ghibli' ? (
@@ -1449,8 +1537,8 @@ export default function Home(){
                   <Nike key="nike" className="col-span-full"/>
                 ) : selectedWork === 'leica' ? (
                   <Leica key="leica" className="col-span-full"/>
-                ) : selectedWork === 'nycsubway' ? (
-                  <NycSubway key="nycsubway" className="col-span-full"/>
+                ) : selectedWork === 'subway' ? (
+                  <NycSubway key="subway" className="col-span-full"/>
                 ) : selectedWork === 'bestwork' ? (
                   <BestWorkPage key="bestwork" className="col-span-full w-full" setSelectedWork={setSelectedWork} setHoveredWork={setHoveredWork}/>
                 ) : (

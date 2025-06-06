@@ -49,8 +49,8 @@ useEffect(() => {
     
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 
-            sm:gap-3 max-w-full -mt-8 font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -77,13 +77,13 @@ useEffect(() => {
                 md:text-left tracking-tighter leading-tighter -ml-2">Samsung Lifestyle Displays</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Motion Design for<span className='font-script -rotate-1 relative left-2 top-1'>Samsung</span></p>
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Motion Design for Samsung</p>
             </motion.div> 
 
             {/* Banner Video */}
             <motion.video src="/samsung/montage.mp4" 
-            className="col-span-full shadow-standard rounded-2xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/.jpeg'
@@ -94,7 +94,7 @@ useEffect(() => {
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
-                <motion.div className="text-2xl lg:text-4.5xl font-base tracking-tight text-center leading-7 md:leading-11 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                <motion.div className="text-2xl lg:text-4.5xl font-medium tracking-tight text-center leading-7 md:leading-11 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0 md:w-[80%]" variants={animateInChild}>
                 Content Creation for Samsung&apos;s Lifestyle Display&apos;s global social platforms. 
                 </motion.div>
             </div>
@@ -125,7 +125,7 @@ useEffect(() => {
             </div>
 
             <div className="col-span-full mb-3 md:mb-8 mt-20">
-                <h1 className="text-2xl md:text-5xl font-script -rotate-1 text-center md:text-left tracking-tighter">CES <span className='font-script2 text-5xl md:text-8xl tracking-tighter'>2020</span></h1>
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium mt-28 mb-4">CES 2020</h1>
                 <h2 className='font-medium tracking-tight w-full text-center md:text-left hidden md:block'>On site social coverage of Samsung’s Visual display’s new releases and technology at CES 2020 in Las Vegas.</h2>
                 <h2 className='font-medium tracking-tight w-full text-center md:text-left hidden md:block'>Content produced involved short form video series distributed on Facebook and Instagram feed, day to day event coverage on Instagram stories and long form event recap videos for Youtube.</h2>
             </div>
@@ -133,25 +133,25 @@ useEffect(() => {
             <div className='col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 lg:gap-2 mb-16 md:mb-20 px-1 md:px-4'>  
                 <video
                     src='/samsung/ces_1.mp4'
-                    className="shadow rounded-xl md:rounded-2xl object-cover col-span-full w-full scale-102"
+                    className="shadow rounded-xl md:rounded-3xl object-cover col-span-full w-full scale-102"
                     autoPlay loop muted controls playsInline
                 ></video>
             </div>
 
             <div className="col-span-full mb-3 md:mb-10">
-                <h1 className="text-3xl md:text-5xl font-script -rotate-1 text-center md:text-left tracking-tighter">The Frame</h1>
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium mt-28">The Frame</h1>
             </div>
 
             <div className='col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 lg:gap-2 mb-16 md:mb-20 px-1 md:px-4'>  
                 <video
                     src='/samsung/frame_1.mp4'
-                    className="shadow rounded-xl md:rounded-2xl object-cover col-span-full w-full scale-102"
+                    className="shadow rounded-xl md:rounded-3xl object-cover col-span-full w-full scale-102"
                     autoPlay loop muted controls playsInline
                 ></video>
             </div>
 
             <div className="col-span-full mb-3 md:mb-8">
-                <h1 className="text-2xl md:text-4xl font-script -rotate-1 text-center md:text-left tracking-tighter">Why Would You Do That ?!</h1>
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium mt-28">Why Would You Do That?!</h1>
                 <h2 className='font-medium tracking-tight w-full text-center md:text-left hidden md:block mt-8'>A video promoting the features of pairing a Samsung Soundbar with a Samsung TV, executed in a tongue-in-cheek manner.</h2>
                 <h2 className='font-medium tracking-tight w-full text-center md:text-left hidden md:block'>Adapted in both 16:9 and 4:5 for YouTube, Facebook and Instagram.</h2>
             </div>
@@ -159,7 +159,7 @@ useEffect(() => {
             <div className='col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 lg:gap-2 mb-16 md:mb-20 px-1 md:px-4'>  
                 <video
                     src='/samsung/soundbar_1.mp4'
-                    className="shadow rounded-xl md:rounded-2xl object-cover col-span-full w-full scale-102"
+                    className="shadow rounded-xl md:rounded-3xl object-cover col-span-full w-full scale-102"
                     autoPlay loop muted controls playsInline
                 ></video>
             </div>

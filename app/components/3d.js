@@ -49,8 +49,8 @@ useEffect(() => {
     
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 
-            sm:gap-3 max-w-full -mt-8 font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -73,17 +73,17 @@ useEffect(() => {
             variants={animateInChild}>
                 
 
-                <h1 className=" text-[65px] md:text-8xl text-center font-medium md:font-normal 
+                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
                 md:text-left tracking-tighter leading-tighter -ml-2">3D Motion Explorations</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                3D Motion Design<span className='font-script -rotate-1 relative left-2 top-1'>explorations</span></p>
+                {/* <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                3D Motion Design explorations</p> */}
             </motion.div> 
 
             {/* Banner Video */}
             <motion.video src="/3dpersonal/iphone3.mp4" 
-            className="col-span-2 shadow-standard rounded-lg w-full h-auto object-cover mb-12"
+            className="col-span-2 shadow-standard rounded-3xl w-full h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/.jpeg'
@@ -91,7 +91,7 @@ useEffect(() => {
             >
             </motion.video>
             <motion.video src="/3dpersonal/glass1.mp4" 
-            className="col-span-2 shadow-standard rounded-lg w-full h-auto object-cover mb-12"
+            className="col-span-2 shadow-standard rounded-3xl w-full h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/.jpeg'
@@ -99,7 +99,7 @@ useEffect(() => {
             >
             </motion.video>
             <motion.video src="/3dpersonal/sphere1.mp4" 
-            className="col-span-2 shadow-standard rounded-lg w-full h-auto object-cover mb-12"
+            className="col-span-2 shadow-standard rounded-3xl w-full h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/.jpeg'
@@ -110,7 +110,7 @@ useEffect(() => {
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 md:mr-20">
-                <motion.div className="text-2xl lg:text-4xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                <motion.div className="text-2xl lg:text-4xl font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 Various explorations as part of my journey of getting acquainted with Blender and 3D Motion Design.
                 </motion.div>
             </div>
@@ -158,27 +158,27 @@ useEffect(() => {
             {/* iPhone */}
             <div className='col-span-full grid grid-cols-3 md:grid-cols-6 gap-1.5 lg:gap-2 mt-20'>
 
-                <img src='/3dpersonal/iphone1.png' className='w-full h-full object-cover col-span-3 rounded-xl'/>
-                <img src='/3dpersonal/iphone2.png' className='w-full col-span-3 rounded-xl'/>
+                <img src='/3dpersonal/iphone1.png' className='w-full h-full object-cover col-span-3 rounded-2xl'/>
+                <img src='/3dpersonal/iphone2.png' className='w-full col-span-3 rounded-2xl'/>
 
-                <div className='col-span-1 md:col-span-2 rounded-xl'>
+                <div className='col-span-1 md:col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/iphone2.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>
-                <div className='col-span-1 md:col-span-2 rounded-xl'>
+                <div className='col-span-1 md:col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/iphone3.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>
-                <div className='col-span-1 md:col-span-2 rounded-xl'>
+                <div className='col-span-1 md:col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/iphone4.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>
@@ -188,31 +188,31 @@ useEffect(() => {
             {/* Blue Glass */}
             <div className='col-span-full grid grid-cols-2 md:grid-cols-8 gap-1.5 lg:gap-2 md:mt-20'>
 
-                <div className='col-span-1 md:col-span-2 rounded-xl'>
+                <div className='col-span-1 md:col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/pencil1.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>
-                <div className='col-span-1 md:col-span-2 rounded-xl'>
+                <div className='col-span-1 md:col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/pencil3.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>
-                <div className='col-span-1 md:col-span-2 rounded-xl'>
+                <div className='col-span-1 md:col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/glass2.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>
-                <div className='col-span-1 md:col-span-2 rounded-xl'>
+                <div className='col-span-1 md:col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/glass1.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>
@@ -221,12 +221,12 @@ useEffect(() => {
             {/* Bronze Statue */}
             <div className='col-span-full grid grid-cols-2 md:grid-cols-8 gap-1.5 lg:gap-2 md:mt-20'>
 
-                <img src='/3dpersonal/statue0.jpeg' className='w-full h-full object-cover col-span-2 rounded-xl'/>
-                <img src='/3dpersonal/statue1.jpeg' className='w-full col-span-2 rounded-xl'/>
-                <img src='/3dpersonal/bust5.jpeg' className='w-full col-span-2 rounded-xl'/>
+                <img src='/3dpersonal/statue0.jpeg' className='w-full h-full object-cover col-span-2 rounded-2xl'/>
+                <img src='/3dpersonal/statue1.jpeg' className='w-full col-span-2 rounded-2xl'/>
+                <img src='/3dpersonal/bust5.jpeg' className='w-full col-span-2 rounded-2xl'/>
                 <video
                         src='/3dpersonal/sun1.mp4'
-                        className="shadow rounded-xl object-cover col-span-2 w-full"
+                        className="shadow rounded-2xl object-cover col-span-2 w-full"
                         autoPlay loop muted playsInline
                     ></video>
             </div>
@@ -234,9 +234,9 @@ useEffect(() => {
             {/* Lady Statue */}
             <div className='col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 lg:gap-2 md:mt-20'>
 
-                <img src='/3dpersonal/statue5.jpeg' className='w-full h-full object-cover col-span-1 md:col-span-2 rounded-xl'/>
-                <img src='/3dpersonal/statue3.jpeg' className='w-full col-span-1 md:col-span-2 rounded-xl'/>
-                <img src='/3dpersonal/statue4.jpeg' className='w-full h-full object-cover col-span-2 rounded-xl'/>
+                <img src='/3dpersonal/statue5.jpeg' className='w-full h-full object-cover col-span-1 md:col-span-2 rounded-2xl'/>
+                <img src='/3dpersonal/statue3.jpeg' className='w-full col-span-1 md:col-span-2 rounded-2xl'/>
+                <img src='/3dpersonal/statue4.jpeg' className='w-full h-full object-cover col-span-2 rounded-2xl'/>
 
             </div>
 
@@ -245,31 +245,31 @@ useEffect(() => {
             {/* Sphere */}
             <div className='col-span-full grid grid-cols-4 md:grid-cols-8 gap-1.5 lg:gap-2 md:mt-20'>
 
-                <div className='col-span-2 rounded-xl'>
+                <div className='col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/sphere1.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>
-                <div className='col-span-2 rounded-xl'>
+                <div className='col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/sphere2.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>
-                <div className='col-span-2 rounded-xl'>
+                <div className='col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/sphere3.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>
-                <div className='col-span-2 rounded-xl'>
+                <div className='col-span-2 rounded-2xl'>
                     <video
                         src='/3dpersonal/sphere4.mp4'
-                        className="shadow rounded-xl object-cover col-span-full w-full"
+                        className="shadow rounded-2xl object-cover col-span-full w-full"
                         autoPlay loop muted playsInline
                     ></video>
                 </div>

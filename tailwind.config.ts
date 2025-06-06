@@ -125,7 +125,7 @@ const config: Config = {
         '1/6': '16.6667%',
       },
       boxShadow: {
-        'inner-standard': 'inset 5px 5px 20px rgba(0,0,0,0.1)',
+        'inner-standard': 'inset 0px 0px 4px rgba(0,0,0,0.2)',
         'mild': '5px 1px 15px rgba(0,0,0,0.1)',
         'standard': '3px 3px 20px rgba(0,0,0,0.2)',
         'strong': '2px 2px 8px rgba(0,0,0,0.8)',

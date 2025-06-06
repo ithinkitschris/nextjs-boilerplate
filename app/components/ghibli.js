@@ -50,8 +50,8 @@ const animateIn ={
     }
     
     return(
-        <motion.div className={`grid grid-cols-6 gap-2 -mt-8
-            sm:gap-3 max-w-full font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
             initial="hidden"
             animate="show"
             variants={animateIn}>
@@ -74,19 +74,19 @@ const animateIn ={
                 <motion.div 
                 className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
                 variants={animateInChild}>
-                {/* Mobile-only header */}
-                <h1 className="text-7xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">The World of Studio Ghibli</h1>
+                    
+                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">The World of Studio Ghibli</h1>
 
                 {/* Subheader */}
                 <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Marketing Campaign for <span className='font-script -rotate-1 relative left-1.5 top-1'>ArtScience Museum</span></p>
+                Marketing Campaign for ArtScience Museum</p>
                 </motion.div> 
 
                 {/* Banner Video */}
                 <motion.video 
                 ref={bannerVideoRef}
                 src="/Ghibli/banner.mp4" 
-                className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
+                className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
                 autoPlay muted loop playsInline
                 variants={animateInChild}
                 poster='/poster/ghiblibest.jpeg'
@@ -96,7 +96,7 @@ const animateIn ={
 
                 {/* Blurb */}
                 <div className="col-span-full sm:col-span-4 lg:mr-16 ">
-                    <motion.div className="text-2xl lg:text-3xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                    <motion.div className="text-2xl lg:text-3xl font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                     Be spirited away into the magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​
                     </motion.div>
                 </div>
@@ -145,8 +145,8 @@ const animateIn ={
 
                 <motion.div className='col-span-full mt-0 grid grid-cols-3 gap-1.5 md:gap-2' variants={animateInChild}>
    
-                    <div className="col-span-full mb-12 md:mb-18">
-                        <h1 className="text-4.5xl md:text-[50px] font-script -rotate-3 text-center md:text-left tracking-tighter">
+                    <div className="col-span-full mb-12 md:mt-32">
+                        <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">
                             Key visuals
                         </h1>
                     </div>
@@ -157,7 +157,7 @@ const animateIn ={
                             <Image
                                 src="/Ghibli/KV.jpg"
                                 alt=""
-                                className="rounded-lg object-cover h-full"
+                                className="rounded-3xl object-cover h-full"
                                 layout="responsive"
                                 width={500}
                                 height={600}
@@ -168,7 +168,7 @@ const animateIn ={
                         <div className="w-1/2 h-full">
                             <video
                                 src="/Ghibli/KVanimated.mp4"
-                                className="rounded-lg object-cover"
+                                className="rounded-3xl object-cover"
                                 autoPlay
                                 muted
                                 loop
@@ -183,7 +183,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/kv1.jpg"
                             alt=""
-                            className="rounded-lg object-cover"
+                            className="rounded-2xl object-cover"
                             layout="responsive"
                             width={500}
                             height={500}
@@ -193,7 +193,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/kv2.jpg"
                             alt=""
-                            className="rounded-lg object-cover"
+                            className="rounded-2xl object-cover"
                             layout="responsive"
                             width={500}
                             height={500}
@@ -203,7 +203,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/kv3.jpg"
                             alt=""
-                            className="rounded-lg object-cover"
+                            className="rounded-2xl object-cover"
                             layout="responsive"
                             width={500}
                             height={500}
@@ -213,7 +213,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/kv4.jpg"
                             alt=""
-                            className="rounded-lg object-cover"
+                            className="rounded-2xl object-cover"
                             layout="responsive"
                             width={500}
                             height={500}
@@ -223,7 +223,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/kv5.jpg"
                             alt=""
-                            className="rounded-lg object-cover"
+                            className="rounded-2xl object-cover"
                             layout="responsive"
                             width={500}
                             height={500}
@@ -238,7 +238,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/kv1.jpg"
                             alt=""
-                            className="rounded-lg object-cover"
+                            className="rounded-2xl object-cover"
                             layout="responsive"
                             width={500}
                             height={500}
@@ -248,7 +248,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/kv2.jpg"
                             alt=""
-                            className="rounded-lg object-cover"
+                            className="rounded-2xl object-cover"
                             layout="responsive"
                             width={500}
                             height={500}
@@ -258,7 +258,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/kv3.jpg"
                             alt=""
-                            className="rounded-lg object-cover"
+                            className="rounded-2xl object-cover"
                             layout="responsive"
                             width={500}
                             height={500}
@@ -268,7 +268,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/kv4.jpg"
                             alt=""
-                            className="rounded-lg object-cover"
+                            className="rounded-2xl object-cover"
                             layout="responsive"
                             width={500}
                             height={500}
@@ -278,7 +278,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/kv5.jpg"
                             alt=""
-                            className="rounded-lg object-cover"
+                            className="rounded-2xl object-cover"
                             layout="responsive"
                             width={500}
                             height={500}
@@ -291,7 +291,7 @@ const animateIn ={
                     <Image
                         src="/Ghibli/lobby.jpg"
                         alt=""
-                        className="rounded-lg col-span-3 object-cover mb-8"
+                        className="rounded-3xl col-span-3 object-cover mb-8"
                         layout="responsive"
                         width={50}
                         height={10}
@@ -300,7 +300,7 @@ const animateIn ={
                     <Image
                         src="/Ghibli/itsnicethat.jpg"
                         alt=""
-                        className="rounded-lg col-span-3 object-cover mb-8"
+                        className="rounded-3xl col-span-3 object-cover mb-8"
                         layout="responsive"
                         width={50}
                         height={10}
@@ -309,7 +309,7 @@ const animateIn ={
                     <Image
                         src="/Ghibli/facadeartwork.jpg"
                         alt=""
-                        className="rounded-lg col-span-3 object-cover"
+                        className="rounded-3xl col-span-3 object-cover"
                         layout="responsive"
                         width={50}
                         height={10}
@@ -319,7 +319,7 @@ const animateIn ={
 
                         <motion.video 
                         src="/Ghibli/facade.mp4" 
-                        className="w-1/2 rounded-lg object-cover"
+                        className="w-1/2 rounded-3xl object-cover"
                         autoPlay muted loop playsInline
                         variants={animateInChild}
                         // whileHover={{scale:1.01}}
@@ -329,7 +329,7 @@ const animateIn ={
                             <Image
                             src="/Ghibli/facade.jpg"
                             alt=""
-                            className="rounded-lg object-cover mb-8"
+                            className="rounded-3xl object-cover mb-8"
                             layout="fill"
                             />
                         </div>
@@ -338,14 +338,14 @@ const animateIn ={
 
                     <motion.video 
                     src="/Ghibli/mrtentrance.mp4" 
-                    className="col-span-full shadow-standard rounded-lg w-full lg:w-full lg:h-auto object-cover mt-8"
+                    className="col-span-full shadow-standard rounded-3xl w-full lg:w-full lg:h-auto object-cover mt-8"
                     autoPlay muted loop playsInline
                     variants={animateInChild}
                     // whileHover={{scale:1.01}}
                     ></motion.video>
                     <motion.video 
                     src="/Ghibli/cinema.mp4" 
-                    className="col-span-full shadow-standard rounded-lg w-full lg:w-full lg:h-auto object-cover"
+                    className="col-span-full shadow-standard rounded-3xl w-full lg:w-full lg:h-auto object-cover"
                     autoPlay muted loop playsInline
                     variants={animateInChild}
                     // whileHover={{scale:1.01}}

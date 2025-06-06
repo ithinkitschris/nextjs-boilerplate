@@ -55,7 +55,7 @@ show: {
     return(
         
         <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
-            sm:gap-3 font-[family-name:var(--font-geist-sans)] ${className}`}
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -75,16 +75,16 @@ show: {
             
             {/* Header */}
             <motion.div 
-            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
+            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8"
             variants={animateInChild}>
                 {/* Mobile-only header */}
                 <h1 className="sm:hidden text-7xl text-center font-medium tracking-tighter leading-tighter -ml-2">Beyond<br/>The Cabin</h1>
                 {/* Desktop Header */}
-                <h1 className="hidden sm:block text-7xl md:text-8xl text-center font-medium md:font-normal 
+                <h1 className="hidden sm:block text-7xl md:text-8xl text-center font-medium md:font-medium 
                 md:text-left tracking-tighter leading-tighter -ml-2">Beyond The Cabin</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-[-0.9px] mt-4 md:mt-0.5 md:text-[27px] text-center md:text-left">
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
                 Brand campaign for Singapore Airlines</p>
             </motion.div> 
 
@@ -92,7 +92,7 @@ show: {
             <motion.video 
             ref={bannerVideoRef}
             src="/CCS/montagelow.mp4" 
-            className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
+            className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-[820px] object-cover mb-8"
             autoPlay muted loop playsInline loading="lazy"
             variants={animateInChild}
             poster='/poster/cabinbest.jpeg'
@@ -102,7 +102,7 @@ show: {
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
-                <motion.div className="text-2xl lg:text-3xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                <motion.div className="text-2xl lg:text-3xl font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 6 Cities. 6 Cabin Crew. 6 Passions. <br/>
                 Journey beyond the cabin with our cabin crew.
                 You see them on board, now follow their travels around the world. 
@@ -162,21 +162,20 @@ show: {
                 <Episodes />
             </motion.div>
 
-            <div className="col-span-full mt-14 mb-6 lg:mb-10 xl:mb-20">
-                <h1 className="text-4xl lg:text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Art Direction</h1>
+            <div className="col-span-full mt-14 md:mt-44 mb-6">
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">Art Direction</h1>
             </div>
 
-            <h1 className="font-base text-base md:text-2xl font-medium mb-1 col-span-full text-center md:text-left tracking-tight">Key Visual</h1>
-
+            <h1 className="md:text-lg font-medium col-span-full text-center md:text-left tracking-tight">Campaign Key Visual</h1>
             <motion.img 
                 src="/CCS/End Frame KV.jpg"
-                className="col-span-full w-full shadow rounded-xl md:rounded-2xl object-cover -mb-1"
+                className="col-span-full w-full h-full shadow rounded-xl md:rounded-2xl object-cover -mb-1"
                 variants={animateInChild}>
             </motion.img>
 
-            <div className='col-span-full grid grid-cols-5 md:grid-cols-10 gap-1 md:gap-2'>
+            <div className='col-span-full grid grid-cols-5 md:grid-cols-10 gap-1 md:gap-2 md:mt-14'>
 
-                <h1 className="font-base text-base md:text-2xl font-medium mb-1 col-span-full text-center md:text-left tracking-tight mt-8">In-Cabin & Episodes</h1>
+                <h1 className="md:text-lg font-medium col-span-full text-center md:text-left tracking-tight mt-8 mb-1">Episode Key Visuals</h1>
                 <img className='rounded-2xl object-cover h-80 md:h-135 w-full col-span-3'
                 src='/CCS/Teaser Pin.jpg'>
                 </img>
@@ -211,14 +210,14 @@ show: {
 
             </div>
 
-            <div className="col-span-full mt-14 md:mt-18 mb-6 md:mb-8 lg:mb-10 xl:mb-20">
-                <h1 className="text-3xl lg:text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Motion Design</h1>
+            <div className="col-span-full mt-14 md:mt-44 mb-6">
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">Motion Design</h1>
             </div>
 
             <div className="gap-1 md:gap-2 col-span-full grid grid-cols-1 md:grid-cols-2">
                 
                 <div className='col-span-1 relative'>
-                    <h1 className="font-base text-base md:text-lg font-medium mb-2 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
+                    <h1 className="md:text-lg font-medium mb-2 col-span-full text-center md:text-left tracking-tight">Title Sequence</h1>
                     <motion.video
                         src="/CCS/Title Sequence (New York City) 16-9.mp4"
                         className="drop-shadow-lg hover:drop-shadow-xl rounded-2xl 
@@ -248,8 +247,8 @@ show: {
             </div>
 
             {/* Behind the Scenes */}
-            <div className="col-span-full mt-18 md:mt-18 mb-6 lg:mb-10 xl:mb-20">
-                <h1 className="text-3xl lg:text-4.5xl font-script -rotate-3 text-center md:text-left tracking-tighter">Behind the Scenes</h1>
+            <div className="col-span-full mt-18 md:mt-44 mb-6">
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">Behind the Scenes</h1>
             </div>
 
             <div className='col-span-full grid md:grid-cols-3 gap-1 md:gap-2 mb-40'>

@@ -49,8 +49,8 @@ useEffect(() => {
     
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 
-            sm:gap-3 max-w-full -mt-8 font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -73,17 +73,17 @@ useEffect(() => {
             variants={animateInChild}>
                 
 
-                <h1 className=" text-[65px] md:text-8xl text-center font-medium md:font-normal 
+                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
                 md:text-left tracking-tighter leading-tighter -ml-2">Oops Happens</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Product Campaign for <span className='font-script -rotate-1 relative left-0.5 top-1'>IKEA</span></p>
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Product Campaign for IKEA</p>
             </motion.div> 
 
             {/* Banner Video */}
             <motion.video src="/Hemsaker/video1_1.mp4" 
-            className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop controls playsInline
             variants={animateInChild}
             poster='/poster/.jpeg'
@@ -93,7 +93,7 @@ useEffect(() => {
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
-                <motion.div className="text-2xl lg:text-4xl lg:w-5/6 font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                <motion.div className="text-2xl lg:text-4xl lg:w-5/6 font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 With HEMSÄKER home insurance, everything will be exactly as if it never happened.
                 </motion.div>
             </div>
@@ -135,8 +135,8 @@ useEffect(() => {
                 </motion.div>
             </div>
 
-            <div className="col-span-full mb-8 md:mb-8 lg:mb-10 xl:mb-10">
-                <h1 className="text-4xl lg:text-6xl font-script -rotate-1 text-center md:text-left tracking-tighter">Key Visuals</h1>
+            <div className="col-span-full mb-8 md:mb-8 lg:mb-10 xl:mb-10 md:mt-24">
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">Key Visuals</h1>
             </div>
 
             <div className='col-span-full grid grid-cols-4 gap-1 lg:gap-2'>
@@ -154,8 +154,8 @@ useEffect(() => {
                 className='rounded-md col-span-full md:col-span-1 object-cover w-full'/>    
             </div>
 
-            <div className="col-span-full mt-20 mb-8 md:mb-8 lg:mb-10 xl:mb-14">
-                <h1 className="text-4xl lg:text-6xl font-script -rotate-3 text-center md:text-left tracking-tighter">Films</h1>
+            <div className="col-span-full mt-20 mb-8 md:mb-8 lg:mb-10 md:mt-32">
+                <h1 className="text-4xl md:text-5xl text-center md:text-left tracking-[-2pt] font-medium">Films</h1>
             </div>
             
             <div className='col-span-full grid md:grid-cols-2 gap-1 lg:gap-2'>
@@ -182,7 +182,7 @@ useEffect(() => {
             
 
             <div className="col-span-full mt-24 mb-8 md:mb-8 lg:mb-10">
-                <h1 className="text-4xl lg:text-5xl font-script -rotate-1 text-center md:text-left tracking-tighter">Social Media Adapts</h1>
+                <h1 className="text-4xl md:text-5xl text-center md:text-left tracking-[-2pt] font-medium">Socials</h1>
             </div>
         
             <div className="col-span-full grid grid-cols-3 md:grid-cols-6 gap-1 mb-8 lg:gap-2">

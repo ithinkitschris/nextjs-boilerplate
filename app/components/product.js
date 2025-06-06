@@ -12,7 +12,7 @@ const animateIn ={
     }
 }
 
-const ProductPage = ({className}) => {
+const ProductPage = ({className, setHoveredWork, toggleWork, isDarkMode}) => {
 
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
@@ -83,7 +83,7 @@ return (
       <div className="relative w-full">
 
         {/* Top Navigation Arrows */}
-        <div className="z-50 flex gap-3 justify-end px-28 mb-10 pt-1">
+        <div className="z-50 flex gap-3 justify-end mb-10 pt-1">
 
           <button
             onClick={() => {
@@ -91,11 +91,11 @@ return (
               setActiveIndex(newIndex);
               scrollToIndex(newIndex);
             }}
-            className={`w-7 h-7 pr-[1.5px] text-sm font-semibold rounded-full transition-all duration-200 backdrop-blur-2xl flex items-center justify-center
-              dark:border-1 bg-background drop-shadow-md dark:border-white/50 text-foreground hover:text-white dark:text-white hover:bg-foreground dark:hover:bg-white dark:hover:text-black hover:scale-90 
-              ${activeIndex === 0 ? 'opacity-35 drop-shadow-none' : 'opacity-100'}`}
+            className={`w-9 h-9 pr-[1.5px] text-sm font-semibold rounded-full transition-all duration-200 backdrop-blur-2xl flex items-center justify-center
+              dark:border-1 bg-background drop-shadow-md dark:border-white/20 text-foreground hover:text-white dark:text-white hover:bg-foreground dark:hover:bg-white dark:hover:text-black hover:scale-90 
+              ${activeIndex === 0 ? 'opacity-35 drop-shadow-none pointer-events-none' : 'opacity-100'}`}
           >
-            <ChevronLeftIcon className="w-[18px] h-[18px]" />
+            <ChevronLeftIcon className="w-[23px] h-[23px]" />
           </button>
 
           <button
@@ -104,46 +104,131 @@ return (
               setActiveIndex(newIndex);
               scrollToIndex(newIndex);
             }}
-            className={`w-7 h-7 pl-[1px] text-sm font-semibold rounded-full transition-all duration-200 backdrop-blur-2xl flex items-center justify-center
-              dark:border-1 bg-background drop-shadow-md dark:border-white/50 text-foreground hover:text-white dark:text-white hover:bg-foreground dark:hover:bg-white dark:hover:text-black hover:scale-90 
-              ${activeIndex === 2 ? 'opacity-35 drop-shadow-none' : 'opacity-100'}`}
+            className={`w-9 h-9 pl-[1px] text-sm font-semibold rounded-full transition-all duration-200 backdrop-blur-2xl flex items-center justify-center
+              dark:border-1 bg-background drop-shadow-md dark:border-white/20 text-foreground hover:text-white dark:text-white hover:bg-foreground dark:hover:bg-white dark:hover:text-black hover:scale-90 
+              ${activeIndex === 2 ? 'opacity-35 drop-shadow-none pointer-events-none' : 'opacity-100'}`}
           >
-            <ChevronRightIcon className="w-[18px] h-[18px]" />
+            <ChevronRightIcon className="w-[23px] h-[23px]" />
           </button>
 
-        </div>
+        </div>  
 
         {/* Horizontal Carousel Wrapper */}
-        <div className="flex overflow-x-auto gap-4 rounded-3xl mx-20" ref={containerRef}>
+        <div className="flex overflow-x-auto gap-4 rounded-3xl" ref={containerRef}>
 
-          {/* Simple Navigation Dots */}
-          <div className="absolute bottom-2 left-0 right-0 z-20 flex justify-center gap-0 mb-3 scale-90">
-            {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations'].map((title,index) => (
+        {/* Navigation Dots */}
+        <div className="absolute left-0 right-0 bottom-2 z-20 flex justify-center gap-1 mb-3 scale-90">
+            {['','',''].map((title,index) => (
               <button
                 key={index}
                 onClick={() => scrollToIndex(index)}
-                className={`text-[7pt] font-semibold rounded-full transition-all duration-300 flex items-center justify-center w-3.5 h-3.5  ${
+                className={`text-[7pt] font-semibold rounded-full transition-all duration-300 flex items-center justify-center w-3.5 h-3.5 backdrop-blur-xl mix-blend-overlay ${
                   activeIndex === index
-                    ? "bg-white scale-75 mx-1 px-1.5"
-                    : "bg-white/35 text-white hover:bg-white hover:scale-75 scale-50"
+                    ? "bg-white/75 scale-75 -mx-1 px-6 backdrop-blur-xl border-b-2 border-r-[1px] border-white drop-shadow-lg"
+                    : "bg-white/35 text-white hover:bg-white/80 hover:scale-100 scale-[60%] drop-shadow-lg"
                 }`}
               >
                 {activeIndex === index ? '' : ''}
               </button>
             ))}
           </div>
-            
-          {/* Research */}
+
+          {/* Apple Maps */}
           <div 
           ref={(el) => (itemsRef.current[0] = el)}
-          onMouseEnter={() => scrollToIndex(0)}
+          onMouseEnter={() => {
+            setHoveredWork("subway");
+          }}
+          onMouseLeave={() => {
+            setHoveredWork(null);
+          }}
+          onClick={() => {
+            toggleWork('subway')
+          }}
           className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
           >
             
-            {/* Top Right Arrow */}
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1 px-2 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-3 transition-all duration-300`}>
+            {/* Side Container */}
+            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[420px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
+            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
+            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
+
+              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
+                01
+              </button>
+
+              <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
+              flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
+              group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
+                  <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="2 2 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-4 h-4">
+                  <path d="M7 17L17 7" />
+                  <path d="M7 7h10v10" />
+                  </svg>
+              </button>
+
+              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-tighter mb-1 transition-all duration-300 -ml-1">
+                Enhanced Subway Navigation with Apple Maps
+              </h1>
+
+              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                UX Research + UI Design
+              </h1>
+
+              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[90%]">
+              Precise turn-by-turn navigation within the New York City subway with Apple Maps, powered by Ultra-Wideband technology.
+              </p>
+
+              <div className="col-span-3">
+                <div className="absolute bottom-5 -ml-1 gap-6 tracking-tight hidden 2xl:flex
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="font-semibold">Skills:</div>   
+                      <p>UX Research</p>
+                      <p>UI Design</p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Video */}
+            {/* <img src="/subway/cover2.png"
+            className="rounded-3xl w-full col-span-full h-[760px] object-cover"/> */}
+            <video src={isDarkMode ? "/subway/cover.mp4" : "/subway/cover.mp4"}
+              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/poster/cabinbest1.jpeg"/>
+          </div>
+            
+          {/* Research */}
+          <div 
+          ref={(el) => (itemsRef.current[1] = el)}
+          
+          className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
+          >
+
+
+            {/* Side Container */}
+            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[440px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
+            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
+            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
+
+              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
+                02
+              </button>
+
+            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
+            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
+            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="2 2 20 20"
@@ -157,38 +242,27 @@ return (
                 <path d="M7 7h10v10" />
                 </svg>
             </button>
-
-            {/* Side Container */}
-            <div className="absolute z-50 p-10 pt-8 w-[50%] group-hover:w-[33%] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
-
-              <button className="font-mono text-base tracking-tight -ml-2 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                01
-                {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                  <path d="M7 17L17 7" />
-                  <path d="M7 7h10v10" />
-                </svg> */}
-              </button>
   
 
-              <h1 className="text-4.5xl group-hover:text-5xl font-medium tracking-tighter leading-[85%] group-hover:leading-11 mb-1 transition-all duration-300 -ml-1 w-[95%]">
+              <h1 className="text-4.5xl group-hover:text-5xl font-medium tracking-tighter leading-[85%] group-hover:leading-11 mb-1 transition-all duration-300 -ml-1 w-[80%]">
                 A study into Time Management techniques of College Students
               </h1>
 
               <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Ethnographic User Research
+                User Research Methodologies
               </h1>
 
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[360px]">
+              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[85%]">
               If there was a drink to match every personality, how would your bespoke cocktail look and taste like?
               </p>
 
               <div className="col-span-3">
-                  <div className="absolute bottom-10 -ml-1 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Role:</div>
-                  <div className="absolute bottom-5 -ml-1 gap-6 tracking-tight hidden 2xl:flex
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
-                      <p>User Research</p>
-                  </div>
+                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight hidden 2xl:flex
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="font-semibold">Skills:</div>   
+                    <p>Ethnographic User Research</p>
+                    <p>Motion Design</p>
+                </div>
               </div>
 
             </div>
@@ -205,37 +279,43 @@ return (
 
           {/* Website */}
           <div 
-          ref={(el) => (itemsRef.current[1] = el)}
-          onMouseEnter={() => scrollToIndex(1)}
+          ref={(el) => (itemsRef.current[2] = el)}
+          onMouseEnter={() => {
+            setHoveredWork("website");
+          }}
+          onMouseLeave={() => {
+            setHoveredWork(null);
+          }}
+          onClick={() => {
+            toggleWork('website')
+          }}
           className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
           >
             
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1 px-2 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-3 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-            
             {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 group-hover:p-10 w-[20%] group-hover:w-[30%] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-lg transition-all duration-300">
+            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[420px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
+            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
+            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
 
               <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                02
-                {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                03
+              </button>
+
+              <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
+              flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
+              group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
+                  <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="2 2 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-4 h-4">
                   <path d="M7 17L17 7" />
                   <path d="M7 7h10v10" />
-                </svg> */}
+                  </svg>
               </button>
 
               <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-tighter mb-1 transition-all duration-300 -ml-1">
@@ -243,7 +323,7 @@ return (
               </h1>
 
               <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                User Interface Design & Web Development
+                UI Design + Front-end Development
               </h1>
 
               <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[280px]">
@@ -251,26 +331,31 @@ return (
               </p>
 
               <div className="col-span-3">
-                  <div className="absolute bottom-10 -ml-1 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Role:</div>
-                  <div className="absolute bottom-5 -ml-1 gap-3 tracking-tight hidden 2xl:flex
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-
-                      <p>User Interface Design</p>
-                      <p>Web Development</p>
-                  </div>
+                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight hidden 2xl:flex
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="font-semibold">Skills:</div>   
+                  <p>UI Design</p>
+                  <p>Web Development</p>
+                </div>
               </div>
 
             </div>
 
             {/* Video */}
-            <video src="/website/cover_1.mp4"
+
+            <img src="/website/cover 2.png"
+            className="rounded-3xl w-full col-span-full h-[760px] object-cover"/>
+
+            {/* <video src="/website/cover_1.mp4"
               className="rounded-3xl w-full col-span-full h-[760px] object-cover"
               autoPlay
               muted
               loop
               playsInline
-              poster="/poster/cabinbest1.jpeg"/>
+              poster="/poster/cabinbest1.jpeg"/> */}
           </div>
+
+      
 
       
 

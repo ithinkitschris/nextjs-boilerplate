@@ -49,8 +49,8 @@ useEffect(() => {
     
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 
-            sm:gap-3 max-w-full -mt-8 font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -72,18 +72,18 @@ useEffect(() => {
             className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
             variants={animateInChild}>
 
-                <h1 className=" text-[65px] md:text-7xl text-center font-medium md:font-normal 
+                <h1 className="hidden sm:block text-7xl md:text-8xl text-center font-medium md:font-medium 
                 md:text-left tracking-tighter leading-tighter -ml-2">Nike Athlete Stories: Koy & Toon</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Social Media Campaign for <span className='font-script -rotate-1 relative left-0.5 top-1'>Nike</span></p>
+                <p className="text-xl md:text-3xl font-medium tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
+                Social Media Campaign for Nike</p>
 
             </motion.div> 
 
             {/* Banner Video */}
             <motion.video src="/nike/trailer1.mp4" 
-            className="col-span-full md:col-span-2 shadow-standard rounded-lg w-full h-screen/1.5 lg:w-full lg:h-auto object-cover mb-12"
+            className="col-span-full md:col-span-2 shadow-standard rounded-[18pt] w-full h-screen/1.5 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/nikepage1.png'
@@ -92,7 +92,7 @@ useEffect(() => {
             </motion.video>
 
             <motion.video src="/nike/trailer3.mp4" 
-            className="hidden md:block col-span-2 shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="hidden md:block col-span-2 shadow-standard rounded-[18pt] w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/nikepage2.png'
@@ -101,7 +101,7 @@ useEffect(() => {
             </motion.video>
             
             <motion.video src="/nike/3.mp4" 
-            className="hidden md:block col-span-2 shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
+            className="hidden md:block col-span-2 shadow-standard rounded-[18pt] w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop playsInline
             variants={animateInChild}
             poster='/poster/nikepage3.png'
@@ -111,7 +111,7 @@ useEffect(() => {
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
-                <motion.div className="text-2xl lg:text-4xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                <motion.div className="text-2xl lg:text-4xl font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 A set of Instagram Stories videos and a full film featuring Thai NIKE athletes Koy Ratchawin and Artiwara Kongmalai (Toon)
                 </motion.div>
             </div>
@@ -154,7 +154,7 @@ useEffect(() => {
             </div>
 
             <div className="col-span-full mb-8">
-                <h1 className="text-4xl lg:text-5xl font-script -rotate-1 text-center md:text-left tracking-tighter">Main Film Teaser</h1>
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium mt-28">Main Film Teaser</h1>
                 <h2 className='mt-12 font-medium tracking-tight w-full md:w-4/6 text-center md:text-left'>A set of 3 Instagram Stories that was posted on the main @nike account as a teaser to drive viewership to the full film on @nike Instagram TV.</h2>
             </div>
 
@@ -162,25 +162,25 @@ useEffect(() => {
 
                 <video
                     src='/nike/trailer0.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/trailer1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/trailer2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/trailer3.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
@@ -188,7 +188,7 @@ useEffect(() => {
 
 
             <div className="col-span-full mb-8 mt-4">
-                <h1 className="text-4xl lg:text-5xl font-script -rotate-1 text-center md:text-left tracking-tighter">@nikerunning Narrative Teaser</h1>
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium mt-28">@nikerunning Narrative Teaser</h1>
                 <h2 className='mt-12 font-medium tracking-tight w-full md:w-4/6 text-center md:text-left'>An extended 8 video set of Instagram Stories that was uploaded onto @nikerunning, serving as an alternate method of storytelling to the full film through the Instagram Stories format. 
                 Viewers could then choose to swipe up to watch the full film on the main @nike account.</h2>
             </div>
@@ -197,55 +197,55 @@ useEffect(() => {
 
                 <video
                     src='/nike/Running-1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/Running-2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/Running-3.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/Running-4.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/Running-5.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/Running-6.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
                 <video
                     src='/nike/Running-7.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/Running-8.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
                 
             </div>
 
             <div className="col-span-full mb-8">
-                <h1 className="text-4xl lg:text-5xl font-script -rotate-1 text-center md:text-left tracking-tighter">@nike Training Montage</h1>
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium mt-28">@nike Training Montage</h1>
                 <h2 className='mt-12 font-medium tracking-tight w-full md:w-1/2 text-center md:text-left'>A 4 video training routine montage set that was uploaded onto the main @nike account to raise interest and drive viewership to the @niketraining Instagram account.</h2>
             </div>
 
@@ -253,25 +253,25 @@ useEffect(() => {
 
                 <video
                     src='/nike/montage1.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/montage2.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/montage3.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 
                 <video
                     src='/nike/montage4.mp4'
-                    className="shadow rounded-lg object-cover col-span-1 w-full"
+                    className="shadow rounded-[18pt] object-cover col-span-1 w-full"
                     autoPlay loop muted playsInline
                 ></video>
 

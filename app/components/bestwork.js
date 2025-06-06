@@ -77,6 +77,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
         initial="hidden"
         animate="show"
         variants={animateIn}>
+            
 
             {/* Beyond The Cabin */}
             {/* <div
@@ -154,6 +155,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
             </div> */}
 
             {/* Beyond The Cabin */}
+            
             <div
                 className="col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group shadow-mild
               dark:border-white/20 md:dark:border-white/5 md:dark:hover:border-white/20 duration-300 mt-4 md:mt-3
@@ -166,8 +168,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 }}
                 onClick={() => {
                 setSelectedWork("cabin");
+                
                 }}
             >
+                
                 <motion.div
                 className="col-span-3 rounded-3xl p-4 2xl:p-10 2xl:pt-8 relative"
                 variants={animateInChild}

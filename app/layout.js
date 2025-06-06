@@ -110,7 +110,8 @@ const toggleDarkMode = () => {
       ${modernLine.variable} 
       ${breathing.variable}
       antialiased flex flex-col min-h-screen font-sans
-      bg-background transition-all duration-300`}>
+      bg-background transition-all duration-300`}
+      isDarkMode={isDarkMode}>
 
         {/* Backdrop Blur */}
         <div className={`${changelog ? 'backdrop-blur-md md:backdrop-blur-lg' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
@@ -121,14 +122,14 @@ const toggleDarkMode = () => {
         </div>   
 
         {/* Main */}
-        <main className="">{children}</main>
+        <main className="" isDarkMode={isDarkMode}>{children}</main>
 
         {/* About Site Footer */}
         <div className="fixed bottom-6 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center scale-105">
           <div
             ref={footerRef}
-            className={`transition-all text-center backdrop-blur-lg rounded-full dark:border-b-1 border-transparent md:dark:hover:border-white md:dark:hover:border-1 whitespace-nowrap tracking-tight text-[9.5pt]
-              bg-background dark:bg-transparent shadow px-1.5 pr-2 cursor-pointer md:hover:bg-foreground md:dark:hover:bg-transparent md:hover:text-white dark:text-white/90 py-0.5 md:hover:scale-95 font-medium
+            className={`transition-all text-center rounded-full dark:border-b-1 backdrop-blur-lg border-transparent md:dark:hover:border-white md:dark:hover:border-1 whitespace-nowrap tracking-tight text-[9.5pt]
+              bg-background dark:bg-white/0 shadow px-1.5 pr-2 cursor-pointer md:hover:bg-foreground md:dark:hover:bg-transparent md:hover:text-white dark:text-white/90 py-0.5 md:hover:scale-95 font-medium
               ${changelog ?'bg-foreground text-white dark:border-white/75 border-1' :'dark:border-white/15 md:dark:border-white/15'}`}
             onClick={toggleChangelog}>
             <div className="inline-flex ml-1.5">Website built with React and Next.js
@@ -177,7 +178,8 @@ const toggleDarkMode = () => {
                 </a>
 
                 {/* Last Updated */}
-                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 03.05.25 for the 223rd time.</p>
+                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on May 15
+                  <span className="relative text-[6pt] mr-[1px]">th</span> 2025 for the 223rd time.</p>
 
               </motion.div>
 

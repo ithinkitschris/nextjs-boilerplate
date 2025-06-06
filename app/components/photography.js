@@ -20,7 +20,7 @@ show: {
     }
 }
 
-const PhotographyPage = ({className, setSelectedWork}) => {
+const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
   return (
     <motion.div className={`grid grid-cols-1 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] min-h-screen gap-3 ${className}`}
@@ -34,11 +34,11 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
-        onClick={() => setSelectedWork('street')}>
+        onClick={() => toggleWork('street')}>
 
             {/* Image */}
             <img 
-            className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-lg"
+            className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200"
             src="/Photography/street/cover2.jpg">
             </img>
 
@@ -48,13 +48,13 @@ const PhotographyPage = ({className, setSelectedWork}) => {
             {/* Text */}
             <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
 
-                <h1 className="text-4.5xl group-hover:text-6xl font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-300">
+                <h1 className="text-4.5xl group-hover:text-[40pt] font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-200">
                     Digital
                 </h1>
 
-                <h1 className="text-lg ml-1 text-white tracking-tight opacity-0 group-hover:opacity-100 transition-all duration-200">
+                {/* <h1 className="text-lg ml-1 text-white tracking-tight opacity-0 group-hover:opacity-100 transition-all duration-200">
                     Lorem ipseum dolor sit amet.
-                </h1>
+                </h1> */}
 
                 <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
                 flex items-center justify-center border-1 border-white text-white cursor-pointer
@@ -73,38 +73,33 @@ const PhotographyPage = ({className, setSelectedWork}) => {
                     </svg>
                 </button>
 
-                <h1 className="absolute opacity-0 group-hover:opacity-100 text-md text-white tracking-tight bottom-5 gap-4 flex transition-all duration-300">
+                {/* <h1 className="absolute opacity-0 group-hover:opacity-100 text-md text-white tracking-tight bottom-5 gap-4 flex transition-all duration-300">
                     <p className="font-medium">Equipment:</p>
                     <p>Leica M10-P</p>
-                </h1>
+                </h1> */}
 
             </div>
         </motion.div>
 
         {/* Film */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none"
+        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
-        onClick={() => setSelectedWork('film')}>
+        onClick={() => toggleWork('film')}>
         
         
         <img 
-            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300"
+            className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200"
             src="/Photography/film/cover4.jpg"/>
         <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/70 to-transparent rounded-t-lg"></div>
         <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
 
-            <h1 className="text-4.5xl group-hover:text-6xl font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-300">
+            <h1 className="text-4.5xl group-hover:text-[40pt] font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-200">
                 Film
             </h1>
-
-            <h1 className="text-lg ml-1 text-white tracking-tight opacity-0 group-hover:opacity-100 transition-all duration-200">
-                Lorem ipseum dolor sit amet.
-            </h1>
             
-
             <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
                 flex items-center justify-center border-1 border-white text-white cursor-pointer
                 group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
@@ -130,15 +125,15 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* BBH */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none"
+        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
-        onClick={() => setSelectedWork('bbh')}>
+        onClick={() => toggleWork('bbh')}>
         
         
         <img 
-            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300"
+            className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200"
             src="/Photography/bbh/cover.jpg"/>
 
         
@@ -175,15 +170,15 @@ const PhotographyPage = ({className, setSelectedWork}) => {
 
         {/* Stressed */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 lg:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none"
+        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 lg:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
-        onClick={() => setSelectedWork('stressed')}>
+        onClick={() => toggleWork('stressed')}>
         
         {/* Image */}
         <img 
-            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300 object-[42%]"
+            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-200 object-[42%]"
             src="/Photography/stressed/4.jpg"/>
 
         {/* Gradient */}
@@ -224,7 +219,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
-        onClick={() => setSelectedWork('bts')}> 
+        onClick={() => toggleWork('bts')}> 
 
             <img 
             className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300"
@@ -263,7 +258,7 @@ const PhotographyPage = ({className, setSelectedWork}) => {
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
-        onClick={() => setSelectedWork('unshackle')}> 
+        onClick={() => toggleWork('unshackle')}> 
 
             
             <img 
