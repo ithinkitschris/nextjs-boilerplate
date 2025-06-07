@@ -23,17 +23,23 @@ show: {
 const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
   return (
-    <motion.div className={`grid grid-cols-1 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] min-h-screen gap-3 ${className}`}
+    <motion.div className={`grid grid-cols-1 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] h-[800px] gap-3 ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
 
         {/* Personal */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-3xl cursor-pointer shadow hover:shadow-none" 
+        className="group col-span-3 h-full tracking-tight relative z-10 overflow-hidden rounded-3xl cursor-pointer shadow hover:shadow-none" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
+        onMouseEnter={() => {
+            setHoveredWork("street");
+          }}
+          onMouseLeave={() => {
+            setHoveredWork(null);
+          }}
         onClick={() => toggleWork('street')}>
 
             {/* Image */}
@@ -83,10 +89,16 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
         {/* Film */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
+        className="group col-span-3 h-full mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
+        onMouseEnter={() => {
+            setHoveredWork("film");
+          }}
+          onMouseLeave={() => {
+            setHoveredWork(null);
+          }}
         onClick={() => toggleWork('film')}>
         
         
@@ -125,10 +137,16 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
         {/* BBH */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
+        className="group col-span-3 h-full mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
+        onMouseEnter={() => {
+            setHoveredWork("bbh");
+          }}
+          onMouseLeave={() => {
+            setHoveredWork(null);
+          }}
         onClick={() => toggleWork('bbh')}>
         
         
@@ -170,10 +188,16 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
         {/* Stressed */}
         <motion.div 
-        className="group col-span-3 h-[600px] 2xl:h-5/6 mt-2 lg:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
+        className="group col-span-3 h-full mt-2 lg:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
+        onMouseEnter={() => {
+            setHoveredWork("stressed");
+          }}
+          onMouseLeave={() => {
+            setHoveredWork(null);
+          }}
         onClick={() => toggleWork('stressed')}>
         
         {/* Image */}
@@ -212,89 +236,6 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
             src="/Photography/bbh/cover.jpg">
         </img>
         </motion.div>
-
-        {/* BTS */}
-        {/* <motion.div 
-        className="group col-span-3 h-[600px] mt-2 xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-lg" 
-        whileHover={{ scale: 0.98 }}
-        transition={{ duration: 0.15, ease: easeOut }}
-        variants={animateInChild}
-        onClick={() => toggleWork('bts')}> 
-
-            <img 
-            className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300"
-            src="/Photography/bts/cover.jpg">
-            </img>
-
-            <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
-            <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
-
-                <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
-                    Behind the Scenes
-                </h1>
-
-                <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
-                flex items-center justify-center border-1 border-white text-white cursor-pointer
-                group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="2 2 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-5 h-5">
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                    </svg>
-                </button>
-            </div>
-        </motion.div> */}
-
-        {/* Unshackle */}
-        {/* <motion.div 
-        className="group col-span-3 h-[600px] mt-2 xl:mt-0 2xl:h-5/6 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none" 
-        whileHover={{ scale: 0.98 }}
-        transition={{ duration: 0.15, ease: easeOut }}
-        variants={animateInChild}
-        onClick={() => toggleWork('unshackle')}> 
-
-            
-            <img 
-            className="w-auto h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-lg transition-all duration-300 object-[58%]"
-            src="/Photography/unshackle/cover.JPG">
-            </img>
-
-            
-            <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
-
-            
-            <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
-
-                <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">
-                    Unshackle:
-                </h1>
-                <p className="-mt-1 ml-0.5 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Behind the Scenes</p>
-
-                <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
-                flex items-center justify-center border-1 border-white text-white cursor-pointer
-                group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="2 2 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-5 h-5">
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                    </svg>
-                </button>
-            </div>
-        </motion.div> */}
 
     </motion.div>
   );

@@ -76,87 +76,45 @@ useEffect(() => {
                 <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
                 md:text-left tracking-tighter leading-tighter -ml-2">3D Motion Explorations</h1>
 
-                {/* Subheader */}
-                {/* <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
-                3D Motion Design explorations</p> */}
             </motion.div> 
-
-            {/* Banner Video */}
-            <motion.video src="/3dpersonal/iphone3.mp4" 
-            className="col-span-2 shadow-standard rounded-3xl w-full h-auto object-cover mb-12"
-            autoPlay muted loop playsInline
-            variants={animateInChild}
-            poster='/poster/.jpeg'
-            // whileHover={{scale:1.01}}
-            >
-            </motion.video>
-            <motion.video src="/3dpersonal/glass1.mp4" 
-            className="col-span-2 shadow-standard rounded-3xl w-full h-auto object-cover mb-12"
-            autoPlay muted loop playsInline
-            variants={animateInChild}
-            poster='/poster/.jpeg'
-            // whileHover={{scale:1.01}}
-            >
-            </motion.video>
-            <motion.video src="/3dpersonal/sphere1.mp4" 
-            className="col-span-2 shadow-standard rounded-3xl w-full h-auto object-cover mb-12"
-            autoPlay muted loop playsInline
-            variants={animateInChild}
-            poster='/poster/.jpeg'
-            // whileHover={{scale:1.01}}
-            >
-            </motion.video>
-
-
             {/* Blurb */}
-            <div className="col-span-full sm:col-span-4 md:mr-20">
-                <motion.div className="text-2xl lg:text-4xl font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+            <div className="col-span-full sm:col-span-5 lg:mr-16">
+                <motion.div className="text-2xl lg:text-4xl lg:w-5/6 font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 Various explorations as part of my journey of getting acquainted with Blender and 3D Motion Design.
                 </motion.div>
             </div>
 
-            {/* Project Details */}
-            <div className="flex flex-row col-span-full sm:col-span-2 px-8 sm:px-0 justify-left font-mono text-xs tracking-tight ">
-                <motion.div variants={animateInChild} className='flex-1'>
-                    Role
-                    <ol className="mt-2 text-sm font-sans font-normal normal-case tracking-tight">
-                        <li>Personal Exploration</li>
-                        
-                    </ol>
-                </motion.div>
-                {/* <motion.div variants={animateInChild} className='flex-2'>
-                    Client
-                    <ol className="mt-2 text-sm font-sans font-normal normal-case tracking-tight">
-                        <li>Uniqlo</li>
-                    </ol>
-                </motion.div> */}
-                
+            {/* Banner Video */}           
+            <div className='col-span-full grid grid-cols-3 md:grid-cols-6 gap-1.5 lg:gap-2 mt-20'>
+
+                <motion.video src="/3dpersonal/iphone3.mp4" 
+                className="col-span-2 shadow-standard rounded-3xl w-full h-auto object-cover"
+                autoPlay muted loop playsInline
+                variants={animateInChild}
+                poster='/poster/.jpeg'
+                // whileHover={{scale:1.01}}
+                >
+                </motion.video>
+                <motion.video src="/3dpersonal/glass1.mp4" 
+                className="col-span-2 shadow-standard rounded-3xl w-full h-auto object-cover"
+                autoPlay muted loop playsInline
+                variants={animateInChild}
+                poster='/poster/.jpeg'
+                // whileHover={{scale:1.01}}
+                >
+                </motion.video>
+                <motion.video src="/3dpersonal/sphere1.mp4" 
+                className="col-span-2 shadow-standard rounded-3xl w-full h-auto object-cover"
+                autoPlay muted loop playsInline
+                variants={animateInChild}
+                poster='/poster/.jpeg'
+                // whileHover={{scale:1.01}}
+                >
+                </motion.video>      
             </div>
 
-            {/* Writeup */}
-            {/* <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-4 md:gap-10 mt-8 md:mr-7">
-                <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono text-sm "></p>
-                <p className="mb-3">As part of the launch of the first Uniqlo flagship store in Singapore at Orchard Central, I was tasked to both design and animate a set of transitions for the in-store panoramic displays.</p>
-                </motion.div>
-                
-                <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono text-sm "></p>
-                <p className="mb-3">The displays were primarily utilised to showcase photos and outfit shots submitted by the public through the hashtag #yourstagenowlive on Uniqlo Singapore&apos;s social media platforms. </p> 
-                </motion.div>
-
-                <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
-                <p className="mb-2 font-mono text-sm "></p>
-                <p className="mb-3">The displays looped a 4 minute long video that followed a format of 4 different sets of images collaged together. While graphic transitions served as intermissions between the sets.</p> 
-                </motion.div>
-            </div> */}
-
-            {/* <div className="col-span-full mb-3 md:mb-8 mt-20">
-                <h1 className="text-2xl md:text-4xl font-script -rotate-1 text-center md:text-left tracking-tighter">Proposed Transitions</h1>
-            </div> */}
-
             {/* iPhone */}
-            <div className='col-span-full grid grid-cols-3 md:grid-cols-6 gap-1.5 lg:gap-2 mt-20'>
+            <div className='col-span-full grid grid-cols-3 md:grid-cols-6 gap-1.5 lg:gap-2'>
 
                 <img src='/3dpersonal/iphone1.png' className='w-full h-full object-cover col-span-3 rounded-2xl'/>
                 <img src='/3dpersonal/iphone2.png' className='w-full col-span-3 rounded-2xl'/>

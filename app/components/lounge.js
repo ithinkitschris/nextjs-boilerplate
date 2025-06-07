@@ -54,7 +54,7 @@ show: {
 
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen md:pt-14
             sm:gap-3 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
@@ -78,19 +78,20 @@ show: {
             variants={animateInChild}>
                 
                 {/* Desktop Header */}
-                <h1 className="sm:block text-7xl md:text-8xl text-center font-medium md:font-normal 
+                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
                 md:text-left tracking-tighter leading-tighter -ml-2">SilverKris Lounge</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0 md:text-[27px] -ml-1 text-center md:text-left">
-                Brand Campaign for <span className='font-script -rotate-1 relative left-1.5 top-1'>Singapore Airlines</span></p>
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Brand campaign for Singapore Airlines</p>
+            
             </motion.div> 
 
             {/* Banner Video */}
             <motion.video 
             ref={bannerVideoRef}
             src="/lounge/film_1.mp4" 
-            className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
+            className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-12"
             autoPlay muted loop controls playsInline
             variants={animateInChild}
             poster='/poster/loungepage.jpeg'
@@ -99,8 +100,8 @@ show: {
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
-                <motion.div className="text-2xl lg:text-3xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
-                An all-encompassing Brand Campaign spanning two years and multiple briefs for Singapore Airline’s brand new flagship SilverKris Lounges at Changi Airport Terminal 3.
+                <motion.div className="text-2xl lg:text-3xl font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                An all-encompassing Brand Campaign spanning two years and multiple briefs for Singapore Airline's brand new flagship SilverKris Lounges at Changi Airport Terminal 3.
                 </motion.div>
             </div>
 
@@ -136,7 +137,7 @@ show: {
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <div className="md:mb-[26px] font-mono text-sm "></div>
                     
-                    <ol className='text-sm font-script'>Film</ol>
+                    <ol className='text-sm font-semibold'>Film</ol>
                     <ol className='mb-4'>Creative Direction and complete offline, online to final delivery edit of the brand film for the lounge.</ol>
 
                 </motion.div>
@@ -144,7 +145,7 @@ show: {
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <div className="md:mb-[26px] font-mono text-sm "></div>
                     
-                    <ol className='text-sm font-script'>Photo Asset Library</ol>
+                    <ol className='text-sm font-semibold'>Photo Asset Library</ol>
                     <ol className='mb-4'>Creative Direction on the photo asset library shoot for the lounge.</ol>
                    
                 </motion.div>
@@ -152,38 +153,38 @@ show: {
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <div className="md:mb-[26px] font-mono text-sm "></div>
                   
-                    <ol className='text-sm font-script'>Digital Wall</ol>
+                    <ol className='text-sm font-semibold'>Digital Wall</ol>
                     <ol className='mb-4'>Motion Design oversight on the panoramic digital display that served as the backdrop of the entrance of the lounge.</ol>
 
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/4" variants={animateInChild}>
                 <div className="md:mb-[26px] font-mono text-sm "></div>
-                    <ol className='text-sm font-script'>Entrance Facade</ol>
+                    <ol className='text-sm font-semibold'>Entrance Facade</ol>
                     <ol className='mb-4'>Brand oversight on an eight-metre long glass installation artwork that served as the facade of the lounge,</ol>
 
                 </motion.div>
             </div>
 
-            <motion.div className='col-span-full mt-0 grid grid-cols-3 gap-1.5 md:gap-2' variants={animateInChild}>
+            {/* Page */}
+            <motion.div className='col-span-full mt-0 grid grid-cols-3 gap-1.5 md:gap-2 md:mt-28' variants={animateInChild}>
 
-                <div className="col-span-full mb-8 md:mb-18">
-                    <h1 className="text-4.5xl md:text-[40px] font-script -rotate-3 text-center md:text-left tracking-tighter">Film</h1>
+                <div className="col-span-full mb-4">
+                    <h1 className="text-4.5xl md:text-[48px] font-medium text-center md:text-left tracking-tighter">Main Film</h1>
                 </div>
 
-                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 mb-4'>A brand film centred around the concept of juxtaposing the expansive grandeur of the lounges against fine attention to detail.</h1>
+                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm mb-4'>A brand film centred around the concept of juxtaposing the expansive grandeur of the lounges against fine attention to detail.</h1>
                 <Image
                     src="/lounge/board.jpg"
                     alt=""
-                    className="rounded-lg col-span-3 object-cover"
+                    className="rounded-3xl col-span-3 object-cover"
                     layout="responsive"
                     width={50}
                     height={10}
                     />
 
                 
-                <h1 className="mt-18 mb-8 text-3xl md:text-[35px] col-span-full 
-                font-script -rotate-3 text-center md:text-left tracking-tighter">Photo asset library</h1>
+                <h1 className="text-4.5xl md:text-[48px] font-medium text-center md:text-left tracking-tighter mt-32 mb-4">Photo asset library</h1>
 
                 <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4'>A set of 20 images across the 4 SilverKris Lounges for Singapore Airlines&apos; marketing and communications asset library.</h1>
                 
@@ -191,7 +192,7 @@ show: {
                     <Image
                         src="/lounge/7.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-3xl object-cover"
                         layout="responsive"
                         width={50}
                         height={50}
@@ -202,7 +203,7 @@ show: {
                     <Image
                         src="/lounge/6.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-3xl object-cover"
                         layout="responsive"
                         width={50}
                         height={50}
@@ -214,7 +215,7 @@ show: {
                         <Image
                         src="/lounge/3.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={500}
                         height={500}
@@ -224,7 +225,7 @@ show: {
                         <Image
                         src="/lounge/5.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={500}
                         height={500}
@@ -236,15 +237,15 @@ show: {
                     <Image
                         src="/lounge/4.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-3xl object-cover"
                         layout="responsive"
                         width={50}
                         height={50}
                         />
                 </div>
 
-                <h1 className="mt-18 mb-8 text-3xl md:text-[35px] col-span-full 
-                font-script -rotate-3 text-center md:text-left tracking-tighter">Digital Wall</h1>
+
+                <h1 className="text-4.5xl md:text-[48px] font-medium text-center md:text-left tracking-tighter mt-32 mb-4">Digital Wall</h1>
 
                 <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4 md:w-5/6'>A seamless looping backdrop to the entrance foyer of the SilverKris Lounges. 
                 The Batik Motif is separated into 4 distinct layers and animated to both grow on screen and sway in the wind.</h1>
@@ -252,7 +253,7 @@ show: {
                 <Image
                 src="/lounge/entrance.jpg"
                 alt=""
-                className="rounded-lg col-span-3 object-cover"
+                className="rounded-3xl col-span-3 object-cover"
                 layout="responsive"
                 width={50}
                 height={10}
@@ -260,7 +261,7 @@ show: {
 
                 <motion.video 
                 src="/lounge/insitu.mp4" 
-                className="col-span-full shadow-standard rounded-lg w-full lg:w-full lg:h-auto object-cover mb-6"
+                className="col-span-full shadow-standard rounded-3xl w-full lg:w-full lg:h-auto object-cover mb-6"
                 autoPlay muted loop playsInline
                 variants={animateInChild}
                 // whileHover={{scale:1.01}}
@@ -270,7 +271,7 @@ show: {
 
                 <motion.video 
                 src="/lounge/peak.mp4" 
-                className="col-span-full shadow-standard rounded-lg w-full lg:w-full lg:h-auto object-cover"
+                className="col-span-full shadow-standard rounded-3xl w-full lg:w-full lg:h-auto object-cover"
                 autoPlay muted loop playsInline
                 variants={animateInChild}
                 // whileHover={{scale:1.01}}
@@ -278,7 +279,7 @@ show: {
 
                 <motion.video 
                 src="/lounge/offpeak.mp4" 
-                className="col-span-full shadow-standard rounded-lg w-full lg:w-full lg:h-auto object-cover mb-6"
+                className="col-span-full shadow-standard rounded-3xl w-full lg:w-full lg:h-auto object-cover mb-6"
                 autoPlay muted loop playsInline
                 variants={animateInChild}
                 // whileHover={{scale:1.01}}
@@ -291,7 +292,7 @@ show: {
                         <Image
                         src="/lounge/bts7.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={500}
                         height={500}
@@ -301,7 +302,7 @@ show: {
                         <Image
                         src="/lounge/bts8.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={500}
                         height={500}
@@ -311,15 +312,14 @@ show: {
 
                 
 
-                <h1 className="mt-18 mb-8 text-3xl md:text-[35px] col-span-full 
-                font-script -rotate-3 text-center md:text-left tracking-tighter">Entrance Facade</h1>
+                <h1 className="text-4.5xl md:text-[48px] font-medium text-center md:text-left tracking-tighter mt-32 mb-4">Entrance Facade</h1>
 
-                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4'>An 8 metre long glass installation of Singapore Airline’s Batik Motif serving as the grand facade to the SilverKris Lounge.</h1>
+                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4'>An 8 metre long glass installation of Singapore Airline's Batik Motif serving as the grand facade to the SilverKris Lounge.</h1>
 
                 <Image
                 src="/lounge/1.jpg"
                 alt=""
-                className="rounded-lg col-span-3 object-cover mb-4"
+                className="rounded-3xl col-span-3 object-cover mb-4"
                 layout="responsive"
                 width={50}
                 height={10}
@@ -332,7 +332,7 @@ show: {
                         <Image
                         src="/lounge/bts1.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={500}
                         height={500}
@@ -342,7 +342,7 @@ show: {
                         <Image
                         src="/lounge/bts4.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={500}
                         height={500}
@@ -355,7 +355,7 @@ show: {
                         <Image
                         src="/lounge/bts5.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={500}
                         height={500}
@@ -365,7 +365,7 @@ show: {
                         <Image
                         src="/lounge/bts6.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={500}
                         height={500}

@@ -54,7 +54,7 @@ show: {
 
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen md:pt-14
             sm:gap-3 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
@@ -78,12 +78,12 @@ show: {
             variants={animateInChild}>
                 
                 {/* Desktop Header */}
-                <h1 className="sm:block text-7xl md:text-8xl text-center font-medium md:font-normal 
-                md:text-left tracking-tighter leading-tighter lg:leading-[85px] -ml-2">Kris+ Brand Campaign</h1>
+                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
+                md:text-left tracking-tighter leading-tighter -ml-2">Kris+ Brand Campaign</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-3 md:text-[27px] -ml-1 text-center md:text-left">
-                Brand campaign for <span className='font-script -rotate-1 relative left-1.5 top-1'>Singapore Airlines</span></p>
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Brand campaign for Singapore Airlines</p>
             </motion.div> 
 
             {/* Banner Video */}

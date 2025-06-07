@@ -49,7 +49,7 @@ useEffect(() => {
     
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 
+        <motion.div className={`grid grid-cols-6 gap-2 md:pt-14
             sm:gap-3 max-w-full -mt-8 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
@@ -73,12 +73,12 @@ useEffect(() => {
             variants={animateInChild}>
                 
 
-                <h1 className=" text-[65px] md:text-8xl text-center font-medium md:font-normal 
-                md:text-left tracking-tighter leading-tighter -ml-2">I Spy in the Sky...</h1>
+                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
+                md:text-left tracking-tighter leading-tighter -ml-2 mb-2">I Spy in the Sky...</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Social Content for <span className='font-script -rotate-1 relative left-1.5 top-1'>Singapore Airlines</span></p>
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Content Series for Singapore Airlines</p>
             </motion.div> 
 
             {/* Banner Video */}

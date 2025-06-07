@@ -110,7 +110,8 @@ const toggleDarkMode = () => {
       ${modernLine.variable} 
       ${breathing.variable}
       antialiased flex flex-col min-h-screen font-sans
-      bg-background transition-all duration-300`}>
+      bg-background transition-all duration-300`}
+      suppressHydrationWarning>
 
         {/* Backdrop Blur */}
         <div className={`${changelog ? 'backdrop-blur-md md:backdrop-blur-lg' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />

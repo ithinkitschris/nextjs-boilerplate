@@ -97,17 +97,17 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
     
 
 
-    const toggleAI = () => {
-        setShowAI((prevState) => !prevState);
-    };
+    // const toggleAI = () => {
+    //     setShowAI((prevState) => !prevState);
+    // };
 
-    const toggleShort = () => {
-        setShowShort((prevState) => !prevState);
-    };
+    // const toggleShort = () => {
+    //     setShowShort((prevState) => !prevState);
+    // };
 
-    const toggleLong = () => {
-        setShowLong((prevState) => !prevState);
-    };
+    // const toggleLong = () => {
+    //     setShowLong((prevState) => !prevState);
+    // };
 
     const toggleCurriculum = () => {
         setShowCurriculum((prevState) => !prevState);
@@ -167,30 +167,32 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
     <>
         {/* Page Container */}
         <motion.div 
+        key="page-container"
         className={`grid grid-cols-1 lg:grid-cols-10 w-full md:mt-12
         items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
         gap-2 text-sm tracking-tight ${className}`}
         >
-        <AnimatePresence>
+        <AnimatePresence key="animate-presence">
             
             {/* Bio */}
-            <div className="lg:flex lg:flex-wrap lg:gap-10 col-span-full w-full ">
+            <div key="bio-section" className="lg:flex lg:flex-wrap lg:gap-10 col-span-full w-full ">
 
                 {/* Mobile Photo Card */}
-                <div className="lg:hidden relative w-full h-[620px]">
+                <div key="mobile-photo-card" className="lg:hidden relative w-full h-[620px]">
 
                     {/* Name */}
                     <motion.h1
+                    key="mobile-name"
                     className="z-50 pl-5 pt-5 text-6xl tracking-tighter leading-15 font-base text-[#e9e9e9] dark:text-white"
                     variants={animateInChild} 
                     >
-                    I am <span className="font-script absolute top-10 tracking-tight text-7xl align-top ml-2">Chris</span>
-                    {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
+                    I am <span key="mobile-name-chris" className="font-script absolute top-10 tracking-tight text-7xl align-top ml-2">Chris</span>
                     </motion.h1>
 
                     {/* Image */}
-                    <motion.div className="absolute top-0 left-0 w-full h-full -z-40 overflow-hidden rounded-3xl shadow-standard" variants={animateInChild}>
+                    <motion.div key="mobile-image-container" className="absolute top-0 left-0 w-full h-full -z-40 overflow-hidden rounded-3xl shadow-standard" variants={animateInChild}>
                         <Image
+                        key="mobile-profile-image"
                         src='/profile/profile.jpg'
                         alt=""
                         className="transform scale-105 translate-y-4"
@@ -252,16 +254,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                     className="rounded-3xl h-full w-full group-hover:drop-shadow-xl object-cover transition-all" variants={animateInChild}/>
 
                         <div className="absolute inset-0 pt-1 pb-4 pl-10 text-white grid grid-cols-2 group">
-
-                            {/* Desktop Name */}
-                            {/* <motion.h1
-                            className="pt-3 text-4xl font-medium tracking-tighter -ml-2"
-                            variants={animateInChild}>
-                            I am
-                            <p className={`font-script tracking-tight ml-6 mt-16 -rotate-3 ${showNav ? 'text-[150px]' : 'text-[150px]'}`} 
-                            style={{ wordSpacing: "-0.25em" }}>Chris <span className=" relative bottom-7 text-[110px]">Leow</span></p>
-                            </motion.h1> */}
-
+   
                             {/* Desktop Name */}
                             <motion.h1
                             className="pt-6 text-xl font-script tracking-tight whitespace-nowrap"
@@ -270,13 +263,6 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             <p className={`font-medium font-sans tracking-[-4.5pt] text-9xl -ml-3 -mt-3.5`}>
                             Chris Leow</p>
                             </motion.h1>
-
-                            {/* Desktop Subheader */}
-                            {/* <motion.h1 
-                            className={`absolute top-44 tracking-tight col-span-full text-[24px]`}
-                            variants={animateInChild}>                       
-                            And here are three things about me:    
-                            </motion.h1> */}
 
                             {/* Desktop Subheader */}
                             <motion.h1 
@@ -289,7 +275,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             {/* Desktop Three Things */}
                             <motion.div 
                             className="absolute left-10 bottom-8 w-full" 
-                            variants={animateInChild} layout="position">
+                            variants={animateInChild}>
                                 {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                                 <p className="text-2xl tracking-tight -ml-3"><span className="text-[32px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
                                 <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3">A bold opening statement; I know.</p>
@@ -300,12 +286,12 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             </motion.div>
 
                             {/* Desktop Details Container */}
-                            <motion.div className={`col-span-1 absolute right-12 bottom-18`} layout="position">
+                            <motion.div className={`col-span-1 absolute right-12 bottom-18`}>
 
                                 {/* Details */}
                                 <motion.div
                                 className="text-[#e9e9e9] dark:text-white flex flex-col items-end self-end"
-                                variants={animateInChild} layout>
+                                variants={animateInChild}>
 
                                 {/* Circle Header */}
                                 <h1 className="flex items-center justify-center border-1 rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 whitespace-nowrap -ml-2">Senior Creative</h1>
@@ -320,7 +306,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             {/* Desktop Contact */} 
                             <motion.div 
                                 className="z-30 tracking-tight text-white flex w-full justify-between px-4 pr-12 absolute bottom-6 col-span-full"
-                                variants={animateInChild} layout>
+                                variants={animateInChild}>
                                     {/* <p className="mb-2 text-xl">Contact</p> */}
                                     <p className="text-white opacity-25 group-hover:opacity-100 transition-all duration-300">Email – <span className="transition-all duration-300 hover:text-white">ithinkitschristopher@gmail.com</span></p>
                                     <p className="text-white opacity-25 group-hover:opacity-100 transition-all duration-300">LinkedIn – <a href="https://www.linkedin.com/in/chris-leow-93372b184/" className="underline transition-all duration-300 hover:text-white" target="_blank" rel="noopener noreferrer">Chris Leow</a></p>
@@ -339,58 +325,68 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             <div className="font-medium tracking-[-2.7pt] text-[58pt] mt-36 ml-6 mb-3 col-span-full leading-[87%] w-2/3">Story time.</div>
 
             {/* Story Container */}
-            <motion.div className={`col-span-full w-full grid grid-cols-9 gap-4 mt-4 mb-10 `}>  
-
-                {/* Story Container */}
-                <motion.div className="border-r-[1.5px] border-b-[2px] border-t-[0.1px] border-l-[0.1px] border-white/15 h-full w-full rounded-3xl col-span-full bg-background dark:bg-transparent leading-[150%]
-                transition-non-color shadow-mild p-6 px-12 text-sm grid grid-cols-9 relative" 
-                animate={{ height: showDesktopAI ? "270px" : showDesktopShort ? "320px" : "800px" }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                >
-                    {/* Story Selector */}
-                    <motion.div className="col-span-2 transition-non-color text-sm flex flex-col gap-1.5 items-start">
-
-                        <p className=" font-medium text-2xl tracking-tight mb-4">But first, are you<span className="font-light text-2xl">...</span></p>
-                        
-                        <p className={`flex justify-center items-center text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
-                        border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
-                        ${showDesktopAI ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
-                        onClick={() => {
-                            setShowDesktopAI(true);
-                            setShowDesktopShort(false);
-                            setShowDesktopLong(false);}}    
-                        >In a hurry?</p>
-
-                        <p className={`flex justify-center items-center text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
-                        border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
-                        ${showDesktopShort ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
-
-                        onClick={() => {
-                            setShowDesktopAI(false);
-                            setShowDesktopShort(true);
-                            setShowDesktopLong(false);}}
-                        >Keen to know more?</p>
-
-                        <p className={`flex justify-center items-center text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
-                        border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
-                        ${showDesktopLong ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
-
-                        onClick={() => {
-                            setShowDesktopAI(false);
-                            setShowDesktopShort(false);
-                            setShowDesktopLong(true);}}
-                        >Down for an essay?</p>
-                    </motion.div>
-
-                    {/* Line */}
-                    <div className="absolute h-[80%] w-[1px] bg-black/5 dark:bg-white/5 left-72 top-7"/>
+            <motion.div 
+                className="border-r-[1.5px] border-b-[2px] border-t-[0.1px] border-l-[0.1px] border-white/15 w-full rounded-3xl col-span-full bg-background dark:bg-transparent leading-[150%]
+                transition-non-color shadow-mild p-6 px-12 text-sm grid grid-cols-9 relative overflow-hidden" 
+                transition={{ 
+                    duration: 0.3,
+                    ease: "easeInOut"
+                }}
+                key="story-container"
+            >
+                {/* Story Selector */}
+                <div className="col-span-2 transition-non-color text-sm flex flex-col gap-1.5 items-start">
+                    <p className=" font-medium text-2xl tracking-tight mb-4">But first, are you<span className="font-light text-2xl">...</span></p>
                     
-                    {/* AI */}
-                    {showDesktopAI && (
-                        <div className="col-span-7 grid grid-cols-4">
+                    <p className={`flex justify-center items-center text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
+                    border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
+                    ${showDesktopAI ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
+                    onClick={() => {
+                        setShowDesktopAI(true);
+                        setShowDesktopShort(false);
+                        setShowDesktopLong(false);}}    
+                    >In a hurry?</p>
 
-                            {/* Experience and Education */}
-                            <div className="col-span-1">
+                    <p className={`flex justify-center items-center text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
+                    border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
+                    ${showDesktopShort ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
+
+                    onClick={() => {
+                        setShowDesktopAI(false);
+                        setShowDesktopShort(true);
+                        setShowDesktopLong(false);}}
+                    >Keen to know more?</p>
+
+                    <p className={`flex justify-center items-center text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
+                    border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
+                    ${showDesktopLong ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
+
+                    onClick={() => {
+                        setShowDesktopAI(false);
+                        setShowDesktopShort(false);
+                        setShowDesktopLong(true);}}
+                    >Down for an essay?</p>
+                </div>
+
+                {/* Line */}
+                <div className="absolute h-[80%] w-[1px] bg-black/5 dark:bg-white/5 left-72 top-7"/>
+                
+                <AnimatePresence mode="wait">
+                    {showDesktopAI && (
+                        <motion.div 
+                            className="col-span-7 grid grid-cols-4"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.1 }}
+                            key="ai-content"
+                        >
+                            <motion.div 
+                                className="col-span-1"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0 }}
+                            >
                                 <h1 className="text-xl font-medium tracking-tight">Experience</h1>
                                 <div className="text-sm">
                                     <p className="mt-4 font-semibold">Design + Advertising</p>
@@ -401,11 +397,14 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                                     <p className="">Graduate Student</p>
                                     
                                 </div>
-                            </div>
+                            </motion.div>
 
-                            {/* Experience and Education */}
-                            <div className="col-span-1">
-
+                            <motion.div 
+                                className="col-span-1"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0.1 }}
+                            >
                                 <h1 className="text-xl font-medium tracking-tight">Education</h1>
                                 <div className="text-sm">
                                     <p className="mt-4">MFA Interaction Design</p>
@@ -417,11 +416,15 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                                     <i>2013 – 2016</i>
                                     
                                 </div>
-                            </div>
+                            </motion.div>
 
-                            {/* Skills */}
-                            <div className="col-span-2 text-sm">
-                                <h1 className="text-xl font-medium tracking-tight">Skillsets <span className="font-light text-[13pt] relative -top-[1pt] px-1">+</span> Technical Abilities</h1>
+                            <motion.div 
+                                className="col-span-2 text-sm"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0.2 }}
+                            >
+                                <h1 className="text-xl font-medium tracking-tight">Skillsets</h1>
                                 <div className="grid grid-cols-3 -mr-20">
                                     <div>
                                         <p className="mt-4">Creative Direction</p>
@@ -454,42 +457,81 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                                         <p>p5.js</p>
                                     </div>   
                                 </div>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     )}
 
-                    {/* Short */}
                     {showDesktopShort && (
-                        <div className="col-span-7 grid grid-cols-3 gap-10 text-sm leading-[155%]">
-                            {/* <h1 className="text-2xl font-medium tracking-tight col-span-full mb-2 -ml-0.5 opacity-0">Here's my story:</h1> */}
-                            <div className="col-span-1">
+                        <motion.div 
+                            className="col-span-7 grid grid-cols-3 gap-10 text-sm leading-[155%]"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.1 }}
+                            key="short-content"
+                        >
+                            <motion.div 
+                                className="col-span-1"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0 }}
+                            >
                                 <h1 className="text-xl font-medium tracking-tight mb-4">Who?</h1>
                                 <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists. 
                                 Now, he finds himself living the surreal reality of conceptualizing, designing, and directing what is essentially art for the world.</p>
                                 <p>With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in crafting visually compelling work across various mediums.</p>
-                            </div>
+                            </motion.div>
 
-                            <div className="col-span-1">
+                            <motion.div 
+                                className="col-span-1"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0.1 }}
+                            >
                                 <h1 className="text-xl font-medium tracking-tight mb-4">What?</h1>
                                 <p className="mb-3">As a Multidisciplinary Creative and formerly the Creative Lead at ArtScience Museum in Singapore; 
                                     he finds himself with eight years of experience in Advertising – having worked in the two leading agencies Singapore at the time: BBH and TBWA and working on multiple brand campaigns for Singapore Airlines 
                                     as an Art Director and global brands the likes of IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo.</p>
-                            </div>
+                            </motion.div>
 
-                            <div className="col-span-1">
+                            <motion.div 
+                                className="col-span-1"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0.2 }}
+                            >
                                 <h1 className="text-xl font-medium tracking-tight mb-4">And?</h1>
                                 <p className="mb-3">In his spare time (which, realistically, isn&apos;t much), he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
                                 <p>When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, 
                                 though he wouldn&apos;t go so far as to call it interior design.</p>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     )}
 
-                    {/* Long */}
                     {showDesktopLong && (
-                        <div className="col-span-7 grid grid-cols-4 gap-8">
-                            <h1 className="text-xl font-medium tracking-tight col-span-full -ml-0.5">A love letter to myself:</h1>
-                            <div className="col-span-1">
+                        <motion.div 
+                            className="col-span-7 grid grid-cols-4 gap-8"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.1 }}
+                            key="long-content"
+                        >
+                            <motion.h1 
+                                className="text-xl font-medium tracking-tight col-span-full -ml-0.5"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0 }}
+                            >
+                                A love letter to myself:
+                            </motion.h1>
+                            
+                            <motion.div 
+                                className="col-span-1"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0.1 }}
+                            >
                                 <p className="italic text-sm opacity-50 pr-8">If everyone is busy making everything, how can anyone perfect anything? We start to confuse convenience with joy. Abundance with choice.</p>
                                 <p className="italic text-sm opacity-50 mt-4 pr-8">Designing something requires focus. The first thing we ask is: What do we want people to feel. Surprise. Love. Connection.</p>
                                 <p className="italic text-sm opacity-50 mt-4 pr-8">Then we begin to craft around our intention. It takes time. There are a thousand no's for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.
@@ -515,24 +557,39 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                                     <path d="M7 7h10v10" />
                                     </svg>
                                 </a>
-                            </div>
+                            </motion.div>
                             
-                            <div className="col-span-1">    
+                            <motion.div 
+                                className="col-span-1"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0.15 }}
+                            >
                                 <p className="mb-3">It all started from this very film. I remember the first time I watched it–it was very much a lightbulb moment for me. I was a student pursuing Communication Design then, a freshman back in 2014.</p>
                                 <p className="mb-3">It was at a school-wide convention, the entire design school, that is. We were in a massive auditorium, the director of our school played the film for all to watch on a screen that could&apos;ve possibly been what is two floors high.</p>
                                 <p className="mb-3">That was the first time I had watched anything like that. In retrospect, the message conveyed in the film likely didn&apos;t even register within me. But the execution absolutely did, even though the concept of Motion Graphics couldn&apos;t be more foreign to me then.</p>
                                 <p className="mb-3">Serendipitously, I found myself in a class on Motion Graphics a few months later, and I daresay it all intuitively clicked within me the first time I opened After Effects. It set me down a path driven by manic passion for crafting visuals that engaged by movement.</p>
                                 <p className="mb-3">With a combination of sheer luck and my skillset in Motion Graphics, I found myself with a foot in the Advertising industry as a young creative.</p>
-                            </div>
+                            </motion.div>
 
-                            <div className="col-span-1">
+                            <motion.div 
+                                className="col-span-1"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0.2 }}
+                            >
                                 <p className="mb-3">After 8 years, and as I ever fervently sought the next step throughout that led me from starting out as a Motion Designer to eventually being a Creative Lead; I found myself with a startling ability to tell a story behind my craft.</p>
                                 <p className="mb-3">One thing that remained absolute however, was that I never stopped <i>doing</i>. Just because I found myself an Art Director, didn't mean that I no longer needed to get my hands dirty with Illustrator and After Effects. <i className="opacity-50 mr-1.5 hidden">(along with a disproportionate amount of Powerpoint, Keynote and Teams).</i> Crafting was the one North Star that got me where I was, and kept me doing what I did, and I wasn't about to leave that behind.</p>
                                 <p className="mb-3">Every piece of work on this site went through a thousand no&apos;s for the final yes. It was crafted amidst busyness, with focus and the aim for perfection <i className="opacity-50 mr-1.5 hidden ">(not that I personally believe in the conventional understanding of perfection; I don&apos;t).</i></p>
                                 <p className="mb-6">Today, an entire decade later, as I sit here writing this, the very message of the film that started it all could not be more poignant. What was once the visuals that resonated so deeply, it is now the message that strikes a deeper chord:</p>
-                            </div>
+                            </motion.div>
 
-                            <div className="col-span-1">
+                            <motion.div 
+                                className="col-span-1"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.2, delay: 0.3 }}
+                            >
                                 
                                 <i className="font- opacity-60">&quot;The first thing we ask is: What do we want people to feel? Delight. Surprise. Love. Connection. Then we begin to craft around our intention.&quot;</i>             
                                 <p className="mt-6 mb-3">As an Advertising Creative who grew the muscle to tell stories, and now a Graduate Student currently pursuing a Masters in Interaction Design; the above message resonates immensely. It&apos;s one thing to be able to tell stories, but a completely different discipline to 
@@ -541,47 +598,45 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                                 <p className="">Am I able to discern what people want to feel?</p>
                                 <p className="font- mb-3">That is precisely the question I&apos;m onto right now–in the very field of Interaction Design, and where I am at now as a Creative.</p>
                                 <p className="">More to come, as always.</p>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     )}
-                    
-                </motion.div>
-
-            </motion.div>   
+                </AnimatePresence>
+            </motion.div>
 
             {/* Creative Direction */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-44 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 ml-6 px-2
+            <div key="creative-direction-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-44 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 ml-6 px-2
             p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">Creative Direction</div>
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 mb-3 col-span-full leading-[87%] w-2/3 ml-8">The ones that had legs.</div>
-            <BestWorkPage3 className='col-span-full -mt-12'key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <div key="creative-direction-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 mb-3 col-span-full leading-[87%] w-2/3 ml-8">The ones that had legs.</div>
+            <BestWorkPage3 className='col-span-full -mt-12' key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Product Design */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full ml-8 px-2">Product Design</div>
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 mb-3 col-span-full leading-[87%] w-2/3 px-8">Products of Design.</div>
+            <div key="product-design-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full ml-8 px-2">Product Design</div>
+            <div key="product-design-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 mb-3 col-span-full leading-[87%] w-2/3 px-8">Products of Design.</div>
             <ProductPage className='col-span-full -mt-10' key='product' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Motion Design */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-8 px-2">Motion Design</div>
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-6 mb-3 col-span-full leading-[87%] w-2/3">.blend-ing .ai, .ae and .js</div>
+            <div key="motion-design-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-8 px-2">Motion Design</div>
+            <div key="motion-design-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-6 mb-3 col-span-full leading-[87%] w-2/3">.blend-ing .ai, .ae and .js</div>
             <MotionDesignPage className='col-span-full -mt-10' key='motion' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Photography */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-6 px-2">Photography</div>
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[87%] w-[50%] ">Photographic Memories.</div>
+            <div key="photography-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-6 px-2">Photography</div>
+            <div key="photography-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[87%] w-[50%] ">Photographic Memories.</div>
             <PhotographyPage className='col-span-full mt-8' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
             
             {/* Content */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] ml-4 mt-32 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-3 mb-8 col-span-full leading-[87%] w-[70%] ">A life of mine viewed through a short attention span.</div>
+            <div key="content-header" className="font-medium tracking-[-0.2pt] text-[12pt] ml-4 mt-72 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>
+            <div key="content-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-3 mb-8 col-span-full leading-[87%] w-[70%] ">A life of mine viewed through a short attention span.</div>
             <ContentPage className='col-span-full mt-8' key='content'/>
             
             {/* CV */}
-            <div className="font-medium tracking-[-0.2pt] text-[12pt] mt-60 mb-3 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Curriculum Vitae</div>
-            <div className="font-medium tracking-[-1.8pt] text-[58pt] mb-3 col-span-full leading-[87%] w-full">Info, the rest of it all.</div>
+            <div key="cv-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Curriculum Vitae</div>
+            <div key="cv-title" className="font-medium tracking-[-1.8pt] text-[58pt] mb-3 col-span-full leading-[87%] w-full">Info, the rest of it all.</div>
 
             {/* Desktop Brands Container */}
-            <h1 className="text-[40px] md:text-3xl mt-20 tracking-tight font-medium text-black dark:text-white col-span-full">Worked with:</h1>
-            <motion.div className="md:col-span-full md:w-full justify-between items-center mix-blend-difference relative mb-10 hidden md:flex mt-4" layout key='test'>           
+            <h1 className="text-[40px] md:text-3xl mt-20 tracking-tight font-medium text-black dark:text-white col-span-full" key='brands-header'>Worked with:</h1>
+            <motion.div className="md:col-span-full md:w-full justify-between items-center mix-blend-difference relative mb-10 hidden md:flex mt-4" layout key='brands'>           
                 <img src='/brandlogos/sia.png' className="w-[90px] h-[35px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
                 <img src='/brandlogos/asm.png' className="w-[120px] h-[35px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
                 <img src='/brandlogos/ikea.png' className="w-[75px] h-[25px]  object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
@@ -596,7 +651,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             </motion.div>
 
             {/* Footer */}
-            <div className="col-span-full grid grid-cols-5 w-full gap-8">  
+            <div className="col-span-full grid grid-cols-5 w-full gap-8" key='footer'>  
 
                 {/* Currently: */}
                 <motion.div className="md:col-span-1 md:w-full relative mt-4 md:mt-10 group cursor-pointer" 
@@ -1478,7 +1533,8 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                 </motion.div>
             </div>
 
-            <div className="col-span-full w-full h-[250px]" key='whateverdude'/>
+            {/* Bottom Spacer */}        
+            <div className="col-span-full w-full h-[250px]" key='bottomspacer'/>
             
             </AnimatePresence>    
         </motion.div>

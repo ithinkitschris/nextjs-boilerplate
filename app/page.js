@@ -736,13 +736,12 @@ export default function Home(){
 
                 {/* Desktop Side Navbar Reset Button */}
                 <motion.div 
-                  className="sticky top-20 mt-10 z-40 hidden md:block">
+                  className="sticky -ml-0.5 top-28 z-40 hidden md:block">
                   {showReset && (
                     <motion.button
-                      className="group hover:text-background font-medium flex gap-1.5
-                      -ml-1 mb-6 pt-1 pb-1 pr-2 pl-2.5 backdrop-blur 
-                      items-center text-foreground transition-colors hover:bg-foreground 
-                      rounded-full border-1 border-foreground dark:border-neutral-400 "
+                      className="group hover:text-background font-medium backdrop-blur p-[8px]
+                      text-foreground transition-colors hover:bg-foreground dark:hover:bg-foreground drop-shadow bg-background dark:bg-transparent
+                      rounded-full border-r-1 border-b-1 border-transparent dark:border-white/35"
                       initial={{ opacity: 0, y:-20 }} 
                       animate={{ opacity: 1, y:0 }}  
                       transition={{
@@ -759,11 +758,11 @@ export default function Home(){
                           behavior: 'smooth' // Enables smooth scrolling to the top
                         });
                       }}
-                    >Lets rewind
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 100 105"
-                        className="w-4 h-4 group-hover:text-background"
+                        viewBox="0 0 100 100"
+                        className="ml-[1.5px] w-[18px] h-[18px] group-hover:text-background"
                       >
                         <path
                           d="M50,96.7c-20.3,0-38-14.4-42.1-34.3-.4-2.2,1-4.3,3.1-4.7,2.2-.4,4.3,1,4.7,3.1,3.3,16.2,17.7,27.9,34.2,27.9s35-15.7,35-35-15.7-35-35-35-14.9,2.4-21,7c-1.8,1.3-4.3,1-5.6-.8-1.3-1.8-1-4.3.8-5.6,7.5-5.6,16.4-8.6,25.8-8.6,23.7,0,43,19.3,43,43s-19.3,43-43,43Z"
@@ -780,7 +779,7 @@ export default function Home(){
 
                 {/* Desktop Side Navbar Skillsets */}    
                 <motion.div 
-                className="hidden md:flex flex-col items-start gap-1 mt-4 dark:text-neutral-500 sticky"
+                className="hidden md:flex flex-col items-start gap-1 mt-24 dark:text-neutral-500 sticky"
                 initial="hidden"
                 animate="show"
                 exit="fade"
@@ -878,7 +877,7 @@ export default function Home(){
 
                 {/* Desktop Side Navbar All Work */}
                 <motion.div
-                className={`hidden md:flex flex-col items-start gap-1 mt-12  sticky z-10 ${showReset ? "top-32" : "top-24"}`}
+                className={`hidden md:flex flex-col items-start gap-1 mt-12 sticky z-10 ${showReset ? "top-48" : "top-36"}`}
                 initial="hidden"
                 animate="show"
                 exit="exit"
@@ -1183,23 +1182,7 @@ export default function Home(){
                     toggleTag('clear');
                     toggleWork('samsung')}}>Samsung Lifestyle Displays</motion.button>
 
-                  {/* <motion.button 
-                  className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion','edit']) || selectedWork.includes(['sentosa']) || hoveredWork ==='sentosa' 
-                    ? 'text-foreground' 
-                    : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
-                  } transition-colors duration-100`}
-                  whileHover={{scale:1.06}}
-                  animate={{scale: 
-                    includesTags(['motion','edit']) || selectedWork.includes(['sentosa']) ||
-                    hoveredWork==='sentosa' 
-                    ? 1.02 : 1
-                  }}
-                  variants={animateInChild}
-                  onClick={() => {
-                    toggleTag('clear');
-                    toggleWork('sentosa')}}>Sentosa Island</motion.button> */}
-
+                
                   <motion.h1
                   className={`text-xs mt-5 tracking-tight font-medium "`}
                   variants={animateInChild}>
@@ -1304,23 +1287,6 @@ export default function Home(){
                     toggleTag('clear');
                     toggleWork('street')}}>Photography</motion.button>
 
-                  {/* <motion.button 
-                  className={`hover:text-foreground text-left mr-8
-                    ${includesTags(['motion']) || selectedWork.includes(['iphone12']) || hoveredWork ==='iphone12' 
-                    ? 'text-foreground' 
-                    : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
-                  } transition-colors duration-100`}
-                  whileHover={{scale:1.06}}
-                  animate={{scale: 
-                    includesTags(['motion']) || selectedWork.includes(['iphone12']) ||
-                    hoveredWork==='iphone12' 
-                    ? 1.02 : 1
-                  }}
-                  variants={animateInChild}
-                  onClick={() => {
-                    toggleTag('clear');
-                    toggleWork('iphone12')}}>iPhone 12 Pro</motion.button> */}
-
                   <motion.button 
                   className={`hover:text-foreground text-left mr-8
                     ${includesTags(['motion']) || selectedWork.includes(['iphone']) || hoveredWork ==='iphone' 
@@ -1374,22 +1340,6 @@ export default function Home(){
                     toggleTag('clear');
                     toggleWork('3d')}}>3D Motion Exploration</motion.button>
 
-                  <motion.button 
-                  className={`hover:text-foreground text-left mr-8
-                    ${includesWorks(['photography']) || selectedWork.includes(['unshackle']) || hoveredWork ==='unshackle' 
-                    ? 'text-foreground' 
-                    : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
-                  } transition-colors duration-100`}
-                  whileHover={{scale:1.06}}
-                  animate={{scale: 
-                    includesWorks(['photography']) || selectedWork.includes(['unshackle']) ||
-                    hoveredWork==='unshackle' 
-                    ? 1.02 : 1
-                  }}
-                  variants={animateInChild}
-                  onClick={() => {
-                    toggleTag('clear');
-                    toggleWork('unshackle')}}>Unshackle: BTS</motion.button>
 
                 </motion.div>
               </>
@@ -1409,7 +1359,7 @@ export default function Home(){
             ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1 gap-2' : 'grid-cols-1 gap-1'}`}>
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
-                  <PhotographyPage key="photography" className="col-span-full -mt-22" setSelectedWork={setSelectedWork}/>
+                  <PhotographyPage key="photography" className="col-span-full -mt-22" toggleWork={toggleWork} setHoveredWork={setHoveredWork}/>
                 ) : selectedWork === 'content' ? (
                   <ContentPage key="content" className="col-span-full"/>
                 ) : selectedWork === 'website' ? (
