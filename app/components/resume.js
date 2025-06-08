@@ -49,7 +49,7 @@ const dropdownChild = {
     },
 };
 
-export default function Resume({ className = "", showNav }) {
+export default function Resume({ className = "" }) {
     const [timeNyc, setTimeNyc] = useState(null);
     const [timeSg, setTimeSg] = useState(null);
 
