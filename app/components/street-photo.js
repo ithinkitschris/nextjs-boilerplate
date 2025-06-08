@@ -1,4 +1,3 @@
-
 'use client'
 import * as motion from "framer-motion/client"
 import React from 'react';
@@ -21,7 +20,7 @@ show: {
 
 const StreetPhotography = ({className}) => {
   return (
-    <motion.div className={`grid grid-cols-6 md:pt-14 ${className}`}
+    <motion.div className={`grid grid-cols-6 md:pt-6 ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>

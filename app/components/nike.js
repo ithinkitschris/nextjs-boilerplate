@@ -50,7 +50,7 @@ useEffect(() => {
     return(
         
         <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
-            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-6 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -77,7 +77,7 @@ useEffect(() => {
 
                 {/* Subheader */}
                 <p className="text-xl md:text-3xl font-medium tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Social Media Campaign for Nike</p>
+                Social Media Campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>Nike</span></p>
 
             </motion.div> 
 

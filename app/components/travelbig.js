@@ -78,19 +78,18 @@ show: {
             variants={animateInChild}>
                 
                 {/* Desktop Header */}
-                <h1 className="sm:block text-7xl md:text-8xl text-center font-medium md:font-normal 
-                md:text-left tracking-tighter leading-tighter -ml-2">Travel Like Never Before</h1>
+                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">Travel Like Never Before</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0 md:text-[27px] -ml-1 text-center md:text-left">
-                Brand campaign for <span className='font-script -rotate-1 relative left-1.5 top-1'>Singapore Airlines</span></p>
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Brand campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>Singapore Airlines</span></p>
             </motion.div> 
 
             {/* Banner Video */}
             <motion.video 
             ref={bannerVideoRef}
             src="/travelbig/video.mp4" 
-            className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
+            className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
             autoPlay muted loop controls playsInline
             variants={animateInChild}
             poster='/poster/travelbigpage.jpeg'
@@ -99,13 +98,13 @@ show: {
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
-                <motion.div className="text-2xl lg:text-3xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                <motion.div className="text-2xl lg:text-3xl font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 A brand campaign for the recovery efforts of Singapore Airlines as travel restrictions lifted across the world in 2022. 
                 </motion.div>
             </div>
 
             {/* Project Details */}
-            <div className="flex flex-row col-span-full sm:col-span-2 px-8 sm:px-0 justify-between font-mono text-xs tracking-tight w-full">
+            <div className="flex flex-row col-span-full sm:col-span-2 px-8 sm:px-0 justify-between font-mono text-xs tracking-tight w-full mb-44">
                 <motion.div variants={animateInChild}>
                     Role
                     <ol className="mt-2 text-sm font-sans font-normal normal-case tracking-tight">

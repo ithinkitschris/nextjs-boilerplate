@@ -463,11 +463,11 @@ export default function Home(){
     <>
       <VideoProvider>
         {/* Entire Page column setup */}
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12
-        px-3 sm:px-4 2xl:px-6 text-sm max-w-9xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12 
+        px-3 sm:px-4 2xl:px-6 text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-screen mx-auto">
           
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-2 md:top-8 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen pr-6">
+          <div className="col-span-full fixed top-2 md:top-8 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen max-w-9xl pr-6">
 
               {/* Sidenav / Dropdown Button */}
               <motion.button 
@@ -492,7 +492,7 @@ export default function Home(){
 
               {/* Top Navbar Contents */}
               <motion.div
-              className={`flex flex-row items-center justify-center max-w-10xl gap-2 text-white z-40 ${showWork ? ' md:gap-3' : ' md:gap-1'}`}
+              className={`flex flex-row items-center justify-center gap-2 text-white z-40 ${showWork ? ' md:gap-3' : ' md:gap-1'}`}
               initial="hidden"
               animate="show"
               layout="position"
@@ -525,8 +525,6 @@ export default function Home(){
                   <span className="block md:hidden">Home</span>
                 </motion.button>
 
-
-
                 {/* Work Button */}
                 <div className='relative inline-flex group gap-1.5'>
 
@@ -549,34 +547,6 @@ export default function Home(){
                     <div>Work</div>
                   </motion.button>
                 </div>
-
-                {/* All Button */}
-                {/* <motion.button 
-                className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
-                    hover:border-black hover:bg-foreground dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
-                    ${['all', 'creative', 'edit', 'motion', 'photography', 'content', 'ixd'].some(tag => selectedTags.includes(tag))
-                    ? ' border-foreground dark:border-white text-foreground' 
-                    : ' text-black dark:text-white dark:border-white/0'
-                  }`}
-
-                whileHover={{scale:0.94}}
-                variants={animateInChild}
-                layout="position"
-                onClick={() => {
-                  if (window.matchMedia('(max-width: 640px)').matches) {
-                    toggleNav(true);
-                    } else {
-                      toggleTag('clear');
-                      toggleWork('clear');
-                      setSelectedTags(['all']);
-                      setShowNav(true);
-                    }
-                  }}>
-
-                  <span className="hidden md:block">Archive</span>
-                  <span className="block md:hidden">Work</span>
-                  
-                </motion.button> */}
 
                 {/* Desktop Navbar BG */}
                 <motion.div className='hidden md:flex items-center justify-center max-w-10xl w-screen fixed -z-10'>
@@ -751,8 +721,14 @@ export default function Home(){
                         }} 
                       whileHover={{ scale: 0.97 }} 
                       onClick={() => {
-                        setSelectedTags(['all']);
-                        setSelectedWork([]);
+                        toggleTag('clear');
+                        toggleWork('resume');
+                        setShowWork(false);
+                        setSelectedTags(['']);
+                        setShowNav(false);
+                        if (isMobile) {
+                          setShowNav(false);
+                        }
                         window.scrollTo({
                           top: 0,
                           behavior: 'smooth' // Enables smooth scrolling to the top
@@ -1383,7 +1359,7 @@ export default function Home(){
                 ) : selectedWork === 'ghibli' ? (
                   <Ghibli key="ghibli" className="col-span-full"/>
                 ) : selectedWork === 'cabin' ? (
-                  <CabinCrewStories key="cabin" className="col-span-full" isMobile={isMobile}/>
+                  <CabinCrewStories key="cabin" className="col-span-full md:px-2" isMobile={isMobile}/>
                 ) : selectedWork === 'cocktail' ? (
                   <Cocktail key="cocktail" className="col-span-full"/>
                 ) : selectedWork === 'kris' ? (

@@ -50,7 +50,7 @@ useEffect(() => {
     return(
         
         <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
-            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-6 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -78,7 +78,7 @@ useEffect(() => {
 
                 {/* Subheader */}
                 <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
-                Product Campaign for IKEA</p>
+                Product Campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>IKEA</span></p>
             </motion.div> 
 
             {/* Banner Video */}
@@ -131,7 +131,7 @@ useEffect(() => {
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm "></p>
-                <p className="mb-3">Utilising IKEA’s FLISAT doll house shelving and LILLABO toy figurines, a series of short films were created depicting 6 seemingly accidental yet disastrous home accidents.</p> 
+                <p className="mb-3">Utilising IKEA's FLISAT doll house shelving and LILLABO toy figurines, a series of short films were created depicting 6 seemingly accidental yet disastrous home accidents.</p> 
                 </motion.div>
             </div>
 

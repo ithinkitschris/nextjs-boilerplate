@@ -371,6 +371,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                 {/* Line */}
                 <div className="absolute h-[80%] w-[1px] bg-black/5 dark:bg-white/5 left-72 top-7"/>
                 
+                {/* Stories */}
                 <AnimatePresence mode="wait">
                     {showDesktopAI && (
                         <motion.div 
@@ -378,12 +379,12 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.1 }}
+                            transition={{ duration: 0.2 }}
                             key="ai-content"
                         >
                             <motion.div 
                                 className="col-span-1"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0 }}
                             >
@@ -401,7 +402,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
                             <motion.div 
                                 className="col-span-1"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0.1 }}
                             >
@@ -420,7 +421,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
                             <motion.div 
                                 className="col-span-2 text-sm"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0.2 }}
                             >
@@ -467,12 +468,12 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.1 }}
+                            transition={{ duration: 0.2 }}
                             key="short-content"
                         >
                             <motion.div 
                                 className="col-span-1"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0 }}
                             >
@@ -484,7 +485,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
                             <motion.div 
                                 className="col-span-1"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0.1 }}
                             >
@@ -496,7 +497,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
                             <motion.div 
                                 className="col-span-1"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0.2 }}
                             >
@@ -514,12 +515,12 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.1 }}
+                            transition={{ duration: 0.2 }}
                             key="long-content"
                         >
                             <motion.h1 
                                 className="text-xl font-medium tracking-tight col-span-full -ml-0.5"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0 }}
                             >
@@ -528,7 +529,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             
                             <motion.div 
                                 className="col-span-1"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0.1 }}
                             >
@@ -561,7 +562,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             
                             <motion.div 
                                 className="col-span-1"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0.15 }}
                             >
@@ -574,7 +575,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
                             <motion.div 
                                 className="col-span-1"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0.2 }}
                             >
@@ -586,7 +587,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
                             <motion.div 
                                 className="col-span-1"
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.2, delay: 0.3 }}
                             >
@@ -602,6 +603,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         </motion.div>
                     )}
                 </AnimatePresence>
+
             </motion.div>
 
             {/* Creative Direction */}
@@ -704,14 +706,14 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         variants={dropdown}>
                             <h1 className="mt-8 text-lg">Curriculum</h1>
                             <div className="">
-                                <p className="mt-4">Research Methodology</p>
+                                <p className="mt-4">Research Methodologies</p>
                                 <p>Service Design</p>
                                 <p>Inclusive Design</p>
                                 <p>UX Content Writing</p>
-                                <p>Framing User Experiences</p>
+                                <p>User Experience Design</p>
                                 <p>Programming <i>(C, Python, JavaScript)</i></p>
                                 <p>Human Interaction & Ergonomics</p>
-                                <p>Intellectual Property & the Law</p>
+                                <p>Intellectual Property</p>
                                 <p>Physical Computing</p>
                                 <p>Smart Objects</p>
                                 <p>Game Design</p>
@@ -719,13 +721,8 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             </div>
 
                             <div className=" text-black/25 dark:text-white/25">
-                                <p className="mt-0">Inclusive Design II</p>
-                                <p>Spatial Computing</p>
-                                <p>Advanced Fundamentals of UX</p>
-                                <p>Professional Practices</p>
-                                <p>Digital Accessibility</p>
+                            <p className="mt-0">Spatial Computing</p>
                                 <p>Design for Cities</p>
-                                <p>Prototyping Narratives</p>
                                 <p>Thesis</p>
                             </div>
                         </motion.div>
@@ -753,7 +750,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         <div className="cursor-pointer" onClick={toggleAsm}>
 
                             {/* Button Row */}
-                            <div className="flex justify-between mt-0">
+                            <div className="flex justify-between">
                                 <div 
                                 className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-all duration-200 md:group-hover:bg-foreground md:group-hover:text-background
                                 rounded-full tracking-tight font-medium text-sm w-[104px] mb-2  whitespace-nowrap ${showAsm ? 'bg-foreground text-background scale-96' : ''}`}>
@@ -772,11 +769,10 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                                 </div>
                             </div> 
 
-                            <p>Marina Bay Sands <i>(ArtScience Museum)</i></p>
+                            <p className="">Marina Bay Sands <i>(ArtScience Museum)</i></p>
                             <p className="-ml-0.5 italic opacity-75">January 2024 – November 2024</p>
 
                         </div>
-
                     </div>
 
                     { showAsm && (
@@ -786,7 +782,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         animate="show"
                         layout="position"
                         variants={dropdown}>
-                            <h1 className="mt-8 md:mt-8 text-lg">
+                            <h1 className="mt-8 md:mt-12 text-lg">
                             ArtScience Museum</h1>
 
                             <motion.div variants={dropdownChild}>

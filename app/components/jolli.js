@@ -50,7 +50,7 @@ useEffect(() => {
     return(
         
         <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
-            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-6 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -73,12 +73,11 @@ useEffect(() => {
             variants={animateInChild}>
                 
 
-                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
-                md:text-left tracking-tighter leading-tighter -ml-2">JolliEverAfter</h1>
+                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">JolliEverAfter</h1>
 
                 {/* Subheader */}
                 <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Social Media Campaign for <span className='font-script -rotate-1 relative left-0.5 top-1'>Jollibee</span></p>
+                Social Media Campaign for <span className='relative font-script left-2 top-1 text-[17pt]'>Jollibee</span></p>
             </motion.div> 
 
             {/* Banner Video */}
@@ -149,7 +148,7 @@ useEffect(() => {
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm "></p>
-                <p className="mb-3">The result is a story of infinite possibilities and storylines strung together by everyone’s own interpretation. </p> 
+                <p className="mb-3">The result is a story of infinite possibilities and storylines strung together by everyone's own interpretation. </p> 
                 </motion.div>
             </div>
 

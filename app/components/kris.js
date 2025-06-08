@@ -54,7 +54,7 @@ show: {
 
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen md:pt-14
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen md:pt-6
             sm:gap-3 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
@@ -83,14 +83,14 @@ show: {
 
                 {/* Subheader */}
                 <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
-                Brand campaign for Singapore Airlines</p>
+                Brand campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>Singapore Airlines</span></p>
             </motion.div> 
 
             {/* Banner Video */}
             <motion.video 
             ref={bannerVideoRef}
             src="/Kris/video_1.mp4" 
-            className="col-span-full shadow-standard rounded-lg w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
+            className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
             autoPlay muted loop controls playsInline loading="lazy"
             variants={animateInChild}
             poster='/poster/krispage.jpeg'
@@ -152,7 +152,7 @@ show: {
                 <Image
                     src="/Kris/1.jpg"
                     alt=""
-                    className="rounded-lg col-span-3 object-cover"
+                    className="rounded-3xl col-span-3 object-cover"
                     layout="responsive"
                     width={50}
                     height={10}
@@ -162,7 +162,7 @@ show: {
                     <Image
                         src="/Kris/2.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-3xl object-cover"
                         layout="responsive"
                         width={50}
                         height={50}
@@ -174,7 +174,7 @@ show: {
                         <Image
                         src="/Kris/3.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={500}
                         height={500}
@@ -184,7 +184,7 @@ show: {
                         <Image
                         src="/Kris/4.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={500}
                         height={500}
@@ -197,7 +197,7 @@ show: {
                         <Image
                         src="/Kris/5.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={50}
                         height={50}
@@ -207,7 +207,7 @@ show: {
                         <Image
                         src="/Kris/6.jpg"
                         alt=""
-                        className="rounded-lg object-cover"
+                        className="rounded-2xl object-cover"
                         layout="responsive"
                         width={50}
                         height={50}

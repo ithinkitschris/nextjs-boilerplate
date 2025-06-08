@@ -20,52 +20,14 @@ show: {
     }
 }
 
-const backgroundGlowRef=useRef(null);
-const bannerVideoRef=useRef(null);
-
-useEffect(() => {
-    const backgroundGlow = backgroundGlowRef.current;
-    const bannerVideo = bannerVideoRef.current;
-
-    if (backgroundGlow && bannerVideo) {
-      // Ensure both videos start together
-      backgroundGlow.play();
-      bannerVideo.play();
-
-      // Synchronize the videos periodically
-      const syncVideos = () => {
-        if (Math.abs(backgroundGlow.currentTime - bannerVideo.currentTime) > 0.2) {
-          bannerVideo.currentTime = backgroundGlow.currentTime;
-        }
-      };
-
-      // Set an interval to check and sync the videos every 100ms
-      const syncInterval = setInterval(syncVideos, 100);
-
-      // Clean up the interval on component unmount
-      return () => clearInterval(syncInterval);
-    }
-  }, []);
     
-    return(
-        
+return(
         <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
-            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-6 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
 
-            {/* Background Glow */}
-            <video 
-            ref={backgroundGlowRef}
-            src="/uniqlo1/video.mp4" 
-            className="absolute mt-20 w-screen h-screen/1.2 object-cover rounded-full -z-10 
-            opacity-0 dark:opacity-50 -ml-4 blur-3xl saturate-200"
-            autoPlay 
-            muted 
-            loop controls
-            playsInline
-            ></video>
             
             {/* Header */}
             <motion.div 
@@ -73,10 +35,10 @@ useEffect(() => {
             variants={animateInChild}>
                 
 
-                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
-                md:text-left tracking-tighter leading-tighter -ml-2">3D Motion Explorations</h1>
+                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">3D Motion Explorations</h1>
 
             </motion.div> 
+
             {/* Blurb */}
             <div className="col-span-full sm:col-span-5 lg:mr-16">
                 <motion.div className="text-2xl lg:text-4xl lg:w-5/6 font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
@@ -144,7 +106,7 @@ useEffect(() => {
             </div>
             
             {/* Blue Glass */}
-            <div className='col-span-full grid grid-cols-2 md:grid-cols-8 gap-1.5 lg:gap-2 md:mt-20'>
+            <div className='col-span-full grid grid-cols-2 md:grid-cols-8 gap-1.5 lg:gap-2'>
 
                 <div className='col-span-1 md:col-span-2 rounded-2xl'>
                     <video
@@ -177,7 +139,7 @@ useEffect(() => {
             </div>
             
             {/* Bronze Statue */}
-            <div className='col-span-full grid grid-cols-2 md:grid-cols-8 gap-1.5 lg:gap-2 md:mt-20'>
+            <div className='col-span-full grid grid-cols-2 md:grid-cols-8 gap-1.5 lg:gap-2'>
 
                 <img src='/3dpersonal/statue0.jpeg' className='w-full h-full object-cover col-span-2 rounded-2xl'/>
                 <img src='/3dpersonal/statue1.jpeg' className='w-full col-span-2 rounded-2xl'/>
@@ -190,18 +152,16 @@ useEffect(() => {
             </div>
 
             {/* Lady Statue */}
-            <div className='col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 lg:gap-2 md:mt-20'>
+            <div className='col-span-full grid grid-cols-2 md:grid-cols-6 gap-1.5 lg:gap-2'>
 
                 <img src='/3dpersonal/statue5.jpeg' className='w-full h-full object-cover col-span-1 md:col-span-2 rounded-2xl'/>
                 <img src='/3dpersonal/statue3.jpeg' className='w-full col-span-1 md:col-span-2 rounded-2xl'/>
                 <img src='/3dpersonal/statue4.jpeg' className='w-full h-full object-cover col-span-2 rounded-2xl'/>
 
-            </div>
-
-            
+            </div> 
 
             {/* Sphere */}
-            <div className='col-span-full grid grid-cols-4 md:grid-cols-8 gap-1.5 lg:gap-2 md:mt-20'>
+            <div className='col-span-full grid grid-cols-4 md:grid-cols-8 gap-1.5 lg:gap-2'>
 
                 <div className='col-span-2 rounded-2xl'>
                     <video

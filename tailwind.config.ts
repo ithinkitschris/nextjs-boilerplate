@@ -30,6 +30,7 @@ const config: Config = {
         '8xl' : '96rem',
         '9xl' : '120rem',
         '10xl' : '144rem',
+        'screen-2.5xl': '1850px',
       },
       borderWidth: {
         1: '1px',

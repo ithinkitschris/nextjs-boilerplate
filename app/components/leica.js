@@ -23,8 +23,8 @@ show: {
     
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 md:pt-14
-            sm:gap-3 max-w-full -mt-8 font-[family-name:var(--font-geist-sans)] ${className}`}
+        <motion.div className={`grid grid-cols-6 gap-2 md:pt-6
+            max-w-full -mt-8 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -38,7 +38,6 @@ show: {
                 md:text-left tracking-tighter leading-tighter -ml-2">Leica M10-P</h1>
             </motion.div> 
 
-
             {/* Blurb */}
             <div className="col-span-full sm:col-span-5 lg:mr-16">
                 <motion.div className="text-2xl lg:text-4xl lg:w-5/6 font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
@@ -46,7 +45,7 @@ show: {
                 </motion.div>
             </div>
 
-            <div className='col-span-full grid grid-cols-3 md:grid-cols-6 gap-1.5 md:gap-3 md:mt-20'>
+            <div className='col-span-full grid grid-cols-3 md:grid-cols-6 gap-1.5 md:gap-3 md:mt-20 mb-1'>
                 <motion.video src="/leica/4.mp4" 
                 className="col-span-1 md:col-span-2 shadow-standard rounded-[20pt] w-full lg:w-full lg:h-full object-cover md:mb-12"
                 autoPlay muted loop playsInline
@@ -75,7 +74,7 @@ show: {
                 </motion.video>
             </div>
 
-            <div className='col-span-full grid grid-cols-4 md:grid-cols-9 gap-1.5 md:gap-2 mb-20'>
+            <div className='col-span-full grid grid-cols-4 md:grid-cols-9 gap-1.5 md:gap-3 mb-20'>
 
                 <motion.img src='/leica/3.png' className='col-span-2 md:col-span-3 shadow-standard rounded-[20pt] object-cover w-full'/>
                 <motion.img src='/leica/4.png' className='col-span-2 md:col-span-3 shadow-standard rounded-[20pt] object-cover w-full'/>

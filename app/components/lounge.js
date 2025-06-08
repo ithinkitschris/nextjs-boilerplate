@@ -54,7 +54,7 @@ show: {
 
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen md:pt-14
+        <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen md:pt-6
             sm:gap-3 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
@@ -83,7 +83,7 @@ show: {
 
                 {/* Subheader */}
                 <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
-                Brand campaign for Singapore Airlines</p>
+                Brand campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>Singapore Airlines</span></p>
             
             </motion.div> 
 

@@ -23,7 +23,7 @@ show: {
     
     return(
         
-        <motion.div className={`grid grid-cols-6 gap-2 md:pt-14
+        <motion.div className={`grid grid-cols-6 gap-2 md:pt-6
             sm:gap-3 max-w-full -mt-8 font-[family-name:var(--font-geist-sans)] ${className}`}
         initial="hidden"
         animate="show"
@@ -33,8 +33,7 @@ show: {
             <motion.div 
             className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
             variants={animateInChild}>
-                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
-                md:text-left tracking-tighter leading-tighter -ml-2">iPhone 15 Pro</h1>
+                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">iPhone 15 Pro</h1>
             </motion.div> 
 
 
@@ -107,7 +106,7 @@ show: {
                 </motion.video>
             </div>
 
-            <div className='col-span-full grid grid-cols-4 md:grid-cols-8 gap-1.5 md:gap-2 mb-20'>
+            <div className='col-span-full grid grid-cols-4 md:grid-cols-8 gap-1.5 md:gap-3 mb-20'>
 
                 <motion.video src="/iphone/3.mp4" 
                 className="col-span-2 shadow-standard rounded-[20pt] w-full lg:w-full lg:h-full object-cover md:mb-12"

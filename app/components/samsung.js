@@ -50,7 +50,7 @@ useEffect(() => {
     return(
         
         <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
-            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-6 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -73,12 +73,11 @@ useEffect(() => {
             variants={animateInChild}>
                 
 
-                <h1 className=" text-[65px] md:text-8xl text-center font-medium md:font-normal 
-                md:text-left tracking-tighter leading-tighter -ml-2">Samsung Lifestyle Displays</h1>
+                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">Samsung Lifestyle Displays</h1>
 
                 {/* Subheader */}
                 <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
-                Motion Design for Samsung</p>
+                Motion Design for <span className='relative font-script left-2 top-1 text-[18pt]'>Samsung</span></p>
             </motion.div> 
 
             {/* Banner Video */}
@@ -126,7 +125,7 @@ useEffect(() => {
 
             <div className="col-span-full mb-3 md:mb-8 mt-20">
                 <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium mt-28 mb-4">CES 2020</h1>
-                <h2 className='font-medium tracking-tight w-full text-center md:text-left hidden md:block'>On site social coverage of Samsung’s Visual display’s new releases and technology at CES 2020 in Las Vegas.</h2>
+                <h2 className='font-medium tracking-tight w-full text-center md:text-left hidden md:block'>On site social coverage of Samsung's Visual display's new releases and technology at CES 2020 in Las Vegas.</h2>
                 <h2 className='font-medium tracking-tight w-full text-center md:text-left hidden md:block'>Content produced involved short form video series distributed on Facebook and Instagram feed, day to day event coverage on Instagram stories and long form event recap videos for Youtube.</h2>
             </div>
 

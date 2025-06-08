@@ -77,14 +77,13 @@ export default function Oneshow({ className = "" }) {
         variants={animateInChild}
       >
         <h1
-          className=" text-[65px] md:text-8xl text-center font-medium md:font-normal 
-                md:text-left tracking-tighter leading-tighter -ml-2"
+          className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2"
         >
-          TBWA One Show Shortlists
+          The One Show
         </h1>
 
         {/* Subheader */}
-        <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left font-script">
+        <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
           Social Media Post
         </p>
       </motion.div>
@@ -108,7 +107,7 @@ export default function Oneshow({ className = "" }) {
           className="text-2xl lg:text-4xl lg:w-5/6 font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0"
           variants={animateInChild}
         >
-          A simple 3D animation for the announcement of TBWA\ Singapore’s One
+          A simple 3D animation for the announcement of TBWA\ Singapore's One
           Show shortlists across their social media platforms.
         </motion.div>
       </div>

@@ -67,7 +67,7 @@ const modernLine = localFont({
 
 export default function RootLayout({ children }) {
 
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [changelog, setChangelog] = useState(false);
   const changelogRef = useRef(null);
   const footerRef = useRef(null);
@@ -106,7 +106,7 @@ const toggleDarkMode = () => {
     <html className={isDarkMode ? "dark" : ""}>
       <body className={`
       ${geistSans.variable} 
-      ${geistMono.variable} 
+   
       ${modernLine.variable} 
       ${breathing.variable}
       antialiased flex flex-col min-h-screen font-sans
@@ -117,9 +117,11 @@ const toggleDarkMode = () => {
         <div className={`${changelog ? 'backdrop-blur-md md:backdrop-blur-lg' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
 
         {/* <Dark Mode Button/> */}
-        <div className="fixed left-4 md:left-auto md:right-8 top-3 md:top-6 z-50">
-          <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
-        </div>   
+        <div className="fixed left-1/2 -translate-x-1/2 w-full max-w-9xl px-4 md:px-8 z-50">
+          <div className="absolute right-4 md:right-8 top-3 md:top-6 z-50">
+            <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
+          </div>   
+        </div>
 
         {/* Main */}
         <main>{children}</main>

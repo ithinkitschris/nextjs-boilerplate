@@ -73,12 +73,11 @@ useEffect(() => {
             variants={animateInChild}>
                 
 
-                <h1 className=" text-[65px] md:text-8xl text-center font-medium md:font-normal 
-                md:text-left tracking-tighter leading-tighter -ml-2">New Style Fresh Start</h1>
+                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">UNIQLO LifeWear</h1>
 
                 {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Motion Design for<span className='font-script -rotate-1 relative left-2 top-1'>Uniqlo</span></p>
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Motion Design for<span className='relative font-script left-2 top-1 text-[18pt]'>Uniqlo</span></p>
             </motion.div> 
 
             {/* Mobile Banner Video */}

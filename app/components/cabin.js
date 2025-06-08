@@ -55,7 +55,7 @@ show: {
     return(
         
         <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
-            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-14 ${className}`}
+            sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-6 ${className}`}
         initial="hidden"
         animate="show"
         variants={animateIn}>
@@ -78,14 +78,13 @@ show: {
             className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8"
             variants={animateInChild}>
                 {/* Mobile-only header */}
-                <h1 className="sm:hidden text-7xl text-center font-medium tracking-tighter leading-tighter -ml-2">Beyond<br/>The Cabin</h1>
+                <h1 className="block md:hidden text-7xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">Beyond<br/>The Cabin</h1>
                 {/* Desktop Header */}
-                <h1 className="hidden sm:block text-7xl md:text-8xl text-center font-medium md:font-medium 
-                md:text-left tracking-tighter leading-tighter -ml-2">Beyond The Cabin</h1>
+                <h1 className="hidden md:block text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">Beyond The Cabin</h1>
 
                 {/* Subheader */}
                 <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
-                Brand campaign for Singapore Airlines</p>
+                Brand campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>Singapore Airlines</span></p>
             </motion.div> 
 
             {/* Banner Video */}
@@ -137,7 +136,7 @@ show: {
             <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-8 md:gap-10 mt-10 mb-14 md:mr-7">
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-0 font-mono text-sm "></p>
-                    <p>Singapore Airlines Cabin Crew are commonly seen as being one-dimensional - from misconceptions of misogyny to them being just “servants of the cabin”. As part of the Welcome to World Class brand campaign, we wanted to dimensionalise Cabin Crew in their portrayals; as modern, informed and relatable travelers of the world outside of the cabin.</p>
+                    <p>Singapore Airlines Cabin Crew are commonly seen as being one-dimensional - from misconceptions of misogyny to them being just "servants of the cabin". As part of the Welcome to World Class brand campaign, we wanted to dimensionalise Cabin Crew in their portrayals; as modern, informed and relatable travelers of the world outside of the cabin.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
