@@ -155,7 +155,7 @@ const toggleDarkMode = () => {
               animate="show"
               variants={animateIn}>
 
-                <h1 className="font-medium text-xl text-foreground font-script">About this site</h1>
+                <h1 className="font-medium text-lg text-foreground tracking-tight mb-6">About this site</h1>
                 <p className="mt-2">Having being once told that my previous site on Squarespace was &apos;boy scout&apos; for someone who takes pride in his craft, this site was thus masochistically designed and coded from ground up with React and Next.js by yours truly.</p>
                 <p className="mt-4">As I have had little to no experience with web dev prior to this project, I also made a conscious decision to document every step of the process from the start to the first MVP iteration of this site–check it out if you happen to be curious on the process of creating a site from scratch with no prior knowledge.</p>
                 <a className="relative inline-flex mt-6 -ml-1.5 border-1 pl-2 px-1 py-0.5 rounded-full text-black dark:text-white border-black/25 dark:border-white/65 
@@ -177,7 +177,7 @@ const toggleDarkMode = () => {
                 </a>
 
                 {/* Last Updated */}
-                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 04.03.25 for the 228th time.</p>
+                <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on 06.08.25 for the 229th time.</p>
 
               </motion.div>
 
@@ -188,7 +188,7 @@ const toggleDarkMode = () => {
               animate="show"
               variants={animateInToDo}>
 
-                <h1 className="font-medium text-xl text-foreground font-script">To do:</h1>
+                <h1 className="font-medium text-lg text-foreground tracking-tight mb-6">To do:</h1>
                 <p className='mt-2 text-foreground font-medium text-xxs'>01</p>
                 <p className="">#ShotOniPhone photography album.</p>
                 <p className='mt-3.5 text-foreground font-medium text-xxs'>02</p>
@@ -211,13 +211,16 @@ const toggleDarkMode = () => {
               animate="show"
               variants={animateInChangelog}>
 
-              <h1 className="font-medium text-xl text-foreground font-script pt-1 col-span-2 mb-4 md:-mb-6">
-                Changelog <span className="text-xxs font-normal italic opacity-50 font-sans -ml-1">(version number based off git commits)</span>
+              <h1 className="font-medium text-lg text-foreground tracking-tight pt-1 col-span-2 mb-4 md:-mb-6">
+                Changelog <span className="text-xxs font-normal italic opacity-50 font-sans">(version number based off git commits)</span>
               </h1>
 
                 <div className="md:overflow-y-auto col-span-full md:col-span-1">
 
-                  <p className='mt-0 text-foreground font-medium'>v228 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
+                  <p className='mt-0 text-foreground font-medium'>v229 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
+                  <p>Removed some instances of script font across the site. Reduced size of headers in works page.</p>
+
+                  <p className='mt-4 text-foreground font-medium'>v228 <span className="ml-0.5 opacity-20 font-normal">(Desktop)</span></p>
                   <p>Fixed minor bugs, reduced size of the numbers of the three points about me, changed the font of who, what, and, from script to sans-serif.</p>
 
                   <p className='mt-4 text-foreground font-medium'>v227 <span className="ml-0.5 opacity-20 font-normal">(Mobile)</span></p>

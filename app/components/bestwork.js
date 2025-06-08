@@ -117,10 +117,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     </svg>
                 </button>
                 
-                <h1 className="text-6xl md:text-7xl -ml-1 font-medium tracking-tighter leading-tighter mb-1 mr-24">
+                <h1 className="text-6xl leading-tighter md:leading-tighter md:text-6xl font-medium tracking-tighter mb-3 break-words mr-0 hyphens-auto -ml-0.5">
                     Beyond The Cabin
                 </h1>
-                <h1 className="text-lg tracking-tight mt-2 mb-5">Brand Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Singapore Airlines</span></h1>
+                <h1 className="text-lg tracking-tight mt-2 mb-5">Brand Campaign for Singapore Airlines</h1>
                 <p className="mr-10 md:mb-4 md:w-3/4">
                     6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see
                     them on board, now follow their travels around the world.
@@ -195,7 +195,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                    Cocktail Conversations
                 </h1>
 
-                <h1 className="text-lg tracking-tight mt-2 mb-5">Brand Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Singapore Airlines</span></h1>
+                <h1 className="text-lg tracking-tight mt-2 mb-5">Brand Campaign for Singapore Airlines</h1>
                 <p className="mr-10 md:mb-4 md:mb-0">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -262,10 +262,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
+                <h1 className="text-6xl leading-tighter md:leading-tighter md:text-6xl font-medium tracking-tighter mb-3 break-words mr-0 hyphens-auto -ml-0.5">
                    The World of Studio Ghibli
                 </h1>
-                <h1 className="text-lg tracking-tight mt-2 mb-5">Marketing Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">ArtScience Museum</span></h1>
+                <h1 className="text-lg tracking-tight mt-2 mb-5">Marketing Campaign for ArtScience Museum</h1>
                 <p className="mr-10 md:mb-4 md:w-3/4">Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -332,10 +332,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl leading-tighter md:text-7xl font-medium tracking-tighter mb-3 mr-10">
+                <h1 className="text-6xl leading-tighter md:leading-tighter md:text-6xl font-medium tracking-tighter mb-3 break-words mr-0 hyphens-auto -ml-0.5">
                     Nike Athlete Stories: <span className="font-normal">Koy & Toon</span>
                 </h1>
-                <h1 className="text-lg tracking-tight mt-2 mb-5">Social Media Campaign for<span className="ml-1.5 text-xl font-script -rotate-1 relative top-1.5">Nike</span></h1>
+                <h1 className="text-lg tracking-tight mt-2 mb-5">Social Media Campaign for Nike</h1>
                 <p className="mr-10 md:mb-4 md:w-3/4">A set of Instagram Stories videos and a full film featuring Thai NIKE athletes Koy Ratchawin and Artiwara Kongmalai.</p>
                 <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -414,7 +414,7 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     <path d="M7 7h10v10" />
                     </svg>
                 </button>
-                <h1 className="text-6xl md:text-7xl font-medium tracking-tighter leading-tighter mb-3 -mr-2 ">
+                <h1 className="text-6xl leading-tighter md:leading-tighter md:text-6xl font-medium tracking-tighter mb-3 break-words mr-0 hyphens-auto -ml-0.5">
                    JolliEverAfter
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">Social Media Campaign for <span className="ml-1 [word-spacing:-0.05em] font-script -rotate-1">Jollibee</span></h1>

@@ -459,7 +459,7 @@ export default function Home(){
     <>
       <VideoProvider>
         {/* Entire Page column setup */}
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12 
         px-3 sm:px-4 2xl:px-6 text-sm max-w-10xl font-[family-name:var(--font-geist-sans)] w-screen mx-auto">
           
           {/* Top Navbar */}
