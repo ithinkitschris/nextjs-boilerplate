@@ -54,7 +54,7 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
             {/* Text */}
             <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
 
-                <h1 className="text-4.5xl group-hover:text-[40pt] font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-200">
+                <h1 className="text-4.5xl font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-200">
                     Digital
                 </h1>
 
@@ -108,7 +108,7 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
         <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/70 to-transparent rounded-t-lg"></div>
         <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
 
-            <h1 className="text-4.5xl group-hover:text-[40pt] font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-200">
+            <h1 className="text-4.5xl font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-200">
                 Film
             </h1>
             

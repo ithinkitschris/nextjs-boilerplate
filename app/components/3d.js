@@ -1,7 +1,7 @@
 // import { motion } from "framer-motion"
 'use client'
-import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
+import ProjectHeader from './common/ProjectHeader';
 
 export default function ThreeD({className=""}) {
 
@@ -28,16 +28,9 @@ return(
         animate="show"
         variants={animateIn}>
 
-            
-            {/* Header */}
-            <motion.div 
-            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
-            variants={animateInChild}>
-                
-
-                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">3D Motion Explorations</h1>
-
-            </motion.div> 
+            <ProjectHeader 
+                title="3D Motion Explorations"
+            />
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-5 lg:mr-16">

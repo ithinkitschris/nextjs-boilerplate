@@ -2,6 +2,7 @@
 'use client'
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
+import ProjectHeader from './common/ProjectHeader';
 
 export default function Jolli({className=""}) {
 
@@ -68,17 +69,11 @@ useEffect(() => {
             ></video>
             
             {/* Header */}
-            <motion.div 
-            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
-            variants={animateInChild}>
-                
-
-                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">JolliEverAfter</h1>
-
-                {/* Subheader */}
-                <p className="text-xl md:text-3xl font-base tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
-                Social Media Campaign for <span className='relative font-script left-2 top-1 text-[17pt]'>Jollibee</span></p>
-            </motion.div> 
+            <ProjectHeader 
+                title="JolliEverAfter"
+                subtitle="Social Media Campaign for"
+                subtitleBrand="Jollibee"
+            />
 
             {/* Banner Video */}
             <motion.video src="/jollieverafter/teaser1.mp4" 

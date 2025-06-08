@@ -236,7 +236,7 @@ const Film = ({className}) => {
         {/* Two Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2 mb-24">
             <motion.img
-                src="/Photography/film/london4.jpg"
+                src="/Photography/film/stanford1.jpg"
                 alt="Description of Image 2"
                 className="col-span-full md:col-span-3 h-auto w-full object-cover rounded-2xl"
                 variants={animateInChild}

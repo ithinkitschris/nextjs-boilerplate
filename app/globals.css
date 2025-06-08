@@ -57,3 +57,7 @@ video {
 .no-scrollbar {
   scrollbar-width: none; /* Firefox */
 }
+
+.will-change-transform {
+  transform: translateZ(0);
+}
