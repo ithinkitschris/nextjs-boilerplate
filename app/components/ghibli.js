@@ -3,7 +3,6 @@
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
 import Image from 'next/image';
-import ProjectHeader from './common/ProjectHeader';
 
 export default function Ghibli({className=""}) {
 
@@ -72,11 +71,16 @@ const animateIn ={
                 ></video>
                 
                 {/* Header */}
-                <ProjectHeader 
-                title="The World of Studio Ghibli"
-                subtitle="Marketing campaign for"
-                subtitleBrand="ArtScience Museum"
-                />
+                <motion.div 
+                className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
+                variants={animateInChild}>
+                    
+                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">The World of Studio Ghibli</h1>
+
+                {/* Subheader */}
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Marketing Campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>ArtScience Museum</span></p>
+                </motion.div> 
 
                 {/* Banner Video */}
                 <motion.video 

@@ -2,7 +2,6 @@
 "use client";
 import { useEffect, useRef } from "react";
 import * as motion from "framer-motion/client";
-import ProjectHeader from './common/ProjectHeader';
 
 export default function Oneshow({ className = "" }) {
   const animateIn = {
@@ -72,10 +71,22 @@ export default function Oneshow({ className = "" }) {
         playsInline
       ></video>
 
-      <ProjectHeader 
-        title="TBWA One Show Shortlist"
-        subtitle="Social Media Post"
-      />
+      {/* Header */}
+      <motion.div
+        className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
+        variants={animateInChild}
+      >
+        <h1
+          className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2"
+        >
+          The One Show
+        </h1>
+
+        {/* Subheader */}
+        <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+          Social Media Post
+        </p>
+      </motion.div>
 
       {/* Banner Video */}
       <motion.video
@@ -93,7 +104,7 @@ export default function Oneshow({ className = "" }) {
       {/* Blurb */}
       <div className="col-span-full sm:col-span-4 lg:mr-16 ">
         <motion.div
-          className="text-2xl lg:text-4xl lg:w-5/6 font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0"
+          className="text-2xl lg:text-4xl lg:w-5/6 font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0"
           variants={animateInChild}
         >
           A simple 3D animation for the announcement of TBWA\ Singapore's One

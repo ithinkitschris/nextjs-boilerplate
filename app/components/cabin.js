@@ -3,7 +3,6 @@
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
 import Episodes from "@/app/components/episodes-cabin.js";
-import ProjectHeader from './common/ProjectHeader';
 
 export default function CabinCrewStories({className="", isMobile}) {
     
@@ -75,11 +74,18 @@ show: {
             ></video>
             
             {/* Header */}
-            <ProjectHeader 
-                title="Beyond The Cabin"
-                subtitle="Brand campaign for"
-                subtitleBrand="Singapore Airlines"
-            />
+            <motion.div 
+            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8"
+            variants={animateInChild}>
+                {/* Mobile-only header */}
+                <h1 className="block md:hidden text-7xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">Beyond<br/>The Cabin</h1>
+                {/* Desktop Header */}
+                <h1 className="hidden md:block text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">Beyond The Cabin</h1>
+
+                {/* Subheader */}
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Brand campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>Singapore Airlines</span></p>
+            </motion.div> 
 
             {/* Banner Video */}
             <motion.video 

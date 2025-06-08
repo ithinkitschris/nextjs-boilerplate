@@ -2,7 +2,6 @@
 'use client'
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
-import ProjectHeader from './common/ProjectHeader';
 
 export default function ISpy({className=""}) {
 
@@ -69,11 +68,18 @@ useEffect(() => {
             ></video>
             
             {/* Header */}
-            <ProjectHeader 
-                title="I Spy in the Sky..."
-                subtitle="Content series for"
-                subtitleBrand="Singapore Airlines"
-            />
+            <motion.div 
+            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
+            variants={animateInChild}>
+                
+
+                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
+                md:text-left tracking-tighter leading-tighter -ml-2 mb-2">I Spy in the Sky...</h1>
+
+                {/* Subheader */}
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                Content Series for <span className='relative font-script left-2 top-1 text-[18pt]'>Singapore Airlines</span></p>
+            </motion.div> 
 
             {/* Banner Video */}
             <motion.video src="/ispy/1.mp4" 

@@ -2,7 +2,6 @@
 'use client'
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
-import ProjectHeader from './common/ProjectHeader';
 
 export default function Uniqlo1({className=""}) {
 
@@ -68,11 +67,18 @@ useEffect(() => {
             playsInline
             ></video>
             
-            <ProjectHeader 
-                title="Your Stage Now Live"
-                subtitle="In-Store Displays for"
-                subtitleBrand="Uniqlo"
-            />
+            {/* Header */}
+            <motion.div 
+            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
+            variants={animateInChild}>
+                
+
+                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">UNIQLO LifeWear</h1>
+
+                {/* Subheader */}
+                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+                In-Store Displays for<span className='relative font-script left-2 top-1 text-[18pt]'>Uniqlo</span></p>
+            </motion.div> 
 
             {/* Banner Video */}
             <motion.video src="/uniqlo1/video.mp4" 

@@ -2,7 +2,6 @@
 'use client'
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
-import ProjectHeader from './common/ProjectHeader';
 
 export default function Nike({className=""}) {
 
@@ -68,11 +67,19 @@ useEffect(() => {
             playsInline
             ></video>
             
-            <ProjectHeader 
-                title="Nike Athlete Stories: Koy & Toon"
-                subtitle="Social Media Campaign for"
-                subtitleBrand="Nike"
-            />  
+            {/* Header */}
+            <motion.div 
+            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
+            variants={animateInChild}>
+
+                <h1 className="hidden sm:block text-7xl md:text-8xl text-center font-medium md:font-medium 
+                md:text-left tracking-tighter leading-tighter -ml-2">Nike Athlete Stories: Koy & Toon</h1>
+
+                {/* Subheader */}
+                <p className="text-xl md:text-3xl font-medium tracking-tight mt-4 md:mt-0.5 md:text-[27px] -ml-1 text-center md:text-left">
+                Social Media Campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>Nike</span></p>
+
+            </motion.div> 
 
             {/* Banner Video */}
             <motion.video src="/nike/trailer1.mp4" 

@@ -58,7 +58,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
     hidden: {opacity:0, x:-10},
     show: {
         opacity:1, x:0, 
-        transition: {duration:0.1, ease:"easeOut"},
+        transition: {staggerChildren: 0.02, duration:0.1, ease:"easeOut"},
     },
     fade: {
       opacity:0,
@@ -66,15 +66,11 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
     },
   };
   const animateInChild ={
-    hidden: {opacity:0, x:-100},
+    hidden: {opacity:0, x:-20},
     show: {
       opacity:1, x:0,
-      transition: {
-        type: "spring",
-        stiffness: 600, // Adjust for faster or slower animation
-        damping: 22, // Adjust for bounciness and smoothness
-      }
-    },
+      transition: {duration:0.25, ease:"easeOut"},
+      },
     fade: {
       opacity:0,
       transition: {duration: 0.5, ease: "easeOut"},
@@ -95,6 +91,10 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
+      transition: {
+        //when: "beforeChildren",
+        staggerChildren: 0.015, // Stagger the children
+      },
     },
     exit: { opacity: 0 },
   };
@@ -103,7 +103,9 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
     show: {
       opacity: 1,
       transition: {
-        delay: 0,
+        // delay: 0.05, // Delay to make Works fade in after Skillsets
+        when: "beforeChildren",
+        staggerChildren: 0.03,
       },
     },
     exit: { opacity: 0 },
@@ -165,7 +167,7 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
         {/* <div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15"/> */}
         
         {/* Square */}
-        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-[6%] drop-shadow-lg
+        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-2xl md:rounded-[5%] drop-shadow-lg
           ${selectedTags.includes('all') 
           ? `${isExpanded ? 'pt-[155%]' : 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100 bg-black/25'}`
           : 'pt-[150%]'}`}>
@@ -378,6 +380,23 @@ export default function Home(){
     return works.some((work) => selectedWork.includes(work));
   };
 
+  // const toggleTag = (tag) => {
+  //   if (tag === 'clear') {
+  //     setSelectedTags([]);
+  //   } else {
+  //     // Remove 'all' from the selectedTags array if it exists
+  //     const updatedTags = selectedTags.filter((t) => t !== 'all');
+
+  //     // Check if the tag is already in updatedTags
+  //     if (updatedTags.includes(tag)) {
+  //       // Remove the tag if it's already selected
+  //       setSelectedTags(updatedTags.filter((t) => t !== tag));
+  //     } else {
+  //       // Add the tag if it's not selected
+  //       setSelectedTags([...updatedTags, tag]);
+  //     }
+  //   }
+  // };
   const toggleShowWork = () => {
     setShowWork((prevState) => !prevState);
   }
@@ -743,8 +762,8 @@ export default function Home(){
                 layout="position"
                   transition={{
                   type: "spring",
-                  stiffness: 600, // Adjust for faster or slower animation
-                  damping: 14, // Adjust for bounciness and smoothness
+                  stiffness: 400, // Adjust for faster or slower animation
+                  damping: 17, // Adjust for bounciness and smoothness
                   }}
                 variants={skillContainer}>
 
@@ -846,8 +865,8 @@ export default function Home(){
                 layout="position"
                 transition={{
                   type: "spring",
-                  stiffness: 600, 
-                  damping: 12,
+                  stiffness: 400, 
+                  damping: 15,
                 }}
                 variants={worksContainer}
                 >
@@ -1189,13 +1208,13 @@ export default function Home(){
                     {/* BBH Profile Headshots */}
                     <motion.button 
                     className={`hover:text-foreground text-left mr-8
-                      ${includesWorks(['photography']) || selectedWork.includes(['bbh']) || hoveredWork ==='bbh' 
+                      ${includesWorks(['bbh']) || selectedWork.includes(['bbh']) || hoveredWork ==='bbh' 
                       ? 'text-foreground' 
                       : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
                     } transition-colors duration-100`}
                     whileHover={{scale:1.06}}
                     animate={{scale: 
-                      includesWorks(['photography']) || selectedWork.includes(['bbh']) ||
+                      includesWorks(['bbh']) || selectedWork.includes(['bbh']) ||
                       hoveredWork==='bbh' 
                       ? 1.02 : 1
                     }}
@@ -1254,22 +1273,7 @@ export default function Home(){
                     Personal
                   </motion.h1>
 
-                    {/* Content Creation */}
-                      <motion.button 
-                      className={`hover:text-foreground text-left md:mr-8
-                        ${selectedWork.includes('content') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
-                          : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'}`}
-                      whileHover={{scale:1.06}}
-                      animate={{scale: selectedWork.includes('content') ? 1.06 : 1}}
-                      variants={animateInChild}
-                      layout="position"
-                      onClick={() => {
-                        toggleTag('clear');
-                        setSelectedTags([]);
-                        toggleWork('content');}}>Content Creation
-                    </motion.button>
-
-                    {/* Digital Photography */}
+                    {/* Photography */}
                     <motion.button 
                     className={`hover:text-foreground text-left mr-8
                       ${includesWorks(['photography']) || selectedWork.includes(['street']) || hoveredWork ==='street' 
@@ -1285,25 +1289,7 @@ export default function Home(){
                     variants={animateInChild}
                     onClick={() => {
                       toggleTag('clear');
-                      toggleWork('street')}}>Digital Photography</motion.button>
-
-                    {/* Film Photography */}
-                    <motion.button 
-                    className={`hover:text-foreground text-left mr-8
-                      ${includesWorks(['photography']) || selectedWork.includes(['film']) || hoveredWork ==='film' 
-                      ? 'text-foreground' 
-                      : 'text-neutral-350 dark:text-neutral-500 dark:hover:text-foreground'
-                    } transition-colors duration-100`}
-                    whileHover={{scale:1.06}}
-                    animate={{scale: 
-                      includesWorks(['photography']) || selectedWork.includes(['film']) ||
-                      hoveredWork==='film' 
-                      ? 1.02 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('film')}}>Film Photography</motion.button>
+                      toggleWork('street')}}>Photography</motion.button>
 
                     {/* iPhone 15 Pro */}
                     <motion.button 
@@ -1370,7 +1356,7 @@ export default function Home(){
             className={`${showNav ? `col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8 -mx-12` : "col-span-full"}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
-            transition={{ type: "spring", stiffness: 600, damping: 25 }}  
+            transition={{ type: "spring", stiffness: 400, damping: 24 }}  
           > 
             {/* Grid / Page */}
             <motion.div 
