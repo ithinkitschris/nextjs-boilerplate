@@ -3,6 +3,7 @@
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
 import Image from 'next/image';
+import ProjectHeader from './common/ProjectHeader';
 
 export default function Kris({className="", isMobile}) {
     
@@ -73,18 +74,11 @@ show: {
             ></video>
             
             {/* Header */}
-            <motion.div 
-            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
-            variants={animateInChild}>
-                
-                {/* Desktop Header */}
-                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
-                md:text-left tracking-tighter leading-tighter -ml-2">Kris+ Brand Campaign</h1>
-
-                {/* Subheader */}
-                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
-                Brand campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>Singapore Airlines</span></p>
-            </motion.div> 
+            <ProjectHeader 
+                title="Kris+ Brand Campaign"
+                subtitle="Brand campaign for"
+                subtitleBrand="Singapore Airlines"
+            />
 
             {/* Banner Video */}
             <motion.video 
@@ -99,7 +93,7 @@ show: {
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
-                <motion.div className="text-2xl lg:text-3xl font-base tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
+                <motion.div className="text-2xl lg:text-3xl font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
                 With the Kris+ app, you’re one tap away from everything. 
                 One tap away from the plus side of life.
                 One tap away from a getaway.

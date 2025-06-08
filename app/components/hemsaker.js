@@ -2,6 +2,7 @@
 'use client'
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
+import ProjectHeader from './common/ProjectHeader';
 
 export default function Hemsaker({className=""}) {
 
@@ -67,19 +68,11 @@ useEffect(() => {
             playsInline
             ></video>
             
-            {/* Header */}
-            <motion.div 
-            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
-            variants={animateInChild}>
-                
-
-                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
-                md:text-left tracking-tighter leading-tighter -ml-2">Oops Happens</h1>
-
-                {/* Subheader */}
-                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
-                Product Campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>IKEA</span></p>
-            </motion.div> 
+            <ProjectHeader 
+                title="Oops Happens"
+                subtitle="Product campaign for"
+                subtitleBrand="IKEA"
+            />
 
             {/* Banner Video */}
             <motion.video src="/Hemsaker/video1_1.mp4" 

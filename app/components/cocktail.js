@@ -2,6 +2,7 @@
 'use client'
 import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
+import ProjectHeader from './common/ProjectHeader';
 
 export default function Cocktail({className=""}) {
 
@@ -52,7 +53,7 @@ useEffect(() => {
         <motion.div className={`grid grid-cols-6 gap-2 -mt-8 max-w-screen overflow-x-hidden
             sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-6 ${className}`}
         initial="hidden"
-        animate="show"
+        animate="show"          
         variants={animateIn}>
 
             {/* Background Glow */}
@@ -68,17 +69,11 @@ useEffect(() => {
             ></video>
             
             {/* Header */}
-            <motion.div 
-            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8 md:mb-8"
-            variants={animateInChild}>
-                
-
-                <h1 className="text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">Cocktail Conversations</h1>
-
-                {/* Subheader */}
-                <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
-                Brand campaign for <span className='relative font-script left-2 top-1 text-[18pt]'>Singapore Airlines</span></p>
-            </motion.div> 
+            <ProjectHeader 
+            title="Cocktail Conversations"
+            subtitle="Brand campaign for"
+            subtitleBrand="Singapore Airlines"
+            />
 
             {/* Banner Video */}
             <motion.video src="/Cocktail/montagelow.mp4" 

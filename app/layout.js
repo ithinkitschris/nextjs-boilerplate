@@ -67,7 +67,7 @@ const modernLine = localFont({
 
 export default function RootLayout({ children }) {
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [changelog, setChangelog] = useState(false);
   const changelogRef = useRef(null);
   const footerRef = useRef(null);
@@ -149,7 +149,7 @@ const toggleDarkMode = () => {
           <motion.div 
             ref={changelogRef}
             className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 left-0 inset-x-0 mx-auto z-50 rounded-2xl overflow-y-auto md:p-2 md:pt-4 no-scrollbar
-            h-[82.5%] md:h-[40%] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
+            h-[82.5%] md:h-[430px] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
 
               {/* About */}
               <motion.div className="p-6 mt-4 md:mt-0 md:mr-2 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background dark:bg-black/10 border-b-1 border-r-1 border-transparent 

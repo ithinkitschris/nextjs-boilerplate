@@ -1,7 +1,7 @@
 // import { motion } from "framer-motion"
 'use client'
-import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
+import ProjectHeader from './common/ProjectHeader';
 
 export default function Leica({className=""}) {
 
@@ -29,14 +29,9 @@ show: {
         animate="show"
         variants={animateIn}>
             
-            {/* Header */}
-            <motion.div 
-            className="tracking-tighter col-span-full mt-8 md:mt-6 mb-4"
-            variants={animateInChild}>
-                
-                <h1 className="text-7xl md:text-8xl text-center font-medium md:font-medium 
-                md:text-left tracking-tighter leading-tighter -ml-2">Leica M10-P</h1>
-            </motion.div> 
+            <ProjectHeader 
+                title="Leica M10-P"
+            />
 
             {/* Blurb */}
             <div className="col-span-full sm:col-span-5 lg:mr-16">
