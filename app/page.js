@@ -113,7 +113,6 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
     return typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches;
   };
 
-
   const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, selectedTags, poster }) => {
 
     const { expandedVideo, setExpandedVideo } = useVideoContext();
@@ -160,12 +159,9 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
           onClick();
         }
       }}>
-
-        {/* Line */}
-        {/* <div className="col-span-full ml-3 w-[90vw] h-[0.5px] bg-black/15 dark:bg-white/15"/> */}
         
         {/* Square */}
-        <div className={`md:pt-[100%] group relative overflow-hidden brightness-100 md:brightness-100 transition-all duration-300 mb-0.5 bg-background rounded-[6%] drop-shadow-lg
+        <div className={`md:pt-[60%] group relative overflow-hidden transition-all duration-300 mb-0.5 rounded-3xl drop-shadow-lg
           ${selectedTags.includes('all') 
           ? `${isExpanded ? 'pt-[155%]' : 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100 bg-black/25'}`
           : 'pt-[150%]'}`}>
@@ -174,12 +170,12 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
           <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-4 lg:gap-4">
 
             {/* Title of work */}
-            <h1 className={`tracking-tight font-medium -mt-1 md:mt-0 pl-2 md:pl-0 transition-all duration-300 z-50 break-words hyphens-auto 
-            w-5/6 md:w-3/4 md:leading-8 md:text-4xl md:opacity-0 md:group-hover:opacity-100 
-            ${selectedTags.includes('all') 
-            ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white text-5xl leading-11 p-2 ' : 'p-1 text-[18px] text-[#e9e9e9] dark:text-white md:group-hover:text-4xl md:group-hover:leading-8 dark:mix-blend-overlay md:dark:mix-blend-normal'}` 
-            : 'text-5xl p-3 text-[#e9e9e9] dark:text-white leading-tighter'}`}>
-              {title}
+            <h1 
+              className={`tracking-tight font-medium -m-1 transition-all duration-300 z-50 w-1/3 group-hover:w-2/3 drop-shadow-lg
+              ${selectedTags.includes('all') 
+              ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white p-2' : 'p-1 text-[18px] text-[#e9e9e9] dark:text-white md:group-hover:text-4xl'}` 
+              : 'p-3 text-[#e9e9e9] dark:text-white text-3xl group-hover:text-5xl leading-tighter'}`}>
+                {title}
             </h1>
 
             {/* Gradient */}
@@ -202,12 +198,6 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
               ? `${isExpanded ? 'text-white opacity-100' : 'text-[8px] text-white opacity-50'} w-5/6` 
               : 'text-xxs p-1.5 pl-2.5 md:pl-0 text-white w-full font-light'}`}>
               {subheader}</h3>
-
-              {/* Role */}
-              {/* <h3 className="hidden lg:block z-50 text-white text-sm tracking-tight opacity-0 group-hover:opacity-100
-              transition-all duration-300 leading-5 w-1/2">
-              {role}
-              </h3> */}
             </div>
           </div>
     
@@ -272,6 +262,8 @@ import {useVideoContext, VideoProvider} from './components/expandedGridContext.j
           </video>
 
         </div>
+
+        
         
       </motion.div>
     );
@@ -339,37 +331,6 @@ export default function Home(){
     }
   }, [isMobile]);
 
-  // const [touchStart, setTouchStart] = useState(0);
-  // const [touchEnd, setTouchEnd] = useState(0);
-
-  // const handleSwipe = () => {
-  //   if (touchStart - touchEnd > 60) {
-  //     // Swipe Left, IF prevWork is Resume, set All.
-  //     setSelectedWork((prevWork) => (prevWork === "resume" ? "all" : "resume"));
-  //   } else if (touchEnd - touchStart > 60) {
-  //     // Swipe Right, IF prevwork is All, set Resume.
-  //     setSelectedWork((prevWork) => (prevWork === "all" ? "resume" : "all"));
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const handleTouchStart = (e) => setTouchStart(e.touches[0].clientX);
-  //   const handleTouchEnd = (e) => {
-  //     setTouchEnd(e.changedTouches[0].clientX);
-  //     handleSwipe();
-  //   };
-
-  //   // Add event listeners
-  //   document.addEventListener("touchstart", handleTouchStart);
-  //   document.addEventListener("touchend", handleTouchEnd);
-
-  //   return () => {
-  //     // Cleanup event listeners
-  //     document.removeEventListener("touchstart", handleTouchStart);
-  //     document.removeEventListener("touchend", handleTouchEnd);
-  //   };
-  // }, [touchStart, touchEnd]);
-
   const includesTags = (tags) => {
     return tags.some((tag) => selectedTags.includes(tag));
   };
@@ -423,11 +384,6 @@ export default function Home(){
     } else {
       setShowReset(true); // Show Reset button for other cases
     }
-    console.log('selectedTags', selectedTags);
-    console.log('selectedWork:', selectedWork)
-    console.log('showReset:', showReset);
-    console.log('showNav', showNav);
-    console.log('showReset', showReset);
     
   }, [selectedTags, selectedWork]);
 
@@ -1374,7 +1330,7 @@ export default function Home(){
           > 
             {/* Grid / Page */}
             <motion.div 
-            className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-span-full md:gap-3 mt-4 md:mt-14 md:px-20
+            className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 col-span-full md:gap-3 mt-4 md:mt-14 md:px-20
             ${selectedTags.includes('creative') || selectedTags.includes('edit') || selectedTags.includes('motion') ? 'grid-cols-1 gap-2' : 'grid-cols-1 gap-1'}`}>
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
