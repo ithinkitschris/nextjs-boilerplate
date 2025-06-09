@@ -186,14 +186,13 @@ return (
               Precise turn-by-turn navigation within the New York City subway with Apple Maps, powered by Ultra-Wideband technology.
               </p>
 
-              <div className="col-span-3">
-                <div className="absolute bottom-5 -ml-1 gap-6 tracking-tight hidden 2xl:flex
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="font-semibold">Skills:</div>   
-                      <p>UX Research</p>
-                      <p>UI Design</p>
+                <div className="absolute bottom-5 -ml-1 gap-6 tracking-tight flex
+                  opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="font-semibold">Skills:</div>   
+                  <p>UX Research</p>
+                  <p>UI Design</p>
                 </div>
-              </div>
+              
 
             </div>
 
@@ -257,7 +256,9 @@ return (
               </p>
 
               <div className="col-span-3">
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight hidden 2xl:flex
+                
+
+                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="font-semibold">Skills:</div>   
                     <p>Ethnographic User Research</p>
@@ -331,7 +332,8 @@ return (
               </p>
 
               <div className="col-span-3">
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight hidden 2xl:flex
+
+                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="font-semibold">Skills:</div>   
                   <p>UI Design</p>

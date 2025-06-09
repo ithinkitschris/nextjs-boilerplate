@@ -189,13 +189,13 @@ return (
               </p>
 
               <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight hidden 2xl:flex
+                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
                   opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                   <div className="font-semibold">Role:</div>   
                   <p>Motion Designer</p>
                 </div>
 
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight hidden 2xl:flex
+                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
                   opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                   <div className="font-semibold mr-1">Skills:</div>   
                   <p>Motion Design</p>
@@ -268,13 +268,13 @@ return (
               </p>
 
               <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight hidden 2xl:flex
+                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
                   opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                   <div className="font-semibold">Role:</div>   
                   <p>Motion Designer</p>
                 </div>
 
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight hidden 2xl:flex
+                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
                   opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                   <div className="font-semibold mr-1">Skills:</div>   
                   <p>Motion Design</p>
@@ -348,13 +348,13 @@ return (
               </p>
 
               <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight hidden 2xl:flex
+                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
                   opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                   <div className="font-semibold">Role:</div>   
                   <p>Personal</p>
                 </div>
 
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight hidden 2xl:flex
+                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
                   opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                   <div className="font-semibold mr-1">Skills:</div>   
                   <p>3D Motion Design</p>
@@ -429,13 +429,13 @@ return (
               </p>
 
               <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight hidden 2xl:flex
+                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
                   opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                   <div className="font-semibold">Role:</div>   
                   <p>Motion Designer</p>
                 </div>
 
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight hidden 2xl:flex
+                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
                   opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                   <div className="font-semibold mr-1">Skills:</div>   
                   <p>Motion Design</p>

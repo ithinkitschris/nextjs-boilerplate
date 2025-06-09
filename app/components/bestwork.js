@@ -130,9 +130,13 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                         </p>
                     </div>
                     <div className="col-span-3">
-                        <div className="absolute top-14 flex-col gap-0 tracking-tight hidden 2xl:flex
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <p className="font-semibold">Role:</p>
+                        <div className="absolute top-14 flex-col gap-0 tracking-tight flex">
+                            <div className="font-semibold">Role:</div>   
+                            <p>Creative Direction</p>
+                        </div>
+
+                        <div className="absolute bottom-4 flex-row gap-6 tracking-tight flex">
+                            <div className="font-semibold mr-1">Skills:</div>   
                             <p>Creative Direction</p>
                             <p>Motion Design</p>
                             <p>Visual Design</p>
@@ -204,12 +208,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                     6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see
                     them on board, now follow their travels around the world.
                 </p>
-                <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
-                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="font-semibold">Role:</p>
+                <div className="absolute bottom-4 flex-row gap-6 tracking-tight flex">
+                    <div className="font-semibold">Role:</div>   
                     <p>Creative Direction</p>
-                    <p>Motion Design</p>
-                    <p>Visual Design</p>
                 </div>
                 </motion.div>
 
@@ -276,12 +277,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
 
                 <h1 className="text-base font-normal tracking-[-0.3pt] mt-3 mb-5">Brand Campaign for Singapore Airlines</h1>
                 <p className="mr-10 md:mb-4 md:mb-0">If there was a drink to match every personality, how would your bespoke cocktail look and taste like?</p>
-                <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
-                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p className=" font-semibold">Role:</p>
-                        <p>Creative Direction</p>
-                        <p>Motion Design</p>
-                        <p>Visual Design</p>
+                <div className="absolute bottom-4 flex-row gap-6 tracking-tight flex">
+                    <div className="font-semibold">Role:</div>   
+                    <p>Creative Direction</p>
                 </div>
                 </motion.div>
 
@@ -346,12 +344,9 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </h1>
                 <h1 className="text-base font-normal tracking-[-0.3pt] mt-3 mb-5">Marketing Campaign for ArtScience Museum</h1>
                 <p className="mr-10 md:mb-4 md:w-3/4">Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​</p>
-                <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
-                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p className=" font-semibold">Role:</p>
-                        <p className="">Creative Direction</p>
-                        <p className="">Motion Design</p>
-                        <p className="">Visual Design</p>
+                <div className="absolute bottom-4 flex-row gap-6 tracking-tight flex">
+                    <div className="font-semibold">Role:</div>   
+                    <p className="">Creative Direction</p>
                 </div>
                 </motion.div>
 
@@ -416,11 +411,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </h1>
                 <h1 className="text-base font-normal tracking-[-0.3pt] mt-3 mb-5">Social Media Campaign for Nike</h1>
                 <p className="mr-10 md:mb-4 md:w-3/4">A set of Instagram Stories videos and a full film featuring Thai NIKE athletes Koy Ratchawin and Artiwara Kongmalai.</p>
-                <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
-                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p className=" font-semibold">Role:</p>
-                        <p className="">Motion Design</p>
-                        <p className="">Video Editing</p>
+                <div className="absolute bottom-4 flex-row gap-6 tracking-tight flex">
+                    <div className="font-semibold">Role:</div>   
+                    <p className="">Motion Design</p>
+                    <p className="">Video Editing</p>
                 </div>
                 </motion.div>
 
@@ -497,12 +491,11 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                    JolliEverAfter
                 </h1>
                 <h1 className="text-base font-normal tracking-[-0.3pt] mt-3 mb-5">Social Media Campaign for Jollibee</h1>
-                <p className="mr-10 md:mb-4 md:w-3/4">An interactive social media campaign that brought Jollibee’s annual Kwentong film to TikTok for the first time in 2020.</p>
-                <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
-                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p className=" font-semibold">Role:</p>
-                        <p className="">Motion Design</p>
-                        <p className="">Video Editing</p>
+                <p className="mr-10 md:mb-4 md:w-3/4">An interactive social media campaign that brought Jollibee's annual Kwentong film to TikTok for the first time in 2020.</p>
+                <div className="absolute bottom-4 flex-row gap-6 tracking-tight flex">
+                    <div className="font-semibold">Role:</div>   
+                    <p className="">Motion Design</p>
+                    <p className="">Video Editing</p>
                 </div>
                 </motion.div>
 
@@ -568,11 +561,10 @@ const BestWorkPage = ({className, setSelectedWork, setHoveredWork}) => {
                 </h1>
                 <h1 className="text-lg tracking-tight mt-2 mb-5">In-Store Displays for<span className="ml-1.5 text-xl font-script -rotate-1">Uniqlo</span></h1>
                 <p className="mr-10 mb-4 md:w-3/4">A set of In-Store Motion Graphics for the launch of the first Uniqlo Flagship store in Singapore at Orchard Central.</p>
-                <div className="absolute bottom-4 flex-row gap-6 tracking-tight hidden 2xl:flex
-                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p className=" font-semibold">Role:</p>
-                        <p className="">Motion Design</p>
-                        <p className="">Visual Design</p>
+                <div className="absolute bottom-4 flex-row gap-6 tracking-tight flex">
+                    <div className="font-semibold">Role:</div>   
+                    <p className="">Motion Design</p>
+                    <p className="">Visual Design</p>
                 </div>
                 </motion.div>
                 

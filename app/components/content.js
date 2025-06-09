@@ -1,8 +1,8 @@
-
 'use client'
 import { easeOut } from "framer-motion";
 import * as motion from "framer-motion/client"
 import React from 'react';
+import Video from './Video';
 
 
 const animateIn ={
@@ -87,15 +87,14 @@ const ContentPage = ({className}) => {
             </motion.div>
 
             <motion.div className="relative">
+                <Video 
+                    src="/content/ontheroadc43.mp4"
+                    className="rounded-2xl w-full h-auto object-cover"
+                    poster='/poster/content/c43.jpg'
+                    videoId="ontheroadc43"
+                    variants={animateInChild}
+                />
                 
-                <video 
-                src="/content/ontheroadc43.mp4" 
-                className=" rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/c43.jpg'
-                variants={animateInChild}>
-                </video>
-
                 {/* Gradient */}
                 <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
 
