@@ -118,7 +118,7 @@ const toggleDarkMode = () => {
             suppressHydrationWarning>
 
               {/* Backdrop Blur */}
-              <div className={`${changelog ? 'backdrop-blur-md md:backdrop-blur-lg' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
+              <div className={`${changelog ? 'bg-black/20 backdrop-blur' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
 
               {/* <Dark Mode Button/> */}
               <div className="fixed left-1/2 -translate-x-1/2 w-full max-w-9xl px-4 md:px-8 z-50">
@@ -157,7 +157,7 @@ const toggleDarkMode = () => {
 
                     {/* About */}
                     <motion.div className="p-6 mt-4 md:mt-0 md:mr-2 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background dark:bg-black/10 border-r-2 border-b-[3px] border-transparent 
-                    dark:border-white/15 md:dark:border-white/10 backdrop-blur-2xl rounded-3xl drop-shadow-md" 
+                    dark:border-white/15 md:dark:border-white/10 backdrop-blur-3xl rounded-3xl drop-shadow-md" 
                     initial="hidden"
                     animate="show"
                     variants={animateIn}>
@@ -191,7 +191,7 @@ const toggleDarkMode = () => {
 
                     {/* To Do */}
                     <motion.div className="p-6 mt-4 md:mt-0 md:ml-2 max-h-[100%] md:overflow-y-auto leading-[145%] bg-background dark:bg-black/10 border-r-2 border-b-[3px] border-transparent 
-                    dark:border-white/15 md:dark:border-white/10 backdrop-blur-2xl rounded-3xl drop-shadow-md" 
+                    dark:border-white/15 md:dark:border-white/10 backdrop-blur-3xl rounded-3xl drop-shadow-md" 
                     initial="hidden"
                     animate="show"
                     variants={animateInToDo}>
@@ -217,7 +217,7 @@ const toggleDarkMode = () => {
                     
                     {/* Changelog */}
                     <motion.div className="grid md:grid-cols-2 md:gap-10 md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background 
-                    dark:border-white/20 dark:bg-black/10 border-r-2 border-b-[3px] border-transparent md:dark:border-white/10 backdrop-blur-2xl rounded-3xl drop-shadow-md"
+                    dark:border-white/20 dark:bg-black/10 border-r-2 border-b-[3px] border-transparent md:dark:border-white/10 backdrop-blur-3xl rounded-3xl drop-shadow-md"
                     initial="hidden"
                     animate="show"
                     variants={animateInChangelog}>

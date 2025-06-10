@@ -11,6 +11,7 @@ import ProductPage from "./product";
 import { useExperienceState } from "../hooks/useExperienceState";
 import { animateInChild, dropdown, dropdownChild } from "../constants/animations";
 import ExperienceCard from './resume/ExperienceCard';
+import Currently from "./currently";
 
 export default function Resume({ className = "", setHoveredWork, toggleWork}) {
     const [timeNyc, setTimeNyc] = useState(null);
@@ -247,7 +248,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             </div>
 
             {/* Header */}
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] mt-36 ml-6 mb-3 col-span-full leading-[87%] w-2/3">Story time.</div>
+            <div className="font-medium tracking-[-2.7pt] text-[58pt] mt-48 ml-6 mb-3 col-span-full leading-[87%] w-2/3">Story time.</div>
 
             {/* Story Container */}
             <motion.div 
@@ -485,8 +486,14 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                 </AnimatePresence>
             </motion.div>
 
+            {/* Currently */}
+            <div key="currently-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-52 mb-1 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 ml-4 px-2
+            p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">June 2025</div>
+            <div key="currently-title" className="font-medium tracking-[-2.5pt] text-[52pt] mb-4 col-span-full leading-[87%] w-5/6 ml-5">Everything I've been up to lately:</div>
+            <Currently className='col-span-full -mt-12' key='currently' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+
             {/* Creative Direction */}
-            <div key="creative-direction-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-44 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 ml-6 px-2
+            <div key="creative-direction-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 ml-6 px-2
             p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">Creative Direction</div>
             <div key="creative-direction-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 mb-3 col-span-full leading-[87%] w-2/3 ml-8">The ones that had legs.</div>
             <BestWorkPage3 className='col-span-full -mt-12' key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
