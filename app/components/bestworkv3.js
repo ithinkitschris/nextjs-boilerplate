@@ -1,8 +1,9 @@
 'use client'
 
 import * as motion from "framer-motion/client"
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import SideContainer from './SideContainer';
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -48,16 +49,6 @@ const BestWorkPage3 = ({className, setHoveredWork, toggleWork}) => {
     });
     
     setActiveIndex(index);
-  };
-
-
-  const handleMouseEnter = (index) => {
-    const hoverTimer = setTimeout(() => {
-      scrollToIndex(index);
-    }, 200); // Increased delay to allow for hover transition to start
-    
-    // Store the timer ID so we can clear it if needed
-    return () => clearTimeout(hoverTimer);
   };
 
 return (
@@ -134,67 +125,18 @@ return (
               onClick={() => {
                 toggleWork('cabin')
               }}
-              className={`${hoveredIndex === 0 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative ${hoveredIndex === 0 ? 'scale-99' : ''}`}
+              className={`min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative ${hoveredIndex === 0 ? 'scale-99' : ''}`}
             >
             
-            {/* Gradient */}
-            {/* <div className="absolute top-0 left-0 right-0 bottom-0 rounded-3xl bg-gradient-to-b from-black/70 to-transparent h-[30%] group-hover:opacity-0 transition-all duration-300"/> */}
-            
-            
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[430px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
-
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                01
-              </button>
-
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-tighter mb-1 transition-all duration-300 -ml-1">
-                Beyond <br/> The Cabin
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Brand Campaign for Singapore Airlines
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[90%]">
-                6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world.
-              </p>
-
-              <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold">Role:</div>   
-                  <p>Art Director</p>
-                </div>
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold mr-1">Skills:</div>   
-                  <p>Creative Direction</p>
-                  <p>Motion + Graphic Design</p>
-                </div>
-              </div>
-
-            </div>
+            <SideContainer
+              number="01"
+              title="Beyond The Cabin"
+              subtitle="Brand Campaign for Singapore Airlines"
+              description="6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world."
+              role="Art Director"
+              skills={["Creative Direction", "Motion + Graphic Design"]}
+              hoverWidth="420px"
+            />
 
             {/* Video */}
             <video src="/CCS/bestworkmontage.mp4"
@@ -223,67 +165,19 @@ return (
               className={`${hoveredIndex === 1 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 1 ? 'scale-99' : ''}`}
             >
 
-            {/* Gradient */}
-            {/* <div className="absolute top-0 left-0 right-0 bottom-0 rounded-3xl bg-gradient-to-b from-black/70 to-transparent h-[30%] group-hover:opacity-0 transition-all duration-300"/> */}
-
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[440px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
-
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                02
-              </button>
-
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-  
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-[85%] group-hover:leading-12 mb-1 transition-all duration-300 -ml-1">
-                The World of <br/>Studio Ghibli
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Marketing Campaign for ArtScience Museum
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[360px]">
-              Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more.​
-              </p>
-
-              <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold">Role:</div>   
-                  <p>Creative Lead</p>
-                </div>
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold mr-1">Skills:</div>   
-                  <p>Creative Direction</p>
-                  <p>Graphic Design</p>
-                </div>
-              </div>
-
-            </div>
+            <SideContainer
+              number="02"
+              title="The World of Studio Ghibli"
+              subtitle="Marketing Campaign for ArtScience Museum"
+              description="Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more."
+              role="Creative Lead"
+              skills={["Creative Direction", "Graphic Design"]}
+              onExpand={() => toggleWork('ghibli')}
+              hoverWidth="440px"
+            />
 
             {/* Video */}
-            <video src="/Ghibli/banner.mp4"
+            <video src="/Ghibli/banner1.mp4"
               className="rounded-3xl w-full col-span-full h-[760px] object-cover"
               autoPlay
               muted
@@ -308,67 +202,20 @@ return (
               }}
               className={`${hoveredIndex === 2 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 2 ? 'scale-99' : ''}`}
             >
-
-            {/* Gradient */}
-            {/* <div className="absolute top-0 left-0 right-0 bottom-0 rounded-3xl bg-gradient-to-b from-black/70 to-transparent h-[30%] group-hover:opacity-0 transition-all duration-300"/> */}
             
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[460px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
-
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                03
-              </button>
-
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-[85%] group-hover:leading-12 mb-1 transition-all duration-300 -ml-1">
-                Cocktail<br/> Conversations
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Brand Campaign for Singapore Airlines
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[360px]">
-              If there was a drink to match every personality, how would your bespoke cocktail look and taste like?
-              </p>
-
-              <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold">Role:</div>   
-                  <p>Art Director</p>
-                </div>
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold mr-1">Skills:</div>   
-                  <p>Creative Direction</p>
-                  <p>Motion + Graphic Design</p>
-                </div>
-              </div>
-
-            </div>
+            <SideContainer
+              number="03"
+              title="Cocktail Conversations"
+              subtitle="Brand Campaign for Singapore Airlines"
+              description="If there was a drink to match every personality, how would your bespoke cocktail look and taste like?"
+              role="Art Director"
+              skills={["Creative Direction", "Motion + Graphic Design"]}
+              onExpand={() => toggleWork('cocktail')}
+              hoverWidth="460px"
+            />
 
             {/* Video */}
-            <video src="/Cocktail/bestworkmontage_1.mp4"
+            <video src="/Cocktail/cover2.mp4"
               className="rounded-3xl w-full col-span-full h-[760px] object-cover"
               autoPlay
               muted
@@ -393,63 +240,17 @@ return (
               }}
               className={`${hoveredIndex === 3 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 3 ? 'scale-99' : ''}`}
             >
-
-            {/* Gradient */}
-            {/* <div className="absolute top-0 left-0 right-0 bottom-0 rounded-3xl bg-gradient-to-b from-black/70 to-transparent h-[30%] group-hover:opacity-0 transition-all duration-300"/> */}
             
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[370px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
-
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                04
-              </button>
-
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-[85%] group-hover:leading-12 mb-1 transition-all duration-300 -ml-1">
-                Oops Happens
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Product Campaign for IKEA
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[280px]">
-              With HEMSÄKER home insurance, everything will be exactly as if it never happened.
-              </p>
-
-              <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold">Role:</div>   
-                  <p>Art Director</p>
-                </div>
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold mr-1">Skills:</div>   
-                  <p>Creative Direction</p>
-                </div>
-              </div>
-
-            </div>
+            <SideContainer
+              number="04"
+              title="Oops Happens"
+              subtitle="Product Campaign for IKEA"
+              description="With HEMSÄKER home insurance, everything will be exactly as if it never happened."
+              role="Art Director"
+              skills={["Creative Direction"]}
+              onExpand={() => toggleWork('hemsaker')}
+              hoverWidth="370px"
+            />
 
             {/* Video */}
             <video src="/Hemsaker/cover.mp4"
@@ -477,64 +278,17 @@ return (
               }}
               className={`${hoveredIndex === 4 ? 'min-w-[90%]' : 'min-w-[90%]'} snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 rounded-3xl transition-all cursor-pointer relative ${hoveredIndex === 3 ? 'scale-99' : ''}`}
             >
-
-            {/* Gradient */}
-            {/* <div className="absolute top-0 left-0 right-0 bottom-0 rounded-3xl bg-gradient-to-b from-black/70 to-transparent h-[30%] group-hover:opacity-0 transition-all duration-300"/> */}
             
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[420px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
-
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                05
-              </button>
-
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-[85%] group-hover:leading-12 mb-1 transition-all duration-300 -ml-1">
-                SilverKris Lounge
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Brand Campaign for Singapore Airlines
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[280px]">
-              If there was a drink to match every personality, how would your bespoke cocktail look and taste like?
-              </p>
-
-              <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold">Role:</div>   
-                  <p>Art Director</p>
-                </div>
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold mr-1">Skills:</div>   
-                  <p>Creative Direction</p>
-                  <p>Motion + Graphic Design</p>
-                </div>
-              </div>
-
-            </div>
+            <SideContainer
+              number="05"
+              title="SilverKris Lounge"
+              subtitle="Brand Campaign for Singapore Airlines"
+              description="If there was a drink to match every personality, how would your bespoke cocktail look and taste like?"
+              role="Art Director"
+              skills={["Creative Direction", "Motion + Graphic Design"]}
+              onExpand={() => toggleWork('lounge')}
+              hoverWidth="420px"
+            />
 
             {/* Video */}
             <video src="/lounge/montage.mp4"
@@ -550,9 +304,7 @@ return (
         
       </div>
     </motion.div>  
-
-    
-    
+ 
   );
 };
 

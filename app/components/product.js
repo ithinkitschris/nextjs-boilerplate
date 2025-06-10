@@ -3,6 +3,7 @@
 import * as motion from "framer-motion/client"
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import SideContainer from "./SideContainer";
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -148,57 +149,16 @@ return (
           className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
           >
             
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[420px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
+            <SideContainer
+              number="01"
+              title="Enhanced Subway Navigation with Apple Maps"
+              subtitle="UX Research + UI Design"
+              description="Precise turn-by-turn navigation within the New York City subway with Apple Maps, powered by Ultra-Wideband technology."
+              skills={["UX Research", "UI Design"]}
+              hoverWidth="420px"
+              hideTitle={true}
+            />
 
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                01
-              </button>
-
-              <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-              flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-              group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                  <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="2 2 20 20"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-4 h-4">
-                  <path d="M7 17L17 7" />
-                  <path d="M7 7h10v10" />
-                  </svg>
-              </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-tighter mb-1 transition-all duration-300 -ml-1">
-                Enhanced Subway Navigation with Apple Maps
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                UX Research + UI Design
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[90%]">
-              Precise turn-by-turn navigation within the New York City subway with Apple Maps, powered by Ultra-Wideband technology.
-              </p>
-
-                <div className="absolute bottom-5 -ml-1 gap-6 tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="font-semibold">Skills:</div>   
-                  <p>UX Research</p>
-                  <p>UI Design</p>
-                </div>
-              
-
-            </div>
-
-            {/* Video */}
-            {/* <img src="/subway/cover2.png"
-            className="rounded-3xl w-full col-span-full h-[760px] object-cover"/> */}
             <video src="/subway/cover.mp4"
               className="rounded-3xl w-full col-span-full h-[760px] object-cover"
               autoPlay
@@ -207,80 +167,10 @@ return (
               playsInline
               poster="/poster/cabinbest1.jpeg"/>
           </div>
-            
-          {/* Research */}
-          <div 
-          ref={(el) => (itemsRef.current[1] = el)}
-          
-          className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
-          >
-
-
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[440px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
-
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                02
-              </button>
-
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-  
-
-              <h1 className="text-4.5xl group-hover:text-5xl font-medium tracking-tighter leading-[85%] group-hover:leading-11 mb-1 transition-all duration-300 -ml-1 w-[80%]">
-                A study into Time Management techniques of College Students
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                User Research Methodologies
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[85%]">
-              If there was a drink to match every personality, how would your bespoke cocktail look and taste like?
-              </p>
-
-              <div className="col-span-3">
-                
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="font-semibold">Skills:</div>   
-                    <p>Ethnographic User Research</p>
-                    <p>Motion Design</p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Video */}
-            <video src="/wellnessco/cover.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster='/poster/ghibli.jpeg'/>
-          </div>
 
           {/* Website */}
           <div 
-          ref={(el) => (itemsRef.current[2] = el)}
+          ref={(el) => (itemsRef.current[1] = el)}
           onMouseEnter={() => {
             setHoveredWork("website");
           }}
@@ -292,70 +182,52 @@ return (
           }}
           className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
           >
-            
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[420px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
+            <SideContainer
+              number="02"
+              title="Literally this website."
+              subtitle="UI Design + Front-end Development"
+              description="The process of masochistically designing and coding this site from ground up with React and Next.js by yours truly."
+              skills={["UI Design", "Web Development"]}
+              hoverWidth="420px"
+            />
 
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                03
-              </button>
-
-              <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-              flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-              group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                  <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="2 2 20 20"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-4 h-4">
-                  <path d="M7 17L17 7" />
-                  <path d="M7 7h10v10" />
-                  </svg>
-              </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-tighter mb-1 transition-all duration-300 -ml-1">
-                Literally this website.
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                UI Design + Front-end Development
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[280px]">
-              The process of masochistically designing and coding this site from ground up with React and Next.js by yours truly.
-              </p>
-
-              <div className="col-span-3">
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="font-semibold">Skills:</div>   
-                  <p>UI Design</p>
-                  <p>Web Development</p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Video */}
-
-            <img src="/website/cover 2.png"
-            className="rounded-3xl w-full col-span-full h-[760px] object-cover"/>
-
-            {/* <video src="/website/cover_1.mp4"
+            <video src="/website/cover.mp4"
               className="rounded-3xl w-full col-span-full h-[760px] object-cover"
               autoPlay
               muted
               loop
               playsInline
-              poster="/poster/cabinbest1.jpeg"/> */}
+              poster="/poster/cabinbest1.jpeg"/>
           </div>
+            
+          {/* Research */}
+          <div 
+          ref={(el) => (itemsRef.current[2] = el)}
+          
+          className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
+          >
+
+            <SideContainer
+              number="03"
+              title="A study into Time Management techniques of College Students"
+              subtitle="User Research Methodologies"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+              skills={["Ethnographic User Research", "Motion Design"]}
+              hoverWidth="450px"
+            />
+              
+
+            {/* Video */}
+            <video src="/wellnessco/cover.mp4"
+              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster='/poster/ghibli.jpeg'/>
+          </div>
+
+          
 
       
 

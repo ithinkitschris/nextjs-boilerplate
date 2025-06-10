@@ -7,6 +7,12 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    'group-hover:w-[430px]',
+    'group-hover:w-[440px]',
+    'group-hover:w-[460px]',
+    'group-hover:w-[600px]',
+  ],
   theme: {
     extend: {
       width: {

@@ -62,7 +62,7 @@ const animateIn ={
                 {/* Background Glow */}
                 <video 
                 ref={backgroundGlowRef}
-                src="/Ghibli/banner.mp4" 
+                src="/Ghibli/banner1.mp4" 
                 className="absolute mt-20 w-screen h-screen/1.2 object-cover rounded-full -z-10 
                 opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200"
                 autoPlay 
@@ -81,7 +81,7 @@ const animateIn ={
                 {/* Banner Video */}
                 <motion.video 
                 ref={bannerVideoRef}
-                src="/Ghibli/banner.mp4" 
+                src="/Ghibli/banner1.mp4" 
                 className="col-span-full shadow-standard rounded-3xl w-full h-screen/2 lg:w-full lg:h-auto object-cover mb-8"
                 autoPlay muted loop playsInline
                 variants={animateInChild}

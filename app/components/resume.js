@@ -167,6 +167,14 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                 <div className="col-span-full mb-4 border-0 hidden lg:block relative w-full h-[650px] group scale-100 hover:scale-101 transition-all duration-300">
                     
                     {/* Image */}
+                    {/* <video
+                    src="/profile/cover_1.mp4"
+                    className="rounded-3xl h-full w-full group-hover:drop-shadow-xl object-cover transition-all"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    /> */}
                     <motion.img src='/profile/profilelandscape2.jpg'
                     className="rounded-3xl h-full w-full group-hover:drop-shadow-xl object-cover transition-all" variants={animateInChild}/>
 
@@ -195,11 +203,11 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             variants={animateInChild}>
                                 {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                                 <p className="text-2xl tracking-tight -ml-3"><span className="text-[32px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> I don&apos;t take anything too seriously.</p>
-                                <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3">A bold opening statement; I know.</p>
+                                <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3 group-hover:opacity-50 transition-all duration-300">A bold opening statement; I know.</p>
                                 <p className="text-2xl tracking-tight -ml-[13px]"><span className="text-[32px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> I aim to have fun in everything I do.</p>
-                                <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3">{"<p>I designed and coded this site from ground up.<br/>"}<br/>{"Fun? Curiosity? Masochism? Take your pick.</p>"}</p>
+                                <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] w-1/3 group-hover:opacity-50 transition-all duration-300">{"<p>I designed and coded this site from ground up.<br/>"}<br/>{"Fun? Curiosity? Masochism? Take your pick.</p>"}</p>
                                 <p className="text-2xl tracking-tight -ml-3"><span className="text-[32px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> Craft. Craft. Craft.</p>
-                                <p className="text-xs ml-[18px] opacity-25 mb-12 tracking-normal font-light leading-[16px] w-1/3">Craft means everything to me. I have to <i>do</i>.<br/>I hope this comes across as you peruse my work.</p>
+                                <p className="text-xs ml-[18px] opacity-25 mb-12 tracking-normal font-light leading-[16px] w-1/3 group-hover:opacity-50 transition-all duration-300">Craft means everything to me. I have to <i>do</i>.<br/>I hope this comes across as you peruse my work.</p>
                             </motion.div>
 
                             {/* Desktop Details Container */}
