@@ -3,6 +3,7 @@
 import * as motion from "framer-motion/client"
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import CarouselVideo from "./CarouselVideo";
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -206,13 +207,10 @@ return (
             </div>
 
             {/* Video */}
-            <video src="/nike/cover.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster='/poster/cocktailpage.jpeg'/>
+            <CarouselVideo 
+              src="/nike/cover.mp4"
+              poster="/poster/cocktailpage.jpeg"
+            />
           </div>
 
           {/* Jollibee */}
@@ -285,13 +283,10 @@ return (
             </div>
 
             {/* Video */}
-            <video src="/jollieverafter/favpagecover.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster='/poster/cocktailpage.jpeg'/>
+            <CarouselVideo 
+              src="/jollieverafter/favpagecover.mp4"
+              poster="/poster/cocktailpage.jpeg"
+            />
           </div>
 
           {/* 3D */}
@@ -365,13 +360,10 @@ return (
             </div>
 
             {/* Video */}
-            <video src="/3dpersonal/glass1.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/poster/cabinbest1.jpeg"/>
+            <CarouselVideo 
+              src="/3dpersonal/glass1.mp4"
+              poster="/poster/cabinbest1.jpeg"
+            />
           </div>
           
           {/* Samsung */}
@@ -446,13 +438,10 @@ return (
             </div>
 
             {/* Video */}
-            <video src="/samsung/montage.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/poster/cabinbest1.jpeg"/>
+            <CarouselVideo 
+              src="/samsung/montage.mp4"
+              poster="/poster/cabinbest1.jpeg"
+            />
           </div>
 
           

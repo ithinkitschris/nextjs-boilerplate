@@ -13,22 +13,29 @@ const SideContainer = ({
 }) => {
   return (
     <div 
-      className="absolute z-40 pl-10 pt-6 w-[300px] h-[var(--height)] text-white group-hover:bg-white/20 saturate-200 dark:group-hover:bg-transparent
-        backdrop-blur-none group-hover:backdrop-blur-3xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-        group-hover:scale-95 group-hover:ml-2.5 group-hover:w-[var(--hover-width)]"
+    className="
+      absolute z-40 pl-10 pt-6 w-[300px] h-[var(--height)] text-white border-white/0
+      rounded-3xl transition-all duration-300
+      group-hover:border-b-[1px] group-hover:border-r-[1px] group-hover:border-white/40 
+      group-hover:shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_4px_0px_rgba(255,255,255,0.3)]
+      group-hover:bg-white/20 saturate-200 dark:group-hover:bg-transparent
+      group-hover:backdrop-blur-3xl
+      group-hover:scale-95 group-hover:ml-2.5 group-hover:w-[var(--hover-width)]"
       style={{ '--hover-width': hoverWidth, '--height': height }}
-      
     >
       {/* Number */}
-      <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
+      <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center 
+      border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90
+      border-b-1 border-r-1 group-hover:bg-white/90 drop-shadow-md">
         {number}
       </button>
 
       {/* Corner Arrow */}
       <button 
-        className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-        flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-        group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
+        className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5 backdrop-blur-3xl saturate-200 drop-shadow-md
+        flex items-center justify-center text-white cursor-pointer opacity-0 group-hover:opacity-100
+        border-b-1 border-r-1 border-white group-hover:bg-white/95
+      group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="2 2 20 20"
@@ -79,5 +86,16 @@ const SideContainer = ({
     </div>
   );
 };
+
+// className="
+// absolute z-40 pl-10 pt-6 w-[300px] h-[var(--height)] text-white 
+// rounded-3xl
+// transition-all duration-300
+// group-hover:border-b-[1px] group-hover:border-r-[1px] group-hover:border-white/35 border-white/0
+// group-hover:shadow-[1px_1px_15px_rgba(0,0,0,0.2)]
+// group-hover:bg-white/20 saturate-100 dark:group-hover:bg-transparent
+// group-hover:backdrop-blur-lg
+// group-hover:scale-95 group-hover:ml-2.5 group-hover:w-[var(--hover-width)]"
+// style={{ '--hover-width': hoverWidth, '--height': height }}
 
 export default SideContainer; 

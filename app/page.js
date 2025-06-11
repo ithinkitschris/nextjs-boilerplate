@@ -161,7 +161,9 @@ import Video from './components/Video';
       }}>
         
         {/* Square */}
-        <div className={`group relative overflow-hidden transition-all duration-200 mb-0.5 rounded-2xl drop-shadow-md group-hover:scale-97
+        <div className={`group relative overflow-hidden transition-all duration-200 mb-0.5 rounded-2xl group-hover:scale-97 
+        shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/20
+        after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl after:shadow-[inset_0px_0px_5px_0px_rgba(255,255,255,0.15)]
 
           ${selectedTags.includes('photography') 
           ? 'md:pt-[150%]' 
@@ -262,7 +264,9 @@ import Video from './components/Video';
           <Video
             videoId={`grid-${videoSrc}`}
             src={videoSrc}
-            className={`absolute inset-0 w-full h-full object-cover rounded-lg
+            className={`absolute inset-0 w-full h-full object-cover rounded-2xl
+              shadow-[0px_2px_30px_rgba(0,0,0,0.3)]
+              after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl after:shadow-[inset_0px_0px_3px_0px_rgba(255,255,255,0.2)]
             ${selectedTags.includes('all') 
               ? `${isExpanded ? 'opacity-100' : 'opacity-100 blur-[30px] md:blur-0'}`
               : 'blur-[0px] opacity-100'}`}
@@ -325,7 +329,7 @@ export default function Home(){
   ];
 
   const [isMobile, setIsMobile] = useState(false);
-  const [selectedTags, setSelectedTags] = useState('');
+  const [selectedTags, setSelectedTags] = useState([]);
   const [selectedWork, setSelectedWork] = useState('');
   const [showNav, setShowNav] = useState(false);
   const [showReset, setShowReset] = useState(false);
@@ -429,8 +433,7 @@ export default function Home(){
         text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-screen mx-auto">
           
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-4 md:top-8 z-40 mb-4 text-sm lg:text-[15px] font-base w-screen max-w-9xl pr-6">
-
+          <div className="col-span-full fixed top-4 md:top-10 z-40 mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
               {/* Sidenav / Dropdown Button */}
               <motion.button 
                 className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-white/30 backdrop-blur-lg w-10
@@ -455,81 +458,134 @@ export default function Home(){
                   </svg>
               </motion.button>
 
-              {/* Top Navbar Contents */}
+              {/* Top Navbar Container */}
               <motion.div
-              className={`flex flex-row items-center justify-center gap-2 text-white z-40 ml-6 md:ml-0`}
-              initial="hidden"
-              animate="show"
-              layout="position"
-              variants={animateIn}
-              transition={{ duration: 0.5 }}> 
+                className="hidden md:flex items-center justify-center w-full"
+                initial="hidden"
+                animate="show"
+                layout="position"
+                variants={animateIn}
+                transition={{ duration: 0.5 }}
+              >
 
+                {/* Navbar Background */}
+                <motion.div
+                  className={`rounded-full flex items-center justify-center 
+                  w-[160px] h-[50px] bg-background dark:bg-transparent
+                  backdrop-blur-3xl drop-shadow-md 
+                  border-b-[0.2px] border-white/50
+                  shadow-[0px_2px_12px_rgba(0,0,0,0.2),inset_-1px_-1px_5px_0px_rgba(255,255,255,0.1)]`}
+
+                  /* This creates an inner shadow with:
+                     - 0px horizontal offset (no left/right shift)
+                     - -1px vertical offset (shifts up slightly) 
+                     - 6px blur radius (how soft/spread out the shadow is)
+                     - 0px spread radius (shadow size before blur)
+                     - white color at full opacity
+                     Creates a subtle glowing effect on the inside */
+                >
+
+                  {/* Navbar Content */}
+                  <div className="flex flex-row items-center justify-between w-full px-3 text-white z-40 mb-0.5">
+
+                    {/* Profile Button */}
+                    <motion.button
+                      className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-[3px] border-1 dark:hover:bg-transparent
+                        hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
+                        ${selectedWork.includes('resume') 
+                          ? 'border-foreground dark:border-white text-foreground' 
+                          : 'text-black dark:text-white border-background dark:border-white/0'
+                        }`}
+                      whileHover={{ scale: 0.94 }}
+                      variants={animateInChild}
+                      layout="position"
+                      onClick={() => {
+                        toggleWork('resume');
+                        setShowWork(false);
+                        setSelectedTags([]);
+                        setShowNav(false);
+                        if (isMobile) {
+                          setShowNav(false);
+                        }
+                      }}
+                    >
+                      <span className="hidden md:block">Home</span>
+                      <span className="block md:hidden">Home</span>
+                    </motion.button>
+
+                    {/* Work Button */}
+                    <motion.button 
+                      className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-[3px] border-1 dark:hover:bg-transparent
+                      hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
+                        ${selectedTags.length > 0
+                          ? 'border-foreground dark:border-white text-foreground' 
+                          : 'text-black dark:text-white border-background dark:border-white/0'
+                        }`}
+                      whileHover={{ scale: 0.94 }}
+                      variants={animateInChild}
+                      layout="position"
+                      onClick={() => {
+                        toggleNav(true);
+                      }}
+                    >
+                      <div>Work</div>
+                    </motion.button>
+
+                  </div>             
+              
+                </motion.div>
+              </motion.div>
+
+              {/* Mobile Navbar */}
+              <motion.div
+                className={`md:hidden flex flex-row items-center justify-center gap-2 text-white z-40 ml-6`}
+                initial="hidden"
+                animate="show"
+                layout="position"
+                variants={animateIn}
+                transition={{ duration: 0.5 }}
+              >
                 {/* Profile Button */}
                 <motion.button
                   className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 dark:hover:bg-transparent md:mr-1
-                    hover:border-black hover:bg-foreground  dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
+                    hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('resume') 
-                      ? ' border-foreground dark:border-white text-foreground' 
-                      : ' text-black dark:text-white border-background dark:border-white/0'
+                      ? 'border-foreground dark:border-white text-foreground' 
+                      : 'text-black dark:text-white border-background dark:border-white/0'
                     }`}
                   whileHover={{ scale: 0.94 }}
                   variants={animateInChild}
                   layout="position"
                   onClick={() => {
-                    toggleTag('clear');
                     toggleWork('resume');
                     setShowWork(false);
-                    setSelectedTags(['']);
+                    setSelectedTags([]);
                     setShowNav(false);
                     if (isMobile) {
                       setShowNav(false);
                     }
                   }}
-                    >
-                  <span className="hidden md:block">Home</span>
+                >
                   <span className="block md:hidden">Home</span>
                 </motion.button>
 
                 {/* Work Button */}
-                <div className='relative inline-flex group gap-1.5'>
-
-                  <motion.button 
-                    className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 border-black/0 dark:hover:bg-transparent 
-                      hover:border-black hover:bg-foreground dark:border-white/0 dark:hover:border-white/100 transition-colors duration-300 whitespace-nowrap font-medium
-                      ${selectedWork.includes('bestwork') 
-                        ? ' border-black/100 dark:border-white/100 text-foreground' 
-                        : ' text-black dark:text-white dark:hover:text-foreground'
-                      }`}
-                    whileHover={{ scale: 0.94 }}
-                    variants={animateInChild}
-                    layout="position"
-                    onClick={() => {
-                      toggleNav(true);
-                      // toggleShowWork(true);
-                    }}
-                    >
-
-                    <div>Work</div>
-                  </motion.button>
-                </div>
-
-                {/* Desktop Navbar BG */}
-                <motion.div className='hidden md:flex items-center justify-center max-w-10xl w-screen fixed -z-10'>
-                  <motion.div
-                    className={`backdrop-blur-2xl rounded-full flex items-center justify-end
-                    drop-shadow-md bg-background dark:bg-transparent h-[40px] border-b-1 border-white/30
-                    ${showWork ? 'w-[550px]' : 'w-[152px] '}`}
-                    layout
-                  >
-                    <motion.div
-                      className={`rounded-full shadow-inner-standard h-[30px] mr-2
-                      ${showWork ? 'w-[450px] opacity-100' : 'w-[230px] opacity-0'}`}
-                      layout
-                    />
-                  </motion.div>
-                  
-                </motion.div>
-
+                <motion.button 
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 dark:hover:bg-transparent md:mr-1
+                  hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
+                    ${selectedTags.length > 0
+                      ? 'border-foreground dark:border-white text-foreground' 
+                      : 'text-black dark:text-white border-background dark:border-white/0'
+                    }`}
+                  whileHover={{ scale: 0.94 }}
+                  variants={animateInChild}
+                  layout="position"
+                  onClick={() => {
+                    toggleNav(true);
+                  }}
+                >
+                  <div>Work</div>
+                </motion.button>
               </motion.div>
           </div>  
 
@@ -582,10 +638,9 @@ export default function Home(){
                         damping: 15, 
                         }} 
                       onClick={() => {
-                        toggleTag('clear');
                         toggleWork('resume');
                         setShowWork(false);
-                        setSelectedTags(['']);
+                        setSelectedTags([]);
                         setShowNav(false);
                         if (isMobile) {
                           setShowNav(false);

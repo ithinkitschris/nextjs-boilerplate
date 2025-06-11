@@ -59,18 +59,19 @@ return (
     variants={animateIn}>
 
       {/* 01 */}
-      <div className={`col-span-full group mt-16 transition-all duration-200 h-full grid grid-cols-3`}>
+      <div className={`col-span-full group mt-16 transition-all duration-200 h-full grid grid-cols-3 `}>
 
-        {/* Video */}
-        <video src="/subway/cover2.mp4"
-          className="rounded-3xl w-full col-span-full h-[550px] object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/poster/subway.png"/>
-
-          
+        {/* Video Container */}
+        <div className="rounded-3xl w-full col-span-full h-[550px] relative overflow-hidden border-b-1 border-white/20">
+          <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_3px_0px_rgba(255,255,255,0.2)] pointer-events-none z-10"/>
+          <video src="/subway/cover4.mp4"
+            className="rounded-3xl w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/poster/subway.png"/>
+        </div>
 
         {/* Header Container */}
         <div className='ml-1 -mt-2 text-foreground col-span-1 mb-20'>
@@ -122,10 +123,14 @@ return (
           </button>
 
         {/* Video */}
-        <img src="/currently/carplay.jpg"
-        className="rounded-3xl w-full col-span-full h-[500px] object-cover"
-        alt="Human Car(mputer) Interaction"
-        />
+        <div className="rounded-3xl w-full col-span-full h-[500px] relative overflow-hidden border-b-1 border-white/15">
+          <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_3px_0px_rgba(255,255,255,0.2)] pointer-events-none z-10"/>
+            <img src="/currently/carplay.jpg"
+            className="rounded-3xl w-full col-span-full h-[500px] object-cover shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_3px_0px_rgba(255,255,255,0.2)]"
+            alt="Human Car(mputer) Interaction"
+            />
+        </div>
+        
       
         {/* Header Container */}
         <div className='ml-1 mt-8 text-foreground col-span-1'>
@@ -171,13 +176,16 @@ return (
         </button>
         
         {/* Video */}
-        <video src="/website/cover.mp4"
-            className="rounded-3xl w-full col-span-full h-[500px] object-cover"
+        <div className="rounded-3xl w-full col-span-full h-[500px] relative overflow-hidden border-b-1 border-white/15">
+          <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_3px_0px_rgba(255,255,255,0.2)] pointer-events-none z-10"/>
+          <video src="/website/cover.mp4"
+            className="rounded-3xl w-full h-full object-cover"
             autoPlay
             muted
             loop
             playsInline
-            poster="/poster/website.png"/>
+            poster="/poster/subway.png"/>
+        </div>
       
         {/* Header Container */}
         <div className='ml-1 text-foreground col-span-1'>

@@ -168,16 +168,12 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                 <div className="col-span-full mb-4 border-0 hidden lg:block relative w-full h-[650px] group scale-100 hover:scale-101 transition-all duration-300">
                     
                     {/* Image */}
-                    {/* <video
-                    src="/profile/cover_1.mp4"
-                    className="rounded-3xl h-full w-full group-hover:drop-shadow-xl object-cover transition-all"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    /> */}
-                    <motion.img src='/profile/profilelandscape2.jpg'
-                    className="rounded-3xl h-full w-full group-hover:drop-shadow-xl object-cover transition-all" variants={animateInChild}/>
+                    <div className="rounded-3xl h-full w-full relative shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden">
+                        <motion.img src='/profile/profilelandscape2.jpg'
+                        className="rounded-3xl h-full w-full object-cover transition-all"
+                        variants={animateInChild}/>
+                        <div className="absolute inset-0 rounded-3xl shadow-[inset_0px_0px_4px_0px_rgba(255,255,255,0.2)] pointer-events-none"></div>
+                    </div>
 
                         <div className="absolute inset-0 pt-1 pb-4 pl-10 text-white grid grid-cols-2 group">
    
@@ -253,7 +249,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             {/* Story Container */}
             <motion.div 
                 className="border-r-[1.5px] border-b-[2px] border-t-[0.1px] border-l-[0.1px] border-white/15 w-full rounded-3xl col-span-full bg-background dark:bg-transparent leading-[150%]
-                transition-non-color shadow-mild p-6 px-12 text-sm grid grid-cols-9 relative overflow-hidden" 
+                transition-non-color shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_4px_0px_rgba(255,255,255,0.15)]  p-6 px-12 text-sm grid grid-cols-9 relative overflow-hidden" 
                 transition={{ 
                     duration: 0.3,
                     ease: "easeInOut"

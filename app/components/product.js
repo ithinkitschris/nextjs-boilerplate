@@ -4,6 +4,7 @@ import * as motion from "framer-motion/client"
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import SideContainer from "./SideContainer";
+import CarouselVideo from "./CarouselVideo";
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -159,13 +160,10 @@ return (
               hideTitle={true}
             />
 
-            <video src="/subway/cover.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/poster/subway.png"/>
+            <CarouselVideo 
+              src="/subway/cover.mp4"
+              poster="/poster/subway.png"
+            />
           </div>
 
           {/* Website */}
@@ -191,13 +189,10 @@ return (
               hoverWidth="420px"
             />
 
-            <video src="/website/cover.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/poster/cabinbest1.jpeg"/>
+            <CarouselVideo 
+              src="/website/cover.mp4"
+              poster="/poster/cabinbest1.jpeg"
+            />
           </div>
             
           {/* Research */}
@@ -217,14 +212,10 @@ return (
             />
               
 
-            {/* Video */}
-            <video src="/wellnessco/cover.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster='/poster/ghibli.jpeg'/>
+            <CarouselVideo 
+              src="/wellnessco/cover.mp4"
+              poster="/poster/ghibli.jpeg"
+            />
           </div>
 
           

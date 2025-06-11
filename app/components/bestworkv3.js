@@ -4,6 +4,7 @@ import * as motion from "framer-motion/client"
 import { useRef, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import SideContainer from './SideContainer';
+import CarouselVideo from './CarouselVideo';
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -138,14 +139,10 @@ return (
               hoverWidth="420px"
             />
 
-            {/* Video */}
-            <video src="/CCS/bestworkmontage.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/poster/cabinbest1.jpeg"/>
+            <CarouselVideo 
+              src="/CCS/bestworkmontage.mp4"
+              poster="/poster/cabinbest1.jpeg"
+            />
           </div>
 
           {/* Ghibli */}
@@ -176,14 +173,10 @@ return (
               hoverWidth="440px"
             />
 
-            {/* Video */}
-            <video src="/Ghibli/banner1.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster='/poster/ghibli.jpeg'/>
+            <CarouselVideo 
+              src="/Ghibli/banner1.mp4"
+              poster="/poster/ghibli.jpeg"
+            />
           </div>
 
           {/* Cocktail Conversations */}
@@ -214,14 +207,10 @@ return (
               hoverWidth="460px"
             />
 
-            {/* Video */}
-            <video src="/Cocktail/cover2.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster='/poster/cocktailpage.jpeg'/>
+            <CarouselVideo 
+              src="/Cocktail/cover2.mp4"
+              poster="/poster/cocktailpage.jpeg"
+            />
           </div>
 
           {/* IKEA */}
@@ -252,14 +241,10 @@ return (
               hoverWidth="370px"
             />
 
-            {/* Video */}
-            <video src="/Hemsaker/cover.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster='/poster/cocktailpage.jpeg'/>
+            <CarouselVideo 
+              src="/Hemsaker/cover.mp4"
+              poster="/poster/cocktailpage.jpeg"
+            />
           </div>
 
           {/* Lounge */}
@@ -290,14 +275,10 @@ return (
               hoverWidth="420px"
             />
 
-            {/* Video */}
-            <video src="/lounge/montage.mp4"
-              className="rounded-3xl w-full col-span-full h-[760px] object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster='/poster/cocktailpage.jpeg'/>
+            <CarouselVideo 
+              src="/lounge/montage.mp4"
+              poster="/poster/cocktailpage.jpeg"
+            />
           </div>
 
         </div>
