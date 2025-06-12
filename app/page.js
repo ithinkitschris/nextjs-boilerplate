@@ -161,8 +161,8 @@ import Video from './components/Video';
       }}>
         
         {/* Square */}
-        <div className={`group relative overflow-hidden transition-all duration-200 mb-0.5 rounded-2xl group-hover:scale-97 
-        shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/20
+        <motion.div className={`group relative overflow-hidden mb-0.5 rounded-2xl
+        shadow-[3px_3px_15px_rgba(0,0,0,0.2)] group-hover:shadow-none border-b-0 border-white/20
         after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl after:shadow-[inset_0px_0px_5px_0px_rgba(255,255,255,0.15)]
 
           ${selectedTags.includes('photography') 
@@ -173,7 +173,14 @@ import Video from './components/Video';
           ? `${isExpanded ? 'pt-[155%]' : 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100 bg-black/25'}`
           : 'pt-[150%]'}
           
-          `}>
+          `}
+          whileHover={{ scale: 0.98 }}
+          transition={{
+            type: "spring",
+            stiffness: 1000, 
+            damping: 25, 
+          }}
+          >
 
           {/* Deprecated Text Container */}
           <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-4 lg:gap-4">
@@ -214,8 +221,8 @@ import Video from './components/Video';
           </div>
     
           {/* Corner Arrow */}
-          <button className="hidden lg:block absolute top-2 right-2 z-20 p-0 m-1 scale-100
-          rounded-full border-1.5 text-white backdrop-blur border-transparent 
+          <button className="hidden lg:block absolute top-2 right-2 z-20 p-0 m-1 scale-100 
+          rounded-full border-1.5 text-white group-hover:text-black border-transparent group-hover:glass group-hover:bg-white/95
           group-hover:border-white group-hover:scale-125 group-hover:m-2 group-hover:p-0.5 group-hover:px-1
           transition-all duration-200">
               <svg
@@ -264,8 +271,7 @@ import Video from './components/Video';
           <Video
             videoId={`grid-${videoSrc}`}
             src={videoSrc}
-            className={`absolute inset-0 w-full h-full object-cover rounded-2xl
-              shadow-[0px_2px_30px_rgba(0,0,0,0.3)]
+            className={`absolute inset-0 w-full h-full object-cover rounded-2xl 
               after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl after:shadow-[inset_0px_0px_3px_0px_rgba(255,255,255,0.2)]
             ${selectedTags.includes('all') 
               ? `${isExpanded ? 'opacity-100' : 'opacity-100 blur-[30px] md:blur-0'}`
@@ -277,8 +283,9 @@ import Video from './components/Video';
             loop
             playsInline
             loading="lazy"
+            
           />
-        </div>
+        </motion.div>
 
         {/* New Text Container */}
         <div className='ml-1 mt-4 text-foreground group'>
@@ -434,15 +441,22 @@ export default function Home(){
           
           {/* Top Navbar */}
           <div className="col-span-full fixed top-4 md:top-10 z-40 mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
+            
               {/* Sidenav / Dropdown Button */}
               <motion.button 
-                className={`absolute text-foreground border-1 p-1.5 px-1.75 rounded-full border-white/30 backdrop-blur-lg w-10
-                flex items-center shadow md:hover:text-background transition-colors duration-100 z-30 md:mt-0 left-2 md:left-7 -top-1
+                className={`absolute text-foreground p-2 rounded-full backdrop-blur-lg w-12 h-12 top-1
+                flex items-center justify-center md:hover:text-background transition-colors duration-100 z-30 left-2 md:left-7 
+                glass
                 ${showNav 
                 ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground md:-ml-1" 
-                : "bg-[#f3f3f3] dark:bg-black/20 md:hover:bg-foreground right-8"}`}
+                : "bg-background dark:bg-black/20 md:hover:bg-foreground right-8"}`}
                 
                 whileHover={{ scale: 0.9 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 700, 
+                  damping: 15, 
+                  }} 
                 variants={animateInChild}
                 layout="position"
                 onClick={toggleNav}>
@@ -472,9 +486,8 @@ export default function Home(){
                 <motion.div
                   className={`rounded-full flex items-center justify-center 
                   w-[160px] h-[50px] bg-background dark:bg-transparent
-                  backdrop-blur-3xl drop-shadow-md 
-                  border-b-[0.2px] border-white/50
-                  shadow-[0px_2px_12px_rgba(0,0,0,0.2),inset_-1px_-1px_5px_0px_rgba(255,255,255,0.1)]`}
+                  backdrop-blur-2xl saturate-150 border-b-[0.2px] border-white/60
+                  shadow-[0px_3px_10px_rgba(0,0,0,0.15),inset_0px_-1px_4px_0px_rgba(255,255,255,0.3)]`}
 
                   /* This creates an inner shadow with:
                      - 0px horizontal offset (no left/right shift)
@@ -491,9 +504,9 @@ export default function Home(){
                     {/* Profile Button */}
                     <motion.button
                       className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-[3px] border-1 dark:hover:bg-transparent
-                        hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
+                        hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium 
                         ${selectedWork.includes('resume') 
-                          ? 'border-foreground dark:border-white text-foreground' 
+                          ? 'border-foreground dark:border-white text-foreground ' 
                           : 'text-black dark:text-white border-background dark:border-white/0'
                         }`}
                       whileHover={{ scale: 0.94 }}
@@ -621,20 +634,20 @@ export default function Home(){
               <>
                 {/* Desktop Side Navbar Reset Button */}
                 <motion.div 
-                  className="sticky top-16 z-40 hidden md:block -ml-2 group">
+                  className="sticky top-20 z-40 hidden md:block">
 
                   {showReset && (
 
                     <motion.button
-                      className="hover:text-background font-medium backdrop-blur flex items-start justify-start gap-2 px-2.5 py-1 pl-3 transition-colors
-                      text-foreground hover:bg-foreground dark:hover:bg-foreground drop-shadow bg-background dark:bg-transparent
-                      rounded-full border-1 border-transparent dark:border-white/35"
+                      className="hover:text-background backdrop-blur flex items-start justify-start gap-2 px-3 py-2 pl-4 -ml-2 transition-colors
+                      text-foreground hover:bg-foreground dark:hover:bg-foreground glass bg-background dark:bg-transparent text-[16.5px] 
+                      rounded-full border-transparent dark:border-white/35"
                       initial={{ opacity: 0, y:-20 }} 
                       animate={{ opacity: 1, y:0 }}  
-                      whileHover={{ scale: 0.95 }}
+                      whileHover={{ scale: 0.92 }}
                       transition={{
                         type: "spring",
-                        stiffness: 500, 
+                        stiffness: 700, 
                         damping: 15, 
                         }} 
                       onClick={() => {
@@ -672,7 +685,7 @@ export default function Home(){
 
                 {/* Desktop Side Navbar Skillsets */}
                 <motion.div 
-                className="hidden md:flex flex-col items-start gap-1 mt-24 dark:text-black/20 dark:text-white/20 sticky"
+                className={`hidden md:flex flex-col items-start gap-1 ${showReset ? "mt-32" : "mt-24"} dark:text-white/20 sticky`}
                 initial="hidden"
                 animate="show"
                 exit="fade"
@@ -1461,11 +1474,11 @@ export default function Home(){
             className={`${showNav ? `col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8 md:-ml-12` : "col-span-full"} md:px-[7%]`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}  
+            transition={{ type: "spring", stiffness: 600, damping: 25 }}  
           > 
             {/* Grid / Page */}
             <motion.div 
-            className={`grid grid-cols-1 col-span-full md:gap-3 mt-4 md:mt-14 
+            className={`grid grid-cols-1 col-span-full md:gap-3 mt-4 md:mt-24 
             ${selectedTags.includes('photography') 
               ? 'xl:grid-cols-4' 
               : selectedTags.includes('creative') || selectedTags.includes('motion')

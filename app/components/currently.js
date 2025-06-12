@@ -63,7 +63,8 @@ return (
 
         {/* Video Container */}
         <div className="rounded-3xl w-full col-span-full h-[550px] relative overflow-hidden border-b-1 border-white/20">
-          <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_3px_0px_rgba(255,255,255,0.2)] pointer-events-none z-10"/>
+          <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
+          pointer-events-none mix-blend-overlay z-10"/>
           <video src="/subway/cover4.mp4"
             className="rounded-3xl w-full h-full object-cover"
             autoPlay
@@ -97,16 +98,27 @@ return (
       </div>
 
       {/* 02 */}
-      <a className="col-span-1 cursor-pointer group hover:scale-98 transition-all duration-200 h-full relative"
+      <motion.a className="col-span-1 cursor-pointer transition-all duration-200 h-full relative group"
       href="https://www.notion.so/Portfolio-Website-127a92ab668680ed91ddd0619057466f?source=copy_link#20ca92ab6686809a8f8bf9a72e2a90cf"
       target="_blank"
       rel="noopener noreferrer"
+      
       >
-        {/* Corner Arrow */}
-        <button className="absolute top-2 right-2 z-20 p-1.5 m-1 scale-125
-          rounded-full border-1.5 text-white border-transparent 
-          group-hover:border-white group-hover:scale-[150%] group-hover:m-4 group-hover:p-0.5 group-hover:px-1
-          transition-all duration-200">
+        {/* Video Container with Corner Arrow */}
+        <motion.div 
+          className="relative"
+          whileHover={{ scale: 0.98 }}
+          transition={{
+            type: "spring",
+            stiffness: 1200, 
+            damping: 22, 
+          }}>
+
+          {/* Corner Arrow */}
+          <button className="absolute top-2 right-2 z-20 p-1.5 m-1 scale-125
+            rounded-full border-1.5 text-white border-transparent group-hover:text-black group-hover:glass group-hover:bg-white/95
+            group-hover:border-white group-hover:scale-[150%] group-hover:m-4 group-hover:p-0.5 group-hover:px-1
+            transition-all duration-200">
               <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="2 2 20 20"
@@ -122,14 +134,17 @@ return (
               </svg>
           </button>
 
-        {/* Video */}
-        <div className="rounded-3xl w-full col-span-full h-[500px] relative overflow-hidden border-b-1 border-white/15">
-          <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_3px_0px_rgba(255,255,255,0.2)] pointer-events-none z-10"/>
-            <img src="/currently/carplay.jpg"
-            className="rounded-3xl w-full col-span-full h-[500px] object-cover shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_3px_0px_rgba(255,255,255,0.2)]"
-            alt="Human Car(mputer) Interaction"
-            />
-        </div>
+          {/* Video */}
+          <motion.div className="rounded-3xl w-full col-span-full h-[500px] relative overflow-hidden border-b-1 border-white/15">
+              <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
+              pointer-events-none mix-blend-overlay z-10"/>
+                <img src="/currently/carplay.jpg"
+                className="rounded-3xl w-full col-span-full h-[500px] object-cover shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_3px_0px_rgba(255,255,255,0.2)]"
+                alt="Human Car(mputer) Interaction"
+                />
+          </motion.div>
+
+        </motion.div>
         
       
         {/* Header Container */}
@@ -146,46 +161,59 @@ return (
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
           </h3>
         </div>
-      </a>
+      </motion.a>
 
       {/* 03 */}
-      <a className="col-span-2 cursor-pointer group hover:scale-98 transition-all duration-200 h-full grid grid-cols-3 relative"
+      <a className="col-span-2 cursor-pointer group transition-all duration-200 h-full grid grid-cols-3 relative"
       href="https://www.notion.so/Portfolio-Website-127a92ab668680ed91ddd0619057466f?source=copy_link#20ca92ab6686809a8f8bf9a72e2a90cf"
       target="_blank"
       rel="noopener noreferrer"
       >
         
-        {/* Corner Arrow */}
-        <button className="absolute top-2 right-2 z-20 p-1.5 m-1 scale-125
-        rounded-full border-1.5 text-white border-transparent 
-        group-hover:border-white group-hover:scale-[150%] group-hover:m-4 group-hover:p-0.5 group-hover:px-1
-        transition-all duration-200">
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="2 2 20 20"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-4 h-4">
-            <path d="M7 17L17 7"
-            className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-            <path d="M7 7h10v10" />
-            </svg>
-        </button>
-        
-        {/* Video */}
-        <div className="rounded-3xl w-full col-span-full h-[500px] relative overflow-hidden border-b-1 border-white/15">
-          <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_3px_0px_rgba(255,255,255,0.2)] pointer-events-none z-10"/>
-          <video src="/website/cover.mp4"
-            className="rounded-3xl w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="/poster/subway.png"/>
-        </div>
+        {/* Video Container with Corner Arrow */}
+        <motion.div 
+          className="relative col-span-full"
+          whileHover={{ scale: 0.98 }}
+          transition={{
+            type: "spring",
+            stiffness: 1200, 
+            damping: 22, 
+          }}>
+
+          {/* Corner Arrow */}
+          <button className="absolute top-2 right-2 z-20 p-1.5 m-1 scale-125
+            rounded-full border-1.5 text-white border-transparent group-hover:text-black group-hover:glass group-hover:bg-white/95
+            group-hover:border-white group-hover:scale-[150%] group-hover:m-4 group-hover:p-0.5 group-hover:px-1
+            transition-all duration-200">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="2 2 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4">
+              <path d="M7 17L17 7"
+              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <path d="M7 7h10v10" />
+              </svg>
+          </button>
+
+          {/* Video */}
+          <motion.div className="rounded-3xl w-full col-span-full h-[500px] relative overflow-hidden border-b-1 border-white/15">
+              <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
+              pointer-events-none mix-blend-overlay z-10"/>
+              <video src="/website/cover.mp4"
+                className="rounded-3xl w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/poster/subway.png"/>
+          </motion.div>
+
+        </motion.div>
       
         {/* Header Container */}
         <div className='ml-1 text-foreground col-span-1'>

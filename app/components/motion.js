@@ -4,6 +4,7 @@ import * as motion from "framer-motion/client"
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import CarouselVideo from "./CarouselVideo";
+import SideContainer from "./SideContainer";
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -151,60 +152,16 @@ return (
           }}
           className="min-w-[450px] h-full snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group  duration-300 rounded-3xl transition-all cursor-pointer relative hover:scale-98">
             
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[430px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
-
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                01
-              </button>
-
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-tighter mb-1 transition-all duration-300 -ml-1 opacity-100 group-hover:opacity-100">
-                Nike Athlete Stories: <br/>Koy & Toon
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Social Media Campaign for Nike
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[93%]">
-              A set of Instagram Stories videos and a full film featuring Thai NIKE athletes Koy Ratchawin and Artiwara Kongmalai (Toon)
-              </p>
-
-              <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold">Role:</div>   
-                  <p>Motion Designer</p>
-                </div>
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold mr-1">Skills:</div>   
-                  <p>Motion Design</p>
-                  <p>Video Editing</p>
-                </div>
-              </div>
-
-            </div>
+            <SideContainer
+              number="01"
+              title="Nike Athlete Stories: Koy & Toon"
+              subtitle="Social Media Campaign for Nike"
+              description="A set of Instagram Stories videos and a full film featuring Thai NIKE athletes Koy Ratchawin and Artiwara Kongmalai (Toon)"
+              role="Motion Designer"
+              skills={["Motion Design", "Video Editing"]}
+              hoverWidth="430px"
+              height="100%"
+            />
 
             {/* Video */}
             <CarouselVideo 
@@ -227,60 +184,16 @@ return (
           }}
           className="min-w-[610px] h-full snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 dark:border-1.5 border-transparent group  duration-300 rounded-3xl transition-all cursor-pointer relative hover:scale-98">
             
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[470px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
-
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                02
-              </button>
-
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-tighter mb-1 transition-all duration-300 -ml-1 opacity-100 group-hover:opacity-100">
-                JolliEverAfter
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Social Media Campaign for Jollibee
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[350px]">
-              An interactive social media campaign that brought Jollibee's annual Kwentong film to TikTok for the first time in 2020.
-              </p>
-
-              <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold">Role:</div>   
-                  <p>Motion Designer</p>
-                </div>
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold mr-1">Skills:</div>   
-                  <p>Motion Design</p>
-                  <p>Video Editing</p>
-                </div>
-              </div>
-
-            </div>
+            <SideContainer
+              number="02"
+              title="JolliEverAfter"
+              subtitle="Social Media Campaign"
+              description="A social media campaign for Jollibee featuring their signature products and brand messaging"
+              role="Motion Designer"
+              skills={["Motion Design", "Video Editing", "Animation"]}
+              hoverWidth="480px"
+              height="100%"
+            />
 
             {/* Video */}
             <CarouselVideo 
@@ -303,61 +216,16 @@ return (
           }}
           className="min-w-[450px] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98">
           
-            
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[430px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
-
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                03
-              </button>
-
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-tighter mb-1 transition-all duration-300 -ml-1 opacity-100 group-hover:opacity-100 w-full">
-                3D Motion Explorations
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Personal Explorations
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[280px]">
-              Various explorations as part of my journey of getting acquainted with Blender and 3D Motion Design.
-              </p>
-
-              <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold">Role:</div>   
-                  <p>Personal</p>
-                </div>
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold mr-1">Skills:</div>   
-                  <p>3D Motion Design</p>
-                 
-                </div>
-              </div>
-
-            </div>
+            <SideContainer
+              number="03"
+              title="3D Motion Explorations"
+              subtitle="Personal Explorations"
+              description="Various explorations as part of my journey of getting acquainted with Blender and 3D Motion Design."
+              role="Personal"
+              skills={["3D Motion Design"]}
+              hoverWidth="430px"
+              height="100%"
+            />
 
             {/* Video */}
             <CarouselVideo 
@@ -380,62 +248,16 @@ return (
           }}
           className="min-w-[90%] h-full snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98">
             
-            
-            
-            {/* Side Container */}
-            <div className="absolute z-40 pl-10 pt-6 w-[300px] group-hover:w-[360px] h-full text-white group-hover:bg-white/10 dark:group-hover:bg-black/20 
-            backdrop-blur-none group-hover:backdrop-blur-2xl rounded-3xl group-hover:shadow-standard transition-all duration-300
-            border-r-[1.5px] border-b-[3px] border-white/0 group-hover:border-white/15 group-hover:scale-95 group-hover:ml-2.5">
-
-              <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90">
-                04
-              </button>
-
-            <button className={`absolute top-7 right-7 font-medium text-lg tracking-tighter p-1.5 rounded-full mt-0.5
-            flex items-center justify-center border-1 border-white text-white cursor-pointer opacity-0 group-hover:opacity-100
-            group-hover:bg-white group-hover:text-black group-hover:scale-110 group-hover:-m-2 transition-all duration-300`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
-
-              <h1 className="text-4.5xl group-hover:text-6xl font-medium tracking-tighter leading-tighter mb-1 transition-all duration-300 -ml-1 opacity-100 group-hover:opacity-100 w-1/3">
-                Samsung Lifestyle Displays
-              </h1>
-
-              <h1 className="text-base font-medium tracking-tight mt-5 mb-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Motion Design for Samsung
-              </h1>
-
-              <p className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[280px]">
-                Content Creation for Samsung's Lifestyle Display's global social platforms.
-              </p>
-
-              <div className="col-span-3">
-                <div className="absolute bottom-11 -ml-1 gap-[30px] tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold">Role:</div>   
-                  <p>Motion Designer</p>
-                </div>
-
-                <div className="absolute bottom-5 -ml-1 gap-5 tracking-tight flex
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  <div className="font-semibold mr-1">Skills:</div>   
-                  <p>Motion Design</p>
-                  <p>Video Editing</p>
-                </div>
-              </div>
-
-            </div>
+            <SideContainer
+              number="04"
+              title="Samsung Lifestyle Displays"
+              subtitle="Motion Design for Samsung"
+              description="Content Creation for Samsung's Lifestyle Display's global social platforms."
+              role="Motion Designer"
+              skills={["Motion Design", "Video Editing"]}
+              hoverWidth="360px"
+              height="100%"
+            />
 
             {/* Video */}
             <CarouselVideo 

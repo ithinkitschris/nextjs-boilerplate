@@ -13,14 +13,13 @@ const SideContainer = ({
 }) => {
   return (
     <div 
-    className="
-      absolute z-40 pl-10 pt-6 w-[300px] h-[var(--height)] text-white border-white/0
-      rounded-3xl transition-all duration-300
-      group-hover:border-b-[1px] group-hover:border-r-[1px] group-hover:border-white/40 
-      group-hover:shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_4px_0px_rgba(255,255,255,0.3)]
-      group-hover:bg-white/20 saturate-200 dark:group-hover:bg-transparent
-      group-hover:backdrop-blur-3xl
-      group-hover:scale-95 group-hover:ml-2.5 group-hover:w-[var(--hover-width)]"
+      className="
+        absolute z-40 pl-10 pt-6 w-[300px] h-[var(--height)] text-white border-white/0
+        rounded-3xl transition-all duration-300
+        group-hover:backdrop-blur-3xl
+        group-hover:bg-white/20 saturate-150 dark:group-hover:bg-transparent
+        group-hover:glass-strong
+        group-hover:scale-95 group-hover:ml-2.5 group-hover:w-[var(--hover-width)]"
       style={{ '--hover-width': hoverWidth, '--height': height }}
     >
       {/* Number */}

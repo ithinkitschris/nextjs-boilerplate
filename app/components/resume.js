@@ -86,7 +86,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
         {/* Page Container */}
         <motion.div 
         key="page-container"
-        className={`grid grid-cols-1 lg:grid-cols-10 w-full md:mt-12
+        className={`grid grid-cols-1 lg:grid-cols-10 w-full md:mt-8
         items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
         gap-2 text-sm tracking-tight ${className}`}
         >

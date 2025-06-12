@@ -13,7 +13,7 @@ const animateIn = {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { staggerChildren: 0.15, type: "spring", stiffness: 400, damping: 20, },
+      transition: { staggerChildren: 0.15, type: "spring", stiffness: 600, damping: 22, },
       
   },
 };
@@ -24,7 +24,7 @@ const animateInToDo = {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { delay:0.08, staggerChildren: 0.15, type: "spring", stiffness: 400, damping: 20, },
+      transition: { delay:0.07, staggerChildren: 0.15, type: "spring", stiffness: 600, damping: 22, },
       
   },
 };
@@ -35,7 +35,7 @@ const animateInChangelog = {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { delay:0.16, staggerChildren: 0.15, type: "spring", stiffness: 400, damping: 20, },
+      transition: { delay:0.14, staggerChildren: 0.15, type: "spring", stiffness: 600, damping: 22, },
       
   },
 };
@@ -118,7 +118,8 @@ const toggleDarkMode = () => {
             suppressHydrationWarning>
 
               {/* Backdrop Blur */}
-              <div className={`${changelog ? 'bg-black/20 backdrop-blur' :'backdrop-blur-none pointer-events-none'} fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
+              <div className={`${changelog ? 'bg-black/0 backdrop-blur' :'backdrop-blur-none pointer-events-none'}
+              fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
 
               {/* <Dark Mode Button/> */}
               <div className="fixed left-1/2 -translate-x-1/2 w-full max-w-9xl px-4 md:px-8 z-50">
@@ -134,9 +135,44 @@ const toggleDarkMode = () => {
               <div className="fixed bottom-6 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center scale-105">
                 <div
                   ref={footerRef}
-                  className={`transition-all text-center rounded-full dark:border-b-1 backdrop-blur-lg border-transparent md:dark:hover:border-white md:dark:hover:border-1 whitespace-nowrap tracking-tight text-[9.5pt]
-                    bg-background dark:bg-white/0 shadow px-1.5 pr-2 cursor-pointer md:hover:bg-foreground md:dark:hover:bg-transparent md:hover:text-white dark:text-white/90 py-0.5 md:hover:scale-95 font-medium
-                    ${changelog ?'bg-foreground text-white dark:border-white/75 border-1' :'dark:border-white/15 md:dark:border-white/15'}`}
+                  className={`
+                    transition-all 
+                    text-center 
+                    rounded-full 
+                    whitespace-nowrap 
+                    tracking-tight 
+                    text-[9.5pt]
+                    font-medium
+                    cursor-pointer
+                    shadow
+                    px-1.5 
+                    pr-2 
+                    py-0.5
+                    
+                    /* Base styles */
+                    bg-background 
+                    dark:bg-white/0 
+                    dark:text-white/90
+                    backdrop-blur-lg
+                    
+                    /* Border styles */
+                    border-transparent 
+                    dark:border-b-1
+                    md:dark:hover:border-white 
+                    md:dark:hover:border-1
+                    
+                    /* Hover effects */
+                    md:hover:bg-foreground 
+                    md:dark:hover:bg-transparent 
+                    md:hover:text-white 
+                    md:hover:scale-95
+                    
+                    /* Changelog state */
+                    ${changelog 
+                      ? 'bg-foreground text-white dark:border-white/75 border-1' 
+                      : 'dark:border-white/25 md:dark:border-white/25'
+                    }
+                  `}
                   onClick={toggleChangelog}>
                   <div className="inline-flex ml-1.5">Website built with React and Next.js
                     {changelog ? (
@@ -156,8 +192,8 @@ const toggleDarkMode = () => {
                   h-[82.5%] md:h-[430px] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
 
                     {/* About */}
-                    <motion.div className="p-6 mt-4 md:mt-0 md:mr-2 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background dark:bg-black/10 border-r-2 border-b-[3px] border-transparent 
-                    dark:border-white/15 md:dark:border-white/10 backdrop-blur-3xl rounded-3xl drop-shadow-md" 
+                    <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:mr-2 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background dark:bg-black/10
+                    backdrop-blur-3xl rounded-3xl drop-shadow-md" 
                     initial="hidden"
                     animate="show"
                     variants={animateIn}>
@@ -190,8 +226,8 @@ const toggleDarkMode = () => {
                     </motion.div>
 
                     {/* To Do */}
-                    <motion.div className="p-6 mt-4 md:mt-0 md:ml-2 max-h-[100%] md:overflow-y-auto leading-[145%] bg-background dark:bg-black/10 border-r-2 border-b-[3px] border-transparent 
-                    dark:border-white/15 md:dark:border-white/10 backdrop-blur-3xl rounded-3xl drop-shadow-md" 
+                    <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:ml-2 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background dark:bg-black/10
+                    backdrop-blur-3xl rounded-3xl drop-shadow-md" 
                     initial="hidden"
                     animate="show"
                     variants={animateInToDo}>
@@ -216,8 +252,8 @@ const toggleDarkMode = () => {
                     </motion.div>
                     
                     {/* Changelog */}
-                    <motion.div className="grid md:grid-cols-2 md:gap-10 md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background 
-                    dark:border-white/20 dark:bg-black/10 border-r-2 border-b-[3px] border-transparent md:dark:border-white/10 backdrop-blur-3xl rounded-3xl drop-shadow-md"
+                    <motion.div className="glass-sm grid md:grid-cols-2 md:gap-10 md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background 
+                    dark:bg-black/10 backdrop-blur-3xl rounded-3xl drop-shadow-md"
                     initial="hidden"
                     animate="show"
                     variants={animateInChangelog}>
@@ -259,22 +295,13 @@ const toggleDarkMode = () => {
 
                         <p className='mt-4 text-foreground font-medium'>v217</p>
                         <p>Implemented this exact changelog feature; all updates will now be reflected here as I continue to iterate upon this site.</p>
-                        <p>Changed BG of light mode footer notes from frosted glass to opaque white with drop shadow.</p>
+                        <p>Changed BG of light mode footer notes from frosted glass-sm to opaque white with drop shadow.</p>
                         <p>Changed the cover photo of the film photography album.</p> 
                       </div>
 
                     </motion.div>
                 </motion.div>
               )}
-
-              {/* Last Updated Footer */}
-              {/* <div 
-                className="hidden md:flex fixed bottom-6 right-8 z-30 justify-center text-right backdrop-blur-sm rounded-full whitespace-nowrap tracking-tight select-none
-                bg-background dark:bg-transparent shadow text-[8.5pt] text-black/30 md:text-black/40 dark:text-white/80 md:dark:text-white/60 
-                w-[270px]"
-                >
-                  Last meddled with on 03.05.25 for the 222nd time.
-              </div> */}
 
             </body>
           </html>
