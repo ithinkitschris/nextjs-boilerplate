@@ -26,7 +26,7 @@ const SideContainer = ({
             x="0" y="0"  
             preserveAspectRatio="none"
           />
-{/* test */}
+
           <feDisplacementMap
             in="SourceGraphic"
             scale="30"
