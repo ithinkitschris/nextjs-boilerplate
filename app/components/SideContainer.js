@@ -12,15 +12,44 @@ const SideContainer = ({
   hideTitle = false,
 }) => {
   return (
+    <>
+
+    {/* SVG Filter Definition */}
+    <svg width="0" height="0" style={{ position: 'absolute' }}>
+      <defs>
+        <filter
+          id="backdrop-distortion"
+          x="0" y="0" width="100%" height="100%"
+        >
+          <feImage
+            href="/displace-map.png"
+            x="0" y="0"  
+            preserveAspectRatio="none"
+          />
+
+          <feDisplacementMap
+            in="SourceGraphic"
+            scale="30"
+            xChannelSelector="R"
+            yChannelSelector="G"
+          />
+        </filter>
+      </defs>
+    </svg>
+
     <div 
       className="
         absolute z-40 pl-10 pt-6 w-[300px] h-[var(--height)] text-white border-white/0
         rounded-3xl transition-all duration-300
         group-hover:backdrop-blur-3xl
         group-hover:bg-white/20 saturate-150 dark:group-hover:bg-transparent
-        group-hover:glass-strong
+        group-hover:glass-sidecontainer
         group-hover:scale-95 group-hover:ml-2.5 group-hover:w-[var(--hover-width)]"
-      style={{ '--hover-width': hoverWidth, '--height': height }}
+      style={{ 
+        '--hover-width': hoverWidth, 
+        '--height': height,
+        // backdropFilter: 'blur(25px) url(#backdrop-distortion)'
+      }}
     >
       {/* Number */}
       <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center 
@@ -83,6 +112,7 @@ const SideContainer = ({
         </div>
       </div>
     </div>
+    </>
   );
 };
 

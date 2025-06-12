@@ -435,6 +435,30 @@ export default function Home(){
   return (
     <>
       <VideoProvider>
+
+        {/* SVG Filter Definition */}
+        <svg width="0" height="0" style={{ position: 'absolute' }}>
+          <defs>
+            <filter
+              id="backdrop-distortion"
+              x="0" y="0" width="100%" height="100%"
+            >
+              <feImage
+                href="/displace-map.png"
+                x="0" y="0"  
+                preserveAspectRatio="none"
+              />
+
+              <feDisplacementMap
+                in="SourceGraphic"
+                scale="30"
+                xChannelSelector="R"
+                yChannelSelector="G"
+              />
+            </filter>
+          </defs>
+        </svg>
+
         {/* Entire Page column setup */}
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12 
         text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-screen mx-auto">
@@ -474,7 +498,7 @@ export default function Home(){
 
               {/* Top Navbar Container */}
               <motion.div
-                className="hidden md:flex items-center justify-center w-full"
+                className="hidden md:flex items-center justify-center w-full z-50"
                 initial="hidden"
                 animate="show"
                 layout="position"
@@ -486,16 +510,13 @@ export default function Home(){
                 <motion.div
                   className={`rounded-full flex items-center justify-center 
                   w-[160px] h-[50px] bg-background dark:bg-transparent
-                  backdrop-blur-2xl saturate-150 border-b-[0.2px] border-white/60
-                  shadow-[0px_3px_10px_rgba(0,0,0,0.15),inset_0px_-1px_4px_0px_rgba(255,255,255,0.3)]`}
-
-                  /* This creates an inner shadow with:
-                     - 0px horizontal offset (no left/right shift)
-                     - -1px vertical offset (shifts up slightly) 
-                     - 6px blur radius (how soft/spread out the shadow is)
-                     - 0px spread radius (shadow size before blur)
-                     - white color at full opacity
-                     Creates a subtle glowing effect on the inside */
+                  saturate-100 border--1 border-b-1 border-white/50
+                  shadow-[0px_3px_10px_rgba(0,0,0,0.15),inset_0px_-1px_6px_0px_rgba(255,255,255,0.4)]`}
+                  style={{
+                    // WebkitBackdropFilter: 'blur(5px) url(#backdrop-distortion)',
+                    backdropFilter: 'blur(3px) url(#backdrop-distortion) brightness(1.1)',
+                    background: 'rgba(0, 0, 0, 0)'
+                  }}
                 >
 
                   {/* Navbar Content */}
