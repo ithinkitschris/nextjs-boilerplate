@@ -12,7 +12,7 @@ export default plugin(function({ addComponents }) {
       '@apply border-t-1.5 border-l-1 border-transparent dark:border-white/45 shadow-glass-border': {},
     },
     '.glass-sidecontainer': {
-      '@apply border-t-1.5 border-l-1 border-white/35 shadow-glass-border': {},
+      '@apply border-t-1.5 border-l-1 border-white/35 shadow-glass-border-sm': {},
     },
   })
 }) 

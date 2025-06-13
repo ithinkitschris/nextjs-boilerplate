@@ -1,6 +1,6 @@
 'use client';
 import { FC } from "react";
-
+import { motion } from "framer-motion";
 interface DarkModeToggleProps {
   toggleDarkMode: () => void;
   isDarkMode: boolean; // Add isDarkMode prop
@@ -8,19 +8,27 @@ interface DarkModeToggleProps {
 
 const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode }) => {
   return (
-    <button
+    <motion.button
       onClick={toggleDarkMode}
       className="
-      group transition-all duration-200 -mt-0.5 lg:mt-0 ml-1 bg-background shadow backdrop-blur dark:bg-black/20 lg:dark:bg-transparent
-      p-1.5 rounded-full border-1 border-black/0 dark:border-white/15 lg:hover:border-transparent lg:hover:text-white scale-110
-      lg:dark:hover:bg-foreground text-foreground lg:hover:bg-foreground lg:hover:scale-100"
+      group -mt-0.5 lg:mt-1 bg-background backdrop-blur dark:bg-black/20 lg:dark:bg-transparent
+      p-1.5 rounded-full lg:hover:border-transparent lg:hover:text-white bg-background shadow-glass-border dark:shadow-none
+      lg:dark:hover:bg-foreground text-foreground lg:hover:bg-foreground"
+      initial={{ scale: 1.3 }}
+      whileHover={{ scale: 1.2 }}
+      transition={{
+        duration: 0.2,  
+        type: "spring",
+        stiffness: 700, 
+        damping: 15, 
+      }}
     >
       {/* Inline SVG for dark mode */}
       {isDarkMode ? (
         // Sun icon 
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 120 120"
+          viewBox="0 0 127 120"
           className="w-6 h-6 text-foreground lg:group-hover:text-background  transition-colors duration-200"
         >
           <circle className="stroke-current fill-none" cx="60.9" cy="60.6" r="30.4" style={{ strokeWidth: '6' }}/>
@@ -45,7 +53,7 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
 
 
       )}
-    </button>
+    </motion.button>
   );
 };
 

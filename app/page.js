@@ -464,16 +464,16 @@ export default function Home(){
         text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-screen mx-auto">
           
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-4 md:top-72 z-40 mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
+          <div className="col-span-full fixed top-4 md:top-12 z-40 mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
             
               {/* Sidenav / Dropdown Button */}
               <motion.button 
                 className={`absolute text-foreground p-2 rounded-full backdrop-blur-lg w-12 h-12 top-1
                 flex items-center justify-center md:hover:text-background transition-colors duration-100 z-30 left-2 md:left-7 
-                glass
+                shadow-glass-border dark:shadow-none
                 ${showNav 
                 ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground md:-ml-1" 
-                : "bg-background dark:bg-black/20 md:hover:bg-foreground right-8"}`}
+                : "bg-background dark:bg-background md:hover:bg-foreground right-8"}`}
                 
                 whileHover={{ scale: 0.9 }}
                 transition={{
@@ -509,12 +509,12 @@ export default function Home(){
                 {/* Navbar Background */}
                 <motion.div
                   className={`rounded-full flex items-center justify-center 
-                  w-[160px] h-[50px] bg-background dark:bg-transparent
+                  w-[160px] h-[50px] bg-background dark:bg-transparent brightness-[100%]
                   saturate-100 border-r-1 border-b-1 border-white/45
                   shadow-[0px_3px_10px_rgba(0,0,0,0.15),inset_0px_-1px_6px_0px_rgba(255,255,255,0.3)]`}
                   style={{
                     // WebkitBackdropFilter: 'blur(5px) url(#backdrop-distortion)',
-                    backdropFilter: 'blur(2px) url(#backdrop-distortion)',
+                    backdropFilter: 'blur(3px) url(#backdrop-distortion)',
                     background: 'rgba(0, 0, 0, 0)'
                   }}
                 >
@@ -525,7 +525,7 @@ export default function Home(){
                     {/* Profile Button */}
                     <motion.button
                       className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-[3px] border-1 dark:hover:bg-transparent
-                        hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium 
+                        hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium mix-blend-difference
                         ${selectedWork.includes('resume') 
                           ? 'border-foreground dark:border-white text-foreground ' 
                           : 'text-black dark:text-white border-background dark:border-white/0'
@@ -551,7 +551,7 @@ export default function Home(){
                     <motion.button 
                       className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-[3px] border-1 dark:hover:bg-transparent
                       hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
-                        ${selectedTags.length > 0 || selectedWork.length > 0
+                        ${selectedTags.length > 0 || (selectedWork.length > 0 && !selectedWork.includes('resume'))
                           ? 'border-foreground dark:border-white text-foreground' 
                           : 'text-black dark:text-white border-background dark:border-white/0'
                         }`}

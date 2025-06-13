@@ -18,7 +18,7 @@ const SideContainer = ({
     <svg width="0" height="0" style={{ position: 'absolute' }}>
       <defs>
         <filter
-          id="backdrop-distortion"
+          id="backdrop-distortion-sidecontainer"
           x="0" y="0" width="100%" height="100%"
         >
           <feImage
@@ -29,7 +29,7 @@ const SideContainer = ({
 
           <feDisplacementMap
             in="SourceGraphic"
-            scale="30"
+            scale="150"
             xChannelSelector="R"
             yChannelSelector="G"
           />
@@ -41,16 +41,16 @@ const SideContainer = ({
       className="
         absolute z-40 pl-10 pt-6 w-[300px] h-[var(--height)] text-white border-white/0
         rounded-3xl transition-all duration-300
-        group-hover:backdrop-blur-3xl
-        group-hover:bg-white/20 saturate-150 dark:group-hover:bg-transparent
-        group-hover:glass-sidecontainer
+        group-hover:bg-white/20 saturate-100 dark:group-hover:bg-transparent
+        group-hover:glass-sidecontainer group-hover:backdrop-blur-3xl
         group-hover:scale-95 group-hover:ml-2.5 group-hover:w-[var(--hover-width)]"
       style={{ 
         '--hover-width': hoverWidth, 
-        '--height': height,
-        // backdropFilter: 'blur(25px) url(#backdrop-distortion)'
+        '--height': height
       }}
     >
+      {/* [backdrop-filter:none] group-hover:[backdrop-filter:blur(10px)_url(#backdrop-distortion-sidecontainer)]" */}
+
       {/* Number */}
       <button className="font-mono text-base tracking-tight -ml-1.5 p-2 h-6 rounded-full flex items-center justify-center 
       border border-white mb-2 transition group-hover:bg-white group-hover:text-black group-hover:scale-90

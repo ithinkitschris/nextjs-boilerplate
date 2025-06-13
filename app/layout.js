@@ -123,7 +123,7 @@ const toggleDarkMode = () => {
 
               {/* <Dark Mode Button/> */}
               <div className="fixed left-1/2 -translate-x-1/2 w-full max-w-9xl px-4 md:px-8 z-50">
-                <div className="absolute right-4 md:right-8 top-3 md:top-6 z-50">
+                <div className="absolute right-4 md:right-8 top-3 md:top-14 z-50">
                   <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
                 </div>   
               </div>
@@ -144,35 +144,35 @@ const toggleDarkMode = () => {
                     text-[9.5pt]
                     font-medium
                     cursor-pointer
-                    shadow
-                    px-1.5 
+                    px-2
                     pr-2 
-                    py-0.5
-                    
-                    /* Base styles */
+                    py-1
+                                 
                     bg-background 
-                    dark:bg-white/0 
-                    dark:text-white/90
-                    backdrop-blur-lg
-                    
-                    /* Border styles */
+                    dark:bg-transparent 
+                    dark:text-white
+                    glass
+                  
                     border-transparent 
                     dark:border-b-1
                     md:dark:hover:border-white 
                     md:dark:hover:border-1
                     
-                    /* Hover effects */
                     md:hover:bg-foreground 
                     md:dark:hover:bg-transparent 
                     md:hover:text-white 
                     md:hover:scale-95
                     
-                    /* Changelog state */
                     ${changelog 
                       ? 'bg-foreground text-white dark:border-white/75 border-1' 
                       : 'dark:border-white/25 md:dark:border-white/25'
                     }
                   `}
+                  style={{
+                    // WebkitBackdropFilter: 'blur(5px) url(#backdrop-distortion)',
+                    backdropFilter: 'blur(2px) url(#backdrop-distortion)',
+                    background: 'rgba(0, 0, 0, 0)'
+                  }}
                   onClick={toggleChangelog}>
                   <div className="inline-flex ml-1.5">Website built with React and Next.js
                     {changelog ? (
