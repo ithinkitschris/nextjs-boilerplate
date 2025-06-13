@@ -123,7 +123,7 @@ const toggleDarkMode = () => {
 
               {/* <Dark Mode Button/> */}
               <div className="fixed left-1/2 -translate-x-1/2 w-full max-w-9xl px-4 md:px-8 z-50">
-                <div className="absolute right-4 md:right-8 top-3 md:top-14 z-50">
+                <div className="absolute right-4 md:right-8 top-3 md:top-12 z-50">
                   <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
                 </div>   
               </div>

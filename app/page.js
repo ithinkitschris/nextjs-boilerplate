@@ -464,7 +464,7 @@ export default function Home(){
         text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-screen mx-auto">
           
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-4 md:top-12 z-40 mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
+          <div className="col-span-full fixed top-4 md:top-10 z-40 mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
             
               {/* Sidenav / Dropdown Button */}
               <motion.button 
@@ -524,10 +524,10 @@ export default function Home(){
 
                     {/* Profile Button */}
                     <motion.button
-                      className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-[3px] border-1 dark:hover:bg-transparent
+                      className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-[3px] border-1.5 dark:hover:bg-transparent
                         hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium mix-blend-difference
                         ${selectedWork.includes('resume') 
-                          ? 'border-foreground dark:border-white text-foreground ' 
+                          ? 'border-foreground dark:glass-strong text-foreground ' 
                           : 'text-black dark:text-white border-background dark:border-white/0'
                         }`}
                       whileHover={{ scale: 0.94 }}
