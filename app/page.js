@@ -446,11 +446,12 @@ export default function Home(){
               <feImage
                 href="/displace-map.png"
                 x="0" y="0"  
+                preserveAspectRatio="none"
               />
 
               <feDisplacementMap
                 in="SourceGraphic"
-                scale="10"
+                scale="30"
                 xChannelSelector="R"
                 yChannelSelector="G"
               />
@@ -508,7 +509,7 @@ export default function Home(){
                 {/* Navbar Background */}
                 <motion.div
                   className={`rounded-full flex items-center justify-center 
-                  w-[162px] h-[50px] bg-background dark:bg-transparent brightness-[100%]
+                  w-[162px] h-[50px] bg-background dark:bg-transparent brightness-[120%]
                   saturate-100 border-r-1 border-b-1 border-white/45
                   shadow-[0px_3px_10px_rgba(0,0,0,0.15),inset_0px_-1px_6px_0px_rgba(255,255,255,0.3)]`}
                   style={{
@@ -529,9 +530,9 @@ export default function Home(){
 
                     {/* Profile Button */}
                     <motion.button
-                      className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-[3px] border-1.5 
+                      className={`hover:text-background dark:hover:text-black tracking-tight rounded-full px-3 py-[3px] border-1.5 
                         hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 
-                        whitespace-nowrap font-medium
+                        whitespace-nowrap font-medium pointer-events-cursor
                         ${selectedWork.includes('resume') 
                           ? 'border-foreground dark:border-white/75 text-foreground' 
                           : 'text-black dark:text-white border-background dark:border-white/0'}`}
@@ -550,20 +551,18 @@ export default function Home(){
 
                     {/* Work Button */}
                     <motion.button 
-                      className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-[3px] border-1.5 dark:hover:bg-transparent
-                      hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
+                      className={`hover:text-background dark:hover:text-black tracking-tight rounded-full px-3 py-[3px] border-1.5 
+                        hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 pointer-events-cursor
+                        whitespace-nowrap font-medium
                         ${selectedTags.length > 0 || (selectedWork.length > 0 && !selectedWork.includes('resume'))
                           ? 'border-foreground dark:border-white/75 text-foreground' 
-                          : 'text-black dark:text-white border-background dark:border-white/0'
-                        }`}
+                          : 'text-black dark:text-white border-background dark:border-white/0'}`}
                       whileHover={{ scale: 1 }}
                       variants={animateInChild}
                       layout="position"
-                      onClick={() => {
-                        toggleNav(true);
-                      }}
+                      onClick={() => toggleNav(true)}
                     >
-                      <div>Work</div>
+                      Work
                     </motion.button>
 
                   </div>             
@@ -582,12 +581,11 @@ export default function Home(){
               >
                 {/* Profile Button */}
                 <motion.button
-                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 dark:hover:bg-transparent md:mr-1
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 
                     hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedWork.includes('resume') 
                       ? 'border-foreground dark:border-white text-foreground' 
-                      : 'text-black dark:text-white border-background dark:border-white/0'
-                    }`}
+                      : 'text-black dark:text-white border-background dark:border-white/0'}`}
                   whileHover={{ scale: 0.94 }}
                   variants={animateInChild}
                   layout="position"
@@ -601,25 +599,22 @@ export default function Home(){
                     }
                   }}
                 >
-                  <span className="block md:hidden">Home</span>
+                  Home
                 </motion.button>
 
                 {/* Work Button */}
                 <motion.button 
-                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 dark:hover:bg-transparent md:mr-1
+                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 
                   hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
                     ${selectedTags.length > 0
                       ? 'border-foreground dark:border-white text-foreground' 
-                      : 'text-black dark:text-white border-background dark:border-white/0'
-                    }`}
+                      : 'text-black dark:text-white border-background dark:border-white/0'}`}
                   whileHover={{ scale: 0.94 }}
                   variants={animateInChild}
                   layout="position"
-                  onClick={() => {
-                    toggleNav(true);
-                  }}
+                  onClick={() => toggleNav(true)}
                 >
-                  <div>Work</div>
+                  Work
                 </motion.button>
               </motion.div>
           </div>  
@@ -1120,7 +1115,7 @@ export default function Home(){
                     2021
                   </motion.h1>
 
-                    {/* JolliEverAfter */}
+                    {/* JolliEverAfter*/}
                     <motion.button 
                     className={`hover:text-foreground text-left mr-8
                       ${includesTags(['motion', 'edit','best']) || selectedWork.includes(['jolli']) || hoveredWork ==='jolli' 
