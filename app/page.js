@@ -4,7 +4,7 @@ import React, { useState, useEffect, } from 'react';
 import { motion, AnimatePresence, spring } from "framer-motion";
 import PhotographyPage from './components/photography.js';
 import ContentPage from './components/content.js';
-import WebsitePage from './components/website.js';
+import Website from './components/websitev2.js';
 import Ghibli from './components/ghibli.js';
 import CabinCrewStories from './components/cabin.js';
 import Cocktail from './components/cocktail.js';
@@ -31,6 +31,7 @@ import Iphone from './components/iphone.js';
 import ThreeD from './components/3d.js';
 import Leica from './components/leica.js';
 import NycSubway from './components/nycsubway.js';
+import Car from './components/car.js';
 import { ChevronDownIcon} from '@heroicons/react/24/solid';
 import {useVideoContext, VideoProvider} from './components/expandedGridContext.js';
 import Video from './components/Video';
@@ -315,7 +316,7 @@ export default function Home(){
     { src: '/travelbig/cover_1.mp4', title:'Travel Like Never Before', subheader:'Brand Campaign for Singapore Airlines', poster:'/poster/travelbig.jpg', tags: ['travelbig', 'all', 'creative', 'sia'] },
     { src: '/lounge/montage.mp4', title:'SilverKris Lounge', subheader:'Brand Campaign for Singapore Airlines', poster:'/poster/lounge.jpeg', tags: ['lounge', 'all', 'creative', 'sia', 'edit', 'motion', 'graphic'] },
     { src: '/Hemsaker/cover.mp4', title:'Oops Happens', subheader:'Product Campaign for IKEA', poster:'/poster/hemsaker.jpeg', tags: ['hemsaker', 'all', 'creative', 'Ikea'] },
-    { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social Content for Singapore Airlines', poster:'/poster/ispy.jpeg', tags: ['ispy', 'all', 'creative', 'sia'] },
+    { src: '/ispy/cover.mp4', title:'I Spy in The Sky...', subheader:'Social Content for Singapore Airlines', poster:'/poster/ispy.jpeg', tags: [] },
     { src: '/jollieverafter/cover_1.mp4', title:'JolliEverAfter', subheader:'Social Media Campaign for Jollibee', poster:'/poster/jollieverafter.jpeg', tags: ['jolli', 'all', 'motion', 'edit', 'best'] },
     { src: '/samsung/cover.mp4', title:'Samsung Lifestyle Displays', subheader:'Content Creation for Samsung', poster:'/poster/samsung.jpeg', tags: ['samsung', 'all', 'motion', 'edit'] },
     { src: '/nike/cover.mp4', title:'Nike Athlete Stories: Koy & Toon', subheader:'Social Media Campaign for Nike', poster:'/poster/samsung.jpeg', tags: ['nike', 'all', 'motion', 'edit'] },
@@ -332,6 +333,7 @@ export default function Home(){
     { src: '/subway/cover.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'UX + UI Design', poster:'', tags: ['subway', 'all', 'product'] },
     { src: '/wellnessco/cover.mp4', title:'Time Management by College Students', subheader:'Ethnographic User Research', poster:'', tags: ['wellnessco', 'all', 'product'] },
     { src: '/website/cover.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.jpeg', tags: ['website', 'all', 'product'] },
+    { src: '/currently/car.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/website.jpeg', tags: ['car', 'all', 'product'] },
      
   ];
 
@@ -392,6 +394,7 @@ export default function Home(){
       setSelectedWork([]);
       //setSelectedWork(['all']);
     } else {
+      toggleTag('clear');
       setSelectedWork(work);
     }
 
@@ -460,20 +463,22 @@ export default function Home(){
         </svg>
 
         {/* Entire Page column setup */}
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12 
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12 mix-b
         text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-screen mx-auto">
           
+          
+
           {/* Top Navbar */}
           <div className="col-span-full fixed top-4 md:top-10 z-40 mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
             
               {/* Sidenav / Dropdown Button */}
               <motion.button 
                 className={`absolute text-foreground p-2 rounded-full backdrop-blur-lg w-12 h-12 top-1
-                flex items-center justify-center md:hover:text-background transition-colors duration-100 z-30 left-2 md:left-7 
+                flex items-center justify-center md:hover:text-background transition-colors duration-200 z-30 left-2 md:left-7 
                 shadow-glass-border dark:shadow-none
                 ${showNav 
                 ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground md:-ml-1" 
-                : "bg-background dark:bg-background md:hover:bg-foreground right-8"}`}
+                : "bg-background dark:bg-background border-white md:hover:bg-foreground right-8"}`}
                 
                 whileHover={{ scale: 0.9 }}
                 transition={{
@@ -501,72 +506,25 @@ export default function Home(){
                 className="hidden md:flex items-center justify-center w-full z-50"
                 initial="hidden"
                 animate="show"
-                layout="position"
                 variants={animateIn}
-                
               >
-
                 {/* Navbar Background */}
                 <motion.div
-                  className={`rounded-full flex items-center justify-center 
-                  w-[162px] h-[50px] bg-background dark:bg-transparent brightness-[120%]
-                  saturate-100 border-r-1 border-b-1 border-white/45
-                  shadow-[0px_3px_10px_rgba(0,0,0,0.15),inset_0px_-1px_6px_0px_rgba(255,255,255,0.3)]`}
+                  className={`rounded-full flex items-center justify-center ml-2.5
+                  w-[162px] h-[50px] dark:bg-transparent brightness-[100%]
+                  saturate-100 border-r-1 border-b-1 border-white/35
+                  shadow-glass-border-light dark:shadow-glass-border`}
                   style={{
-                    // WebkitBackdropFilter: 'blur(5px) url(#backdrop-distortion)',
-                    backdropFilter: 'blur(3px) url(#backdrop-distortion)',
-                    background: 'rgba(0, 0, 0, 0)'
+                    WebkitBackdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
+                    backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
                   }}
                   whileHover={{ scaleY: 0.94, scaleX: 1.02}}
                   transition={{
                     type: "spring",
-                    stiffness: 900, 
-                    damping: 10, 
+                    stiffness: 1000, 
+                    damping: 6, 
                     }} 
                 >
-
-                  {/* Navbar Content */}
-                  <div className="flex flex-row items-center justify-between w-full px-3 text-white z-40 mb-0.5">
-
-                    {/* Profile Button */}
-                    <motion.button
-                      className={`hover:text-background dark:hover:text-black tracking-tight rounded-full px-3 py-[3px] border-1.5 
-                        hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 
-                        whitespace-nowrap font-medium pointer-events-cursor
-                        ${selectedWork.includes('resume') 
-                          ? 'border-foreground dark:border-white/75 text-foreground' 
-                          : 'text-black dark:text-white border-background dark:border-white/0'}`}
-                      whileHover={{ scale: 1 }}
-                      variants={animateInChild}
-                      layout="position"
-                      onClick={() => {
-                        toggleWork('resume');
-                        setShowWork(false);
-                        setSelectedTags([]);
-                        setShowNav(false);
-                      }}
-                    >
-                      Home
-                    </motion.button>
-
-                    {/* Work Button */}
-                    <motion.button 
-                      className={`hover:text-background dark:hover:text-black tracking-tight rounded-full px-3 py-[3px] border-1.5 
-                        hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 pointer-events-cursor
-                        whitespace-nowrap font-medium
-                        ${selectedTags.length > 0 || (selectedWork.length > 0 && !selectedWork.includes('resume'))
-                          ? 'border-foreground dark:border-white/75 text-foreground' 
-                          : 'text-black dark:text-white border-background dark:border-white/0'}`}
-                      whileHover={{ scale: 1 }}
-                      variants={animateInChild}
-                      layout="position"
-                      onClick={() => toggleNav(true)}
-                    >
-                      Work
-                    </motion.button>
-
-                  </div>             
-              
                 </motion.div>
               </motion.div>
 
@@ -575,49 +533,72 @@ export default function Home(){
                 className={`md:hidden flex flex-row items-center justify-center gap-2 text-white z-40 ml-6`}
                 initial="hidden"
                 animate="show"
-                layout="position"
                 variants={animateIn}
                 transition={{ duration: 0.5 }}
               >
-                {/* Profile Button */}
-                <motion.button
-                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 
-                    hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
-                    ${selectedWork.includes('resume') 
-                      ? 'border-foreground dark:border-white text-foreground' 
-                      : 'text-black dark:text-white border-background dark:border-white/0'}`}
-                  whileHover={{ scale: 0.94 }}
-                  variants={animateInChild}
-                  layout="position"
-                  onClick={() => {
-                    toggleWork('resume');
-                    setShowWork(false);
-                    setSelectedTags([]);
-                    setShowNav(false);
-                    if (isMobile) {
-                      setShowNav(false);
-                    }
-                  }}
-                >
-                  Home
-                </motion.button>
-
-                {/* Work Button */}
-                <motion.button 
-                  className={`hover:text-background dark:hover:text-white tracking-tight rounded-full px-3 py-0.5 border-1 
-                  hover:border-black hover:bg-foreground dark:hover:border-white transition-colors duration-300 whitespace-nowrap font-medium
-                    ${selectedTags.length > 0
-                      ? 'border-foreground dark:border-white text-foreground' 
-                      : 'text-black dark:text-white border-background dark:border-white/0'}`}
-                  whileHover={{ scale: 0.94 }}
-                  variants={animateInChild}
-                  layout="position"
-                  onClick={() => toggleNav(true)}
-                >
-                  Work
-                </motion.button>
               </motion.div>
           </div>  
+
+
+          {/* Home Button */}
+          <motion.button
+            className={`
+              fixed top-4 left-[50%] -ml-[4.7rem] md:top-[3.2rem] z-40
+              rounded-full px-3 py-[3px] border-1.5 
+              font-semibold tracking-[-0.2pt] whitespace-nowrap
+              text-white mix-blend-difference dark:mix-blend-normal
+              transition-colors duration-200
+              hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
+              dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+              ${selectedWork.includes('resume') 
+                ? '' 
+                : 'border-transparent'
+              }
+            `}
+            onClick={() => {
+              toggleWork('resume');
+              setShowWork(false);
+              setSelectedTags([]);
+              setShowNav(false);
+            }}
+            whileHover={{ scale: 0.96 }}
+            transition={{
+              type: "spring",
+              stiffness: 600,
+              damping: 10
+            }}
+          >
+            Home
+          </motion.button>
+
+          {/* Work Button */}
+          <motion.button 
+            className={`
+              fixed top-4 left-[50%] md:top-[3.2rem] z-40
+              rounded-full px-3 py-[3px] border-1.5
+              font-semibold tracking-[-0.2pt] whitespace-nowrap
+              text-white mix-blend-difference dark:mix-blend-normal
+              transition-colors duration-200
+              hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
+              dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+              ${selectedTags.length > 0 || (selectedWork.length > 0 && !selectedWork.includes('resume'))
+                ? '' 
+                : 'border-transparent'
+              }
+              `}
+              onClick={() => {
+                toggleNav(true);
+              }}
+              whileHover={{ scale: 0.96 }}
+              transition={{
+                type: "spring",
+                stiffness: 600,
+                damping: 10
+              }}
+            >
+              Work
+          </motion.button>
+
 
           {/* Mobile Navbar BG */}
           <motion.div
@@ -824,16 +805,16 @@ export default function Home(){
 
                   {/* 2025 */}
                   <motion.h1
-                  className={`text-xs font-medium tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground' : 'text-neutral-350 dark:text-white/40'}`}
+                  className={`text-xs font-medium tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
                   variants={animateInChild}>
                     2025
                   </motion.h1>
                 
                     {/* Enhanced Subway Navigation with Apple Maps */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['product']) || selectedWork.includes(['subway']) || hoveredWork ==='subway' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -842,7 +823,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['product']) || selectedWork.includes(['subway']) ||
                       hoveredWork==='subway' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -851,9 +832,9 @@ export default function Home(){
 
                     {/* Bloom */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['product']) || selectedWork.includes(['bloom']) || hoveredWork ==='bloom' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium text-[11pt] -ml-0.5' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -862,7 +843,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['product']) || selectedWork.includes(['bloom']) ||
                       hoveredWork==='bloom' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -871,9 +852,29 @@ export default function Home(){
 
                     {/* Website v2 */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
+                      ${includesTags(['product']) || selectedWork.includes(['car']) || hoveredWork ==='car' 
+                        ? 'text-foreground font-medium' 
+                        : selectedWork.length === 0 && !hoveredWork
+                          ? 'text-black/10 dark:text-white/20'
+                          : 'text-black/30 dark:text-white/35'
+                      } transition-colors duration-100`}
+                    whileHover={{scale:0.95}}
+                    animate={{scale: 
+                      includesTags(['product']) || selectedWork.includes(['car']) ||
+                      hoveredWork==='car' 
+                      ? 1.03 : 1
+                    }}
+                    variants={animateInChild}
+                    onClick={() => {
+                      toggleTag('clear');
+                      toggleWork('car')}}>Human (Car)mputer Interaction</motion.button>
+
+                    {/* Website v2 */}
+                    <motion.button 
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['product']) || selectedWork.includes(['website']) || hoveredWork ==='website' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -882,24 +883,25 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['product']) || selectedWork.includes(['website']) ||
                       hoveredWork==='website' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
                       toggleTag('clear');
                       toggleWork('website')}}>Portfolio Website v2</motion.button>
+
                   {/* 2024 */}
                   <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground' : 'text-neutral-350 dark:text-white/40'}`}
+                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
                   variants={animateInChild}>
                     2024
                   </motion.h1>
 
                     {/* Portfolio Website */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['product']) || selectedWork.includes(['website']) || hoveredWork ==='website' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -908,7 +910,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['product']) || selectedWork.includes(['website']) ||
                       hoveredWork==='website' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -917,9 +919,9 @@ export default function Home(){
 
                     {/* The World of Studio Ghibli */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['ghibli']) || hoveredWork ==='ghibli' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -928,7 +930,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['ghibli']) ||
                       hoveredWork==='ghibli' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -937,16 +939,16 @@ export default function Home(){
 
                   {/* 2023 */}
                   <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground' : 'text-neutral-350 dark:text-white/40'}`}
+                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
                   variants={animateInChild}>
                     2023
                   </motion.h1>
 
                     {/* Beyond the Cabin */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cabin']) || hoveredWork ==='cabin' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -954,7 +956,7 @@ export default function Home(){
                     whileHover={{scale:0.95}}
                     animate={{scale: 
                       includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cabin']) || hoveredWork==='cabin' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -963,9 +965,9 @@ export default function Home(){
 
                     {/* Cocktail Conversations */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cocktail']) || hoveredWork ==='cocktail' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -974,7 +976,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cocktail']) ||
                       hoveredWork==='cocktail' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -983,9 +985,9 @@ export default function Home(){
 
                     {/* Kris+ Brand Campaign */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['creative', 'motion',]) || selectedWork.includes(['kris']) || hoveredWork ==='kris' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20' 
                           : 'text-black/30 dark:text-white/35'
@@ -994,7 +996,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['creative', 'motion']) || selectedWork.includes(['kris']) ||
                       hoveredWork==='kris' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1002,10 +1004,10 @@ export default function Home(){
                       toggleWork('kris')}}>Kris+ Brand Campaign</motion.button>
 
                     {/* I Spy in the Sky */}
-                    <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    {/* <motion.button 
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['creative']) || selectedWork.includes(['ispy']) || hoveredWork ==='ispy' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -1014,25 +1016,25 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['creative']) || selectedWork.includes(['ispy']) ||
                       hoveredWork==='ispy' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
                       toggleTag('clear');
-                      toggleWork('ispy')}}>I Spy in the Sky</motion.button>
+                      toggleWork('ispy')}}>I Spy in the Sky</motion.button> */}
 
                   {/* 2022 */}
                   <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground' : 'text-neutral-350 dark:text-white/40'}`}
+                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
                   variants={animateInChild}>
                     2022
                   </motion.h1>
 
                     {/* Travel Like Never Before */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['creative', 'motion']) || selectedWork.includes(['travelbig']) || hoveredWork ==='travelbig' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -1041,7 +1043,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['creative', 'motion']) || selectedWork.includes(['travelbig']) ||
                       hoveredWork==='travelbig' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1050,9 +1052,9 @@ export default function Home(){
 
                     {/* SilverKris Lounge */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['creative', 'motion', 'edit', 'graphic']) || selectedWork.includes(['lounge']) || hoveredWork ==='lounge' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20' 
                           : 'text-black/30 dark:text-white/35'
@@ -1061,7 +1063,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['creative', 'motion', 'edit', 'graphic']) || selectedWork.includes(['lounge']) ||
                       hoveredWork==='lounge' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1070,9 +1072,9 @@ export default function Home(){
 
                     {/* Oops Happens */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['creative']) || selectedWork.includes(['hemsaker']) || hoveredWork ==='hemsaker' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -1081,7 +1083,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['creative']) || selectedWork.includes(['hemsaker']) ||
                       hoveredWork==='hemsaker' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1090,9 +1092,9 @@ export default function Home(){
 
                     {/* TBWA One Show Shortlist */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['motion']) || selectedWork.includes(['oneshow']) || hoveredWork ==='oneshow' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -1101,7 +1103,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['motion']) || selectedWork.includes(['oneshow']) ||
                       hoveredWork==='oneshow' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1110,16 +1112,16 @@ export default function Home(){
 
                   {/* 2021 */}
                   <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground' : 'text-neutral-350 dark:text-white/40'}`}
+                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
                   variants={animateInChild}>
                     2021
                   </motion.h1>
 
-                    {/* JolliEverAfter*/}
+                    {/* JolliEverAfter */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['motion', 'edit','best']) || selectedWork.includes(['jolli']) || hoveredWork ==='jolli' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -1128,7 +1130,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['motion', 'edit','best']) || selectedWork.includes(['jolli']) || selectedTags.includes('edit') ||
                       hoveredWork==='jolli' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1137,9 +1139,9 @@ export default function Home(){
 
                     {/* Samsung Lifestyle Displays */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['motion','edit']) || selectedWork.includes(['samsung']) || hoveredWork ==='samsung' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -1148,7 +1150,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['motion','edit']) || selectedWork.includes(['samsung']) ||
                       hoveredWork==='samsung' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1157,16 +1159,16 @@ export default function Home(){
 
                   {/* 2019 */}
                   <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground' : 'text-neutral-350 dark:text-white/40'}`}
+                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
                   variants={animateInChild}>
                     2019
                   </motion.h1>
 
                     {/* Nike Athlete Stories: Koy & Toon */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['edit', 'motion']) || selectedWork.includes(['nike']) || hoveredWork ==='nike' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -1175,7 +1177,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['motion','edit']) || selectedWork.includes(['nike']) ||
                       hoveredWork==='nike' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1184,9 +1186,9 @@ export default function Home(){
 
                     {/* BBH Profile Headshots */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['photography']) || selectedWork.includes(['bbh']) || hoveredWork ==='bbh' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -1195,7 +1197,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['photography']) || selectedWork.includes(['bbh']) ||
                       hoveredWork==='bbh' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1204,9 +1206,9 @@ export default function Home(){
 
                     {/* New Style Fresh Start */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['motion']) || selectedWork.includes(['uniqlo2']) || hoveredWork ==='uniqlo2' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -1215,7 +1217,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['motion']) || selectedWork.includes(['uniqlo2']) ||
                       hoveredWork==='uniqlo2' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1224,16 +1226,16 @@ export default function Home(){
 
                   {/* 2017 */}
                   <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground' : 'text-neutral-350 dark:text-white/40'}`}
+                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
                   variants={animateInChild}>
                     2017
                   </motion.h1>
 
                     {/* Your Stage Now Live */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['motion', 'graphic']) || selectedWork.includes(['uniqlo1']) || hoveredWork ==='uniqlo1' 
-                        ? 'text-foreground' 
+                        ? 'text-foreground font-medium' 
                         : selectedWork.length === 0 && !hoveredWork
                           ? 'text-black/10 dark:text-white/20'
                           : 'text-black/30 dark:text-white/35'
@@ -1241,7 +1243,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['motion', 'graphic']) || selectedWork.includes(['uniqlo1']) ||
                       hoveredWork==='uniqlo1' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1250,16 +1252,16 @@ export default function Home(){
 
                   {/* Personal */}
                   <motion.h1
-                  className={`text-sm font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground' : 'text-neutral-350 dark:text-white/40'}`}
+                  className={`text-sm font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
                   variants={animateInChild}>
                     Personal
                   </motion.h1>
 
                     {/* Content Creation */}
                       <motion.button 
-                      className={`hover:text-foreground text-left mr-8
+                      className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                         ${includesTags(['content']) || selectedWork.includes(['content']) || hoveredWork ==='content' 
-                          ? 'text-foreground' 
+                          ? 'text-foreground font-medium' 
                           : selectedWork.length === 0 && !hoveredWork
                             ? 'text-black/10 dark:text-white/20'
                             : 'text-black/30 dark:text-white/35'
@@ -1276,9 +1278,9 @@ export default function Home(){
 
                     {/* Digital Photography */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['photography']) || selectedWork.includes(['street']) || hoveredWork ==='street' 
-                          ? 'text-foreground' 
+                          ? 'text-foreground font-medium' 
                           : selectedWork.length === 0 && !hoveredWork
                             ? 'text-black/10 dark:text-white/20'
                             : 'text-black/30 dark:text-white/35'
@@ -1287,7 +1289,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['photography']) || selectedTags.includes(['street']) ||
                       hoveredWork==='street' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1296,9 +1298,9 @@ export default function Home(){
 
                     {/* Film Photography */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['photography']) || selectedWork.includes(['film']) || hoveredWork ==='film' 
-                          ? 'text-foreground' 
+                          ? 'text-foreground font-medium' 
                           : selectedWork.length === 0 && !hoveredWork
                             ? 'text-black/10 dark:text-white/20'
                             : 'text-black/30 dark:text-white/35'
@@ -1307,7 +1309,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['photography']) || selectedWork.includes(['film']) ||
                       hoveredWork==='film' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1316,9 +1318,9 @@ export default function Home(){
 
                     {/* iPhone 15 Pro */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['motion']) || selectedWork.includes(['iphone']) || hoveredWork ==='iphone' 
-                          ? 'text-foreground' 
+                          ? 'text-foreground font-medium' 
                           : selectedWork.length === 0 && !hoveredWork
                             ? 'text-black/10 dark:text-white/20'
                             : 'text-black/30 dark:text-white/35'
@@ -1327,7 +1329,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['motion']) || selectedWork.includes(['iphone']) ||
                       hoveredWork==='iphone' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1336,9 +1338,9 @@ export default function Home(){
 
                     {/* Leica M10-P */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['photography']) || selectedWork.includes(['leica']) || hoveredWork ==='leica' 
-                          ? 'text-foreground' 
+                          ? 'text-foreground font-medium' 
                           : selectedWork.length === 0 && !hoveredWork
                             ? 'text-black/10 dark:text-white/20'
                             : 'text-black/30 dark:text-white/35'
@@ -1347,7 +1349,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['motion']) || selectedWork.includes(['leica']) ||
                       hoveredWork==='leica' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1356,9 +1358,9 @@ export default function Home(){
 
                     {/* 3D Motion Exploration */}
                     <motion.button 
-                    className={`hover:text-foreground text-left mr-8
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
                       ${includesTags(['motion']) || selectedWork.includes(['3d']) || hoveredWork ==='3d' 
-                          ? 'text-foreground' 
+                          ? 'text-foreground font-medium' 
                           : selectedWork.length === 0 && !hoveredWork
                             ? 'text-black/10 dark:text-white/20'
                             : 'text-black/30 dark:text-white/35'
@@ -1367,7 +1369,7 @@ export default function Home(){
                     animate={{scale: 
                       includesTags(['motion']) || selectedWork.includes(['3d']) ||
                       hoveredWork==='3d' 
-                      ? 1.02 : 1
+                      ? 1.03 : 1
                     }}
                     variants={animateInChild}
                     onClick={() => {
@@ -1509,7 +1511,7 @@ export default function Home(){
                 ) : selectedWork === 'content' ? (
                   <ContentPage key="content" className="col-span-full"/>
                 ) : selectedWork === 'website' ? (
-                  <WebsitePage key="website" className="col-span-full"/>
+                  <Website key="website" className="col-span-full" showNav={showNav}/>
                 ) : selectedWork === 'street' ? (
                   <StreetPhotography key="street" className="col-span-full"/>
                 ) : selectedWork === 'film' ? (
@@ -1530,6 +1532,8 @@ export default function Home(){
                   <Ghibli key="ghibli" className="col-span-full"/>
                 ) : selectedWork === 'cabin' ? (
                   <CabinCrewStories key="cabin" className="col-span-full md:px-2" isMobile={isMobile}/>
+                ) : selectedWork === 'hemsaker' ? (
+                  <Hemsaker key="hemsaker" className="col-span-full"/>
                 ) : selectedWork === 'cocktail' ? (
                   <Cocktail key="cocktail" className="col-span-full"/>
                 ) : selectedWork === 'kris' ? (
@@ -1558,6 +1562,8 @@ export default function Home(){
                   <Leica key="leica" className="col-span-full"/>
                 ) : selectedWork === 'subway' ? (
                   <NycSubway key="subway" className="col-span-full"/>
+                ) : selectedWork === 'car' ? (
+                  <Car key="car" className="col-span-full" showNav={showNav}/>
                 ) : selectedWork === 'bestwork' ? (
                   <BestWorkPage key="bestwork" className="col-span-full w-full" setSelectedWork={setSelectedWork} setHoveredWork={setHoveredWork}/>
                 ) : (
@@ -1576,7 +1582,7 @@ export default function Home(){
                       selectedTags={selectedTags}
                       onClick={() => { 
                         const workTags = 
-                        ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'iphone', '3d',
+                        ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'iphone', '3d', 'car',
                           'travelbig', 'lounge', 'hemsaker', 'ispy', 'jolli', 'uniqlo1', 'uniqlo2', 'oneshow', 'samsung', 'leica', 
                           'nike', 'film'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));

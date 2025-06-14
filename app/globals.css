@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #ededed;
   --foreground: #2f2f2f;
   --midground: #a0a0a0;
   --font-serif: var(--font-quicksand);
@@ -32,7 +32,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif var(--font-quicksand), serif var(--font-quicksand), serif;
+  font-family: var(--font-geist-sans), sans-serif;
 }
 
 html, body {

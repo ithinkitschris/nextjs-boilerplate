@@ -138,7 +138,8 @@ const config: Config = {
         'standard': '3px 3px 20px rgba(0,0,0,0.2)',
         'strong': '2px 2px 8px rgba(0,0,0,0.8)',
         'standard-hover': '4px 4px 20px rgba(0,0,0,0.2)',
-        'glass-border': '0px 3px 10px rgba(0,0,0,0.15), inset 0px 0px 5px 0px rgba(255,255,255,0.3)',
+        'glass-border': '0px 2px 8px rgba(0,0,0,0.15), inset 0px 0px 5px 0px rgba(255,255,255,0.3)',
+        'glass-border-light': '0px 3px 10px rgba(0,0,0,0.15), inset -1px -2px 6px 0px rgba(0,0,0,0.05)',
         'glass-border-sm': '0px 3px 10px rgba(0,0,0,0.15), inset 0px 0px 5px 0px rgba(255,255,255,0.15)',
       },
       lineHeight: {
