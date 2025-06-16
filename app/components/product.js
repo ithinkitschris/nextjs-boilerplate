@@ -94,7 +94,7 @@ return (
         />
 
         {/* Horizontal Carousel Wrapper */}
-        <div className="flex overflow-x-auto gap-4 rounded-3xl scrollbar-hide" ref={containerRef}>
+        <div className="flex overflow-x-auto gap-2 md:gap-4 rounded-3xl scrollbar-hide" ref={containerRef}>
 
         {/* Navigation Dots */}
         <div className="hidden md:flex absolute left-0 right-0 bottom-2 z-20 justify-center gap-1 mb-3 scale-90">
@@ -125,7 +125,7 @@ return (
           onClick={() => {
             toggleWork('subway')
           }}
-          className="min-w-[85%] md:min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
+          className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
           >
             
             <SideContainer
@@ -156,7 +156,7 @@ return (
           onClick={() => {
             toggleWork('website')
           }}
-          className="min-w-[85%] md:min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
+          className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
           >
             <SideContainer
               number="02"
@@ -177,7 +177,7 @@ return (
           <div 
           ref={(el) => (itemsRef.current[2] = el)}
           
-          className="min-w-[85%] md:min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
+          className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
           >
 
             <SideContainer

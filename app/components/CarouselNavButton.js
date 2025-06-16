@@ -13,7 +13,7 @@ const CarouselNavButton = ({
   iconStrokeWidth = 2.5
 }) => {
   return (
-    <div className={`z-50 flex gap-3 justify-end -mr-5 mb-6 md:mb-10 scale-${scale} ${className}`}>
+    <div className={`z-50 flex gap-3 justify-end -mr-5 md:mr-0 mb-6 md:mb-10 scale-${scale} ${className}`}>
       <motion.button
         onClick={() => {
           const newIndex = Math.max(0, activeIndex - 1); 

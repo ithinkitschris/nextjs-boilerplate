@@ -1,4 +1,3 @@
-
 'use client'
 import { easeOut } from "framer-motion";
 import * as motion from "framer-motion/client"
@@ -23,14 +22,14 @@ show: {
 const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
   return (
-    <motion.div className={`grid grid-cols-1 md:grid-cols-6 xl:grid-cols-12 font-[family-name:var(--font-geist-sans)] h-[800px] gap-3 ${className}`}
+    <motion.div className={`grid grid-cols-4 font-[family-name:var(--font-geist-sans)] gap-3 h-[800px] ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
 
         {/* Personal */}
         <motion.div 
-        className="group col-span-3 h-full tracking-tight relative z-10 overflow-hidden rounded-3xl cursor-pointer shadow hover:shadow-none" 
+        className="group col-span-1 h-full tracking-tight relative z-10 overflow-hidden rounded-3xl cursor-pointer shadow hover:shadow-none" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -89,7 +88,7 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
         {/* Film */}
         <motion.div 
-        className="group col-span-3 h-full mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
+        className="group col-span-1 h-full tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -137,7 +136,7 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
         {/* BBH */}
         <motion.div 
-        className="group col-span-3 h-full mt-2 md:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
+        className="group col-span-1 h-full tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -188,7 +187,7 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
         {/* Stressed */}
         <motion.div 
-        className="group col-span-3 h-full mt-2 lg:mt-0 2xl:mt-0 tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
+        className="group col-span-1 h-full tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}

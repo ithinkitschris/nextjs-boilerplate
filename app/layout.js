@@ -132,7 +132,7 @@ const toggleDarkMode = () => {
               <main>{children}</main>
 
               {/* About Site Footer */}
-              <div className="md:fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-40 flex justify-center scale-105">
+              <div className="hidden md:fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-40 flex justify-center scale-105">
                 <div
                   ref={footerRef}
                   className={`

@@ -2,7 +2,7 @@
 
 const CarouselVideo = ({ src, poster, className = "" }) => {
   return (
-    <div className="rounded-3xl w-full col-span-full h-[500px] md:h-[760px] relative overflow-hidden border-l-2 border-t-2 border-white/0">
+    <div className="rounded-3xl w-full col-span-full h-[520px] md:h-[760px] relative overflow-hidden border-l-2 border-t-2 border-white/0">
 
     {/* Glass Border */}
     <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_10px_0px_rgba(255,255,255,0.8)] mix-blend-overlay pointer-events-none z-20"/>

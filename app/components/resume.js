@@ -496,14 +496,14 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             <Currently className='col-span-full -mt-12' key='currently' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Creative Direction */}
-            <div key="creative-direction-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-6 px-2
+            <div key="creative-direction-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-7 px-2
             p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">Creative Direction</div>
-            <div key="creative-direction-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-5">The ones that had legs.</div>
+            <div key="creative-direction-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-9">The ones that had legs.</div>
             <BestWorkPage3 className='col-span-full -mt-[3.2rem]' key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Product Design */}
             <div key="product-design-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full md:ml-8 px-2">Product Design</div>
-            <div key="product-design-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-5">Products of Design.</div>
+            <div key="product-design-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-9">Products of Design.</div>
             <ProductPage className='col-span-full -mt-10' key='product' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Motion Design */}
@@ -514,7 +514,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             {/* Photography */}
             <div key="photography-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-6 px-2 hidden md:block">Photography</div>
             <div key="photography-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[95%] w-[50%] hidden md:block">Photographic Memories.</div>
-            <PhotographyPage className='col-span-full mt-8 hidden md:block' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <PhotographyPage className='col-span-full mt-8 invisible md:visible' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
             
             {/* Content */}
             <div key="content-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] ml-2 md:ml-4 mt-32 md:mt-72 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>

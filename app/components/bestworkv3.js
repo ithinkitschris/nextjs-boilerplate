@@ -1,7 +1,7 @@
 'use client'
 
 import * as motion from "framer-motion/client"
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import SideContainer from './SideContainer';
 import CarouselVideo from './CarouselVideo';
@@ -23,35 +23,58 @@ const BestWorkPage3 = ({className, setHoveredWork, toggleWork}) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const scrollToIndex = (index) => {
-    if (!itemsRef.current[index] || !containerRef.current) return;
-    
-    // Save current vertical scroll position
-    const scrollY = window.scrollY;
-    
-    // Get container dimensions
-    const container = containerRef.current;
-    const containerWidth = container.clientWidth;
-    
-    // Calculate what the scroll position should be to position the item at 5% from left edge
-    // This assumes the expanded item will take 90% width and be centered in the container
-    const item = itemsRef.current[index];
-    const targetLeftPosition = containerWidth * 0.1; // 5% from left edge
-    const scrollPosition = item.offsetLeft - targetLeftPosition;
-    
-    // Scroll to position
-    container.scrollTo({
-      left: scrollPosition,
-      behavior: "smooth"
-    });
-    
-    // Restore vertical scroll position
-    window.scrollTo({
-      top: scrollY,
-      behavior: "auto"
-    });
+    if (itemsRef.current[index]) {
+      // Save current vertical scroll position
+      const scrollY = window.scrollY;
+      
+      // Scroll the item into view horizontally
+      itemsRef.current[index].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      
+      // Restore vertical scroll position
+      window.scrollTo({
+        top: scrollY,
+        behavior: "auto" // Use "auto" to prevent animation conflict
+      });
+      
+      // Prevent focus shift
+      setTimeout(() => {
+        document.activeElement?.blur();
+      }, 100);
+    }
     
     setActiveIndex(index);
   };
+
+  // Detects active index based on scroll position
+  const handleScroll = () => {
+    if (!containerRef.current || !itemsRef.current.length) return;
+
+    let closestIndex = 0;
+    let minDistance = Infinity;
+    const containerCenter = containerRef.current.scrollLeft + containerRef.current.clientWidth / 2;
+
+    itemsRef.current.forEach((item, index) => {
+      if (!item) return;
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const distance = Math.abs(containerCenter - itemCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    setActiveIndex(closestIndex);
+  };
+
+  // Attach the scroll listener
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
 
 return (
     <motion.div
@@ -71,7 +94,7 @@ return (
         />
 
         {/* Horizontal Carousel Container*/}
-        <div className="flex overflow-x-auto gap-4 rounded-3xl scrollbar-hide" ref={containerRef}>
+        <div className="flex overflow-x-auto gap-2 md:gap-4 rounded-3xl scrollbar-hide" ref={containerRef}>
 
           {/* Desktop Navigation Dots */}
           <div className="absolute left-0 right-0 bottom-5 z-20 justify-center gap-1 scale-90 hidden md:flex">
@@ -105,7 +128,7 @@ return (
               onClick={() => {
                 toggleWork('cabin')
               }}
-              className='min-w-[85%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative'
+              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative'
             >
             
             <SideContainer
@@ -138,7 +161,7 @@ return (
               onClick={() => {
                 toggleWork('ghibli')
               }}
-              className='min-w-[85%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative'
+              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative'
             >
 
             <SideContainer
@@ -172,7 +195,7 @@ return (
               onClick={() => {
                 toggleWork('cocktail')
               }}
-              className='min-w-[85%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative'
+              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative'
             >
             
             <SideContainer
@@ -206,7 +229,7 @@ return (
               onClick={() => {
                 toggleWork('hemsaker');
               }}
-              className='min-w-[85%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative'
+              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative'
             >
             
             <SideContainer
@@ -240,7 +263,7 @@ return (
               onClick={() => {
                 toggleWork('lounge');
               }}
-              className='min-w-[85%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative'
+              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative'
             >
             
             <SideContainer

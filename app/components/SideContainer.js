@@ -90,7 +90,7 @@ const SideContainer = ({
       {/* Desktop Title */}
       <h1 
         className={`
-          hidden md:block absolute 
+          hidden md:block 
           text-4.5xl group-hover:text-6xl 
           font-medium tracking-tighter leading-tighter 
           mt-0 mb-1 w-[90%]
@@ -102,12 +102,13 @@ const SideContainer = ({
       </h1>
 
       {/* Desktop Subtitle */}
-      <h1 className="hidden md:block static ml-0 bottom-auto text-base font-medium tracking-tight mt-5 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow">
+      <h1 className="text-base font-medium tracking-tight mt-5 mb-3 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 drop-shadow">
         {subtitle}
       </h1>
 
       {/* Mobile Title and Subtitle */}
-      <div className="absolute bottom-4">
+      <div className="lg:hidden absolute bottom-4">
+
         {/* Mobile Title */}
         <h1 
           className={`
@@ -122,7 +123,7 @@ const SideContainer = ({
         </h1>
 
         {/* Mobile Subtitle */}
-        <h1 className="ml-1 text-[8.5pt] font-normal tracking-normal mt-2 opacity-100 transition-opacity duration-300 drop-shadow w-3/4 leading-4">
+        <h1 className="lg:hidden ml-1 text-[8.5pt] font-normal tracking-normal mt-2 opacity-100 transition-opacity duration-300 drop-shadow w-3/4 leading-4">
           {subtitle}
         </h1>
       </div>

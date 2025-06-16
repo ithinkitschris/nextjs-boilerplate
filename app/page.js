@@ -162,13 +162,13 @@ import Video from './components/Video';
       }}>
         
         {/* Square */}
-        <motion.div className={`group relative overflow-hidden mb-0.5 rounded-2xl
+        <motion.div className={`group relative overflow-hidden rounded-2xl
         shadow-[3px_3px_15px_rgba(0,0,0,0.2)] group-hover:shadow-none border-b-0 border-white/20
         after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl after:shadow-[inset_0px_0px_5px_0px_rgba(255,255,255,0.15)]
 
           ${selectedTags.includes('photography') 
           ? 'md:pt-[150%]' 
-          : 'md:pt-[60%]'}
+          : 'pt-[150%] lg:pt-[57.5%]'}
 
           ${selectedTags.includes('all') 
           ? `${isExpanded ? 'pt-[155%]' : 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100 bg-black/25'}`
@@ -183,44 +183,6 @@ import Video from './components/Video';
           }}
           >
 
-          {/* Deprecated Text Container */}
-          <div className="absolute inset-0 flex flex-col items-start justify-between p-2 md:p-4 lg:gap-4">
-
-            {/* Title of work */}
-            {/* <h1 
-              className={`tracking-tight font-medium -m-1 transition-all duration-300 z-50 w-1/3 group-hover:w-2/3 drop-shadow-lg
-              ${selectedTags.includes('all') 
-              ? `${isExpanded ? 'text-[#e9e9e9] dark:text-white p-2' : 'p-1 text-[18px] text-[#e9e9e9] dark:text-white md:group-hover:text-4xl'}` 
-              : 'p-3 text-[#e9e9e9] dark:text-white text-3xl group-hover:text-5xl leading-tighter'}`}>
-                {title}
-            </h1> */}
-
-            {/* Gradient */}
-            <div className={`transition-all duration-300 z-10 ${selectedTags.includes('all') 
-              ? `${isExpanded ? 'opacity-75' : 'opacity-0'}` 
-              : 'opacity-100'}`}>
-
-              <div className={`absolute rounded-lg lg:hidden inset-x-0 -top-[0.10px] -right-[0.2px] z-10 h-1/2 md:h-1/3 bg-gradient-to-b from-black/70 dark:from-black/90 to-transparent mix-blend-multiply `}/>
-              <div className="absolute rounded-lg lg:hidden inset-x-0 -bottom-[0.8px] -right-[0.2px] z-10 h-1/5 bg-gradient-to-t from-black/80 to-transparent mix-blend-multiply "/>
-            </div>
-
-            {/* Details Container */}
-            <div className="z-50 flex flex-row justify-start w-full">
-
-              {/* Clean Subheader */}
-              {/* <h3 className={`z-10 md:pb-0 md:text-sm font-medium 
-              opacity-0 md:group-hover:opacity-100 ml-1 md:w-4/6 transition-opacity duration-300 
-              leading-normal md:leading-4 text-left
-              ${selectedTags.includes('all') 
-              ? `${isExpanded ? 'text-white opacity-100' : 'text-[8px] text-white opacity-50'} w-5/6` 
-              : 'text-xs text-white w-full font-light p-1.5 mb-2'}`}>
-              {subheader}
-              </h3> */}
-
-            </div>
-
-          </div>
-    
           {/* Corner Arrow */}
           <button className="hidden lg:block absolute top-2 right-2 z-20 p-0 m-1 scale-100 
           rounded-full border-1.5 text-white group-hover:text-black border-transparent group-hover:glass group-hover:bg-white/95
@@ -241,32 +203,29 @@ import Video from './components/Video';
               </svg>
           </button>
 
-          {/* Mobile Corner Arrow */}
-          <button className={`md:hidden absolute p-0.5 px-1 rounded-full z-50 
-          flex items-center justify-center cursor-pointer group-hover:text-black transition-all duration-300
-          ${selectedTags.includes('all') 
-            ? `${isExpanded ? 'top-5 right-5 scale-150 text-black bg-white' : 'hidden'}` 
-            : 'top-7 right-7 scale-150 group-hover:-m-2 group-hover:scale-150 group-hover:bg-white text-white border-1'}`}>
+          {/* Mobile Text Container */}
+          <div className="lg:hidden absolute inset-0 flex flex-col items-start justify-end pb-2.5 p-3 pl-3.5 w-full mb-1">
 
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="2 2 20 20"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className={`w-3 h-3 ${selectedTags.includes('all') ? (isExpanded ? 'block' : 'hidden') : 'block'}`}>
-            <path d="M7 17L17 7"/>
-            <path d="M7 7h10v10"/>
-            </svg>
+            {/* Title */}
+            <h1 
+              className={`tracking-tight font-medium z-30 w-[80%] text-xl md:text-2xl leading-5 md:leading-6 mb-1.5`}>
+                {title}
+            </h1>
 
-          </button>
-
-          {/* Mobile Dropdown Chevron */}     
-          <ChevronDownIcon 
-          className={`absolute z-50 top-3 right-4 text-white opacity-100 w-3.5 h-3.5 md:hidden
-          ${selectedTags.includes('all') ? (isExpanded ? 'hidden' : 'block') : 'hidden'}`}/>
+            <h3 
+              className={`tracking-tight z-30 w-[95%] text-[6pt] leading-tight opacity-60 mix-blend-screen`}>
+                {subheader}
+            </h3>
+          </div>
+          
+          {/* Mobile Gradient Blur */}
+          <div 
+            className="lg:hidden absolute bottom-0 left-0 right-0 h-[60%] z-10 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
+            style={{
+              maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 80%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 80%, transparent 100%)'
+            }}
+          />
 
           {/* Video */}
           <Video
@@ -286,21 +245,20 @@ import Video from './components/Video';
             loading="lazy"
             
           />
+          
         </motion.div>
 
-        {/* New Text Container */}
-        <div className='ml-1 mt-4 text-foreground group'>
-          <h1 className={`tracking-tight font-medium text-xl group-hover:ml-3 transition-all duration-200`}>
-            {title}
-          </h1>
+        {/* Desktop Text Container */}
+        <div className='hidden lg:block ml-1 mt-4 text-foreground group'>
+            <h1 className={`tracking-tight font-medium text-xl group-hover:ml-3 transition-all duration-200`}>
+              {title}
+            </h1>
 
-          <h3 className={`mb-12 opacity-35 text-xs group-hover:opacity-100 group-hover:ml-3 transition-all duration-300`}>
-            {subheader}
-          </h3>
-        </div>
+            <h3 className={`mb-12 opacity-35 text-xs group-hover:opacity-100 group-hover:ml-3 transition-all duration-300`}>
+              {subheader}
+            </h3>
+          </div>
 
-        
-        
       </motion.div>
     );
   };
@@ -464,9 +422,7 @@ export default function Home(){
 
         {/* Entire Page column setup */}
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12 mix-b
-        text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-screen mx-auto">
-          
-          
+        text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-screen mx-auto">            
 
           {/* Top Navbar */}
           <div className="col-span-full fixed top-[0.4rem] md:top-10 z-[45] mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
@@ -558,7 +514,6 @@ export default function Home(){
 
           </div>  
 
-
           {/* Home Button */}
           <motion.button
             className={`
@@ -617,7 +572,6 @@ export default function Home(){
             >
               Work
           </motion.button>
-
 
           {/* Mobile Navbar BG */}
           <motion.div
@@ -1510,12 +1464,12 @@ export default function Home(){
           > 
             {/* Grid / Page */}
             <motion.div 
-            className={`grid grid-cols-1 col-span-full md:gap-3 mt-4 md:mt-24 
+            className={`grid col-span-full md:gap-3 mt-8 md:mt-24 
             ${selectedTags.includes('photography') 
-              ? 'xl:grid-cols-4' 
+              ? 'grid-cols-4' 
               : selectedTags.includes('creative') || selectedTags.includes('motion')
-                ? 'xl:grid-cols-3 grid-cols-1 gap-2'
-                : 'xl:grid-cols-2 grid-cols-1 gap-1'
+                ? 'xl:grid-cols-3 grid-cols-2 gap-1.5'
+                : 'grid-cols-2 gap-1.5'
             }`}>
 
               <AnimatePresence>
