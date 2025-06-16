@@ -86,24 +86,46 @@ const SideContainer = ({
         </svg>
       </button>
 
-      {/* Title */}
+      
+      {/* Desktop Title */}
       <h1 
         className={`
-          absolute bottom-11 md:static ml-2.5 md:ml-0
-          text-4xl md:text-4.5xl md:group-hover:text-6xl 
+          hidden md:block absolute 
+          text-4.5xl group-hover:text-6xl 
           font-medium tracking-tighter leading-tighter 
-          -mt-1 md:mt-0 mb-1 w-2/3 md:w-[90%]
+          mt-0 mb-1 w-[90%]
           transition-all duration-300 
-          ${hideTitle ? 'opacity-0 md:group-hover:opacity-100' : ''}
+          ${hideTitle ? 'opacity-0 group-hover:opacity-100' : ''}
         `}
       >
         <span className="drop-shadow-sm">{title}</span>
       </h1>
 
-      {/* Subtitle */}
-      <h1 className="absolute md:static bottom-3 ml-3 md:ml-0 md:bottom-auto text-[8.5pt] md:text-base font-normal md:font-medium tracking-normal md:tracking-tight mt-5 mb-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 drop-shadow">
+      {/* Desktop Subtitle */}
+      <h1 className="hidden md:block static ml-0 bottom-auto text-base font-medium tracking-tight mt-5 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow">
         {subtitle}
       </h1>
+
+      {/* Mobile Title and Subtitle */}
+      <div className="absolute bottom-4">
+        {/* Mobile Title */}
+        <h1 
+          className={`
+            text-4xl
+            font-medium tracking-tighter leading-tighter 
+            w-3/4
+            transition-all duration-300 
+            ${hideTitle ? 'opacity-0' : ''}
+          `}
+        >
+          <span className="drop-shadow-sm">{title}</span>
+        </h1>
+
+        {/* Mobile Subtitle */}
+        <h1 className="ml-1 text-[8.5pt] font-normal tracking-normal mt-2 opacity-100 transition-opacity duration-300 drop-shadow w-3/4 leading-4">
+          {subtitle}
+        </h1>
+      </div>
 
       {/* Description */}
       <p className="opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 w-[90%]">

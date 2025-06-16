@@ -2,7 +2,7 @@
 import { easeOut } from "framer-motion";
 import * as motion from "framer-motion/client"
 import React from 'react';
-import Video from './Video';
+import ContentGridItem from './ContentGridItem';
 
 
 const animateIn ={
@@ -28,622 +28,239 @@ const ContentPage = ({className}) => {
     animate="show"
     variants={animateIn}>
 
-        
-        {/* <motion.h1 className="col-span-full text-5xl lg:text-6xl tracking-tight font-medium mb-4 leading-11 relative px-4 md:px-0 mt-6 md:w-5/6" variants={animateInChild}>This here is essentially my Instagram feed, & basically my life.
-        <span className="font-script text-2xl -rotate-2 ml-3 mb-6 hidden md:inline"> Wait woahI have one ?</span></motion.h1>
-        <motion.h2 className="col-span-full font-script text-2xl ml-3 -rotate-2 -mt-2 mb-6 md:hidden" variants={animateInChild}> Wait woahI have one ?</motion.h2>
-        <motion.h3 className="col-span-full text-xs lg:text-base font-medium tracking-tight mb-10 md:mb-6 px-4 lg:px-0 -mt-1" variants={animateInChild}>You may also alternatively, find it natively here: 
-            <a href="https://www.instagram.com/khristurtle/reels/"
-            className="font-script underline ml-1.5 relative top-0.5"
-            target="blank"
-            rel="noopener noreferrer">@khristurtle</a>
-            
-            </motion.h3> */}
-
-        {/* <h2 className="col-span-full tracking-wider text-xs px-4 font-semibold -mt-2 mb-2">REELS</h2> */}
-
-
         {/* On The Road */}
         <motion.div className="col-span-full grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-0.5 md:gap-1 dark:md:gap-2 md:mb-1 mb-0.5 transition-all duration-300" variants={animateInChild}>
-
-            <motion.div className="relative">
-                
-                <video 
-                src="/content/taycan.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/taycan.jpg'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-xl md:rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1><span className="opacity-50">On The Road:</span> Taycan 4S</h1>
-                </div>
-                
-            </motion.div>
+            <ContentGridItem
+                videoSrc="/content/taycan.mp4"
+                posterSrc="/poster/content/taycan.jpg"
+                title="Taycan 4S"
+                subtitle="On The Road:"
+                variants={animateInChild}
+            />
             
-            <motion.div className="relative">
-                
-                <video 
-                src="/content/m3.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/m3.jpg'
-                variants={animateInChild}>
-                </video>
+            <ContentGridItem
+                videoSrc="/content/m3.mp4"
+                posterSrc="/poster/content/m3.jpg"
+                title="BMW M3"
+                subtitle="On The Road:"
+                variants={animateInChild}
+            />
 
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1><span className="opacity-50">On The Road:</span> BMW M3</h1>
-                </div>
-                
-            </motion.div>
-
-            <motion.div className="relative">
-                <Video 
-                    src="/content/ontheroadc43.mp4"
-                    className="rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                    poster='/poster/content/c43.jpg'
-                    videoId="ontheroadc43"
-                    variants={animateInChild}
-                />
-                
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1><span className="opacity-50">On The Road:</span> New York</h1>
-                </div>
-                
-            </motion.div>
-
-            <motion.div className="relative">
+            <ContentGridItem
+                videoSrc="/content/ontheroadc43.mp4"
+                posterSrc="/poster/content/c43.jpg"
+                title="New York"
+                subtitle="On The Road:"
+                variants={animateInChild}
+            />
             
-                <video 
-                src="/content/ontheroad1_1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/roadbay.png'
-                variants={animateInChild}>
-                </video>
+            <ContentGridItem
+                videoSrc="/content/ontheroad1_1.mp4"
+                posterSrc="/poster/content/roadbay.png"
+                title="California"
+                subtitle="On The Road:"
+                variants={animateInChild}
+            />
 
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
+            <ContentGridItem
+                videoSrc="/content/ontheroad3_1.mp4"
+                posterSrc="/poster/content/roadkl.png"
+                title="Kuala Lumpur"
+                subtitle="On The Road:"
+                variants={animateInChild}
+            />
 
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1><span className="opacity-50">On The Road:</span> California</h1>
-                </div>
-                
-            </motion.div>
-
-            <motion.div className="relative">
+            <ContentGridItem
+                videoSrc="/content/ontheroad4_1.mp4"
+                posterSrc="/poster/content/roadmelbourne.png"
+                title="Melbourne"
+                subtitle="On The Road:"
+                variants={animateInChild}
+            />
             
-                <video 
-                src="/content/ontheroad3_1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/roadkl.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1><span className="opacity-50">On The Road:</span> Kuala Lumpur</h1>
-                </div>
-                
-            </motion.div>
-
-            <motion.div className="relative">
-            
-                <video 
-                src="/content/ontheroad4_1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/roadmelbourne.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1><span className="opacity-50">On The Road:</span> Melbourne</h1>
-                </div>
-                
-            </motion.div>
-            
-            <div className="relative">
-            
-                <video 
-                src="/content/rangefinder1_1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/klleica.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px] md:leading-4">
-                    <h1><span className="opacity-50">Through the Rangefinder:<br/></span>Kuala Lumpur</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/rangefinder2_1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/shanghaileica.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px] md:leading-4">
-                    <h1><span className="opacity-50">Through the Rangefinder:<br/></span>Shanghai</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/rangefinder3_1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/shanghaifilm.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px] md:leading-4">
-                    <h1><span className="opacity-50">Through the Rangefinder:<br/></span>Film</h1>
-                </div>
-                
-            </div>
-            
-            <div className="relative">
-            
-                <video 
-                src="/content/pov2.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/12a.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">POV: </span>Seat 12A</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/pov3_1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/15a.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">POV: </span>Seat 15A</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/pov4_1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/nonstop.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">POV: </span>The World&apos;s Longest Flight</h1>
-                </div>
-                
-            </div>
-            
-            <div className="relative">
-            
-                <video 
-                src="/content/filmvsdigital1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/filmhanoi.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1><span className="opacity-50">Film vs Digital: </span>Hanoi</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/filmvsdigital2.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/filmmarinabay.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1><span className="opacity-50">Film vs Digital: </span>Marina Bay</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/filmvsdigital3.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/filmshanghai.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-0.5">
-                    <h1><span className="opacity-50">Film vs Digital: </span>Shanghai</h1>
-                </div>
-                
-            </div>
-        
-            <div className="relative">
-            
-                <video 
-                src="/content/blender1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/iphoneblender.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">Blender: </span>15 Hours of iPhone 15 Pro</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/blender2.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/iphoneblender2.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">Blender: </span>15 more hours of iPhone 15 Pro</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/blender3.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/leicablender.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">Blender: </span>Leica M10-P</h1>
-                </div>
-                
-            </div>
-            
-            <div className="relative">
-            
-                <video 
-                src="/content/blender4.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/leicablender2.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">Blender: </span>Modeling a Leica</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/24hours1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/24hourkl.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">24 Hours of </span>Kuala Lumpur</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/24hours2.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/24hourmelbourne.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50">24 Hours of </span>Melbourne</h1>
-                </div>
-                
-            </div>
-        
-            <div className="relative">
-            
-                <video 
-                src="/content/16.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/stool.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px] md:leading-4 md:w-2/3">
-                    <h1><span className="opacity-50">One man&apos;s trash, another man&apos;s questionable treasure: </span>IKEA Stool</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/15.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/lounge.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50"></span>One Afternoon in SilverKris Lounge</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/14.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/shanghaibrands.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50"></span>Brands to check out in Shanghai</h1>
-                </div>
-
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/11.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/prints.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1>Too many prints, not enough wall</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/4_1.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/jaguar.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50"></span>A Drone, A Jaguar, in California</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/3.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/chicago.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50"></span>Chicago in 26,020 steps</h1>
-                </div>
-
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/17.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/dia.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1>One Afternoon at DIA Beacon</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/5.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/manhattanbridge.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50"></span>N – Brooklyn</h1>
-                </div>
-                
-            </div>
-
-            <div className="relative">
-            
-                <video 
-                src="/content/2.mp4" 
-                className=" rounded-xl md:rounded-2xl w-full h-auto object-cover"
-                autoPlay muted loop playsInline loading="lazy"
-                poster='/poster/content/muir.png'
-                variants={animateInChild}>
-                </video>
-
-                {/* Gradient */}
-                <div className="bg-gradient-to-t from-black/60 to-transparent absolute bottom-0 w-full h-1/4 rounded-b-2xl"/>
-
-                {/* Title */}
-                <div className="absolute bottom-0 w-full text-white tracking-tight font-medium text-[8px] md:text-[14px] md:p-3 pl-2 pb-1.5 leading-[10px]">
-                    <h1><span className="opacity-50"></span>Muir Beach</h1>
-                </div>
-
-            </div>
+            <ContentGridItem
+                videoSrc="/content/rangefinder1_1.mp4"
+                posterSrc="/poster/content/klleica.png"
+                title="Kuala Lumpur"
+                subtitle="Through the Rangefinder:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/rangefinder2_1.mp4"
+                posterSrc="/poster/content/shanghaileica.png"
+                title="Shanghai"
+                subtitle="Through the Rangefinder:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/rangefinder3_1.mp4"
+                posterSrc="/poster/content/shanghaifilm.png"
+                title="Film"
+                subtitle="Through the Rangefinder:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/pov2.mp4"
+                posterSrc="/poster/content/12a.png"
+                title="Seat 12A"
+                subtitle="POV:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/pov3_1.mp4"
+                posterSrc="/poster/content/15a.png"
+                title="Seat 15A"
+                subtitle="POV:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/pov4_1.mp4"
+                posterSrc="/poster/content/nonstop.png"
+                title="The World's Longest Flight"
+                subtitle="POV:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/filmvsdigital1.mp4"
+                posterSrc="/poster/content/filmhanoi.png"
+                title="Hanoi"
+                subtitle="Film vs Digital:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/filmvsdigital2.mp4"
+                posterSrc="/poster/content/filmmarinabay.png"
+                title="Marina Bay"
+                subtitle="Film vs Digital:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/filmvsdigital3.mp4"
+                posterSrc="/poster/content/filmshanghai.png"
+                title="Shanghai"
+                subtitle="Film vs Digital:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/blender1.mp4"
+                posterSrc="/poster/content/iphoneblender.png"
+                title="15 Hours of iPhone 15 Pro"
+                subtitle="Blender:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/blender2.mp4"
+                posterSrc="/poster/content/iphoneblender2.png"
+                title="15 more hours of iPhone 15 Pro"
+                subtitle="Blender:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/blender3.mp4"
+                posterSrc="/poster/content/leicablender.png"
+                title="Leica M10-P"
+                subtitle="Blender:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/blender4.mp4"
+                posterSrc="/poster/content/leicablender2.png"
+                title="Modeling a Leica"
+                subtitle="Blender:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/24hours1.mp4"
+                posterSrc="/poster/content/24hourkl.png"
+                title="Kuala Lumpur"
+                subtitle="24 Hours of"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/24hours2.mp4"
+                posterSrc="/poster/content/24hourmelbourne.png"
+                title="Melbourne"
+                subtitle="24 Hours of"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/16.mp4"
+                posterSrc="/poster/content/stool.png"
+                title="IKEA Stool"
+                subtitle="One man's trash, another man's questionable treasure:"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/15.mp4"
+                posterSrc="/poster/content/lounge.png"
+                title="One Afternoon in SilverKris Lounge"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/14.mp4"
+                posterSrc="/poster/content/shanghaibrands.png"
+                title="Brands to check out in Shanghai"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/11.mp4"
+                posterSrc="/poster/content/prints.png"
+                title="Too many prints, not enough wall"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/4_1.mp4"
+                posterSrc="/poster/content/jaguar.png"
+                title="A Drone, A Jaguar, in California"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/3.mp4"
+                posterSrc="/poster/content/chicago.png"
+                title="Chicago in 26,020 steps"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/17.mp4"
+                posterSrc="/poster/content/dia.png"
+                title="One Afternoon at DIA Beacon"
+                variants={animateInChild}
+            />
+            <ContentGridItem
+                videoSrc="/content/5.mp4"
+                posterSrc="/poster/content/manhattanbridge.png"
+                title="Brooklyn"
+                subtitle="N –"
+                variants={animateInChild}
+            />
+
+            <ContentGridItem
+                videoSrc="/content/2.mp4"
+                posterSrc="/poster/content/muir.png"
+                title="Muir Beach"
+                variants={animateInChild}
+            />
             
         </motion.div>
 

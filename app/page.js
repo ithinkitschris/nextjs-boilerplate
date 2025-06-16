@@ -331,7 +331,7 @@ export default function Home(){
     { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', poster:'/poster/leica.jpeg', tags: ['leica', 'all', 'motion'] },
     { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Behind The Scenes', poster:'', tags: ['unshackle', 'all', 'photography'] },
     { src: '/subway/cover.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'', tags: ['subway', 'all', 'product'] },
-    { src: '/wellnessco/cover.mp4', title:'Time Management by College Students', subheader:'Ethnographic User Research', poster:'', tags: ['wellnessco', 'all', 'product'] },
+    // { src: '/wellnessco/cover.mp4', title:'Time Management by College Students', subheader:'Ethnographic User Research', poster:'', tags: ['wellnessco', 'all', 'product'] },
     { src: '/website/cover.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.jpeg', tags: ['website', 'all', 'product'] },
     { src: '/currently/car.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/website.jpeg', tags: ['car', 'all', 'product'] },
      
@@ -469,29 +469,28 @@ export default function Home(){
           
 
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-[0.4rem] md:top-10 z-40 mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
+          <div className="col-span-full fixed top-[0.4rem] md:top-10 z-[45] mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
             
-              {/* Sidenav / Dropdown Button */}
+              {/* Desktop Sidenav / Dropdown Button */}
               <motion.button 
-
-                // Base styles
                 className={`
-                  absolute p-2 rounded-full w-12 h-12 top-1 right-2.5 md:left-7 
-                  flex items-center justify-center z-30
-                  
-                  // Visual effects
-                  backdrop-blur-lg saturate-150 md:saturate-100 
+                  fixed md:absolute p-2 rounded-full 
+                  w-16 h-16 md:w-12 md:h-12 pl-1.5  
                   backdrop-brightness-125 md:backdrop-brightness-100
-                  shadow-glass-border-xs md:shadow-glass-border md:dark:shadow-none
+                  bottom-4 right-7 md:top-1 md:left-7 
+                  flex items-center justify-center z-50
+
+                  backdrop-blur-2xl saturate-150 md:saturate-100
+                  shadow-glass-border-sm md:shadow-glass-border-sm
+                  border-l-1.5 border-t-1.5 border-b-1 border-r-1 border-white/35
+                  md:border-none
                   
-                  // Text and transitions
                   text-foreground md:hover:text-background
-                  transition-colors duration-200
-                  
-                  // Conditional styles based on nav state
+                  transition-colors duration-200           
+
                   ${showNav 
                     ? "text-white dark:text-black bg-foreground dark:bg-white/90 md:hover:bg-foreground md:-ml-1" 
-                    : "bg-background dark:bg-transparent md:bg-background border-white md:hover:bg-foreground"
+                    : "bg-background dark:bg-white/0 md:bg-white border-white md:hover:bg-foreground"
                   }
                 `}
                 
@@ -503,7 +502,6 @@ export default function Home(){
                   damping: 15, 
                 }} 
                 variants={animateInChild}
-                layout="position"
                 onClick={toggleNav}
               >
                 {/* Hamburger/Close Icon */}
@@ -513,7 +511,7 @@ export default function Home(){
                   stroke="currentColor" 
                   strokeWidth="1" 
                   strokeLinecap="round" 
-                  className="w-6 md:w-7 h-6 md:h-7"
+                  className="w-7 h-7"
                 >
                   {/* Animated lines */}
                   <path 
@@ -625,8 +623,8 @@ export default function Home(){
           <motion.div
             className={`
               md:hidden fixed top-3 md:top-6 w-full z-40
-              border-white/40 transition-colors bg-background dark:bg-black/20 
-              backdrop-blur-xl saturate-150 backdrop-brightness-125
+              border-white/40 transition-colors bg-background dark:bg-black/0
+              backdrop-blur-xl
               glass border-b-1 border-r-0
               ${showNav ? "" : ""}
             `}
@@ -637,7 +635,7 @@ export default function Home(){
             animate={{ 
               width: showNav ? "16.5rem" : "9.6rem",
               height: showNav ? "23.5rem" : "2.7rem",
-              borderRadius: showNav ? "1.25rem" : "50rem"
+              borderRadius: showNav ? "1.5rem" : "50rem"
             }}
             transition={{
               width: { 

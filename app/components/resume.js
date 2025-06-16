@@ -86,7 +86,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
         {/* Page Container */}
         <motion.div 
         key="page-container"
-        className={`grid grid-cols-1 lg:grid-cols-10 w-full md:mt-8
+        className={`grid grid-cols-1 lg:grid-cols-10 w-full mt-2 md:mt-8
         items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
         gap-2 text-sm tracking-tight ${className}`}
         >
@@ -100,12 +100,13 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
                     {/* Name */}
                     <motion.h1
-                    className="ml-5 pt-1 text-xl font-script tracking-tight whitespace-nowrap text-background dark:text-foreground -rotate-6"
-                    variants={animateInChild}>
-                    I am
-                    <p className={`-ml-8 font-medium font-sans tracking-[-1.5pt] text-[48pt] mt-6 rotate-6 text-center`}>
-                    Chris Leow</p>
+                    className="z-50 pl-6 pt-3 text-4xl tracking-tighter leading-15 font-base text-[#e9e9e9] dark:text-white"
+                    variants={animateInChild}
+                    >
+                    I am <span className="font-script absolute top-10 tracking-tight text-7xl align-top">Chris</span>
+                    {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
                     </motion.h1>
+
 
                     {/* Image */}
                     <motion.div key="mobile-image-container" className="absolute top-0 left-0 w-full h-full -z-40 overflow-hidden rounded-3xl shadow-standard" variants={animateInChild}>
@@ -140,19 +141,17 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                 <div className="flex-1 lg:mb-10 border-0 lg:hidden">
 
                     {/* Mobile Subheader */}
-                    <motion.h1 
+                    <h1 
                     className="mb-14 -mt-8 -ml-10 text-[38px] px-2 font-script tracking-tight leading-11 text-center mix-blend-difference dark:mix-blend-normal text-white dark:text-white"
-                    animate={{rotate:-4}}
-                    variants={animateInChild}>
+                    style={{transform: 'rotate(-4deg)'}}>
                     
                         <p className="">And here are three <span className="ml-28 whitespace-nowrap">things about me:</span></p>
 
-                    </motion.h1>
+                    </h1>
 
                     {/* Mobile Three Things */}
-                    <motion.div 
-                    className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-14" 
-                    variants={animateInChild}>
+                    <div 
+                    className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-14">
                         {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2 ml-1">1</span> I don&apos;t take anything too seriously.</p>
                         <p className="text-xxs ml-2.5 opacity-35 mb-11 tracking-normal font-light">A bold opening statement; I know.</p>
@@ -160,7 +159,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">{"<p>I designed and coded this site from ground up.<br/>"}<br/>{"Fun? Curiosity? Self-hatred? <i>Possibly.</i></p>"}</p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">3</span> Craft. Craft. Craft.</p>
                         <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">Craft means everything to me. I have to <i>do</i>.<br/>I hope this comes across as you peruse my work.</p>
-                    </motion.div>
+                    </div>
 
                 </div>
 

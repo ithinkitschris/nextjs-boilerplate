@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import SideContainer from './SideContainer';
 import CarouselVideo from './CarouselVideo';
+import CarouselNavButton from './CarouselNavButton';
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -62,94 +63,35 @@ return (
       <div className="relative w-full">
 
         {/* Top Navigation Arrows */}
-        <div className="z-50 flex gap-3 justify-end mb-6 md:mb-10 scale-90 md:scale-100">
+        <CarouselNavButton 
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          scrollToIndex={scrollToIndex}
+          maxIndex={4}
+        />
 
-          <motion.button
-            onClick={() => {
-              const newIndex = Math.max(0, activeIndex - 1); 
-              setActiveIndex(newIndex);
-              scrollToIndex(newIndex);
-            }}
-            whileHover={{ scale: 0.92 }}
-            transition={{
-              type: "spring",
-              stiffness: 600,
-              damping: 10
-            }}
-            className={`
-              w-9 h-9 pr-[1.5px] text-sm font-semibold rounded-full 
-              backdrop-blur-2xl transition-opacity duration-200
-              flex items-center justify-center
-              dark:border-1 bg-background drop-shadow-md 
-              dark:border-white/20 text-foreground 
-              md:hover:text-white dark:text-white 
-              md:hover:bg-foreground dark:md:hover:bg-white 
-              dark:md:hover:text-black
-              ${activeIndex === 0 
-                ? 'opacity-35 drop-shadow-none pointer-events-none' 
-                : 'opacity-100'
-              }
-            `}
-          >
-            <ChevronLeftIcon className="w-[23px] h-[23px]" style={{ strokeWidth: 2.5 }} />
-          </motion.button>
+        {/* Horizontal Carousel Container*/}
+        <div className="flex overflow-x-auto gap-4 rounded-3xl scrollbar-hide" ref={containerRef}>
 
-          <motion.button
-            onClick={() => {
-              const newIndex = Math.min(4, activeIndex + 1); 
-              setActiveIndex(newIndex);
-              scrollToIndex(newIndex);
-            }}
-            whileHover={{ scale: 0.92 }}
-            transition={{
-              type: "spring",
-              stiffness: 600,
-              damping: 10
-            }}
-            className={`
-              w-9 h-9 pl-[2px] text-sm font-semibold rounded-full 
-              backdrop-blur-2xl transition-opacity duration-200
-              flex items-center justify-center
-              dark:border-1 bg-background drop-shadow-md 
-              dark:border-white/20 text-foreground 
-              md:hover:text-white md:dark:text-white 
-              md:hover:bg-foreground dark:md:hover:bg-white 
-              dark:md:hover:text-black
-              ${activeIndex === 4 
-                ? 'opacity-35 drop-shadow-none pointer-events-none' 
-                : activeIndex === 1 || activeIndex === 2 || activeIndex === 3
-                  ? 'opacity-100'
-                  : 'opacity-100 dark:bg-foreground dark:text-black md:dark:bg-transparent'
-              }
-            `}
-          >
-            <ChevronRightIcon className="w-[23px] h-[23px]" style={{ strokeWidth: 2.5 }} />
-          </motion.button>
-
-        </div>  
-
-        {/* Horizontal Carousel Wrapper */}
-        <div className="flex overflow-x-auto gap-4 rounded-3xl" ref={containerRef}>
-
-        {/* Desktop Navigation Dots */}
-        <div className="absolute left-0 right-0 bottom-5 z-20 justify-center gap-1 scale-90 hidden md:flex">
-          {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations', 'hemsaker', 'SilverKris Lounge'].map((title, index) => (
-            <button
-              key={index}
-              onClick={() => scrollToIndex(index)}
-              className={`
-                text-[7pt] font-semibold rounded-full transition-all duration-300 
-                flex items-center justify-center w-3.5 h-3.5 backdrop-blur-xl mix-blend-overlay
-                ${activeIndex === index
-                  ? "bg-white/75 scale-75 -mx-1 px-6 backdrop-blur-xl border-b-2 border-r-[1px] border-white drop-shadow-lg"
-                  : "bg-white/35 text-white hover:bg-white/80 hover:scale-100 scale-[60%] drop-shadow-lg"
-                }
-              `}
-            >
-              {activeIndex === index ? '' : ''}
-            </button>
-          ))}
-        </div>
+          {/* Desktop Navigation Dots */}
+          <div className="absolute left-0 right-0 bottom-5 z-20 justify-center gap-1 scale-90 hidden md:flex">
+            {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations', 'hemsaker', 'SilverKris Lounge'].map((title, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToIndex(index)}
+                className={`
+                  text-[7pt] font-semibold rounded-full transition-all duration-300 
+                  flex items-center justify-center w-3.5 h-3.5 backdrop-blur-xl mix-blend-overlay
+                  ${activeIndex === index
+                    ? "bg-white/75 scale-75 -mx-1 px-6 backdrop-blur-xl border-b-2 border-r-[1px] border-white drop-shadow-lg"
+                    : "bg-white/35 text-white hover:bg-white/80 hover:scale-100 scale-[60%] drop-shadow-lg"
+                  }
+                `}
+              >
+                {activeIndex === index ? '' : ''}
+              </button>
+            ))}
+          </div>
           
           {/* Beyond The Cabin */}
           <div 
@@ -320,25 +262,25 @@ return (
 
         </div>
 
-        {/* Mobile Navigation Dots */}
-        <div className="z-20 mt-4 justify-center gap-1 scale-90 flex md:hidden">
-          {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations', 'hemsaker', 'SilverKris Lounge'].map((title, index) => (
-            <button
-              key={index}
-              onClick={() => scrollToIndex(index)}
-              className={`
-                text-[7pt] font-semibold rounded-full transition-all duration-300 
-                flex items-center justify-center w-3.5 h-3.5 backdrop-blur-xl mix-blend-overlay
-                ${activeIndex === index
-                  ? "bg-white/75 scale-75 -mx-1 px-6 backdrop-blur-xl border-b-2 border-r-[1px] border-white drop-shadow-lg"
-                  : "bg-white/35 text-white hover:bg-white/80 hover:scale-100 scale-[60%] drop-shadow-lg"
-                }
-              `}
-            >
-              {activeIndex === index ? '' : ''}
-            </button>
-          ))}
-        </div>
+      {/* Mobile Navigation Dots */}
+      <div className="z-20 mt-4 justify-center gap-1 scale-90 flex md:hidden">
+        {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations', 'hemsaker', 'SilverKris Lounge'].map((title, index) => (
+          <button
+            key={index}
+            onClick={() => scrollToIndex(index)}
+            className={`
+              text-[7pt] font-semibold rounded-full transition-all duration-300 
+              flex items-center justify-center w-3.5 h-3.5 backdrop-blur-xl mix-blend-overlay
+              ${activeIndex === index
+                ? "bg-white/75 scale-75 -mx-1 px-6 backdrop-blur-xl border-b-2 border-r-[1px] border-white drop-shadow-lg"
+                : "bg-white/35 text-white hover:bg-white/80 hover:scale-100 scale-[60%] drop-shadow-lg"
+              }
+            `}
+          >
+            {activeIndex === index ? '' : ''}
+          </button>
+        ))}
+      </div>
         
       </div>
     </motion.div>  

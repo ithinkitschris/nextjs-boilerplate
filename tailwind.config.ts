@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import glass from './app/styles/glass';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   darkMode: 'class', 
@@ -159,6 +160,20 @@ const config: Config = {
   },
   plugins: [
     glass,
+    plugin(function({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          /* IE and Edge */
+          '-ms-overflow-style': 'none',
+          /* Firefox */
+          'scrollbar-width': 'none',
+          /* Safari and Chrome */
+          '&::-webkit-scrollbar': {
+            display: 'none'
+          }
+        }
+      })
+    })
   ],
   // corePlugins: {
   //   aspectRatio: false, // Disabling built-in aspect ratio plugin

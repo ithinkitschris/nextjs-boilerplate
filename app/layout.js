@@ -119,20 +119,20 @@ const toggleDarkMode = () => {
 
               {/* Backdrop Blur */}
               <div className={`${changelog ? 'bg-black/0 backdrop-blur' :'backdrop-blur-none pointer-events-none'}
-              fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
+              fixed top-0 left-0 w-full h-full z-[40] transition-all duration-500 md:duration-300`} />
 
-              {/* <Dark Mode Button/> */}
-              <div className="fixed w-full max-w-9xl px-4 md:px-8 z-50">
-                <div className="absolute left-4.5 md:right-8 top-3 md:top-12 z-50">
+              {/* Dark Mode Button */}
+              <div className="absolute w-full max-w-9xl h-screen px-8">
+                <div className="fixed left-[1.7rem] md:left-auto md:right-8 top-[0.55rem] md:top-12 z-[60] scale-[85%] md:scale-100">
                   <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
                 </div>   
               </div>
-
+              
               {/* Main */}
               <main>{children}</main>
 
               {/* About Site Footer */}
-              <div className="fixed bottom-6 left-0 inset-x-0 mx-auto z-50 md:w-200 flex justify-center scale-105">
+              <div className="md:fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-40 flex justify-center scale-105">
                 <div
                   ref={footerRef}
                   className={`
@@ -147,7 +147,9 @@ const toggleDarkMode = () => {
                     px-2
                     pr-2 
                     py-1
-                    backdrop-blur-xl
+                    backdrop-blur
+                    md:backdrop-blur-[2px]
+                    md:[backdrop-filter:url(#backdrop-distortion)]
                                  
                     bg-background 
                     dark:bg-transparent 
@@ -169,11 +171,6 @@ const toggleDarkMode = () => {
                       : 'dark:border-white/25 md:dark:border-white/25'
                     }
                   `}
-                  style={{
-                    WebkitBackdropFilter: 'blur(2px) url(#backdrop-distortion)',
-                    backdropFilter: 'blur(2px) url(#backdrop-distortion)',
-                 
-                  }}
                   onClick={toggleChangelog}>
                   <div className="inline-flex ml-1.5">Website built with React and Next.js
                     {changelog ? (
