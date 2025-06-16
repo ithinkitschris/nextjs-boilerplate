@@ -122,8 +122,8 @@ const toggleDarkMode = () => {
               fixed top-0 left-0 w-full h-full z-50 transition-all duration-500 md:duration-300`} />
 
               {/* <Dark Mode Button/> */}
-              <div className="fixed left-1/2 -translate-x-1/2 w-full max-w-9xl px-4 md:px-8 z-50">
-                <div className="absolute right-4 md:right-8 top-3 md:top-12 z-50">
+              <div className="fixed w-full max-w-9xl px-4 md:px-8 z-50">
+                <div className="absolute left-4.5 md:right-8 top-3 md:top-12 z-50">
                   <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
                 </div>   
               </div>
@@ -147,6 +147,7 @@ const toggleDarkMode = () => {
                     px-2
                     pr-2 
                     py-1
+                    backdrop-blur-xl
                                  
                     bg-background 
                     dark:bg-transparent 
@@ -169,9 +170,9 @@ const toggleDarkMode = () => {
                     }
                   `}
                   style={{
-                    // WebkitBackdropFilter: 'blur(5px) url(#backdrop-distortion)',
+                    WebkitBackdropFilter: 'blur(2px) url(#backdrop-distortion)',
                     backdropFilter: 'blur(2px) url(#backdrop-distortion)',
-                    background: 'rgba(0, 0, 0, 0)'
+                 
                   }}
                   onClick={toggleChangelog}>
                   <div className="inline-flex ml-1.5">Website built with React and Next.js

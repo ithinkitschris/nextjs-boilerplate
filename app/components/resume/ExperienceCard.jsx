@@ -36,9 +36,7 @@ const ExperienceCard = ({
         </h1>
       )}
 
-      {showMobileDivider && (
-        <motion.div className="md:hidden md:col-span-1 -ml-1 w-[89vw] md:w-full h-[1px] dark:bg-white/15 shadow" variants={dropdownChild} layout='position'/>
-      )}
+      
 
       <div className="cursor-pointer mt-4" onClick={onToggle}>
         <div className="flex justify-between">

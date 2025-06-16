@@ -100,11 +100,11 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
                     {/* Name */}
                     <motion.h1
-                    key="mobile-name"
-                    className="z-50 pl-5 pt-5 text-6xl tracking-tighter leading-15 font-base text-[#e9e9e9] dark:text-white"
-                    variants={animateInChild} 
-                    >
-                    I am <span key="mobile-name-chris" className="font-script absolute top-10 tracking-tight text-7xl align-top ml-2">Chris</span>
+                    className="ml-5 pt-1 text-xl font-script tracking-tight whitespace-nowrap text-background dark:text-foreground -rotate-6"
+                    variants={animateInChild}>
+                    I am
+                    <p className={`-ml-8 font-medium font-sans tracking-[-1.5pt] text-[48pt] mt-6 rotate-6 text-center`}>
+                    Chris Leow</p>
                     </motion.h1>
 
                     {/* Image */}
@@ -141,7 +141,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
                     {/* Mobile Subheader */}
                     <motion.h1 
-                    className="mb-14 -mt-8 -ml-1 md:mt-0 text-[40px] px-2 font-script tracking-tight leading-11 mix-blend-difference dark:mix-blend-normal text-white dark:text-white"
+                    className="mb-14 -mt-8 -ml-10 text-[38px] px-2 font-script tracking-tight leading-11 text-center mix-blend-difference dark:mix-blend-normal text-white dark:text-white"
                     animate={{rotate:-4}}
                     variants={animateInChild}>
                     
@@ -239,20 +239,28 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                 </div>
 
                 {/* Desktop Background Glow */}
-                <motion.img src='/profile/profilelandscape2.jpg' className="hidden md:block absolute -z-10 blur-[220px] left-0 mt-10 saturate-200 w-screen opacity-0 dark:opacity-100"/>
+                <motion.img src='/profile/profilelandscape2.jpg' className="absolute -z-10 blur-[220px] left-0 mt-10 saturate-200 w-screen opacity-0 dark:opacity-100"/>
 
             </div>
 
-            {/* Header */}
-            <div className="font-medium tracking-[-2.7pt] text-[58pt] mt-48 ml-6 mb-3 col-span-full leading-[87%] w-2/3">Story time.</div>
+            {/* Story Header */}
+            <div className="hidden md:block font-medium tracking-[-1.5pt] md:tracking-[-2.7pt] text-5xl md:text-[58pt] mt-24 md:mt-48 ml-6 mb-3 col-span-full leading-[95%] w-2/3">Story time.
+            </div>
 
             {/* Story Container */}
             <motion.div 
-                className="border-r-[1.5px] border-b-[2px] border-t-[0.1px] border-l-[0.1px] border-white/15 w-full rounded-3xl col-span-full bg-background dark:bg-transparent leading-[150%]
-                transition-non-color shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_4px_0px_rgba(255,255,255,0.15)]  p-6 px-12 text-sm grid grid-cols-9 relative overflow-hidden" 
+                className={`
+                  hidden md:grid
+                  border-r-[1.5px] border-b-[2px] border-t-[0.1px] border-l-[0.1px] 
+                  border-white/15 w-full rounded-3xl col-span-full 
+                  bg-background dark:bg-transparent leading-[150%]
+                  transition-non-color 
+                  shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_4px_0px_rgba(255,255,255,0.15)]
+                  p-6 px-12 text-sm grid-cols-9 relative overflow-hidden
+                `}
                 transition={{ 
-                    duration: 0.3,
-                    ease: "easeInOut"
+                  duration: 0.3,
+                  ease: "easeInOut"
                 }}
                 key="story-container"
             >
@@ -483,40 +491,40 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             </motion.div>
 
             {/* Currently */}
-            <div key="currently-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-52 mb-1 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 ml-4 px-2
+            <div key="currently-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-20 md:mt-52 mb-1 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-4 px-2
             p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">June 2025</div>
-            <div key="currently-title" className="font-medium tracking-[-2.5pt] text-[52pt] mb-4 col-span-full leading-[87%] w-5/6 ml-5">Everything I've been up to lately:</div>
+            <div key="currently-title" className="font-medium tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[52pt] mb-4 col-span-full md:w-5/6 ml-1.5 md:ml-5">Everything I've been up to lately:</div>
             <Currently className='col-span-full -mt-12' key='currently' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Creative Direction */}
-            <div key="creative-direction-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 ml-6 px-2
+            <div key="creative-direction-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-6 px-2
             p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">Creative Direction</div>
-            <div key="creative-direction-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 mb-3 col-span-full leading-[87%] w-2/3 ml-8">The ones that had legs.</div>
-            <BestWorkPage3 className='col-span-full -mt-12' key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <div key="creative-direction-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-5">The ones that had legs.</div>
+            <BestWorkPage3 className='col-span-full -mt-[3.2rem]' key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Product Design */}
-            <div key="product-design-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full ml-8 px-2">Product Design</div>
-            <div key="product-design-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 mb-3 col-span-full leading-[87%] w-2/3 px-8">Products of Design.</div>
+            <div key="product-design-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full md:ml-8 px-2">Product Design</div>
+            <div key="product-design-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-5">Products of Design.</div>
             <ProductPage className='col-span-full -mt-10' key='product' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Motion Design */}
-            <div key="motion-design-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-2 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-8 px-2">Motion Design</div>
-            <div key="motion-design-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-6 mb-3 col-span-full leading-[87%] w-2/3">.blend-ing .ai, .ae and .js</div>
+            <div key="motion-design-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-2 md:ml-8 px-2">Motion Design</div>
+            <div key="motion-design-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-5">.blend-ing .ai, .ae and .js</div>
             <MotionDesignPage className='col-span-full -mt-10' key='motion' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Photography */}
-            <div key="photography-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-6 px-2">Photography</div>
-            <div key="photography-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[87%] w-[50%] ">Photographic Memories.</div>
-            <PhotographyPage className='col-span-full mt-8' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <div key="photography-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-6 px-2 hidden md:block">Photography</div>
+            <div key="photography-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[95%] w-[50%] hidden md:block">Photographic Memories.</div>
+            <PhotographyPage className='col-span-full mt-8 hidden md:block' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
             
             {/* Content */}
-            <div key="content-header" className="font-medium tracking-[-0.2pt] text-[12pt] ml-4 mt-72 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>
-            <div key="content-title" className="font-medium tracking-[-2.7pt] text-[58pt] -mt-1 ml-3 mb-8 col-span-full leading-[87%] w-[70%] ">A life of mine viewed through a short attention span.</div>
+            <div key="content-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] ml-2 md:ml-4 mt-32 md:mt-72 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>
+            <div key="content-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-3 mb-8 col-span-full leading-[95%] w-[80%] ">A life of mine viewed through a short attention span.</div>
             <ContentPage className='col-span-full mt-8' key='content'/>
             
             {/* CV */}
             <div key="cv-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Curriculum Vitae</div>
-            <div key="cv-title" className="font-medium tracking-[-1.8pt] text-[58pt] mb-3 col-span-full leading-[87%] w-full">Info, the rest of it all.</div>
+            <div key="cv-title" className="font-medium tracking-[-5.8pt] text-[58pt] mb-3 col-span-full leading-[95%] w-full">Info, the rest of it all.</div>
 
             {/* Desktop Brands Container */}
             <h1 className="text-[40px] md:text-3xl mt-20 tracking-tight font-medium text-black dark:text-white col-span-full" key='brands-header'>Worked with:</h1>
@@ -535,7 +543,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             </motion.div>
 
             {/* Footer */}
-            <div className="col-span-full grid grid-cols-5 w-full gap-8" key='footer'>  
+            <div className="col-span-full grid-cols-5 w-full gap-8 hidden md:grid" key='footer'>  
 
                 {/* Currently */}
                 <ExperienceCard

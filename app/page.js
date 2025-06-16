@@ -330,7 +330,7 @@ export default function Home(){
     { src: '/iphone/intro.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', poster:'/poster/iphone15.jpeg', tags: ['iphone', 'all', 'motion'] },
     { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', poster:'/poster/leica.jpeg', tags: ['leica', 'all', 'motion'] },
     { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Behind The Scenes', poster:'', tags: ['unshackle', 'all', 'photography'] },
-    { src: '/subway/cover.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'UX + UI Design', poster:'', tags: ['subway', 'all', 'product'] },
+    { src: '/subway/cover.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'', tags: ['subway', 'all', 'product'] },
     { src: '/wellnessco/cover.mp4', title:'Time Management by College Students', subheader:'Ethnographic User Research', poster:'', tags: ['wellnessco', 'all', 'product'] },
     { src: '/website/cover.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.jpeg', tags: ['website', 'all', 'product'] },
     { src: '/currently/car.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/website.jpeg', tags: ['car', 'all', 'product'] },
@@ -469,36 +469,66 @@ export default function Home(){
           
 
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-4 md:top-10 z-40 mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
+          <div className="col-span-full fixed top-[0.4rem] md:top-10 z-40 mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
             
               {/* Sidenav / Dropdown Button */}
               <motion.button 
-                className={`absolute text-foreground p-2 rounded-full backdrop-blur-lg w-12 h-12 top-1
-                flex items-center justify-center md:hover:text-background transition-colors duration-200 z-30 left-2 md:left-7 
-                shadow-glass-border dark:shadow-none
-                ${showNav 
-                ? "text-white dark:text-black bg-foreground right-8 md:hover:bg-foreground md:-ml-1" 
-                : "bg-background dark:bg-background border-white md:hover:bg-foreground right-8"}`}
+
+                // Base styles
+                className={`
+                  absolute p-2 rounded-full w-12 h-12 top-1 right-2.5 md:left-7 
+                  flex items-center justify-center z-30
+                  
+                  // Visual effects
+                  backdrop-blur-lg saturate-150 md:saturate-100 
+                  backdrop-brightness-125 md:backdrop-brightness-100
+                  shadow-glass-border-xs md:shadow-glass-border md:dark:shadow-none
+                  
+                  // Text and transitions
+                  text-foreground md:hover:text-background
+                  transition-colors duration-200
+                  
+                  // Conditional styles based on nav state
+                  ${showNav 
+                    ? "text-white dark:text-black bg-foreground dark:bg-white/90 md:hover:bg-foreground md:-ml-1" 
+                    : "bg-background dark:bg-transparent md:bg-background border-white md:hover:bg-foreground"
+                  }
+                `}
                 
+                // Animation properties
                 whileHover={{ scale: 0.9 }}
                 transition={{
                   type: "spring",
                   stiffness: 700, 
                   damping: 15, 
-                  }} 
+                }} 
                 variants={animateInChild}
                 layout="position"
-                onClick={toggleNav}>
-
-                  {/* Example of an SVG icon */}
-                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" className="w-6 md:w-7 h-6 md:h-7">
-                    <path d={`${showNav ? 'M2 10h16' : 'M6 10h8'}`}
-                    className='transition-all duration-200'/>
-                    <path d={`${showNav ? 'M2 15h16' : 'M6 15h8'}`}
-                    className='transition-all duration-300'/>
-                    <path d={`${showNav ? 'M2 5h16' : 'M6 5h8'}`}
-                    className='transition-all duration-100'/>
-                  </svg>
+                onClick={toggleNav}
+              >
+                {/* Hamburger/Close Icon */}
+                <svg 
+                  viewBox="0 0 20 20" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="1" 
+                  strokeLinecap="round" 
+                  className="w-6 md:w-7 h-6 md:h-7"
+                >
+                  {/* Animated lines */}
+                  <path 
+                    d={`${showNav ? 'M2 10h16' : 'M4 10h13'}`}
+                    className='transition-all duration-200'
+                  />
+                  <path 
+                    d={`${showNav ? 'M2 15h16' : 'M4 15h13'}`}
+                    className='transition-all duration-300'
+                  />
+                  <path 
+                    d={`${showNav ? 'M2 5h16' : 'M4 5h13'}`}
+                    className='transition-all duration-100'
+                  />
+                </svg>
               </motion.button>
 
               {/* Top Navbar Container */}
@@ -528,22 +558,13 @@ export default function Home(){
                 </motion.div>
               </motion.div>
 
-              {/* Mobile Navbar */}
-              <motion.div
-                className={`md:hidden flex flex-row items-center justify-center gap-2 text-white z-40 ml-6`}
-                initial="hidden"
-                animate="show"
-                variants={animateIn}
-                transition={{ duration: 0.5 }}
-              >
-              </motion.div>
           </div>  
 
 
           {/* Home Button */}
           <motion.button
             className={`
-              fixed top-4 left-[50%] -ml-[4.7rem] md:top-[3.2rem] z-40
+              fixed top-[1.2rem] left-[50%] -ml-[4.3rem] md:-ml-[4.7rem] md:top-[3.2rem] z-50
               rounded-full px-3 py-[3px] border-1.5 
               font-semibold tracking-[-0.2pt] whitespace-nowrap
               text-white mix-blend-difference dark:mix-blend-normal
@@ -574,7 +595,7 @@ export default function Home(){
           {/* Work Button */}
           <motion.button 
             className={`
-              fixed top-4 left-[50%] md:top-[3.2rem] z-40
+              fixed top-[1.2rem] left-[50%] ml-1.5 md:ml-0 md:top-[3.2rem] z-50
               rounded-full px-3 py-[3px] border-1.5
               font-semibold tracking-[-0.2pt] whitespace-nowrap
               text-white mix-blend-difference dark:mix-blend-normal
@@ -602,28 +623,43 @@ export default function Home(){
 
           {/* Mobile Navbar BG */}
           <motion.div
-            className={`md:hidden fixed dark:backdrop-blur-lg top-2 w-full shadow z-2 z-30
-              border-white/20 transition-colors bg-background dark:bg-black/20 blur-[0.2px] border-b-1 
-              ${showNav ? "" : ""}`}
+            className={`
+              md:hidden fixed top-3 md:top-6 w-full z-40
+              border-white/40 transition-colors bg-background dark:bg-black/20 
+              backdrop-blur-xl saturate-150 backdrop-brightness-125
+              glass border-b-1 border-r-0
+              ${showNav ? "" : ""}
+            `}
             style={{
               left: "50%",
               transform: "translateX(-50%)",
             }}
-              animate={{ 
-                width: showNav? "17rem" : "9.1rem",
-                height: showNav ? "25rem" : "2.5rem",
-                borderRadius: showNav ? "1.25rem" : "50rem"}}
-              transition={{
-                width: { type: "spring", stiffness: showNav ? 500 : 500 , damping: showNav ? 28 : 26 },
-                height: { type: "spring", stiffness: showNav ? 500 : 500 , damping: showNav ? 26 : 36 }, // Faster or bouncier for height
-                borderRadius: { duration: showNav ? 0.01 : 10 } // Separate easing for smooth border-radius transition
-              }}
-          ></motion.div>
+            animate={{ 
+              width: showNav ? "16.5rem" : "9.6rem",
+              height: showNav ? "23.5rem" : "2.7rem",
+              borderRadius: showNav ? "1.25rem" : "50rem"
+            }}
+            transition={{
+              width: { 
+                type: "spring", 
+                stiffness: showNav ? 500 : 500, 
+                damping: showNav ? 28 : 26 
+              },
+              height: { 
+                type: "spring", 
+                stiffness: showNav ? 500 : 500, 
+                damping: showNav ? 26 : 36 
+              },
+              borderRadius: { 
+                duration: showNav ? 0.01 : 10 
+              }
+            }}
+          />
 
           {/* Side Navbar / Mobile Dropdown */}
           <motion.div
-            className={`${showNav ? "col-span-1 flex flex-col tracking-tight ml-5 -mr-6 sticky top-12 h-screen overflow-y-auto pl-2" : "opacity-0 pointer-events-none"}
-            transition-opacity duration-300`} 
+            className={`${showNav ? "col-span-1 flex flex-col tracking-tight ml-5 md:-mr-6 md:sticky md:top-12 md:h-screen md:overflow-y-auto md:pl-2" : "opacity-0 pointer-events-none"}
+            relative transition-opacity duration-300`} 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }}
             variants={animateInChildMobile}>
@@ -1380,11 +1416,11 @@ export default function Home(){
                 </motion.div>
 
                 {/* Mobile Dropdown Container */}
-                <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-40 fixed w-screen -ml-4 font-medium ">
+                <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-50 fixed w-screen -ml-4 font-medium top-20">
 
                   {/* Dropdown Menu */}    
                   <motion.div 
-                  className="flex flex-col gap-2 items-start tracking-tighter text-[23px] leading-tighter font-medium mt-4 w-full max-w-[16rem] mx-auto md:hidden"
+                  className="flex flex-col gap-2 items-start tracking-tighter text-[23px] leading-tighter font-medium mt-4 w-full max-w-[16rem] mx-auto md:hidden z-50 relative"
                   initial="hidden"
                   animate="show"
                   exit="fade"
@@ -1395,41 +1431,34 @@ export default function Home(){
                   }}
                   variants={skillContainer}>
 
-                    {/* <motion.div className="w-full bg-backgroundround dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
-
-                    <motion.button 
-                    className="text-left text-foreground mt-2 mb-1 px-5"
-                    variants={animateInChildMobile}
-                    onClick={() => {
-                      toggleTag('all');
-                      toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1.5 font-light text-base align-top tracking-normal'>∞</span>
-                      Everything<span className='ml-1.5 absolute -rotate-2 mt-1 font-script italic tracking-wider text-[9px] align-super whitespace-nowrap'
-                      ></span></motion.button>
-
-                    {/* <motion.div className="mx-auto mr-2 w-[90%] bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px] " variants={animateInChildMobile}/> */}
-
-                    <motion.button 
-                    className="text-left text-foreground mt-2 mb-3 px-5 relative"
-                    variants={animateInChildMobile}
-                    onClick={() => {
-                      toggleTag('creative');
-                      toggleWork('bestwork');
-                      setShowNav(false)}}><span className='hidden mr-1 font-light text-xl align-center leading-none tracking-normal'>* </span>
-                      My <span className="font-script ml-1.5 relative top-1">favorites</span></motion.button>
-                      
-                    <motion.div className="mx-auto mr-2 w-[90%] bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/>
-
-                    <motion.button 
-                    className="text-left text-foreground font-normal mt-2.5 mb-3 px-5 "
+                    {/* <motion.button 
+                    className="text-left text-foreground font-normal mb-3 px-5 "
                     variants={animateInChildMobile}
                     onClick={() => {
                       toggleTag('creative');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 opacity-35 text-xxs align-top tracking-normal'>01 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 opacity-35 text-xxs align-top'>01 </span>
+                      Info</motion.button>
+
+                    <motion.div className="w-full bg-background dark:bg-white/[7%] shadow -ml-1 mb-6 h-[1.5px]" variants={animateInChildMobile}/> */}
+
+                    <motion.button 
+                    className="text-left text-foreground font-normal mb-3 px-5 "
+                    variants={animateInChildMobile}
+                    onClick={() => {
+                      toggleTag('creative');
+                      toggleNav('false');
+                      toggleWork('clear');}}><span className='hidden mr-1 opacity-35 text-xxs align-top'>01 </span>
                       Creative Direction</motion.button>
 
-                    {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
+                    <motion.button 
+                    className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
+                    variants={animateInChildMobile}
+                    onClick={() => {
+                      toggleTag('product');
+                      toggleNav('false');
+                      toggleWork('clear');}}><span className='hidden mr-1 opacity-35 text-xxs align-top'>01 </span>
+                      Product Design</motion.button>
 
                     <motion.button 
                     className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
@@ -1437,10 +1466,8 @@ export default function Home(){
                     onClick={() => {
                       toggleTag('motion');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>02 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>02 </span>
                       Motion Design</motion.button>
-
-                    {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
                     className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
@@ -1448,10 +1475,8 @@ export default function Home(){
                     onClick={() => {
                       toggleTag('edit');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>03 </span>
+                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>03 </span>
                       Video Editing</motion.button>
-
-                    {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
                     className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
@@ -1460,18 +1485,8 @@ export default function Home(){
                       toggleTag('photography');
                       toggleNav('false');
                       toggleWork('photography');
-                      }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>05 </span>
+                      }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>05 </span>
                       Photography</motion.button>
-
-                    {/* <motion.button 
-                    className="text-left text-foreground font-normal mt-1 mb-3 px-5 whitespace-nowrap"
-                    variants={animateInChildMobile}
-                    onClick={() => {
-                      toggleTag('website');
-                      toggleNav('false');
-                      toggleWork('website');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>04 </span>
-                      Interaction Design</motion.button>                       */}
-                    {/* <motion.div className="w-full bg-background dark:bg-white/[7%] shadow rounded-full h-[1.5px]" variants={animateInChildMobile}/> */}
 
                     <motion.button 
                    className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
@@ -1480,7 +1495,7 @@ export default function Home(){
                     toggleTag('content');
                     toggleNav('false');
                     toggleWork('content');
-                    }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top tracking-normal'>06 </span>
+                    }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>06 </span>
                       Content Creation</motion.button>
                   </motion.div>
                 </div>
@@ -1490,7 +1505,7 @@ export default function Home(){
 
           {/* Page Container (Adjust px here) */}
           <motion.div
-            className={`${showNav ? `col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8 md:-ml-12` : "col-span-full"} md:px-[7%]`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className={`${showNav ? `col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8 md:-ml-12` : "col-span-full"} px-4 md:px-[7%]`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 600, damping: 25 }}  
@@ -1582,7 +1597,7 @@ export default function Home(){
                       selectedTags={selectedTags}
                       onClick={() => { 
                         const workTags = 
-                        ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'iphone', '3d', 'car',
+                        ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'iphone', '3d', 'car', 'subway',
                           'travelbig', 'lounge', 'hemsaker', 'ispy', 'jolli', 'uniqlo1', 'uniqlo2', 'oneshow', 'samsung', 'leica', 
                           'nike', 'film'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));

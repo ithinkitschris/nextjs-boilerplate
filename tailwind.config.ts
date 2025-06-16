@@ -141,6 +141,7 @@ const config: Config = {
         'glass-border': '0px 2px 8px rgba(0,0,0,0.15), inset 0px 0px 5px 0px rgba(255,255,255,0.3)',
         'glass-border-light': '0px 3px 10px rgba(0,0,0,0.15), inset -1px -2px 6px 0px rgba(0,0,0,0.05)',
         'glass-border-sm': '0px 3px 10px rgba(0,0,0,0.15), inset 0px 0px 5px 0px rgba(255,255,255,0.15)',
+        'glass-border-xs': '0px 3px 10px rgba(0,0,0,0.15), inset 0px 0px 4px -2px rgba(255,255,255,0.5)',
       },
       lineHeight: {
         'tighter' : '0.92',

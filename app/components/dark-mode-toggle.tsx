@@ -11,8 +11,8 @@ const DarkModeToggle: FC<DarkModeToggleProps> = ({ toggleDarkMode, isDarkMode })
     <motion.button
       onClick={toggleDarkMode}
       className="
-      group -mt-0.5 lg:mt-1 bg-background backdrop-blur dark:bg-black/20 lg:dark:bg-transparent
-      p-1.5 rounded-full lg:hover:border-transparent lg:hover:text-white bg-background shadow-glass-border dark:shadow-none
+      group mt-1.5 md:mt-1 bg-background backdrop-blur dark:bg-transparent shadow-glass-border-xs saturate-150 md:saturate-100 backdrop-brightness-125 md:backdrop-brightness-100
+      p-1.5 rounded-full lg:hover:border-transparent lg:hover:text-white
       lg:dark:hover:bg-foreground text-foreground lg:hover:bg-foreground"
       initial={{ scale: 1.3 }}
       whileHover={{ scale: 1.2 }}
