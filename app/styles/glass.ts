@@ -8,6 +8,10 @@ export default plugin(function({ addComponents }) {
     '.glass-sm': {
       '@apply border-t-1.5 border-l-1 border-transparent dark:border-white/25 shadow-glass-border-sm': {},
     },
+
+    '.glass-xs': {
+      '@apply border-t-1 border-transparent dark:border-white/15 shadow-glass-border-sm': {},
+    },
     '.glass-strong': {
       '@apply border-t-1.5 border-l-1 border-transparent dark:border-white/45 shadow-glass-border': {},
     },

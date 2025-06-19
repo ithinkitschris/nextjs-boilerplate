@@ -437,8 +437,8 @@ export default function Home(){
                   flex items-center justify-center z-50
 
                   backdrop-blur-2xl saturate-150 md:saturate-100
-                  shadow-glass-border-sm md:shadow-glass-border-sm
-                  border-l-1.5 border-t-1.5 border-b-1 border-r-1 border-white/35
+                  shadow-glass-border-xs md:shadow-glass-border-sm
+                  border-t-1.5 border-l-1.5 border-1 border-white/25
                   md:border-none
                   
                   text-foreground md:hover:text-background

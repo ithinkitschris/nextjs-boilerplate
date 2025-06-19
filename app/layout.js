@@ -132,7 +132,7 @@ const toggleDarkMode = () => {
               <main>{children}</main>
 
               {/* About Site Footer */}
-              <div className="hidden md:fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-40 flex justify-center scale-105">
+              <div className="fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-40 flex justify-center scale-90 md:scale-105">
                 <div
                   ref={footerRef}
                   className={`
@@ -154,13 +154,12 @@ const toggleDarkMode = () => {
                     bg-background 
                     dark:bg-transparent 
                     dark:text-white
-                    glass
+                    shadow-glass-border-xs md:glass
                   
                     border-transparent 
-                    dark:border-b-1
+                    
                     md:dark:hover:border-white 
                     md:dark:hover:border-1
-                    
                     md:hover:bg-foreground 
                     md:dark:hover:bg-transparent 
                     md:hover:text-white 
@@ -168,7 +167,7 @@ const toggleDarkMode = () => {
                     
                     ${changelog 
                       ? 'bg-foreground text-white dark:border-white/75 border-1' 
-                      : 'dark:border-white/25 md:dark:border-white/25'
+                      : ' md:dark:border-white/25'
                     }
                   `}
                   onClick={toggleChangelog}>

@@ -92,8 +92,22 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
         >
         <AnimatePresence key="animate-presence">
             
+            {/* Mobile Blur Background */}
+            <div className="lg:hidden absolute top-0 left-0 w-full h-[800px] -z-50" key="mobile-blur-background">
+                <motion.div key="mobile-image-container-blur" className="absolute -top-0 -left-0 -right-0 -bottom-0 brightness-200 saturate-150 blur-[80px]" variants={animateInChild}>
+                    <Image
+                    key="mobile-profile-image-blur"
+                    src='/profile/profile.jpg'
+                    alt=""
+                    className=""
+                    layout="fill"
+                    objectFit="cover"
+                    />
+                </motion.div>
+            </div>
+            
             {/* Bio */}
-            <div key="bio-section" className="lg:flex lg:flex-wrap lg:gap-10 col-span-full w-full ">
+            <div key="bio-section" className="lg:flex lg:flex-wrap lg:gap-10 col-span-full w-full relative">
 
                 {/* Mobile Photo Card */}
                 <div key="mobile-photo-card" className="lg:hidden relative w-full h-[620px]">
@@ -107,9 +121,11 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                     {/* <span className="text-xs align-top ml-2 font-normal tracking-normal italic">Leow, Chris Leow.</span> */}
                     </motion.h1>
 
+                    <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_15px_rgba(0,0,0,0.3),inset_0px_0px_6px_0px_rgba(255,255,255,1)] 
+                    pointer-events-none mix-blend-overlay z-10"/>
 
                     {/* Image */}
-                    <motion.div key="mobile-image-container" className="absolute top-0 left-0 w-full h-full -z-40 overflow-hidden rounded-3xl shadow-standard" variants={animateInChild}>
+                    <motion.div key="mobile-image-container" className="absolute top-0 left-0 w-full h-full -z-40 overflow-hidden rounded-3xl" variants={animateInChild}>
                         <Image
                         key="mobile-profile-image"
                         src='/profile/profile.jpg'
@@ -119,7 +135,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         objectFit="cover"
                         />
                     </motion.div>
-
+                    
                     {/* Details */}
                     <motion.div
                     className="absolute bottom-0 pl-6 pb-14 text-[#e9e9e9] dark:text-white"
