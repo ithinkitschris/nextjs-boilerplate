@@ -93,7 +93,7 @@ show: {
             {/* Blurb */}
             <div className="col-span-full sm:col-span-4 lg:mr-16 ">
                 <motion.div className="text-2xl lg:text-3xl font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0" variants={animateInChild}>
-                An all-encompassing Brand Campaign spanning two years and multiple briefs for Singapore Airline's brand new flagship SilverKris Lounges at Changi Airport Terminal 3.
+                An all-encompassing Brand Campaign spanning two years and multiple briefs for Singapore Airline&apos;s brand new flagship SilverKris Lounges at Changi Airport Terminal 3.
                 </motion.div>
             </div>
 
@@ -306,7 +306,7 @@ show: {
 
                 <h1 className="text-4.5xl md:text-[48px] font-medium text-center md:text-left tracking-tighter mt-32 mb-4">Entrance Facade</h1>
 
-                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4'>An 8 metre long glass installation of Singapore Airline's Batik Motif serving as the grand facade to the SilverKris Lounge.</h1>
+                <h1 className='text-center md:text-left col-span-full tracking-tight text-sm px-4 md:px-0 mb-4'>An 8 metre long glass installation of Singapore Airline&apos;s Batik Motif serving as the grand facade to the SilverKris Lounge.</h1>
 
                 <Image
                 src="/lounge/1.jpg"

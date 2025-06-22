@@ -22,7 +22,7 @@ show: {
 
 
 
-const NycSubway = ({className}) => {
+const NycSubway = ({}) => {
 
   return (
     <div className="grid grid-cols-1 col-span-full">

@@ -16,39 +16,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
 
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
-  const scrollToIndex = (index) => {
-    if (!itemsRef.current[index] || !containerRef.current) return;
-    
-    // Save current vertical scroll position
-    const scrollY = window.scrollY;
-    
-    // Get container dimensions
-    const container = containerRef.current;
-    const containerWidth = container.clientWidth;
-    
-    // Calculate what the scroll position should be to position the item at 5% from left edge
-    // This assumes the expanded item will take 90% width and be centered in the container
-    const item = itemsRef.current[index];
-    const targetLeftPosition = containerWidth * 0.1; // 5% from left edge
-    const scrollPosition = item.offsetLeft - targetLeftPosition;
-    
-    // Scroll to position
-    container.scrollTo({
-      left: scrollPosition,
-      behavior: "smooth"
-    });
-    
-    // Restore vertical scroll position
-    window.scrollTo({
-      top: scrollY,
-      behavior: "auto"
-    });
-    
-    setActiveIndex(index);
-  };
+  const [setActiveIndex] = useState(0);
 
 return (
     <motion.div

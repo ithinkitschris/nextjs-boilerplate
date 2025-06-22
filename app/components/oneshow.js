@@ -96,7 +96,7 @@ export default function Oneshow({ className = "" }) {
           className="text-2xl lg:text-4xl lg:w-5/6 font-medium tracking-tight text-center leading-7 sm:text-left mx-4 sm:mx-0 mb-10 sm:mb-0"
           variants={animateInChild}
         >
-          A simple 3D animation for the announcement of TBWA\ Singapore's One
+          A simple 3D animation for the announcement of TBWA\ Singapore&apos;s One
           Show shortlists across their social media platforms.
         </motion.div>
       </div>

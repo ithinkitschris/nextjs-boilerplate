@@ -166,7 +166,7 @@ useEffect(() => {
             <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-8 mt-8 mb-14 md:mb-0 md:mr-7">
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm ">Ask:</p>
-                <p className="mb-3">Singapore Airlines has one of the world's youngest and most cutting edge fleet of aircraft in the world. We sought to raise interest in the fleet, the brand and it's products.</p>
+                <p className="mb-3">Singapore Airlines has one of the world&apos;s youngest and most cutting edge fleet of aircraft in the world. We sought to raise interest in the fleet, the brand and it&apos;s products.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
@@ -177,7 +177,7 @@ useEffect(() => {
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm ">How:</p>
                 <p className="mb-3">I spy In The Sky is a content series built around this, encouraging and inspiring parents to make plane spotting at these parks a weekend activity within the family. </p>
-                <p className="mb-3">The series takes on a storybook-like art direction and copywriting, portraying the different models of aircraft in Singapore Airlines' fleet and their respective distinctive features that would aid in identifying them.</p>
+                <p className="mb-3">The series takes on a storybook-like art direction and copywriting, portraying the different models of aircraft in Singapore Airlines&apos; fleet and their respective distinctive features that would aid in identifying them.</p>
                 </motion.div>
             </div>
 

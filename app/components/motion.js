@@ -2,7 +2,6 @@
 
 import * as motion from "framer-motion/client"
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import CarouselVideo from "./CarouselVideo";
 import SideContainer from "./SideContainer";
 import CarouselNavButton from "./CarouselNavButton";

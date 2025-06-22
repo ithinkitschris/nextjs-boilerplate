@@ -690,7 +690,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         <motion.div key="dropdown-SIA" initial="hidden" animate="show" layout="position" variants={dropdown}>
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">Beyond The Cabin</h1>
-                                <p className="mb-4  opacity-50">Lead Creative and Motion Designer for Beyond The Cabin, an episodic brand campaign and content series that was centred around Singapore Airline's Cabin Crew's as World Class travellers with worldly passions.</p>
+                                <p className="mb-4  opacity-50">Lead Creative and Motion Designer for Beyond The Cabin, an episodic brand campaign and content series that was centred around Singapore Airline&apos;s Cabin Crew&apos;s as World Class travellers with worldly passions.</p>
                                 <p className="mb-4  opacity-50">Produced travel guides featuring Cabin Crew, casted for their expertise and passion for destinations flown to by Singapore Airlines. Showcasing a depth of understanding they have for the destinations and novel experiences through their insights</p>
                             </motion.div>
                             <motion.div variants={dropdownChild}>
@@ -848,12 +848,12 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         <motion.div variants={dropdownChild}>
                             <h1 className="mt-6  mb-4 opacity-90 font-base">Athlete Stories: Koy & Toon</h1>
                             <p className="mb-4  opacity-50">
-                            Offline and online edit and animation for a set of videos and a full film highlighting the stories of Bangkok based NIKE athletes Koy & toon, distributed on Nike's Instagram feed, stories and TV.</p>
+                            Offline and online edit and animation for a set of videos and a full film highlighting the stories of Bangkok based NIKE athletes Koy & toon, distributed on Nike&apos;s Instagram feed, stories and TV.</p>
                         </motion.div>
                         <motion.div variants={dropdownChild}>
                             <h1 className="mt-6  mb-4 opacity-90 font-base">Women&apos;s Instazine</h1>
                             <p className="mb-10  opacity-50">
-                            Edited and animated supporting assets for the campaign as well as the case study film for Women's Instazine</p>
+                            Edited and animated supporting assets for the campaign as well as the case study film for Women&apos;s Instazine</p>
                         </motion.div>
                     </motion.div>
                     
@@ -923,7 +923,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         <motion.div variants={dropdownChild}>
                             <h1 className="mt-6  mb-4 opacity-90 font-base">Virtual Sentosa</h1>
                             <p className="mb-4  opacity-50">
-                            Compiled footage of Virtual Sentosa and edited + animated a set of launch and PR videos for the campaign. The videos were then distributed on Sentosa's social media platforms as well as news outlets and channels both locally and globally.</p>
+                            Compiled footage of Virtual Sentosa and edited + animated a set of launch and PR videos for the campaign. The videos were then distributed on Sentosa&apos;s social media platforms as well as news outlets and channels both locally and globally.</p>
                             <p className="mb-4  opacity-50">
                             The campaign was covered by news outlets worldwide including Campaign Asia, Hypebeast, Conde Nast, NHK Japan.
                             </p>
@@ -931,7 +931,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         <motion.div variants={dropdownChild}>
                             <h1 className="mt-6  mb-4 opacity-90 font-base">#BehindSentosa</h1>
                             <p className="mb-4  opacity-50">
-                            Filmed and directed a video covering the efforts undertaken by the staff of Sentosa in response to the COVID-19 outbreak. The video went live on Sentosa's Facebook and Instagram channels.</p>
+                            Filmed and directed a video covering the efforts undertaken by the staff of Sentosa in response to the COVID-19 outbreak. The video went live on Sentosa&apos;s Facebook and Instagram channels.</p>
                         </motion.div>
                         <motion.div variants={dropdownChild}>
                             <h1 className="mt-6  mb-4 opacity-90 font-base">Motion Design</h1>

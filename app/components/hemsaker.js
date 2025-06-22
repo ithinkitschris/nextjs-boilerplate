@@ -124,7 +124,7 @@ useEffect(() => {
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm "></p>
-                <p className="mb-3">Utilising IKEA's FLISAT doll house shelving and LILLABO toy figurines, a series of short films were created depicting 6 seemingly accidental yet disastrous home accidents.</p> 
+                <p className="mb-3">Utilising IKEA&apos;s FLISAT doll house shelving and LILLABO toy figurines, a series of short films were created depicting 6 seemingly accidental yet disastrous home accidents.</p> 
                 </motion.div>
             </div>
 

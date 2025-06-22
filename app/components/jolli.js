@@ -143,7 +143,7 @@ useEffect(() => {
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-2 font-mono text-sm "></p>
-                <p className="mb-3">The result is a story of infinite possibilities and storylines strung together by everyone's own interpretation. </p> 
+                <p className="mb-3">The result is a story of infinite possibilities and storylines strung together by everyone&apos;s own interpretation. </p> 
                 </motion.div>
             </div>
 

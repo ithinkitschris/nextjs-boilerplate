@@ -130,7 +130,7 @@ show: {
             <div className="flex flex-col sm:flex-row col-span-full px-8 sm:px-0 gap-8 md:gap-10 mt-10 mb-14 md:mr-7">
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
                 <p className="mb-0 font-mono text-sm "></p>
-                    <p>Singapore Airlines Cabin Crew are commonly seen as being one-dimensional - from misconceptions of misogyny to them being just "servants of the cabin". As part of the Welcome to World Class brand campaign, we wanted to dimensionalise Cabin Crew in their portrayals; as modern, informed and relatable travelers of the world outside of the cabin.</p>
+                    <p>Singapore Airlines Cabin Crew are commonly seen as being one-dimensional - from misconceptions of misogyny to them being just &quot;servants of the cabin&quot;. As part of the Welcome to World Class brand campaign, we wanted to dimensionalise Cabin Crew in their portrayals; as modern, informed and relatable travelers of the world outside of the cabin.</p>
                 </motion.div>
                 
                 <motion.div className="tracking-tight sm:w-1/3" variants={animateInChild}>
