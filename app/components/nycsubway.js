@@ -36,7 +36,7 @@ const NycSubway = ({}) => {
             className="text-6xl md:text-8xl tracking-tighter font-medium text-center"
             variants={animateInChild}
             >
-            The New York City Subway
+            Work in Progress
             </motion.h1>
         </motion.div>
 
@@ -50,7 +50,7 @@ const NycSubway = ({}) => {
             className="text-6xl md:text-8xl tracking-tighter font-medium text-center"
             variants={animateInChild}
             >
-            is not great.
+            2
             </motion.h1>
         </motion.div>
 

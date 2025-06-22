@@ -107,7 +107,7 @@ const SideContainer = ({
       </h1>
 
       {/* Mobile Title and Subtitle */}
-      <div className="lg:hidden absolute bottom-4">
+      <div className="md:hidden absolute bottom-4">
 
         {/* Mobile Title */}
         <h1 
