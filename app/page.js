@@ -17,7 +17,7 @@ import Jolli from './components/jolli.js';
 import Uniqlo1 from './components/uniqlo1.js';
 import Uniqlo2 from './components/uniqlo2.js';
 import Oneshow from './components/oneshow.js';
-import BestWorkPage from './components/bestwork.js';
+import BestWorkPage from './components/bestworkv3.js';
 import Resume from './components/resume.js';
 import StreetPhotography from './components/street-photo.js';
 import Film from './components/film.js';

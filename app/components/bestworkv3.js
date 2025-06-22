@@ -2,7 +2,6 @@
 
 import * as motion from "framer-motion/client"
 import { useRef, useState, useEffect } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import SideContainer from './SideContainer';
 import CarouselVideo from './CarouselVideo';
 import CarouselNavButton from './CarouselNavButton';
@@ -20,7 +19,6 @@ const BestWorkPage3 = ({className, setHoveredWork, toggleWork}) => {
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const scrollToIndex = (index) => {
     if (itemsRef.current[index]) {
@@ -152,11 +150,9 @@ return (
               ref={(el) => (itemsRef.current[1] = el)}
               onMouseEnter={() => {
                 setHoveredWork("ghibli");
-                setHoveredIndex(1);
               }}
               onMouseLeave={() => {
                 setHoveredWork(null);
-                setHoveredIndex(null)
               }}
               onClick={() => {
                 toggleWork('ghibli')
@@ -186,11 +182,9 @@ return (
               ref={(el) => (itemsRef.current[2] = el)}
               onMouseEnter={() => {
                 setHoveredWork("cocktail");
-                setHoveredIndex(2);
               }}
               onMouseLeave={() => {
                 setHoveredWork(null);
-                setHoveredIndex(null)
               }}
               onClick={() => {
                 toggleWork('cocktail')
@@ -220,11 +214,9 @@ return (
               ref={(el) => (itemsRef.current[3] = el)}
               onMouseEnter={() => {
                 setHoveredWork("hemsaker");
-                setHoveredIndex(3);
               }}
               onMouseLeave={() => {
                 setHoveredWork(null);
-                setHoveredIndex(null)
               }}
               onClick={() => {
                 toggleWork('hemsaker');
@@ -254,11 +246,9 @@ return (
               ref={(el) => (itemsRef.current[4] = el)}
               onMouseEnter={() => {
                 setHoveredWork("lounge");
-                setHoveredIndex(4);
               }}
               onMouseLeave={() => {
                 setHoveredWork(null);
-                setHoveredIndex(null)
               }}
               onClick={() => {
                 toggleWork('lounge');
