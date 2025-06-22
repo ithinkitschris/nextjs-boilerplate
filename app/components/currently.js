@@ -1,7 +1,6 @@
 'use client'
 
 import * as motion from "framer-motion/client"
-import { useRef, useState } from "react";
 import CornerArrow from './CornerArrow.js';
 
 const animateIn ={
