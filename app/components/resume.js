@@ -93,8 +93,8 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
         <AnimatePresence key="animate-presence">
             
             {/* Mobile Blur Background */}
-            <div className="lg:hidden absolute top-0 left-0 w-full h-[800px] -z-50" key="mobile-blur-background">
-                <motion.div key="mobile-image-container-blur" className="absolute -top-0 -left-0 -right-0 -bottom-0 brightness-200 saturate-150 blur-[80px]" variants={animateInChild}>
+            <div className="lg:hidden absolute top-0 left-0 w-full h-[800px] -z-50 opacity-0 dark:opacity-100" key="mobile-blur-background">
+                <motion.div key="mobile-image-container-blur" className="absolute -top-0 -left-0 -right-0 -bottom-0 brightness-150 saturate-150 blur-[80px]" variants={animateInChild}>
                     <Image
                     key="mobile-profile-image-blur"
                     src='/profile/profile.jpg'
@@ -528,12 +528,12 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             <MotionDesignPage className='col-span-full -mt-10' key='motion' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Photography */}
-            <div key="photography-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-6 px-2 hidden md:block">Photography</div>
-            <div key="photography-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[95%] w-[50%] hidden md:block">Photographic Memories.</div>
-            <PhotographyPage className='col-span-full mt-8 invisible md:visible' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <div key="photography-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-6 px-2">Photography</div>
+            <div key="photography-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-5 mb-3 col-span-full leading-[95%] w-[50%]">Photographic Memories.</div>
+            <PhotographyPage className='col-span-full mt-8' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
             
             {/* Content */}
-            <div key="content-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] ml-2 md:ml-4 mt-32 md:mt-72 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>
+            <div key="content-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] ml-2 md:ml-4 mt-24 md:mt-72 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>
             <div key="content-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-3 mb-8 col-span-full leading-[95%] w-[80%] ">A life of mine viewed through a short attention span.</div>
             <ContentPage className='col-span-full mt-8' key='content'/>
             

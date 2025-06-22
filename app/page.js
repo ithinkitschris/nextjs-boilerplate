@@ -431,14 +431,14 @@ export default function Home(){
               <motion.button 
                 className={`
                   fixed md:absolute p-2 rounded-full 
-                  w-16 h-16 md:w-12 md:h-12 pl-1.5  
+                  w-11 h-11 md:w-12 md:h-12 pl-1.5  
                   backdrop-brightness-125 md:backdrop-brightness-100
-                  bottom-4 right-7 md:top-1 md:left-7 
+                  md:top-1 md:left-7 top-3 right-6 md:right-auto
                   flex items-center justify-center z-50
 
                   backdrop-blur-2xl saturate-150 md:saturate-100
                   shadow-glass-border-xs md:shadow-glass-border-sm
-                  border-t-1.5 border-l-1.5 border-1 border-white/25
+                  border-1 border-white/25
                   md:border-none
                   
                   text-foreground md:hover:text-background
@@ -1439,6 +1439,7 @@ export default function Home(){
                       toggleWork('photography');
                       }}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>05 </span>
                       Photography</motion.button>
+                      
 
                     <motion.button 
                    className="text-left text-foreground font-normal mt-1 mb-3 px-5 "

@@ -22,14 +22,14 @@ show: {
 const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
   return (
-    <motion.div className={`grid grid-cols-4 font-[family-name:var(--font-geist-sans)] gap-3 h-[800px] ${className}`}
+    <motion.div className={`grid grid-cols-2 lg:grid-cols-4 font-[family-name:var(--font-geist-sans)] gap-1.5 lg:gap-3 lg:h-[800px] ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
 
         {/* Personal */}
         <motion.div 
-        className="group col-span-1 h-full tracking-tight relative z-10 overflow-hidden rounded-3xl cursor-pointer shadow hover:shadow-none" 
+        className="group col-span-1 h-[350px] lg:h-full tracking-tight relative z-10 overflow-hidden rounded-[20px] cursor-pointer shadow hover:shadow-none" 
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -48,47 +48,21 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
             </img>
 
             {/* Gradient */}
-            <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/90 to-transparent rounded-t-lg"></div>
+            <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-b from-black/90 to-transparent rounded-t-lg"></div>
 
             {/* Text */}
-            <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
+            <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start pl-6 pt-4 md:pt-8">
 
-                <h1 className="text-4.5xl font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-200">
+                <h1 className="text-2xl lg:text-4.5xl font-medium text-white tracking-tight leading-tight">
                     Digital
                 </h1>
-
-                {/* <h1 className="text-lg ml-1 text-white tracking-tight opacity-0 group-hover:opacity-100 transition-all duration-200">
-                    Lorem ipseum dolor sit amet.
-                </h1> */}
-
-                <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
-                flex items-center justify-center border-1 border-white text-white cursor-pointer
-                group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="2 2 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-5 h-5">
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                    </svg>
-                </button>
-
-                {/* <h1 className="absolute opacity-0 group-hover:opacity-100 text-md text-white tracking-tight bottom-5 gap-4 flex transition-all duration-300">
-                    <p className="font-medium">Equipment:</p>
-                    <p>Leica M10-P</p>
-                </h1> */}
 
             </div>
         </motion.div>
 
         {/* Film */}
         <motion.div 
-        className="group col-span-1 h-full tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
+        className="group col-span-1 h-[350px] lg:h-full tracking-tight relative z-10 overflow-hidden rounded-[20px] shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -100,43 +74,24 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
           }}
         onClick={() => toggleWork('film')}>
         
-        
-        <img 
-            className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200"
-            src="/Photography/film/cover4.jpg"/>
-        <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-black/70 to-transparent rounded-t-lg"></div>
-        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
+        {/* Cover */}
+        <img className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200" src="/Photography/film/cover4.jpg"/>
 
-            <h1 className="text-4.5xl font-medium text-white tracking-tighter leading-tight mb-1 transition-all duration-200">
+        {/* Gradient */}
+        <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-b from-black/70 to-transparent rounded-t-lg"/>
+
+        {/* Text */}
+        <div className="absolute inset-0 flex flex-col items-start justify-start pl-6 pt-4 md:pt-8">
+            <h1 className="text-2xl lg:text-4.5xl font-medium text-white tracking-tight leading-tight">
                 Film
-            </h1>
-            
-            <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
-                flex items-center justify-center border-1 border-white text-white cursor-pointer
-                group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="2 2 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-5 h-5">
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                    </svg>
-                </button>
+            </h1> 
         </div>
-        <img 
-            className="absolute top-24 h-screen scale-100 rounded-full blur-3xl -z-40 opacity-0 dark:opacity-100"
-            src="/Photography/film/cover.jpg">
-        </img>
+
         </motion.div>
 
         {/* BBH */}
         <motion.div 
-        className="group col-span-1 h-full tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
+        className="group col-span-1 h-[350px] lg:h-full tracking-tight relative z-10 overflow-hidden rounded-[20px] shadow hover:shadow-none cursor-pointer"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -148,46 +103,23 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
           }}
         onClick={() => toggleWork('bbh')}>
         
-        
-        <img 
-            className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200"
-            src="/Photography/bbh/cover.jpg"/>
-
-        
-        <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
-
-        
-        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
-            <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">BBH</h1>
-            <p className="mt-1 ml-0.5 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Profile Headshots</p>
-            
-
-            <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
-            flex items-center justify-center border-1 border-white text-white cursor-pointer
-            group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="2 2 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-5 h-5">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
-                </svg>
-            </button>
+        {/* Image */}
+        <div className="w-full h-full overflow-hidden">
+            <img className="w-full h-full inset-0 object-cover object-[38%] scale-110 mt-2 blur-none md:group-hover:blur-sm transition-all duration-200" src="/Photography/bbh/cover.jpg"/>
         </div>
-        <img 
-            className="absolute top-24 h-screen scale-100 rounded-full blur-3xl -z-40 opacity-0 dark:opacity-100"
-            src="/Photography/bbh/cover.jpg">
-        </img>
+        
+        {/* Gradient */}
+        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-black/50 to-transparent rounded-t-lg"/>
+
+        {/* Text */}
+        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start pl-6 pt-4 md:pt-8">
+            <h1 className="text-xl lg:text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight leading-6 w-2/3">BBH Profile Headshots</h1>
+        </div>
         </motion.div>
 
         {/* Stressed */}
         <motion.div 
-        className="group col-span-1 h-full tracking-tight relative z-10 overflow-hidden rounded-3xl shadow hover:shadow-none cursor-pointer"
+        className="group col-span-1 h-[350px] lg:h-full tracking-tight relative z-10 overflow-hidden rounded-[20px] shadow hover:shadow-none cursor-pointer mb-20"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -201,39 +133,17 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
         
         {/* Image */}
         <img 
-            className="w-full h-full inset-0 object-cover rounded-lg blur-none md:group-hover:blur-sm transition-all duration-200 object-[42%]"
+            className="w-full h-full inset-0 object-cover rounded-[20px] blur-none md:group-hover:blur-sm transition-all duration-200 object-[42%]"
             src="/Photography/stressed/4.jpg"/>
 
         {/* Gradient */}
         <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
 
         {/* Text */}
-        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start p-7 md:pt-8">
-            <h1 className="text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight w-5/6">Class of 2016</h1>
-            {/* <p className="-mt-1 ml-1 text-2xl text-[#e9e9e9] dark:text-white font-medium tracking-tight">Profile Headshots</p> */}
-            {/* <h2 className="text-xl text-white tracking-tight">Subheader</h2> */}
-
-            <button className={`absolute right-6 font-medium text-lg tracking-tighter p-1 px-2  rounded-full 
-                flex items-center justify-center border-1 text-white cursor-pointer backdrop-blur-sm
-                group-hover:bg-white group-hover:text-black group-hover:scale-90 group-hover:-m-3 transition-all duration-200`}>
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="2 2 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-5 h-5">
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                    </svg>
-                </button>
+        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start pl-6 pt-4 md:pt-8">
+            <h1 className="text-2xl lg:text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight w-5/6">Class of 2016</h1>
         </div>
-        <img 
-            className="absolute top-24 h-screen scale-100 rounded-full blur-3xl -z-40 opacity-0 dark:opacity-100"
-            src="/Photography/bbh/cover.jpg">
-        </img>
+
         </motion.div>
 
     </motion.div>
