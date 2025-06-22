@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
-import { animateInChild, dropdown, dropdownChild } from "../../constants/animations";
+import { animateInChild, dropdown } from "../../constants/animations";
 
 const ExperienceCard = ({
   header,
@@ -14,7 +14,6 @@ const ExperienceCard = ({
   children,
   sectionKey,
   damping,
-  showMobileDivider = true,
   className = "",
 }) => {
   

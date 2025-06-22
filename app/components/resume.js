@@ -309,28 +309,30 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                 key="story-container"
             >
                 {/* Story Selector */}
-                <div className="col-span-2 transition-non-color text-sm flex flex-col gap-1.5 items-start">
-                    <p className=" font-medium text-2xl tracking-tight mb-4">But first, are you<span className="font-light text-2xl">...</span></p>
+                <div className="col-span-2 transition-non-color flex flex-col gap-1.5 items-start">
+
+                    <p className=" font-medium text-lg lg:text-xl tracking-tight mb-4">But first, are you<span className="font-light text-lg lg:text-xl">...</span></p>
                     
-                    <p className={`flex justify-center items-center text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
+                    <p className={`flex justify-center items-center text-md lg:text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                     border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
                     ${visibleSections.desktopAI ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
                     onClick={() => showStory('desktopAI')}    
                     >In a hurry?</p>
 
-                    <p className={`flex justify-center items-center text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
+                    <p className={`flex justify-center items-center text-md lg:text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                     border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
                     ${visibleSections.desktopShort ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
 
                     onClick={() => showStory('desktopShort')}
                     >Keen to know more?</p>
 
-                    <p className={`flex justify-center items-center text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
+                    <p className={`flex justify-center items-center text-md lg:text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                     border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
                     ${visibleSections.desktopLong ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
 
                     onClick={() => showStory('desktopLong')}
                     >Down for an essay?</p>
+
                 </div>
 
                 {/* Line */}
@@ -349,10 +351,10 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             animate="show"
                         >
                             <motion.div className="col-span-1" variants={storyColumn}>
-                                <motion.h1 className="text-xl font-medium tracking-tight" variants={storyElement}>
+                                <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight" variants={storyElement}>
                                     Experience
                                 </motion.h1>
-                                <motion.div className="text-sm" variants={storyElement}>
+                                <motion.div className="text-xs lg:text-sm" variants={storyElement}>
                                     <p className="mt-4 font-semibold">Design + Advertising</p>
                                     <p className="">Senior Creative</p>
                                     <p>8+ Years of Experience</p>
@@ -363,10 +365,10 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             </motion.div>
 
                             <motion.div className="col-span-1" variants={storyColumn}>
-                                <motion.h1 className="text-xl font-medium tracking-tight" variants={storyElement}>
+                                <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight" variants={storyElement}>
                                     Education
                                 </motion.h1>
-                                <motion.div className="text-sm" variants={storyElement}>
+                                <motion.div className="text-xs lg:text-sm" variants={storyElement}>
                                     <p className="mt-4">MFA Interaction Design</p>
                                     <p>School of Visual Arts</p>
                                     <i>2024 – 2026</i>
@@ -377,8 +379,8 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                                 </motion.div>
                             </motion.div>
 
-                            <motion.div className="col-span-2 text-sm" variants={storyColumn}>
-                                <motion.h1 className="text-xl font-medium tracking-tight" variants={storyElement}>
+                            <motion.div className="col-span-2 text-xs lg:text-sm" variants={storyColumn}>
+                                <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight" variants={storyElement}>
                                     Skillsets
                                 </motion.h1>
                                 <motion.div className="grid grid-cols-3 -mr-20" variants={storyElement}>
@@ -425,28 +427,28 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             animate="show"
                         >
                             <motion.div className="col-span-1" variants={storyColumn}>
-                                <motion.h1 className="text-xl font-medium tracking-tight mb-4" variants={storyElement}>Who?</motion.h1>
+                                <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight mb-4" variants={storyElement}>Who?</motion.h1>
                                 <motion.div variants={storyElement}>
-                                    <p className="mb-3">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists.
+                                    <p className="mb-3 text-sm lg:text-base">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists.
                                     Now, he finds himself living the surreal reality of conceptualizing, designing, and directing what is essentially art for the world.</p>
-                                    <p>With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in crafting visually compelling work across various mediums.</p>
+                                    <p className="text-sm lg:text-base">With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in crafting visually compelling work across various mediums.</p>
                                 </motion.div>
                             </motion.div>
 
                             <motion.div className="col-span-1" variants={storyColumn}>
-                                <motion.h1 className="text-xl font-medium tracking-tight mb-4" variants={storyElement}>What?</motion.h1>
+                                <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight mb-4" variants={storyElement}>What?</motion.h1>
                                 <motion.div variants={storyElement}>
-                                    <p className="mb-3">As a Multidisciplinary Creative and formerly the Creative Lead at ArtScience Museum in Singapore;
+                                    <p className="mb-3 text-sm lg:text-base">As a Multidisciplinary Creative and formerly the Creative Lead at ArtScience Museum in Singapore;
                                         he finds himself with eight years of experience in Advertising – having worked in the two leading agencies Singapore at the time: BBH and TBWA and working on multiple brand campaigns for Singapore Airlines
                                         as an Art Director and global brands the likes of IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo.</p>
                                 </motion.div>
                             </motion.div>
 
                             <motion.div className="col-span-1" variants={storyColumn}>
-                                <motion.h1 className="text-xl font-medium tracking-tight mb-4" variants={storyElement}>And?</motion.h1>
+                                <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight mb-4" variants={storyElement}>And?</motion.h1>
                                 <motion.div variants={storyElement}>
-                                    <p className="mb-3">In his spare time (which, realistically, isn&apos;t much), he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
-                                    <p>When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up,
+                                    <p className="mb-3 text-sm lg:text-base">In his spare time (which, realistically, isn&apos;t much), he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
+                                    <p className="text-sm lg:text-base">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up,
                                     though he wouldn&apos;t go so far as to call it interior design.</p>
                                 </motion.div>
                             </motion.div>
@@ -463,7 +465,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             animate="show"
                         >
                             <motion.h1
-                                className="text-xl font-medium tracking-tight col-span-full -ml-0.5"
+                                className="text-lg lg:text-xl font-medium tracking-tight col-span-full -ml-0.5"
                                 variants={storyColumn}
                             >
                                 A love letter to myself:
@@ -473,7 +475,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                                 <motion.div variants={storyElement}>
                                     <p className="italic text-sm opacity-50 pr-8">If everyone is busy making everything, how can anyone perfect anything? We start to confuse convenience with joy. Abundance with choice.</p>
                                     <p className="italic text-sm opacity-50 mt-4 pr-8">Designing something requires focus. The first thing we ask is: What do we want people to feel. Surprise. Love. Connection.</p>
-                                    <p className="italic text-sm opacity-50 mt-4 pr-8">Then we begin to craft around our intention. It takes time. There are a thousand no's for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.
+                                    <p className="italic text-sm opacity-50 mt-4 pr-8">Then we begin to craft around our intention. It takes time. There are a thousand no&apos;s for every yes. We simplify, we perfect, we start over, until everything we touch enhances each life it touches.
                                     </p>
                                     <p className="italic text-sm opacity-50 mt-4 pr-8">Only then do we sign our work:<br/> Designed by Apple in California</p>
 
@@ -512,7 +514,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             <motion.div className="col-span-1" variants={storyColumn}>
                                 <motion.div variants={storyElement}>
                                     <p className="mb-3">After 8 years, and as I ever fervently sought the next step throughout that led me from starting out as a Motion Designer to eventually being a Creative Lead; I found myself with a startling ability to tell a story behind my craft.</p>
-                                    <p className="mb-3">One thing that remained absolute however, was that I never stopped <i>doing</i>. Just because I found myself an Art Director, didn't mean that I no longer needed to get my hands dirty with Illustrator and After Effects. <i className="opacity-50 mr-1.5 hidden">(along with a disproportionate amount of Powerpoint, Keynote and Teams).</i> Crafting was the one North Star that got me where I was, and kept me doing what I did, and I wasn't about to leave that behind.</p>
+                                    <p className="mb-3">One thing that remained absolute however, was that I never stopped <i>doing</i>. Just because I found myself an Art Director, didn&apos;t mean that I no longer needed to get my hands dirty with Illustrator and After Effects. <i className="opacity-50 mr-1.5 hidden">(along with a disproportionate amount of Powerpoint, Keynote and Teams).</i> Crafting was the one North Star that got me where I was, and kept me doing what I did, and I wasn&apos;t about to leave that behind.</p>
                                     <p className="mb-3">Every piece of work on this site went through a thousand no&apos;s for the final yes. It was crafted amidst busyness, with focus and the aim for perfection <i className="opacity-50 mr-1.5 hidden ">(not that I personally believe in the conventional understanding of perfection; I don&apos;t).</i></p>
                                     <p className="mb-6">Today, an entire decade later, as I sit here writing this, the very message of the film that started it all could not be more poignant. What was once the visuals that resonated so deeply, it is now the message that strikes a deeper chord:</p>
                                 </motion.div>
@@ -521,8 +523,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             <motion.div className="col-span-1" variants={storyColumn}>
                                 <motion.div variants={storyElement}>
                                     <i className="font- opacity-60">&quot;The first thing we ask is: What do we want people to feel? Delight. Surprise. Love. Connection. Then we begin to craft around our intention.&quot;</i>
-                                    <p className="mt-6 mb-3">As an Advertising Creative who grew the muscle to tell stories, and now a Graduate Student currently pursuing a Masters in Interaction Design; the above message resonates immensely. It&apos;s one thing to be able to tell stories, but a completely different discipline to
-                                        craft stories that people <i>want</i> to listen to.</p>
+                                    <p className="mt-6 mb-3">As an Advertising Creative who grew the muscle to tell stories, and now a Graduate Student currently pursuing a Master&apos;s in Interaction Design; the above message resonates immensely. It&apos;s one thing to be able to tell stories, but a completely different discipline to craft stories that people <i>want</i> to listen to.</p>
                                     <p className="mb-3">Am I capable of craft? <i className="mr-1">Well, gosh, after all this while; I sure hope so.</i> Am I able to tell stories? <i>I certainly have lots of fun doing it.</i></p>
                                     <p className="">Am I able to discern what people want to feel?</p>
                                     <p className="font- mb-3">That is precisely the question I&apos;m onto right now–in the very field of Interaction Design, and where I am at now as a Creative.</p>
@@ -537,7 +538,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             {/* Currently */}
             <div key="currently-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-20 md:mt-52 mb-1 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-4 px-2
             p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">June 2025</div>
-            <div key="currently-title" className="font-medium tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[52pt] mb-4 col-span-full md:w-5/6 ml-1.5 md:ml-5">Everything I've been up to lately:</div>
+            <div key="currently-title" className="font-medium tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[52pt] mb-4 col-span-full md:w-5/6 ml-1.5 md:ml-5">Everything I&apos;ve been up to lately:</div>
             <Currently className='col-span-full -mt-12' key='currently' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
             {/* Creative Direction */}
@@ -647,7 +648,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                     </motion.div>
                     <motion.div variants={dropdownChild}>
                         <h1 className="mt-4 mb-4  opacity-90">Frida Kahlo: The Life of an Icon</h1>
-                        <p className=" opacity-50">Creative direction and strategic positioning for the marketing campaign of Frida Kahlo: Life of an Icon, an exhibition at the ArtScience Museum on Mexican artist Frida Kahlo, alongside the companion exhibition Laid Bare: Frida's Inner World. Managed and produced visuals and assets across the campaign titled Frida Forever for the lineup of activities held at the museum.</p>
+                        <p className="mb-4  opacity-50">Creative direction and strategic positioning for the marketing campaign of Frida Kahlo: Life of an Icon, an exhibition at the ArtScience Museum on Mexican artist Frida Kahlo, alongside the companion exhibition Laid Bare: Frida&apos;s Inner World. Managed and produced visuals and assets across the campaign titled Frida Forever for the lineup of activities held at the museum.</p>
                     </motion.div>
                     <motion.div variants={dropdownChild}>
                         <h1 className="mt-4 mb-4  opacity-90">teamLab Future World: Where Art Meets Science</h1>
@@ -659,7 +660,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                     </motion.div>
                     <motion.div variants={dropdownChild}>
                         <h1 className="mt-4 mb-4  opacity-90">ArtScience Cinema</h1>
-                        <p className=" opacity-50">Creative direction on all marketing deliverables for ArtScience Cinema, ArtScience Museumss purpose-built cinema that screens a curated programme of film all year round by the museums film curatorial team.</p>
+                        <p className=" opacity-50">Creative direction on all marketing deliverables for ArtScience Cinema, ArtScience Museum&apos;s purpose-built cinema that screens a curated programme of film all year round by the museum&apos;s film curatorial team.</p>
                     </motion.div>
                 </ExperienceCard>
 

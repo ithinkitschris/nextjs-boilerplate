@@ -119,7 +119,7 @@ useEffect(() => {
 
             <div className="col-span-full mb-3 md:mb-8 mt-20">
                 <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium mt-28 mb-4">CES 2020</h1>
-                <h2 className='font-medium tracking-tight w-full text-center md:text-left hidden md:block'>On site social coverage of Samsung's Visual display's new releases and technology at CES 2020 in Las Vegas.</h2>
+                <h2 className='font-medium tracking-tight w-full text-center md:text-left hidden md:block'>On site social coverage of Samsung&apos;s Visual display&apos;s new releases and technology at CES 2020 in Las Vegas.</h2>
                 <h2 className='font-medium tracking-tight w-full text-center md:text-left hidden md:block'>Content produced involved short form video series distributed on Facebook and Instagram feed, day to day event coverage on Instagram stories and long form event recap videos for Youtube.</h2>
             </div>
 

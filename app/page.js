@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, } from 'react';
-import { motion, AnimatePresence, spring } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import PhotographyPage from './components/photography.js';
 import ContentPage from './components/content.js';
 import Website from './components/websitev2.js';
@@ -32,7 +32,6 @@ import ThreeD from './components/3d.js';
 import Leica from './components/leica.js';
 import NycSubway from './components/nycsubway.js';
 import Car from './components/car.js';
-import { ChevronDownIcon} from '@heroicons/react/24/solid';
 import {useVideoContext, VideoProvider} from './components/expandedGridContext.js';
 import Video from './components/Video';
 
@@ -301,7 +300,7 @@ export default function Home(){
   const [showNav, setShowNav] = useState(false);
   const [showReset, setShowReset] = useState(false);
   const [hoveredWork, setHoveredWork] = useState(null);
-  const [showWork, setShowWork] = useState(false);
+  const [setShowWork] = useState(false);
 
   // Check if Mobile
   useEffect(() => {
@@ -335,9 +334,9 @@ export default function Home(){
     return works.some((work) => selectedWork.includes(work));
   };
 
-  const toggleShowWork = () => {
-    setShowWork((prevState) => !prevState);
-  }
+  // const toggleShowWork = () => {
+  //   setShowWork((prevState) => !prevState);
+  // }
 
   const toggleTag = (tag) => {
     if (tag === 'clear') {
