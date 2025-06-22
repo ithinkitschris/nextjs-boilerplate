@@ -2,7 +2,7 @@
 import { easeOut } from "framer-motion";
 import * as motion from "framer-motion/client"
 import React from 'react';
-
+import CornerArrow from './CornerArrow.js';
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -22,7 +22,7 @@ show: {
 const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
   return (
-    <motion.div className={`grid grid-cols-2 lg:grid-cols-4 font-[family-name:var(--font-geist-sans)] gap-1.5 lg:gap-3 lg:h-[800px] ${className}`}
+    <motion.div className={`grid grid-cols-2 lg:grid-cols-4 font-[family-name:var(--font-geist-sans)] gap-1.5 lg:gap-3 lg:h-[600px] 2xl:h-[800px] ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
@@ -47,13 +47,16 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
             src="/Photography/street/cover2.jpg">
             </img>
 
+            {/* Corner Arrow */}
+            <CornerArrow className='p-2 hidden md:block'/>
+
             {/* Gradient */}
             <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-b from-black/90 to-transparent rounded-t-lg"></div>
 
             {/* Text */}
-            <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start pl-6 pt-4 md:pt-8">
+            <div className="absolute inset-0 flex flex-col gap-1 items-start justify-start pt-4 lg:pt-6 pl-5">
 
-                <h1 className="text-2xl lg:text-4.5xl font-medium text-white tracking-tight leading-tight">
+                <h1 className="text-2xl md:text-3xl 2xl:text-4.5xl font-medium text-white tracking-tight leading-tight">
                     Digital
                 </h1>
 
@@ -77,12 +80,15 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
         {/* Cover */}
         <img className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200" src="/Photography/film/cover4.jpg"/>
 
+        {/* Corner Arrow */}
+        <CornerArrow className='p-2 hidden md:block'/>
+
         {/* Gradient */}
         <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-b from-black/70 to-transparent rounded-t-lg"/>
 
         {/* Text */}
-        <div className="absolute inset-0 flex flex-col items-start justify-start pl-6 pt-4 md:pt-8">
-            <h1 className="text-2xl lg:text-4.5xl font-medium text-white tracking-tight leading-tight">
+        <div className="absolute inset-0 flex flex-col items-start justify-start pt-4 lg:pt-6 pl-5">
+            <h1 className="text-2xl md:text-3xl 2xl:text-4.5xl font-medium text-white tracking-tight leading-tight">
                 Film
             </h1> 
         </div>
@@ -108,12 +114,15 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
             <img className="w-full h-full inset-0 object-cover object-[38%] scale-110 mt-2 blur-none md:group-hover:blur-sm transition-all duration-200" src="/Photography/bbh/cover.jpg"/>
         </div>
         
+        {/* Corner Arrow */}
+        <CornerArrow className='p-2 hidden md:block'/>
+
         {/* Gradient */}
         <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-black/50 to-transparent rounded-t-lg"/>
 
         {/* Text */}
-        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start pl-6 pt-4 md:pt-8">
-            <h1 className="text-xl lg:text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight leading-6 w-2/3">BBH Profile Headshots</h1>
+        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start pt-4 lg:pt-6 pl-5">
+            <h1 className="text-xl md:text-3xl 2xl:text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight leading-5 md:leading-7 2xl:leading-9 w-2/3">BBH Profile Headshots</h1>
         </div>
         </motion.div>
 
@@ -136,12 +145,15 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
             className="w-full h-full inset-0 object-cover rounded-[20px] blur-none md:group-hover:blur-sm transition-all duration-200 object-[42%]"
             src="/Photography/stressed/4.jpg"/>
 
+        {/* Corner Arrow */}
+        <CornerArrow className='p-2 hidden md:block'/>
+
         {/* Gradient */}
         <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
 
         {/* Text */}
-        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start pl-6 pt-4 md:pt-8">
-            <h1 className="text-2xl lg:text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight w-5/6">Class of 2016</h1>
+        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start pt-4 lg:pt-6 pl-5">
+            <h1 className="text-2xl md:text-3xl 2xl:text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight w-5/6">Class of 2016</h1>
         </div>
 
         </motion.div>

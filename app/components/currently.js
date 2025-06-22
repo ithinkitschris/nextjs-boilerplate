@@ -2,8 +2,7 @@
 
 import * as motion from "framer-motion/client"
 import { useRef, useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
-import SideContainer from './SideContainer';
+import CornerArrow from './CornerArrow.js';
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -82,24 +81,7 @@ return (
             
 
           {/* Corner Arrow */}
-          <button className="absolute top-0.5 right-0.5 md:top-2 md:right-2 z-20 p-1.5 m-1 md:scale-125
-            rounded-full border-1.5 text-white border-transparent group-hover:text-black group-hover:glass group-hover:bg-white/95
-            group-hover:border-white md:group-hover:scale-[150%] group-hover:m-3 md:group-hover:m-4 group-hover:p-0.5 group-hover:px-1
-            transition-all duration-200">
-              <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="2 2 20 20"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4">
-              <path d="M7 17L17 7"
-              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-              <path d="M7 7h10v10" />
-              </svg>
-          </button>
+          <CornerArrow />
 
           {/* Video */}
           <motion.div className="rounded-3xl w-full col-span-full h-[350px] md:h-[500px] relative overflow-hidden border-b-1 border-white/15">
@@ -124,6 +106,7 @@ return (
               Enhanced Subway Navigation with Apple Maps
             </h1>
   
+            {/* Desktop */}
             <h3 className={`hidden md:block mt-2 opacity-60 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:w-[85%] text-xs md:text-sm leading-tight `}>
               An exercise in user research and design and potential thesis topic.
             </h3>
@@ -132,11 +115,12 @@ return (
           {/* Description Container */}
           <div className='ml-1 text-foreground col-span-full md:col-span-2 grid grid-cols-3'>
             
+            {/* Mobile */}
             <h3 className={`md:hidden mt-3 opacity-60 transition-all duration-300 tracking-normal text-xs `}>
               An exercise in user research and design and potential thesis topic.
             </h3>
             
-            <h3 className={`opacity-40 mt-3 md:mt-0 col-span-2 md:col-span-1 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
+            <h3 className={`opacity-40 mt-3 md:mt-0 col-span-2 md:col-span-2 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
               An ongoing research project into providing precise turn-by-turn navigation within the New York City subway system, powered by Ultra-Wideband (UWB) technology.
             </h3>
           </div>
@@ -167,24 +151,7 @@ return (
             
 
           {/* Corner Arrow */}
-          <button className="absolute right-0 md:top-2 md:right-2 z-20 p-1.5 m-1 md:scale-125
-            rounded-full border-1.5 text-white border-transparent group-hover:text-black group-hover:glass group-hover:bg-white/95
-            group-hover:border-white md:group-hover:scale-[150%] group-hover:m-3 md:group-hover:m-4 group-hover:p-0.5 group-hover:px-1
-            transition-all duration-200">
-              <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="2 2 20 20"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4">
-              <path d="M7 17L17 7"
-              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-              <path d="M7 7h10v10" />
-              </svg>
-          </button>
+          <CornerArrow />
 
           {/* Video */}
           <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[150px] md:h-[500px] relative overflow-hidden border-b-1 border-white/15">
@@ -204,24 +171,21 @@ return (
       
         {/* Header Container */}
         <div className='ml-1 mt-4 md:mt-8 text-foreground col-span-full md:col-span-1'>
+          
           <h1 className={`tracking-tight font-medium text-lg md:text-2xl md:group-hover:ml-3 transition-all duration-200 md:w-3/4 leading-tight md:leading-7`}>
             Human Car(mputer) Interaction
           </h1>
-        </div>
 
-        {/* Description Container */}
-        <div className='ml-1 mt-2 text-foreground col-span-2'>
-          <h3 className={`opacity-60 md:opacity-40 md:group-hover:ml-3 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
+          <h3 className={`mt-4 opacity-60 md:opacity-40 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
             A deep dive into the Human Computer Interaction of the automobile through the lens of design history.
           </h3>
+
         </div>
+        
       </motion.div>
 
       {/* 03 */}
-      <a className="col-span-1 md:col-span-2 cursor-pointer group transition-all duration-200 h-[150px] md:h-full grid grid-cols-1 md:grid-cols-3"
-      // href="https://www.notion.so/Portfolio-Website-127a92ab668680ed91ddd0619057466f?source=copy_link#20ca92ab6686809a8f8bf9a72e2a90cf"
-      // target="_blank"
-      // rel="noopener noreferrer"
+      <div className="col-span-1 md:col-span-2 cursor-pointer group transition-all duration-200 h-[150px] md:h-full grid grid-cols-1 md:grid-cols-3"
       >
         
         {/* Video Container with Corner Arrow */}
@@ -244,24 +208,7 @@ return (
           }}>
 
           {/* Corner Arrow */}
-          <button className="absolute right-0 md:top-2 md:right-2 z-20 p-1.5 m-1 md:scale-125
-            rounded-full border-1.5 text-white border-transparent group-hover:text-black group-hover:glass group-hover:bg-white/95
-            group-hover:border-white md:group-hover:scale-[150%] group-hover:m-3 md:group-hover:m-4 group-hover:p-0.5 group-hover:px-1
-            transition-all duration-200">
-              <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="2 2 20 20"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4">
-              <path d="M7 17L17 7"
-              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-              <path d="M7 7h10v10" />
-              </svg>
-          </button>
+          <CornerArrow />
 
           {/* Video */}
           <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[150px] md:h-[500px] relative overflow-hidden border-b-1 border-white/15">
@@ -279,8 +226,8 @@ return (
         </motion.div>
       
         {/* Header Container */}
-        <div className='ml-1 text-foreground md:col-span-1 mt-4 md:mt-0'>
-          <h1 className={`tracking-tight font-medium text-lg transition-all duration-200 md:text-2xl md:group-hover:ml-3 md:w-3/4 md:leading-7`}>
+        <div className='ml-1 text-foreground md:col-span-1 mt-4 md:mt-8'>
+          <h1 className={`tracking-tight font-medium text-lg transition-all duration-200 md:text-2xl md:group-hover:ml-3 md:w-full md:leading-7`}>
             Portfolio Website v2
           </h1>
  
@@ -290,13 +237,13 @@ return (
         </div>
 
         {/* Description Container DESKTOP ONLY */}
-        <div className='mt-0 ml-1 text-foreground col-span-2 hidden md:block'>
+        <div className='mt-8 ml-1 text-foreground col-span-2 hidden md:block'>
           <h3 className={`mt-1 opacity-25 group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm leading-tight`}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
           </h3>
         </div>
-      </a>
+      </div>
       
     </motion.div>  
  
