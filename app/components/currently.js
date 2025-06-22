@@ -13,12 +13,7 @@ const animateIn ={
 }
 
 const Currently = ({className, setHoveredWork, toggleWork}) => {
-
-  const containerRef = useRef(null);
-  const itemsRef = useRef([]);
-  const [setActiveIndex] = useState(0);
-
-return (
+  return (
     <motion.div
     className={`font-[family-name:var(--font-geist-sans)] relative w-full grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 ${className}`}
     initial="hidden"
@@ -198,7 +193,7 @@ return (
           <h1 className={`tracking-tight font-medium text-lg transition-all duration-200 md:text-2xl md:group-hover:ml-3 md:w-full md:leading-7`}>
             Portfolio Website v2
           </h1>
- 
+
           <h3 className={`mt-2 opacity-60 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:w-[85%] text-xs md:text-sm md:leading-tight`}>
             Design and development of this website alongside exploration of the workflows of prototyping and coding with AI.
           </h3>
@@ -214,7 +209,7 @@ return (
       </div>
       
     </motion.div>  
- 
+
   );
 };
 

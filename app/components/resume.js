@@ -716,7 +716,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             </motion.div>
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">Cargo THRUCOOL</h1>
-                                <p className="mb-4  opacity-50">Conceptualized and art directed a film for Singapore Airlines Cargo's THRUCOOL product, that boasts a seamless cold chain cargo service for temperature critical products that can shipped across the world with Singapore Airline's global destinations network.</p>
+                                <p className="mb-4  opacity-50">Conceptualized and art directed a film for Singapore Airlines Cargo&apos;s THRUCOOL product, that boasts a seamless cold chain cargo service for temperature critical products that can shipped across the world with Singapore Airline&apos;s global destinations network.</p>
                             </motion.div>
                         </motion.div>
                     )}
@@ -729,7 +729,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                     {visibleSections.ikea && (
                         <motion.div variants={dropdownChild} layout='position'>
                             <h1 className="mt-4  mb-4 opacity-90 font-base">Oops Happens <i className="text-neutral-500">(HEMSÄKER)</i></h1>
-                            <p className="mb-4  opacity-50">Art directed and conceptualised a campaign for IKEA Singapore & Malaysia's insurance product, HEMSAKER. A set of 9 videos that went live across IKEA's social platforms, web pages and various other platforms.</p>
+                            <p className="mb-4  opacity-50">Art directed and conceptualised a campaign for IKEA Singapore & Malaysia&apos;s insurance product, HEMSAKER. A set of 9 videos that went live across IKEA&apos;s social platforms, web pages and various other platforms.</p>
                         </motion.div>
                     )}
 
@@ -798,7 +798,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                         <motion.div variants={dropdownChild}>
                             <h1 className="mt-6  mb-4 opacity-90 font-base">CES 2020</h1>
                             <p className="mb-4  opacity-50">
-                            Art directed & executed on site social coverage of Samsung's Visual display's new releases and technology at CES 2020 in Las Vegas. </p>
+                            Art directed & executed on site social coverage of Samsung&apos;s Visual display&apos;s new releases and technology at CES 2020 in Las Vegas. </p>
                             <p className="mb-4  opacity-50">
                             Content produced involved short form video series distributed on Facebook and Instagram feed, day to day event coverage on Instagram stories and long form event recap videos for Youtube.
                             </p>
