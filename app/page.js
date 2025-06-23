@@ -609,7 +609,7 @@ export default function Home(){
 
           {/* Side Navbar / Mobile Dropdown */}
           <motion.div
-            className={`${showNav ? "col-span-1 flex flex-col tracking-tight ml-5 md:-mr-6 md:sticky md:top-12 md:h-screen md:overflow-y-auto md:pl-2" : "opacity-0 pointer-events-none"}
+            className={`${showNav ? "col-span-1 flex flex-col tracking-tight ml-5 md:-mr-6 md:sticky md:top-12 md:h-screen md:overflow-y-auto md:pl-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" : "opacity-0 pointer-events-none"}
             relative transition-opacity duration-300`} 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }}
