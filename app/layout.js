@@ -270,7 +270,7 @@ const toggleDarkMode = () => {
                           
 
                           <p className='mt-4 text-foreground font-medium'>v2.0</p>
-                          <p>Portfolio Website v2 officially live! Changelog to come. It's too much to write about right now.</p>
+                          <p>Portfolio Website v2 officially live! Changelog to come. It&apos;s too much to write about right now.</p>
 
                         </div>
                         
