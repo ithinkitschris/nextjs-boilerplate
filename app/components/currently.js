@@ -125,7 +125,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
                 muted
                 loop
                 playsInline
-                poster="/poster/subway.png"/>
+                poster="/poster/car.png"/>
           </motion.div>
 
         </motion.div>
@@ -151,7 +151,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
       >
         
         {/* Video Container with Corner Arrow */}
-        <motion.div 
+        <motion.a href="https://www.notion.so/Portfolio-Website-127a92ab668680ed91ddd0619057466f#20ca92ab6686809a8f8bf9a72e2a90cf" target="_blank"
           className="relative col-span-full"
           whileHover={{ scale: 0.98 }}
           transition={{
@@ -165,9 +165,10 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
           onMouseLeave={() => {
             setHoveredWork(null);
           }}
-          onClick={() => {
-            toggleWork('website')
-          }}>
+          // onClick={() => {
+          //   toggleWork('website')
+          // }}
+          >
 
           {/* Corner Arrow */}
           <CornerArrow />
@@ -182,10 +183,10 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
                 muted
                 loop
                 playsInline
-                poster="/poster/subway.png"/>
+                poster="/poster/website.png"/>
           </motion.div>
 
-        </motion.div>
+        </motion.a>
       
         {/* Header Container */}
         <div className='ml-1 text-foreground md:col-span-1 mt-4 md:mt-8'>

@@ -186,7 +186,7 @@ const toggleDarkMode = () => {
                 <motion.div 
                   ref={changelogRef}
                   className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 left-0 inset-x-0 mx-auto z-50 rounded-3xl overflow-y-auto md:p-2 md:pt-4 no-scrollbar
-                  h-[82.5%] md:h-[430px] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
+                  h-[82.5%] md:h-[450px] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
 
                     {/* About */}
                     <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:mr-2 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background dark:bg-black/10
@@ -217,13 +217,12 @@ const toggleDarkMode = () => {
                       </a>
 
                       {/* Last Updated */}
-                      <p className="mt-6 italic text-xxs opacity-75">Website last meddled with on May 15
-                        <span className="relative text-[6pt] mr-[1px]">th</span> 2025 for the 223rd time.</p>
+                      <p className="mt-6 text-xxs opacity-75">Website last meddled with on 07.02.25 for the 258th time.</p>
 
                     </motion.div>
 
                     {/* To Do */}
-                    <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:ml-2 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background dark:bg-black/10
+                    <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:ml-2 max-h-[100%] md:overflow-y-auto no-scrollbar leading-[145%] bg-background dark:bg-black/10
                     backdrop-blur-3xl rounded-3xl drop-shadow-md" 
                     initial="hidden"
                     animate="show"
@@ -233,68 +232,62 @@ const toggleDarkMode = () => {
                       <p className='mt-2 text-foreground font-medium text-xxs'>01</p>
                       <p className="">#ShotOniPhone photography album.</p>
                       <p className='mt-3.5 text-foreground font-medium text-xxs'>02</p>
-                      <p className="">&apos;What I&apos;m currently up to&apos; section under the profile page.</p>
+                      <p className=""><span className="line-through">&apos;What I&apos;m currently up to&apos; section.</span> Done!</p>
                       <p className='mt-2 text-foreground font-medium text-xxs'>03</p>
-                      <p className="">Prototype placing works under the mobile profile /intro page.</p>
+                      <p className=""><span className="line-through">Prototype placing works together with profile page.</span> Done! This has basically become v2.0 of the site; what you see now.</p>
                       <p className='mt-2 text-foreground font-medium text-xxs'>04</p>
                       <p className="leading-[135%] line-through">Adapt this About-Site window to mobile–currently does not work on mobile.</p>
                       <p className='mt-2 text-foreground font-medium text-xxs'>05</p>
                       <p className="">Rebuild &apos;Portfolio Website&apos; project page–port website documentation from Notion onto this site.</p>
-                      <p className='mt-2 text-foreground font-medium text-xxs'>06</p>
-                      <p className="">Explore p5.js integration.</p>
-                      <p className='mt-3 text-foreground font-medium text-xxs'>07</p>
+                      <p className='mt-3 text-foreground font-medium text-xxs'>06</p>
                       <p className="">Explore GSAP integration.</p>
                     
 
                     </motion.div>
                     
-                    {/* Changelog */}
-                    <motion.div className="glass-sm grid md:grid-cols-2 md:gap-10 md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 max-h-[100%] md:overflow-y-hidden leading-[145%] bg-background 
+                    {/* Changelog Window */}
+                    <motion.div className="glass-sm md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 max-h-[100%] md:overflow-y-auto no-scrollbar bg-background relative 
                     dark:bg-black/10 backdrop-blur-3xl rounded-3xl drop-shadow-md"
                     initial="hidden"
                     animate="show"
                     variants={animateInChangelog}>
 
-                    <h1 className="font-medium text-lg tracking-tight text-foreground font- pt-1 col-span-2 mb-4 md:-mb-6">
-                      Changelog <span className="text-xxs font-normal italic opacity-50 font-sans"> (version number based off git commits)</span>
-                    </h1>
+                      {/* Title */}
+                      <h1 className="font-medium text-lg tracking-tight text-foreground pt-1 mb-4 relative col-span-full">
+                        Changelog
+                      </h1>
 
-                      <div className="md:overflow-y-auto col-span-full md:col-span-1">
+                      {/* Container */}
+                      <div className="grid grid-cols-2 gap-4">
 
-                        <p className='mt-0 text-foreground font-medium'>v223</p>
-                        <p>Broke this About-Site window up into separate bubbles per section–optimized for light/dark mode and mobile/web experience.</p>
-                        <p>Optimized some hover states for this window on desktop–buttons now scale down to 95% upon hover.</p>
-                        <p>Fine-tuned the opening animation for this window–reworked stagger and rebound values.</p>
+                        {/* Left Column */}
+                        <div className="no-scrollbar col-span-full md:col-span-1">
 
-                        <p className='mt-4 text-foreground font-medium'>v222</p>
-                        <p>This window now also closes upon clicking on the footer button–previously only closed upon clicking outside of the window.</p>
-                        <p>Tweaked copy on the footer button and this window.</p>
-                        <p>Fixed minor bugs on the hover states in this window.</p>
+                          <p className='text-foreground font-medium'>v2.01</p>
+                          <p>Updated this changelog window from v1.0–All changes now start from v2.0 and will be progressively updated here.</p>
+                          {/* <p>Added Expense Tracker project to 'Everything I've been up to' section.</p> */}
+                          <p>Updated poster images.</p>
+                          
 
-                        <p className='mt-4 text-foreground font-medium'>v221</p>
-                        <p>Adapted and optimized this window for mobile.</p>
-                      </div>
-                      
-                      <div className="md:overflow-y-auto col-span-full md:col-span-1">
+                          <p className='mt-4 text-foreground font-medium'>v2.0</p>
+                          <p>Portfolio Website v2 officially live! Changelog to come. It's too much to write about right now.</p>
 
-                        <p className='mt-4 md:mt-0 text-foreground font-medium'>v220</p>
-                        <p>Moved this window to the center of the screen–now opens upon clicking the middle footer, background blurs as well.</p>
-                        <p>Combined link to documentation with changelog window–new four columned layout.</p>
-                        <p>Will be referring to this window as the About-Site window from here on as it no longer houses just the changelog.</p>
+                        </div>
+                        
+                        {/* Right Column */}
+                        {/* <div className="no-scrollbar col-span-full md:col-span-1 bg-black">
 
-                        <p className='mt-4 text-foreground font-medium'>v219</p>
-                        <p>This changelog window now scrolls!</p>
-                        <p>Refined the opening animation for this changelog window–now has a rebound effect.</p>
-                        <p>This changelog window now closes upon clicking outside of it.</p>
-                      
-                        <p className='mt-4 text-foreground font-medium'>v218</p>
-                        <p>Added new photos to digital and film photography albums.</p>
+                          <p className='text-foreground font-medium'>v2.01</p>
+                          <p>Updated this changelog window from v1.0</p>
+                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Dolor sit</p>
+                          
 
-                        <p className='mt-4 text-foreground font-medium'>v217</p>
-                        <p>Implemented this exact changelog feature; all updates will now be reflected here as I continue to iterate upon this site.</p>
-                        <p>Changed BG of light mode footer notes from frosted glass-sm to opaque white with drop shadow.</p>
-                        <p>Changed the cover photo of the film photography album.</p> 
-                      </div>
+                          <p className='mt-4 text-foreground font-medium'>v2.0</p>
+                          <p>Portfolio Website v2! Changelog to come. It's too much to write about right now.</p>
+
+                        </div> */}
+                        
+                      </div>                
 
                     </motion.div>
                 </motion.div>

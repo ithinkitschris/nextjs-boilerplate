@@ -429,16 +429,16 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             <motion.div className="col-span-1" variants={storyColumn}>
                                 <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight mb-4" variants={storyElement}>Who?</motion.h1>
                                 <motion.div variants={storyElement}>
-                                    <p className="mb-3 text-sm lg:text-base">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists.
+                                    <p className="mb-3 text-sm tracking-normal">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists.
                                     Now, he finds himself living the surreal reality of conceptualizing, designing, and directing what is essentially art for the world.</p>
-                                    <p className="text-sm lg:text-base">With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in crafting visually compelling work across various mediums.</p>
+                                    <p className="text-sm tracking-normal">With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in crafting visually compelling work across various mediums.</p>
                                 </motion.div>
                             </motion.div>
 
                             <motion.div className="col-span-1" variants={storyColumn}>
                                 <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight mb-4" variants={storyElement}>What?</motion.h1>
                                 <motion.div variants={storyElement}>
-                                    <p className="mb-3 text-sm lg:text-base">As a Multidisciplinary Creative and formerly the Creative Lead at ArtScience Museum in Singapore;
+                                    <p className="mb-3 text-sm tracking-normal">As a Multidisciplinary Creative and formerly the Creative Lead at ArtScience Museum in Singapore;
                                         he finds himself with eight years of experience in Advertising – having worked in the two leading agencies Singapore at the time: BBH and TBWA and working on multiple brand campaigns for Singapore Airlines
                                         as an Art Director and global brands the likes of IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo.</p>
                                 </motion.div>
@@ -447,8 +447,8 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             <motion.div className="col-span-1" variants={storyColumn}>
                                 <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight mb-4" variants={storyElement}>And?</motion.h1>
                                 <motion.div variants={storyElement}>
-                                    <p className="mb-3 text-sm lg:text-base">In his spare time (which, realistically, isn&apos;t much), he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
-                                    <p className="text-sm lg:text-base">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up,
+                                    <p className="mb-3 text-sm tracking-normal">In his spare time (which, realistically, isn&apos;t much), he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
+                                    <p className="text-sm tracking-normal">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up,
                                     though he wouldn&apos;t go so far as to call it interior design.</p>
                                 </motion.div>
                             </motion.div>
@@ -537,7 +537,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
             {/* Currently */}
             <div key="currently-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-20 md:mt-52 mb-1 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-4 px-2
-            p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">June 2025</div>
+            p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">July 2025</div>
             <div key="currently-title" className="font-medium tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[52pt] mb-4 col-span-full md:w-5/6 ml-1.5 md:ml-5">Everything I&apos;ve been up to lately:</div>
             <Currently className='col-span-full -mt-12' key='currently' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
 
