@@ -24,7 +24,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
       >
         {/* Video Container with Corner Arrow */}
         <motion.div 
-          className="relative col-span-full"
+          className="relative col-span-full cursor-pointer"
           whileHover={{ scale: 0.995 }}
           transition={{
             type: "spring",
@@ -38,8 +38,9 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
             setHoveredWork(null);
           }}
           onClick={() => {
-            toggleWork('subway')
-          }}>
+            window.open('https://www.figma.com/deck/J7hetbcBMaabUf2LubpVnu', '_blank');
+          }}
+          >
             
 
           {/* Corner Arrow */}
@@ -67,23 +68,18 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
             <h1 className="tracking-[-0.5pt] md:tracking-[-0.8pt] font-medium text-lg md:text-2xl md:group-hover:ml-3 transition-all duration-200 md:w-3/4 leading-tight md:leading-7">
               Enhanced Subway Navigation with Apple Maps
             </h1>
-  
-            {/* Desktop */}
-            <h3 className={`hidden md:block mt-2 opacity-60 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:w-[85%] text-xs md:text-sm leading-tight `}>
-              An exercise in user research and design and potential thesis topic.
-            </h3>
           </div>
 
           {/* Description Container */}
-          <div className='ml-1 text-foreground col-span-full md:col-span-2 grid grid-cols-3'>
+          <div className='ml-1 text-foreground col-span-full md:col-span-2 grid grid-cols-3 md:grid-cols-1'>
             
-            {/* Mobile */}
-            <h3 className={`md:hidden mt-3 opacity-60 transition-all duration-300 tracking-normal text-xs `}>
-              An exercise in user research and design and potential thesis topic.
+
+            <h3 className={`mt-3 md:mt-0 opacity-60 group-hover:opacity-100 transition-all duration-300 tracking-normal text-xs md:text-base w-[90%] md:w-full`}>
+              An ongoing exercise in UX/UI design, and potential thesis topic.
             </h3>
             
-            <h3 className={`opacity-40 mt-3 md:mt-0 col-span-2 md:col-span-2 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
-              An ongoing research project into providing precise turn-by-turn navigation within the New York City subway system, powered by Ultra-Wideband (UWB) technology.
+            <h3 className={`opacity-40 mt-3 md:mt-3 col-span-2 md:col-span-2 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
+              A research and design project based around enhancing the navigation experience within the New York City Subway system by providing precise turn-by-turn navigation within Apple Maps, powered by Ultra-Wideband (UWB) technology.
             </h3>
           </div>
         </div>
@@ -138,7 +134,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
             Human Car(mputer) Interaction
           </h1>
 
-          <h3 className={`mt-4 opacity-60 md:opacity-40 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
+          <h3 className={`mt-4 opacity-60 md:opacity-40 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
             A deep dive into the Human Computer Interaction of the automobile through the lens of design history.
           </h3>
 
@@ -189,18 +185,18 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
         </motion.a>
       
         {/* Header Container */}
-        <div className='ml-1 text-foreground md:col-span-1 mt-4 md:mt-8'>
-          <h1 className={`tracking-tight font-medium text-lg transition-all duration-200 md:text-2xl md:group-hover:ml-3 md:w-full md:leading-7`}>
+        <div className='ml-1 text-foreground col-span-full'>
+          <h1 className={`tracking-tight font-medium text-lg transition-all duration-200 md:text-2xl md:group-hover:ml-3 md:w-full md:leading-7 mt-4 md:mt-0`}>
             Portfolio Website v2
           </h1>
 
-          <h3 className={`mt-2 opacity-60 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:w-[85%] text-xs md:text-sm md:leading-tight`}>
+          <h3 className={`mt-2 opacity-60 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:w-1/2 text-xs md:text-sm md:leading-tight`}>
             Design and development of this website alongside exploration of the workflows of prototyping and coding with AI.
           </h3>
         </div>
 
         {/* Description Container DESKTOP ONLY */}
-        <div className='mt-8 ml-1 text-foreground col-span-2 hidden md:block'>
+        <div className='mt-8 ml-1 text-foreground col-span-2 hidden'>
           <h3 className={`mt-1 opacity-25 group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm leading-tight`}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 

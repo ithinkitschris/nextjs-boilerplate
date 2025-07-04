@@ -61,3 +61,25 @@ video {
 .will-change-transform {
   transform: translateZ(0);
 }
+
+/* Browser-specific styles for non-Chromium browsers */
+/* Firefox */
+@supports (-moz-appearance: none) {
+  .non-chromium-ml {
+    margin-left: -0.5rem; /* -ml-2 equivalent */
+  }
+}
+
+/* Safari and other WebKit browsers (non-Chromium) */
+@supports (-webkit-appearance: none) and (not (-webkit-user-select: none)) {
+  .non-chromium-ml {
+    margin-left: -0.5rem; /* -ml-2 equivalent */
+  }
+}
+
+/* Edge (legacy) */
+@supports (-ms-ime-align: auto) {
+  .non-chromium-ml {
+    margin-left: -0.5rem; /* -ml-2 equivalent */
+  }
+}

@@ -568,11 +568,11 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             <ContentPage className='col-span-full mt-8' key='content'/>
             
             {/* CV */}
-            <div key="cv-header" className="font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Curriculum Vitae</div>
-            <div key="cv-title" className="font-medium tracking-[-2.5pt] text-[58pt] mb-3 col-span-full leading-[95%] w-full">More info, all of it.</div>
+            <div key="cv-header" className="hidden md:block font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Curriculum Vitae</div>
+            <div key="cv-title" className="hidden md:block font-medium tracking-[-2.5pt] text-[58pt] mb-3 col-span-full leading-[95%] w-full">More info, all of it.</div>
 
             {/* Desktop Brands Container */}
-            <h1 className="text-[40px] md:text-3xl mt-20 tracking-tight font-medium text-black dark:text-white col-span-full" key='brands-header'>Worked with:</h1>
+            <h1 className="text-[40px] md:text-3xl mt-20 tracking-tight font-medium text-black dark:text-white col-span-full hidden md:block" key='brands-header'>Worked with:</h1>
             <motion.div className="md:col-span-full md:w-full justify-between items-center mix-blend-difference relative mb-10 hidden md:flex mt-4" layout key='brands'>           
                 <img src='/brandlogos/sia.png' className="w-[90px] h-[35px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
                 <img src='/brandlogos/asm.png' className="w-[120px] h-[35px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>

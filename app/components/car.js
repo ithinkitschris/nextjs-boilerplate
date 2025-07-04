@@ -3,8 +3,10 @@ import * as motion from "framer-motion/client"
 import React, { useState, useEffect } from 'react';
 import { carContent } from '../content/car-content';
 import { pageLoad, pageLoadItem } from '../constants/animations';
+import { useBrowser } from '../context/BrowserContext';
 
 const Car = ({className, showNav}) => {
+  const { browserType } = useBrowser();
   const [activeChapter, setActiveChapter] = useState(1);
 
   useEffect(() => {
@@ -123,11 +125,18 @@ const Car = ({className, showNav}) => {
               {/* Chapter Title */}
               <h3 className="tracking-[-0.3pt] text-[13pt] font-semibold -ml-3.5 mt-2 mb-6 sticky top-28">
                 <span 
-                  className="px-3 py-1 rounded-full bg-transparent glass-sm inline-block"
-                  style={{
-                    WebkitBackdropFilter: 'blur(1px) url(#backdrop-distortion)',
+                  className={`px-3 py-1 rounded-full bg-transparent glass-sm inline-block
+                  ${browserType === 'chrome' 
+                    ? '' 
+                    : browserType === 'safari' 
+                      ? 'backdrop-blur-3xl' 
+                      : browserType === 'firefox' 
+                        ? 'backdrop-blur-3xl' 
+                        : 'backdrop-blur-3xl'
+                    }`}
+                  style={browserType === 'chrome' ? {
                     backdropFilter: 'blur(1px) url(#backdrop-distortion)',
-                  }}
+                  } : {}}
                 >
                   {section.chapterTitle}
                 </span>

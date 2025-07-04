@@ -34,6 +34,7 @@ import NycSubway from './components/nycsubway.js';
 import Car from './components/car.js';
 import {useVideoContext, VideoProvider} from './components/expandedGridContext.js';
 import Video from './components/Video';
+import { useBrowser } from './context/BrowserContext';
 
 
 
@@ -112,6 +113,8 @@ import Video from './components/Video';
   const isMobileDevice = () => {
     return typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches;
   };
+
+
 
   const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, selectedTags, poster }) => {
 
@@ -263,6 +266,8 @@ import Video from './components/Video';
   };
 
 export default function Home(){
+
+  const { browserType } = useBrowser();
 
   const videoData = [
     
@@ -486,7 +491,7 @@ export default function Home(){
 
               {/* Top Navbar Container */}
               <motion.div
-                className="hidden md:flex items-center justify-center w-full z-50"
+                className="hidden md:flex items-center justify-center non-chromium-ml w-full z-50"
                 initial="hidden"
                 animate="show"
                 variants={animateIn}
@@ -496,11 +501,18 @@ export default function Home(){
                   className={`rounded-full flex items-center justify-center ml-2.5
                   w-[162px] h-[50px] dark:bg-transparent brightness-[100%]
                   saturate-100 border-r-1 border-b-1 border-white/35
-                  shadow-glass-border-light dark:shadow-glass-border`}
-                  style={{
-                    WebkitBackdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
-                    backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
-                  }}
+                  shadow-glass-border-light dark:shadow-glass-border
+                  ${browserType === 'chrome' 
+                    ? '' 
+                    : browserType === 'safari' 
+                      ? 'backdrop-blur-3xl' 
+                      : browserType === 'firefox' 
+                        ? 'backdrop-blur-3xl' 
+                        : 'backdrop-blur-3xl'
+                  }`}
+                  style={browserType === 'chrome' ? {
+                       backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
+                    } : {}}
                   whileHover={{ scaleY: 0.94, scaleX: 1.02}}
                   transition={{
                     type: "spring",
@@ -508,6 +520,10 @@ export default function Home(){
                     damping: 6, 
                     }} 
                 >
+                  {/* Debug indicator */}
+                  {/* <span className="text-xs text-white/50 pointer-events-none">
+                    {browserType}
+                  </span> */}
                 </motion.div>
               </motion.div>
 
