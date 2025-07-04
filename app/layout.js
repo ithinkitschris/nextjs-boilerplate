@@ -307,7 +307,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                             <p>Updated this changelog window from v1.0–All changes now start from v2.0 and will be progressively updated here.</p>
                             <p>Updated poster images.</p>
                             <p>Updated To Do list.</p>
-                            <p>Added fallback backdrop-blur for all 'Liquid Glass' implementations (Top Navbar, Footer) on non-Chromium browsers.</p>
+                            <p>Added fallback backdrop-blur for all &apos;Liquid Glass&apos; implementations (Top Navbar, Footer) on non-Chromium browsers.</p>
                           </div>                          
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
