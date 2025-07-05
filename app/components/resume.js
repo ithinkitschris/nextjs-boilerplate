@@ -404,6 +404,8 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                                     </div>
                                     <div>
                                         <p className="mt-4">VSCode</p>
+                                        <p>Cursor</p>
+                                        <p>Ollama</p>
                                         <p>JavaScript</p>
                                         <p>Python</p>
                                         <p>HTML / JSX</p>
