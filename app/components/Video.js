@@ -13,14 +13,14 @@ const Video = ({
   loading = "lazy",
   preload = "metadata",
   useCache = true,
-  unloadDelay = 4000, // 4 seconds delay before unloading when leaving viewport
+  unloadDelay = 3000, // 4 seconds delay before unloading when leaving viewport
   videoId,
   ...props 
 }) => {
   const videoRef = useRef(null);
   const { registerVideo, unregisterVideo, markVideoLoaded, markVideoUnloaded } = useVideoContext();
   
-  const { isLoaded, hidePoster, hasBeenLoaded } = useVideoOptimization(videoRef, src, {
+  const { isLoaded, hidePoster } = useVideoOptimization(videoRef, src, {
     autoPlay,
     loop,
     muted,
