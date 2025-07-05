@@ -144,6 +144,7 @@ return (
             <CarouselVideo 
               src="/nike/cover.mp4"
               poster="/poster/cocktailpage.jpeg"
+              videoId="motion-nike"
             />
           </div>
 
@@ -176,6 +177,7 @@ return (
             <CarouselVideo 
               src="/jollieverafter/favpagecover.mp4"
               poster="/poster/cocktailpage.jpeg"
+              videoId="motion-jolli"
             />
           </div>
 
@@ -208,6 +210,7 @@ return (
             <CarouselVideo 
               src="/3dpersonal/glass1.mp4"
               poster="/poster/cabinbest1.jpeg"
+              videoId="motion-3d"
             />
           </div>
           
@@ -240,6 +243,7 @@ return (
             <CarouselVideo 
               src="/samsung/montage.mp4"
               poster="/poster/cabinbest1.jpeg"
+              videoId="motion-samsung"
             />
           </div>
 

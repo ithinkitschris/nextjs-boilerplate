@@ -8,6 +8,7 @@ import "./globals.css";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { VideoProvider } from './context/VideoContext';
 import { BrowserProvider, useBrowser } from './context/BrowserContext';
+import VideoDebugger from './components/VideoDebugger';
 
 const animateIn = {
   hidden: { opacity: 0, y: 90, scale:0.99 },
@@ -182,6 +183,9 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
               bg-background transition-all duration-300`}
               suppressHydrationWarning>
 
+                {/* Video Performance Monitor - Only in development */}
+                <VideoDebugger enabled={process.env.NODE_ENV === 'development'} />
+
                 {/* Backdrop Blur */}
                 <div className={`${changelog ? 'bg-black/0 backdrop-blur' :'backdrop-blur-none pointer-events-none'}
                 fixed top-0 left-0 w-full h-full z-[40] transition-all duration-500 md:duration-300`} />
@@ -203,17 +207,17 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
               {changelog && (
                 <motion.div 
                   ref={changelogRef}
-                  className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 left-0 inset-x-0 mx-auto z-50 rounded-3xl overflow-y-auto md:p-2 md:pt-4 no-scrollbar
-                  h-[82.5%] md:h-[450px] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
+                  className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 left-0 inset-x-0 mx-auto z-50 rounded-3xl overflow-y-auto md:overflow-hidden md:p-2 md:pt-4 no-scrollbar overflow-x-hidden
+                  h-[80%] md:h-[450px] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
 
                     {/* About */}
-                    <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:mr-2 max-h-[100%] md:overflow-y-auto no-scrollbar leading-[145%] bg-background dark:bg-black/10
+                    <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:mr-2 h-[430px] md:h-[430px] overflow-y-auto no-scrollbar leading-[145%] bg-background dark:bg-black/10
                     backdrop-blur-3xl rounded-3xl drop-shadow-md" 
                     initial="hidden"
                     animate="show"
                     variants={animateIn}>
 
-                      <h1 className="font-medium text-lg mb-4 -mt-1 tracking-tight text-foreground font-">About this site</h1>
+                      <h1 className="font-medium text-lg mb-4 md:-mt-1 tracking-tight text-foreground font-">About this site</h1>
                       <p className="mt-2">Having being once told that my previous site on Squarespace was &apos;boy scout&apos; for someone who takes pride in his craft, this site was thus masochistically designed and hard-coded from ground up with Javascript, React and Next.js by yours truly.</p>
                       <p className="mt-4">As I have had little to no experience with web development prior to this project, I also made a conscious decision to document every step of the process from the start to the first MVP iteration of this site–check it out if you happen to be curious on the process of creating a site from scratch with no prior knowledge.</p>
                       <a className="relative inline-flex mt-6 -ml-1.5 border-1 pl-2 px-1 py-0.5 rounded-full text-black dark:text-white border-black/25 dark:border-white/65 
@@ -235,12 +239,12 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                       </a>
 
                       {/* Last Updated */}
-                      <p className="mt-6 text-xxs opacity-75 leading-tight">Website last meddled with on 07.03.25 for the 259th time.</p>
+                      <p className="mt-6 text-xxs opacity-75 leading-tight">Website last meddled with on 07.05.25 for the 260th time.</p>
 
                     </motion.div>
 
                     {/* To Do */}
-                    <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:ml-2 max-h-[100%] md:overflow-y-auto no-scrollbar leading-[145%] bg-background dark:bg-black/10 flex flex-col gap-2
+                    <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:ml-2 h-[450px] md:h-[430px] overflow-y-auto no-scrollbar leading-[145%] bg-background dark:bg-black/10 flex flex-col gap-2
                     backdrop-blur-3xl rounded-3xl drop-shadow-md" 
                     initial="hidden"
                     animate="show"
@@ -284,22 +288,30 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                     </motion.div>
                     
                     {/* Changelog Window */}
-                    <motion.div className="glass-sm md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 max-h-[100%] md:overflow-y-auto no-scrollbar bg-background relative 
+                    <motion.div className="glass-sm md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 h-[100%] md:h-[430px] no-scrollbar bg-background relative flex flex-col
                     dark:bg-black/10 backdrop-blur-3xl rounded-3xl drop-shadow-md"
                     initial="hidden"
                     animate="show"
                     variants={animateInChangelog}>
 
                       {/* Title */}
-                      <h1 className="font-medium text-lg tracking-tight text-foreground pt-1 mb-4 relative col-span-full">
+                      <h1 className="font-medium text-lg tracking-tight text-foreground pt-1 mb-4 relative col-span-full flex-shrink-0">
                         Changelog
                       </h1>
 
                       {/* Container */}
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-2 gap-4 flex-1 min-h-0">
 
                         {/* Left Column */}
-                        <div className="no-scrollbar col-span-full md:col-span-1 flex flex-col gap-4">
+                        <div className="no-scrollbar col-span-full md:col-span-1 flex flex-col gap-4 overflow-y-auto pr-4">
+
+                          <div className="flex flex-col gap-3 leading-4 mb-4"> 
+                            <p className='text-foreground font-medium'>v2.02</p>
+                            
+                            <p>Added Expense Tracker project to &apos;Everything I&apos;ve been up to&apos; section.</p>
+                            <p>Improved backend performance optimizations for all videos across the site–now mounts only when visible in the viewport, and unmounts when not.</p>
+                            <p>Refined formatting for some project pages.</p>
+                          </div>        
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.01</p>
@@ -310,25 +322,17 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                             <p>Added fallback backdrop-blur for all &apos;Liquid Glass&apos; implementations (Top Navbar, Footer) on non-Chromium browsers.</p>
                           </div>                          
 
-                          <div className="flex flex-col gap-3 leading-4 mb-4"> 
-                            <p className='text-foreground font-medium'>v2.0</p>
-                            <p>Portfolio Website v2 officially live! Changelog to come. It&apos;s too much to write about right now.</p>
-                          </div>
-
                         </div>
                         
                         {/* Right Column */}
-                        {/* <div className="no-scrollbar col-span-full md:col-span-1 bg-black">
+                        <div className="no-scrollbar col-span-full md:col-span-1 overflow-y-auto">
 
-                          <p className='text-foreground font-medium'>v2.01</p>
-                          <p>Updated this changelog window from v1.0</p>
-                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Dolor sit</p>
-                          
+                          <div className="flex flex-col gap-3 leading-4 mb-4"> 
+                            <p className='mt-0 text-foreground font-medium'>v2.0</p>
+                            <p>Portfolio Website v2! Changelog to come. It's too much to write about right now.</p>
+                          </div>
 
-                          <p className='mt-4 text-foreground font-medium'>v2.0</p>
-                          <p>Portfolio Website v2! Changelog to come. It's too much to write about right now.</p>
-
-                        </div> */}
+                        </div>
                         
                       </div>                
 

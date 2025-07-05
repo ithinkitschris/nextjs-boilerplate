@@ -4,21 +4,79 @@ const VideoContext = createContext();
 
 export const VideoProvider = ({ children }) => {
   const [visibleVideos, setVisibleVideos] = useState(new Set());
+  const [loadedVideos, setLoadedVideos] = useState(new Set());
+  const [videoStats, setVideoStats] = useState({
+    totalVideos: 0,
+    loadedVideos: 0,
+    visibleVideos: 0
+  });
 
   const registerVideo = useCallback((videoId) => {
-    setVisibleVideos(prev => new Set([...prev, videoId]));
+    setVisibleVideos(prev => {
+      const newSet = new Set([...prev, videoId]);
+      setVideoStats(stats => ({
+        ...stats,
+        totalVideos: Math.max(stats.totalVideos, newSet.size),
+        visibleVideos: newSet.size
+      }));
+      return newSet;
+    });
   }, []);
 
   const unregisterVideo = useCallback((videoId) => {
     setVisibleVideos(prev => {
       const newSet = new Set(prev);
       newSet.delete(videoId);
+      setVideoStats(stats => ({
+        ...stats,
+        visibleVideos: newSet.size
+      }));
+      return newSet;
+    });
+    setLoadedVideos(prev => {
+      const newSet = new Set(prev);
+      newSet.delete(videoId);
+      setVideoStats(stats => ({
+        ...stats,
+        loadedVideos: newSet.size
+      }));
+      return newSet;
+    });
+  }, []);
+
+  const markVideoLoaded = useCallback((videoId) => {
+    setLoadedVideos(prev => {
+      const newSet = new Set([...prev, videoId]);
+      setVideoStats(stats => ({
+        ...stats,
+        loadedVideos: newSet.size
+      }));
+      return newSet;
+    });
+  }, []);
+
+  const markVideoUnloaded = useCallback((videoId) => {
+    setLoadedVideos(prev => {
+      const newSet = new Set(prev);
+      newSet.delete(videoId);
+      setVideoStats(stats => ({
+        ...stats,
+        loadedVideos: newSet.size
+      }));
       return newSet;
     });
   }, []);
 
   return (
-    <VideoContext.Provider value={{ visibleVideos, registerVideo, unregisterVideo }}>
+    <VideoContext.Provider value={{ 
+      visibleVideos, 
+      loadedVideos,
+      videoStats,
+      registerVideo, 
+      unregisterVideo,
+      markVideoLoaded,
+      markVideoUnloaded
+    }}>
       {children}
     </VideoContext.Provider>
   );

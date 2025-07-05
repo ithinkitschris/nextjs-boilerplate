@@ -17,7 +17,7 @@ const ProjectHeader = ({ title, subtitle, subtitleBrand }) => {
         >
 
             {/* Header */}
-            <h1 className="hidden md:block text-7xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">
+            <h1 className="text-6xl md:text-8xl text-center md:text-left font-medium tracking-tighter leading-tighter -ml-2">
                 {title}
             </h1>
 

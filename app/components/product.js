@@ -138,6 +138,7 @@ return (
             />
 
             <CarouselVideo 
+              videoId="product-subway"
               src="/subway/cover.mp4"
               poster="/poster/subway.png"
             />
@@ -167,8 +168,9 @@ return (
             />
 
             <CarouselVideo 
+              videoId="product-website"
               src="/website/cover.mp4"
-              poster="/poster/cabinbest1.jpeg"
+              poster="/poster/website.png"
             />
           </div>
             
@@ -190,8 +192,9 @@ return (
               
 
             <CarouselVideo 
+              videoId="product-car"
               src="/currently/car.mp4"
-              poster="/poster/ghibli.jpeg"
+              poster="/poster/car.png"
             />
           </div>
         </div>

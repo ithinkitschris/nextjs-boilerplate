@@ -2,6 +2,7 @@
 
 import * as motion from "framer-motion/client"
 import CornerArrow from './CornerArrow.js';
+import Video from './Video.js';
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -14,13 +15,13 @@ const animateIn ={
 const Currently = ({className, setHoveredWork, toggleWork}) => {
   return (
     <motion.div
-    className={`font-[family-name:var(--font-geist-sans)] relative w-full grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 ${className}`}
+    className={`font-[family-name:var(--font-geist-sans)] relative w-full grid grid-cols-2 md:grid-cols-6 gap-2 md:gap-4 ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
 
       {/* 01 */}
-      <motion.div className="col-span-full group cursor-pointer mt-16 h-full relative group"
+      <motion.div className="col-span-full md:col-span-4 mt-16 group cursor-pointer h-full relative group"
       >
         {/* Video Container with Corner Arrow */}
         <motion.div 
@@ -47,16 +48,19 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-3xl w-full col-span-full h-[350px] md:h-[500px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-3xl w-full col-span-full h-[250px] md:h-[420px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
-              <video src="/subway/cover2.mp4"
+              <Video 
+                videoId="currently-subway"
+                src="/subway/cover2.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
                 autoPlay
                 muted
                 loop
                 playsInline
-                poster="/poster/subway.png"/>
+                poster="/poster/subway.png"
+              />
           </motion.div>
 
         </motion.div>
@@ -65,7 +69,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
         <div className="grid grid-cols-3 mb-8 mt-4 md:mt-6">
 
           <div className='ml-1 text-foreground col-span-full md:col-span-1'>
-            <h1 className="tracking-[-0.5pt] md:tracking-[-0.8pt] font-medium text-lg md:text-2xl md:group-hover:ml-3 transition-all duration-200 md:w-3/4 leading-tight md:leading-7">
+            <h1 className="tracking-[-0.5pt] md:tracking-[-0.8pt] font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 md:w-4/5 leading-tight md:leading-6">
               Enhanced Subway Navigation with Apple Maps
             </h1>
           </div>
@@ -74,19 +78,78 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
           <div className='ml-1 text-foreground col-span-full md:col-span-2 grid grid-cols-3 md:grid-cols-1'>
             
 
-            <h3 className={`mt-3 md:mt-0 opacity-60 group-hover:opacity-100 transition-all duration-300 tracking-normal text-xs md:text-base w-[90%] md:w-full`}>
-              An ongoing exercise in UX/UI design, and potential thesis topic.
+            <h3 className={`mt-3 md:mt-0 opacity-80 group-hover:opacity-100 transition-all duration-300 tracking-normal text-xs md:text-base w-[90%] md:w-full`}>
+              UX/UI design, potential thesis topic.
             </h3>
             
-            <h3 className={`opacity-40 mt-3 md:mt-3 col-span-2 md:col-span-2 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
-              A research and design project based around enhancing the navigation experience within the New York City Subway system by providing precise turn-by-turn navigation within Apple Maps, powered by Ultra-Wideband (UWB) technology.
+            <h3 className={`opacity-60 mt-3 md:mt-3 col-span-2 md:col-span-2 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
+              An ongoing research and design project based around enhancing the navigation experience within the New York City Subway system by providing precise turn-by-turn navigation within Apple Maps, powered by Ultra-Wideband (UWB) technology.
             </h3>
           </div>
         </div>
       </motion.div>
 
       {/* 02 */}
-      <motion.div className="col-span-1 md:col-span-1 cursor-pointer transition-all duration-200 h-full group"
+      <motion.div className="col-span-full md:mt-16 md:col-span-2 cursor-pointer transition-all duration-200 h-full group mb-8 md:mb-0"
+      >
+        {/* Video Container with Corner Arrow */}
+        <motion.div 
+          className="relative col-span-full cursor-pointer"
+          whileHover={{ scale: 0.98 }}
+          transition={{
+            type: "spring",
+            stiffness: 1200, 
+            damping: 22, 
+          }}
+          onMouseEnter={() => {
+            setHoveredWork("car");
+          }}
+          onMouseLeave={() => {
+            setHoveredWork(null);
+          }}
+          onClick={() => {
+            window.open('https://ithinkitschris.notion.site/local-expense-tracker', '_blank');
+          }}>
+            
+
+          {/* Corner Arrow */}
+          <CornerArrow />
+
+          {/* Video */}
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] md:h-[420px] relative overflow-hidden border-b-1 border-white/15">
+              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
+              pointer-events-none mix-blend-overlay z-10"/>
+              <Video 
+                videoId="currently-expense"
+                src="/expense/cover.mov"
+                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover object-[0%_10%]"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/poster/expense.png"
+              />
+          </motion.div>
+
+        </motion.div>
+        
+        {/* Header Container */}
+        <div className='ml-1 mt-4 md:mt-6 text-foreground col-span-full md:col-span-1'>
+          
+          <h1 className={`tracking-tight font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-7`}>
+            On-device LLM Expense Tracker
+          </h1>
+
+          <h3 className={`mt-4 opacity-60 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
+            An ongoing quick and dirty project on setting up and running a local LLM and Python to track my personal expenses. Powered by Ollama + Gemma3n:e2b.
+          </h3>
+
+        </div>
+        
+      </motion.div>
+
+      {/* 03 */}
+      <motion.div className="col-span-1 md:col-span-3 cursor-pointer transition-all duration-200 h-full group"
       >
         {/* Video Container with Corner Arrow */}
         <motion.div 
@@ -112,16 +175,19 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[150px] md:h-[500px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[150px] md:h-[420px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
-              <video src="/currently/car.mp4"
+              <Video 
+                videoId="currently-car"
+                src="/currently/car.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
                 autoPlay
                 muted
                 loop
                 playsInline
-                poster="/poster/car.png"/>
+                poster="/poster/car.png"
+              />
           </motion.div>
 
         </motion.div>
@@ -130,11 +196,11 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
         {/* Header Container */}
         <div className='ml-1 mt-4 md:mt-8 text-foreground col-span-full md:col-span-1'>
           
-          <h1 className={`tracking-tight font-medium text-lg md:text-2xl md:group-hover:ml-3 transition-all duration-200 md:w-3/4 leading-tight md:leading-7`}>
+          <h1 className={`tracking-tight font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-7`}>
             Human Car(mputer) Interaction
           </h1>
 
-          <h3 className={`mt-4 opacity-60 md:opacity-40 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
+          <h3 className={`mt-4 opacity-60 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight md:w-4/5`}>
             A deep dive into the Human Computer Interaction of the automobile through the lens of design history.
           </h3>
 
@@ -142,8 +208,8 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
         
       </motion.div>
 
-      {/* 03 */}
-      <div className="col-span-1 md:col-span-2 cursor-pointer group transition-all duration-200 h-[150px] md:h-full grid grid-cols-1 md:grid-cols-3"
+      {/* 04 */}
+      <div className="col-span-1 md:col-span-3 cursor-pointer group transition-all duration-200 h-[150px] md:h-full grid grid-cols-1 md:grid-cols-3"
       >
         
         {/* Video Container with Corner Arrow */}
@@ -170,23 +236,26 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[150px] md:h-[500px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[150px] md:h-[420px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
-              <video src="/website/cover.mp4"
+              <Video 
+                videoId="currently-website"
+                src="/website/cover.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
                 autoPlay
                 muted
                 loop
                 playsInline
-                poster="/poster/website.png"/>
+                poster="/poster/website.png"
+              />
           </motion.div>
 
         </motion.a>
       
         {/* Header Container */}
-        <div className='ml-1 text-foreground col-span-full'>
-          <h1 className={`tracking-tight font-medium text-lg transition-all duration-200 md:text-2xl md:group-hover:ml-3 md:w-full md:leading-7 mt-4 md:mt-0`}>
+        <div className='ml-1 text-foreground col-span-full mt-0 md:mt-8'>
+          <h1 className={`tracking-tight font-medium text-lg transition-all duration-200 md:text-[15pt] md:group-hover:ml-3 md:w-full md:leading-7 mt-4 md:mt-0`}>
             Portfolio Website v2
           </h1>
 

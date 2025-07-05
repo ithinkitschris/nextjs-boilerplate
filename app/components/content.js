@@ -36,6 +36,7 @@ const ContentPage = ({className}) => {
                 title="Taycan 4S"
                 subtitle="On The Road:"
                 variants={animateInChild}
+                videoId="content-taycan"
             />
             
             <ContentGridItem
@@ -44,6 +45,7 @@ const ContentPage = ({className}) => {
                 title="BMW M3"
                 subtitle="On The Road:"
                 variants={animateInChild}
+                videoId="content-m3"
             />
 
             <ContentGridItem
@@ -52,6 +54,7 @@ const ContentPage = ({className}) => {
                 title="New York"
                 subtitle="On The Road:"
                 variants={animateInChild}
+                videoId="content-newyork"
             />
             
             <ContentGridItem
@@ -60,6 +63,7 @@ const ContentPage = ({className}) => {
                 title="California"
                 subtitle="On The Road:"
                 variants={animateInChild}
+                videoId="content-california"
             />
 
             <ContentGridItem
@@ -68,6 +72,7 @@ const ContentPage = ({className}) => {
                 title="Kuala Lumpur"
                 subtitle="On The Road:"
                 variants={animateInChild}
+                videoId="content-roadkl"
             />
 
             <ContentGridItem
@@ -76,6 +81,7 @@ const ContentPage = ({className}) => {
                 title="Melbourne"
                 subtitle="On The Road:"
                 variants={animateInChild}
+                videoId="content-melbourne"
             />
             
             <ContentGridItem
@@ -84,6 +90,7 @@ const ContentPage = ({className}) => {
                 title="Kuala Lumpur"
                 subtitle="Through the Rangefinder:"
                 variants={animateInChild}
+                videoId="content-rangefinder-kl"
             />
 
             <ContentGridItem
@@ -92,6 +99,7 @@ const ContentPage = ({className}) => {
                 title="Shanghai"
                 subtitle="Through the Rangefinder:"
                 variants={animateInChild}
+                videoId="content-rangefinder-shanghai"
             />
 
             <ContentGridItem
@@ -100,6 +108,7 @@ const ContentPage = ({className}) => {
                 title="Film"
                 subtitle="Through the Rangefinder:"
                 variants={animateInChild}
+                videoId="content-rangefinder-film"
             />
 
             <ContentGridItem
@@ -108,6 +117,7 @@ const ContentPage = ({className}) => {
                 title="Seat 12A"
                 subtitle="POV:"
                 variants={animateInChild}
+                videoId="content-seat12a"
             />
 
             <ContentGridItem
@@ -116,6 +126,7 @@ const ContentPage = ({className}) => {
                 title="Seat 15A"
                 subtitle="POV:"
                 variants={animateInChild}
+                videoId="content-seat15a"
             />
 
             <ContentGridItem
@@ -124,6 +135,7 @@ const ContentPage = ({className}) => {
                 title="The World's Longest Flight"
                 subtitle="POV:"
                 variants={animateInChild}
+                videoId="content-longestflight"
             />
 
             <ContentGridItem
@@ -132,6 +144,7 @@ const ContentPage = ({className}) => {
                 title="Hanoi"
                 subtitle="Film vs Digital:"
                 variants={animateInChild}
+                videoId="content-filmvsdigital-hanoi"
             />
 
             <ContentGridItem
@@ -140,6 +153,7 @@ const ContentPage = ({className}) => {
                 title="Marina Bay"
                 subtitle="Film vs Digital:"
                 variants={animateInChild}
+                videoId="content-filmvsdigital-marinabay"
             />
 
             <ContentGridItem
@@ -148,6 +162,7 @@ const ContentPage = ({className}) => {
                 title="Shanghai"
                 subtitle="Film vs Digital:"
                 variants={animateInChild}
+                videoId="content-filmvsdigital-shanghai"
             />
 
             <ContentGridItem
@@ -156,6 +171,7 @@ const ContentPage = ({className}) => {
                 title="15 Hours of iPhone 15 Pro"
                 subtitle="Blender:"
                 variants={animateInChild}
+                videoId="content-blender-iphone15"
             />
 
             <ContentGridItem
@@ -164,6 +180,7 @@ const ContentPage = ({className}) => {
                 title="15 more hours of iPhone 15 Pro"
                 subtitle="Blender:"
                 variants={animateInChild}
+                videoId="content-blender-iphone15-more"
             />
 
             <ContentGridItem
@@ -172,6 +189,7 @@ const ContentPage = ({className}) => {
                 title="Leica M10-P"
                 subtitle="Blender:"
                 variants={animateInChild}
+                videoId="content-blender-leica"
             />
 
             <ContentGridItem
@@ -180,6 +198,7 @@ const ContentPage = ({className}) => {
                 title="Modeling a Leica"
                 subtitle="Blender:"
                 variants={animateInChild}
+                videoId="content-blender-leica-modeling"
             />
 
             <ContentGridItem
@@ -188,6 +207,7 @@ const ContentPage = ({className}) => {
                 title="Kuala Lumpur"
                 subtitle="24 Hours of"
                 variants={animateInChild}
+                videoId="content-24hours-kl"
             />
 
             <ContentGridItem
@@ -196,6 +216,7 @@ const ContentPage = ({className}) => {
                 title="Melbourne"
                 subtitle="24 Hours of"
                 variants={animateInChild}
+                videoId="content-24hours-melbourne"
             />
 
             <ContentGridItem
@@ -204,6 +225,7 @@ const ContentPage = ({className}) => {
                 title="IKEA Stool"
                 subtitle="One man's trash, another man's questionable treasure:"
                 variants={animateInChild}
+                videoId="content-ikea-stool"
             />
 
             <ContentGridItem
@@ -211,6 +233,7 @@ const ContentPage = ({className}) => {
                 posterSrc="/poster/content/lounge.png"
                 title="One Afternoon in SilverKris Lounge"
                 variants={animateInChild}
+                videoId="content-silverkris-lounge"
             />
 
             <ContentGridItem
@@ -218,6 +241,7 @@ const ContentPage = ({className}) => {
                 posterSrc="/poster/content/shanghaibrands.png"
                 title="Brands to check out in Shanghai"
                 variants={animateInChild}
+                videoId="content-shanghai-brands"
             />
 
             <ContentGridItem
@@ -225,6 +249,7 @@ const ContentPage = ({className}) => {
                 posterSrc="/poster/content/prints.png"
                 title="Too many prints, not enough wall"
                 variants={animateInChild}
+                videoId="content-prints"
             />
 
             <ContentGridItem
@@ -232,6 +257,7 @@ const ContentPage = ({className}) => {
                 posterSrc="/poster/content/jaguar.png"
                 title="A Drone, A Jaguar, in California"
                 variants={animateInChild}
+                videoId="content-jaguar-drone"
             />
 
             <ContentGridItem
@@ -239,6 +265,7 @@ const ContentPage = ({className}) => {
                 posterSrc="/poster/content/chicago.png"
                 title="Chicago in 26,020 steps"
                 variants={animateInChild}
+                videoId="content-chicago"
             />
 
             <ContentGridItem
@@ -246,6 +273,7 @@ const ContentPage = ({className}) => {
                 posterSrc="/poster/content/dia.png"
                 title="One Afternoon at DIA Beacon"
                 variants={animateInChild}
+                videoId="content-dia-beacon"
             />
             <ContentGridItem
                 videoSrc="/content/5.mp4"
@@ -253,6 +281,7 @@ const ContentPage = ({className}) => {
                 title="Brooklyn"
                 subtitle="N –"
                 variants={animateInChild}
+                videoId="content-brooklyn"
             />
 
             <ContentGridItem
@@ -260,6 +289,7 @@ const ContentPage = ({className}) => {
                 posterSrc="/poster/content/muir.png"
                 title="Muir Beach"
                 variants={animateInChild}
+                videoId="content-muir-beach"
             />
             
         </motion.div>

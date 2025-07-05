@@ -56,7 +56,7 @@ const Episodes = () => {
             </div>
 
             {/* Episode Thumbnails */}
-            <div className="gap-1 2xl:gap-2 grid grid-cols-3 lg:grid-cols-6 mb-10 lg:mb-24 w-full h-auto">
+            <div className="gap-1 2xl:gap-2 grid grid-cols-3 lg:grid-cols-6 mb-14 lg:mb-24 w-full h-auto">
                 {episodeData.map((_, index) => (
                     <button key={index}>
                       <img
@@ -73,21 +73,20 @@ const Episodes = () => {
                 <div
                 key={episode.title}
                 ref={(el) => (episodeRefs.current[index] = el)}
-                className="grid grid-cols-6 col-span-full mb-3 xl:mb-5"
+                className="grid grid-cols-6 col-span-full mb-24 xl:mb-5"
                 >
                 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1 relative">
-                        <div className="text-xl lg:text-xl tracking-tight mb-2 md:mb-4 md:mr-10 text-center md:text-left mt-4 md:mt-0 leading-3">
-                          <h1 className="font-medium mb-3 tracking-tight">Episode {index + 1}</h1>
-                          <h2 className="text-[15pt] font-script">{episode.title}</h2>
-                          {/* <h2 className="font-sans tracking-wider uppercase font-semibold text-xs">{episode.title}</h2> */}
+                        <div className="tracking-tight mb-2 md:mb-4 md:mr-10 text-center md:text-left mt-4 md:mt-0 leading-3">
+                          <h1 className="tracking-tight font-medium text-[10pt] md:text-sm mb-1">Episode {index + 1}</h1>
+                          <h2 className="text-xl md:text-2xl md:leading-6 md:mt-2 tracking-tight font-medium mb-2 md:w-3/4">{episode.title}</h2>
                         </div>
 
-                        <h3 className="text-sm font-normal md:mr-10 text-center md:text-left px-2 md:px-0 mb-4 md:mb-8">
+                        <h3 className="text-[8pt] md:text-sm font-normal leading-4 md:mr-24 text-center md:text-left px-12 md:px-0 mb-4 md:mb-8">
                         {episode.description}
                         </h3>
 
-                        <h3 className="text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0">
+                        <h3 className="text-[8pt] md:text-sm md:mr-10 text-center md:text-left px-10 md:px-0 mb-6 md:mb-0">
                         Watch it
                         <a href={episode.link} 
                         className="px-[5px] border-1 border-foreground rounded-full ml-1.5 hover:bg-foreground hover:text-background relative top-[0.4px] transition-all duration-200"
@@ -97,7 +96,7 @@ const Episodes = () => {
 
                     <video
                         src={episode.videoSrc}
-                        className="rounded-3xl md:rounded-3xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-full w-full"
+                        className="rounded-2xl md:rounded-3xl object-cover col-span-6 md:col-span-4 lg:col-span-4 2xl:col-span-5 h-[120%] md:h-full w-full"
                         autoPlay
                         loop
                         muted

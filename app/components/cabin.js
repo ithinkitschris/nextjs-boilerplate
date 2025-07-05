@@ -4,11 +4,13 @@ import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
 import Episodes from "@/app/components/episodes-cabin.js";
 import ProjectHeader from './common/ProjectHeader';
+import { useBrowser } from '@/app/context/BrowserContext';
 
 export default function CabinCrewStories({className="", isMobile}) {
     
     const backgroundGlowRef=useRef(null);
     const bannerVideoRef=useRef(null);
+    const { browserType } = useBrowser();
 
     useEffect(() => {
         if (isMobile) return;
@@ -65,8 +67,8 @@ show: {
             <video 
             ref={backgroundGlowRef}
             src="/CCS/montageglow_1.mp4" 
-            className="absolute mt-52 w-screen h-screen/1.2 object-cover rounded-full -z-10 
-            opacity-0 dark:opacity-100 -ml-4 blur-3xl saturate-200 left-3"
+            className={`absolute mt-52 w-screen h-screen/1.2 object-cover rounded-full -z-10 
+            opacity-0 dark:opacity-100 -ml-4 blur-[300px] saturate-200 left-3 ${browserType !== 'chrome' ? '' : ''}`}
             autoPlay 
             muted 
             loop
@@ -155,8 +157,8 @@ show: {
                 <Episodes />
             </motion.div>
 
-            <div className="col-span-full mt-14 md:mt-44 mb-6">
-                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">Art Direction</h1>
+            <div className="col-span-full mt-32 md:mt-44 mb-12">
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-1pt] font-medium">Art Direction</h1>
             </div>
 
             <h1 className="md:text-lg font-medium col-span-full text-center md:text-left tracking-tight">Campaign Key Visual</h1>
@@ -203,8 +205,8 @@ show: {
 
             </div>
 
-            <div className="col-span-full mt-14 md:mt-44 mb-6">
-                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">Motion Design</h1>
+            <div className="col-span-full mt-32 md:mt-44 mb-12">
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-1pt] font-medium">Motion Design</h1>
             </div>
 
             <div className="gap-1 md:gap-2 col-span-full grid grid-cols-1 md:grid-cols-2">
@@ -240,8 +242,8 @@ show: {
             </div>
 
             {/* Behind the Scenes */}
-            <div className="col-span-full mt-18 md:mt-44 mb-6">
-                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">Behind the Scenes</h1>
+            <div className="col-span-full mt-32 md:mt-44 mb-12">
+                <h1 className="text-4xl md:text-6xl text-center md:text-left tracking-[-1pt] font-medium">Behind the Scenes</h1>
             </div>
 
             <div className='col-span-full grid md:grid-cols-3 gap-1 md:gap-2 mb-40'>

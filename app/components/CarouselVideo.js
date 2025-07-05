@@ -1,6 +1,8 @@
 'use client'
 
-const CarouselVideo = ({ src, poster, className = "" }) => {
+import Video from './Video.js';
+
+const CarouselVideo = ({ src, poster, className = "", videoId }) => {
   return (
     <div className="rounded-3xl w-full col-span-full h-[520px] md:h-[760px] relative overflow-hidden border-l-2 border-t-2 border-white/0">
 
@@ -21,7 +23,8 @@ const CarouselVideo = ({ src, poster, className = "" }) => {
     />
 
       {/* <div className="md:hidden absolute bottom-1.5 left-0 right-0 h-[26%] backdrop-blur-md rounded-[1.5rem] scale-93 glass-sm"/> */}
-      <video 
+      <Video 
+        videoId={videoId}
         src={src}
         className={`rounded-3xl w-full h-full object-cover ${className}`}
         autoPlay

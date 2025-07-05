@@ -140,6 +140,7 @@ return (
             />
 
             <CarouselVideo 
+              videoId="creative-cabin"
               src="/CCS/bestworkmontage.mp4"
               poster="/poster/cabinbest1.jpeg"
             />
@@ -172,6 +173,7 @@ return (
             />
 
             <CarouselVideo 
+              videoId="creative-ghibli"
               src="/Ghibli/banner1.mp4"
               poster="/poster/ghibli.jpeg"
             />
@@ -204,6 +206,7 @@ return (
             />
 
             <CarouselVideo 
+              videoId="creative-cocktail"
               src="/Cocktail/cover2.mp4"
               poster="/poster/cocktailpage.jpeg"
             />
@@ -236,6 +239,7 @@ return (
             />
 
             <CarouselVideo 
+              videoId="creative-hemsaker"
               src="/Hemsaker/cover.mp4"
               poster="/poster/cocktailpage.jpeg"
             />
@@ -268,6 +272,7 @@ return (
             />
 
             <CarouselVideo 
+              videoId="creative-lounge"
               src="/lounge/montage.mp4"
               poster="/poster/cocktailpage.jpeg"
             />

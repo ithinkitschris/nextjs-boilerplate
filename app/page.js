@@ -505,10 +505,10 @@ export default function Home(){
                   ${browserType === 'chrome' 
                     ? '' 
                     : browserType === 'safari' 
-                      ? 'backdrop-blur-3xl' 
+                      ? 'backdrop-blur-3xl bg-white' 
                       : browserType === 'firefox' 
-                        ? 'backdrop-blur-3xl' 
-                        : 'backdrop-blur-3xl'
+                        ? 'backdrop-blur-3xl bg-white' 
+                        : 'backdrop-blur-3xl bg-white'
                   }`}
                   style={browserType === 'chrome' ? {
                        backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
@@ -539,6 +539,7 @@ export default function Home(){
               transition-colors duration-200
               hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
               dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+              
               ${selectedWork.includes('resume') 
                 ? '' 
                 : 'border-transparent'

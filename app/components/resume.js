@@ -83,17 +83,9 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
     return (
         
     <>
-        {/* Page Container */}
-        <motion.div 
-        key="page-container"
-        className={`grid grid-cols-1 lg:grid-cols-10 w-full mt-2 md:mt-8
-        items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
-        gap-2 text-sm tracking-tight ${className}`}
-        >
-        <AnimatePresence key="animate-presence">
-            
-            {/* Mobile Blur Background */}
-            <div className="md:hidden absolute top-0 left-0 w-full h-[800px] -z-50 opacity-0 dark:opacity-100" key="mobile-blur-background">
+
+        {/* Mobile Blur Background */}
+        <div className="md:hidden absolute top-0 left-0 w-full h-[800px] -z-50 opacity-0 dark:opacity-100" key="mobile-blur-background">
                 <motion.div key="mobile-image-container-blur" className="absolute -top-0 -left-0 -right-0 -bottom-0 brightness-150 saturate-150 blur-[80px]" variants={animateInChild}>
                     <Image
                     key="mobile-profile-image-blur"
@@ -105,6 +97,15 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                     />
                 </motion.div>
             </div>
+
+        {/* Page Container */}
+        <motion.div 
+        key="page-container"
+        className={`grid grid-cols-1 lg:grid-cols-10 w-full mt-2 md:mt-8
+        items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
+        gap-2 text-sm tracking-tight ${className}`}
+        >
+        <AnimatePresence key="animate-presence">
             
             {/* Profile */}
             <div key="bio-section" className="lg:flex col-span-full w-full relative">
@@ -575,18 +576,44 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
             {/* Desktop Brands Container */}
             <h1 className="text-[40px] md:text-3xl mt-20 tracking-tight font-medium text-black dark:text-white col-span-full hidden md:block" key='brands-header'>Worked with:</h1>
-            <motion.div className="md:col-span-full md:w-full justify-between items-center mix-blend-difference relative mb-10 hidden md:flex mt-4" layout key='brands'>           
-                <img src='/brandlogos/sia.png' className="w-[90px] h-[35px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
-                <img src='/brandlogos/asm.png' className="w-[120px] h-[35px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
-                <img src='/brandlogos/ikea.png' className="w-[75px] h-[25px]  object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
-                <img src='/brandlogos/samsung.png' className="w-[95px] h-[28px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
-                <img src='/brandlogos/uniqlo.png' className="w-[70px] h-[35px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
-                <img src='/brandlogos/ghibli.png' className="w-[105px] h-[40px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
-                <img src='/brandlogos/nike.png' className="w-60px] h-[36px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
-                <img src='/brandlogos/sc.png' className="w-[80px] h-[37px]  object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
-                <img src='/brandlogos/stb.png' className="w-[90px] h-[35px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
-                <img src='/brandlogos/mckinsey.png' className="w-[85px] h-[32px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
-                <img src='/brandlogos/jollibee.png' className="w-[80px] h-[30px] object-cover opacity-80 hover:opacity-100 scale-110 hover:scale-110 transition-transform duration-300"/>
+            <motion.div 
+              className="md:col-span-full md:w-full mix-blend-difference relative mb-10 hidden md:grid grid-cols-6 xl:grid-cols-11 gap-5 md:-mx-9 xl:mx-0 mt-4" 
+              layout 
+              key='brands'
+            >           
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/sia.png' className="w-[90px] h-[35px] object-cover opacity-80 scale-110"/>
+                </div>
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/asm.png' className="w-[120px] h-[35px] object-cover opacity-80 scale-110"/>
+                </div>
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/ikea.png' className="w-[75px] h-[25px]  object-cover opacity-80 scale-110"/>
+                </div>
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/samsung.png' className="w-[95px] h-[25px] object-cover opacity-80 scale-110"/>
+                </div>
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/uniqlo.png' className="w-[70px] h-[35px] object-cover opacity-80 scale-110"/>
+                </div>
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/ghibli.png' className="w-[105px] h-[40px] object-cover opacity-80 scale-110"/>
+                </div>
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/nike.png' className="w-[60px] h-[36px] object-cover opacity-80 scale-110"/>
+                </div>
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/sc.png' className="w-[80px] h-[37px]  object-cover opacity-80 scale-110"/>
+                </div>
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/stb.png' className="w-[90px] h-[35px] object-cover opacity-80 scale-110"/>
+                </div>
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/mckinsey.png' className="w-[85px] h-[32px] object-cover opacity-80 scale-110"/>
+                </div>
+                <div className="flex items-center justify-center">
+                    <img src='/brandlogos/jollibee.png' className="w-[80px] h-[30px] object-cover opacity-80 scale-110"/>
+                </div>
             </motion.div>
 
             {/* Footer */}

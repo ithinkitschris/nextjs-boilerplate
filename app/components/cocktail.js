@@ -158,7 +158,7 @@ useEffect(() => {
                 playsInline
             ></video>
 
-            <h1 className="font-base text-base md:text-2xl font-medium mb-1 mt-20 col-span-full text-center md:text-left tracking-tight">Cocktails</h1>
+            <h1 className="font-base text-base md:text-2xl font-medium mb-2 text-lg mt-20 col-span-full text-center md:text-left tracking-tight">Cocktails</h1>
 
             <div className="col-span-full flex flex-wrap gap-1.5 mb-8 lg:gap-2">
                 <video
@@ -203,7 +203,7 @@ useEffect(() => {
                 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1 flex flex-col relative">
                         <div className="text-xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
-                            <h1 className="font-medium mb-1">Episode 2: <span className="md:hidden ml-1 text-base font-script">Matt Moran</span></h1>
+                            <h1 className="font-medium mb-2 text-lg">Episode 2 <span className="md:hidden ml-1 text-base font-script">Matt Moran</span></h1>
                             <h2 className="hidden md:block font-script tracking-wide -rotate-1 text-base md:text-xl md:tracking-tight">Matt Moran</h2>
                         </div>
 
@@ -232,7 +232,7 @@ useEffect(() => {
 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1 mt-4 flex flex-col">
                         <div className="text-xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
-                          <h1 className="font-medium mb-1">Episode 3: <span className="md:hidden ml-1 text-sm font-script">HONNE</span></h1>
+                          <h1 className="font-medium mb-2 text-lg">Episode 3 <span className="md:hidden ml-1 text-sm font-script">HONNE</span></h1>
                           <h2 className="hidden md:block font-script tracking-wide -rotate-1 text-base md:text-xl md:tracking-tight">HONNE</h2>
                         </div>
 
@@ -260,7 +260,7 @@ useEffect(() => {
 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1 mt-4 flex flex-col">
                         <div className="text-xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
-                            <h1 className="font-medium mb-1">Episode 4: <span className="md:hidden ml-1 text-base font-script">Danielle Kang</span></h1>
+                            <h1 className="font-medium mb-2 text-lg">Episode 4 <span className="md:hidden ml-1 text-base font-script">Danielle Kang</span></h1>
                             <h2 className="hidden md:block font-script tracking-wide -rotate-1 text-base md:text-xl md:tracking-tight">Danielle Kang</h2>
                         </div>
 
@@ -288,7 +288,7 @@ useEffect(() => {
 
                     <div className="col-span-6 md:col-span-2 lg:col-span-2 2xl:col-span-1 mt-4 flex flex-col">
                         <div className="text-xl tracking-tight mb-2 md:mb-4 leading-7 md:mr-10 text-center md:text-left mt-4 md:mt-0">
-                            <h1 className="font-medium mb-1">Episode 5: <span className="md:hidden ml-1 text-base font-script">Jeannie Cho Lee</span></h1>
+                            <h1 className="font-medium mb-2 text-lg">Episode 5 <span className="md:hidden ml-1 text-base font-script">Jeannie Cho Lee</span></h1>
                             <h2 className="hidden md:block font-script tracking-wide -rotate-1 text-base md:text-xl md:tracking-tight">Jeannie Cho Lee</h2>
                         </div>
 
