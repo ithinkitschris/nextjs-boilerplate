@@ -17,7 +17,7 @@ const Video = ({
   const videoRef = useRef(null);
   const { registerVideo, unregisterVideo, markVideoLoaded, markVideoUnloaded } = useVideoContext();
   
-  const { isInViewport, isLoaded } = useVideoOptimization(videoRef, src, {
+  const { isLoaded } = useVideoOptimization(videoRef, src, {
     autoPlay,
     loop,
     muted,

@@ -2,7 +2,7 @@ import { useVideoContext } from '../context/VideoContext';
 import { useEffect, useState } from 'react';
 
 const VideoDebugger = ({ enabled = false }) => {
-  const { videoStats, loadedVideos, visibleVideos } = useVideoContext();
+  const { videoStats } = useVideoContext();
   const [isVisible, setIsVisible] = useState(false);
 
   // Keyboard shortcut listener
@@ -43,7 +43,7 @@ const VideoDebugger = ({ enabled = false }) => {
         {loadedVideos.size > 3 && '...'}
       </div> */}
       <div className="mt-2 text-xs opacity-50 text-center border-t border-white/20 pt-2">
-        Press 'V' to toggle
+        Press &apos;V&apos; to toggle
       </div>
     </div>
   );
