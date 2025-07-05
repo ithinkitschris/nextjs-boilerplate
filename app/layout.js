@@ -329,7 +329,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='mt-0 text-foreground font-medium'>v2.0</p>
-                            <p>Portfolio Website v2! Changelog to come. It's too much to write about right now.</p>
+                            <p>Portfolio Website v2! Changelog to come. It&apos;s too much to write about right now.</p>
                           </div>
 
                         </div>

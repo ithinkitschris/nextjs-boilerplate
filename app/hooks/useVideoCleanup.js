@@ -34,9 +34,9 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
     rootMargin = '50px',
     threshold = 0.1,
     autoPlay = true,
-    loop = true,
-    muted = true,
-    playsInline = true
+    // loop = true,
+    // muted = true,
+    // playsInline = true
   } = options;
 
   // Function to load video
