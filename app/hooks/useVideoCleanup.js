@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useBrowser } from '../context/BrowserContext';
 
 export const useVideoCleanup = (videoRef) => {
   useEffect(() => {
@@ -6,13 +7,9 @@ export const useVideoCleanup = (videoRef) => {
     
     return () => {
       if (video) {
-        // Pause the video
         video.pause();
-        // Remove the source
         video.removeAttribute('src');
-        // Load empty source to clear the video element
         video.load();
-        // Clear any event listeners
         video.onloadeddata = null;
         video.oncanplay = null;
         video.onplay = null;
@@ -23,44 +20,139 @@ export const useVideoCleanup = (videoRef) => {
   }, [videoRef]);
 };
 
-// New optimized hook for viewport-aware video management
 export const useVideoOptimization = (videoRef, src, options = {}) => {
+  const { isMobile, browserType } = useBrowser();
   const [isInViewport, setIsInViewport] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hidePoster, setHidePoster] = useState(false);
+  const [hasBeenLoaded, setHasBeenLoaded] = useState(false);
   const observerRef = useRef(null);
   const originalSrc = useRef(src);
+  const safariTimeoutRef = useRef(null);
+  const unloadTimeoutRef = useRef(null);
   
   const {
-    rootMargin = '50px',
+    rootMargin = isMobile ? '200px' : '50px',
     threshold = 0.1,
     autoPlay = true,
-    // loop = true,
-    // muted = true,
-    // playsInline = true
+    useCache = true,
+    unloadDelay, // No default here - received from Video component
   } = options;
 
-  // Function to load video
+  // Load video
   const loadVideo = () => {
     const video = videoRef.current;
     if (video && !isLoaded && originalSrc.current) {
-      video.src = originalSrc.current;
-      video.load();
+      if (!video.src || video.src !== originalSrc.current) {
+        video.src = originalSrc.current;
+        video.load();
+      }
       setIsLoaded(true);
+      setHasBeenLoaded(true);
     }
   };
 
-  // Function to unload video
+  // Unload video
   const unloadVideo = () => {
     const video = videoRef.current;
     if (video && isLoaded) {
       video.pause();
-      video.removeAttribute('src');
-      video.load();
+      
+      // Clear Safari timeout
+      if (safariTimeoutRef.current) {
+        clearTimeout(safariTimeoutRef.current);
+        safariTimeoutRef.current = null;
+      }
+      
+      if (useCache && hasBeenLoaded) {
+        video.currentTime = 0;
+      } else {
+        video.removeAttribute('src');
+        video.load();
+        setHasBeenLoaded(false);
+      }
+      
       setIsLoaded(false);
+      setHidePoster(false);
     }
   };
 
-  // Intersection Observer effect
+  // Video event listeners - Safari-optimized
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handlePlaying = () => {
+      // Clear any existing timeout
+      if (safariTimeoutRef.current) {
+        clearTimeout(safariTimeoutRef.current);
+      }
+      
+      // For Safari, use a short delay after playing event
+      const delay = browserType === 'safari' ? 200 : 100;
+      
+      safariTimeoutRef.current = setTimeout(() => {
+        // Double-check that video is still playing and has progressed
+        if (!video.paused && video.currentTime > 0) {
+          setHidePoster(true);
+        }
+        safariTimeoutRef.current = null;
+      }, delay);
+    };
+
+    const handlePause = () => {
+      if (safariTimeoutRef.current) {
+        clearTimeout(safariTimeoutRef.current);
+        safariTimeoutRef.current = null;
+      }
+      setHidePoster(false);
+    };
+
+    const handleEnded = () => {
+      if (safariTimeoutRef.current) {
+        clearTimeout(safariTimeoutRef.current);
+        safariTimeoutRef.current = null;
+      }
+      setHidePoster(false);
+    };
+
+    const handleLoadStart = () => {
+      if (safariTimeoutRef.current) {
+        clearTimeout(safariTimeoutRef.current);
+        safariTimeoutRef.current = null;
+      }
+      setHidePoster(false);
+    };
+
+    const handleError = () => {
+      if (safariTimeoutRef.current) {
+        clearTimeout(safariTimeoutRef.current);
+        safariTimeoutRef.current = null;
+      }
+      setHidePoster(false);
+    };
+
+    video.addEventListener('playing', handlePlaying);
+    video.addEventListener('pause', handlePause);
+    video.addEventListener('ended', handleEnded);
+    video.addEventListener('loadstart', handleLoadStart);
+    video.addEventListener('error', handleError);
+
+    return () => {
+      video.removeEventListener('playing', handlePlaying);
+      video.removeEventListener('pause', handlePause);
+      video.removeEventListener('ended', handleEnded);
+      video.removeEventListener('loadstart', handleLoadStart);
+      video.removeEventListener('error', handleError);
+      
+      if (safariTimeoutRef.current) {
+        clearTimeout(safariTimeoutRef.current);
+        safariTimeoutRef.current = null;
+      }
+    };
+  }, [browserType]);
+
+  // Intersection Observer
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -71,14 +163,24 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
         setIsInViewport(inViewport);
         
         if (inViewport) {
+          // Cancel any pending unload when entering viewport
+          if (unloadTimeoutRef.current) {
+            clearTimeout(unloadTimeoutRef.current);
+            unloadTimeoutRef.current = null;
+          }
           loadVideo();
         } else {
-          // Small delay to prevent flicker when scrolling quickly
-          setTimeout(() => {
+          // Delay unloading when leaving viewport
+          if (unloadTimeoutRef.current) {
+            clearTimeout(unloadTimeoutRef.current);
+          }
+          
+          unloadTimeoutRef.current = setTimeout(() => {
             if (!isInViewport) {
               unloadVideo();
             }
-          }, 100);
+            unloadTimeoutRef.current = null;
+          }, unloadDelay);
         }
       },
       {
@@ -94,15 +196,19 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
       if (observerRef.current) {
         observerRef.current.disconnect();
       }
+      if (unloadTimeoutRef.current) {
+        clearTimeout(unloadTimeoutRef.current);
+        unloadTimeoutRef.current = null;
+      }
     };
-  }, [rootMargin, threshold, isInViewport]);
+  }, [rootMargin, threshold, isInViewport, unloadDelay]);
 
-  // Auto-play when video loads and is in viewport
+  // Auto-play
   useEffect(() => {
     const video = videoRef.current;
     if (video && isLoaded && isInViewport && autoPlay) {
       video.play().catch(() => {
-        // Ignore autoplay errors (user interaction required)
+        // Ignore autoplay errors
       });
     }
   }, [isLoaded, isInViewport, autoPlay]);
@@ -111,13 +217,26 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
   useEffect(() => {
     if (src !== originalSrc.current) {
       originalSrc.current = src;
+      setHasBeenLoaded(false);
+      setHidePoster(false);
+      
+      if (safariTimeoutRef.current) {
+        clearTimeout(safariTimeoutRef.current);
+        safariTimeoutRef.current = null;
+      }
+      
+      if (unloadTimeoutRef.current) {
+        clearTimeout(unloadTimeoutRef.current);
+        unloadTimeoutRef.current = null;
+      }
+      
       if (isInViewport) {
         loadVideo();
       }
     }
   }, [src, isInViewport]);
 
-  // Cleanup on unmount
+  // Cleanup
   useEffect(() => {
     return () => {
       const video = videoRef.current;
@@ -131,11 +250,23 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
         video.onpause = null;
         video.onended = null;
       }
+      
+      if (safariTimeoutRef.current) {
+        clearTimeout(safariTimeoutRef.current);
+        safariTimeoutRef.current = null;
+      }
+      
+      if (unloadTimeoutRef.current) {
+        clearTimeout(unloadTimeoutRef.current);
+        unloadTimeoutRef.current = null;
+      }
     };
   }, []);
 
   return {
     isInViewport,
-    isLoaded
+    isLoaded,
+    hidePoster,
+    hasBeenLoaded
   };
 };

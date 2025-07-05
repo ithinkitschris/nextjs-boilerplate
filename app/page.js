@@ -292,10 +292,10 @@ export default function Home(){
     { src: '/iphone/intro.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', poster:'/poster/iphone15.jpeg', tags: ['iphone', 'all', 'motion'] },
     { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', poster:'/poster/leica.jpeg', tags: ['leica', 'all', 'motion'] },
     { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Behind The Scenes', poster:'', tags: ['unshackle', 'all', 'photography'] },
-    { src: '/subway/cover.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'', tags: ['subway', 'all', 'product'] },
+    { src: '/subway/cover.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'/poster/subway.png', tags: ['subway', 'all', 'product'] },
     // { src: '/wellnessco/cover.mp4', title:'Time Management by College Students', subheader:'Ethnographic User Research', poster:'', tags: ['wellnessco', 'all', 'product'] },
-    { src: '/website/cover.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.jpeg', tags: ['website', 'all', 'product'] },
-    { src: '/currently/car.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/website.jpeg', tags: ['car', 'all', 'product'] },
+    { src: '/website/cover.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.png', tags: ['website', 'all', 'product'] },
+    { src: '/currently/car.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/car.png', tags: ['car', 'all', 'product'] },
      
   ];
 

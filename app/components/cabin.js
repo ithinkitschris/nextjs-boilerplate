@@ -153,7 +153,7 @@ show: {
                 </motion.div>
             </div>
 
-            <motion.div className='col-span-full mt-40' variants={animateInChild}>
+            <motion.div className='col-span-full mt-14 md:mt-40' variants={animateInChild}>
                 <Episodes />
             </motion.div>
 
@@ -164,7 +164,7 @@ show: {
             <h1 className="md:text-lg font-medium col-span-full text-center md:text-left tracking-tight">Campaign Key Visual</h1>
             <motion.img 
                 src="/CCS/End Frame KV.jpg"
-                className="col-span-full w-full h-full shadow rounded-xl md:rounded-2xl object-cover -mb-1"
+                className="col-span-full w-full h-auto shadow rounded-xl md:rounded-2xl object-cover -mb-1"
                 variants={animateInChild}>
             </motion.img>
 

@@ -142,7 +142,7 @@ return (
             <CarouselVideo 
               videoId="creative-cabin"
               src="/CCS/bestworkmontage.mp4"
-              poster="/poster/cabinbest1.jpeg"
+              poster="/poster/cabin.jpeg"
             />
           </div>
 
@@ -208,7 +208,7 @@ return (
             <CarouselVideo 
               videoId="creative-cocktail"
               src="/Cocktail/cover2.mp4"
-              poster="/poster/cocktailpage.jpeg"
+              poster="/poster/cocktail.jpg"
             />
           </div>
 
@@ -241,7 +241,7 @@ return (
             <CarouselVideo 
               videoId="creative-hemsaker"
               src="/Hemsaker/cover.mp4"
-              poster="/poster/cocktailpage.jpeg"
+              poster="/poster/hemsaker.jpg"
             />
           </div>
 
@@ -274,7 +274,7 @@ return (
             <CarouselVideo 
               videoId="creative-lounge"
               src="/lounge/montage.mp4"
-              poster="/poster/cocktailpage.jpeg"
+              poster="/poster/lounge.jpg"
             />
           </div>
 

@@ -14,7 +14,7 @@ const ContentGridItem = ({
     <motion.div className="relative">
       <Video 
         src={videoSrc}
-        className={`rounded-xl md:rounded-2xl w-full h-auto object-cover ${className}`}
+        className={`rounded-xl md:rounded-2xl w-full aspect-[9/16] object-cover ${className}`}
         poster={posterSrc}
         videoId={videoId}
         variants={variants}

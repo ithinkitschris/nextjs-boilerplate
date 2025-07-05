@@ -48,7 +48,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-3xl w-full col-span-full h-[250px] md:h-[420px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
               <Video 
@@ -116,7 +116,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] md:h-[420px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
               <Video 
@@ -175,7 +175,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[150px] md:h-[420px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
               <Video 
@@ -236,7 +236,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[150px] md:h-[420px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
               <Video 

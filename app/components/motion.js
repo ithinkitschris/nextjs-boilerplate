@@ -143,7 +143,7 @@ return (
             {/* Video */}
             <CarouselVideo 
               src="/nike/cover.mp4"
-              poster="/poster/cocktailpage.jpeg"
+              poster="/poster/nike.jpg"
               videoId="motion-nike"
             />
           </div>
@@ -176,7 +176,7 @@ return (
             {/* Video */}
             <CarouselVideo 
               src="/jollieverafter/favpagecover.mp4"
-              poster="/poster/cocktailpage.jpeg"
+              poster="/poster/jolli.jpg"
               videoId="motion-jolli"
             />
           </div>
@@ -209,7 +209,7 @@ return (
             {/* Video */}
             <CarouselVideo 
               src="/3dpersonal/glass1.mp4"
-              poster="/poster/cabinbest1.jpeg"
+              poster="/poster/3d.jpeg"
               videoId="motion-3d"
             />
           </div>
@@ -242,7 +242,7 @@ return (
             {/* Video */}
             <CarouselVideo 
               src="/samsung/montage.mp4"
-              poster="/poster/cabinbest1.jpeg"
+              poster="/poster/samsung.jpg"
               videoId="motion-samsung"
             />
           </div>

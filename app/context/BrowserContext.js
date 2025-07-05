@@ -13,6 +13,8 @@ export const useBrowser = () => {
 
 export const BrowserProvider = ({ children }) => {
   const [browserType, setBrowserType] = useState('unknown');
+  const [deviceType, setDeviceType] = useState('unknown');
+  const [isMobile, setIsMobile] = useState(false);
 
   // Browser detection for backdrop-filter fallbacks
   const getBrowserType = () => {
@@ -33,13 +35,37 @@ export const BrowserProvider = ({ children }) => {
     return "unknown";
   };
 
-  // Detect browser type on mount
+  // Device detection for mobile/desktop
+  const getDeviceType = () => {
+    if (typeof window === "undefined") return { deviceType: "unknown", isMobile: false };
+    
+    const userAgent = window.navigator.userAgent;
+    
+    // Mobile device detection
+    const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    const isMobileDevice = mobileRegex.test(userAgent);
+    
+    // More specific device detection
+    const isTablet = /iPad|Android(?!.*Mobile)/i.test(userAgent);
+    const isPhone = /iPhone|Android.*Mobile|webOS|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+    
+    let deviceType = "desktop";
+    if (isTablet) deviceType = "tablet";
+    else if (isPhone) deviceType = "phone";
+    
+    return { deviceType, isMobile: isMobileDevice };
+  };
+
+  // Detect browser and device type on mount
   useEffect(() => {
     setBrowserType(getBrowserType());
+    const { deviceType, isMobile } = getDeviceType();
+    setDeviceType(deviceType);
+    setIsMobile(isMobile);
   }, []);
 
   return (
-    <BrowserContext.Provider value={{ browserType }}>
+    <BrowserContext.Provider value={{ browserType, deviceType, isMobile }}>
       {children}
     </BrowserContext.Provider>
   );
