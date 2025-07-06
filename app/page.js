@@ -210,12 +210,12 @@ import { useBrowser } from './context/BrowserContext';
 
             {/* Title */}
             <h1 
-              className={`tracking-tight font-medium z-30 w-[80%] text-xl md:text-2xl leading-5 md:leading-6 mb-1.5`}>
+              className={`tracking-tight font-medium z-30 w-[80%] text-xl md:text-2xl leading-5 md:leading-6 mb-1.5 text-white`}>
                 {title}
             </h1>
 
             <h3 
-              className={`tracking-tight z-30 w-[95%] text-[6pt] leading-tight opacity-60 mix-blend-screen`}>
+              className={`tracking-tight z-30 w-[95%] text-[6pt] leading-tight opacity-60 mix-blend-screen text-white`}>
                 {subheader}
             </h3>
           </div>
