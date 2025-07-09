@@ -59,7 +59,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
                 muted
                 loop
                 playsInline
-                poster="/poster/subway.png"
+                poster="/poster/subwaylandscape.jpg"
               />
           </motion.div>
 

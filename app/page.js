@@ -114,8 +114,6 @@ import { useBrowser } from './context/BrowserContext';
     return typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches;
   };
 
-
-
   const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, selectedTags, poster }) => {
 
     const { expandedVideo, setExpandedVideo } = useVideoContext();
@@ -164,16 +162,16 @@ import { useBrowser } from './context/BrowserContext';
       }}>
         
         {/* Square */}
-        <motion.div className={`group relative overflow-hidden rounded-2xl
+        <motion.div className={`group relative overflow-hidden rounded-3xl
         shadow-[3px_3px_15px_rgba(0,0,0,0.2)] group-hover:shadow-none border-b-0 border-white/20
         after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl after:shadow-[inset_0px_0px_5px_0px_rgba(255,255,255,0.15)]
 
           ${selectedTags.includes('photography') 
           ? 'md:pt-[150%]' 
-          : 'pt-[150%] lg:pt-[57.5%]'}
+          : 'pt-[150%] lg:pt-[140%]'}
 
           ${selectedTags.includes('all') 
-          ? `${isExpanded ? 'pt-[155%]' : 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100 bg-black/25'}`
+          ? 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100 bg-black/25'
           : 'pt-[150%]'}
           
           `}
@@ -206,26 +204,27 @@ import { useBrowser } from './context/BrowserContext';
           </button>
 
           {/* Mobile Text Container */}
-          <div className="lg:hidden absolute inset-0 flex flex-col items-start justify-end pb-2.5 p-3 pl-3.5 w-full mb-1">
+          <div className="absolute inset-0 md:inset-2.5 flex flex-col items-start justify-end pb-2.5 p-3 pl-3.5 w-full mb-1">
 
             {/* Title */}
-            <h1 
-              className={`tracking-tight font-medium z-30 w-[80%] text-xl md:text-2xl leading-5 md:leading-6 mb-1.5 text-white`}>
-                {title}
+            <h1
+              className="tracking-tight font-medium z-30 w-[80%] text-xl 2xl:text-2xl leading-5 2xl:leading-6 mb-1.5 text-white">
+              {title}
             </h1>
 
+            {/* Subheader */}
             <h3 
-              className={`tracking-tight z-30 w-[95%] text-[6pt] leading-tight opacity-60 mix-blend-screen text-white`}>
+              className={`tracking-tight z-30 w-[95%] text-[6pt] md:text-[8pt] 2xl:text-[9pt] 2xl:w-3/4 leading-tight opacity-60 mix-blend-screen text-white`}>
                 {subheader}
             </h3>
           </div>
           
           {/* Mobile Gradient Blur */}
           <div 
-            className="lg:hidden absolute bottom-0 left-0 right-0 h-[60%] z-10 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
+            className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-10 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
             style={{
-              maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 80%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 80%, transparent 100%)'
+              maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'
             }}
           />
 
@@ -251,7 +250,7 @@ import { useBrowser } from './context/BrowserContext';
         </motion.div>
 
         {/* Desktop Text Container */}
-        <div className='hidden lg:block ml-1 mt-4 text-foreground group'>
+        <div className='hidden ml-1 mt-4 text-foreground group'>
             <h1 className={`tracking-tight font-medium text-xl group-hover:ml-3 transition-all duration-200`}>
               {title}
             </h1>
@@ -272,7 +271,7 @@ export default function Home(){
   const videoData = [
     
     { src: '/Ghibli/banner1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing Campaign for ArtScience Museum', poster:'/poster/ghibli.jpeg', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
-    { src: '/CCS/bestworkmontage.mp4', title:'Beyond the Cabin', subheader:'Brand Campaign for Singapore Airlines', poster:'/poster/cabin.jpeg', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
+    { src: '/CCS/bestworkmontage.mp4', title:'Beyond the Cabin', subheader:'Brand Campaign for Singapore Airlines', poster:'/poster/cabinbest.jpg', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
     { src: '/Cocktail/cover2.mp4', title:'Cocktail Conversations', subheader:'Brand Campaign for Singapore Airlines', poster:'/poster/cocktail.jpeg', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
     { src: '/Kris/cover2.mp4', title:'Kris+ Brand Campaign', subheader:'Brand Campaign for Singapore Airlines', poster:'/poster/kris.jpeg', tags: ['kris', 'all', 'creative', 'sia'] },
     { src: '/travelbig/cover_1.mp4', title:'Travel Like Never Before', subheader:'Brand Campaign for Singapore Airlines', poster:'/poster/travelbig.jpg', tags: ['travelbig', 'all', 'creative', 'sia'] },
@@ -292,7 +291,7 @@ export default function Home(){
     { src: '/iphone/intro.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', poster:'/poster/iphone15.jpeg', tags: ['iphone', 'all', 'motion'] },
     { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', poster:'/poster/leica.jpeg', tags: ['leica', 'all', 'motion'] },
     { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Behind The Scenes', poster:'', tags: ['unshackle', 'all', 'photography'] },
-    { src: '/subway/cover.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'/poster/subway.png', tags: ['subway', 'all', 'product'] },
+    { src: '/subway/coverportrait.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'/poster/subwayportrait.jpg', tags: ['subway', 'all', 'product'] },
     // { src: '/wellnessco/cover.mp4', title:'Time Management by College Students', subheader:'Ethnographic User Research', poster:'', tags: ['wellnessco', 'all', 'product'] },
     { src: '/website/cover.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.png', tags: ['website', 'all', 'product'] },
     { src: '/currently/car.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/car.png', tags: ['car', 'all', 'product'] },
@@ -1481,13 +1480,7 @@ export default function Home(){
           > 
             {/* Grid / Page */}
             <motion.div 
-            className={`grid col-span-full md:gap-3 mt-8 md:mt-24 
-            ${selectedTags.includes('photography') 
-              ? 'grid-cols-4' 
-              : selectedTags.includes('creative') || selectedTags.includes('motion')
-                ? 'xl:grid-cols-3 grid-cols-2 gap-1.5'
-                : 'grid-cols-2 gap-1.5'
-            }`}>
+            className={`grid col-span-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 md:gap-2.5 mt-8 md:mt-24`}>
 
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
