@@ -62,14 +62,14 @@ const CarouselNavButton = ({
           flex items-center justify-center
           dark:border-1 bg-background drop-shadow-md 
           dark:border-white/20 text-foreground 
-          md:hover:text-white md:dark:text-white 
-          md:hover:bg-foreground dark:md:hover:bg-white 
+          md:hover:text-white 
+          md:hover:bg-foreground dark:hover:bg-white 
           dark:md:hover:text-black
           ${activeIndex === maxIndex 
             ? 'opacity-35 drop-shadow-none pointer-events-none' 
             : activeIndex === 1 || activeIndex === 2 || activeIndex === 3
-              ? 'opacity-100'
-              : 'opacity-100 dark:bg-foreground dark:text-black md:dark:bg-transparent'
+              ? 'opacity-100 '
+              : 'opacity-100 dark:bg-foreground dark:text-black'
           }
         `}
       >

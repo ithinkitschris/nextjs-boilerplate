@@ -203,7 +203,7 @@ import { useBrowser } from './context/BrowserContext';
               </svg>
           </button>
 
-          {/* Mobile Text Container */}
+          {/* Text Container */}
           <div className="absolute inset-0 md:inset-2.5 flex flex-col items-start justify-end pb-2.5 p-3 pl-3.5 w-full mb-1">
 
             {/* Title */}
@@ -219,7 +219,7 @@ import { useBrowser } from './context/BrowserContext';
             </h3>
           </div>
           
-          {/* Mobile Gradient Blur */}
+          {/* Bottom Gradient Blur */}
           <div 
             className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-10 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
             style={{
@@ -250,7 +250,7 @@ import { useBrowser } from './context/BrowserContext';
         </motion.div>
 
         {/* Desktop Text Container */}
-        <div className='hidden ml-1 mt-4 text-foreground group'>
+        {/* <div className='hidden ml-1 mt-4 text-foreground group'>
             <h1 className={`tracking-tight font-medium text-xl group-hover:ml-3 transition-all duration-200`}>
               {title}
             </h1>
@@ -258,7 +258,7 @@ import { useBrowser } from './context/BrowserContext';
             <h3 className={`mb-12 opacity-35 text-xs group-hover:opacity-100 group-hover:ml-3 transition-all duration-300`}>
               {subheader}
             </h3>
-          </div>
+          </div> */}
 
       </motion.div>
     );
