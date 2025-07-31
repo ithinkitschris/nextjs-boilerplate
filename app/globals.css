@@ -37,9 +37,9 @@ body {
 
 html, body {
   position: static;
-  /* overflow-x:hidden; */
   overflow-y: visible; /* Make sure overflow is not hidden or clipped */
   height: 100%; /* Ensure they take the full height of the viewport */
+  width: 100%;
   margin: 0; /* Remove any default margins */
 }
 

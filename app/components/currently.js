@@ -121,7 +121,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
               pointer-events-none mix-blend-overlay z-10"/>
               <Video 
                 videoId="currently-expense"
-                src="/expense/cover.mov"
+                src="/expense/cover.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover object-[0%_10%]"
                 autoPlay
                 muted
@@ -137,11 +137,11 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
         <div className='ml-1 mt-4 md:mt-6 text-foreground col-span-full md:col-span-1'>
           
           <h1 className={`tracking-tight font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-7`}>
-            On-device LLM Expense Tracker
+            On-device LLM Expense Tracker (iOS)
           </h1>
 
           <h3 className={`mt-4 opacity-60 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
-            An ongoing quick and dirty project on setting up and running a local LLM and Python to track my personal expenses. Powered by Ollama + Gemma3n:e2b.
+            A personal project into developing and designing an on-device LLM-powered personal expense tracker for iOS using React Native, FastAPI, Ollama and Gemma3n:e2b.
           </h3>
 
         </div>
@@ -241,7 +241,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
               pointer-events-none mix-blend-overlay z-10"/>
               <Video 
                 videoId="currently-website"
-                src="/website/cover.mp4"
+                src="/website/coverproper.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
                 autoPlay
                 muted

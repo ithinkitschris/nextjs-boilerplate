@@ -239,7 +239,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                       </a>
 
                       {/* Last Updated */}
-                      <p className="mt-6 text-xxs opacity-75 leading-tight">Website last meddled with on 07.05.25 for the 260th time.</p>
+                      <p className="mt-6 text-xxs opacity-75 leading-tight">Website last meddled with on 07.31.25 for the 261st time.</p>
 
                     </motion.div>
 
@@ -269,7 +269,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
 
                       <div>
                         <p className='mt-2 text-foreground font-medium text-xxs'>05</p>
-                        <p className="">#ShotOniPhone photography album.</p>
+                        <p className="line-through">#ShotOniPhone photography album.</p>
                       </div>
 
                       <div>
@@ -306,12 +306,27 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                         <div className="no-scrollbar col-span-full md:col-span-1 flex flex-col gap-4 overflow-y-auto pr-4">
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
+                            <p className='text-foreground font-medium'>v2.03</p>
+                            
+                            <p>Added #shotoniPhone photography album.</p>
+                            <p>Updated digital photography album with new photos.</p>
+                            <p>Added a new &apos;What&apos;s New&apos; section on the main page.</p>
+                            <p>Tweaked the margins to be narrower for the top navbar</p>
+                            <p>Fixed overflow-x-hidden bug for the main page.</p>
+                          </div> 
+
+                          <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.02</p>
                             
                             <p>Added Expense Tracker project to &apos;Everything I&apos;ve been up to&apos; section.</p>
                             <p>Improved backend performance optimizations for all videos across the site–now mounts only when visible in the viewport, and unmounts when not.</p>
                             <p>Refined formatting for some project pages.</p>
-                          </div>        
+                          </div>                                
+
+                        </div>
+                        
+                        {/* Right Column */}
+                        <div className="no-scrollbar col-span-full md:col-span-1 overflow-y-auto">
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.01</p>
@@ -320,12 +335,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                             <p>Updated poster images.</p>
                             <p>Updated To Do list.</p>
                             <p>Added fallback backdrop-blur for all &apos;Liquid Glass&apos; implementations (Top Navbar, Footer) on non-Chromium browsers.</p>
-                          </div>                          
-
-                        </div>
-                        
-                        {/* Right Column */}
-                        <div className="no-scrollbar col-span-full md:col-span-1 overflow-y-auto">
+                          </div>  
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='mt-0 text-foreground font-medium'>v2.0</p>

@@ -88,19 +88,19 @@ const StreetPhotography = ({className}) => {
             <motion.img
                 src="/Photography/street/nyc02.jpg"
                 alt="Description of Image 3"
-                className="md:col-span-2 col-span-3 h-screen/3 md:h-auto w-full object-cover rounded-l-3xl rounded-r-2xl shadow-lg"
+                className="md:col-span-2 col-span-3 h-screen/3 md:h-full w-full object-cover rounded-l-3xl rounded-r-2xl shadow-lg"
+                variants={animateInChild}
+            />
+            <motion.img
+                src="/Photography/street/new/7.JPG"
+                alt="Description of Image 3"
+                className="md:col-span-2 h-screen/3 md:h-full w-full object-cover rounded-2xl shadow-lg col-span-3"
                 variants={animateInChild}
             />
             <motion.img
                 src="/Photography/street/nyc06.JPG"
                 alt="Description of Image 3"
-                className="md:col-span-2 h-screen/3 md:h-auto w-full object-cover rounded-2xl shadow-lg col-span-3"
-                variants={animateInChild}
-            />
-            <motion.img
-                src="/Photography/street/nyc05.JPG"
-                alt="Description of Image 3"
-                className="md:col-span-2 col-span-3 h-screen/3 md:h-auto w-full object-cover rounded-r-3xl rounded-l-2xl shadow-lg hidden md:block"
+                className="md:col-span-2 col-span-3 h-screen/3 md:h-full w-full object-cover rounded-r-3xl rounded-l-2xl shadow-lg hidden md:block"
                 variants={animateInChild}
             />
         </div>
@@ -221,7 +221,7 @@ const StreetPhotography = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="col-span-full mb-2" variants={animateInChild} >
             <img
-            src="/Photography/street/2_2.JPG"
+            src="/Photography/street/new/9.JPG"
             className="col-span-6 w-full h-auto object-cover rounded-3xl shadow-lg"
             />
         </motion.div>
@@ -253,15 +253,15 @@ const StreetPhotography = ({className}) => {
         {/* Two Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full gap-1 lg:gap-2 mb-2">
             <motion.img
-                src="/Photography/street/nyc03.JPG"
+                src="/Photography/street/new/6.JPG"
                 alt="Description of Image 3"
-                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-2xl shadow-lg hidden md:block"
+                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-2xl shadow-lg"
                 variants={animateInChild}
             />
             <motion.img
-                src="/Photography/street/nyc04.jpg"
+                src="/Photography/street/new/2.JPG"
                 alt="Description of Image 3"
-                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-2xl shadow-lg hidden md:block"
+                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-2xl shadow-lg"
                 variants={animateInChild}
             />
         </div>
@@ -273,6 +273,22 @@ const StreetPhotography = ({className}) => {
             className="col-span-6 w-full h-auto object-cover rounded-3xl shadow-lg"
             />
         </motion.div>
+
+        {/* Two Images Side by Side */}
+        <div className="grid grid-cols-6 col-span-full gap-1 lg:gap-2 mb-2">
+            <motion.img
+                src="/Photography/street/new/3.JPG"
+                alt="Description of Image 3"
+                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-2xl shadow-lg"
+                variants={animateInChild}
+            />
+            <motion.img
+                src="/Photography/street/new/8.JPG"
+                alt="Description of Image 3"
+                className="col-span-3 h-screen/3 md:h-full w-auto object-cover rounded-2xl shadow-lg"
+                variants={animateInChild}
+            />
+        </div>
 
         {/* Full-Width Image */}
         <motion.div className="col-span-full mb-2" variants={animateInChild} >

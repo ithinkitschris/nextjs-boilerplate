@@ -23,7 +23,7 @@ import StreetPhotography from './components/street-photo.js';
 import Film from './components/film.js';
 import BBH from './components/bbh.js';
 import StressedLa from './components/stressed.js';
-import Unshackle from './components/unshackle.js';
+import ShotOnIphone from './components/shotoniphone.js';
 import BTS from './components/bts.js';
 import Samsung from './components/samsung.js';
 import Nike from './components/nike.js';
@@ -286,13 +286,12 @@ export default function Home(){
     { src: '/uniqlo1/cover.mp4', title:'Your Stage Now Live', subheader:'Motion Design for Uniqlo', poster:'/poster/uniqlo2.jpeg', tags: ['uniqlo1', 'all', 'motion'] },
     { src: '/Photography/street/Cover2_2.mp4', title:'Digital', subheader:'Personal Photography', poster:'/poster/street.jpeg', tags: ['street', 'all', 'photography'] },
     { src: '/Photography/film/cover4.mp4', title:'Film', subheader:'Personal Photography', poster:'/poster/street.jpeg', tags: ['film', 'all', 'photography'] },
-    { src: '/Photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', poster:'', tags: ['bbh', 'all', 'photography'] },
     { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', poster:'/poster/oneshow.jpeg', tags: ['oneshow', 'all', 'motion'] },
     { src: '/iphone/intro.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', poster:'/poster/iphone15.jpeg', tags: ['iphone', 'all', 'motion'] },
     { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', poster:'/poster/leica.jpeg', tags: ['leica', 'all', 'motion'] },
-    { src: '/Photography/unshackle/Cover.mp4', title:'Unshackle:', subheader:'Behind The Scenes', poster:'', tags: ['unshackle', 'all', 'photography'] },
+    { src: '/photography/iphone/cover.mp4', title:'#shotoniPhone', subheader:'Personal Photography', poster:'', tags: ['shotoniphone', 'all', 'photography'] },
+    { src: '/Photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', poster:'', tags: ['bbh', 'all', 'photography'] },
     { src: '/subway/coverportrait.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'/poster/subwayportrait.jpg', tags: ['subway', 'all', 'product'] },
-    // { src: '/wellnessco/cover.mp4', title:'Time Management by College Students', subheader:'Ethnographic User Research', poster:'', tags: ['wellnessco', 'all', 'product'] },
     { src: '/website/cover.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.png', tags: ['website', 'all', 'product'] },
     { src: '/currently/car.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/car.png', tags: ['car', 'all', 'product'] },
      
@@ -425,10 +424,10 @@ export default function Home(){
 
         {/* Entire Page column setup */}
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12 mix-b
-        text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-screen mx-auto">            
+        text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-full mx-auto overflow-x-hidden">            
 
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-[0.4rem] md:top-10 z-[45] mb-4 text-sm lg:text-[15px] w-screen max-w-9xl pr-6">
+          <div className="col-span-full fixed top-[0.4rem] md:top-10 z-[45] mb-4 w-screen max-w-9xl pr-6">
             
               {/* Desktop Sidenav / Dropdown Button */}
               <motion.button 
@@ -498,7 +497,7 @@ export default function Home(){
                 {/* Navbar Background */}
                 <motion.div
                   className={`rounded-full flex items-center justify-center ml-2.5
-                  w-[162px] h-[50px] dark:bg-transparent brightness-[100%]
+                  w-[158px] h-[47px] dark:bg-transparent brightness-[100%]
                   saturate-100 border-r-1 border-b-1 border-white/35
                   shadow-glass-border-light dark:shadow-glass-border
                   ${browserType === 'chrome' 
@@ -531,9 +530,9 @@ export default function Home(){
           {/* Home Button */}
           <motion.button
             className={`
-              fixed top-[1.2rem] left-[50%] -ml-[4.3rem] md:-ml-[4.7rem] md:top-[3.2rem] z-50
+              fixed top-[1.2rem] left-[50%] -ml-[4.3rem] md:-ml-[4.7rem] md:top-[3.1rem] z-50
               rounded-full px-3 py-[3px] border-1.5 
-              font-semibold tracking-[-0.2pt] whitespace-nowrap
+              font-semibold tracking-[-0.2pt] whitespace-nowrap text-sm lg:text-[15px]
               text-white mix-blend-difference dark:mix-blend-normal
               transition-colors duration-200
               hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
@@ -563,8 +562,8 @@ export default function Home(){
           {/* Work Button */}
           <motion.button 
             className={`
-              fixed top-[1.2rem] left-[50%] ml-1.5 md:ml-0 md:top-[3.2rem] z-50
-              rounded-full px-3 py-[3px] border-1.5
+              fixed top-[1.2rem] left-[50%] ml-1.5 md:ml-0 md:top-[3.1rem] z-50
+              rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
               font-semibold tracking-[-0.2pt] whitespace-nowrap
               text-white mix-blend-difference dark:mix-blend-normal
               transition-colors duration-200
@@ -763,7 +762,7 @@ export default function Home(){
                     ${selectedTags.includes('photography') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
                       : 'text-neutral-350 dark:text-white/50 dark:hover:text-foreground'}`}
                   whileHover={{scale:0.95}}
-                  animate={{scale: includesWorks(['photography', 'street', 'bbh', 'bts', 'unshackle']) ? 1.06 : 1}}
+                  animate={{scale: includesWorks(['photography', 'street', 'bbh', 'bts', 'shotoniphone']) ? 1.06 : 1}}
                   variants={animateInChild}
                   layout="position"      
                   onClick={() => {
@@ -1319,10 +1318,10 @@ export default function Home(){
                       toggleTag('clear');
                       toggleWork('film')}}>Film Photography</motion.button>
 
-                    {/* iPhone 15 Pro */}
+                    {/* Shot on iPhone */}
                     <motion.button 
                     className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['motion']) || selectedWork.includes(['iphone']) || hoveredWork ==='iphone' 
+                      ${selectedWork.includes(['shotoniphone']) || hoveredWork ==='shotoniphone' 
                           ? 'text-foreground font-medium' 
                           : selectedWork.length === 0 && !hoveredWork
                             ? 'text-black/10 dark:text-white/20'
@@ -1330,7 +1329,27 @@ export default function Home(){
                         } transition-colors duration-100`}
                     whileHover={{scale:0.95}}
                     animate={{scale: 
-                      includesTags(['motion']) || selectedWork.includes(['iphone']) ||
+                      selectedWork.includes(['shotoniphone']) ||
+                      hoveredWork==='shotoniphone' 
+                      ? 1.03 : 1
+                    }}
+                    variants={animateInChild}
+                    onClick={() => {
+                      toggleTag('clear');
+                      toggleWork('shotoniphone')}}>#shotoniPhone</motion.button>
+
+                    {/* iPhone 15 Pro */}
+                    <motion.button 
+                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
+                      ${includesTags(['motion']) || selectedWork === 'iphone' || hoveredWork ==='iphone' 
+                          ? 'text-foreground font-medium' 
+                          : selectedWork.length === 0 && !hoveredWork
+                            ? 'text-black/10 dark:text-white/20'
+                            : 'text-black/30 dark:text-white/35'
+                        } transition-colors duration-100`}
+                    whileHover={{scale:0.95}}
+                    animate={{scale: 
+                      includesTags(['motion']) || selectedWork === 'iphone' ||
                       hoveredWork==='iphone' 
                       ? 1.03 : 1
                     }}
@@ -1471,6 +1490,16 @@ export default function Home(){
             )} 
           </motion.div>
 
+          {/* New Navigation Bar Container */}
+          <motion.div
+            className={`${showNav ? "col-span-full fixed bottom-24 left-[50%] -translate-x-1/2 right-0 z-[100] h-10" : "opacity-0 pointer-events-none"}
+            transition-opacity duration-300 border-1 border-black/20 dark:border-white/30 rounded-full shadow-glass-border backdrop-blur-xl`} 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: showNav ? 1 : 0 }}
+            variants={animateInChildMobile}>
+            
+          </motion.div>
+
           {/* Page Container (Adjust px here) */}
           <motion.div
             className={`${showNav ? `col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8 md:-ml-12` : "col-span-full"} px-4 md:px-[7%]`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
@@ -1497,8 +1526,8 @@ export default function Home(){
                   <BBH key="bbh" className="col-span-full"/>
                 ) : selectedWork === 'stressed' ? (
                   <StressedLa key="stressed" className="col-span-full"/>
-                ) : selectedWork === 'unshackle' ? (
-                  <Unshackle key="unshackle" className="col-span-full"/>
+                ) : selectedWork === 'shotoniphone' ? (
+                  <ShotOnIphone key="shotoniphone" className="col-span-full"/>
                 ) : selectedWork === 'bts' ? (
                   <BTS key="bts" className="col-span-full"/>
                 ) : selectedWork === 'resume' ? (
@@ -1559,7 +1588,7 @@ export default function Home(){
                       selectedTags={selectedTags}
                       onClick={() => { 
                         const workTags = 
-                        ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'unshackle', 'kris', 'iphone', '3d', 'car', 'subway',
+                        ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'shotoniphone', 'kris', 'iphone', '3d', 'car', 'subway',
                           'travelbig', 'lounge', 'hemsaker', 'ispy', 'jolli', 'uniqlo1', 'uniqlo2', 'oneshow', 'samsung', 'leica', 
                           'nike', 'film'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));

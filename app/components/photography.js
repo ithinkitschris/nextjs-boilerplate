@@ -95,9 +95,41 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
 
         </motion.div>
 
-        {/* BBH */}
+        {/* Shot on iPhone */}
         <motion.div 
         className="group col-span-1 h-[350px] lg:h-full tracking-tight relative z-10 overflow-hidden rounded-[20px] shadow hover:shadow-none cursor-pointer"
+        whileHover={{ scale: 0.98 }}
+        transition={{ duration: 0.15, ease: easeOut }}
+        variants={animateInChild}
+        onMouseEnter={() => {
+            setHoveredWork("shotoniphone");
+          }}
+          onMouseLeave={() => {
+            setHoveredWork(null);
+          }}
+        onClick={() => toggleWork('shotoniphone')}>
+        
+        {/* Cover */}
+        <img className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200" src="/photography/iphone/cover.jpg"/>
+
+        {/* Corner Arrow */}
+        <CornerArrow className='p-2 hidden md:block'/>
+
+        {/* Gradient */}
+        <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-b from-black/70 to-transparent rounded-t-lg"/>
+
+        {/* Text */}
+        <div className="absolute inset-0 flex flex-col items-start justify-start pt-4 lg:pt-6 pl-5">
+            <h1 className="text-2xl md:text-3xl 2xl:text-4.5xl font-medium text-white tracking-tight leading-tight">
+                #shotoniPhone
+            </h1> 
+        </div>
+
+        </motion.div>
+
+        {/* BBH */}
+        <motion.div 
+        className="group col-span-1 h-[350px] lg:h-full tracking-tight relative z-10 overflow-hidden rounded-[20px] shadow hover:shadow-none cursor-pointer mb-20"
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
@@ -124,38 +156,6 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
         <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start pt-4 lg:pt-6 pl-5">
             <h1 className="text-xl md:text-3xl 2xl:text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight leading-5 md:leading-7 2xl:leading-9 w-2/3">BBH Profile Headshots</h1>
         </div>
-        </motion.div>
-
-        {/* Stressed */}
-        <motion.div 
-        className="group col-span-1 h-[350px] lg:h-full tracking-tight relative z-10 overflow-hidden rounded-[20px] shadow hover:shadow-none cursor-pointer mb-20"
-        whileHover={{ scale: 0.98 }}
-        transition={{ duration: 0.15, ease: easeOut }}
-        variants={animateInChild}
-        onMouseEnter={() => {
-            setHoveredWork("stressed");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
-        onClick={() => toggleWork('stressed')}>
-        
-        {/* Image */}
-        <img 
-            className="w-full h-full inset-0 object-cover rounded-[20px] blur-none md:group-hover:blur-sm transition-all duration-200 object-[42%]"
-            src="/Photography/stressed/4.jpg"/>
-
-        {/* Corner Arrow */}
-        <CornerArrow className='p-2 hidden md:block'/>
-
-        {/* Gradient */}
-        <div className="absolute top-0 left-0 right-0 h-96 bg-gradient-to-b from-black/80 to-transparent rounded-t-lg"></div>
-
-        {/* Text */}
-        <div className="group absolute inset-0 flex flex-col gap-1 items-start justify-start pt-4 lg:pt-6 pl-5">
-            <h1 className="text-2xl md:text-3xl 2xl:text-4.5xl text-[#e9e9e9] dark:text-white font-medium tracking-tight w-5/6">Class of 2016</h1>
-        </div>
-
         </motion.div>
 
     </motion.div>
