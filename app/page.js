@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import PhotographyPage from './components/photography.js';
@@ -230,17 +230,6 @@ import { useHideNav } from './context/HideNavContext';
           
         </motion.div>
 
-        {/* Desktop Text Container */}
-        {/* <div className='hidden ml-1 mt-4 text-foreground group'>
-            <h1 className={`tracking-tight font-medium text-xl group-hover:ml-3 transition-all duration-200`}>
-              {title}
-            </h1>
-
-            <h3 className={`mb-12 opacity-35 text-xs group-hover:opacity-100 group-hover:ml-3 transition-all duration-300`}>
-              {subheader}
-            </h3>
-          </div> */}
-
       </motion.div>
     );
   };
@@ -262,8 +251,8 @@ import { useHideNav } from './context/HideNavContext';
     return { work, tags };
   };
 
-export default function Home(){
-
+// Main content component that uses useSearchParams
+function HomeContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -313,7 +302,7 @@ export default function Home(){
     { tag: 'motion', label: 'Motion', work: 'clear' },
     { tag: 'edit', label: 'Edit', work: 'clear' },
                             { tag: 'photography', label: 'Photo', work: 'clear' },
-    { tag: 'content', label: 'Content', work: 'content' }
+    { tag: 'content', label: 'Content', work: 'clear' }
   ];
 
   // Check if Mobile
@@ -422,10 +411,6 @@ export default function Home(){
       setShowNav(true);
     }
   };
-
-
-
-
 
   const filteredVideos = videoData.filter((video) => {
     if (selectedTags.includes('all')) return true;
@@ -1037,6 +1022,23 @@ export default function Home(){
       </VideoProvider>
     </>
   );
-  
-};
+}
+
+// Loading fallback component
+function HomeLoading() {
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="text-lg">Loading...</div>
+    </div>
+  );
+}
+
+// Main export component with Suspense boundary
+export default function Home() {
+  return (
+    <Suspense fallback={<HomeLoading />}>
+      <HomeContent />
+    </Suspense>
+  );
+}
 
