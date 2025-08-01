@@ -35,6 +35,7 @@ import Car from './components/car.js';
 import {useVideoContext, VideoProvider} from './components/expandedGridContext.js';
 import Video from './components/Video';
 import { useBrowser } from './context/BrowserContext';
+import { useHideNav } from './context/HideNavContext';
 
 
 
@@ -162,17 +163,9 @@ import { useBrowser } from './context/BrowserContext';
       }}>
         
         {/* Square */}
-        <motion.div className={`group relative overflow-hidden rounded-3xl
+        <motion.div className={`group relative overflow-hidden rounded-3xl pt-[150%]
         shadow-[3px_3px_15px_rgba(0,0,0,0.2)] group-hover:shadow-none border-b-0 border-white/20
-        after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl after:shadow-[inset_0px_0px_5px_0px_rgba(255,255,255,0.15)]
-
-          ${selectedTags.includes('photography') 
-          ? 'md:pt-[150%]' 
-          : 'pt-[150%] lg:pt-[140%]'}
-
-          ${selectedTags.includes('all') 
-          ? 'pt-[14%] md:hover:pt-[100%] saturate-200 md:saturate-100 hover:saturate-100 bg-black/25'
-          : 'pt-[150%]'}
+        after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl md:after:rounded-3xl after:shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)]
           
           `}
           whileHover={{ scale: 0.98 }}
@@ -234,9 +227,7 @@ import { useBrowser } from './context/BrowserContext';
             src={videoSrc}
             className={`absolute inset-0 w-full h-full object-cover rounded-2xl 
               after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl after:shadow-[inset_0px_0px_3px_0px_rgba(255,255,255,0.2)]
-            ${selectedTags.includes('all') 
-              ? `${isExpanded ? 'opacity-100' : 'opacity-100 blur-[30px] md:blur-0'}`
-              : 'blur-[0px] opacity-100'}`}
+            `}
             style={{ clipPath: 'inset(0 round 0.5rem)' }}
             poster={poster}
             autoPlay
@@ -267,9 +258,12 @@ import { useBrowser } from './context/BrowserContext';
 export default function Home(){
 
   const { browserType } = useBrowser();
+  const { hideNav, randomRotation, toggleHideNav } = useHideNav();
 
   const videoData = [
-    
+    { src: '/subway/coverportrait.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'/poster/subwayportrait.jpg', tags: ['subway', 'all', 'product'] },
+    { src: '/currently/car.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/car.png', tags: ['car', 'all', 'product'] },
+    { src: '/website/cover.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.png', tags: ['website', 'all', 'product'] },
     { src: '/Ghibli/banner1.mp4', title:'The World of Studio Ghibli', subheader:'Marketing Campaign for ArtScience Museum', poster:'/poster/ghibli.jpeg', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
     { src: '/CCS/bestworkmontage.mp4', title:'Beyond the Cabin', subheader:'Brand Campaign for Singapore Airlines', poster:'/poster/cabinbest.jpg', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
     { src: '/Cocktail/cover2.mp4', title:'Cocktail Conversations', subheader:'Brand Campaign for Singapore Airlines', poster:'/poster/cocktail.jpeg', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'] },
@@ -286,14 +280,12 @@ export default function Home(){
     { src: '/uniqlo1/cover.mp4', title:'Your Stage Now Live', subheader:'Motion Design for Uniqlo', poster:'/poster/uniqlo2.jpeg', tags: ['uniqlo1', 'all', 'motion'] },
     { src: '/Photography/street/Cover2_2.mp4', title:'Digital', subheader:'Personal Photography', poster:'/poster/street.jpeg', tags: ['street', 'all', 'photography'] },
     { src: '/Photography/film/cover4.mp4', title:'Film', subheader:'Personal Photography', poster:'/poster/street.jpeg', tags: ['film', 'all', 'photography'] },
+    { src: '/photography/iphone/cover.mp4', title:'#shotoniPhone', subheader:'Personal Photography', poster:'', tags: ['shotoniphone', 'all', 'photography'] },
+    { src: '/Photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', poster:'', tags: ['bbh', 'all', 'photography'] },
     { src: '/oneshow/cover.mp4', title:'TBWA One Show Shortlists', subheader:'Social media post', poster:'/poster/oneshow.jpeg', tags: ['oneshow', 'all', 'motion'] },
     { src: '/iphone/intro.mp4', title:'iPhone 15 Pro', subheader:'Personal explorations', poster:'/poster/iphone15.jpeg', tags: ['iphone', 'all', 'motion'] },
     { src: '/leica/leica.mp4', title:'Leica M-10P', subheader:'3D Motion Design', poster:'/poster/leica.jpeg', tags: ['leica', 'all', 'motion'] },
-    { src: '/photography/iphone/cover.mp4', title:'#shotoniPhone', subheader:'Personal Photography', poster:'', tags: ['shotoniphone', 'all', 'photography'] },
-    { src: '/Photography/bbh/cover.mp4', title:'BBH Profile Headshots', subheader:'Portrait series', poster:'', tags: ['bbh', 'all', 'photography'] },
-    { src: '/subway/coverportrait.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'/poster/subwayportrait.jpg', tags: ['subway', 'all', 'product'] },
-    { src: '/website/cover.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.png', tags: ['website', 'all', 'product'] },
-    { src: '/currently/car.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/car.png', tags: ['car', 'all', 'product'] },
+
      
   ];
 
@@ -301,9 +293,18 @@ export default function Home(){
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedWork, setSelectedWork] = useState('');
   const [showNav, setShowNav] = useState(false);
-  const [showReset, setShowReset] = useState(false);
   const [hoveredWork, setHoveredWork] = useState(null);
   const [setShowWork] = useState(false);
+
+  // Skillset data for navbar
+  const skillsetData = [
+    { tag: 'creative', label: 'Creative', work: 'clear' },
+    { tag: 'product', label: 'Product', work: 'clear' },
+    { tag: 'motion', label: 'Motion', work: 'clear' },
+    { tag: 'edit', label: 'Edit', work: 'clear' },
+                            { tag: 'photography', label: 'Photo', work: 'clear' },
+    { tag: 'content', label: 'Content', work: 'content' }
+  ];
 
   // Check if Mobile
   useEffect(() => {
@@ -319,6 +320,21 @@ export default function Home(){
     }
   }, []);
 
+  // Keyboard event listener for Tab key
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Tab') {
+        event.preventDefault(); // Prevent default tab behavior
+        toggleHideNav();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [hideNav]); // Include hideNav in dependencies since toggleHideNav uses it
+
+
+
   useEffect(() => {
     if (isMobile) {
       setSelectedTags('');
@@ -329,18 +345,6 @@ export default function Home(){
     }
   }, [isMobile]);
 
-  const includesTags = (tags) => {
-    return tags.some((tag) => selectedTags.includes(tag));
-  };
-
-  const includesWorks = (works) => {
-    return works.some((work) => selectedWork.includes(work));
-  };
-
-  // const toggleShowWork = () => {
-  //   setShowWork((prevState) => !prevState);
-  // }
-
   const toggleTag = (tag) => {
     if (tag === 'clear') {
       setSelectedTags([]); 
@@ -349,13 +353,26 @@ export default function Home(){
     }
   };
 
+  // Function to get tags for a selected work
+  const getWorkTags = (work) => {
+    const workVideo = videoData.find(video => {
+      const workTags = ['website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'shotoniphone', 'kris', 'iphone', '3d', 'car', 'subway',
+      'travelbig', 'lounge', 'hemsaker', 'ispy', 'jolli', 'uniqlo1', 'uniqlo2', 'oneshow', 'samsung', 'leica', 
+      'nike', 'film'];
+      return workTags.includes(work) && video.tags.includes(work);
+    });
+    return workVideo ? workVideo.tags.filter(tag => ['creative', 'product', 'motion', 'edit', 'photography', 'content'].includes(tag)) : [];
+  };
+
   const toggleWork = (work) => {
     if (work === 'clear') {
-      setSelectedWork([]);
-      //setSelectedWork(['all']);
+      setSelectedWork('');
+      setSelectedTags([]);
     } else {
-      toggleTag('clear');
       setSelectedWork(work);
+      // Set tags based on the selected work
+      const workTags = getWorkTags(work);
+      setSelectedTags(workTags);
     }
 
     window.scrollTo ({
@@ -372,19 +389,9 @@ export default function Home(){
     }
   };
 
-  // Reset Button Logic
-  useEffect(() => {
-    if (selectedWork.includes('bestwork') || selectedWork.includes('resume')) {
-      setShowReset(false); 
-    } else if (selectedWork.length > 0) {
-      setShowReset(true); // Always show Reset button if there is any selected work
-    } else if (selectedTags.includes('all') || selectedTags.length === 0) {
-      setShowReset(false); // Hide Reset button if 'all' is selected or if there are no tags
-    } else {
-      setShowReset(true); // Show Reset button for other cases
-    }
-    
-  }, [selectedTags, selectedWork]);
+
+
+
 
   const filteredVideos = videoData.filter((video) => {
     if (selectedTags.includes('all')) return true;
@@ -423,16 +430,27 @@ export default function Home(){
         </svg>
 
         {/* Entire Page column setup */}
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12 mix-b
-        text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-full mx-auto overflow-x-hidden">            
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12
+        text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-full mx-auto">            
 
           {/* Top Navbar */}
-          <div className="col-span-full fixed top-[0.4rem] md:top-10 z-[45] mb-4 w-screen max-w-9xl pr-6">
+          <motion.div 
+            className="col-span-full fixed top-[0.4rem] md:top-10 z-[45] mb-4 w-screen max-w-9xl pl-3"
+            animate={{ 
+              y: hideNav ? -240 : 0,
+              rotateZ: hideNav ? randomRotation : 0
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 500,
+              damping: 24
+            }}
+          >
             
-              {/* Desktop Sidenav / Dropdown Button */}
+              {/* MOBILE Dropdown Button */}
               <motion.button 
                 className={`
-                  fixed md:absolute p-2 rounded-full 
+                  fixed md:absolute p-2 rounded-full md:hidden
                   w-11 h-11 md:w-12 md:h-12 pl-1.5  
                   backdrop-brightness-125 md:backdrop-brightness-100
                   md:top-1 md:left-7 top-3 right-6 md:right-auto
@@ -487,18 +505,19 @@ export default function Home(){
                 </svg>
               </motion.button>
 
-              {/* Top Navbar Container */}
+              {/* DESKTOP Navbar Container */}
               <motion.div
                 className="hidden md:flex items-center justify-center non-chromium-ml w-full z-50"
                 initial="hidden"
                 animate="show"
                 variants={animateIn}
               >
-                {/* Navbar Background */}
+                
+                {/* Navbar Background with Buttons */}
                 <motion.div
-                  className={`rounded-full flex items-center justify-center ml-2.5
-                  w-[158px] h-[47px] dark:bg-transparent brightness-[100%]
-                  saturate-100 border-r-1 border-b-1 border-white/35
+                  className={`rounded-full flex items-center justify-center gap-2 
+                  h-[47px] dark:bg-transparent brightness-[100%]
+                  saturate-100 border border-white/35
                   shadow-glass-border-light dark:shadow-glass-border
                   ${browserType === 'chrome' 
                     ? '' 
@@ -511,26 +530,183 @@ export default function Home(){
                   style={browserType === 'chrome' ? {
                        backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
                     } : {}}
-                  whileHover={{ scaleY: 0.94, scaleX: 1.02}}
+                  animate={{ width: showNav ? '602px' : '157px' }}
                   transition={{
                     type: "spring",
-                    stiffness: 1000, 
-                    damping: 6, 
-                    }} 
+                    stiffness: 500,
+                    damping: 27.5
+                  }}
                 >
-                  {/* Debug indicator */}
-                  {/* <span className="text-xs text-white/50 pointer-events-none">
-                    {browserType}
-                  </span> */}
-                </motion.div>
+
+                {/* Button Container - Centers when closed, left-aligned when open */}
+                  <motion.div
+                    layout
+                    className={`flex gap-2 w-full relative ${showNav ? 'ml-2' : 'ml-4'}`}
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                      damping: 27.5
+                    }}
+                  >
+                    
+                    {/* Home/Back Button */}
+                    <motion.button
+                      layout='position'
+                      className={`
+                        rounded-full ${showNav ? 'px-0.5 py-0' : 'px-3 py-[3px]'} border-1.5
+                        font-semibold tracking-[-0.2pt] whitespace-nowrap text-sm lg:text-[15px]
+                        text-white mix-blend-difference dark:mix-blend-normal
+                        transition-colors duration-200
+                        hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
+                        dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+                        
+                        ${showNav 
+                          ? 'border-transparent' 
+                          : selectedWork.includes('resume') 
+                            ? '' 
+                            : 'border-transparent'
+                        }
+                      `}
+                      whileHover={{ scale: 0.96 }}
+                      onClick={() => {
+                        if (showNav) {
+                          // If nav is open, close it and go back to resume
+                          setShowNav(false);
+                          toggleWork('resume');
+                          setShowWork(false);
+                        } else {
+                          // If nav is closed, go to resume (home functionality)
+                          toggleWork('resume');
+                          setShowWork(false);
+                          setShowNav(false);
+                        }
+                      }}
+                      animate={{
+                        x: showNav ? 0 : 0
+                      }}
+                      transition={{
+                        duration: 0.2,  
+                        type: "spring",
+                        stiffness: 700, 
+                        damping: 15, 
+                      }}
+                    >
+                      {showNav ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="w-6 h-6"
+                        >
+                          <path d="m15 18-6-6 6-6"/>
+                        </svg>
+                      ) : (
+                        'Home'
+                      )}
+                    </motion.button>
+
+                    {/* Work Button */}
+                    <motion.button 
+                      layout='position'
+                      className={`
+                        rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
+                        font-semibold tracking-[-0.2pt] whitespace-nowrap
+                        mix-blend-difference dark:mix-blend-normal
+                        transition-colors duration-200
+                        hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
+                        dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+                        ${showNav ? '' : 'text-white dark:hover:text-white dark:hover:bg-transparent'}
+                        ${selectedTags.includes('all')
+                          ? '' 
+                          : 'border-transparent'
+                        }
+                        `}
+                        whileHover={{ scale: 0.95 }}
+                        onClick={() => {
+                          if (!showNav) {
+                            toggleNav(true);
+                            setSelectedTags(['all']);
+                            setSelectedWork('');
+                          } else {
+                            setSelectedTags(['all']);
+                            setSelectedWork('');
+                          }
+                        }}
+                        animate={{
+                          x: showNav ? 0 : 0
+                        }}
+                        transition={{
+                          duration: 0.2,  
+                          type: "spring",
+                          stiffness: 700, 
+                          damping: 15, 
+                        }}
+                      >
+                        {showNav ? 'All' : 'Work'}
+                    </motion.button>
+
+                    {/* Skillset Buttons - Only show when nav is open */}
+                    <motion.div 
+                      layout
+                      className={`flex gap-2 ${showNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                      animate={{ 
+                        x: showNav ? 0 : -20
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10
+                      }}
+                    >
+                      {skillsetData.map(({ tag, label, work }, index) => (
+                        <motion.button 
+                          key={tag}
+                          className={`rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
+                          font-semibold tracking-[-0.2pt] whitespace-nowrap text-white mix-blend-difference 
+                          dark:mix-blend-normal transition-colors duration-200 hover:text-background 
+                          hover:bg-foreground hover:text-white hover:mix-blend-normal hover:border-foreground
+                          dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+                          ${selectedTags.includes(tag) || (tag === 'photography' && selectedWork === 'photography') || (tag === 'content' && selectedWork === 'content') ? 'border-foreground' : 'border-transparent'}`}
+                          whileHover={{ scale: 0.98 }}
+                          animate={{ 
+                            x: showNav ? 0 : -30
+                          }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 600,
+                            damping: 12,
+                            delay: showNav ? index * 0 : 0
+                          }}
+                          onClick={() => {
+                            if (work === 'clear') {
+                              // For skillset filtering, just set the tag and clear selected work
+                              toggleTag(tag);
+                              setSelectedWork('');
+                            } else {
+                              // For specific work pages (like photography, content)
+                              toggleTag(tag);
+                              toggleWork(work);
+                            }
+                          }}
+                        >
+                          {label}
+                        </motion.button>
+                      ))}
+                      </motion.div>
+                    </motion.div>
+                  </motion.div>
               </motion.div>
 
-          </div>  
+          </motion.div>  
 
-          {/* Home Button */}
+          {/* Mobile Home Button */}
           <motion.button
             className={`
-              fixed top-[1.2rem] left-[50%] -ml-[4.3rem] md:-ml-[4.7rem] md:top-[3.1rem] z-50
+              md:hidden fixed top-[1.2rem] left-[50%] -ml-[4.3rem] z-50
               rounded-full px-3 py-[3px] border-1.5 
               font-semibold tracking-[-0.2pt] whitespace-nowrap text-sm lg:text-[15px]
               text-white mix-blend-difference dark:mix-blend-normal
@@ -538,7 +714,7 @@ export default function Home(){
               hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
               dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
               
-              ${selectedWork.includes('resume') 
+              ${selectedWork === 'resume' 
                 ? '' 
                 : 'border-transparent'
               }
@@ -546,7 +722,6 @@ export default function Home(){
             onClick={() => {
               toggleWork('resume');
               setShowWork(false);
-              setSelectedTags([]);
               setShowNav(false);
             }}
             whileHover={{ scale: 0.96 }}
@@ -559,17 +734,17 @@ export default function Home(){
             Home
           </motion.button>
 
-          {/* Work Button */}
+          {/* Mobile Work Button */}
           <motion.button 
             className={`
-              fixed top-[1.2rem] left-[50%] ml-1.5 md:ml-0 md:top-[3.1rem] z-50
+              md:hidden fixed top-[1.2rem] left-[50%] ml-1.5 z-50
               rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
               font-semibold tracking-[-0.2pt] whitespace-nowrap
               text-white mix-blend-difference dark:mix-blend-normal
               transition-colors duration-200
               hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
               dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-              ${selectedTags.length > 0 || (selectedWork.length > 0 && !selectedWork.includes('resume'))
+              ${selectedTags.length > 0 || (selectedWork && selectedWork !== '' && selectedWork !== 'resume')
                 ? '' 
                 : 'border-transparent'
               }
@@ -624,7 +799,7 @@ export default function Home(){
 
           {/* Side Navbar / Mobile Dropdown */}
           <motion.div
-            className={`${showNav ? "col-span-1 flex flex-col tracking-tight ml-5 md:-mr-6 md:sticky md:top-12 md:h-screen md:overflow-y-auto md:pl-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" : "opacity-0 pointer-events-none"}
+            className={`${showNav ? "" : "opacity-0 pointer-events-none"}
             relative transition-opacity duration-300`} 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }}
@@ -632,775 +807,7 @@ export default function Home(){
 
             {showNav && (
               <>
-                {/* Desktop Side Navbar Reset Button */}
-                <motion.div 
-                  className="sticky top-20 z-40 hidden md:block">
-
-                  {showReset && (
-
-                    <motion.button
-                      className="hover:text-background backdrop-blur flex items-start justify-start gap-2 px-3 py-2 pl-4 -ml-2 transition-colors
-                      text-foreground hover:bg-foreground dark:hover:bg-foreground glass bg-background dark:bg-transparent text-[16.5px] 
-                      rounded-full border-transparent dark:border-white/35"
-                      initial={{ opacity: 0, y:-20 }} 
-                      animate={{ opacity: 1, y:0 }}  
-                      whileHover={{ scale: 0.92 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 700, 
-                        damping: 15, 
-                        }} 
-                      onClick={() => {
-                        toggleWork('resume');
-                        setShowWork(false);
-                        setSelectedTags([]);
-                        setShowNav(false);
-                        if (isMobile) {
-                          setShowNav(false);
-                        }
-                        window.scrollTo({
-                          top: 0,
-                          behavior: 'smooth' // Enables smooth scrolling to the top
-                        });
-                      }}
-                    >
-                      Home
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 10 100 100"
-                        className="mt-[6%] w-3.5 h-3.5 group-hover:text-background -rotate-12 group-hover:-rotate-[360deg] transition-all duration-500"
-                      >
-                        <path
-                          d="M50,96.7c-20.3,0-38-14.4-42.1-34.3-.4-2.2,1-4.3,3.1-4.7,2.2-.4,4.3,1,4.7,3.1,3.3,16.2,17.7,27.9,34.2,27.9s35-15.7,35-35-15.7-35-35-35-14.9,2.4-21,7c-1.8,1.3-4.3,1-5.6-.8-1.3-1.8-1-4.3.8-5.6,7.5-5.6,16.4-8.6,25.8-8.6,23.7,0,43,19.3,43,43s-19.3,43-43,43Z"
-                          fill="currentColor"
-                        />
-                        <path
-                          d="M42.6,44.4H11c-1.1,0-2.1-.4-2.8-1.2-.8-.8-1.2-1.8-1.2-2.9l.4-32.8c0-2.2,1.8-4,4-4s0,0,0,0c2.2,0,4,1.8,4,4l-.3,28.7h27.5c2.2,0,4,1.8,4,4s-1.8,4-4,4Z"
-                          fill="currentColor"
-                        />
-                      </svg> 
-                    </motion.button>
-                  )}
-                </motion.div>
-
-                {/* Desktop Side Navbar Skillsets */}
-                <motion.div 
-                className={`hidden md:flex flex-col items-start gap-1 ${showReset ? "mt-32" : "mt-24"} dark:text-white/20 sticky`}
-                initial="hidden"
-                animate="show"
-                exit="fade"
-                layout="position"
-                  transition={{
-                  type: "spring",
-                  stiffness: 500, // Adjust for faster or slower animation
-                  damping: 14, // Adjust for bounciness and smoothness
-                  }}
-                variants={skillContainer}>
-
-                  <motion.h1
-                  className="text-xl font-medium tracking-tighter mb-4 text-foreground hidden sm:block"
-                  variants={animateInChild}
-                  layout="position">
-                    Skillsets
-                  </motion.h1>
-
-                  {/* Creative Direction */}
-                  <motion.button 
-                  className={`hover:text-foreground text-left md:mr-8
-                    ${selectedTags.includes('creative') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground'
-                      : 'text-neutral-350 dark:text-white/50 dark:hover:text-foreground'}`}
-                  whileHover={{scale:0.95}}
-                  animate={{scale: selectedTags.includes('creative') ? 1.06 : 1}}
-                  variants={animateInChild}
-                  layout="position"
-                  onClick={() => {
-                    toggleTag('creative');
-                    toggleWork('clear');}}>Creative Direction</motion.button>
-
-                  {/* Product Design */}
-                  <motion.button 
-                  className={`hover:text-foreground text-left md:mr-8
-                    ${selectedTags.includes('product') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground'
-                      : 'text-neutral-350 dark:text-white/50 dark:hover:text-foreground'}`}
-                  whileHover={{scale:0.95}}
-                  animate={{scale: selectedTags.includes('product') ? 1.06 : 1}}
-                  variants={animateInChild}
-                  layout="position"
-                  onClick={() => {
-                    toggleTag('product');
-                    toggleWork('clear');}}>Product Design</motion.button>
-
-                  {/* Motion Design */}
-                  <motion.button 
-                  className={`hover:text-foreground text-left md:mr-8
-                    ${selectedTags.includes('motion') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
-                      : 'text-neutral-350 dark:text-white/50 dark:hover:text-foreground'}`}
-                  whileHover={{scale:0.95}}
-                  animate={{scale: selectedTags.includes('motion') ? 1.06 : 1}}
-                  variants={animateInChild}
-                  layout="position"
-                  onClick={() => {
-                    toggleTag('motion');
-                    toggleWork('clear');}}>Motion Design</motion.button>
-
-                  {/* Video Editing */}
-                  <motion.button 
-                  className={`hover:text-foreground text-left md:mr-8
-                    ${selectedTags.includes('edit') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
-                      : 'text-neutral-350 dark:text-white/50 dark:hover:text-foreground'}`}
-                  whileHover={{scale:0.95}}
-                  animate={{scale: selectedTags.includes('edit') ? 1.06 : 1}}
-                  variants={animateInChild}
-                  layout="position"  
-                  onClick={() => {
-                    toggleTag('edit');
-                    toggleWork('clear');}}>Video Editing</motion.button>
-
-                  {/* Photography */}
-                  <motion.button 
-                  className={`hover:text-foreground text-left md:mr-8
-                    ${selectedTags.includes('photography') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
-                      : 'text-neutral-350 dark:text-white/50 dark:hover:text-foreground'}`}
-                  whileHover={{scale:0.95}}
-                  animate={{scale: includesWorks(['photography', 'street', 'bbh', 'bts', 'shotoniphone']) ? 1.06 : 1}}
-                  variants={animateInChild}
-                  layout="position"      
-                  onClick={() => {
-                    toggleTag('photography');
-                    toggleWork('clear');}}>Photography</motion.button>
-
-                  {/* Content Creation */}
-                  <motion.button 
-                  className={`hover:text-foreground text-left md:mr-8
-                    ${selectedWork.includes('content') ? 'rounded-full border-1 border-foreground py-0.5 sm:py-0 sm:border-0 text-foreground' 
-                      : 'text-neutral-350 dark:text-white/50 dark:hover:text-foreground'}`}
-                  whileHover={{scale:0.95}}
-                  animate={{scale: selectedWork.includes('content') ? 1.06 : 1}}
-                  variants={animateInChild}
-                  layout="position"
-                  onClick={() => {
-                    toggleTag('clear');
-                    setSelectedTags([]);
-                    toggleWork('content');}}>Content Creation</motion.button>
-                </motion.div>
-
-                {/* Desktop Side Navbar All Work */}
-                <motion.div
-                className={`hidden md:flex flex-col items-start gap-1 mt-12 sticky z-10 ${showReset ? "top-48" : "top-36"}`}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-                layout="position"
-                transition={{
-                  type: "spring",
-                  stiffness: 500, 
-                  damping: 10,
-                }}
-                variants={worksContainer}
-                >
-                  
-                  <motion.h1
-                  className="text-xl font-medium tracking-tight mb-4 text-foreground"
-                  variants={animateInChild}>
-                    Work
-                  </motion.h1>
-
-                  {/* 2025 */}
-                  <motion.h1
-                  className={`text-xs font-medium tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
-                  variants={animateInChild}>
-                    2025
-                  </motion.h1>
                 
-                    {/* Enhanced Subway Navigation with Apple Maps */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['product']) || selectedWork.includes(['subway']) || hoveredWork ==='subway' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['product']) || selectedWork.includes(['subway']) ||
-                      hoveredWork==='subway' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('subway')}}>Apple Maps x NYC Subway</motion.button>
-
-                    {/* Bloom */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['product']) || selectedWork.includes(['bloom']) || hoveredWork ==='bloom' 
-                        ? 'text-foreground font-medium text-[11pt] -ml-0.5' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['product']) || selectedWork.includes(['bloom']) ||
-                      hoveredWork==='bloom' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('bloom')}}>Bloom</motion.button>
-
-                    {/* Website v2 */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['product']) || selectedWork.includes(['car']) || hoveredWork ==='car' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['product']) || selectedWork.includes(['car']) ||
-                      hoveredWork==='car' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('car')}}>Human (Car)mputer Interaction</motion.button>
-
-                    {/* Website v2 */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['product']) || selectedWork.includes(['website']) || hoveredWork ==='website' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['product']) || selectedWork.includes(['website']) ||
-                      hoveredWork==='website' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('website')}}>Portfolio Website v2</motion.button>
-
-                  {/* 2024 */}
-                  <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
-                  variants={animateInChild}>
-                    2024
-                  </motion.h1>
-
-                    {/* Portfolio Website */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['product']) || selectedWork.includes(['website']) || hoveredWork ==='website' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['product']) || selectedWork.includes(['website']) ||
-                      hoveredWork==='website' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('website')}}>Portfolio Website</motion.button>
-
-                    {/* The World of Studio Ghibli */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['ghibli']) || hoveredWork ==='ghibli' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['ghibli']) ||
-                      hoveredWork==='ghibli' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('ghibli')}}>The World of Studio Ghibli</motion.button>
-
-                  {/* 2023 */}
-                  <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
-                  variants={animateInChild}>
-                    2023
-                  </motion.h1>
-
-                    {/* Beyond the Cabin */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cabin']) || hoveredWork ==='cabin' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cabin']) || hoveredWork==='cabin' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('cabin')}}>Beyond the Cabin</motion.button>
-
-                    {/* Cocktail Conversations */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cocktail']) || hoveredWork ==='cocktail' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['creative', 'motion', 'graphic', 'best']) || selectedWork.includes(['cocktail']) ||
-                      hoveredWork==='cocktail' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('cocktail')}}>Cocktail Conversations</motion.button>
-
-                    {/* Kris+ Brand Campaign */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['creative', 'motion',]) || selectedWork.includes(['kris']) || hoveredWork ==='kris' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20' 
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['creative', 'motion']) || selectedWork.includes(['kris']) ||
-                      hoveredWork==='kris' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('kris')}}>Kris+ Brand Campaign</motion.button>
-
-                    {/* I Spy in the Sky */}
-                    {/* <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['creative']) || selectedWork.includes(['ispy']) || hoveredWork ==='ispy' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['creative']) || selectedWork.includes(['ispy']) ||
-                      hoveredWork==='ispy' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('ispy')}}>I Spy in the Sky</motion.button> */}
-
-                  {/* 2022 */}
-                  <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
-                  variants={animateInChild}>
-                    2022
-                  </motion.h1>
-
-                    {/* Travel Like Never Before */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['creative', 'motion']) || selectedWork.includes(['travelbig']) || hoveredWork ==='travelbig' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['creative', 'motion']) || selectedWork.includes(['travelbig']) ||
-                      hoveredWork==='travelbig' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('travelbig')}}>Travel Like Never Before</motion.button>
-
-                    {/* SilverKris Lounge */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['creative', 'motion', 'edit', 'graphic']) || selectedWork.includes(['lounge']) || hoveredWork ==='lounge' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20' 
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['creative', 'motion', 'edit', 'graphic']) || selectedWork.includes(['lounge']) ||
-                      hoveredWork==='lounge' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('lounge')}}>SilverKris Lounge</motion.button>
-
-                    {/* Oops Happens */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['creative']) || selectedWork.includes(['hemsaker']) || hoveredWork ==='hemsaker' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['creative']) || selectedWork.includes(['hemsaker']) ||
-                      hoveredWork==='hemsaker' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('hemsaker')}}>Oops Happens</motion.button>
-
-                    {/* TBWA One Show Shortlist */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['motion']) || selectedWork.includes(['oneshow']) || hoveredWork ==='oneshow' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['motion']) || selectedWork.includes(['oneshow']) ||
-                      hoveredWork==='oneshow' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('oneshow')}}>TBWA One Show Shortlist</motion.button>
-
-                  {/* 2021 */}
-                  <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
-                  variants={animateInChild}>
-                    2021
-                  </motion.h1>
-
-                    {/* JolliEverAfter */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['motion', 'edit','best']) || selectedWork.includes(['jolli']) || hoveredWork ==='jolli' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['motion', 'edit','best']) || selectedWork.includes(['jolli']) || selectedTags.includes('edit') ||
-                      hoveredWork==='jolli' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('jolli')}}>JolliEverAfter</motion.button>
-
-                    {/* Samsung Lifestyle Displays */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['motion','edit']) || selectedWork.includes(['samsung']) || hoveredWork ==='samsung' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['motion','edit']) || selectedWork.includes(['samsung']) ||
-                      hoveredWork==='samsung' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('samsung')}}>Samsung Lifestyle Displays</motion.button>
-
-                  {/* 2019 */}
-                  <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
-                  variants={animateInChild}>
-                    2019
-                  </motion.h1>
-
-                    {/* Nike Athlete Stories: Koy & Toon */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['edit', 'motion']) || selectedWork.includes(['nike']) || hoveredWork ==='nike' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['motion','edit']) || selectedWork.includes(['nike']) ||
-                      hoveredWork==='nike' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('nike')}}>Nike Athlete Stories: Koy & Toon</motion.button>
-
-                    {/* BBH Profile Headshots */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['photography']) || selectedWork.includes(['bbh']) || hoveredWork ==='bbh' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['photography']) || selectedWork.includes(['bbh']) ||
-                      hoveredWork==='bbh' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      setSelectedWork('bbh')}}>BBH Profile Headshots</motion.button>
-
-                    {/* New Style Fresh Start */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['motion']) || selectedWork.includes(['uniqlo2']) || hoveredWork ==='uniqlo2' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['motion']) || selectedWork.includes(['uniqlo2']) ||
-                      hoveredWork==='uniqlo2' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('uniqlo2')}}>New Style Fresh Start</motion.button>
-
-                  {/* 2017 */}
-                  <motion.h1
-                  className={`text-xs font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
-                  variants={animateInChild}>
-                    2017
-                  </motion.h1>
-
-                    {/* Your Stage Now Live */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['motion', 'graphic']) || selectedWork.includes(['uniqlo1']) || hoveredWork ==='uniqlo1' 
-                        ? 'text-foreground font-medium' 
-                        : selectedWork.length === 0 && !hoveredWork
-                          ? 'text-black/10 dark:text-white/20'
-                          : 'text-black/30 dark:text-white/35'
-                      } transition-colors duration-100`}
-                    animate={{scale: 
-                      includesTags(['motion', 'graphic']) || selectedWork.includes(['uniqlo1']) ||
-                      hoveredWork==='uniqlo1' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('uniqlo1')}}>Your Stage Now Live</motion.button>
-
-                  {/* Personal */}
-                  <motion.h1
-                  className={`text-sm font-medium mt-5 tracking-tighter dark:text-white ${selectedWork.includes('') ? 'text-foreground font-medium' : 'text-neutral-350 dark:text-white/40'}`}
-                  variants={animateInChild}>
-                    Personal
-                  </motion.h1>
-
-                    {/* Content Creation */}
-                      <motion.button 
-                      className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                        ${includesTags(['content']) || selectedWork.includes(['content']) || hoveredWork ==='content' 
-                          ? 'text-foreground font-medium' 
-                          : selectedWork.length === 0 && !hoveredWork
-                            ? 'text-black/10 dark:text-white/20'
-                            : 'text-black/30 dark:text-white/35'
-                        } transition-colors duration-100`}
-                      whileHover={{scale:0.95}}
-                      animate={{scale: selectedWork.includes('content') ? 1.06 : 1}}
-                      variants={animateInChild}
-                      layout="position"
-                      onClick={() => {
-                        toggleTag('clear');
-                        setSelectedTags([]);
-                        toggleWork('content');}}>Content Creation
-                      </motion.button>
-
-                    {/* Digital Photography */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['photography']) || selectedWork.includes(['street']) || hoveredWork ==='street' 
-                          ? 'text-foreground font-medium' 
-                          : selectedWork.length === 0 && !hoveredWork
-                            ? 'text-black/10 dark:text-white/20'
-                            : 'text-black/30 dark:text-white/35'
-                        } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['photography']) || selectedTags.includes(['street']) ||
-                      hoveredWork==='street' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('street')}}>Digital Photography</motion.button>
-
-                    {/* Film Photography */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['photography']) || selectedWork.includes(['film']) || hoveredWork ==='film' 
-                          ? 'text-foreground font-medium' 
-                          : selectedWork.length === 0 && !hoveredWork
-                            ? 'text-black/10 dark:text-white/20'
-                            : 'text-black/30 dark:text-white/35'
-                        } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['photography']) || selectedWork.includes(['film']) ||
-                      hoveredWork==='film' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('film')}}>Film Photography</motion.button>
-
-                    {/* Shot on iPhone */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${selectedWork.includes(['shotoniphone']) || hoveredWork ==='shotoniphone' 
-                          ? 'text-foreground font-medium' 
-                          : selectedWork.length === 0 && !hoveredWork
-                            ? 'text-black/10 dark:text-white/20'
-                            : 'text-black/30 dark:text-white/35'
-                        } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      selectedWork.includes(['shotoniphone']) ||
-                      hoveredWork==='shotoniphone' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('shotoniphone')}}>#shotoniPhone</motion.button>
-
-                    {/* iPhone 15 Pro */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['motion']) || selectedWork === 'iphone' || hoveredWork ==='iphone' 
-                          ? 'text-foreground font-medium' 
-                          : selectedWork.length === 0 && !hoveredWork
-                            ? 'text-black/10 dark:text-white/20'
-                            : 'text-black/30 dark:text-white/35'
-                        } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['motion']) || selectedWork === 'iphone' ||
-                      hoveredWork==='iphone' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('iphone')}}>iPhone 15 Pro</motion.button>
-
-                    {/* Leica M10-P */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['photography']) || selectedWork.includes(['leica']) || hoveredWork ==='leica' 
-                          ? 'text-foreground font-medium' 
-                          : selectedWork.length === 0 && !hoveredWork
-                            ? 'text-black/10 dark:text-white/20'
-                            : 'text-black/30 dark:text-white/35'
-                        } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['motion']) || selectedWork.includes(['leica']) ||
-                      hoveredWork==='leica' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('leica')}}>Leica M10-P</motion.button>
-
-                    {/* 3D Motion Exploration */}
-                    <motion.button 
-                    className={`hover:text-foreground dark:hover:text-foreground text-left mr-8 
-                      ${includesTags(['motion']) || selectedWork.includes(['3d']) || hoveredWork ==='3d' 
-                          ? 'text-foreground font-medium' 
-                          : selectedWork.length === 0 && !hoveredWork
-                            ? 'text-black/10 dark:text-white/20'
-                            : 'text-black/30 dark:text-white/35'
-                        } transition-colors duration-100`}
-                    whileHover={{scale:0.95}}
-                    animate={{scale: 
-                      includesTags(['motion']) || selectedWork.includes(['3d']) ||
-                      hoveredWork==='3d' 
-                      ? 1.03 : 1
-                    }}
-                    variants={animateInChild}
-                    onClick={() => {
-                      toggleTag('clear');
-                      toggleWork('3d')}}>3D Motion Exploration</motion.button>
-
-
-                </motion.div>
-
                 {/* Mobile Dropdown Container */}
                 <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-50 fixed w-screen -ml-4 font-medium top-20">
 
@@ -1434,7 +841,7 @@ export default function Home(){
                     onClick={() => {
                       toggleTag('creative');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 opacity-35 text-xxs align-top'>01 </span>
+                      setSelectedWork('');}}><span className='hidden mr-1 opacity-35 text-xxs align-top'>01 </span>
                       Creative Direction</motion.button>
 
                     <motion.button 
@@ -1443,7 +850,7 @@ export default function Home(){
                     onClick={() => {
                       toggleTag('product');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 opacity-35 text-xxs align-top'>01 </span>
+                      setSelectedWork('');}}><span className='hidden mr-1 opacity-35 text-xxs align-top'>01 </span>
                       Product Design</motion.button>
 
                     <motion.button 
@@ -1452,7 +859,7 @@ export default function Home(){
                     onClick={() => {
                       toggleTag('motion');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>02 </span>
+                      setSelectedWork('');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>02 </span>
                       Motion Design</motion.button>
 
                     <motion.button 
@@ -1461,7 +868,7 @@ export default function Home(){
                     onClick={() => {
                       toggleTag('edit');
                       toggleNav('false');
-                      toggleWork('clear');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>03 </span>
+                      setSelectedWork('');}}><span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>03 </span>
                       Video Editing</motion.button>
 
                     <motion.button 
@@ -1490,19 +897,10 @@ export default function Home(){
             )} 
           </motion.div>
 
-          {/* New Navigation Bar Container */}
-          <motion.div
-            className={`${showNav ? "col-span-full fixed bottom-24 left-[50%] -translate-x-1/2 right-0 z-[100] h-10" : "opacity-0 pointer-events-none"}
-            transition-opacity duration-300 border-1 border-black/20 dark:border-white/30 rounded-full shadow-glass-border backdrop-blur-xl`} 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: showNav ? 1 : 0 }}
-            variants={animateInChildMobile}>
-            
-          </motion.div>
 
           {/* Page Container (Adjust px here) */}
           <motion.div
-            className={`${showNav ? `col-span-1 md:col-span-3 lg:col-span-4 xl:col-span-8 md:-ml-12` : "col-span-full"} px-4 md:px-[7%]`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className="col-span-full px-4 md:px-[7%]"  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 600, damping: 25 }}  
@@ -1593,14 +991,8 @@ export default function Home(){
                           'nike', 'film'];
                         const matchedWork = workTags.find((tag) => video.tags.includes(tag));
                         if (matchedWork) {
-                          toggleTag('clear');
-                          setSelectedWork(matchedWork);
+                          toggleWork(matchedWork);
                         }
-                        
-                        window.scrollTo ({
-                          top:0,
-                          behavior:'smooth',
-                        });
                       }}
                     />
                   ))

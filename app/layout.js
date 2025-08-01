@@ -8,6 +8,7 @@ import "./globals.css";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
 import { VideoProvider } from './context/VideoContext';
 import { BrowserProvider, useBrowser } from './context/BrowserContext';
+import { HideNavProvider, useHideNav } from './context/HideNavContext';
 import VideoDebugger from './components/VideoDebugger';
 
 const animateIn = {
@@ -106,12 +107,46 @@ const toggleDarkMode = () => {
   console.log("Dark mode toggled:", isDarkMode);
 };
 
-// Footer component that uses browser context
-const Footer = ({ changelog, toggleChangelog, footerRef }) => {
-  const { browserType } = useBrowser();
+// Dark Mode Toggle Wrapper that uses nav context
+const DarkModeToggleWrapper = ({ toggleDarkMode, isDarkMode }) => {
+  const { hideNav } = useHideNav();
   
   return (
-    <div className="fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-40 flex justify-center scale-90 md:scale-105">
+    <motion.div 
+      className="absolute w-full max-w-9xl h-screen px-8"
+      animate={{ 
+        y: hideNav ? -100 : 0
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 500,
+        damping: 24
+      }}
+    >
+      <div className="fixed left-[1.7rem] md:left-auto md:right-8 top-[0.55rem] md:top-12 z-[60] scale-[85%] md:scale-100">
+        <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
+      </div>   
+    </motion.div>
+  );
+};
+
+// Footer component that uses browser context and nav context
+const Footer = ({ changelog, toggleChangelog, footerRef }) => {
+  const { browserType } = useBrowser();
+  const { hideFooter } = useHideNav();
+  
+  return (
+    <motion.div 
+      className="fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-40 flex justify-center scale-90 md:scale-105"
+      animate={{ 
+        y: hideFooter ? 60 : 0
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 500,
+        damping: 24
+      }}
+    >
       <div
         ref={footerRef}
         className={`
@@ -164,7 +199,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
   
@@ -172,7 +207,8 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
     <html lang="en">
       <body>
         <BrowserProvider>
-          <VideoProvider>
+          <HideNavProvider>
+            <VideoProvider>
             <html className={isDarkMode ? "dark" : ""}>
               <body className={`
               ${geistSans.variable} 
@@ -191,11 +227,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                 fixed top-0 left-0 w-full h-full z-[40] transition-all duration-500 md:duration-300`} />
 
                 {/* Dark Mode Button */}
-                <div className="absolute w-full max-w-9xl h-screen px-8">
-                  <div className="fixed left-[1.7rem] md:left-auto md:right-8 top-[0.55rem] md:top-12 z-[60] scale-[85%] md:scale-100">
-                    <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
-                  </div>   
-                </div>
+                {/* <DarkModeToggleWrapper toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} /> */}
                 
                 {/* Main */}
                 <main>{children}</main>
@@ -306,14 +338,31 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                         <div className="no-scrollbar col-span-full md:col-span-1 flex flex-col gap-4 overflow-y-auto pr-4">
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
+                            <p className='text-foreground font-medium'>v2.1</p>
+                            
+                            <p>Redesigned the desktop top navbar: Work button has been renamed to Archive. Upon clicking on work button, the home button changes to a chevron back button, a grid of all works on the site is displayed, and the navbar also expands to show skillset categories that can be selected to filter the works displayed by skillsets. This redesigned navbar replaces the original sidebar of the website; consolidating navigation to one location.</p>
+
+                            <p>Sidebar deprecated–removed sidebar hamburger menu.</p>
+                            <p>RIP sidebar, 2024–2025.</p>
+
+                         
+                            
+                          </div> 
+
+                          <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.03</p>
                             
                             <p>Added #shotoniPhone photography album.</p>
                             <p>Updated digital photography album with new photos.</p>
-                            <p>Added a new &apos;What&apos;s New&apos; section on the main page.</p>
                             <p>Tweaked the margins to be narrower for the top navbar</p>
                             <p>Fixed overflow-x-hidden bug for the main page.</p>
                           </div> 
+
+                    
+                        </div>
+                        
+                        {/* Right Column */}
+                        <div className="no-scrollbar col-span-full md:col-span-1 overflow-y-auto">
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.02</p>
@@ -323,10 +372,6 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                             <p>Refined formatting for some project pages.</p>
                           </div>                                
 
-                        </div>
-                        
-                        {/* Right Column */}
-                        <div className="no-scrollbar col-span-full md:col-span-1 overflow-y-auto">
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.01</p>
@@ -352,7 +397,8 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
 
             </body>
           </html>
-          </VideoProvider>
+            </VideoProvider>
+          </HideNavProvider>
         </BrowserProvider>
       </body>
     </html>

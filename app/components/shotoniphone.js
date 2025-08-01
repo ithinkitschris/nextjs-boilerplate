@@ -104,8 +104,8 @@ const ShotOnIphone = ({className}) => {
                         muted
                         playsInline
                     />
-                    <div className="absolute bottom-3 right-3">
-                        <p className="text-white/75 text-xs font-medium px-3 py-1 rounded-lg">
+                    <div className="absolute bottom-0 md:bottom-3 right-0 md:right-3">
+                        <p className="text-white/75 text-[6.5pt] md:text-xs font-medium px-3 py-1 rounded-lg">
                             ProRes Log + Variable ND Filter
                         </p>
                     </div>

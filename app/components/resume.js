@@ -251,7 +251,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             </p>
                         </motion.div>
 
-                        {/* Desktop Senior Creative Container */}
+                        {/* Desktop Job Title Container */}
                         <motion.div className={`col-span-1 absolute right-12 bottom-18`}>
 
                             {/* Details */}
@@ -260,7 +260,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                             variants={animateInChild}>
 
                             {/* Circle Header */}
-                            <h1 className="flex items-center justify-center border-1 rounded-full tracking-tight font-medium text-sm w-[115px] mb-1.5 whitespace-nowrap -ml-2">Senior Creative</h1>
+                            <h1 className="flex items-center justify-center border-1 rounded-full tracking-tight font-medium text-sm -mr-2 px-2 mb-1.5 whitespace-nowrap -ml-2">Senior Creative / Product Designer</h1>
                             <p><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2 italic">{timeNyc}</span>Based in New York City</p>
                             <i className="-ml-0.5"><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span>From Singapore</i>
                                 
@@ -288,9 +288,45 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
 
             </div>
 
+            {/* Currently */}
+            <div key="currently-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-20 md:mt-52 mb-1 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-1 px-2
+            p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">July 2025</div>
+            <div key="currently-title" className="font-medium tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[52pt] mb-4 col-span-full md:w-5/6 ml-1.5 md:ml-2">Everything I&apos;ve been up to lately:</div>
+            <Currently className='col-span-full -mt-12' key='currently' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+
+            {/* Creative Direction */}
+            <div key="creative-direction-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-0 px-2
+            p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">Creative Direction</div>
+            <div key="creative-direction-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-2">The ones that had legs.</div>
+            <BestWorkPage3 className='col-span-full -mt-[3.2rem]' key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+
+            {/* Product Design */}
+            <div key="product-design-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full md:ml-1 px-2">Product Design</div>
+            <div key="product-design-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-2">Products of Design.</div>
+            <ProductPage className='col-span-full -mt-10' key='product' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+
+            {/* Motion Design */}
+            <div key="motion-design-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-2 md:ml-1 px-2">Motion Design</div>
+            <div key="motion-design-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-0">.blend-ing .ai, .ae and .js</div>
+            <MotionDesignPage className='col-span-full -mt-10' key='motion' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+
+            {/* Photography */}
+            <div key="photography-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-1 px-2">Photography</div>
+            <div key="photography-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-2 mb-3 col-span-full leading-[95%] w-[50%]">Photographic Memories.</div>
+            <PhotographyPage className='col-span-full mt-8' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            
+            {/* Content */}
+            <div key="content-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] ml-2 md:ml-0 mt-24 md:mt-72 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>
+            <div key="content-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-0 mb-8 col-span-full leading-[95%] w-[80%] ">A life of mine viewed through a short attention span.</div>
+            <ContentPage className='col-span-full mt-8' key='content'/>
+            
+            {/* CV */}
+            <div key="cv-header" className="hidden md:block font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Curriculum Vitae</div>
+            <div key="cv-title" className="hidden md:block font-medium tracking-[-2.5pt] text-[64pt] mb-8 col-span-full leading-[95%] w-full">Story time.</div>
+
             {/* Story Header */}
-            <div className="hidden md:block font-medium tracking-[-1.5pt] md:tracking-[-2.7pt] text-5xl md:text-[58pt] mt-24 md:mt-48 ml-2 mb-6 col-span-full leading-[95%] w-2/3">Story time.
-            </div>
+            {/* <div className="hidden md:block font-medium tracking-[-1.5pt] md:tracking-[-2.7pt] text-5xl md:text-[58pt] mt-24 md:mt-48 ml-2 mb-6 col-span-full leading-[95%] w-2/3">Story time.
+            </div> */}
 
             {/* Story Container */}
             <motion.div 
@@ -299,7 +335,7 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                   border-r-[1.5px] border-b-[2px] border-t-[0.1px] border-l-[0.1px] 
                   border-white/15 w-full rounded-3xl col-span-full 
                   bg-background dark:bg-transparent leading-[150%]
-                  transition-non-color 
+                  transition-non-color mb-14
                   shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_4px_0px_rgba(255,255,255,0.15)]
                   p-6 px-12 text-sm grid-cols-9 relative overflow-hidden
                 `}
@@ -537,42 +573,6 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
                     )}
                 </AnimatePresence>
             </motion.div>
-
-            {/* Currently */}
-            <div key="currently-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-20 md:mt-52 mb-1 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-1 px-2
-            p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">July 2025</div>
-            <div key="currently-title" className="font-medium tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[52pt] mb-4 col-span-full md:w-5/6 ml-1.5 md:ml-2">Everything I&apos;ve been up to lately:</div>
-            <Currently className='col-span-full -mt-12' key='currently' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
-
-            {/* Creative Direction */}
-            <div key="creative-direction-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-0 px-2
-            p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">Creative Direction</div>
-            <div key="creative-direction-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-2">The ones that had legs.</div>
-            <BestWorkPage3 className='col-span-full -mt-[3.2rem]' key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
-
-            {/* Product Design */}
-            <div key="product-design-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full md:ml-1 px-2">Product Design</div>
-            <div key="product-design-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-2">Products of Design.</div>
-            <ProductPage className='col-span-full -mt-10' key='product' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
-
-            {/* Motion Design */}
-            <div key="motion-design-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-2 md:ml-1 px-2">Motion Design</div>
-            <div key="motion-design-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-0">.blend-ing .ai, .ae and .js</div>
-            <MotionDesignPage className='col-span-full -mt-10' key='motion' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
-
-            {/* Photography */}
-            <div key="photography-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-1 px-2">Photography</div>
-            <div key="photography-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-2 mb-3 col-span-full leading-[95%] w-[50%]">Photographic Memories.</div>
-            <PhotographyPage className='col-span-full mt-8' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
-            
-            {/* Content */}
-            <div key="content-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] ml-2 md:ml-0 mt-24 md:mt-72 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>
-            <div key="content-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-0 mb-8 col-span-full leading-[95%] w-[80%] ">A life of mine viewed through a short attention span.</div>
-            <ContentPage className='col-span-full mt-8' key='content'/>
-            
-            {/* CV */}
-            <div key="cv-header" className="hidden md:block font-medium tracking-[-0.2pt] text-[12pt] mt-72 mb-3 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Curriculum Vitae</div>
-            <div key="cv-title" className="hidden md:block font-medium tracking-[-2.5pt] text-[58pt] mb-3 col-span-full leading-[95%] w-full">Everything else about me.</div>
 
             {/* Desktop Brands Container */}
             <h1 className="text-[40px] md:text-3xl mt-20 tracking-tight font-medium text-black dark:text-white col-span-full hidden md:block" key='brands-header'>Worked with:</h1>
