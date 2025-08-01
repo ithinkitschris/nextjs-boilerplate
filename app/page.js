@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import PhotographyPage from './components/photography.js';
 import ContentPage from './components/content.js';
 import Website from './components/websitev2.js';
@@ -244,7 +245,28 @@ import { useHideNav } from './context/HideNavContext';
     );
   };
 
+  // URL Helper Functions for Deep Linking
+  const createURL = (work, tags) => {
+    const params = new URLSearchParams();
+    if (work && work !== 'resume') params.set('work', work);
+    if (tags && tags.length > 0) params.set('tags', tags.join(','));
+    
+    const paramString = params.toString();
+    return paramString ? `?${paramString}` : '';
+  };
+
+  const parseURL = (searchParams) => {
+    const work = searchParams.get('work') || 'resume';
+    const tags = searchParams.get('tags')?.split(',').filter(Boolean) || [];
+    
+    return { work, tags };
+  };
+
 export default function Home(){
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const { browserType } = useBrowser();
   const { hideNav, randomRotation, toggleHideNav } = useHideNav();
@@ -333,12 +355,30 @@ export default function Home(){
     }
   }, [isMobile]);
 
+  // NEW: Read URL and set initial state
+  useEffect(() => {
+    const { work, tags } = parseURL(searchParams);
+    setSelectedWork(work);
+    setSelectedTags(tags);
+  }, [searchParams]);
+
   const toggleTag = (tag) => {
+    let newTags;
+    
     if (tag === 'clear') {
-      setSelectedTags([]); 
+      newTags = [];
+      setSelectedWork('resume');
     } else {
-      setSelectedTags([tag]); 
+      newTags = [tag];
+      setSelectedWork(''); // Clear selected work when filtering by tag
     }
+    
+    setSelectedTags(newTags);
+    
+    // NEW: Update URL
+    const work = tag === 'clear' ? 'resume' : '';
+    const newURL = createURL(work, newTags);
+    router.push(pathname + newURL);
   };
 
   // Function to get tags for a selected work
@@ -354,13 +394,19 @@ export default function Home(){
 
   const toggleWork = (work) => {
     if (work === 'clear') {
-      setSelectedWork('');
+      setSelectedWork('resume');
       setSelectedTags([]);
+      // Update URL to clean state
+      router.push(pathname);
     } else {
       setSelectedWork(work);
       // Set tags based on the selected work
       const workTags = getWorkTags(work);
       setSelectedTags(workTags);
+      
+      // NEW: Update URL
+      const newURL = createURL(work, workTags);
+      router.push(pathname + newURL);
     }
 
     window.scrollTo ({
@@ -916,7 +962,9 @@ export default function Home(){
                   <ShotOnIphone key="shotoniphone" className="col-span-full"/>
                 ) : selectedWork === 'bts' ? (
                   <BTS key="bts" className="col-span-full"/>
-                ) : selectedWork === 'resume' ? (
+                ) : selectedWork === 'bestwork' ? (
+                  <BestWorkPage key="bestwork" className="col-span-full w-full" setSelectedWork={setSelectedWork}/>
+                ) : selectedWork === 'resume' && selectedTags.length === 0 ? (
                   <Resume key="resume" className="col-span-full" showNav={showNav} toggleWork={toggleWork}/>
                 ) : selectedWork === 'samsung' ? (
                   <Samsung key="samsung" className="col-span-full"/>
@@ -956,8 +1004,6 @@ export default function Home(){
                   <NycSubway key="subway" className="col-span-full"/>
                 ) : selectedWork === 'car' ? (
                   <Car key="car" className="col-span-full" showNav={showNav}/>
-                ) : selectedWork === 'bestwork' ? (
-                  <BestWorkPage key="bestwork" className="col-span-full w-full" setSelectedWork={setSelectedWork}/>
                 ) : (
                   filteredVideos.map((video) => (
                   
