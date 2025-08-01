@@ -19,7 +19,7 @@ show: {
     }
 }
 
-const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
+const PhotographyPage = ({className, toggleWork}) => {
 
   return (
     <motion.div className={`grid grid-cols-2 lg:grid-cols-4 font-[family-name:var(--font-geist-sans)] gap-1.5 lg:gap-3 lg:h-[600px] 2xl:h-[800px] ${className}`}
@@ -33,12 +33,7 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
-        onMouseEnter={() => {
-            setHoveredWork("street");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+
         onClick={() => toggleWork('street')}>
 
             {/* Image */}
@@ -69,12 +64,7 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
-        onMouseEnter={() => {
-            setHoveredWork("film");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+
         onClick={() => toggleWork('film')}>
         
         {/* Cover */}
@@ -101,12 +91,7 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
-        onMouseEnter={() => {
-            setHoveredWork("shotoniphone");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+
         onClick={() => toggleWork('shotoniphone')}>
         
         {/* Cover */}
@@ -133,12 +118,7 @@ const PhotographyPage = ({className, setHoveredWork, toggleWork}) => {
         whileHover={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
-        onMouseEnter={() => {
-            setHoveredWork("bbh");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+
         onClick={() => toggleWork('bbh')}>
         
         {/* Image */}

@@ -12,7 +12,7 @@ const animateIn ={
     }
 }
 
-const Currently = ({className, setHoveredWork, toggleWork}) => {
+const Currently = ({className, toggleWork}) => {
   return (
     <motion.div
     className={`font-[family-name:var(--font-geist-sans)] relative w-full grid grid-cols-2 md:grid-cols-6 gap-2 md:gap-4 ${className}`}
@@ -32,12 +32,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
             stiffness: 1000, 
             damping: 15, 
           }}
-          onMouseEnter={() => {
-            setHoveredWork("subway");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+          
           onClick={() => {
             window.open('https://www.figma.com/deck/J7hetbcBMaabUf2LubpVnu', '_blank');
           }}
@@ -101,12 +96,6 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
             stiffness: 1200, 
             damping: 22, 
           }}
-          onMouseEnter={() => {
-            setHoveredWork("car");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
           onClick={() => {
             window.open('https://ithinkitschris.notion.site/local-expense-tracker', '_blank');
           }}>
@@ -159,12 +148,6 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
             type: "spring",
             stiffness: 1200, 
             damping: 22, 
-          }}
-          onMouseEnter={() => {
-            setHoveredWork("car");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
           }}
           onClick={() => {
             toggleWork('car')
@@ -221,12 +204,7 @@ const Currently = ({className, setHoveredWork, toggleWork}) => {
             stiffness: 1200, 
             damping: 22, 
           }}
-          onMouseEnter={() => {
-            setHoveredWork("website");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+
           // onClick={() => {
           //   toggleWork('website')
           // }}

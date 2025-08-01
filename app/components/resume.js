@@ -13,7 +13,7 @@ import { animateInChild, dropdown, dropdownChild } from "../constants/animations
 import ExperienceCard from './resume/ExperienceCard';
 import Currently from "./currently";
 
-export default function Resume({ className = "", setHoveredWork, toggleWork}) {
+export default function Resume({ className = "", toggleWork}) {
     const [timeNyc, setTimeNyc] = useState(null);
     const [timeSg, setTimeSg] = useState(null);
     const { visibleSections, toggleCvSection, showStory } = useExperienceState();
@@ -292,28 +292,28 @@ export default function Resume({ className = "", setHoveredWork, toggleWork}) {
             <div key="currently-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-20 md:mt-52 mb-1 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-1 px-2
             p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">July 2025</div>
             <div key="currently-title" className="font-medium tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[52pt] mb-4 col-span-full md:w-5/6 ml-1.5 md:ml-2">Everything I&apos;ve been up to lately:</div>
-            <Currently className='col-span-full -mt-12' key='currently' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <Currently className='col-span-full -mt-12' key='currently' toggleWork={toggleWork}/>
 
             {/* Creative Direction */}
             <div key="creative-direction-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full dark:border-r-1 dark:border-b-1 border-black/20 dark:border-white/30 md:ml-0 px-2
             p-0.5 rounded-full bg-background dark:bg-transparent drop-shadow">Creative Direction</div>
             <div key="creative-direction-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-2">The ones that had legs.</div>
-            <BestWorkPage3 className='col-span-full -mt-[3.2rem]' key='bestwork' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <BestWorkPage3 className='col-span-full -mt-[3.2rem]' key='bestwork' toggleWork={toggleWork}/>
 
             {/* Product Design */}
             <div key="product-design-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full md:ml-1 px-2">Product Design</div>
             <div key="product-design-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-2">Products of Design.</div>
-            <ProductPage className='col-span-full -mt-10' key='product' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <ProductPage className='col-span-full -mt-10' key='product' toggleWork={toggleWork}/>
 
             {/* Motion Design */}
             <div key="motion-design-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-2 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-2 md:ml-1 px-2">Motion Design</div>
             <div key="motion-design-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:ml-0">.blend-ing .ai, .ae and .js</div>
-            <MotionDesignPage className='col-span-full -mt-10' key='motion' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <MotionDesignPage className='col-span-full -mt-10' key='motion' toggleWork={toggleWork}/>
 
             {/* Photography */}
             <div key="photography-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] mt-32 md:mt-72 mb-3 col-span-full border-1  border-black/20 dark:border-white/50 p-0.5 rounded-full ml-1 px-2">Photography</div>
             <div key="photography-title" className="font-medium tracking-[-1.5pt] text-5xl md:text-[58pt] -mt-1 ml-2 mb-3 col-span-full leading-[95%] w-[50%]">Photographic Memories.</div>
-            <PhotographyPage className='col-span-full mt-8' key='photo' setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+            <PhotographyPage className='col-span-full mt-8' key='photo' toggleWork={toggleWork}/>
             
             {/* Content */}
             <div key="content-header" className="font-medium tracking-[-0.2pt] text-xs md:text-[12pt] ml-2 md:ml-0 mt-24 md:mt-72 mb-4 col-span-full border-1 border-black/20 dark:border-white/50 p-0.5 rounded-full px-2">Content Creation</div>

@@ -14,7 +14,7 @@ const animateIn ={
     }
 }
 
-const ProductPage = ({className, setHoveredWork, toggleWork}) => {
+const ProductPage = ({className, toggleWork}) => {
 
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
@@ -115,12 +115,7 @@ return (
           {/* Apple Maps */}
           <div 
           ref={(el) => (itemsRef.current[0] = el)}
-          onMouseEnter={() => {
-            setHoveredWork("subway");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+          
           onClick={() => {
             toggleWork('subway')
           }}
@@ -147,12 +142,7 @@ return (
           {/* Website */}
           <div 
           ref={(el) => (itemsRef.current[1] = el)}
-          onMouseEnter={() => {
-            setHoveredWork("website");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+          
           onClick={() => {
             toggleWork('website')
           }}

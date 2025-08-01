@@ -16,7 +16,7 @@ const animateIn ={
 
 
 
-const MotionDesignPage = ({className, setHoveredWork, toggleWork}) => {
+const MotionDesignPage = ({className, toggleWork}) => {
 
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
@@ -118,12 +118,7 @@ return (
           {/* Nike */}
           <div 
           ref={(el) => (itemsRef.current[0] = el)}
-          onMouseEnter={() => {
-            setHoveredWork("nike");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+          
           onClick={() => {
             toggleWork('nike')
           }}
@@ -151,12 +146,7 @@ return (
           {/* Jollibee */}
           <div 
           ref={(el) => (itemsRef.current[1] = el)}
-          onMouseEnter={() => {
-            setHoveredWork("jolli");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+          
           onClick={() => {
             toggleWork('jolli')
           }}
@@ -184,12 +174,7 @@ return (
           {/* 3D */}
           <div 
           ref={(el) => (itemsRef.current[2] = el)}
-          onMouseEnter={() => {
-            setHoveredWork("3d");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+          
           onClick={() => {
             toggleWork('3d')
           }}
@@ -217,12 +202,7 @@ return (
           {/* Samsung */}
           <div 
           ref={(el) => (itemsRef.current[3] = el)}
-          onMouseEnter={() => {
-            setHoveredWork("samsung");
-          }}
-          onMouseLeave={() => {
-            setHoveredWork(null);
-          }}
+          
           onClick={() => {
             toggleWork('samsung')
           }}

@@ -100,22 +100,12 @@ import { useHideNav } from './context/HideNavContext';
     },
     exit: { opacity: 0 },
   };
-  const worksContainer = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        delay: 0,
-      },
-    },
-    exit: { opacity: 0 },
-  };
 
   const isMobileDevice = () => {
     return typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches;
   };
 
-  const VideoSquare = ({ videoSrc, tags, setHoveredWork, onClick, title, subheader, selectedTags, poster }) => {
+  const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, poster }) => {
 
     const { expandedVideo, setExpandedVideo } = useVideoContext();
     
@@ -134,8 +124,7 @@ import { useHideNav } from './context/HideNavContext';
       // exit="fade"
       layout
       variants={scaleIn}
-      onMouseEnter={() => {setHoveredWork(tags[0]); console.log(tags)}}
-      onMouseLeave={() => setHoveredWork(null)}
+
       onClick={() => {
 
         // Checks if Mobile, Else default to Desktop Behaviour
@@ -293,7 +282,6 @@ export default function Home(){
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedWork, setSelectedWork] = useState('');
   const [showNav, setShowNav] = useState(false);
-  const [hoveredWork, setHoveredWork] = useState(null);
   const [setShowWork] = useState(false);
 
   // Skillset data for navbar
@@ -911,7 +899,7 @@ export default function Home(){
 
               <AnimatePresence>
                 {selectedWork === 'photography' ? (
-                  <PhotographyPage key="photography" className="col-span-full -mt-22" toggleWork={toggleWork} setHoveredWork={setHoveredWork}/>
+                  <PhotographyPage key="photography" className="col-span-full -mt-22" toggleWork={toggleWork}/>
                 ) : selectedWork === 'content' ? (
                   <ContentPage key="content" className="col-span-full"/>
                 ) : selectedWork === 'website' ? (
@@ -929,7 +917,7 @@ export default function Home(){
                 ) : selectedWork === 'bts' ? (
                   <BTS key="bts" className="col-span-full"/>
                 ) : selectedWork === 'resume' ? (
-                  <Resume key="resume" className="col-span-full" showNav={showNav} setHoveredWork={setHoveredWork} toggleWork={toggleWork}/>
+                  <Resume key="resume" className="col-span-full" showNav={showNav} toggleWork={toggleWork}/>
                 ) : selectedWork === 'samsung' ? (
                   <Samsung key="samsung" className="col-span-full"/>
                 ) : selectedWork === 'ghibli' ? (
@@ -969,7 +957,7 @@ export default function Home(){
                 ) : selectedWork === 'car' ? (
                   <Car key="car" className="col-span-full" showNav={showNav}/>
                 ) : selectedWork === 'bestwork' ? (
-                  <BestWorkPage key="bestwork" className="col-span-full w-full" setSelectedWork={setSelectedWork} setHoveredWork={setHoveredWork}/>
+                  <BestWorkPage key="bestwork" className="col-span-full w-full" setSelectedWork={setSelectedWork}/>
                 ) : (
                   filteredVideos.map((video) => (
                   
@@ -982,7 +970,6 @@ export default function Home(){
                       link={video.link}
                       tags={video.tags}
                       loading="lazy"
-                      setHoveredWork={setHoveredWork}
                       selectedTags={selectedTags}
                       onClick={() => { 
                         const workTags = 

@@ -14,7 +14,7 @@ const animateIn ={
     }
 }
 
-const BestWorkPage3 = ({className, setHoveredWork, toggleWork}) => {
+const BestWorkPage3 = ({className, toggleWork}) => {
 
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
@@ -117,12 +117,7 @@ return (
           {/* Beyond The Cabin */}
           <div 
               ref={(el) => (itemsRef.current[0] = el)}
-              onMouseEnter={() => {
-                setHoveredWork("cabin");
-              }}
-              onMouseLeave={() => {
-                setHoveredWork(null);
-              }}
+              
               onClick={() => {
                 toggleWork('cabin')
               }}
@@ -149,12 +144,7 @@ return (
           {/* Ghibli */}
           <div 
               ref={(el) => (itemsRef.current[1] = el)}
-              onMouseEnter={() => {
-                setHoveredWork("ghibli");
-              }}
-              onMouseLeave={() => {
-                setHoveredWork(null);
-              }}
+              
               onClick={() => {
                 toggleWork('ghibli')
               }}
@@ -182,12 +172,7 @@ return (
           {/* Cocktail Conversations */}
           <div 
               ref={(el) => (itemsRef.current[2] = el)}
-              onMouseEnter={() => {
-                setHoveredWork("cocktail");
-              }}
-              onMouseLeave={() => {
-                setHoveredWork(null);
-              }}
+              
               onClick={() => {
                 toggleWork('cocktail')
               }}
@@ -215,12 +200,7 @@ return (
           {/* IKEA */}
           <div 
               ref={(el) => (itemsRef.current[3] = el)}
-              onMouseEnter={() => {
-                setHoveredWork("hemsaker");
-              }}
-              onMouseLeave={() => {
-                setHoveredWork(null);
-              }}
+              
               onClick={() => {
                 toggleWork('hemsaker');
               }}
@@ -248,12 +228,7 @@ return (
           {/* Lounge */}
           <div 
               ref={(el) => (itemsRef.current[4] = el)}
-              onMouseEnter={() => {
-                setHoveredWork("lounge");
-              }}
-              onMouseLeave={() => {
-                setHoveredWork(null);
-              }}
+              
               onClick={() => {
                 toggleWork('lounge');
               }}

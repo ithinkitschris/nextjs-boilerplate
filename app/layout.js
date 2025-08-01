@@ -102,33 +102,6 @@ useEffect(() => {
   };
 }, [changelog]);
 
-const toggleDarkMode = () => {
-  setIsDarkMode(!isDarkMode);
-  console.log("Dark mode toggled:", isDarkMode);
-};
-
-// Dark Mode Toggle Wrapper that uses nav context
-const DarkModeToggleWrapper = ({ toggleDarkMode, isDarkMode }) => {
-  const { hideNav } = useHideNav();
-  
-  return (
-    <motion.div 
-      className="absolute w-full max-w-9xl h-screen px-8"
-      animate={{ 
-        y: hideNav ? -100 : 0
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 500,
-        damping: 24
-      }}
-    >
-      <div className="fixed left-[1.7rem] md:left-auto md:right-8 top-[0.55rem] md:top-12 z-[60] scale-[85%] md:scale-100">
-        <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
-      </div>   
-    </motion.div>
-  );
-};
 
 // Footer component that uses browser context and nav context
 const Footer = ({ changelog, toggleChangelog, footerRef }) => {
