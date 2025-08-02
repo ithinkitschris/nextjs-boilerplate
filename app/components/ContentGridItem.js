@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Video from './Video';
+import OptimizedVideo from './OptimizedVideo';
 
 const ContentGridItem = ({
   videoSrc,
@@ -12,12 +12,13 @@ const ContentGridItem = ({
 }) => {
   return (
     <motion.div className="relative rounded-xl md:rounded-2xl overflow-hidden">
-      <Video 
+      <OptimizedVideo 
         src={videoSrc}
         className={`w-full aspect-[9/16] object-cover ${className}`}
         poster={posterSrc}
         videoId={videoId}
         variants={variants}
+        useOptimized={true}
       />
 
       {/* Gradient */}

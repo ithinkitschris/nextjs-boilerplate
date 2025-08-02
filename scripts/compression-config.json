@@ -1,0 +1,48 @@
+{
+  "inputDir": "public",
+  "outputDir": "public/optimized",
+  "formats": ["webm", "mp4"],
+  "resolutions": [
+    {
+      "name": "480p",
+      "height": 480,
+      "maxBitrate": "800k",
+      "description": "Mobile devices, slow connections"
+    },
+    {
+      "name": "720p", 
+      "height": 720,
+      "maxBitrate": "1500k",
+      "description": "Tablets, medium connections"
+    },
+    {
+      "name": "1080p",
+      "height": 1080,
+      "maxBitrate": "3000k",
+      "description": "Desktop, fast connections"
+    }
+  ],
+  "quality": {
+    "webm": {
+      "crf": 30,
+      "preset": "fast",
+      "description": "VP9 codec, good compression"
+    },
+    "mp4": {
+      "crf": 28,
+      "preset": "fast", 
+      "description": "H.264 codec, universal compatibility"
+    }
+  },
+  "targetSizes": {
+    "grid": "500KB-2MB",
+    "featured": "2MB-5MB", 
+    "full": "5MB-15MB"
+  },
+  "excludePatterns": [
+    "**/optimized/**",
+    "**/*_480p.*",
+    "**/*_720p.*", 
+    "**/*_1080p.*"
+  ]
+} 

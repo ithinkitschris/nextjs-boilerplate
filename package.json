@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "compress-videos": "node scripts/video-compression.js",
+    "test-compression": "node scripts/test-compression.js",
+    "compress-currently": "node scripts/compress-currently-videos.js",
+    "compress-resume": "node scripts/compress-resume-videos.js",
+    "compress-product": "node scripts/compress-product-videos.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

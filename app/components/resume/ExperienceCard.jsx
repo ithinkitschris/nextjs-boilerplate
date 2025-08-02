@@ -21,7 +21,7 @@ const ExperienceCard = ({
     <motion.div
       className={`md:col-span-1 md:w-full relative mt-4 md:mt-10 group cursor-pointer  ${className}`}
       variants={animateInChild}
-      key={sectionKey}
+      key={`card-${sectionKey}`}
       layout="position"
       transition={{
         type: "spring",

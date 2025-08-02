@@ -2,7 +2,7 @@
 
 import * as motion from "framer-motion/client"
 import CornerArrow from './CornerArrow.js';
-import Video from './Video.js';
+import OptimizedVideo from './OptimizedVideo.js';
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -12,7 +12,7 @@ const animateIn ={
     }
 }
 
-const Currently = ({className, toggleWork}) => {
+const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   return (
     <motion.div
     className={`font-[family-name:var(--font-geist-sans)] relative w-full grid grid-cols-2 md:grid-cols-6 gap-2 md:gap-4 ${className}`}
@@ -46,7 +46,7 @@ const Currently = ({className, toggleWork}) => {
           <motion.div className="rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
-              <Video 
+              <OptimizedVideo 
                 videoId="currently-subway"
                 src="/subway/cover2.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
@@ -55,6 +55,7 @@ const Currently = ({className, toggleWork}) => {
                 loop
                 playsInline
                 poster="/poster/subwaylandscape.jpg"
+                useOptimized={useOptimizedVideos}
               />
           </motion.div>
 
@@ -108,7 +109,7 @@ const Currently = ({className, toggleWork}) => {
           <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
-              <Video 
+              <OptimizedVideo 
                 videoId="currently-expense"
                 src="/expense/cover.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover object-[0%_10%]"
@@ -117,6 +118,7 @@ const Currently = ({className, toggleWork}) => {
                 loop
                 playsInline
                 poster="/poster/expense.png"
+                useOptimized={useOptimizedVideos}
               />
           </motion.div>
 
@@ -161,7 +163,7 @@ const Currently = ({className, toggleWork}) => {
           <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
-              <Video 
+              <OptimizedVideo 
                 videoId="currently-car"
                 src="/currently/car.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
@@ -170,6 +172,7 @@ const Currently = ({className, toggleWork}) => {
                 loop
                 playsInline
                 poster="/poster/car.png"
+                useOptimized={useOptimizedVideos}
               />
           </motion.div>
 
@@ -217,7 +220,7 @@ const Currently = ({className, toggleWork}) => {
           <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
-              <Video 
+              <OptimizedVideo 
                 videoId="currently-website"
                 src="/website/coverproper.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
@@ -226,6 +229,7 @@ const Currently = ({className, toggleWork}) => {
                 loop
                 playsInline
                 poster="/poster/website.png"
+                useOptimized={useOptimizedVideos}
               />
           </motion.div>
 

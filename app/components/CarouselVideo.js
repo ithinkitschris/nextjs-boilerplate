@@ -1,6 +1,6 @@
 'use client'
 
-import Video from './Video.js';
+import OptimizedVideo from './OptimizedVideo.js';
 
 const CarouselVideo = ({ src, poster, className = "", videoId }) => {
   return (
@@ -23,7 +23,7 @@ const CarouselVideo = ({ src, poster, className = "", videoId }) => {
     />
 
       {/* <div className="md:hidden absolute bottom-1.5 left-0 right-0 h-[26%] backdrop-blur-md rounded-[1.5rem] scale-93 glass-sm"/> */}
-      <Video 
+      <OptimizedVideo 
         videoId={videoId}
         src={src}
         className={`rounded-3xl w-full h-full object-cover ${className}`}
@@ -32,6 +32,7 @@ const CarouselVideo = ({ src, poster, className = "", videoId }) => {
         loop
         playsInline
         poster={poster}
+        useOptimized={true}
       />
     </div>
   );

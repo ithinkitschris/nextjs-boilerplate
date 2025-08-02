@@ -174,10 +174,20 @@ const Film = ({className}) => {
         {/* Full-Width Image */}
         <motion.div className="col-span-full mb-2" variants={animateInChild} >
             <img
+            src="/Photography/film/bbh1.jpg"
+            className="h-auto w-full object-cover rounded-3xl"
+            />
+        </motion.div>
+
+        {/* Full-Width Image */}
+        <motion.div className="col-span-full mb-2" variants={animateInChild} >
+            <img
             src="/Photography/film/3.jpg"
             className="h-auto w-full object-cover rounded-3xl"
             />
         </motion.div>
+
+        
 
         {/* Two Images Side by Side */}
         <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2 mb-2">
@@ -194,6 +204,13 @@ const Film = ({className}) => {
                 variants={animateInChild}
             />
         </div>
+        {/* Full-Width Image */}
+        <motion.div className="col-span-full mb-2" variants={animateInChild} >
+            <img
+            src="/Photography/film/london3.jpg"
+            className="h-auto w-full object-cover rounded-3xl"
+            />
+        </motion.div>
 
         {/* Full-Width Image */}
         <motion.div className="col-span-full mb-2" variants={animateInChild} >
@@ -204,7 +221,7 @@ const Film = ({className}) => {
         </motion.div>
 
         {/* Two Images Side by Side */}
-        <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2 mb-24">
+        <div className="grid grid-cols-6 col-span-full gap-1 md:gap-2 mb-44">
             <motion.img
                 src="/Photography/film/stanford1.jpg"
                 alt="Description of Image 2"
@@ -218,6 +235,14 @@ const Film = ({className}) => {
                 variants={animateInChild}
             />
         </div>
+
+         {/* Full-Width Image */}
+         {/* <motion.div className="col-span-full mb-2" variants={animateInChild} >
+            <img
+            src="/Photography/film/london3.jpg"
+            className="h-auto w-full object-cover rounded-3xl"
+            />
+        </motion.div> */}
 
     </motion.div>
   );
