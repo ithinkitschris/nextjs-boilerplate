@@ -95,7 +95,7 @@ const PhotographyPage = ({className, toggleWork}) => {
         onClick={() => toggleWork('shotoniphone')}>
         
         {/* Cover */}
-        <img className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200" src="/photography/iphone/staticcover.jpg"/>
+        <img className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200" src="/Photography/iphone/staticcover.jpg"/>
 
         {/* Corner Arrow */}
         <CornerArrow className='p-2 hidden md:block'/>
