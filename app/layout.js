@@ -320,7 +320,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.1</p>
                             
-                            <p>Redesigned the desktop top navbar: Work button has been renamed to Archive. Upon clicking on work button, the home button changes to a chevron back button, a grid of all works on the site is displayed, and the navbar also expands to show skillset categories that can be selected to filter the works displayed by skillsets. This redesigned navbar replaces the original sidebar of the website; consolidating navigation to one location.</p>
+                            <p>Redesigned the desktop top navbar: Upon clicking on work button, the home button changes to a chevron back button, a grid of all works on the site is displayed, the navbar expands to show categories that can be selected to filter the works displayed by skillsets. This redesigned navbar replaces the original sidebar of the website; consolidating navigation to one location.</p>
 
                             <p>Sidebar deprecated–removed sidebar hamburger menu.</p>
                             <p>RIP sidebar, 2024–2025.</p>
