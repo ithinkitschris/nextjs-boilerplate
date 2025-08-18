@@ -29,11 +29,11 @@ export const videoData = [
 // Skillset data for navbar
 export const skillsetData = [
   { tag: 'creative', label: 'Creative', work: 'clear' },
-  { tag: 'product', label: 'Product', work: 'clear' },
+  { tag: 'product', label: 'UI/UX', work: 'clear' },
   { tag: 'motion', label: 'Motion', work: 'clear' },
   { tag: 'edit', label: 'Edit', work: 'clear' },
   { tag: 'photography', label: 'Photo', work: 'clear' },
-  { tag: 'content', label: 'Content', work: 'clear' }
+  { tag: 'content', label: 'Content', work: 'content' }
 ];
 
 // Work tags for mapping

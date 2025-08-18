@@ -22,7 +22,7 @@ export const HideNavProvider = ({ children }) => {
     let lastScrollY = window.scrollY;
     let ticking = false;
     const footerThreshold = 20; // Threshold for hiding footer when scrolling down
-    const navThreshold = 100; // Threshold for hiding top navbar when scrolling down
+    const navThreshold = 80; // Threshold for hiding top navbar when scrolling down
     const scrollUpThreshold = 15; // Lower threshold for showing nav when scrolling up
 
     const handleScroll = () => {

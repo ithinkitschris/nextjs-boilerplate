@@ -2,43 +2,43 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import PhotographyPage from './components/photography.js';
-import ContentPage from './components/content.js';
-import Website from './components/websitev2.js';
-import Ghibli from './components/ghibli.js';
-import CabinCrewStories from './components/cabin.js';
-import Cocktail from './components/cocktail.js';
-import Kris from './components/kris.js';
-import TravelBig from './components/travelbig.js';
-import Lounge from './components/lounge.js';
-import Hemsaker from './components/hemsaker.js';
-import ISpy from './components/ispy.js';
-import Jolli from './components/jolli.js';
-import Uniqlo1 from './components/uniqlo1.js';
-import Uniqlo2 from './components/uniqlo2.js';
-import Oneshow from './components/oneshow.js';
-import BestWorkPage from './components/bestworkv3.js';
-import Resume from './components/resume.js';
-import StreetPhotography from './components/street-photo.js';
-import Film from './components/film.js';
-import BBH from './components/bbh.js';
-import StressedLa from './components/stressed.js';
-import ShotOnIphone from './components/shotoniphone.js';
-import BTS from './components/bts.js';
-import Samsung from './components/samsung.js';
-import Nike from './components/nike.js';
-import Iphone from './components/iphone.js';
-import ThreeD from './components/3d.js';
-import Leica from './components/leica.js';
-import NycSubway from './components/nycsubway.js';
-import Car from './components/car.js';
+import PhotographyPage from './components/pages/photography.js';
+import ContentPage from './components/pages/content.js';
+import Website from './components/pages/websitev2.js';
+import Ghibli from './components/pages/ghibli.js';
+import CabinCrewStories from './components/pages/cabin.js';
+import Cocktail from './components/pages/cocktail.js';
+import Kris from './components/pages/kris.js';
+import TravelBig from './components/pages/travelbig.js';
+import Lounge from './components/pages/lounge.js';
+import Hemsaker from './components/pages/hemsaker.js';
+import ISpy from './components/pages/ispy.js';
+import Jolli from './components/pages/jolli.js';
+import Uniqlo1 from './components/pages/uniqlo1.js';
+import Uniqlo2 from './components/pages/uniqlo2.js';
+import Oneshow from './components/pages/oneshow.js';
+import BestWorkPage from './components/pages/bestworkv3.js';
+import Resume from './components/pages/resume.js';
+import StreetPhotography from './components/pages/street-photo.js';
+import Film from './components/pages/film.js';
+import BBH from './components/pages/bbh.js';
+import StressedLa from './components/pages/stressed.js';
+import ShotOnIphone from './components/pages/shotoniphone.js';
+import BTS from './components/pages/bts.js';
+import Samsung from './components/pages/samsung.js';
+import Nike from './components/pages/nike.js';
+import Iphone from './components/pages/iphone.js';
+import ThreeD from './components/pages/3d.js';
+import Leica from './components/pages/leica.js';
+import NycSubway from './components/pages/nycsubway.js';
+import Car from './components/pages/car.js';
 import { useBrowser } from './context/BrowserContext';
 import { useHideNav } from './context/HideNavContext';
 
 // Import new components and hooks
-import VideoSquare from './components/VideoSquare';
-import DesktopNavbar from './components/DesktopNavbar';
-import MobileNavbar from './components/MobileNavbar';
+import VideoSquare from './components/ui/VideoSquare';
+import DesktopNavbar from './components/ui/DesktopNavbar';
+import MobileNavbar from './components/ui/MobileNavbar';
 import { useMobileDetection } from './hooks/useMobileDetection';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { useVideoNavigation } from './hooks/useVideoNavigation';
@@ -106,6 +106,7 @@ function HomeContent() {
               selectedTags={selectedTags}
               setSelectedTags={setSelectedTags}
               selectedWork={selectedWork}
+              setSelectedWork={setSelectedWork}
               toggleWork={toggleWork}
               setShowWork={setShowWork}
               skillsetData={skillsetData}
