@@ -37,8 +37,8 @@ const images = [
         type: 'three', 
         images: [
             { src: '/Photography/iphone/nyc3.jpg' },
-            { src: '/Photography/iphone/nyc2.JPG' },
-            { src: '/Photography/iphone/nyc4.JPG' }
+            { src: '/Photography/iphone/nyc2.jpg' },
+            { src: '/Photography/iphone/nyc4.jpg' }
         ]
     },
 
@@ -98,7 +98,7 @@ const ShotOnIphone = ({className}) => {
                 <motion.div key={index} className="col-span-full mb-2 relative" variants={animateInChild}>
                     <video
                         src={image.src}
-                        className="h-auto w-full object-cover rounded-2xl"
+                        className="h-auto w-full object-cover rounded-[17.5pt]"
                         autoPlay
                         loop
                         muted
@@ -118,7 +118,7 @@ const ShotOnIphone = ({className}) => {
                 <motion.div key={index} className="col-span-full mb-2" variants={animateInChild}>
                     <img
                         src={image.src}
-                        className="h-auto w-full object-cover rounded-2xl"
+                        className="h-auto w-full object-cover rounded-[17.5pt]"
                         alt=""
                     />
                 </motion.div>
@@ -130,7 +130,7 @@ const ShotOnIphone = ({className}) => {
                 <motion.div key={index} className="col-span-full mb-2" variants={animateInChild}>
                     <img
                         src={image.src}
-                        className="h-auto w-full object-cover rounded-3xl"
+                        className="h-auto w-full object-cover rounded-[17.5pt]"
                         alt=""
                     />
                 </motion.div>
@@ -159,7 +159,7 @@ const ShotOnIphone = ({className}) => {
                             key={imgIndex}
                             src={img.src}
                             alt=""
-                            className={`col-span-${img.cols} h-full w-full object-cover rounded-2xl`}
+                            className={`col-span-${img.cols} h-full w-full object-cover rounded-[17.5pt]`}
                             variants={animateInChild}
                         />
                     ))}
@@ -175,7 +175,7 @@ const ShotOnIphone = ({className}) => {
                             key={imgIndex}
                             src={img.src}
                             alt=""
-                            className="col-span-2 h-full w-full object-cover rounded-2xl"
+                            className="col-span-2 h-full w-full object-cover rounded-[17.5pt]"
                             variants={animateInChild}
                         />
                     ))}
