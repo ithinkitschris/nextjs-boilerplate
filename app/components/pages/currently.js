@@ -26,7 +26,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         {/* Video Container with Corner Arrow */}
         <motion.div 
           className="relative col-span-full cursor-pointer"
-          whileHover={{ scale: 0.995 }}
+          whileHover={{ scale: 0.98 }}
           transition={{
             type: "spring",
             stiffness: 1000, 
@@ -91,7 +91,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         {/* Video Container with Corner Arrow */}
         <motion.div 
           className="relative col-span-full cursor-pointer"
-          whileHover={{ scale: 0.98 }}
+          whileHover={{ scale: 0.97 }}
           transition={{
             type: "spring",
             stiffness: 1200, 

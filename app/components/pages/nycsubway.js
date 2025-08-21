@@ -17,6 +17,7 @@ if (typeof window !== 'undefined') {
   const section2Ref = useRef(null);
   const section2BubbleRefs = useRef([]);
   const section2EmojiRef = useRef(null);
+  const section2MainTitleRef = useRef(null);
   
   // Section 3 refs (text replacement + emoji) - now part of section 2
   const section3Text1Ref = useRef(null);
@@ -58,6 +59,20 @@ if (typeof window !== 'undefined') {
   const section8Text2Ref = useRef(null);
   const section8Text3Ref = useRef(null);
 
+  // Section 9 refs (3-phase animation: icon, text, background)
+  const section9Ref = useRef(null);
+  const section9IconRef = useRef(null);
+  const section9TextRef = useRef(null);
+  const section9BackgroundRef = useRef(null);
+  const section9RectangleRef = useRef(null);
+  const section9RectangleText1Ref = useRef(null);
+  const section9RectangleText2Ref = useRef(null);
+  const section9RectangleText3Ref = useRef(null);
+  const section9RectangleText4Ref = useRef(null);
+  const section9RectangleText5Ref = useRef(null);
+  const section9TextContainerRef = useRef(null);
+  const section9EmojiRef = useRef(null);
+
   // Section 11 refs (rectangle replacement with 3 columns)
   const section11Ref = useRef(null);
   const section11OriginalRef = useRef(null);
@@ -74,6 +89,8 @@ if (typeof window !== 'undefined') {
   const section11Phase2Text3Ref = useRef(null);
   const section11Phase2TopParagraphRef = useRef(null);
   const section11Phase2EmojiRef = useRef(null);
+  const section11Header1Ref = useRef(null);
+  const section11Header2Ref = useRef(null);
   
   // Section 12 refs (text addition + emoji + gradient) - duplicate of section 4
   const section12Ref = useRef(null);
@@ -171,6 +188,9 @@ if (typeof window !== 'undefined') {
 
     // Set initial state for section 2 emoji
     gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
+    
+    // Set initial state for section 2 main title
+    gsap.set(section2MainTitleRef.current, { opacity: 1, scale: 1 });
 
     //#region Initial States
     // Set initial state for section 3
@@ -212,7 +232,9 @@ if (typeof window !== 'undefined') {
     gsap.set(section11Text1Ref.current, { opacity: 0, y: 30 });
     gsap.set(section11Text2Ref.current, { opacity: 0, y: 30 });
     gsap.set(section11Text3Ref.current, { opacity: 0, y: 30 });
-    gsap.set(section11TopParagraphRef.current, { opacity: 0 });
+    gsap.set(section11TopParagraphRef.current, { opacity: 0, y: 20 });
+    gsap.set(section11Header1Ref.current, { opacity: 0, y: 20 });
+    gsap.set(section11Header2Ref.current, { opacity: 0, x: -20 });
     
     // Set initial state for section 11 phase 2
     gsap.set(section11Phase2Text1Ref.current, { opacity: 0, y: 30 });
@@ -301,8 +323,9 @@ if (typeof window !== 'undefined') {
     let section5AnimationComplete = false;
     let section6AnimationComplete = false;
     let section7AnimationComplete = false;
-    let section8AnimationComplete = false;
-    let section11AnimationComplete = false;
+      let section8AnimationComplete = false;
+  let section9AnimationComplete = false;
+  let section11AnimationComplete = false;
     let section11Phase2AnimationComplete = false;
     let section12AnimationComplete = false;
     let section13AnimationComplete = false;
@@ -314,7 +337,7 @@ if (typeof window !== 'undefined') {
     let section19AnimationComplete = false;
     //#endregion
 
-    // SECTION 2 ANIMATION (Combined with Section 3) - 4 Phases
+    // SECTION 2 (Bubbles) ANIMATION 
     ScrollTrigger.create({
       trigger: section2Ref.current,
       start: "bottom 100%",
@@ -384,15 +407,11 @@ if (typeof window !== 'undefined') {
             scale: 1 - (0.1 * easedPhase2Progress) 
           });
           
-          // Hide the main title text "The New York City Subway is not great"
-          // We need to target the text element that contains this content
-          const mainTitleElement = section2Ref.current?.querySelector('p');
-          if (mainTitleElement) {
-            gsap.set(mainTitleElement, { 
-              opacity: 1 - easedPhase2Progress,
-              scale: 1 - (0.1 * easedPhase2Progress)
-            });
-          }
+                     // Hide the main title text "The New York City Subway is not great"
+           gsap.set(section2MainTitleRef.current, { 
+             opacity: 1 - easedPhase2Progress,
+             scale: 1 - (0.1 * easedPhase2Progress)
+           });
           
           // Keep section 3 elements hidden during clear phase
           gsap.set(section3Text1Ref.current, { opacity: 0, scale: 1 });
@@ -402,7 +421,7 @@ if (typeof window !== 'undefined') {
         // Phase 3: "We all already knew that" (60-90%)
         else if (progress <= 0.9) {
           const phase3Progress = (progress - 0.6) / 0.3; // 0 to 1 for phase 3
-          const easedPhase3Progress = gsap.parseEase("back.out")(phase3Progress);
+          const easedPhase3Progress = gsap.parseEase("expo.out")(phase3Progress);
           
           // Keep everything hidden from previous phases
           section2BubbleRefs.current.forEach((bubble) => {
@@ -411,6 +430,9 @@ if (typeof window !== 'undefined') {
             }
           });
           gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
+          
+          // Keep main title hidden
+          gsap.set(section2MainTitleRef.current, { opacity: 0, scale: 0.9 });
           
           // Animate in "We all already knew that"
           gsap.set(section3Text1Ref.current, {
@@ -434,6 +456,9 @@ if (typeof window !== 'undefined') {
             }
           });
           gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
+          
+          // Keep main title hidden
+          gsap.set(section2MainTitleRef.current, { opacity: 0, scale: 0.9 });
           
           // "We all already knew that" scales down and fades out
           gsap.set(section3Text1Ref.current, { 
@@ -461,7 +486,7 @@ if (typeof window !== 'undefined') {
       }
     });
     
-    // SECTION 4 ANIMATION
+    // SECTION 4 (Look Inwards) ANIMATION
     ScrollTrigger.create({
       trigger: section4Ref.current,
       start: "bottom 100%",
@@ -478,25 +503,26 @@ if (typeof window !== 'undefined') {
         const textProgress = Math.min(1, adjustedProgress); // Cap at 1
         
         // Apply easing to the progress
-        const easedProgress = gsap.parseEase("back.out")(textProgress);
+        const easedBackProgress = gsap.parseEase("back.out")(textProgress);
+        const easedProgress = gsap.parseEase("expo.out")(textProgress);
         
         // Text 1 scales down and moves upward as text2 appears
         gsap.set(section4Text1Ref.current, {
           opacity: 1,
-          scale: 2 - (0.8 * easedProgress), // Scales from 2 to 1
-          y: -80 * easedProgress // Moves up 40px as animation progresses
+          scale: 2 - (0.8 * easedBackProgress), // Scales from 2 to 1
+          y: -80 * easedBackProgress // Moves up 40px as animation progresses
         });
         
         // Text 2 fades in, moves up, and scales up
         gsap.set(section4Text2Ref.current, {
-          opacity: easedProgress,
-          y: 80 - (80 * easedProgress), // Moves up from 120px below to 0px
-          scale: 0.8 + (0.2 * easedProgress) // Scales from 0.8 to 1.0
+          opacity: easedBackProgress,
+          y: 80 - (80 * easedBackProgress), // Moves up from 120px below to 0px
+          scale: 0.8 + (0.2 * easedBackProgress) // Scales from 0.8 to 1.0
         });
         
         // Emoji fades in and moves up
         gsap.set(section4EmojiRef.current, {
-          opacity: easedProgress,
+          opacity: easedBackProgress,
           y: 80 - (80 * easedProgress)
         });
         
@@ -512,7 +538,7 @@ if (typeof window !== 'undefined') {
       }
     });
     
-    // SECTION 5 ANIMATION
+    // SECTION 5 (Personal Insights) ANIMATION
     ScrollTrigger.create({
       trigger: section5Ref.current,
       start: "bottom 100%",
@@ -559,7 +585,7 @@ if (typeof window !== 'undefined') {
       }
     });
     
-    // SECTION 6 ANIMATION
+    // SECTION 6 (look to someone) ANIMATION
     ScrollTrigger.create({
       trigger: section6Ref.current,
       start: "bottom 100%",
@@ -577,6 +603,7 @@ if (typeof window !== 'undefined') {
         
         // Apply easing to the progress
         const easedProgress = gsap.parseEase("back.out")(textProgress);
+        const easedExpoProgress = gsap.parseEase("expo.out")(textProgress);
         
         // Text 1 scales down and moves upward as text2 appears
         gsap.set(section6Text1Ref.current, {
@@ -595,7 +622,7 @@ if (typeof window !== 'undefined') {
         // Emoji fades in and moves up
         gsap.set(section6EmojiRef.current, {
           opacity: easedProgress,
-          y: 100 - (100 * easedProgress)
+          y: 100 - (100 * easedExpoProgress)
         });
         
         // Background gradient fades in
@@ -610,7 +637,7 @@ if (typeof window !== 'undefined') {
       }
     });
     
-    // SECTION 7+8 COMBINED ANIMATION
+    // SECTION 7+8 (Expert INsights) ANIMATION
     ScrollTrigger.create({
       trigger: section7Ref.current,
       start: "bottom 100%",
@@ -652,7 +679,7 @@ if (typeof window !== 'undefined') {
         // Phase 2: Animate section 8 emoji and first text column (25-50%)
         else if (progress <= 0.5) {
           const phase2Progress = (progress - 0.25) / 0.25; // 0 to 1 for phase 2
-          const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
+          const easedPhase2Progress = gsap.parseEase("expo.out")(phase2Progress);
           
           // Keep section 7 content hidden
           gsap.set(section7Text1Ref.current, { opacity: 0, y: 0 });
@@ -683,7 +710,7 @@ if (typeof window !== 'undefined') {
         // Phase 3: Second text column and change emoji (50-75%)
         else if (progress <= 0.75) {
           const phase3Progress = (progress - 0.5) / 0.25; // 0 to 1 for phase 3
-          const easedPhase3Progress = gsap.parseEase("back.out")(phase3Progress);
+          const easedPhase3Progress = gsap.parseEase("expo.out")(phase3Progress);
           
           // Keep section 7 content hidden
           gsap.set(section7Text1Ref.current, { opacity: 0, y: 0 });
@@ -715,7 +742,7 @@ if (typeof window !== 'undefined') {
         // Phase 4: Last text column and change emoji (75-100%)
         else {
           const phase4Progress = (progress - 0.75) / 0.25; // 0 to 1 for phase 4
-          const easedPhase4Progress = gsap.parseEase("back.out")(phase4Progress);
+          const easedPhase4Progress = gsap.parseEase("expo.out")(phase4Progress);
           
           // Keep section 7 content hidden
           gsap.set(section7Text1Ref.current, { opacity: 0, y: 0 });
@@ -750,7 +777,270 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 11 ANIMATION 
+    // SECTION 9 (Problem Statement) ANIMATION
+    ScrollTrigger.create({
+      trigger: section9Ref.current,
+      start: "bottom 100%",
+      end: "+=50%", // Extend the trigger area for scroll control
+      pin: true, // Pin the section in place
+      scrub: 1, // Smooth scrubbing
+      onEnter: () => {
+        // Set initial hidden state
+        gsap.set(section9TextRef.current, { opacity: 1, y: 0 });
+        gsap.set(section9IconRef.current, { opacity: 0, scale: 0.4, rotate: 80});
+        gsap.set(section9BackgroundRef.current, { opacity: 0 });
+        gsap.set(section9RectangleRef.current, { opacity: 0, scale: 0.6, height: 240 });
+        gsap.set(section9TextContainerRef.current, { y: 0 }); // Start at final position
+        gsap.set(section9RectangleText1Ref.current, { opacity: 0, y: 0 });
+        gsap.set(section9RectangleText2Ref.current, { opacity: 0, y: 40 });
+        gsap.set(section9RectangleText3Ref.current, { opacity: 0, y: 40 });
+        gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: 40 });
+        gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: 40 });
+        gsap.set(section9EmojiRef.current, { opacity: 1 }); // Start visible
+      },
+      onUpdate: (self) => {
+        const progress = self.progress; // 0 to 1
+        
+        // Phase 1: Text exists, warning icon animates in (0-30%)
+        if (progress <= 0.3) {
+          const phase1Progress = progress / 0.3; // 0 to 1 for phase 1
+          const easedPhase1Progress = gsap.parseEase("back.out")(phase1Progress);
+          
+          // Icon animates in with scale and fade
+          gsap.set(section9IconRef.current, {
+            opacity: easedPhase1Progress,
+            scale: 0.4 + (0.6 * easedPhase1Progress),
+            rotate: -80 + (74 * easedPhase1Progress)
+          });
+          
+          // Background video hidden in phase 1
+          gsap.set(section9BackgroundRef.current, {
+            opacity: 0
+          });
+          
+          // Rectangle hidden in phase 1
+          gsap.set(section9RectangleRef.current, {
+            opacity: 0,
+            scale: 0.6
+          });
+        }
+        // Phase 2: Clear text and icon completely (30-40%)
+        else if (progress <= 0.4) {
+          const phase2Progress = (progress - 0.3) / 0.1; // 0 to 1 for phase 2
+          const easedPhase2Progress = gsap.parseEase("power2.in")(phase2Progress);
+          
+          // Text and icon fade out
+          gsap.set(section9TextRef.current, {
+            opacity: 1 - easedPhase2Progress,
+          });
+          
+          gsap.set(section9IconRef.current, {
+            opacity: 1 - easedPhase2Progress,
+            scale: 1 - (0.2 * easedPhase2Progress),
+          });
+          
+          // Emoji fades out in phase 2
+          gsap.set(section9EmojiRef.current, {
+            opacity: 1 - easedPhase2Progress
+          });
+          
+          // Background video still hidden in phase 2
+          gsap.set(section9BackgroundRef.current, {
+            opacity: 0
+          });
+          
+          // Rectangle still hidden in phase 2
+          gsap.set(section9RectangleRef.current, {
+            opacity: 0,
+            scale: 0.6
+          });
+        }
+        // Phase 3: Rectangle, textref1 and background reveal (40-60%)
+        else if (progress <= 0.6) {
+          const phase3Progress = (progress - 0.4) / 0.2; // 0 to 1 for phase 3
+          const easedPhase3Progress = gsap.parseEase("expo.out")(phase3Progress);
+          
+          // Text and icon stay hidden
+          gsap.set(section9TextRef.current, {
+            opacity: 0,
+            y: -20
+          });
+          
+          gsap.set(section9IconRef.current, {
+            opacity: 0,
+            scale: 0.8,
+            y: -20
+          });
+          
+          // Emoji stays hidden
+          gsap.set(section9EmojiRef.current, {
+            opacity: 0
+          });
+          
+          // Background video fades in
+          gsap.set(section9BackgroundRef.current, {
+            opacity: easedPhase3Progress
+          });
+          
+          // Rectangle fades in and scales up from 0.6 to 1.0 with back.out easing
+          gsap.set(section9RectangleRef.current, {
+            opacity: easedPhase3Progress,
+            scale: 0.6 + (0.4 * easedPhase3Progress)
+          });
+          
+          // Text container stays at final position during Phase 3
+          gsap.set(section9TextContainerRef.current, {
+            y: 0
+          });
+          
+          // Text1 animates in with rectangle (positioned in middle of container)
+          gsap.set(section9RectangleText1Ref.current, {
+            opacity: easedPhase3Progress,
+            y: 0,
+          });
+          
+          // Other text elements remain hidden
+          gsap.set(section9RectangleText2Ref.current, { opacity: 0, y: 40, color: '#0067d4' });
+          gsap.set(section9RectangleText3Ref.current, { opacity: 0, y: 40, color: '#0067d4' });
+          gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: 40, color: '#0067d4' });
+          gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: 40, color: '#0067d4'});
+        }
+        // Phase 4: Sequential text animations (60-100%)
+        else {
+          const phase4Progress = (progress - 0.6) / 0.4; // 0 to 1 for phase 4
+          
+          // Text and icon stay hidden
+          gsap.set(section9TextRef.current, {
+            opacity: 0,
+            y: -20
+          });
+          
+          gsap.set(section9IconRef.current, {
+            opacity: 0,
+            scale: 0.8,
+            y: -20
+          });
+          
+          // Emoji stays hidden
+          gsap.set(section9EmojiRef.current, {
+            opacity: 0
+          });
+          
+          // Background stays visible
+          gsap.set(section9BackgroundRef.current, { opacity: 1 });
+          
+          // Text container stays at final position
+          gsap.set(section9TextContainerRef.current, { y: 0 });
+          
+          // Text1 stays visible and starts black
+          gsap.set(section9RectangleText1Ref.current, { opacity: 1, y: 0});
+          
+          // PHASE 4A (60-80%)
+          if (phase4Progress <= 0.5) {
+            const combinedProgress = phase4Progress / 0.5;
+            const easedCombinedProgress = gsap.parseEase("expo.out")(combinedProgress);
+            const easedContainerProgress = gsap.parseEase("power2.out")(combinedProgress);
+            
+            // Rectangle maintains final phase 3 state and grows height
+            gsap.set(section9RectangleRef.current, {
+              opacity: 1,
+              scale: 1,
+              height: 240 + (120 * easedContainerProgress)
+            });
+            
+            // Text1 fades to 0.2 during phase 4a
+            gsap.set(section9RectangleText1Ref.current, {
+              opacity: 1 - (0.9 * easedCombinedProgress), // Fade from 1 to 0.2
+              y: 0,
+              color: '#000000' // Stay black
+            });
+            
+            // Both text2 and text3 animate in together
+            gsap.set(section9RectangleText2Ref.current, {
+              opacity: easedCombinedProgress,
+              y: 40 - (40 * easedCombinedProgress)
+            });
+            gsap.set(section9RectangleText3Ref.current, {
+              opacity: easedCombinedProgress,
+              y: 40 - (40 * easedCombinedProgress)
+            });
+            
+            gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: 40 });
+            gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: 40 });
+          }
+          // PHASE 4B
+          else if (phase4Progress <= 0.75) {
+            const text4Progress = (phase4Progress - 0.5) / 0.25;
+            const easedText4Progress = gsap.parseEase("expo.out")(text4Progress);
+            const easedContainer4Progress = gsap.parseEase("power2.out")(text4Progress);
+            
+            // Rectangle grows from 380px to 520px height
+            gsap.set(section9RectangleRef.current, {
+              height: 360 + (60 * easedContainer4Progress)
+            });
+            
+            gsap.set(section9RectangleText1Ref.current, { opacity: 0.1, y: 0, color: '#000000' }); // Keep text1 black
+            gsap.set(section9RectangleText2Ref.current, { 
+              opacity: 1 - (0.9 * easedText4Progress),
+              y: 0
+            });
+            gsap.set(section9RectangleText3Ref.current, { 
+              opacity: 1 - (0.9 * easedText4Progress),
+              y: 0
+            });
+            gsap.set(section9RectangleText4Ref.current, {
+              opacity: easedText4Progress,
+              y: 40 - (40 * easedText4Progress)
+            });
+            
+            gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: 40 });
+          }
+          // PHASE 4C
+          else {
+            const text5Progress = (phase4Progress - 0.75) / 0.25;
+            const easedText5Progress = gsap.parseEase("expo.out")(text5Progress);
+            const easedContainer5Progress = gsap.parseEase("power2.out")(text5Progress);
+            
+            // Rectangle grows from 520px to 620px height (final height)
+            gsap.set(section9RectangleRef.current, {
+              height: 420 + (200 * easedContainer5Progress)
+            });
+            
+            gsap.set(section9RectangleText1Ref.current, { 
+              opacity: 0.1,
+              y: 0, 
+              color: '#000000', 
+            }); 
+
+            gsap.set(section9RectangleText2Ref.current, { 
+              opacity: 0.1,
+              y: 0,
+            }); 
+
+            gsap.set(section9RectangleText3Ref.current, { 
+              opacity: 0.1,
+              y: 0,});
+
+            gsap.set(section9RectangleText4Ref.current, { 
+              opacity: 1 - (0.9 * easedText5Progress),
+              y: 0
+            });
+            
+            gsap.set(section9RectangleText5Ref.current, {
+              opacity: easedText5Progress,
+              y: 40 - (40 * easedText5Progress),
+            });
+          }
+        }
+        
+        // Mark animation as complete when animation finishes (at 100% scroll)
+        if (progress >= 1) {
+          section9AnimationComplete = true;
+        }
+      }
+    });
+
+    // SECTION 11 (UWB Explanation) ANIMATION 
     ScrollTrigger.create({
       trigger: section11Ref.current,
       start: "bottom 100%",
@@ -760,9 +1050,9 @@ if (typeof window !== 'undefined') {
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
-        // Phase 1: Original rectangle to first new rectangle (0-50%)
-        if (progress <= 0.5) {
-          const phase1Progress = progress / 0.5; // 0 to 1 for phase 1
+        // Phase 1: Original rectangle fade out, new rectangle fade in (0-20%)
+        if (progress <= 0.2) {
+          const phase1Progress = progress / 0.2; // 0 to 1 for phase 1
           const easedPhase1Progress = gsap.parseEase("power3.inOut")(phase1Progress);
           
           // Original rectangle fades out, slides up, scales down, and blurs
@@ -773,73 +1063,31 @@ if (typeof window !== 'undefined') {
             filter: `blur(${5 * easedPhase1Progress}px)`
           });
           
-          // First new rectangle fades in and slides up
+          // New rectangle fades in and slides up
           gsap.set(section11NewRef.current, {
             opacity: easedPhase1Progress,
-            y: 150 - (155 * easedPhase1Progress),
+            y: 150 - (150 * easedPhase1Progress),
             filter: `blur(${4 - (4 * easedPhase1Progress)}px)`
           });
           
-          // Top paragraph fades in first
-          gsap.set(section11TopParagraphRef.current, {
-            opacity: easedPhase1Progress
-          });
+          // Keep most text content hidden during rectangle transition
+          gsap.set(section11TopParagraphRef.current, { opacity: 0, y: 20 });
+          gsap.set(section11Header2Ref.current, { opacity: 0, x: -20 });
+          gsap.set(section11Text1Ref.current, { opacity: 0, y: 30 });
+          gsap.set(section11Text2Ref.current, { opacity: 0, y: 30 });
+          gsap.set(section11Text3Ref.current, { opacity: 0, y: 30 });
           
-          // Phase 1 text columns fade in sequentially
-          if (phase1Progress <= 0.33) {
-            const text1Progress = phase1Progress / 0.33;
-            const easedText1Progress = gsap.parseEase("power4.out")(text1Progress);
-            
-            gsap.set(section11Text1Ref.current, {
-              opacity: easedText1Progress,
-              y: 30 - (30 * easedText1Progress)
-            });
-            gsap.set(section11Text2Ref.current, {
-              opacity: 0,
-              y: 30
-            });
-            gsap.set(section11Text3Ref.current, {
-              opacity: 0,
-              y: 30
-            });
-          } else if (phase1Progress <= 0.66) {
-            const text2Progress = (phase1Progress - 0.33) / 0.33;
-            const easedText2Progress = gsap.parseEase("power4.out")(text2Progress);
-            
-            gsap.set(section11Text1Ref.current, {
-              opacity: 1,
-              y: 0
-            });
-            gsap.set(section11Text2Ref.current, {
-              opacity: easedText2Progress,
-              y: 30 - (30 * easedText2Progress)
-            });
-            gsap.set(section11Text3Ref.current, {
-              opacity: 0,
-              y: 30
-            });
-          } else {
-            const text3Progress = (phase1Progress - 0.66) / 0.34;
-            const easedText3Progress = gsap.parseEase("power4.out")(text3Progress);
-            
-            gsap.set(section11Text1Ref.current, {
-              opacity: 1,
-              y: 0
-            });
-            gsap.set(section11Text2Ref.current, {
-              opacity: 1,
-              y: 0
-            });
-            gsap.set(section11Text3Ref.current, {
-              opacity: easedText3Progress,
-              y: 30 - (30 * easedText3Progress)
-            });
-          }
+          // Header1 fades in during Phase 1
+          gsap.set(section11Header1Ref.current, {
+            opacity: easedPhase1Progress,
+            y: 20 - (20 * easedPhase1Progress)
+          });
         }
-        // Phase 2: Text content changes within the same rectangle (50-100%)
-        else {
-          const phase2Progress = Math.max(0, Math.min(1, (progress - 0.5) / 0.5)); // Clamp between 0 and 1
-          const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
+        // Phase 2a: Header2 + paragraph animate in (20-25%)
+        else if (progress <= 0.25) {
+          const phase2aProgress = (progress - 0.2) / 0.05; // 0 to 1 for phase 2a
+          const easedPhase2aProgress = gsap.parseEase("power3.inOut")(phase2aProgress);
+          const header2Phase2aProgress = gsap.parseEase("back.out")(phase2aProgress);
           
           // Original rectangle stays hidden
           gsap.set(section11OriginalRef.current, {
@@ -847,180 +1095,231 @@ if (typeof window !== 'undefined') {
             scale: 0.8
           });
           
-          // Rectangle stays visible, only text content changes
+          // New rectangle stays visible
+          gsap.set(section11NewRef.current, {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)'
+          });
+          
+          // Header1 stays visible
+          gsap.set(section11Header1Ref.current, { opacity: 1, y: 0 });
+          
+          // Header2 fades in
+          gsap.set(section11Header2Ref.current, {
+            opacity: header2Phase2aProgress,
+            x: -20 + (20 * header2Phase2aProgress)
+          });
+          
+          // Top paragraph fades in
+          gsap.set(section11TopParagraphRef.current, {
+            opacity: header2Phase2aProgress,
+            y: -20 + (20 * header2Phase2aProgress),
+          });
+          
+          // Keep columns hidden
+          gsap.set(section11Text1Ref.current, { opacity: 0, y: 30 });
+          gsap.set(section11Text2Ref.current, { opacity: 0, y: 30 });
+          gsap.set(section11Text3Ref.current, { opacity: 0, y: 30 });
+        }
+        // Phase 2b: Three text columns fade in sequentially (25-50%)
+        else if (progress <= 0.5) {
+          const phase2bProgress = (progress - 0.25) / 0.25; // 0 to 1 for phase 2b
+          const easedPhase2bProgress = gsap.parseEase("power3.inOut")(phase2bProgress);
+          
+          // Original rectangle stays hidden
+          gsap.set(section11OriginalRef.current, {
+            opacity: 0,
+            scale: 0.8
+          });
+          
+          // New rectangle stays visible
+          gsap.set(section11NewRef.current, {
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)'
+          });
+          
+          // Headers stay visible
+          gsap.set(section11Header1Ref.current, { opacity: 1, y: 0 });
+          gsap.set(section11Header2Ref.current, { opacity: 1, y: 0 });
+          
+          // Top paragraph stays visible
+          gsap.set(section11TopParagraphRef.current, { opacity: 1 });
+          
+          // Three text columns fade in sequentially
+          if (phase2bProgress <= 0.33) {
+            const text1Progress = phase2bProgress / 0.33;
+            const easedText1Progress = gsap.parseEase("power4.out")(text1Progress);
+            
+            gsap.set(section11Text1Ref.current, {
+              opacity: easedText1Progress,
+              y: 30 - (30 * easedText1Progress)
+            });
+            gsap.set(section11Text2Ref.current, { opacity: 0, y: 30 });
+            gsap.set(section11Text3Ref.current, { opacity: 0, y: 30 });
+          } else if (phase2bProgress <= 0.66) {
+            const text2Progress = (phase2bProgress - 0.33) / 0.33;
+            const easedText2Progress = gsap.parseEase("power4.out")(text2Progress);
+            
+            gsap.set(section11Text1Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Text2Ref.current, {
+              opacity: easedText2Progress,
+              y: 30 - (30 * easedText2Progress)
+            });
+            gsap.set(section11Text3Ref.current, { opacity: 0, y: 30 });
+          } else {
+            const text3Progress = (phase2bProgress - 0.66) / 0.34;
+            const easedText3Progress = gsap.parseEase("power4.out")(text3Progress);
+            
+            gsap.set(section11Text1Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Text2Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Text3Ref.current, {
+              opacity: easedText3Progress,
+              y: 30 - (30 * easedText3Progress)
+            });
+          }
+        }
+        // Phase 3: All existing content fade out completely (50-60%)
+        else if (progress <= 0.6) {
+          const phase3Progress = (progress - 0.5) / 0.1; // 0 to 1 for phase 3
+          const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
+          
+          // Original rectangle stays hidden
+          gsap.set(section11OriginalRef.current, {
+            opacity: 0,
+            scale: 0.8
+          });
+          
+          // New rectangle stays visible
           gsap.set(section11NewRef.current, {
             opacity: 1,
             scale: 1
           });
           
-          // Phase 2 is split into two parts: fade out (0-30%) and fade in (30-100%)
-          if (phase2Progress <= 0.3) {
-            // First 30%: Phase 1 text completely fades out
-            const fadeOutProgress = phase2Progress / 0.3; // 0 to 1 for fade out
-            const easedFadeOutProgress = gsap.parseEase("power3.inOut")(fadeOutProgress);
+          // All Phase 1 content fades out completely
+          gsap.set(section11TopParagraphRef.current, {
+            opacity: 1 - easedPhase3Progress
+          });
+          gsap.set(section11Header1Ref.current, {
+            opacity: 1 - easedPhase3Progress,
+            y: 0
+          });
+          gsap.set(section11Header2Ref.current, {
+            opacity: 1 - easedPhase3Progress,
+            y: 0
+          });
+          gsap.set(section11Text1Ref.current, {
+            opacity: 1 - easedPhase3Progress,
+            y: 0
+          });
+          gsap.set(section11Text2Ref.current, {
+            opacity: 1 - easedPhase3Progress,
+            y: 0
+          });
+          gsap.set(section11Text3Ref.current, {
+            opacity: 1 - easedPhase3Progress,
+            y: 0
+          });
+          
+          // Phase 2 emoji fades out
+          gsap.set(section11Phase2EmojiRef.current, {
+            opacity: 0,
+            y: 100
+          });
+          
+          // Keep Phase 2 content hidden during fade out
+          gsap.set(section11Phase2TopParagraphRef.current, { opacity: 0 });
+          gsap.set(section11Phase2Text1Ref.current, { opacity: 0, y: 30 });
+          gsap.set(section11Phase2Text2Ref.current, { opacity: 0, y: 30 });
+          gsap.set(section11Phase2Text3Ref.current, { opacity: 0, y: 30 });
+        }
+        // Phase 4: New content fades in as per current sequence (60-100%)
+        else {
+          const phase4Progress = (progress - 0.6) / 0.4; // 0 to 1 for phase 4
+          const easedPhase4Progress = gsap.parseEase("power3.inOut")(phase4Progress);
+          
+          // Original rectangle stays hidden
+          gsap.set(section11OriginalRef.current, {
+            opacity: 0,
+            scale: 0.8
+          });
+          
+          // New rectangle stays visible
+          gsap.set(section11NewRef.current, {
+            opacity: 1,
+            scale: 1
+          });
+          
+          // Phase 1 content stays completely hidden
+          gsap.set(section11TopParagraphRef.current, { opacity: 0 });
+          gsap.set(section11Header1Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section11Header2Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section11Text1Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section11Text2Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section11Text3Ref.current, { opacity: 0, y: 0 });
+          
+          // Phase 4 animation sequence: top paragraph first, then columns
+          if (phase4Progress <= 0.25) {
+            // First 25%: Top paragraph fades in
+            const topProgress = phase4Progress / 0.25;
+            const easedTopProgress = gsap.parseEase("power4.out")(topProgress);
             
-            // Phase 1 text content fades out completely
-            gsap.set(section11TopParagraphRef.current, {
-              opacity: 1 - easedFadeOutProgress
-            });
-            gsap.set(section11Text1Ref.current, {
-              opacity: 1 - easedFadeOutProgress,
-              y: 0
-            });
-            gsap.set(section11Text2Ref.current, {
-              opacity: 1 - easedFadeOutProgress,
-              y: 0
-            });
-            gsap.set(section11Text3Ref.current, {
-              opacity: 1 - easedFadeOutProgress,
-              y: 0
-            });
-            
-            // Phase 2 emoji also fades out when going back to phase 1
-            gsap.set(section11Phase2EmojiRef.current, {
-              opacity: 0,
-              y: 100
-            });
-            
-            // Phase 2 content stays hidden during fade out
             gsap.set(section11Phase2TopParagraphRef.current, {
-              opacity: 0
+              opacity: easedTopProgress
             });
+            
+            // Emoji fades in and slides up with top paragraph
+            gsap.set(section11Phase2EmojiRef.current, {
+              opacity: easedTopProgress,
+              y: 100 - (100 * easedTopProgress)
+            });
+            
+            // Keep columns hidden
+            gsap.set(section11Phase2Text1Ref.current, { opacity: 0, y: 30 });
+            gsap.set(section11Phase2Text2Ref.current, { opacity: 0, y: 30 });
+            gsap.set(section11Phase2Text3Ref.current, { opacity: 0, y: 30 });
+          } else if (phase4Progress <= 0.5) {
+            // 25-50%: Column 1 fades in
+            const text1Progress = (phase4Progress - 0.25) / 0.25;
+            const easedText1Progress = gsap.parseEase("power4.out")(text1Progress);
+            
+            gsap.set(section11Phase2TopParagraphRef.current, { opacity: 1 });
             gsap.set(section11Phase2Text1Ref.current, {
-              opacity: 0,
-              y: 30
+              opacity: easedText1Progress,
+              y: 30 - (30 * easedText1Progress)
             });
+            gsap.set(section11Phase2Text2Ref.current, { opacity: 0, y: 30 });
+            gsap.set(section11Phase2Text3Ref.current, { opacity: 0, y: 30 });
+            gsap.set(section11Phase2EmojiRef.current, { opacity: 1, y: 0 });
+          } else if (phase4Progress <= 0.75) {
+            // 50-75%: Column 2 fades in
+            const text2Progress = (phase4Progress - 0.5) / 0.25;
+            const easedText2Progress = gsap.parseEase("power4.out")(text2Progress);
+            
+            gsap.set(section11Phase2TopParagraphRef.current, { opacity: 1 });
+            gsap.set(section11Phase2Text1Ref.current, { opacity: 1, y: 0 });
             gsap.set(section11Phase2Text2Ref.current, {
-              opacity: 0,
-              y: 30
+              opacity: easedText2Progress,
+              y: 30 - (30 * easedText2Progress)
             });
-            gsap.set(section11Phase2Text3Ref.current, {
-              opacity: 0,
-              y: 30
-            });
+            gsap.set(section11Phase2Text3Ref.current, { opacity: 0, y: 30 });
+            gsap.set(section11Phase2EmojiRef.current, { opacity: 1, y: 0 });
           } else {
-            // Second 70%: Phase 2 text fades in
-            const fadeInProgress = (phase2Progress - 0.3) / 0.7; // 0 to 1 for fade in
-            const easedFadeInProgress = gsap.parseEase("power3.inOut")(fadeInProgress);
+            // 75-100%: Column 3 fades in
+            const text3Progress = (phase4Progress - 0.75) / 0.25;
+            const easedText3Progress = gsap.parseEase("power4.out")(text3Progress);
             
-            // Phase 1 content stays completely hidden
-            gsap.set(section11TopParagraphRef.current, {
-              opacity: 0
+            gsap.set(section11Phase2TopParagraphRef.current, { opacity: 1 });
+            gsap.set(section11Phase2Text1Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Phase2Text2Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Phase2Text3Ref.current, {
+              opacity: easedText3Progress,
+              y: 30 - (30 * easedText3Progress)
             });
-            gsap.set(section11Text1Ref.current, {
-              opacity: 0,
-              y: 0
+            gsap.set(section11Phase2EmojiRef.current, {
+              opacity: 1 - easedText3Progress
             });
-            gsap.set(section11Text2Ref.current, {
-              opacity: 0,
-              y: 0
-            });
-            gsap.set(section11Text3Ref.current, {
-              opacity: 0,
-              y: 0
-            });
-            
-            // Phase 2 animation sequence: top paragraph first, then columns
-            if (fadeInProgress <= 0.25) {
-              // First 25%: Top paragraph fades in
-              const topProgress = fadeInProgress / 0.25;
-              const easedTopProgress = gsap.parseEase("power4.out")(topProgress);
-              
-              gsap.set(section11Phase2TopParagraphRef.current, {
-                opacity: easedTopProgress
-              });
-              
-              // Emoji fades in and slides up with top paragraph
-              gsap.set(section11Phase2EmojiRef.current, {
-                opacity: easedTopProgress,
-                y: 100 - (100 * easedTopProgress)
-              });
-              
-              // Keep columns hidden
-              gsap.set(section11Phase2Text1Ref.current, {
-                opacity: 0,
-                y: 30
-              });
-              gsap.set(section11Phase2Text2Ref.current, {
-                opacity: 0,
-                y: 30
-              });
-              gsap.set(section11Phase2Text3Ref.current, {
-                opacity: 0,
-                y: 30
-              });
-                         } else if (fadeInProgress <= 0.5) {
-               // 25-50%: Column 1 fades in
-               const text1Progress = (fadeInProgress - 0.25) / 0.25;
-               const easedText1Progress = gsap.parseEase("power4.out")(text1Progress);
-               
-               gsap.set(section11Phase2TopParagraphRef.current, {
-                 opacity: 1
-               });
-               gsap.set(section11Phase2Text1Ref.current, {
-                 opacity: easedText1Progress,
-                 y: 30 - (30 * easedText1Progress)
-               });
-               gsap.set(section11Phase2Text2Ref.current, {
-                 opacity: 0,
-                 y: 30
-               });
-               gsap.set(section11Phase2Text3Ref.current, {
-                 opacity: 0,
-                 y: 30
-               });
-               gsap.set(section11Phase2EmojiRef.current, {
-                 opacity: 1,
-                 y: 0
-               });
-                         } else if (fadeInProgress <= 0.75) {
-               // 50-75%: Column 2 fades in
-               const text2Progress = (fadeInProgress - 0.5) / 0.25;
-               const easedText2Progress = gsap.parseEase("power4.out")(text2Progress);
-               
-               gsap.set(section11Phase2TopParagraphRef.current, {
-                 opacity: 1
-               });
-               gsap.set(section11Phase2Text1Ref.current, {
-                 opacity: 1,
-                 y: 0
-               });
-               gsap.set(section11Phase2Text2Ref.current, {
-                 opacity: easedText2Progress,
-                 y: 30 - (30 * easedText2Progress)
-               });
-               gsap.set(section11Phase2Text3Ref.current, {
-                 opacity: 0,
-                 y: 30
-               });
-               gsap.set(section11Phase2EmojiRef.current, {
-                 opacity: 1,
-                 y: 0
-               });
-                         } else {
-               // 75-100%: Column 3 fades in
-               const text3Progress = (fadeInProgress - 0.75) / 0.25;
-               const easedText3Progress = gsap.parseEase("power4.out")(text3Progress);
-               
-               gsap.set(section11Phase2TopParagraphRef.current, {
-                 opacity: 1
-               });
-               gsap.set(section11Phase2Text1Ref.current, {
-                 opacity: 1,
-                 y: 0
-               });
-               gsap.set(section11Phase2Text2Ref.current, {
-                 opacity: 1,
-                 y: 0
-               });
-               gsap.set(section11Phase2Text3Ref.current, {
-                 opacity: easedText3Progress,
-                 y: 30 - (30 * easedText3Progress)
-               });
-               gsap.set(section11Phase2EmojiRef.current, {
-                 opacity: 1 - easedText3Progress
-               });
-            }
           }
         }
         
@@ -1032,7 +1331,7 @@ if (typeof window !== 'undefined') {
       }
     });
     
-    // SECTION 12 ANIMATION 
+    // SECTION 12 (How does it actually work?) ANIMATION 
     ScrollTrigger.create({
       trigger: section12Ref.current,
       start: "bottom 100%",
@@ -1050,6 +1349,7 @@ if (typeof window !== 'undefined') {
         
         // Apply easing to the progress
         const easedProgress = gsap.parseEase("back.out")(textProgress);
+        const easedExpoProgress = gsap.parseEase("expo.out")(textProgress);
         
         // Text 1 scales down and moves upward as text2 appears
         gsap.set(section12Text1Ref.current, {
@@ -1082,7 +1382,7 @@ if (typeof window !== 'undefined') {
         // Emoji fades in and moves up
         gsap.set(section12EmojiRef.current, {
           opacity: easedProgress,
-          y: 80 - (80 * easedProgress)
+          y: 80 - (80 * easedExpoProgress)
         });
         
         // Background gradient fades in
@@ -1097,7 +1397,7 @@ if (typeof window !== 'undefined') {
       }
     });
     
-    // SECTION 13 ANIMATION (3 columns)
+    // SECTION 13 (Set destination) ANIMATION 
     ScrollTrigger.create({
       trigger: section13Ref.current,
       start: "bottom 100%",
@@ -1185,7 +1485,7 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 14 ANIMATION 
+    // SECTION 14 (Incorrect Entrance) ANIMATION 
     ScrollTrigger.create({
       trigger: section14Ref.current,
       start: "bottom 100%",
@@ -1309,7 +1609,7 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 15 ANIMATION 
+    // SECTION 15 (Enter Station) ANIMATION 
     ScrollTrigger.create({
       trigger: section15Ref.current,
       start: "bottom 100%",
@@ -1596,7 +1896,7 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 16 ANIMATION 
+    // SECTION 16 (Platform) ANIMATION 
     ScrollTrigger.create({
       trigger: section16Ref.current,
       start: "bottom 100%",
@@ -1712,7 +2012,7 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 17 ANIMATION 
+    // SECTION 17 (Destination) ANIMATION 
     ScrollTrigger.create({
       trigger: section17Ref.current,
       start: "bottom 100%",
@@ -1937,7 +2237,7 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 18 ANIMATION
+    // SECTION 18 (Summary) ANIMATION
     ScrollTrigger.create({
       trigger: section18Ref.current,
       start: "bottom 100%",
@@ -1979,7 +2279,7 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 19 ANIMATION
+    // SECTION 19 (End Frame)ANIMATION
     ScrollTrigger.create({
       trigger: section19Ref.current,
       start: "bottom 100%",
@@ -2067,14 +2367,16 @@ if (typeof window !== 'undefined') {
       >
         <div className="w-full mx-auto text-center relative h-screen">
           
-          {/* Section 2 Text Box */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-            <p className="text-4xl md:text-6xl font-semibold text-foreground tracking-tight w-2/3 mx-auto"
-            style={{ lineHeight: '0.9' }}
-            >
-            The New York City Subway is not great.
-            </p>
-          </div>
+                     {/* Section 2 Text Box */}
+           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+             <p 
+               ref={section2MainTitleRef}
+               className="text-4xl md:text-6xl font-semibold text-foreground tracking-tight w-2/3 mx-auto"
+               style={{ lineHeight: '0.9' }}
+             >
+             The New York City Subway is not great.
+             </p>
+           </div>
           
           {/* Speech Bubbles */}
           <img 
@@ -2461,61 +2763,89 @@ if (typeof window !== 'undefined') {
 
       {/* Section 9 – Problem Statement */}
       <section 
+        ref={section9Ref}
         className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
       >
         {/* Background Video */}
         <video
+          ref={section9BackgroundRef}
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-auto h-full object-cover z-0"
+          className="absolute inset-0 w-auto h-full object-cover z-0 opacity-0"
         >
           <source src="/subway/flyover.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
-        <div className="absolute inset-80 inset-x-96 rounded-[40pt] drop-shadow-2xl bg-white">
-          <div className="flex flex-col items-start justify-start pt-8 px-16">
-            <img src="/subway/section9icon1.png" alt="Section 9 Icon" className="h-12 w-auto mb-6" />
-            <h1 className="text-6xl font-semibold text-black tracking-tight">
-              Navigating the NYC subway system comfortably can be challenging.
+        {/* Text and Icon - positioned independently */}
+        <div className="absolute flex flex-col items-center justify-center z-10 w-[75%] -mt-6">
+          <h1 
+            ref={section9TextRef}
+            className="text-[54pt] font-semibold text-foreground tracking-tight mx-auto text-center"
+            style={{ lineHeight: '1.05' }}
+          >
+            Navigating the NYC subway system comfortably can be challenging.
+          </h1>
+        </div>
+
+        <img 
+            ref={section9IconRef}
+            src="/subway/section9icon1.png" 
+            alt="Section 9 Icon" 
+            className="h-16 w-auto dark:invert opacity-0 absolute bottom-[33%] right-[42%]" 
+                          style={{
+                filter: 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(335deg) brightness(130%) contrast(97%)'
+              }}
+        />
+
+        {/* Emoji positioned at bottom of screen */}
+        <img
+          ref={section9EmojiRef}
+          src="/subway/section9emoji1.png"
+          alt="Section 9 Icon"
+          className="absolute bottom-0 h-[350px] w-auto z-10"
+        />
+
+        {/* Rounded Rectangle - positioned in center */}
+        <div 
+          ref={section9RectangleRef}
+          className="absolute inset-0 h-[620px] w-[520px] m-auto rounded-[40pt] border-2 glass-strong backdrop-blur-lg backdrop-brightness-110 bg-white/60 z-5 flex flex-col items-start justify-start pl-14 opacity-0 overflow-hidden"
+        >
+          <img 
+            src="/subway/section9icon2.png" 
+            alt="Section 9 Icon" 
+            className="mt-9 h-16 w-auto mb-2" 
+          />
+          <div ref={section9TextContainerRef} className="flex flex-col">
+            <h1 
+              className="text-6xl font-semibold text-black tracking-tight"
+              ref={section9RectangleText1Ref}>
+              How might we<span className="font-light">...</span>
+            </h1>
+
+            <h1 
+              className="text-6xl font-semibold text-black tracking-tight"
+              ref={section9RectangleText2Ref}>
+              provide 
+            </h1>
+            <h1 
+              className="text-6xl font-semibold text-black tracking-tight"
+              ref={section9RectangleText3Ref}>
+              commuters
+            </h1>
+            <h1 
+              className="text-6xl font-semibold text-black tracking-tight"
+              ref={section9RectangleText4Ref}>
+              confidence 
+            </h1>
+            <h1 
+              className="text-6xl font-semibold text-black tracking-tight"
+              ref={section9RectangleText5Ref}>
+              when <br/>navigating <br/>the system?
             </h1>
           </div>
-        </div>
-      </section>
-
-      {/* Section 10 – How Might We */}
-      <section 
-        className="min-h-screen flex items-center justify-center relative "
-      >
-        <div className="w-full mx-auto px-12 grid grid-cols-1 lg:grid-cols-5 gap-12 items-center h-screen">
-          
-          {/* Left Half - Text Box */}
-          <div className="text-center lg:text-left col-span-2 ml-10">
-            <h2 className="text-[56pt] font-medium tracking-tight leading-[4.75rem]">
-              How Might We<span className="font-extralight">...</span>
-            </h2>
-            <h2 className="text-[56pt] font-medium tracking-tight mb-6 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent leading-[4.75rem] w-[80%]">
-            provide commuters confidence when navigating the system?
-            </h2>
-          </div>
-          
-          
-          {/* Right Half - Video in Rounded Rectangle */}
-          <div className="bg-background dark:border-0 dark:glass-strong drop-shadow-xl rounded-3xl overflow-hidden h-[85%] mr-4 col-span-3">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src="/subway/flyover.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          
         </div>
       </section>
 
@@ -2539,44 +2869,74 @@ if (typeof window !== 'undefined') {
         {/* 1st Rounded Rectangle */}
         <div 
           ref={section11OriginalRef}
-          className="bg-white dark:border-0 dark:glass-strong drop-shadow-xl rounded-3xl w-[30%] h-[70%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden"
+          className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[29%] h-[70%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden"
           style={{ top: '4%' }}
         >
           {/* Text */}
-          <div className="pl-14 pt-12 text-left w-full">
+          <div className="pl-14 pt-10 text-left w-full">
+
+            {/* Icon */}
             <img 
               src="/subway/section11icon1.png" 
               alt="Section 11 Icon" 
               className="h-12 w-auto mb-6"/>
-            <h2 className="text-[40pt] font-semibold tracking-tight text-left bg-gradient-to-r to-[#3d9bff] from-[#0067d4] leading-[3.5rem] bg-clip-text text-transparent">
+
+            {/* Utilizing */}
+            <p className="text-[20pt] font-semibold tracking-tight text-left text-gray-600 mt-8 mb-4">
+            Utilizing...
+            </p>
+          
+            {/* Header */}
+            <h2 className="text-[38pt] font-semibold tracking-tight text-left bg-gradient-to-r to-[#3d9bff] from-[#0067d4] leading-[3rem] bg-clip-text text-transparent pb-2">
               Ultra-Wideband Technology
             </h2>
+
           </div>
+
           {/* Phone */}
           <img 
             src="/subway/section11phone2.png" 
             alt="Section 11 Icon" 
-            className="w-full h-auto object-cover mt-16 ml-[17%] scale-[120%]"
+            className="w-full h-auto object-cover mt-10 ml-20 scale-[120%]"
           />
         </div>
         
         {/* 2nd Rounded Rectangle with 3 Text Columns */}
         <div 
           ref={section11NewRef}
-          className="bg-white drop-shadow-xl rounded-3xl w-[65%] h-[52%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden p-11 pl-18"
+          className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[60%] h-[50%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden pt-11 pr-14 pl-18"
         >
-          {/* Phase 1 Content */}
-          <div ref={section11TopParagraphRef} className="text-left mb-16">
-            <h2 className="text-6xl font-semibold tracking-tight mb-4 text-black/80">
-            Ultra-wide<span className="bg-gradient-to-r from-[#528ee8] to-[#1a78dd] bg-clip-text text-transparent italic -ml-0.5 pr-2">what?</span>
+          {/* Header Container */}
+          <div className="flex items-center mb-4">
+            
+            <h2 
+              ref={section11Header1Ref}
+              className="text-6xl font-semibold tracking-tight text-black/80"
+            >
+              Ultra-wide
             </h2>
+
+            <h2 
+              ref={section11Header2Ref}
+              className="text-6xl font-semibold tracking-tight bg-gradient-to-r from-[#528ee8] to-[#1a78dd] bg-clip-text  text-transparent italic -ml-0.5 pr-2"
+            >
+              what?
+            </h2>
+
+          </div>
+
+          {/* Phase 1 Content */}
+          <div ref={section11TopParagraphRef} className="text-left mb-12">
+
+            {/* Header Sub Paragraph */}
             <p className="text-xl tracking-tight text-black/60 font-semibold w-[90%]">
             Ultra-Wideband (UWB) is a short-range, high-bandwidth wireless communication technology, capable of providing precise spatial awareness and device tracking
             </p>
+
           </div>
           
-          {/* Bottom Text */}
-          <div className="flex h-full flex-1 items-start justify-start gap-10">
+          {/* Bottom 3 Columns */}
+          <div className="flex h-full flex-1 items-start justify-start gap-6">
 
             {/* Column 1 */}
             <div 
@@ -2593,7 +2953,7 @@ if (typeof window !== 'undefined') {
                 Airtag/Find My
               </h3>
 
-              <p className="text-sm text-gray-700 text-left">
+              <p className="text-sm text-gray-700 font-medium text-left">
                 UWB enables an iPhone to measure its distance and direction from an AirTag, providing precision finding with centimeter-level accuracy.
               </p>
 
@@ -2614,7 +2974,7 @@ if (typeof window !== 'undefined') {
                 Handoff
               </h3>
 
-              <p className="text-sm text-gray-700 text-left">
+              <p className="text-sm text-gray-700 font-medium text-left">
                 Handoff works more smoothly by prioritizing nearby devices. When you bring your iPhone close to a HomePod mini, a visual and haptic effect appears, making it easier to transfer music.
               </p>
                 
@@ -2635,7 +2995,7 @@ if (typeof window !== 'undefined') {
                 AirDrop
               </h3>
 
-              <p className="text-sm text-gray-700 text-left">
+              <p className="text-sm text-gray-700 font-medium text-left">
                 UWB also enables better device-to-device awareness, improving AirDrop by detecting which person you're pointing at.
               </p>
 
@@ -2645,10 +3005,10 @@ if (typeof window !== 'undefined') {
           {/* Phase 2 Content - Overlaid on top */}
           <div 
             ref={section11Phase2Ref}
-            className="absolute inset-0 p-11 pl-18"
+            className="absolute inset-0 pt-11 pl-18 pr-6"
           >
             {/* Top Paragraph */}
-            <div ref={section11Phase2TopParagraphRef} className="text-left mb-16">
+            <div ref={section11Phase2TopParagraphRef} className="text-left mb-10">
               <h2 className="text-6xl font-semibold tracking-[-0.09rem] mb-4 text-black/80 leading-[3.75rem] w-[60%]">
                 How it could work within the subway.
               </h2>
@@ -2668,7 +3028,7 @@ if (typeof window !== 'undefined') {
                   className="h-9 w-auto mb-4 -ml-1"
                 />
 
-                <p className="text-lg font-medium text-gray-600 text-left leading-7 w-[90%]">
+                <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem] ">
                 UWB base stations will be installed within subway stations, namely at entrances and exits, diverging paths within the station, and platforms. 
                 </p>
 
@@ -2685,7 +3045,7 @@ if (typeof window !== 'undefined') {
                   className="h-9 w-auto mb-4 -ml-1"
                 />
 
-                <p className="text-lg font-medium text-gray-600 text-left leading-7 w-[95%]">
+                <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem]">
                 The base stations will be programmed to transmit information regarding its respective location within stations.
                 </p>
                   
@@ -2702,7 +3062,7 @@ if (typeof window !== 'undefined') {
                   className="h-9 w-auto mb-4 -ml-1"
                 />
 
-                <p className="text-lg font-medium text-gray-600 text-left leading-7 w-[80%]">
+                <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem] ">
                 iPhones, in hand with Apple Maps, will query the base stations, resulting in precise spatial awareness within stations.
                 </p>
 

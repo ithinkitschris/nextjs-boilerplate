@@ -288,20 +288,12 @@ export default function Resume({ className = "", toggleWork}) {
 
             {/* Currently */}
             <ResumeSectionHeader 
-                header="July 2025"
+                header="August 2025"
                 title="Everything I've been up to lately:"
                 headerClassName="mt-20 md:mt-52 mb-1 dark:border-r-1 dark:border-b-1 dark:border-white/30 md:ml-1 bg-background dark:bg-transparent drop-shadow"
                 titleClassName="tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[52pt] mb-4 md:w-5/6 ml-1.5 md:ml-2"
             />
             <Currently className='col-span-full -mt-12' key='currently' toggleWork={toggleWork}/>
-
-            {/* Creative Direction */}
-            <ResumeSectionHeader 
-                header="Creative Direction"
-                title="The ones that had legs."
-                headerClassName="dark:border-r-1 dark:border-b-1 dark:border-white/30 md:ml-0 bg-background dark:bg-transparent drop-shadow"
-            />
-            <BestWorkPage3 className='col-span-full -mt-[3.2rem]' key='bestwork' toggleWork={toggleWork}/>
 
             {/* Product Design */}
             <ResumeSectionHeader 
@@ -310,6 +302,14 @@ export default function Resume({ className = "", toggleWork}) {
                 headerClassName="md:ml-1"
             />
             <ProductPage className='col-span-full -mt-10' key='product' toggleWork={toggleWork}/>
+
+            {/* Creative Direction */}
+            <ResumeSectionHeader 
+                header="Creative Direction"
+                title="The ones that had legs."
+                headerClassName="dark:border-r-1 dark:border-b-1 dark:border-white/30 md:ml-0 bg-background dark:bg-transparent drop-shadow"
+            />
+            <BestWorkPage3 className='col-span-full -mt-[3.2rem]' key='bestwork' toggleWork={toggleWork}/>
 
             {/* Motion Design */}
             <ResumeSectionHeader 

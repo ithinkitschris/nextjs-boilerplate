@@ -41,7 +41,7 @@ const DesktopNavbar = ({
         style={browserType === 'chrome' ? {
              backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
           } : {}}
-        animate={{ width: showNav ? '567px' : '152px' }}
+        animate={{ width: showNav ? '567px' : '167px' }}
         transition={{
           type: "spring",
           stiffness: 500,
@@ -159,7 +159,7 @@ const DesktopNavbar = ({
               damping: 15, 
             }}
           >
-            {showNav ? 'All' : 'Work'}
+            {showNav ? 'All' : 'Archive'}
           </motion.button>
 
           {/* Skillset Buttons - Only show when nav is open */}
