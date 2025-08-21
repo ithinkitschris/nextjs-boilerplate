@@ -34,7 +34,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           }}
           
           onClick={() => {
-            window.open('https://www.figma.com/deck/J7hetbcBMaabUf2LubpVnu', '_blank');
+            toggleWork('subway');
           }}
           >
             

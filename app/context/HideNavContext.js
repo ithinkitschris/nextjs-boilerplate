@@ -16,6 +16,7 @@ export const HideNavProvider = ({ children }) => {
   const [hideNav, setHideNav] = useState(false);
   const [hideFooter, setHideFooter] = useState(false);
   const [randomRotation, setRandomRotation] = useState(0);
+  const [isWhiteBG, setIsWhiteBG] = useState(false);
 
   // Scroll event listener for hiding/showing nav and footer
   useEffect(() => {
@@ -81,7 +82,9 @@ export const HideNavProvider = ({ children }) => {
     setHideFooter,
     randomRotation,
     setRandomRotation,
-    toggleHideNav
+    toggleHideNav,
+    isWhiteBG,
+    setIsWhiteBG
   };
 
   return (

@@ -13,7 +13,8 @@ const DesktopNavbar = ({
   toggleWork, 
   setShowWork, 
   skillsetData, 
-  toggleTag 
+  toggleTag,
+  isWhiteBG // Controls styling when white background sections are active
 }) => {
   const { browserType } = useBrowser();
 
@@ -62,9 +63,10 @@ const DesktopNavbar = ({
             layout='position'
             className={`
               rounded-full ${showNav ? 'px-0.5 py-0' : 'px-3 py-[3px]'} border-1.5
-              font-semibold tracking-[-0.2pt] whitespace-nowrap text-sm lg:text-[15px] transition-colors duration-200
-              hover:text-background hover:bg-foreground hover:text-white border-foreground
+              ${isWhiteBG ? 'font-medium' : 'font-semibold'} tracking-[-0.2pt] whitespace-nowrap text-sm lg:text-[15px] transition-colors duration-200
+              hover:text-background hover:bg-foreground hover:text-white ${isWhiteBG ? 'border-black' : 'border-foreground'}
               dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+              ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : ''}
               
               ${showNav 
                 ? 'border-transparent' 
@@ -73,6 +75,9 @@ const DesktopNavbar = ({
                   : 'border-transparent'
               }
             `}
+            style={{
+              color: isWhiteBG ? '#000000' : undefined
+            }}
             whileHover={{ scale: 0.96 }}
             onClick={() => {
               if (showNav) {
@@ -121,15 +126,18 @@ const DesktopNavbar = ({
             className={`
               rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
               font-medium tracking-[-0.2pt] whitespace-nowrap
-              transition-colors duration-200 border-foreground
+              transition-colors duration-200 ${isWhiteBG ? 'border-black' : 'border-foreground'}
               hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
               dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-              ${showNav ? '' : 'text-black dark:text-white dark:hover:bg-transparent'}
+              ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : showNav ? '' : 'text-black dark:text-white dark:hover:bg-transparent'}
               ${selectedTags.includes('all')
                 ? '' 
                 : 'border-transparent'
               }
             `}
+            style={{
+              color: isWhiteBG ? '#000000' : undefined
+            }}
             whileHover={{ scale: 0.95 }}
             onClick={() => {
               if (!showNav) {
@@ -173,9 +181,13 @@ const DesktopNavbar = ({
                 className={`rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
                 font-semibold tracking-[-0.2pt] whitespace-nowrap 
                 dark:mix-blend-normal transition-colors duration-200 hover:text-background 
-                hover:bg-foreground hover:text-white hover:mix-blend-normal hover:border-foreground
+                hover:bg-foreground hover:text-white hover:mix-blend-normal ${isWhiteBG ? 'hover:border-black' : 'hover:border-foreground'}
                 dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-                ${selectedTags.includes(tag) || (tag === 'photography' && selectedWork === 'photography') || (tag === 'content' && selectedWork === 'content') ? 'border-foreground' : 'border-transparent'}`}
+                ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : ''}
+                ${selectedTags.includes(tag) || (tag === 'photography' && selectedWork === 'photography') || (tag === 'content' && selectedWork === 'content') ? (isWhiteBG ? 'border-black' : 'border-foreground') : 'border-transparent'}`}
+                style={{
+                  color: isWhiteBG ? '#000000' : undefined
+                }}
                 whileHover={{ scale: 0.9 }}
                 animate={{ 
                   x: showNav ? 0 : -30

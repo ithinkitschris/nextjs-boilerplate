@@ -9,7 +9,8 @@ const MobileNavbar = ({
   selectedWork, 
   toggleWork, 
   setShowWork, 
-  toggleTag 
+  toggleTag,
+  isSection13Active // Covers sections 13-15 in NYC Subway page
 }) => {
   const toggleNav = () => {
     if (showNav) {
@@ -31,12 +32,16 @@ const MobileNavbar = ({
           transition-colors duration-200
           hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
           dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+          ${isSection13Active ? 'text-black !text-black dark:!text-black mix-blend-normal !important' : ''}
           
           ${selectedWork === 'resume' 
             ? '' 
             : 'border-transparent'
           }
         `}
+        style={{
+          color: isSection13Active ? '#000000' : undefined
+        }}
         onClick={() => {
           toggleWork('resume');
           setShowWork(false);
@@ -53,7 +58,7 @@ const MobileNavbar = ({
       </motion.button>
 
       {/* Mobile Work Button */}
-      <motion.button 
+      <motion.button
         className={`
           md:hidden fixed top-[1.2rem] left-[50%] ml-1.5 z-50
           rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
@@ -62,6 +67,7 @@ const MobileNavbar = ({
           transition-colors duration-200
           hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
           dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+          ${isSection13Active ? 'text-black mix-blend-normal' : ''}
           ${selectedTags.length > 0 || (selectedWork && selectedWork !== '' && selectedWork !== 'resume')
             ? '' 
             : 'border-transparent'

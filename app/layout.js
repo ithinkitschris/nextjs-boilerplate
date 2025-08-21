@@ -108,7 +108,7 @@ useEffect(() => {
 // Footer component that uses browser context and nav context
 const Footer = ({ changelog, toggleChangelog, footerRef }) => {
   const { browserType } = useBrowser();
-  const { hideFooter } = useHideNav();
+  const { hideFooter, isWhiteBG } = useHideNav();
   
   return (
     <motion.div 
@@ -166,11 +166,12 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
 
         onClick={toggleChangelog}>
 
-        <div className="inline-flex ml-1.5">Website built with React and Next.js
+        <div className={`inline-flex ml-1.5 ${isWhiteBG ? 'text-black !text-black dark:!text-black font-semibold' : ''}`}>
+          Website built with React and Next.js
           {changelog ? (
-              <ChevronDownIcon className="h-3.5 w-auto ml-1.5 mt-[3px]" />
+              <ChevronDownIcon className={`h-3.5 w-auto ml-1.5 mt-[3px] ${isWhiteBG ? 'text-black !text-black dark:!text-black' : ''}`} />
           ) : (
-              <ChevronUpIcon className="h-3.5 w-auto ml-1.5 mt-[3px]"  />
+              <ChevronUpIcon className={`h-3.5 w-auto ml-1.5 mt-[3px] ${isWhiteBG ? 'text-black !text-black dark:!text-black' : ''}`} />
           )}
         </div>
       </div>

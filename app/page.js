@@ -47,7 +47,7 @@ import { skillsetData, workTags } from './data/videoData';
 // Main content component that uses useSearchParams
 function HomeContent() {
   const { browserType } = useBrowser();
-  const { hideNav, randomRotation, toggleHideNav } = useHideNav();
+  const { hideNav, randomRotation, toggleHideNav, setIsWhiteBG, isWhiteBG } = useHideNav();
 
   // Use custom hooks
   const isMobile = useMobileDetection();
@@ -56,6 +56,13 @@ function HomeContent() {
 
   const [showNav, setShowNav] = useState(false);
   const [showWork, setShowWork] = useState(false);
+
+  // Reset section 13-15 active state when navigating away from subway page
+  useEffect(() => {
+    if (selectedWork !== 'subway') {
+      setIsWhiteBG(false);
+    }
+  }, [selectedWork, setIsWhiteBG]);
 
   return (
     <>
@@ -111,6 +118,7 @@ function HomeContent() {
               setShowWork={setShowWork}
               skillsetData={skillsetData}
               toggleTag={toggleTag}
+              isWhiteBG={isWhiteBG}
             />
           </motion.div>
 
@@ -123,6 +131,7 @@ function HomeContent() {
             toggleWork={toggleWork}
             setShowWork={setShowWork}
             toggleTag={toggleTag}
+            isSection13Active={isWhiteBG}
           />
 
           {/* Page Container (Adjust px here) */}
@@ -194,7 +203,7 @@ function HomeContent() {
                 ) : selectedWork === 'leica' ? (
                   <Leica key="leica" className="col-span-full"/>
                 ) : selectedWork === 'subway' ? (
-                  <NycSubway key="subway" className="col-span-full"/>
+                  <NycSubway key="subway" className="col-span-full -px-[7%]"/>
                 ) : selectedWork === 'car' ? (
                   <Car key="car" className="col-span-full" showNav={showNav}/>
                 ) : (
