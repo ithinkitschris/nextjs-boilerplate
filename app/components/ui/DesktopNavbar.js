@@ -41,7 +41,7 @@ const DesktopNavbar = ({
         style={browserType === 'chrome' ? {
              backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
           } : {}}
-        animate={{ width: showNav ? '578px' : '152px' }}
+        animate={{ width: showNav ? '567px' : '152px' }}
         transition={{
           type: "spring",
           stiffness: 500,

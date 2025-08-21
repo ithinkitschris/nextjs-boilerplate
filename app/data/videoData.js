@@ -33,7 +33,7 @@ export const skillsetData = [
   { tag: 'motion', label: 'Motion', work: 'clear' },
   { tag: 'edit', label: 'Edit', work: 'clear' },
   { tag: 'photography', label: 'Photo', work: 'clear' },
-  { tag: 'content', label: 'Content', work: 'content' }
+  { tag: 'content', label: 'Social', work: 'content' }
 ];
 
 // Work tags for mapping

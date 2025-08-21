@@ -12,12 +12,13 @@ if (typeof window !== 'undefined') {
   const NycSubway = ({ className }) => {
   const { setIsWhiteBG } = useHideNav();
 
-  // Section 2 refs (speech bubbles)
+  //#region Refs
+  // Section 2 refs (speech bubbles + section 3 content)
   const section2Ref = useRef(null);
   const section2BubbleRefs = useRef([]);
+  const section2EmojiRef = useRef(null);
   
-  // Section 3 refs (text replacement + emoji)
-  const section3Ref = useRef(null);
+  // Section 3 refs (text replacement + emoji) - now part of section 2
   const section3Text1Ref = useRef(null);
   const section3Text2Ref = useRef(null);
   const section3EmojiRef = useRef(null);
@@ -48,8 +49,7 @@ if (typeof window !== 'undefined') {
   const section7EmojiRef = useRef(null);
   const section7BackgroundRef = useRef(null);
   
-  // Section 8 refs (four columns)
-  const section8Ref = useRef(null);
+  // Section 8 refs (four columns) - now part of section 7
   const section8EmojiRef = useRef(null);
   const section8Emoji1Ref = useRef(null);
   const section8Emoji2Ref = useRef(null);
@@ -155,9 +155,9 @@ if (typeof window !== 'undefined') {
   const section19Image1Ref = useRef(null);
   const section19Image2Ref = useRef(null);
   const section19Image3Ref = useRef(null);
-  
+  //#endregion
 
-
+  // Animations
   useEffect(() => {
     // Clear any existing ScrollTriggers
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -169,9 +169,14 @@ if (typeof window !== 'undefined') {
       }
     });
 
+    // Set initial state for section 2 emoji
+    gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
+
+    //#region Initial States
     // Set initial state for section 3
+    gsap.set(section3Text1Ref.current, { opacity: 0, y: 75 });
     gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2});
-    gsap.set(section3EmojiRef.current, { opacity: 0, y: 100 });
+    gsap.set(section3EmojiRef.current, { opacity: 0 });
     
     // Set initial state for section 4
     gsap.set(section4Text1Ref.current, { opacity: 1, scale: 2, y: 0 });
@@ -190,23 +195,20 @@ if (typeof window !== 'undefined') {
     gsap.set(section6BackgroundRef.current, { opacity: 0 });
     
     // Set initial state for section 7
-    gsap.set(section7Text1Ref.current, { opacity: 1, scale: 1, y: 0 });
-    gsap.set(section7Text2Ref.current, { opacity: 0, y: 50 });
-    gsap.set(section7EmojiRef.current, { opacity: 0, y: 100 });
     gsap.set(section7BackgroundRef.current, { opacity: 0 });
     
-    // Set initial state for section 8
-    gsap.set(section8EmojiRef.current, { opacity: 1, scale: 1 });
-    gsap.set(section8Emoji1Ref.current, { opacity: 1, scale: 1 });
-    gsap.set(section8Emoji2Ref.current, { opacity: 0, scale: 1 });
-    gsap.set(section8Emoji3Ref.current, { opacity: 0, scale: 1 });
-    gsap.set(section8Text1Ref.current, { opacity: 1, y: 0 });
+    // Set initial state for section 8 (now hidden initially since it's combined with section 7)
+    gsap.set(section8EmojiRef.current, { opacity: 0, scale: 0.8 });
+    gsap.set(section8Emoji1Ref.current, { opacity: 0 });
+    gsap.set(section8Emoji2Ref.current, { opacity: 0 });
+    gsap.set(section8Emoji3Ref.current, { opacity: 0 });
+    gsap.set(section8Text1Ref.current, { opacity: 0, y: 50 });
     gsap.set(section8Text2Ref.current, { opacity: 0, y: 50 });
     gsap.set(section8Text3Ref.current, { opacity: 0, y: 50 });
 
     // Set initial state for section 11
-    gsap.set(section11OriginalRef.current, { opacity: 1, scale: 1 });
-    gsap.set(section11NewRef.current, { opacity: 0, scale: 0.8 });
+    gsap.set(section11OriginalRef.current, { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' });
+    gsap.set(section11NewRef.current, { opacity: 0, y: 50, filter: 'blur(4px)' });
     gsap.set(section11Text1Ref.current, { opacity: 0, y: 30 });
     gsap.set(section11Text2Ref.current, { opacity: 0, y: 30 });
     gsap.set(section11Text3Ref.current, { opacity: 0, y: 30 });
@@ -290,8 +292,9 @@ if (typeof window !== 'undefined') {
     gsap.set(section19Image1Ref.current, { opacity: 0, scale: 0.95 });
     gsap.set(section19Image3Ref.current, { opacity: 0, scale: 0.95 });
     
+    //#endregion
 
-    
+    //#region Animation States
     let section2AnimationComplete = false;
     let section3AnimationComplete = false;
     let section4AnimationComplete = false;
@@ -309,77 +312,150 @@ if (typeof window !== 'undefined') {
     let section17AnimationComplete = false;
     let section18AnimationComplete = false;
     let section19AnimationComplete = false;
-    
-    // SECTION 2 ANIMATION
+    //#endregion
+
+    // SECTION 2 ANIMATION (Combined with Section 3) - 4 Phases
     ScrollTrigger.create({
       trigger: section2Ref.current,
       start: "bottom 100%",
-      end: "+=100%", // Extend the trigger area for scroll control
+      end: "+=100%", // Extend the trigger area for scroll control to accommodate 4 phases
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        const totalBubbles = section2BubbleRefs.current.length;
         
-        // Calculate which bubble should be visible based on scroll progress
-        section2BubbleRefs.current.forEach((bubble, index) => {
-          if (bubble) {
-            const bubbleStart = index / totalBubbles;
-            const bubbleEnd = (index + 1) / totalBubbles;
-            const bubbleProgress = Math.max(0, Math.min(1, (progress - bubbleStart) / (bubbleEnd - bubbleStart)));
-            
-            // Apply easing to the progress value before setting properties
-            const easedProgress = gsap.parseEase("back.inOut(2)")(bubbleProgress);
-            gsap.set(bubble, {
-              opacity: easedProgress,
-              scale: easedProgress
-            });
-            
-            // Mark animation as complete when all bubbles are visible
-            if (progress >= 1 && index === totalBubbles - 1) {
-              section2AnimationComplete = true;
+        // Phase 1: Bubbles animation (0-50%)
+        if (progress <= 0.5) {
+          const phase1Progress = progress / 0.5; // 0 to 1 for phase 1
+          const totalBubbles = section2BubbleRefs.current.length;
+          
+          // Calculate which bubble should be visible based on scroll progress
+          section2BubbleRefs.current.forEach((bubble, index) => {
+            if (bubble) {
+              const bubbleStart = index / totalBubbles;
+              const bubbleEnd = (index + 1) / totalBubbles;
+              const bubbleProgress = Math.max(0, Math.min(1, (phase1Progress - bubbleStart) / (bubbleEnd - bubbleStart)));
+              
+              // Apply easing to the progress value before setting properties
+              const easedProgress = gsap.parseEase("back.inOut(2)")(bubbleProgress);
+              gsap.set(bubble, {
+                opacity: easedProgress,
+                scale: easedProgress
+              });
             }
-          }
-        });
-      }
-    });
+          });
 
-    // SECTION 3 ANIMATION
-    ScrollTrigger.create({
-      trigger: section3Ref.current,
-      start: "bottom 100%",
-      end: "+=25%", // Extend the trigger area for scroll control
-      pin: true, // Pin the section in place
-      scrub: 1, // Smooth scrubbing
-      onUpdate: (self) => {
-        const progress = self.progress; // 0 to 1
+          // Animate emoji with first bubble (index 0)
+          if (section2EmojiRef.current) {
+            const firstBubbleStart = 0 / totalBubbles;
+            const firstBubbleEnd = 1 / totalBubbles;
+            const emojiProgress = Math.max(0, Math.min(1, (phase1Progress - firstBubbleStart) / (firstBubbleEnd - firstBubbleStart)));
+            
+            const easedEmojiProgress = gsap.parseEase("back.inOut(2)")(emojiProgress);
+            gsap.set(section2EmojiRef.current, {
+              opacity: easedEmojiProgress,
+              scale: 0.9 + (0.1 * easedEmojiProgress) // Scale from 0.9 to 1.0
+            });
+          }
+          
+          // Keep section 3 elements hidden during phase 1
+          gsap.set(section3Text1Ref.current, { opacity: 0, scale: 1 });
+          gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
+          gsap.set(section3EmojiRef.current, { opacity: 0 });
+        }
+        // Phase 2: Clear everything (50-60%)
+        else if (progress <= 0.6) {
+          const phase2Progress = (progress - 0.5) / 0.1; // 0 to 1 for phase 2
+          const easedPhase2Progress = gsap.parseEase("power3.inOut")(phase2Progress);
+          
+          // Hide all bubbles
+          section2BubbleRefs.current.forEach((bubble) => {
+            if (bubble) {
+              gsap.set(bubble, { 
+                opacity: 1 - easedPhase2Progress, 
+                scale: 1 - (0.2 * easedPhase2Progress) 
+              });
+            }
+          });
+          
+          // Hide section 2 emoji
+          gsap.set(section2EmojiRef.current, { 
+            opacity: 1 - easedPhase2Progress, 
+            scale: 1 - (0.1 * easedPhase2Progress) 
+          });
+          
+          // Hide the main title text "The New York City Subway is not great"
+          // We need to target the text element that contains this content
+          const mainTitleElement = section2Ref.current?.querySelector('p');
+          if (mainTitleElement) {
+            gsap.set(mainTitleElement, { 
+              opacity: 1 - easedPhase2Progress,
+              scale: 1 - (0.1 * easedPhase2Progress)
+            });
+          }
+          
+          // Keep section 3 elements hidden during clear phase
+          gsap.set(section3Text1Ref.current, { opacity: 0, scale: 1 });
+          gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
+          gsap.set(section3EmojiRef.current, { opacity: 0 });
+        }
+        // Phase 3: "We all already knew that" (60-90%)
+        else if (progress <= 0.9) {
+          const phase3Progress = (progress - 0.6) / 0.3; // 0 to 1 for phase 3
+          const easedPhase3Progress = gsap.parseEase("back.out")(phase3Progress);
+          
+          // Keep everything hidden from previous phases
+          section2BubbleRefs.current.forEach((bubble) => {
+            if (bubble) {
+              gsap.set(bubble, { opacity: 0, scale: 0 });
+            }
+          });
+          gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
+          
+          // Animate in "We all already knew that"
+          gsap.set(section3Text1Ref.current, {
+            opacity: easedPhase3Progress,
+            y: 75 - (75 * easedPhase3Progress)
+          });
+          
+          // Keep other section 3 elements hidden
+          gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
+          gsap.set(section3EmojiRef.current, { opacity: 0 });
+        }
+        // Phase 4: "However, I decided to take a crack at it" (90-100%)
+        else {
+          const phase4Progress = (progress - 0.9) / 0.1; // 0 to 1 for phase 4
+          const easedPhase4Progress = gsap.parseEase("back.out(2)")(phase4Progress);
+          
+          // Keep everything hidden from previous phases
+          section2BubbleRefs.current.forEach((bubble) => {
+            if (bubble) {
+              gsap.set(bubble, { opacity: 0, scale: 0 });
+            }
+          });
+          gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
+          
+          // "We all already knew that" scales down and fades out
+          gsap.set(section3Text1Ref.current, { 
+            opacity: 1 - easedPhase4Progress,
+            scale: 1 - (0.2 * easedPhase4Progress)
+          });
+          
+          // Animate in "However, I decided to take a crack at it" and emoji
+          gsap.set(section3Text2Ref.current, {
+            opacity: easedPhase4Progress,
+            scale: 1.15 - (0.15 * easedPhase4Progress)
+          });
+          
+          gsap.set(section3EmojiRef.current, {
+            opacity: easedPhase4Progress,
+            scale: 0.75 + (0.15 * easedPhase4Progress)
+          });
+        }
         
-        // Animation happens from 0% to 100% of scroll (no delays)
-        const adjustedProgress = progress; // 0 to 1 for actual animation
-        
-        // Text 1 fades out, Text 2 and Emoji fade in together
-        const textProgress = Math.min(1, adjustedProgress); // Cap at 1
-        
-        // Text 1 fades out and scales down
-        gsap.set(section3Text1Ref.current, {
-          opacity: 1 - textProgress,
-          scale: 0.8 + (0.2 * (1 - textProgress))
-        });
-        
-        // Text 2 fades in and scales down
-        gsap.set(section3Text2Ref.current, {
-          opacity: textProgress,
-          scale: 1.1 - (0.1 * textProgress)
-        });
-        
-        // Emoji fades in and moves up at the same time
-        gsap.set(section3EmojiRef.current, {
-          opacity: textProgress,
-          y: 100 - (100 * textProgress)
-        });
-        
-        // Mark animation as complete when animation finishes (at 100% scroll)
+        // Mark animations as complete when all phases finish
         if (progress >= 1) {
+          section2AnimationComplete = true;
           section3AnimationComplete = true;
         }
       }
@@ -440,7 +516,7 @@ if (typeof window !== 'undefined') {
     ScrollTrigger.create({
       trigger: section5Ref.current,
       start: "bottom 100%",
-      end: "+=50%", // Extend the trigger area for scroll control
+      end: "+=40%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
@@ -534,136 +610,147 @@ if (typeof window !== 'undefined') {
       }
     });
     
-    // SECTION 7 ANIMATION
+    // SECTION 7+8 COMBINED ANIMATION
     ScrollTrigger.create({
       trigger: section7Ref.current,
       start: "bottom 100%",
-      end: "+=25%", // Extend the trigger area for scroll control
+      end: "+=90%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
-        // Animation happens from 0% to 100% of scroll (no delays)
-        const adjustedProgress = progress; // 0 to 1 for actual animation
-        const textProgress = adjustedProgress; // Use full progress range
-        
-        // Text 1 shifts upward as text2 appears
-        gsap.set(section7Text1Ref.current, {
-          opacity: 1,
-          scale: 1,
-          y: -100 * textProgress // Moves up 60px as animation progresses
-        });
-        
-        // Text 2 fades in and moves up
-        gsap.set(section7Text2Ref.current, {
-          opacity: textProgress,
-          y: 100 - (100 * textProgress) // Moves up from 50px below to 0px
-        });
-        
-        // Emoji fades in and moves up
-        gsap.set(section7EmojiRef.current, {
-          opacity: textProgress,
-          y: 100 - (100 * textProgress)
-        });
-        
-        // Background gradient fades in
-        gsap.set(section7BackgroundRef.current, {
-          opacity: textProgress
-        });
+        // Phase 1: Fade out section 7 content (0-25%)
+        if (progress <= 0.25) {
+          const phase1Progress = progress / 0.25; // 0 to 1 for phase 1
+          const easedPhase1Progress = gsap.parseEase("power3.inOut")(phase1Progress);
+          
+          // Fade out section 7 content
+          gsap.set(section7Text1Ref.current, {
+            opacity: 1 - easedPhase1Progress,
+            y: 0
+          });
+          
+          gsap.set(section7Text2Ref.current, {
+            opacity: 1 - easedPhase1Progress,
+            y: 0
+          });
+          
+          gsap.set(section7EmojiRef.current, {
+            opacity: 1 - easedPhase1Progress
+          });
+          
+          // Keep section 8 content hidden during phase 1
+          gsap.set(section8EmojiRef.current, { opacity: 0, scale: 0.8 });
+          gsap.set(section8Emoji1Ref.current, { opacity: 0 });
+          gsap.set(section8Emoji2Ref.current, { opacity: 0 });
+          gsap.set(section8Emoji3Ref.current, { opacity: 0 });
+          gsap.set(section8Text1Ref.current, { opacity: 0, y: 50 });
+          gsap.set(section8Text2Ref.current, { opacity: 0, y: 50 });
+          gsap.set(section8Text3Ref.current, { opacity: 0, y: 50 });
+        }
+        // Phase 2: Animate section 8 emoji and first text column (25-50%)
+        else if (progress <= 0.5) {
+          const phase2Progress = (progress - 0.25) / 0.25; // 0 to 1 for phase 2
+          const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
+          
+          // Keep section 7 content hidden
+          gsap.set(section7Text1Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section7Text2Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section7EmojiRef.current, { opacity: 0 });
+          
+          // Animate section 8 emoji container and first emoji
+          gsap.set(section8EmojiRef.current, {
+            opacity: easedPhase2Progress,
+            scale: 0.8 + (0.2 * easedPhase2Progress)
+          });
+          gsap.set(section8Emoji1Ref.current, {
+            opacity: easedPhase2Progress
+          });
+          
+          // Animate first text column
+          gsap.set(section8Text1Ref.current, {
+            opacity: easedPhase2Progress,
+            y: 50 - (50 * easedPhase2Progress)
+          });
+          
+          // Keep other section 8 content hidden
+          gsap.set(section8Emoji2Ref.current, { opacity: 0 });
+          gsap.set(section8Emoji3Ref.current, { opacity: 0 });
+          gsap.set(section8Text2Ref.current, { opacity: 0, y: 50 });
+          gsap.set(section8Text3Ref.current, { opacity: 0, y: 50 });
+        }
+        // Phase 3: Second text column and change emoji (50-75%)
+        else if (progress <= 0.75) {
+          const phase3Progress = (progress - 0.5) / 0.25; // 0 to 1 for phase 3
+          const easedPhase3Progress = gsap.parseEase("back.out")(phase3Progress);
+          
+          // Keep section 7 content hidden
+          gsap.set(section7Text1Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section7Text2Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section7EmojiRef.current, { opacity: 0 });
+          
+          // Keep emoji container and first text column visible
+          gsap.set(section8EmojiRef.current, { opacity: 1, scale: 1 });
+          gsap.set(section8Text1Ref.current, { opacity: 1, y: 0 });
+          
+          // Change emoji: emoji1 fades out, emoji2 fades in
+          gsap.set(section8Emoji1Ref.current, {
+            opacity: 1 - easedPhase3Progress
+          });
+          gsap.set(section8Emoji2Ref.current, {
+            opacity: easedPhase3Progress
+          });
+          
+          // Animate second text column
+          gsap.set(section8Text2Ref.current, {
+            opacity: easedPhase3Progress,
+            y: 50 - (50 * easedPhase3Progress)
+          });
+          
+          // Keep third text column hidden
+          gsap.set(section8Text3Ref.current, { opacity: 0, y: 50 });
+          gsap.set(section8Emoji3Ref.current, { opacity: 0 });
+        }
+        // Phase 4: Last text column and change emoji (75-100%)
+        else {
+          const phase4Progress = (progress - 0.75) / 0.25; // 0 to 1 for phase 4
+          const easedPhase4Progress = gsap.parseEase("back.out")(phase4Progress);
+          
+          // Keep section 7 content hidden
+          gsap.set(section7Text1Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section7Text2Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section7EmojiRef.current, { opacity: 0 });
+          
+          // Keep emoji container and first two text columns visible
+          gsap.set(section8EmojiRef.current, { opacity: 1, scale: 1 });
+          gsap.set(section8Text1Ref.current, { opacity: 1, y: 0 });
+          gsap.set(section8Text2Ref.current, { opacity: 1, y: 0 });
+          
+          // Change emoji: emoji2 fades out, emoji3 fades in
+          gsap.set(section8Emoji2Ref.current, {
+            opacity: 1 - easedPhase4Progress
+          });
+          gsap.set(section8Emoji3Ref.current, {
+            opacity: easedPhase4Progress
+          });
+          
+          // Animate third text column
+          gsap.set(section8Text3Ref.current, {
+            opacity: easedPhase4Progress,
+            y: 50 - (50 * easedPhase4Progress)
+          });
+        }
         
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section7AnimationComplete = true;
-        }
-      }
-    });
-
-    // SECTION 8 ANIMATION
-    ScrollTrigger.create({
-      trigger: section8Ref.current,
-      start: "bottom 100%",
-      end: "+=100%", // Extend the trigger area for scroll control
-      pin: true, // Pin the section in place
-      scrub: 1, // Smooth scrubbing
-      onUpdate: (self) => {
-        const progress = self.progress; // 0 to 1
-        
-        // Animation happens from 0% to 100% of scroll (no delays)
-        const animationProgress = progress; // 0 to 1 for animation
-        
-        // Text columns animation follows section 5 pattern with easing
-        if (progress <= 0.5) {
-          const text2Progress = progress / 0.5; // 0 to 1 for text 2 animation
-          const easedText2Progress = gsap.parseEase("power4.out")(text2Progress);
-          
-          // Column 2 (Text 1) stays at full opacity
-          gsap.set(section8Text1Ref.current, {
-            opacity: 1,
-            y: 0
-          });
-          
-          // Column 3 (Text 2) fades in and moves up
-          gsap.set(section8Text2Ref.current, {
-            opacity: easedText2Progress,
-            y: 50 - (50 * easedText2Progress)
-          });
-          
-          // Emoji 1 fades out, Emoji 2 fades in
-          gsap.set(section8Emoji1Ref.current, {
-            opacity: 1 - easedText2Progress
-          });
-          gsap.set(section8Emoji2Ref.current, {
-            opacity: 0 + easedText2Progress
-          });
-          
-          // Ensure column 4 is hidden during first half
-          gsap.set(section8Text3Ref.current, {
-            opacity: 0,
-            y: 50
-          });
-          gsap.set(section8Emoji3Ref.current, {
-            opacity: 0
-          });
-        } else {
-          const text3Progress = (progress - 0.5) / 0.5; // 0 to 1 for text 3 animation
-          const easedText3Progress = gsap.parseEase("power4.out")(text3Progress);
-          
-          // Column 2 (Text 1) stays at full opacity
-          gsap.set(section8Text1Ref.current, {
-            opacity: 1,
-            y: 0
-          });
-          
-          // Column 3 (Text 2) stays at full opacity
-          gsap.set(section8Text2Ref.current, {
-            opacity: 1,
-            y: 0
-          });
-          
-          // Column 4 (Text 3) fades in and moves up
-          gsap.set(section8Text3Ref.current, {
-            opacity: easedText3Progress,
-            y: 50 - (50 * easedText3Progress)
-          });
-          
-          // Emoji 2 fades out, Emoji 3 fades in
-          gsap.set(section8Emoji2Ref.current, {
-            opacity: 1 - easedText3Progress
-          });
-          gsap.set(section8Emoji3Ref.current, {
-            opacity: 0 + easedText3Progress
-          });
-        }
-        
-        // Mark animation as complete when animation finishes (at 100% scroll)
-        if (progress >= 1) {
           section8AnimationComplete = true;
         }
       }
     });
 
-    // SECTION 11 ANIMATION (Combined Phase 1 & 2)
+    // SECTION 11 ANIMATION 
     ScrollTrigger.create({
       trigger: section11Ref.current,
       start: "bottom 100%",
@@ -678,16 +765,19 @@ if (typeof window !== 'undefined') {
           const phase1Progress = progress / 0.5; // 0 to 1 for phase 1
           const easedPhase1Progress = gsap.parseEase("power3.inOut")(phase1Progress);
           
-          // Original rectangle fades out and scales down
+          // Original rectangle fades out, slides up, scales down, and blurs
           gsap.set(section11OriginalRef.current, {
             opacity: 1 - easedPhase1Progress,
-            scale: 1 - (0.2 * easedPhase1Progress)
+            y: -10 * easedPhase1Progress,
+            scale: 1 - (0.1 * easedPhase1Progress),
+            filter: `blur(${5 * easedPhase1Progress}px)`
           });
           
-          // First new rectangle fades in and scales up
+          // First new rectangle fades in and slides up
           gsap.set(section11NewRef.current, {
             opacity: easedPhase1Progress,
-            scale: 0.8 + (0.2 * easedPhase1Progress)
+            y: 150 - (155 * easedPhase1Progress),
+            filter: `blur(${4 - (4 * easedPhase1Progress)}px)`
           });
           
           // Top paragraph fades in first
@@ -1095,7 +1185,7 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 14 ANIMATION (3 columns) - Phase 1 & 2
+    // SECTION 14 ANIMATION 
     ScrollTrigger.create({
       trigger: section14Ref.current,
       start: "bottom 100%",
@@ -1219,7 +1309,7 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 15 ANIMATION (3 columns) - Phase 1, 2 & 3
+    // SECTION 15 ANIMATION 
     ScrollTrigger.create({
       trigger: section15Ref.current,
       start: "bottom 100%",
@@ -1506,7 +1596,7 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 16 ANIMATION (3 columns) - Phase 1 & 2 (identical to section 14)
+    // SECTION 16 ANIMATION 
     ScrollTrigger.create({
       trigger: section16Ref.current,
       start: "bottom 100%",
@@ -1622,7 +1712,7 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    // SECTION 17 ANIMATION (3 columns) - Phase 1, 2 & 3
+    // SECTION 17 ANIMATION 
     ScrollTrigger.create({
       trigger: section17Ref.current,
       start: "bottom 100%",
@@ -1940,6 +2030,7 @@ if (typeof window !== 'undefined') {
     };
   }, [setIsWhiteBG]);
 
+  // Body
   return (
       <div className={`relative overflow-x-hidden col-span-full -mx-[8%] -mt-36 ${className || ''}`}>
 
@@ -1969,14 +2060,15 @@ if (typeof window !== 'undefined') {
         </div>
       </section>
 
-      {/* Section 2 – Bubbles */}
+      {/* Section 2 – Bubbles + Take a Crack at It (Combined) */}
       <section 
         ref={section2Ref}
         className="min-h-screen flex items-center justify-center relative border-0 border-white/[20%]"
       >
         <div className="w-full mx-auto text-center relative h-screen">
-          {/* Text Box */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          
+          {/* Section 2 Text Box */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
             <p className="text-4xl md:text-6xl font-semibold text-foreground tracking-tight w-2/3 mx-auto"
             style={{ lineHeight: '0.9' }}
             >
@@ -1989,83 +2081,76 @@ if (typeof window !== 'undefined') {
             ref={(el) => section2BubbleRefs.current[0] = el}
             src="/subway/bubble1.png" 
             alt="Speech Bubble 1" 
-            className="absolute bottom-[25%] left-20 w-120 h-auto"
+            className="absolute bottom-[25%] left-[10%] w-120 h-auto"
           />
           <img 
             ref={(el) => section2BubbleRefs.current[1] = el}
             src="/subway/bubble4.png" 
             alt="Speech Bubble 2" 
-            className="absolute bottom-[60%] left-[8%] w-120 h-auto blur-[1.5px]"
+            className="absolute bottom-[58%] left-[7%] w-[35%] h-auto blur-[1.5px]"
           />
           <img 
             ref={(el) => section2BubbleRefs.current[2] = el}
             src="/subway/bubble3.png" 
             alt="Speech Bubble 3" 
-            className="absolute bottom-[70%] right-[30%] w-120 h-auto blur-[2px]"
+            className="absolute bottom-[69%] right-[35%] w-120 h-auto blur-[2px]"
           />
           <img 
             ref={(el) => section2BubbleRefs.current[3] = el}
             src="/subway/bubble2.png" 
             alt="Speech Bubble 4" 
-            className="absolute bottom-[45%] right-[2%] w-120 h-auto blur-[3px]"
+            className="absolute bottom-[50%] right-[3%] w-120 h-auto blur-[3px]"
           />
           <img 
             ref={(el) => section2BubbleRefs.current[4] = el}
             src="/subway/bubble5.png" 
             alt="Speech Bubble 5" 
-            className="absolute bottom-[15%] right-[5%] w-120 h-auto"
+            className="absolute bottom-[15%] right-[7%] w-135 h-auto"
           />
-        </div>
-        
-        {/* Bottom middle emoji */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
-          <img 
-            src="/subway/section2emoji2.png" 
-            alt="Section 1 Emoji" 
-            className="max-w-full h-96"
-          />
-        </div>
-      </section>
+          
+          {/* Section 2 Bottom middle emoji */}
+          <div 
+            ref={section2EmojiRef}
+            className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-80 h-80 rounded-full overflow-hidden glass-sm"
+          >
+            <img 
+              src="/subway/section2emoji.png" 
+              alt="Section 1 Emoji" 
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-      {/* Section 3 – Take a Crack at It*/}
-      <section 
-        ref={section3Ref}
-        className="min-h-screen flex items-center justify-center relative border-0 border-white/[20%]"
-      >
-        <div className="w-full mx-auto text-center relative h-screen">
-
-          {/* Text Box 1 */}
+          {/* Section 3 Text Box 1 */}
           <div 
             ref={section3Text1Ref}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           >
-            <h2 className="text-4.5xl font-medium text-foreground tracking-tight">
+            <h2 className="text-4.5xl font-medium text-foreground tracking-tight -mt-4">
               We all already knew that.
             </h2>
           </div>
           
-          {/* Text Box 2 */}
+          {/* Section 3 Text Box 2 */}
           <div 
             ref={section3Text2Ref}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
           >
-            <h2 className="text-4xl md:text-6xl font-semibold text-foreground tracking-tight">
-              However, I decided to take a crack at it.
+            <h2 className="text-4xl md:text-6xl font-medium text-foreground tracking-tight w-[40%] mx-auto -mt-28">
+              However, I decided to take a crack at it anyway.
             </h2>
           </div>
           
-        </div>
-        
-        {/* Bottom middle emoji */}
-        <div 
-          ref={section3EmojiRef}
-          className="absolute bottom-0"
-        >
-          <img 
-            src="/subway/section3emoji.png" 
-            alt="Section 3 Emoji" 
-            className="max-w-full h-96"
-          />
+          {/* Section 3 Bottom middle emoji */}
+          <div 
+            ref={section3EmojiRef}
+            className="absolute bottom-36 left-1/2 transform -translate-x-1/2 w-80 h-80 rounded-full overflow-hidden glass-sm"
+          >
+            <img 
+              src="/subway/section3emoji.png" 
+              alt="Section 1 Emoji" 
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </section>
 
@@ -2194,7 +2279,7 @@ if (typeof window !== 'undefined') {
             {/* Text 1 */}
              <div 
                ref={section6Text1Ref}
-               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+               className="absolute top-[53%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
              >
                  <p className="text-2xl font-medium text-foreground tracking-tight">After which...</p>
 
@@ -2205,7 +2290,7 @@ if (typeof window !== 'undefined') {
                ref={section6Text2Ref}
                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[75%]"
              >
-                 <p className="text-4xl md:text-7xl font-semibold text-foreground tracking-tight -mt-20"
+                 <p className="text-[68pt] -mt-4 font-semibold text-foreground tracking-tight mx-auto"
                  style={{ lineHeight: '0.9' }}>
                  I looked to someone who knew what he was talking about.
                  </p>
@@ -2225,13 +2310,12 @@ if (typeof window !== 'undefined') {
         </div>
       </section>
 
-      {/* Section 7 – Sim Hao Jie */}
+      {/* Section 7+8 – Sim Hao Jie + Expert Insights */}
       <section 
         ref={section7Ref}
         className="min-h-screen flex items-center justify-center relative"
       >
-
-        {/* Container */}
+        {/* Section 7 Content */}
         <div className="w-full text-center">
            
             {/* Text 1 */}
@@ -2239,7 +2323,7 @@ if (typeof window !== 'undefined') {
                ref={section7Text1Ref}
                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
              >
-              <p className="text-7xl font-semibold tracking-tight mx-auto bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent">Sim Hao Jie</p>
+              <p className="text-[60pt] py-10 font-semibold tracking-tight mx-auto bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent -mt-36">Sim Hao Jie</p>
 
              </div>
              
@@ -2248,7 +2332,7 @@ if (typeof window !== 'undefined') {
                ref={section7Text2Ref}
                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[65%]"
              >
-                 <p className="text-3xl font-medium text-foreground -mt-10"
+                 <p className="text-[20pt] mt-14 font-medium text-foreground w-[80%] mx-auto"
                   style={{ lineHeight: '1.25' }}>
                  is a Service Designer based in New York City and has conducted studies with communities regarding the daily experience 
                  and situation of the New York City Subway.
@@ -2264,19 +2348,13 @@ if (typeof window !== 'undefined') {
           <img 
             src="/subway/section7emoji.png" 
             alt="Section 7 Emoji" 
-            className="max-w-full h-[20rem]"
+            className="max-w-full h-[22rem]"
           />
         </div>
-      </section>
 
-      {/* Section 8 – Expert Insights */}
-      <section 
-        ref={section8Ref}
-        className="min-h-screen flex items-center justify-center relative"
-      >
-        {/* Container */}
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="grid grid-cols-4 gap-10 items-start">
+        {/* Section 8 Content - Overlaid on top */}
+        <div className="absolute inset-0 w-full flex items-center justify-center">
+          <div className="grid grid-cols-4 gap-10 items-start max-w-7xl -mt-10">
             
             {/* Column 1 - Emoji */}
             <div 
@@ -2308,7 +2386,7 @@ if (typeof window !== 'undefined') {
             {/* Column 2 - Text 1 */}
             <div 
               ref={section8Text1Ref}
-              className="flex items-start flex-col"
+              className="flex items-start flex-col pt-20"
             >
               <div className="mb-4">
                 <img 
@@ -2332,7 +2410,7 @@ if (typeof window !== 'undefined') {
             {/* Column 3 - Text 2 */}
             <div 
               ref={section8Text2Ref}
-              className="flex flex-col"
+              className="flex flex-col pt-20"
             >
               <div className="mb-4">
                 <img 
@@ -2356,7 +2434,7 @@ if (typeof window !== 'undefined') {
             {/* Column 4 - Text 3 */}
             <div 
               ref={section8Text3Ref}
-              className="flex flex-col"
+              className="flex flex-col pt-20"
             >
               <div className="mb-4">
                 <img 
@@ -2462,6 +2540,7 @@ if (typeof window !== 'undefined') {
         <div 
           ref={section11OriginalRef}
           className="bg-white dark:border-0 dark:glass-strong drop-shadow-xl rounded-3xl w-[30%] h-[70%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden"
+          style={{ top: '4%' }}
         >
           {/* Text */}
           <div className="pl-14 pt-12 text-left w-full">
@@ -3336,7 +3415,7 @@ if (typeof window !== 'undefined') {
 
       
     </div>
-  );
+  );s
 };
 
 export default NycSubway;
