@@ -3048,7 +3048,7 @@ const NycSubway = ({ className }) => {
               </h3>
 
               <p className="text-sm text-gray-700 font-medium text-left">
-                UWB also enables better device-to-device awareness, improving AirDrop by detecting which person you're pointing at.
+                UWB also enables better device-to-device awareness, improving AirDrop by detecting which person you&apos;re pointing at.
               </p>
 
             </div>
@@ -3485,7 +3485,7 @@ const NycSubway = ({ className }) => {
               ref={section15Phase4DTextRef}
               className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
             >
-            The station's navigation system guides you to your platform with precision.
+            The station&apos;s navigation system guides you to your platform with precision.
             </p>
             
           </div>
