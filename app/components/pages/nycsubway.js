@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useHideNav } from '../../context/HideNavContext';
@@ -11,7 +11,307 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Mobile Error Screen Component
+// Scroll Progress Tracker Component
+const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) => {
+  const [showDebug, setShowDebug] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [previousSection, setPreviousSection] = useState(currentSection);
+  const [isHovering, setIsHovering] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isEnabled, setIsEnabled] = useState(true);
+  const hideTimerRef = useRef(null);
+  const trackerRef = useRef(null);
+  const contentRef = useRef(null);
+  
+  const sections = [
+    'Intro',
+    'Personal',
+    'Expert',
+    'Problem',
+    'UWB',
+    'Prototype',
+    'Summary'
+  ];
+
+  // Toggle debug window with Tab key, toggle tracker with Shift+Tab
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        if (event.shiftKey) {
+          // Shift+Tab toggles the progress tracker
+          setIsEnabled(prev => !prev);
+        } else {
+          // Tab toggles debug window
+          setShowDebug(prev => !prev);
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+    return () => document.removeEventListener('keydown', handleKeyPress);
+  }, []);
+
+  // Show tracker when grouped section changes
+  useEffect(() => {
+    if (!isEnabled) return; // Don't show tracker if disabled
+    
+    const currentGroupedSection = getGroupedSection(currentSection);
+    const previousGroupedSection = getGroupedSection(previousSection);
+    
+    if (currentGroupedSection !== previousGroupedSection) {
+      // Clear any existing timer
+      if (hideTimerRef.current) {
+        clearTimeout(hideTimerRef.current);
+      }
+      
+      // Show tracker with GSAP animation
+      if (trackerRef.current) {
+        gsap.to(trackerRef.current, {
+          scaleX: 1,
+          duration: 0.4,
+          ease: "expo.out"
+        });
+        if (contentRef.current) {
+          gsap.to(contentRef.current, {
+            x: 0,
+            duration: 0.4,
+            ease: "expo.out"
+          });
+        }
+      }
+      setIsVisible(true);
+      setPreviousSection(currentSection);
+      
+      // Start hide timer only if not hovering
+      if (!isHovering) {
+        hideTimerRef.current = setTimeout(() => {
+          // Hide tracker with GSAP animation
+          if (trackerRef.current) {
+            gsap.to(trackerRef.current, {
+              scaleX: 0,
+              duration: 0.4,
+              ease: "expo.in"
+            });
+            if (contentRef.current) {
+              gsap.to(contentRef.current, {
+                x: "200%",
+                duration: 0.4,
+                ease: "expo.in"
+              });
+            }
+          }
+          setIsVisible(false);
+        }, 2000);
+      }
+    }
+  }, [currentSection, previousSection, isHovering, isEnabled]);
+
+  // Handle hover state changes
+  useEffect(() => {
+    if (!isEnabled) return; // Don't handle hover if disabled
+    
+    if (isVisible) {
+      if (isHovering) {
+        // Clear timer when hovering
+        if (hideTimerRef.current) {
+          clearTimeout(hideTimerRef.current);
+          hideTimerRef.current = null;
+        }
+      } else {
+        // Start timer when not hovering
+        if (!hideTimerRef.current) {
+          hideTimerRef.current = setTimeout(() => {
+            // Hide tracker with GSAP animation
+            if (trackerRef.current) {
+              gsap.to(trackerRef.current, {
+                scaleX: 0,
+                duration: 0.3,
+                ease: "power3.in"
+              });
+              if (contentRef.current) {
+                gsap.to(contentRef.current, {
+                  x: "200%",
+                  duration: 0.3,
+                  ease: "power3.in"
+                });
+              }
+            }
+            setIsVisible(false);
+          }, 2000);
+        }
+      }
+    }
+  }, [isHovering, isVisible, isEnabled]);
+
+  // Handle enable/disable changes
+  useEffect(() => {
+    if (!isEnabled && isVisible) {
+      // Hide tracker immediately when disabled
+      if (trackerRef.current) {
+        gsap.to(trackerRef.current, {
+          scaleX: 0,
+          duration: 0.3,
+          ease: "power2.in"
+        });
+        if (contentRef.current) {
+          gsap.to(contentRef.current, {
+            x: "200%",
+            duration: 0.3,
+            ease: "power2.in"
+          });
+        }
+      }
+      setIsVisible(false);
+      // Clear any existing timer
+      if (hideTimerRef.current) {
+        clearTimeout(hideTimerRef.current);
+        hideTimerRef.current = null;
+      }
+    }
+  }, [isEnabled, isVisible]);
+
+  // Calculate scroll progress
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Calculate initial progress
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Map individual sections to grouped sections
+  const getGroupedSection = (sectionNumber) => {
+    if (sectionNumber <= 2) return 1; // Setup
+    if (sectionNumber >= 4 && sectionNumber <= 6) return 2; // Personal Insight
+    if (sectionNumber <= 7) return 3; // Expert Insight
+    if (sectionNumber === 9) return 4; // Problem Statement
+    if (sectionNumber <= 12) return 5; // UWB
+    if (sectionNumber <= 17) return 6; // Prototype
+    if (sectionNumber >= 18) return 7; // Summary
+    return 6; // Default to Prototype for section 19
+  };
+
+  // Scroll to section function
+  const scrollToSection = (groupNumber) => {
+    let targetRef;
+    switch (groupNumber) {
+      case 1: targetRef = sectionRefs[0]; break; // Introduction: section 1
+      case 2: targetRef = sectionRefs[3]; break; // Lived Experience: section 4
+      case 3: targetRef = sectionRefs[5]; break; // Expert Insight: section 5
+      case 4: targetRef = sectionRefs[8]; break; // Problem Statement: section 9
+      case 5: targetRef = sectionRefs[10]; break; // Ultra Wideband: section 7
+      case 6: targetRef = sectionRefs[12]; break; // Prototype: section 11
+      case 7: targetRef = sectionRefs[17]; break; // Summary: section 18
+      default: targetRef = sectionRefs[0]; break;
+    }
+    
+    if (targetRef && targetRef.current) {
+      targetRef.current.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    } else {
+      console.log(`Section ${groupNumber} not found or null`);
+    }
+  };
+
+  const currentGroupedSection = getGroupedSection(currentSection);
+
+  return (
+    <>
+      {/* Debug Window */}
+      {showDebug && (
+        <div className="fixed left-6 top-6 z-50 bg-black/80 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white/10 text-white text-xs font-mono">
+          <div className="mb-2 font-semibold">Debug Info:</div>
+          <div>Current Section: {currentSection}</div>
+          <div>Grouped Section: {currentGroupedSection}</div>
+          <div>Total Sections: {totalSections}</div>
+          <div className="mt-2 text-yellow-300">
+            Active: {sections[currentGroupedSection - 1] || 'None'}
+          </div>
+          <div className="mt-2 text-blue-300">
+            Section Refs: {sectionRefs.filter(ref => ref !== null).length} valid
+          </div>
+        </div>
+      )}
+
+      {/* Progress Tracker */}
+      {isEnabled && (
+        <div 
+          ref={trackerRef}
+          className="fixed right-0 z-50"
+          style={{
+            top: `${Math.max(20, Math.min(80, scrollProgress))}%`,
+            transform: 'translateY(-50%) scaleX(0)',
+            transformOrigin: 'right'
+          }}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
+
+        <div 
+          ref={contentRef}
+          className="bg-black rounded-l-3xl pr-2 pl-4 py-6 relative drop-shadow-[3px_6px_7px_rgba(0,0,0,0.5)]"
+          style={{ transform: 'translateX(200%)' }}
+        >
+          
+          
+          {/* Top right rounded corner SVG */}
+          <svg 
+            className="absolute -top-6 right-0 w-6 h-6 drop-shadow-2xl"
+            viewBox="0 0 24 24" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              d="M0 24 L24 24 L24 0 Q24 24 0 24 Z" 
+              fill="black"
+            />
+          </svg>
+          
+          {/* Bottom right rounded corner SVG */}
+          <svg 
+            className="absolute -bottom-6 right-0 w-6 h-6 drop-shadow-2xl"
+            viewBox="0 0 24 24" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              d="M0 0 L24 0 L24 24 Q24 0 0 0 Z" 
+              fill="black"
+            />
+          </svg>
+          
+          <div className="flex flex-col space-y-2 items-end">
+            {sections.map((section, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToSection(index + 1)}
+                className={`tracking-tight font-medium text-foreground transition-all duration-300 cursor-pointer ${
+                  currentGroupedSection === index + 1
+                    ? ' text-white text-md font-semibold'
+                    : ' text-xs opacity-25 hover:text-base hover:opacity-100'
+                }`}
+              >
+                {section}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+      )}
+    </>
+  );
+};
+
+// Mobile Screen Component
 const MobileErrorScreen = () => {
   return (
     <div className="h-[90vh] flex col-span-full items-center justify-center text-white px-6" >
@@ -54,8 +354,13 @@ const MobileErrorScreen = () => {
 const NycSubway = ({ className }) => {
   const { setIsWhiteBG } = useHideNav();
   const isMobile = useMobileDetection();
+  const [currentSection, setCurrentSection] = useState(1);
+  const totalSections = 7;
 
   //#region Refs
+  // Section 1 refs (title)
+  const section1Ref = useRef(null);
+  
   // Section 2 refs (speech bubbles + section 3 content)
   const section2Ref = useRef(null);
   const section2BubbleRefs = useRef([]);
@@ -217,10 +522,59 @@ const NycSubway = ({ className }) => {
   const section19Image3Ref = useRef(null);
   //#endregion
 
+  // Section tracking for progress indicator
+  const sectionRefs = [
+    section1Ref, // Section 1 (Title)
+    section2Ref,
+    null, // Section 3 (combined with section 2)
+    section4Ref,
+    section5Ref,
+    section6Ref,
+    section7Ref,
+    null, // Section 8 (combined with section 7)
+    section9Ref,
+    null, // Section 10 (no ref)
+    section11Ref,
+    section12Ref,
+    section13Ref,
+    section14Ref,
+    section15Ref,
+    section16Ref,
+    section17Ref,
+    section18Ref,
+    section19Ref
+  ];
+
   // Animations
   useEffect(() => {
     // Clear any existing ScrollTriggers
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+    // Create intersection observer for section tracking
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionIndex = parseInt(entry.target.dataset.section);
+            if (sectionIndex !== null && sectionIndex !== undefined) {
+              setCurrentSection(sectionIndex + 1); // Convert 0-based to 1-based
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -20% 0px',
+        threshold: 0.1
+      }
+    );
+
+    // Observe all sections
+    sectionRefs.forEach((ref, index) => {
+      if (ref && ref.current) {
+        ref.current.dataset.section = index;
+        sectionObserver.observe(ref.current);
+      }
+    });
 
     // Set initial state for section 2 bubbles
     section2BubbleRefs.current.forEach(bubble => {
@@ -824,7 +1178,7 @@ const NycSubway = ({ className }) => {
     ScrollTrigger.create({
       trigger: section9Ref.current,
       start: "bottom 100%",
-      end: "+=50%", // Extend the trigger area for scroll control
+      end: "+=70%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onEnter: () => {
@@ -844,9 +1198,9 @@ const NycSubway = ({ className }) => {
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
-        // Phase 1: Text exists, warning icon animates in (0-30%)
-        if (progress <= 0.3) {
-          const phase1Progress = progress / 0.3; // 0 to 1 for phase 1
+        // Phase 1: Text exists, warning icon animates in (0-20%)
+        if (progress <= 0.2) {
+          const phase1Progress = progress / 0.2; // 0 to 1 for phase 1
           const easedPhase1Progress = gsap.parseEase("back.out")(phase1Progress);
           
           // Icon animates in with scale and fade
@@ -867,9 +1221,9 @@ const NycSubway = ({ className }) => {
             scale: 0.6
           });
         }
-        // Phase 2: Clear text and icon completely (30-40%)
-        else if (progress <= 0.4) {
-          const phase2Progress = (progress - 0.3) / 0.1; // 0 to 1 for phase 2
+        // Phase 2: Clear text and icon completely (20-30%)
+        else if (progress <= 0.3) {
+          const phase2Progress = (progress - 0.2) / 0.1; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("power2.in")(phase2Progress);
           
           // Text and icon fade out
@@ -898,9 +1252,9 @@ const NycSubway = ({ className }) => {
             scale: 0.6
           });
         }
-        // Phase 3: Rectangle, textref1 and background reveal (40-60%)
-        else if (progress <= 0.6) {
-          const phase3Progress = (progress - 0.4) / 0.2; // 0 to 1 for phase 3
+        // Phase 3: Rectangle, textref1 and background reveal (30-50%)
+        else if (progress <= 0.5) {
+          const phase3Progress = (progress - 0.3) / 0.2; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("expo.out")(phase3Progress);
           
           // Text and icon stay hidden
@@ -948,9 +1302,9 @@ const NycSubway = ({ className }) => {
           gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: 40, color: '#0067d4' });
           gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: 40, color: '#0067d4'});
         }
-        // Phase 4: Sequential text animations (60-100%)
+        // Phase 4: Sequential text animations (50-100%)
         else {
-          const phase4Progress = (progress - 0.6) / 0.4; // 0 to 1 for phase 4
+          const phase4Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 4
           
           // Text and icon stay hidden
           gsap.set(section9TextRef.current, {
@@ -1360,8 +1714,10 @@ const NycSubway = ({ className }) => {
               opacity: easedText3Progress,
               y: 30 - (30 * easedText3Progress)
             });
+            // Emoji animates out with a quick fade when Phase 4D starts
+            const emojiFadeOutProgress = Math.min(1, text3Progress * 3); // Faster fade out
             gsap.set(section11Phase2EmojiRef.current, {
-              opacity: 1 - easedText3Progress
+              opacity: 1 - emojiFadeOutProgress
             });
           }
         }
@@ -2366,6 +2722,9 @@ const NycSubway = ({ className }) => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       document.body.style.overflow = 'auto';
       
+      // Cleanup section observer
+      sectionObserver.disconnect();
+      
       // Reset section 13 active state when component unmounts
       if (setIsWhiteBG) {
         setIsWhiteBG(false);
@@ -2373,7 +2732,7 @@ const NycSubway = ({ className }) => {
     };
   }, [setIsWhiteBG]);
 
-  // Show mobile error screen if on mobile device
+  // Show mobile screen if on mobile device
   if (isMobile) {
     return <MobileErrorScreen />;
   }
@@ -2381,9 +2740,12 @@ const NycSubway = ({ className }) => {
   // Body
   return (
       <div className={`relative overflow-x-hidden col-span-full -mx-[8%] -mt-36 ${className || ''}`}>
+        {/* Scroll Progress Tracker */}
+        <ScrollProgressTracker currentSection={currentSection} totalSections={totalSections} sectionRefs={sectionRefs} />
 
       {/* Section 1 – Title */}
       <section 
+        ref={section1Ref}
         className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
       >
 
