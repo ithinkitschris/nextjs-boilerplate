@@ -3,14 +3,57 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useHideNav } from '../../context/HideNavContext';
+import { useMobileDetection } from '../../hooks/useMobileDetection';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-  const NycSubway = ({ className }) => {
+// Mobile Error Screen Component
+const MobileErrorScreen = () => {
+  return (
+    <div className="h-[90vh] flex col-span-full items-center justify-center text-white px-6" >
+      <div className=" m-auto text-center">
+        {/* Icon */}
+        <div className="mb-4 -mt-10">
+          <img src="/subway/section2emoji2.png" alt="Section 1 Emoji" className="w-52 h-auto mx-auto" />
+          
+        </div>
+        
+        {/* Title */}
+        <h1 className="text-4xl font-medium tracking-tight mb-10 text-white">
+          Check back soon! 
+        </h1>
+        
+        {/* Message */}
+        <p className="text text-gray-300 mb-6 leading-relaxed">
+          I have unfortunately not had the courage to face the unsurmountable beast that is adapting this page that was meticulously designed and animated on desktop for the mobile experience.
+        </p>
+
+        <p className="text text-gray-300 mb-18 leading-relaxed">
+          Rest assured, I will be getting to this in due time. For now, you may view this page on your desktop device.
+        </p>
+        
+        
+        
+        {/* CTA */}
+        <button 
+          onClick={() => window.history.back()}
+          className=" text-white p-3 rounded-full border-1 glass-sm mt-4"
+        >
+          <ChevronLeftIcon className="w-8 h-8 " />
+        </button>
+        
+      </div>
+    </div>
+  );
+};
+
+const NycSubway = ({ className }) => {
   const { setIsWhiteBG } = useHideNav();
+  const isMobile = useMobileDetection();
 
   //#region Refs
   // Section 2 refs (speech bubbles + section 3 content)
@@ -542,7 +585,7 @@ if (typeof window !== 'undefined') {
     ScrollTrigger.create({
       trigger: section5Ref.current,
       start: "bottom 100%",
-      end: "+=40%", // Extend the trigger area for scroll control
+      end: "+=30%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
@@ -2330,6 +2373,11 @@ if (typeof window !== 'undefined') {
     };
   }, [setIsWhiteBG]);
 
+  // Show mobile error screen if on mobile device
+  if (isMobile) {
+    return <MobileErrorScreen />;
+  }
+
   // Body
   return (
       <div className={`relative overflow-x-hidden col-span-full -mx-[8%] -mt-36 ${className || ''}`}>
@@ -2510,7 +2558,7 @@ if (typeof window !== 'undefined') {
         ref={section5Ref}
         className="min-h-screen flex items-center justify-center relative"
       >
-        <div className="w-full max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-32">
+        <div className="w-full max-w-5xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-28">
           
           {/* Text Column 1 */}
           <div 
@@ -2524,12 +2572,14 @@ if (typeof window !== 'undefined') {
                 className="h-10 dark:invert w-auto"
               />
             </div>
-            <h2 className="text-4xl font-semibold tracking-tight mb-6 w-2/3 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent">
+            <h2 className="text-4xl font-semibold dark:font-medium tracking-tight mb-8 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent">
                  Making my way downtown. (or not) 
             </h2>
             <p className="text-lg text-foreground leading-7">
             Subway stations can have platforms on opposing sides of the tracks heading uptown/downtown respectively, with tracks running in the middle.
+            </p>
 
+            <p className="mt-5 text-lg text-foreground leading-7">
             This, combined with the lack of options for crossing the tracks to get to the platform opposite can result in users entering the wrong platform via the wrong entrance and thus having to exit and re-enter.
             </p>
           </div>
@@ -2546,17 +2596,19 @@ if (typeof window !== 'undefined') {
                 className="h-10 dark:invert w-auto"
               />
             </div>
-            <h2 className="text-4xl font-semibold tracking-tight mb-6 w-2/3 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent">
+            <h2 className="text-4xl font-semibold dark:font-medium tracking-tight mb-8  bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent">
               Conduct yourself accordingly.
             </h2>
             <p className="text-lg text-foreground leading-7">
-            Train conductors are a reliable source 
-            of information as well as safety. 
-
+            Train conductors are a reliable source of information as well as safety.  
+            </p>
+            <p className="mt-5 text-lg text-foreground leading-7">  
             They tend to be located in the middle of the train and it is a common sight for commuters to ask the conductors for directions/guidance at stations. 
-
+            </p>
+            <p className="mt-5 text-lg text-foreground leading-7">
             They are also figures of authority and representatives of the MTA while on the train and can be a support for help when it is required.
             </p>
+            
           </div>
           
         </div>
@@ -3775,7 +3827,7 @@ if (typeof window !== 'undefined') {
 
       
     </div>
-  );s
+  );
 };
 
 export default NycSubway;
