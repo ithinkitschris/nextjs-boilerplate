@@ -31,6 +31,7 @@ import Iphone from './components/pages/iphone.js';
 import ThreeD from './components/pages/3d.js';
 import Leica from './components/pages/leica.js';
 import NycSubway from './components/pages/nycsubway.js';
+import Bloom from './components/pages/bloom.js';
 import Car from './components/pages/car.js';
 import { useBrowser } from './context/BrowserContext';
 import { useHideNav } from './context/HideNavContext';
@@ -204,6 +205,8 @@ function HomeContent() {
                   <Leica key="leica" className="col-span-full"/>
                 ) : selectedWork === 'subway' ? (
                   <NycSubway key="subway" className="col-span-full -px-[7%]"/>
+                ) : selectedWork === 'bloom' ? (
+                  <Bloom key="bloom" className="col-span-full -px-[7%]"/>
                 ) : selectedWork === 'car' ? (
                   <Car key="car" className="col-span-full" showNav={showNav}/>
                 ) : (

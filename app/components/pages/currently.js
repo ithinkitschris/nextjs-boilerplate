@@ -21,8 +21,68 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
     variants={animateIn}>
 
       {/* 01 */}
-      <motion.div className="col-span-full md:col-span-4 mt-16 group cursor-pointer h-full relative group"
-      >
+      <motion.div className="col-span-full md:col-span-4 mt-16 group cursor-pointer h-full relative group md:mb-4">
+        {/* Video Container with Corner Arrow */}
+        <motion.div 
+          className="relative col-span-full cursor-pointer"
+          whileHover={{ scale: 0.98 }}
+          transition={{
+            type: "spring",
+            stiffness: 1000, 
+            damping: 15, 
+          }}
+          
+          onClick={() => {
+            toggleWork('bloom');
+          }}
+          >
+            
+
+          {/* Corner Arrow */}
+          <CornerArrow />
+
+          {/* Video */}
+          <motion.div className="rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[580px] relative overflow-hidden border-b-1 border-white/15">
+              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
+              <video 
+                videoId="currently-subway"
+                src="/bloom/cover.mp4"
+                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/poster/subwaylandscape.jpg"
+              />
+          </motion.div>
+
+        </motion.div>
+
+        {/* Header and Description Container */}
+        <div className="grid grid-cols-4 mb-8 mt-4 md:mt-6">
+
+          <div className='ml-1 text-foreground col-span-full md:col-span-1'>
+            <h1 className="tracking-[-0.5pt] md:tracking-[-0.8pt] font-medium text-lg md:text-[18pt] md:group-hover:ml-3 transition-all duration-200 md:w-4/5 leading-tight md:leading-6">
+              Bloom
+            </h1>
+
+            <h3 className={`mt-3 md:mt-3 opacity-80 group-hover:opacity-100 transition-all md:group-hover:ml-3 duration-300 tracking-normal text-xs leading-tight md:text-[11pt] w-[90%]`}>
+                UX/UI design. <br/>Stanford Longevity Design Challenge – First Place.
+            </h3>
+          </div>
+
+          {/* Description Container */}
+          <div className='ml-1 text-foreground col-span-full md:col-span-2 grid grid-cols-3 md:grid-cols-1'>
+            
+            <h3 className={`opacity-60 mt-3 md:mt-0 col-span-2 md:col-span-2 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
+             The first digital tool that helps young Korean adults discover meaningful career paths by exploring their strengths and interests in a playful and social way.
+            </h3>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* 02 */}
+      <motion.div className="col-span-full md:col-span-2 mt-16 group cursor-pointer h-full relative group md:mb-4">
         {/* Video Container with Corner Arrow */}
         <motion.div 
           className="relative col-span-full cursor-pointer"
@@ -43,19 +103,23 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[580px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
-              <OptimizedVideo 
+              <video 
                 videoId="currently-subway"
-                src="/subway/cover2.mp4"
-                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
+                src="/subway/cover_blank.mp4"
+                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover contrast-125 brightness-90"
                 autoPlay
                 muted
                 loop
                 playsInline
                 poster="/poster/subwaylandscape.jpg"
-                useOptimized={useOptimizedVideos}
+              />
+              <img 
+                src="/subway/lockup.png"
+                alt="Subway lockup"
+                className="absolute top-1/2 left-[51.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[90%] h-auto object-contain"
               />
           </motion.div>
 
@@ -85,8 +149,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         </div>
       </motion.div>
 
-      {/* 02 */}
-      <motion.div className="col-span-full md:mt-16 md:col-span-2 cursor-pointer transition-all duration-200 h-full group mb-8 md:mb-0"
+      {/* 03 */}
+      <motion.div className="col-span-full md:col-span-2 cursor-pointer transition-all duration-200 h-full group mb-8 md:mb-0"
       >
         {/* Video Container with Corner Arrow */}
         <motion.div 
@@ -106,7 +170,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
               <OptimizedVideo 
@@ -125,7 +189,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         </motion.div>
         
         {/* Header Container */}
-        <div className='ml-1 mt-4 md:mt-6 text-foreground col-span-full md:col-span-1'>
+        <div className='ml-1 mt-4 md:mt-8 text-foreground col-span-full md:col-span-1'>
           
           <h1 className={`tracking-tight font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-7`}>
             On-device LLM Expense Tracker (iOS)
@@ -139,8 +203,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         
       </motion.div>
 
-      {/* 03 */}
-      <motion.div className="col-span-1 md:col-span-3 cursor-pointer transition-all duration-200 h-full group"
+      {/* 04 */}
+      <motion.div className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group"
       >
         {/* Video Container with Corner Arrow */}
         <motion.div 
@@ -160,7 +224,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
               <OptimizedVideo 
@@ -194,8 +258,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         
       </motion.div>
 
-      {/* 04 */}
-      <div className="col-span-1 md:col-span-3 cursor-pointer group transition-all duration-200 h-[150px] md:h-full grid grid-cols-1 md:grid-cols-3"
+      {/* 05 */}
+      <div className="col-span-1 md:col-span-2 cursor-pointer group transition-all duration-200 h-[150px] md:h-full grid grid-cols-1 md:grid-cols-3"
       >
         
         {/* Video Container with Corner Arrow */}
@@ -217,7 +281,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
               <OptimizedVideo 
