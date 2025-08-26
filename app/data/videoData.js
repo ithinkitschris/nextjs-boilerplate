@@ -1,6 +1,6 @@
 // Video data extracted from page.js
 export const videoData = [
-  { src: '/optimized/bloom/cover_grid.mp4', title:'Bloom', subheader:'UI/UX design – Stanford Longevity Design Challenge First Place.', poster:'/poster/bloom.jpg', tags: ['bloom', 'all', 'product'] },
+  // { src: '/optimized/bloom/cover_grid.mp4', title:'Bloom', subheader:'UI/UX design – Stanford Longevity Design Challenge First Place.', poster:'/poster/bloom.jpg', tags: ['bloom', 'all', 'product'] },
   { src: '/optimized/subway/coverportrait_1080p.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'/poster/subwayportrait.jpg', tags: ['subway', 'all', 'product'] },
   { src: '/optimized/currently/car_1080p.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/car.png', tags: ['car', 'all', 'product'] },
   { src: '/optimized/website/website-cover_1080p.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.png', tags: ['website', 'all', 'product'] },
