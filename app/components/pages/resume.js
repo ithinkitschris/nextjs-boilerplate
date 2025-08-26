@@ -222,31 +222,63 @@ export default function Resume({ className = "", toggleWork}) {
                             variants={animateInChild}
                         >
                             {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
-                            <p className="text-xl lg:text-2xl tracking-tight -ml-3">
-                                <span className="text-[26px] lg:text-[32px] opacity-100 font-script2 align-top relative -top-2 mr-2.5 ml-1">1</span> 
-                                I don&apos;t take anything too seriously.
-                            </p>
-                            <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] lg:w-1/3 group-hover:opacity-50 transition-all duration-300">
-                                A bold opening statement; I know.
-                            </p>
-                            <p className="text-xl lg:text-2xl tracking-tight -ml-[13px]">
-                                <span className="text-[26px] lg:text-[32px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">2</span> 
-                                I aim to have fun in everything I do.
-                            </p>
-                            <p className="text-xs ml-[18px] opacity-25 mb-6 tracking-normal font-light leading-[16px] lg:w-1/3 group-hover:opacity-50 transition-all duration-300">
-                                {"<p>I designed and coded this site from ground up.<br/>"}
-                                <br/>
-                                {"Fun? Curiosity? Masochism? Take your pick.</p>"}
-                            </p>
-                            <p className="text-xl lg:text-2xl tracking-tight -ml-3">
-                                <span className="text-[26px] lg:text-[32px] opacity-100 font-script2 align-top relative -top-2 mr-2.5">3</span> 
-                                Craft. Craft. Craft.
-                            </p>
-                            <p className="text-xs ml-[18px] opacity-25 mb-12 tracking-normal font-light leading-[16px] lg:w-1/3 group-hover:opacity-50 transition-all duration-300">
-                                Craft means everything to me. I have to <i>do</i>.
-                                <br/>
-                                I hope this comes across as you peruse my work.
-                            </p>
+
+                            {/* 01 */}
+                            <div className="text-xl lg:text-2xl tracking-[-0.02rem] mb-7">
+
+                                {/* Number */}
+                                <div className="flex items-center">
+                                    <p className="text-[26px] lg:text-[32px] font-script2 align-top relative -top-2 mr-3">1</p> 
+
+                                    {/* Header */}
+                                    <h3 className="text-xl lg:text-2xl tracking-[-0.02rem]">
+                                        I don't take myself too seriously.
+                                    </h3>
+                                </div>
+
+                                {/* Subheader */}
+                                <p className="text-xs ml-6 opacity-25 tracking-[0.02rem] font-light leading-[16px] lg:w-1/3 group-hover:opacity-75 transition-all duration-300">
+                                    A bold opening statement; I know.
+                                </p>
+                            </div>
+
+                            {/* 02 */}
+                            <div className="text-xl lg:text-2xl tracking-[-0.02rem] mb-7 -ml-1">
+
+                                {/* Number */}
+                                <div className="flex items-center">
+                                    <p className="text-[26px] lg:text-[32px] font-script2 align-top relative -top-2 mr-3">2</p> 
+
+                                    {/* Header */}
+                                    <h3 className="text-xl lg:text-2xl tracking-[-0.02rem]">
+                                        I aim to find fun in everything I do.
+                                    </h3>
+                                </div>
+
+                                {/* Subheader */}
+                                <p className="text-xs ml-[1.65rem] opacity-25 tracking-[0.02rem] font-light leading-[16px] lg:w-1/3 group-hover:opacity-75 transition-all duration-300">
+                                    Iteration becomes play, not work.
+                                </p>
+                            </div>
+
+                            {/* 03 */}
+                            <div className="text-xl lg:text-2xl tracking-[-0.02rem] mb-14 -ml-1">
+
+                                {/* Number */}
+                                <div className="flex items-center">
+                                    <p className="text-[26px] lg:text-[32px] font-script2 align-top relative -top-2 mr-3">3</p> 
+
+                                    {/* Header */}
+                                    <h3 className="text-xl lg:text-2xl tracking-[-0.02rem]">
+                                        Craft. Craft. Craft.
+                                    </h3>
+                                </div>
+
+                                {/* Subheader */}
+                                <p className="text-xs ml-[1.65rem] opacity-25 tracking-[0.02rem] font-light leading-[16px] lg:w-1/3 group-hover:opacity-75 transition-all duration-300">
+                                    Craft is the process. I can't not create. <br/>
+                                </p>
+                            </div>
                         </motion.div>
 
                         {/* Desktop Job Title Container */}
@@ -332,9 +364,9 @@ export default function Resume({ className = "", toggleWork}) {
             {/* Content */}
             <ResumeSectionHeader 
                 header="Content Creation"
-                title="A life of mine viewed through a short attention span."
-                headerClassName="ml-2 md:ml-0 mt-24 md:mt-72 mb-4 md:ml-1"
-                titleClassName="ml-0 mb-8 w-[80%]"
+                title="Overthinking the Algorithm."
+                headerClassName="mb-3 ml-1"
+                titleClassName="ml-2 mb-3 w-[50%]"
             />
             <ContentPage className='col-span-full mt-8' key='content'/>
             
@@ -404,7 +436,7 @@ export default function Resume({ className = "", toggleWork}) {
                             variants={storyContainer}
                             initial="hidden"
                             animate="show"
-                            exit="hidden"
+                            exit={{ opacity: 0, transition: { duration: 0 } }}
                         >
                             <motion.div className="col-span-1" variants={storyColumn}>
                                 <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight" variants={storyElement}>
@@ -466,6 +498,7 @@ export default function Resume({ className = "", toggleWork}) {
                                         <p>Python</p>
                                         <p>HTML / JSX</p>
                                         <p>Tailwind CSS</p>
+                                        <p>React Native</p>
                                         <p>React.js</p>
                                         <p>Next.js + Vercel</p>
                                         <p>p5.js</p>
@@ -483,32 +516,42 @@ export default function Resume({ className = "", toggleWork}) {
                             variants={storyContainer}
                             initial="hidden"
                             animate="show"
-                            exit="hidden"
+                            exit={{ opacity: 0, transition: { duration: 0 } }}
                         >
-                            <motion.div className="col-span-1" variants={storyColumn}>
+                            {/* Who? */}
+                            <motion.div className="col-span-1 " variants={storyColumn}>
                                 <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight mb-4" variants={storyElement}>Who?</motion.h1>
-                                <motion.div variants={storyElement}>
-                                    <p className="mb-3 text-sm tracking-normal">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a young kid obsessed with the romanticized image of beret-wearing, palette-wielding artists.
-                                    Now, he finds himself living the surreal reality of conceptualizing, designing, and directing what is essentially art for the world.</p>
-                                    <p className="text-sm tracking-normal">With a fervor for craft and a meticulous eye for finesse, he takes a possibly unhealthy pride in crafting visually compelling work across various mediums.</p>
-                                </motion.div>
+                                    <motion.div variants={storyElement}>
+                                        <p className="mb-3 text-sm tracking-normal leading-[1.4rem]">Born and raised in sunny <i className="mr-0.5 font-light ">(to put it mildly)</i> Singapore, Chris was once a kid captivated by the romanticized image of beret-wearing, palette-wielding artists. Today, he finds himself living the surreal reality of conceptualizing, designing, and directing what is, in essence, art for the world.</p>
+
+                                        <p className="text-sm tracking-normal leading-[1.4rem]">With a meticulous eye for finesse and a fervor for craft, he takes a possibly unhealthy pride in crafting visually compelling and engaging experiences, no matter the discipline.</p>
+                                    </motion.div>
                             </motion.div>
 
+                            {/* What? */}
                             <motion.div className="col-span-1" variants={storyColumn}>
                                 <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight mb-4" variants={storyElement}>What?</motion.h1>
                                 <motion.div variants={storyElement}>
-                                    <p className="mb-3 text-sm tracking-normal">As a Multidisciplinary Creative and formerly the Creative Lead at ArtScience Museum in Singapore;
-                                        he finds himself with eight years of experience in Advertising – having worked in the two leading agencies Singapore at the time: BBH and TBWA and working on multiple brand campaigns for Singapore Airlines
-                                        as an Art Director and global brands the likes of IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo.</p>
+                                    <p className="mb-3 text-sm tracking-normal leading-[1.4rem]">As a multidisciplinary creative and former Creative Lead at the ArtScience Museum in Singapore,
+                                    he finds himself with eight of his best years of experience in graphic design and advertising. In that time, he honed his craft at two of Singapore’s leading creative agencies, BBH and TBWA, where he served as Art Director on multiple brand campaigns for Singapore Airlines and had the privilege of working with global brands like IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo.</p>
+
+                                    <p className="mt-4 text-sm tracking-normal leading-[1.4rem]">Now, seeking to further his craft, Chris dedicates himself to studying human-centered design principles <span className="italic mr-0.5">(debating them, honestly)</span> as he pursues a Master’s in Interaction Design.</p>
+
+                                    
+                                    <p className="text-sm mt-4 tracking-normal leading-[1.4rem]">His goal is to blend the sensibilities he gained as an Art Director with a deep understanding of UX to create experiences that are visually delightful, intuitive, and ultimately magical—for people (and, well, himself, of course).
+                                    </p>
                                 </motion.div>
                             </motion.div>
 
+                            {/* And? */}
                             <motion.div className="col-span-1" variants={storyColumn}>
                                 <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight mb-4" variants={storyElement}>And?</motion.h1>
                                 <motion.div variants={storyElement}>
-                                    <p className="mb-3 text-sm tracking-normal">In his spare time (which, realistically, isn&apos;t much), he does... even more work, but for himself—creating content through photography, videography, editing and motion design.</p>
-                                    <p className="text-sm tracking-normal">When he is finally, actually, not working, you will find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up,
-                                    though he wouldn&apos;t go so far as to call it interior design.</p>
+                                    <p className="mb-3 text-sm tracking-normal leading-[1.4rem]">In his spare time, he works on... well, this very website, treating it as a platform for pushing his personal visual design sensibilities while gaining a firsthand understanding of what it means to continuously iterate on a design system.</p>
+                                    <p className="text-sm mb-3 tracking-normal leading-[1.4rem]">Additionally, he can't now unsee the intentional design decisions of our everyday world, often devolving into arguments about whether that falls under Product Design or Interaction Design.</p>
+
+                                    <p className="text-sm tracking-normal leading-[1.4rem]">When he is finally, actually, not working, you'll likely find him thrifting for furniture or, for a more colloquial term, stooping on the streets of New York City. He does love building his living space up, though he wouldn&apos;t go so far as to call it interior design.</p>
+                                   
                                 </motion.div>
                             </motion.div>
                         </motion.div>
@@ -522,7 +565,7 @@ export default function Resume({ className = "", toggleWork}) {
                             variants={storyContainer}
                             initial="hidden"
                             animate="show"
-                            exit="hidden"
+                            exit={{ opacity: 0, transition: { duration: 0 } }}
                         >
                             <motion.h1
                                 className="text-lg lg:text-xl font-medium tracking-tight col-span-full -ml-0.5"

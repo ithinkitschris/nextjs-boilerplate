@@ -115,18 +115,19 @@ export const dropdown = {
 };
 
 export const dropdownChild = {
-  hidden: { opacity: 0, x: -20 },
+  hidden: { opacity: 0, y: -40 },
   show: {
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: {
-      duration: 0.2,
-      ease: "easeOut",
+      type: "spring",
+      stiffness: 400,
+      damping: 20,
     },
   },
   exit: {
     opacity: 0,
-    x: -20,
+    y: -20,
     transition: {
       duration: 0.1,
       ease: "easeIn",

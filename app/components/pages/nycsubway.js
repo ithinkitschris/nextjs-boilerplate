@@ -259,7 +259,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) =
 
         <div 
           ref={contentRef}
-          className="bg-black rounded-l-3xl pr-2 pl-4 py-6 relative drop-shadow-[3px_6px_7px_rgba(0,0,0,0.5)]"
+          className="bg-black rounded-l-3xl pr-2 pl-2 py-8 relative drop-shadow-[3px_6px_7px_rgba(0,0,0,0.5)]"
           style={{ transform: 'translateX(200%)' }}
         >
           
@@ -374,6 +374,7 @@ const NycSubway = ({ className }) => {
   const section3Text1Ref = useRef(null);
   const section3Text2Ref = useRef(null);
   const section3EmojiRef = useRef(null);
+  const section3Emoji2Ref = useRef(null);
   
   // Section 4 refs (text addition + emoji + gradient)
   const section4Ref = useRef(null);
@@ -610,6 +611,7 @@ const NycSubway = ({ className }) => {
     gsap.set(section3Text1Ref.current, { opacity: 0, y: 75 });
     gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2});
     gsap.set(section3EmojiRef.current, { opacity: 0 });
+    gsap.set(section3Emoji2Ref.current, { opacity: 0 });
     
     // Set initial state for section 4
     gsap.set(section4Text1Ref.current, { opacity: 1, scale: 2, y: 0 });
@@ -866,6 +868,7 @@ const NycSubway = ({ className }) => {
           gsap.set(section3Text1Ref.current, { opacity: 0, scale: 1 });
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
           gsap.set(section3EmojiRef.current, { opacity: 0 });
+          gsap.set(section3Emoji2Ref.current, { opacity: 0 });
         }
         // Phase 3: "We all already knew that" (25-35%)
         else if (progress <= 0.35) {
@@ -909,6 +912,7 @@ const NycSubway = ({ className }) => {
           
           // Keep other section 3 elements hidden
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
+          gsap.set(section3Emoji2Ref.current, { opacity: 0 });
         }
         // Phase 3b: Pause (35-65%)
         else if (progress <= 0.65) {
@@ -949,6 +953,7 @@ const NycSubway = ({ className }) => {
           
           // Keep other section 3 elements hidden
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
+          gsap.set(section3Emoji2Ref.current, { opacity: 0 });
         }
         // Phase 4: "However, I decided to take a crack at it" (65-100%)
         else {
@@ -972,9 +977,13 @@ const NycSubway = ({ className }) => {
             scale: 1 - (0.2 * easedPhase4Progress)
           });
           
-          // Keep emoji visible in phase 4
+          // Crossfade emoji in phase 4 - first emoji fades out, second emoji fades in
           gsap.set(section3EmojiRef.current, { 
-            opacity: 1,
+            opacity: 1 - easedPhase4Progress,
+            scale: 0.9
+          });
+          gsap.set(section3Emoji2Ref.current, { 
+            opacity: easedPhase4Progress,
             scale: 0.9
           });
           
@@ -2981,21 +2990,27 @@ const NycSubway = ({ className }) => {
             ref={section3Text2Ref}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
           >
-            <h2 className="text-4xl md:text-6xl font-medium text-foreground tracking-tight w-[40%] mx-auto -mt-28">
+            <h2 className="text-4xl md:text-6xl font-medium text-foreground tracking-tight w-[40%] mx-auto -mt-4">
               However, I decided to take a crack at it anyway.
             </h2>
           </div>
           
           {/* Section 3 Bottom middle emoji */}
           <div 
-            ref={section3EmojiRef}
-            className="absolute bottom-36 left-1/2 transform -translate-x-1/2 w-80 h-80"
+            className="absolute bottom-24 left-1/2 transform -translate-x-1/2 w-80 h-80"
           >
-            <div className="w-full h-full rounded-full overflow-hidden relative drop-shadow-xl bg-background -z-50">
+            <div className="w-full h-full rounded-full overflow-hidden relative -z-50 scale-95 origin-bottom">
               <img 
-                src="/subway/section3emoji.png" 
+                ref={section3EmojiRef}
+                src="/subway/section2emoji1.png" 
                 alt="Section 1 Emoji" 
-                className="w-full h-full object-cover"
+                className="w-auto h-full scale-90 object-cover origin-bottom"
+              />
+              <img 
+                ref={section3Emoji2Ref}
+                src="/subway/section3emoji.png" 
+                alt="Section 3 Emoji 2" 
+                className="w-auto h-[120%] -mt-4 object-cover absolute inset-0 opacity-0"
               />
               
               {/* Progress Border */}

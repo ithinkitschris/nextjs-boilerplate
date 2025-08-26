@@ -74,26 +74,28 @@ export default function ResumeFooter() {
                     showMobileDivider={false}
                     
                 >
-                    <h1 className="mt-8 text-lg">Curriculum</h1>
-                    <div className="">
-                        <p className="mt-4">Research Methodologies</p>
-                        <p>Service Design</p>
-                        <p>Inclusive Design</p>
-                        <p>UX Content Writing</p>
-                        <p>User Experience Design</p>
-                        <p>Programming <i>(C, Python, JavaScript)</i></p>
-                        <p>Human Interaction & Ergonomics</p>
-                        <p>Intellectual Property</p>
-                        <p>Physical Computing</p>
-                        <p>Smart Objects</p>
-                        <p>Game Design</p>
+                    <motion.div variants={dropdownChild}>
+                        <h1 className="mt-7 text-lg font-medium">Curriculum</h1>
+                        <div className="">
+                            <p className="mt-4">Research Methodologies</p>
+                            <p>Service Design</p>
+                            <p>Inclusive Design</p>
+                            <p>UX Content Writing</p>
+                            <p>User Experience Design</p>
+                            <p>Programming <i>(C, Python, JavaScript)</i></p>
+                            <p>Human Interaction & Ergonomics</p>
+                            <p>Intellectual Property</p>
+                            <p>Physical Computing</p>
+                            <p>Smart Objects</p>
+                            <p>Game Design</p>
 
-                    </div>
-                    <div className=" text-black/25 dark:text-white/25">
-                        <p className="mt-0">Spatial Computing</p>
-                        <p>Design for Cities</p>
-                        <p>Thesis</p>
-                    </div>
+                        </div>
+                        <div className=" text-black/25 dark:text-white/25">
+                            <p className="mt-0">Spatial Computing</p>
+                            <p>Design for Cities</p>
+                            <p>Thesis</p>
+                        </div>
+                    </motion.div>
                 </ExperienceCard>
 
                 {/* ASM */}
@@ -108,6 +110,10 @@ export default function ResumeFooter() {
                     sectionKey="ASM"
                     damping={28}
                 >
+                    <motion.div className=" text-lg whitespace-nowrap tracking-tight flex items-center mt-7 font-medium">
+                        ArtScience Museum
+                    </motion.div>
+
                     <motion.div variants={dropdownChild}>
                         <h1 className="mt-6 mb-4  opacity-90">The World of Studio Ghibli</h1>
                         <p className=" opacity-50">Creative direction for the integrated marketing campaign for The World of Studio Ghibli, the first ever Studio Ghibli exhibition in Singapore held at ArtScience Museum. Designed the Key Visual for the exhibition and provided creative direction over marketing partners as well as merchandise for the exhibition.</p>
@@ -148,16 +154,15 @@ export default function ResumeFooter() {
                 >
                     {/* Sub-accordion for SIA */}
                     <motion.div
-                        className="flex justify-between cursor-pointer pr-1 mt-6 md:mt-14"
+                        className="flex justify-between cursor-pointer pr-1 mt-6"
                         onClick={() => toggleCvSection('sia')}
                         variants={dropdownChild}
-                        layout='position'
                         >
-                        <button className="text-lg whitespace-nowrap tracking-tight flex items-center">Singapore Airlines</button>
+                        <button className="text-lg whitespace-nowrap tracking-tight flex items-center font-medium">Singapore Airlines</button>
                         <button className="flex items-center">{visibleSections.sia ? <ChevronUpIcon className="ml-1 h-4 w-4"/> : <ChevronDownIcon className="ml-1 h-4 w-4"/>}</button>
                     </motion.div>
                     {visibleSections.sia && (
-                        <motion.div key="dropdown-SIA" initial="hidden" animate="show" layout="position" variants={dropdown}>
+                        <motion.div key="dropdown-SIA" initial="hidden" animate="show" variants={dropdown}>
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">Beyond The Cabin</h1>
                                 <p className="mb-4  opacity-50">Lead Creative and Motion Designer for Beyond The Cabin, an episodic brand campaign and content series that was centred around Singapore Airline&apos;s Cabin Crew&apos;s as World Class travellers with worldly passions.</p>
@@ -192,8 +197,8 @@ export default function ResumeFooter() {
                     )}
 
                     {/* Sub-accordion for IKEA */}
-                    <motion.div className="flex justify-between cursor-pointer pr-1 mt-2 " onClick={() => toggleCvSection('ikea')} variants={dropdownChild} layout='position'>
-                        <button className=" text-lg whitespace-nowrap tracking-tight flex items-center">IKEA</button>
+                    <motion.div className="flex justify-between cursor-pointer pr-1 mt-2 " onClick={() => toggleCvSection('ikea')} variants={dropdownChild}>
+                        <button className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">IKEA</button>
                         <button className=" flex items-center">{visibleSections.ikea ? <ChevronUpIcon className="ml-1 h-4 w-4"/> : <ChevronDownIcon className="ml-1 h-4 w-4"/>}</button>
                     </motion.div>
                     {visibleSections.ikea && (
@@ -201,7 +206,6 @@ export default function ResumeFooter() {
                             key="dropdown-ikea"
                             initial="hidden"
                             animate="show"
-                            layout="position"
                             variants={dropdown}
                         >
                             <motion.div variants={dropdownChild}>
@@ -212,8 +216,8 @@ export default function ResumeFooter() {
                     )}
 
                     {/* Sub-accordion for SC */}
-                    <motion.div className="flex justify-between cursor-pointer pr-1 mt-2" onClick={() => toggleCvSection('sc')} variants={dropdownChild} layout='position'>
-                        <button className=" text-lg whitespace-nowrap tracking-tight flex items-center">Standard Chartered</button>
+                    <motion.div className="flex justify-between cursor-pointer pr-1 mt-2" onClick={() => toggleCvSection('sc')} variants={dropdownChild}>
+                        <button className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">Standard Chartered</button>
                         <button className=" flex items-center">{visibleSections.sc ? <ChevronUpIcon className="ml-1 h-4 w-4"/> : <ChevronDownIcon className="ml-1 h-4 w-4"/>}</button>
                     </motion.div>
                     {visibleSections.sc && (
@@ -221,7 +225,6 @@ export default function ResumeFooter() {
                             key="dropdown-sc"
                             initial="hidden"
                             animate="show"
-                            layout="position"
                             variants={dropdown}
                         >
                             <motion.div variants={dropdownChild}>
@@ -246,13 +249,13 @@ export default function ResumeFooter() {
                 >
                     {/* SAMSUNG Button Row */}
                     <motion.div
-                    className="flex justify-between cursor-pointer pr-1 mt-6 md:mt-14"
+                    className="flex justify-between cursor-pointer pr-1 mt-6"
                     onClick={() => toggleCvSection('samsung')}
                     variants={dropdownChild}
                     layout='position'
                     >
                         <button 
-                        className=" text-lg whitespace-nowrap tracking-tight flex items-center">
+                        className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
                             Samsung
                         </button>
 
@@ -270,7 +273,6 @@ export default function ResumeFooter() {
                     key="dropdown-samsung"
                     initial="hidden"
                     animate="show"
-                    layout="position"
                     variants={dropdown}>
 
                         <motion.div variants={dropdownChild}>
@@ -311,10 +313,9 @@ export default function ResumeFooter() {
                     className="flex justify-between cursor-pointer pr-1 mt-2"
                     onClick={() => toggleCvSection('nike')}
                     variants={dropdownChild}
-                    layout='position'
                     >
                         <button 
-                        className=" text-lg whitespace-nowrap tracking-tight flex items-center">
+                        className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
                             NIKE
                         </button>
 
@@ -332,7 +333,6 @@ export default function ResumeFooter() {
                         key="dropdown-nike"
                         initial="hidden"
                         animate="show"
-                        layout="position"
                         variants={dropdown}
                     >
                         <motion.div variants={dropdownChild}>
@@ -354,10 +354,9 @@ export default function ResumeFooter() {
                     className="flex justify-between cursor-pointer pr-1 mt-2 -ml-0.5"
                     onClick={() => toggleCvSection('jollibee')}
                     variants={dropdownChild}
-                    layout='position'
                     >
                         <button 
-                        className=" text-lg whitespace-nowrap tracking-tight flex items-center">
+                        className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
                             Jollibee
                         </button>
 
@@ -375,7 +374,6 @@ export default function ResumeFooter() {
                         key="dropdown-jollibee"
                         initial="hidden"
                         animate="show"
-                        layout="position"
                         variants={dropdown}
                     >
                         <motion.div variants={dropdownChild}>
@@ -392,10 +390,9 @@ export default function ResumeFooter() {
                     className="flex justify-between cursor-pointer pr-1 mt-2"
                     onClick={() => toggleCvSection('sentosa')}
                     variants={dropdownChild}
-                    layout='position'
                     >
                         <button 
-                        className=" text-lg whitespace-nowrap tracking-tight flex items-center">
+                        className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
                             Sentosa
                         </button>
 
@@ -413,7 +410,6 @@ export default function ResumeFooter() {
                     key="dropdown-sentosa"
                     initial="hidden"
                     animate="show"
-                    layout="position"
                     variants={dropdown}>
 
                         <motion.div variants={dropdownChild}>
@@ -468,7 +464,7 @@ export default function ResumeFooter() {
                     <p className="mt-4">Creative Intern</p>
                     <i className="-ml-[1px] opacity-75">August 2015 – November 2015</i>
 
-                    <h1 className="mt-8  text-lg">
+                    <h1 className="mt-8  text-lg font-medium">
                         Uniqlo Singapore</h1>
 
                     <motion.div variants={dropdownChild}>
