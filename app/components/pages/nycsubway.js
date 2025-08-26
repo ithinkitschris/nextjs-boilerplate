@@ -83,27 +83,27 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) =
       setIsVisible(true);
       setPreviousSection(currentSection);
       
-      // Start hide timer only if not hovering
-      if (!isHovering) {
-        hideTimerRef.current = setTimeout(() => {
-          // Hide tracker with GSAP animation
-          if (trackerRef.current) {
-            gsap.to(trackerRef.current, {
-              scaleX: 0,
-              duration: 0.4,
-              ease: "expo.in"
-            });
-            if (contentRef.current) {
-              gsap.to(contentRef.current, {
-                x: "200%",
-                duration: 0.4,
-                ease: "expo.in"
-              });
-            }
-          }
-          setIsVisible(false);
-        }, 2000);
-      }
+      // COMMENTED OUT: Start hide timer only if not hovering
+      // if (!isHovering) {
+      //   hideTimerRef.current = setTimeout(() => {
+      //     // Hide tracker with GSAP animation
+      //     if (trackerRef.current) {
+      //       gsap.to(trackerRef.current, {
+      //         scaleX: 0,
+      //         duration: 0.4,
+      //         ease: "expo.in"
+      //       });
+      //       if (contentRef.current) {
+      //         gsap.to(contentRef.current, {
+      //           x: "200%",
+      //           duration: 0.4,
+      //           ease: "expo.in"
+      //         });
+      //       }
+      //     }
+      //     setIsVisible(false);
+      //   }, 2000);
+      // }
     }
   }, [currentSection, previousSection, isHovering, isEnabled]);
 
@@ -119,27 +119,27 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) =
           hideTimerRef.current = null;
         }
       } else {
-        // Start timer when not hovering
-        if (!hideTimerRef.current) {
-          hideTimerRef.current = setTimeout(() => {
-            // Hide tracker with GSAP animation
-            if (trackerRef.current) {
-              gsap.to(trackerRef.current, {
-                scaleX: 0,
-                duration: 0.3,
-                ease: "power3.in"
-              });
-              if (contentRef.current) {
-                gsap.to(contentRef.current, {
-                  x: "200%",
-                  duration: 0.3,
-                  ease: "power3.in"
-                });
-              }
-            }
-            setIsVisible(false);
-          }, 2000);
-        }
+        // COMMENTED OUT: Start timer when not hovering
+        // if (!hideTimerRef.current) {
+        //   hideTimerRef.current = setTimeout(() => {
+        //     // Hide tracker with GSAP animation
+        //     if (trackerRef.current) {
+        //       gsap.to(trackerRef.current, {
+        //         scaleX: 0,
+        //         duration: 0.3,
+        //         ease: "power3.in"
+        //       });
+        //       if (contentRef.current) {
+        //         gsap.to(contentRef.current, {
+        //           x: "200%",
+        //           duration: 0.3,
+        //           ease: "power3.in"
+        //         });
+        //       }
+        //     }
+        //     setIsVisible(false);
+        //   }, 2000);
+        // }
       }
     }
   }, [isHovering, isVisible, isEnabled]);
@@ -176,6 +176,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) =
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      // Calculate progress as a percentage of total scrollable area
       const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
       setScrollProgress(progress);
     };
@@ -248,7 +249,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) =
           ref={trackerRef}
           className="fixed right-0 z-50"
           style={{
-            top: `${Math.max(20, Math.min(80, scrollProgress))}%`,
+            top: `${15 + (scrollProgress * 0.7)}%`,
             transform: 'translateY(-50%) scaleX(0)',
             transformOrigin: 'right'
           }}
@@ -366,6 +367,8 @@ const NycSubway = ({ className }) => {
   const section2BubbleRefs = useRef([]);
   const section2EmojiRef = useRef(null);
   const section2MainTitleRef = useRef(null);
+  const section2ProgressLineRef = useRef(null);
+  const section3EmojiProgressBorderRef = useRef(null);
   
   // Section 3 refs (text replacement + emoji) - now part of section 2
   const section3Text1Ref = useRef(null);
@@ -383,6 +386,7 @@ const NycSubway = ({ className }) => {
   const section5Ref = useRef(null);
   const section5Text1Ref = useRef(null);
   const section5Text2Ref = useRef(null);
+  const section5TextBodyRef = useRef(null);
   
   // Section 6 refs (identical to section 4)
   const section6Ref = useRef(null);
@@ -576,18 +580,30 @@ const NycSubway = ({ className }) => {
       }
     });
 
-    // Set initial state for section 2 bubbles
+    // Track if section 2 has been visited
+    let section2FirstVisit = true;
+
+    // Set initial state for section 2 bubbles - start hidden for onEnter animation
     section2BubbleRefs.current.forEach(bubble => {
       if (bubble) {
         gsap.set(bubble, { opacity: 0, scale: 0});
       }
     });
 
-    // Set initial state for section 2 emoji
+    // Set initial state for section 2 emoji - start hidden for onEnter animation
     gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
     
-    // Set initial state for section 2 main title
+    // Set initial state for section 2 main title - start visible for onEnter animation
     gsap.set(section2MainTitleRef.current, { opacity: 1, scale: 1 });
+    
+    // Set initial state for section 2 progress line - start hidden
+    gsap.set(section2ProgressLineRef.current, { scaleX: 0, opacity: 0.25 });
+    
+    // Set initial state for emoji progress border - start hidden
+    gsap.set(section3EmojiProgressBorderRef.current, { 
+      strokeDasharray: '0, 1000',
+      opacity: 0 
+    });
 
     //#region Initial States
     // Set initial state for section 3
@@ -604,6 +620,7 @@ const NycSubway = ({ className }) => {
     // Set initial state for section 5
     gsap.set(section5Text1Ref.current, { opacity: 0, y: 50 });
     gsap.set(section5Text2Ref.current, { opacity: 0, y: 50 });
+    gsap.set(section5TextBodyRef.current, { opacity: 1, y: 0 });
     
     // Set initial state for section 6 (identical to section 4)
     gsap.set(section6Text1Ref.current, { opacity: 1, scale: 2, y: 0 });
@@ -738,57 +755,92 @@ const NycSubway = ({ className }) => {
     ScrollTrigger.create({
       trigger: section2Ref.current,
       start: "bottom 100%",
-      end: "+=100%", // Extend the trigger area for scroll control to accommodate 4 phases
+      end: "+=220%", // Extend the trigger area for scroll control to accommodate 4 phases
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      onEnter: () => {
+        // Only play animation on first visit
+        if (!section2FirstVisit) {
+          // Set elements to their final state immediately for subsequent visits
+          section2BubbleRefs.current.forEach((bubble) => {
+            if (bubble) {
+              gsap.set(bubble, { opacity: 1, scale: 1 });
+            }
+          });
+          if (section2EmojiRef.current) {
+            gsap.set(section2EmojiRef.current, { opacity: 1, scale: 1 });
+          }
+          if (section2MainTitleRef.current) {
+            gsap.set(section2MainTitleRef.current, { opacity: 1, scale: 1 });
+          }
+          section2AnimationComplete = true;
+          return;
+        }
+
+        // Mark as visited
+        section2FirstVisit = false;
+        
+        // Disable scrolling during bubble animation
+        document.body.style.overflow = 'hidden';
+        
+        // Animate bubbles in sequentially
+        const totalBubbles = section2BubbleRefs.current.length;
+        const animationDuration = 0.2; // Duration for each bubble
+        
+        // Create timeline for sequential bubble animation
+        const tl = gsap.timeline({
+          onComplete: () => {
+            // Re-enable scrolling when animation is complete
+            document.body.style.overflow = 'auto';
+            // Set initial state for scroll animation (phase 2)
+            section2AnimationComplete = true;
+          }
+        });
+        
+        // Animate each bubble in sequentially
+        section2BubbleRefs.current.forEach((bubble, index) => {
+          if (bubble) {
+            tl.to(bubble, {
+              opacity: 1,
+              scale: 1,
+              duration: animationDuration,
+              ease: "back.out(0.8)"
+            }, index * 0.15); // Reduced delay between bubbles from 0.2 to 0.1
+          }
+        });
+        
+        // Animate emoji in with the first bubble
+        if (section2EmojiRef.current) {
+          tl.to(section2EmojiRef.current, {
+            opacity: 1,
+            scale: 1,
+            duration: animationDuration,
+            ease: "back.out(0.8)"
+          }, 0);
+        }
+        
+        // Keep main title visible (no animation needed)
+        if (section2MainTitleRef.current) {
+          gsap.set(section2MainTitleRef.current, {
+            opacity: 1,
+            scale: 1
+          });
+        }
+      },
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
-        // Phase 1: Bubbles animation (0-50%)
-        if (progress <= 0.5) {
-          const phase1Progress = progress / 0.5; // 0 to 1 for phase 1
-          const totalBubbles = section2BubbleRefs.current.length;
-          
-          // Calculate which bubble should be visible based on scroll progress
-          section2BubbleRefs.current.forEach((bubble, index) => {
-            if (bubble) {
-              const bubbleStart = index / totalBubbles;
-              const bubbleEnd = (index + 1) / totalBubbles;
-              const bubbleProgress = Math.max(0, Math.min(1, (phase1Progress - bubbleStart) / (bubbleEnd - bubbleStart)));
-              
-              // Apply easing to the progress value before setting properties
-              const easedProgress = gsap.parseEase("back.inOut(2)")(bubbleProgress);
-              gsap.set(bubble, {
-                opacity: easedProgress,
-                scale: easedProgress
-              });
-            }
-          });
-
-          // Animate emoji with first bubble (index 0)
-          if (section2EmojiRef.current) {
-            const firstBubbleStart = 0 / totalBubbles;
-            const firstBubbleEnd = 1 / totalBubbles;
-            const emojiProgress = Math.max(0, Math.min(1, (phase1Progress - firstBubbleStart) / (firstBubbleEnd - firstBubbleStart)));
-            
-            const easedEmojiProgress = gsap.parseEase("back.inOut(2)")(emojiProgress);
-            gsap.set(section2EmojiRef.current, {
-              opacity: easedEmojiProgress,
-              scale: 0.9 + (0.1 * easedEmojiProgress) // Scale from 0.9 to 1.0
-            });
-          }
-          
-          // Keep section 3 elements hidden during phase 1
-          gsap.set(section3Text1Ref.current, { opacity: 0, scale: 1 });
-          gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
-          gsap.set(section3EmojiRef.current, { opacity: 0 });
+        // Only start scroll-based animation after bubble animation is complete
+        if (!section2AnimationComplete) {
+          return;
         }
-        // Phase 2: Clear everything (50-60%)
-        else if (progress <= 0.6) {
-          const phase2Progress = (progress - 0.5) / 0.1; // 0 to 1 for phase 2
+        
+        // Phase 2: Fade out bubbles, emoji, and main title (0-25%)
+        if (progress <= 0.25) {
+          const phase2Progress = progress / 0.25; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("power3.inOut")(phase2Progress);
           
-          // Hide all bubbles
+          // Fade out all bubbles
           section2BubbleRefs.current.forEach((bubble) => {
             if (bubble) {
               gsap.set(bubble, { 
@@ -798,26 +850,26 @@ const NycSubway = ({ className }) => {
             }
           });
           
-          // Hide section 2 emoji
+          // Fade out section 2 emoji
           gsap.set(section2EmojiRef.current, { 
             opacity: 1 - easedPhase2Progress, 
             scale: 1 - (0.1 * easedPhase2Progress) 
           });
           
-                     // Hide the main title text "The New York City Subway is not great"
-           gsap.set(section2MainTitleRef.current, { 
-             opacity: 1 - easedPhase2Progress,
-             scale: 1 - (0.1 * easedPhase2Progress)
-           });
+          // Fade out the main title text
+          gsap.set(section2MainTitleRef.current, { 
+            opacity: 1 - easedPhase2Progress,
+            scale: 1 - (0.1 * easedPhase2Progress)
+          });
           
-          // Keep section 3 elements hidden during clear phase
+          // Keep section 3 elements hidden during fade out phase
           gsap.set(section3Text1Ref.current, { opacity: 0, scale: 1 });
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
           gsap.set(section3EmojiRef.current, { opacity: 0 });
         }
-        // Phase 3: "We all already knew that" (60-90%)
-        else if (progress <= 0.9) {
-          const phase3Progress = (progress - 0.6) / 0.3; // 0 to 1 for phase 3
+        // Phase 3: "We all already knew that" (25-35%)
+        else if (progress <= 0.35) {
+          const phase3Progress = (progress - 0.25) / 0.1; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("expo.out")(phase3Progress);
           
           // Keep everything hidden from previous phases
@@ -837,13 +889,70 @@ const NycSubway = ({ className }) => {
             y: 75 - (75 * easedPhase3Progress)
           });
           
+          // Animate in emoji in phase 3
+          gsap.set(section3EmojiRef.current, {
+            opacity: easedPhase3Progress,
+            scale: 0.75 + (0.15 * easedPhase3Progress)
+          });
+          
+          // Keep progress line hidden in phase 3
+          gsap.set(section2ProgressLineRef.current, {
+            scaleX: 0,
+            opacity: 0.25
+          });
+          
+          // Keep emoji progress border hidden in phase 3
+          gsap.set(section3EmojiProgressBorderRef.current, {
+            strokeDasharray: '0, 1000',
+            opacity: 0
+          });
+          
           // Keep other section 3 elements hidden
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
-          gsap.set(section3EmojiRef.current, { opacity: 0 });
         }
-        // Phase 4: "However, I decided to take a crack at it" (90-100%)
+        // Phase 3b: Pause (35-65%)
+        else if (progress <= 0.65) {
+          const pauseProgress = (progress - 0.35) / 0.3; // 0 to 1 for pause duration
+          const easedPauseProgress = gsap.parseEase("power2.out")(pauseProgress);
+          
+          // Keep everything hidden from previous phases
+          section2BubbleRefs.current.forEach((bubble) => {
+            if (bubble) {
+              gsap.set(bubble, { opacity: 0, scale: 0 });
+            }
+          });
+          gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
+          
+          // Keep main title hidden
+          gsap.set(section2MainTitleRef.current, { opacity: 0, scale: 0.9 });
+          
+          // Keep "We all already knew that" visible during pause
+          gsap.set(section3Text1Ref.current, { opacity: 1, y: 0 });
+          
+          // Keep emoji visible during pause
+          gsap.set(section3EmojiRef.current, { opacity: 1, scale: 0.9 });
+          
+          // Animate progress line to show pause progress
+          gsap.set(section2ProgressLineRef.current, {
+            scaleX: easedPauseProgress, // Animate from 0 to 1 during pause
+            opacity: 0.25
+          });
+          
+          // Animate emoji progress border during pause
+          const circumference = 2 * Math.PI * 160; // radius of 160px
+          const dashOffset = circumference * (1 - easedPauseProgress);
+          gsap.set(section3EmojiProgressBorderRef.current, {
+            strokeDasharray: `${circumference}, ${circumference}`,
+            strokeDashoffset: dashOffset,
+            opacity: 0.3
+          });
+          
+          // Keep other section 3 elements hidden
+          gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
+        }
+        // Phase 4: "However, I decided to take a crack at it" (65-100%)
         else {
-          const phase4Progress = (progress - 0.9) / 0.1; // 0 to 1 for phase 4
+          const phase4Progress = (progress - 0.65) / 0.35; // 0 to 1 for phase 4
           const easedPhase4Progress = gsap.parseEase("back.out(2)")(phase4Progress);
           
           // Keep everything hidden from previous phases
@@ -863,21 +972,31 @@ const NycSubway = ({ className }) => {
             scale: 1 - (0.2 * easedPhase4Progress)
           });
           
-          // Animate in "However, I decided to take a crack at it" and emoji
+          // Keep emoji visible in phase 4
+          gsap.set(section3EmojiRef.current, { 
+            opacity: 1,
+            scale: 0.9
+          });
+          
+          // Fade out progress line
+          gsap.set(section2ProgressLineRef.current, {
+            opacity: 0.25 - (0.25 * easedPhase4Progress) // Fade out from 0.25 to 0
+          });
+          
+          // Keep emoji progress border visible in phase 4
+          gsap.set(section3EmojiProgressBorderRef.current, {
+            opacity: 0.3
+          });
+          
+          // Animate in "However, I decided to take a crack at it"
           gsap.set(section3Text2Ref.current, {
             opacity: easedPhase4Progress,
             scale: 1.15 - (0.15 * easedPhase4Progress)
-          });
-          
-          gsap.set(section3EmojiRef.current, {
-            opacity: easedPhase4Progress,
-            scale: 0.75 + (0.15 * easedPhase4Progress)
           });
         }
         
         // Mark animations as complete when all phases finish
         if (progress >= 1) {
-          section2AnimationComplete = true;
           section3AnimationComplete = true;
         }
       }
@@ -939,39 +1058,48 @@ const NycSubway = ({ className }) => {
     ScrollTrigger.create({
       trigger: section5Ref.current,
       start: "bottom 100%",
-      end: "+=30%", // Extend the trigger area for scroll control
+      end: "+=50%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
-        // Animation happens from 0% to 100% of scroll (no delays)
-        const textProgress = progress; // 0 to 1 for animation
-        
-        // Text 1 fades in first half, Text 2 fades in second half
+        // Phase 1: Text body cross-fades with Text 1 (0-50%)
         if (progress <= 0.5) {
-          const text1Progress = progress / 0.5; // 0 to 1 for text 1 animation
-          const easedText1Progress = gsap.parseEase("power4.out")(text1Progress);
+          const phase1Progress = progress / 0.5; // 0 to 1 for phase 1
+          const phase1FadeOutProgress = gsap.parseEase("expo.out")(phase1Progress);
+          const phase1FadeInProgress = gsap.parseEase("power3.inOut")(phase1Progress);
+          
+          // Text body fades out while Text 1 fades in (cross-fade)
+          gsap.set(section5TextBodyRef.current, {
+            opacity: 1 - phase1FadeOutProgress,
+            y: 0
+          });
           
           gsap.set(section5Text1Ref.current, {
-            opacity: easedText1Progress,
-            y: 50 - (50 * easedText1Progress)
+            opacity: phase1FadeInProgress,
+            y: 50 - (50 * phase1FadeInProgress)
           });
           gsap.set(section5Text2Ref.current, {
             opacity: 0,
             y: 50
           });
-        } else {
-          const text2Progress = (progress - 0.5) / 0.5; // 0 to 1 for text 2 animation
-          const easedText2Progress = gsap.parseEase("power4.out")(text2Progress);
+        } 
+        // Phase 2: Text 2 fades in (50-100%)
+        else {
+          const phase2Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 2
+          const easedPhase2Progress = gsap.parseEase("power4.out")(phase2Progress);
+          
+          // Text body stays hidden
+          gsap.set(section5TextBodyRef.current, { opacity: 0, y: 0 });
           
           gsap.set(section5Text1Ref.current, {
             opacity: 1,
             y: 0
           });
           gsap.set(section5Text2Ref.current, {
-            opacity: easedText2Progress,
-            y: 50 - (50 * easedText2Progress)
+            opacity: easedPhase2Progress,
+            y: 50 - (50 * easedPhase2Progress)
           });
         }
         
@@ -2777,7 +2905,7 @@ const NycSubway = ({ className }) => {
       >
         <div className="w-full mx-auto text-center relative h-screen">
           
-                     {/* Section 2 Text Box */}
+          {/* Section 2 Text Box */}
            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
              <p 
                ref={section2MainTitleRef}
@@ -2840,6 +2968,12 @@ const NycSubway = ({ className }) => {
             <h2 className="text-4.5xl font-medium text-foreground tracking-tight -mt-4">
               We all already knew that.
             </h2>
+            {/* Progress Line */}
+            {/* <div 
+              ref={section2ProgressLineRef}
+              className="w-full h-1 bg-foreground mt-4 transform origin-left rounded-full"
+              style={{ transform: 'scaleX(0)' }}
+            /> */}
           </div>
           
           {/* Section 3 Text Box 2 */}
@@ -2855,13 +2989,36 @@ const NycSubway = ({ className }) => {
           {/* Section 3 Bottom middle emoji */}
           <div 
             ref={section3EmojiRef}
-            className="absolute bottom-36 left-1/2 transform -translate-x-1/2 w-80 h-80 rounded-full overflow-hidden glass-sm"
+            className="absolute bottom-36 left-1/2 transform -translate-x-1/2 w-80 h-80"
           >
-            <img 
-              src="/subway/section3emoji.png" 
-              alt="Section 1 Emoji" 
-              className="w-full h-full object-cover"
-            />
+            <div className="w-full h-full rounded-full overflow-hidden relative drop-shadow-xl bg-background -z-50">
+              <img 
+                src="/subway/section3emoji.png" 
+                alt="Section 1 Emoji" 
+                className="w-full h-full object-cover"
+              />
+              
+              {/* Progress Border */}
+              <svg 
+                className="absolute inset-0 w-full h-full rotate-90 pointer-events-none"
+                viewBox="0 0 320 320"
+              >
+                <circle
+                  ref={section3EmojiProgressBorderRef}
+                  cx="160"
+                  cy="160"
+                  r="160"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  className="blur-[8px] dark:blur-[2px] text-black/30 dark:text-white"
+                  style={{
+                    strokeDasharray: '0, 1000',
+                    strokeLinecap: 'round'
+                  }}
+                />
+              </svg>
+            </div>
           </div>
         </div>
       </section>
@@ -2920,6 +3077,16 @@ const NycSubway = ({ className }) => {
         ref={section5Ref}
         className="min-h-screen flex items-center justify-center relative"
       >
+        {/* Text Body - Phase 0 */}
+        <div 
+          ref={section5TextBodyRef}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center"
+        >
+          <h2 className="text-4.5xl font-medium text-foreground tracking-tight -mt-4 leading-[3rem] w-[90%] mx-auto">
+            And through my own lived experience, deduced the following personal insights.
+          </h2>
+        </div>
+        
         <div className="w-full max-w-5xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-28">
           
           {/* Text Column 1 */}
