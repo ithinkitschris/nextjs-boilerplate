@@ -324,7 +324,7 @@ const Bloom = ({ className }) => {
 
   // Body
   return (
-      <div className={`relative overflow-x-hidden col-span-full bg-black -mx-[8.5%] -mt-36 ${className || ''}`}>
+      <div className={`relative overflow-x-hidden col-span-full bg-black -mt-36 ${className || ''}`}>
 
       {/* Section 1 – Cover Page */}
       <section 

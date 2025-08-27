@@ -219,7 +219,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                   h-[80%] md:h-[450px] w-[78%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
 
                     {/* About */}
-                    <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:mr-2 h-[430px] md:h-[430px] overflow-y-auto no-scrollbar leading-[145%] bg-background dark:bg-black/10
+                    <motion.div className="glass-sm p-8 mt-4 md:mt-0 md:mr-2 h-[430px] md:h-[430px] overflow-y-auto no-scrollbar leading-[145%] bg-background dark:bg-black/10
                     backdrop-blur-3xl rounded-3xl drop-shadow-md relative" 
                     initial="hidden"
                     animate="show"
@@ -252,13 +252,12 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                       </a>
 
                       {/* Last Updated */}
-                      <p className="mt-6 text-xxs opacity-75 leading-tight">Website last meddled with on 07.31.25 for the 261st time.</p>
+                      <p className="mt-6 text-xxs opacity-75 leading-tight">Website last meddled with on 08.27.25 for the 267th time.</p>
 
                     </motion.div>
 
                     {/* To Do */}
-                    <motion.div className="glass-sm p-6 mt-4 md:mt-0 md:ml-2 h-[450px] md:h-[430px] overflow-y-auto no-scrollbar leading-[145%] bg-background dark:bg-black/10 flex flex-col gap-2
-                    backdrop-blur-3xl rounded-3xl drop-shadow-md" 
+                    <motion.div className="glass-sm p-8 mt-4 md:mt-0 md:ml-2 h-[450px] md:h-[430px] overflow-y-auto no-scrollbar leading-[145%] bg-background dark:bg-black/10 flex flex-col gap-2 backdrop-blur-3xl rounded-3xl drop-shadow-md pr-14" 
                     initial="hidden"
                     animate="show"
                     variants={animateInToDo}>
@@ -267,17 +266,18 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
 
                       <div>
                         <p className='mt-2 text-foreground font-medium text-xxs'>01</p>
-                        <p className="">Adapt info section/page and footer for mobile. (Currently only available on desktop).</p>
+                        <p className="">Adapt NYC Subway project page for mobile.</p>
                       </div>
 
                       <div>
                         <p className='mt-2 text-foreground font-medium text-xxs'>02</p>
-                        <p className="">Develop page design for Product Design case studies. (Would like to use GSAP)</p>
+                        <p className="">Explore Notion API integration.</p>
+                        
                       </div>
 
                       <div>
                         <p className='mt-2 text-foreground font-medium text-xxs'>03</p>
-                        <p className="">Explore Notion API integration to have documentation that I have done on Notion on this site.</p>
+                        <p className="">Build out Website and Bloom project pages.</p>
                       </div>
 
                       <div>
@@ -287,12 +287,12 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
 
                       <div>
                         <p className='mt-2 text-foreground font-medium text-xxs'>06</p>
-                        <p className="">Explore GSAP integration.</p>
+                        <p className="line-through">Develop page design for Product Design case studies. (GSAP Integration)</p>
                       </div>
 
                       <div>
                         <p className='mt-2 text-foreground font-medium text-xxs'>07</p>
-                        <p className="">Refine main page footer.</p>
+                        <p className="line-through">Refine main page footer.</p>
                       </div>
 
 
@@ -301,7 +301,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                     </motion.div>
                     
                     {/* Changelog Window */}
-                    <motion.div className="glass-sm md:col-span-2 p-6 mt-4 md:mt-0 md:ml-4 h-[100%] md:h-[430px] no-scrollbar bg-background relative flex flex-col
+                    <motion.div className="glass-sm md:col-span-2 p-8 pr-10 mt-4 md:mt-0 md:ml-4 h-[100%] md:h-[430px] no-scrollbar bg-background relative flex flex-col
                     dark:bg-black/10 backdrop-blur-3xl rounded-3xl drop-shadow-md"
                     initial="hidden"
                     animate="show"
@@ -317,6 +317,35 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
 
                         {/* Left Column */}
                         <div className="no-scrollbar col-span-full md:col-span-1 flex flex-col gap-4 overflow-y-auto pr-4">
+
+                          <div className="flex flex-col"> 
+                            <p className='text-foreground font-medium'>Latest Iterations</p>
+                          </div> 
+
+
+                          <div className="flex flex-col gap-3 leading-4 mb-4"> 
+                            <p className='text-foreground font-medium'>v2.12</p>
+                            
+                            <p>Refined the scroll duration of certain sections of NYC Subway page after two rounds of user testing – Extended duration on intro pages and Problem Statement page.</p>
+
+                            <p>Added pause breaks to the scroll and implemented visual feedback as the user scrolls through a pause.</p>
+                            
+                          </div> 
+
+                          <div className="flex flex-col gap-3 leading-4 mb-4"> 
+                            <p className='text-foreground font-medium'>v2.11</p>
+                            
+                            <p>Completed NYC Subway page – Full GSAP implementation optimized for desktop experience. This was a multi-day endeavor and I am pleasantly surprised with how it turned out. Mobile adaptation will be required and user testing of the scroll behavior will have to be conducted.</p>
+                            
+                          </div> 
+                        </div>
+                        
+                        {/* Right Column */}
+                        <div className="no-scrollbar col-span-full md:col-span-1 overflow-y-auto">
+
+                        <div className="flex flex-col"> 
+                            <p className='text-foreground font-medium mb-4'>Archive</p>
+                          </div>
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.1</p>
@@ -338,12 +367,6 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                             <p>Tweaked the margins to be narrower for the top navbar</p>
                             <p>Fixed overflow-x-hidden bug for the main page.</p>
                           </div> 
-
-                    
-                        </div>
-                        
-                        {/* Right Column */}
-                        <div className="no-scrollbar col-span-full md:col-span-1 overflow-y-auto">
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.02</p>

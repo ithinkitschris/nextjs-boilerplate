@@ -259,14 +259,14 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) =
 
         <div 
           ref={contentRef}
-          className="bg-black rounded-l-3xl pr-2 pl-2 py-8 relative drop-shadow-[3px_6px_7px_rgba(0,0,0,0.5)]"
+          className="bg-black rounded-l-[20pt] md:rounded-l-3xl pr-0 md:pr-2 pl-2 md:pl-3 py-6 md:py-8 relative drop-shadow-[3px_6px_7px_rgba(0,0,0,0.5)]"
           style={{ transform: 'translateX(200%)' }}
         >
           
           
           {/* Top right rounded corner SVG */}
           <svg 
-            className="absolute -top-6 right-0 w-6 h-6 drop-shadow-2xl"
+            className="absolute -top-5 md:-top-6 right-0 w-5 h-5 md:w-6 md:h-6 drop-shadow-2xl"
             viewBox="0 0 24 24" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
@@ -279,7 +279,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) =
           
           {/* Bottom right rounded corner SVG */}
           <svg 
-            className="absolute -bottom-6 right-0 w-6 h-6 drop-shadow-2xl"
+            className="absolute -bottom-5 md:-bottom-6 right-0 w-5 h-5 md:w-6 md:h-6 drop-shadow-2xl"
             viewBox="0 0 24 24" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
@@ -290,15 +290,15 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) =
             />
           </svg>
           
-          <div className="flex flex-col space-y-2 items-end">
+          <div className="flex flex-col -space-y-1 items-end md:space-y-2">
             {sections.map((section, index) => (
               <button
                 key={index}
                 onClick={() => scrollToSection(index + 1)}
                 className={`tracking-tight font-medium text-foreground transition-all duration-300 cursor-pointer ${
                   currentGroupedSection === index + 1
-                    ? ' text-white text-md font-semibold'
-                    : ' text-xs opacity-25 hover:text-base hover:opacity-100'
+                    ? ' text-white text-[7pt] md:text-sm font-semibold'
+                    : ' text-[6pt] md:text-xs opacity-25 hover:text-base hover:opacity-100'
                 }`}
               >
                 {section}
@@ -2876,7 +2876,7 @@ const NycSubway = ({ className }) => {
 
   // Body
   return (
-      <div className={`relative overflow-x-hidden col-span-full -mx-[8%] -mt-36 ${className || ''}`}>
+      <div className={`relative overflow-x-hidden col-span-full -mt-20 md:-mt-36 ${className || ''}`}>
         {/* Scroll Progress Tracker */}
         <ScrollProgressTracker currentSection={currentSection} totalSections={totalSections} sectionRefs={sectionRefs} />
 
@@ -2892,7 +2892,13 @@ const NycSubway = ({ className }) => {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-auto object-cover z-0"
+          style={{ 
+            width: '100vw',
+            height: '100%',
+            left: '50%',
+            transform: 'translateX(-50%)'
+          }}
         >
           <source src="/subway/Title Frame.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -2902,9 +2908,27 @@ const NycSubway = ({ className }) => {
           <img 
             src="/subway/lockup.png" 
             alt="NYC Subway Lockup" 
-            className="mx-auto ml-6 mb-8 max-w-full h-auto scale-[55%]"
+            className="mx-auto md:ml-6 mb-8 max-w-full h-auto scale-[80%] md:scale-[55%]"
           />
         </div>
+
+        {/* Downward Chevron */}
+        {/* <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-10">
+          <svg 
+            className="w-8 h-8 text-white animate-bounce" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+            />
+          </svg>
+        </div> */}
       </section>
 
       {/* Section 2 – Bubbles + Take a Crack at It (Combined) */}
@@ -2915,10 +2939,10 @@ const NycSubway = ({ className }) => {
         <div className="w-full mx-auto text-center relative h-screen">
           
           {/* Section 2 Text Box */}
-           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2">
              <p 
                ref={section2MainTitleRef}
-               className="text-4xl md:text-6xl font-semibold text-foreground tracking-tight w-2/3 mx-auto"
+               className="text-4xl md:text-6xl font-semibold text-foreground tracking-tight w-[90%] md:w-2/3 mx-auto -mt-8 md:mt-0"
                style={{ lineHeight: '0.9' }}
              >
              The New York City Subway is not great.
@@ -2930,37 +2954,37 @@ const NycSubway = ({ className }) => {
             ref={(el) => section2BubbleRefs.current[0] = el}
             src="/subway/bubble1.png" 
             alt="Speech Bubble 1" 
-            className="absolute bottom-[25%] left-[10%] w-120 h-auto"
+            className="absolute bottom-[29%] md:bottom-[25%] -left-5 md:left-[10%] w-60 md:w-120 h-auto"
           />
           <img 
             ref={(el) => section2BubbleRefs.current[1] = el}
             src="/subway/bubble4.png" 
             alt="Speech Bubble 2" 
-            className="absolute bottom-[58%] left-[7%] w-[35%] h-auto blur-[1.5px]"
+            className="absolute bottom-[38%] md:bottom-[58%] left-[28%] md:left-[7%] w-[70%] md:w-[35%] h-auto blur-[0.6px] *:md:blur-[1.5px]"
           />
           <img 
             ref={(el) => section2BubbleRefs.current[2] = el}
             src="/subway/bubble3.png" 
             alt="Speech Bubble 3" 
-            className="absolute bottom-[69%] right-[35%] w-120 h-auto blur-[2px]"
+            className="absolute bottom-[58%] md:bottom-[69%] -right-[8%] md:right-[35%] w-[70%] md:w-120 h-auto blur-[1px] md:blur-[2px]"
           />
           <img 
             ref={(el) => section2BubbleRefs.current[3] = el}
             src="/subway/bubble2.png" 
             alt="Speech Bubble 4" 
-            className="absolute bottom-[50%] right-[3%] w-120 h-auto blur-[3px]"
+            className="absolute bottom-[68%] md:bottom-[50%] right-[35%] md:right-[3%] w-[67%] md:w-120 h-auto blur-[1px] md:blur-[3px]"
           />
           <img 
             ref={(el) => section2BubbleRefs.current[4] = el}
             src="/subway/bubble5.png" 
             alt="Speech Bubble 5" 
-            className="absolute bottom-[15%] right-[7%] w-135 h-auto"
+            className="absolute bottom-[80%] md:bottom-[15%] right-[6%] md:right-[7%] w-[80%] md:w-135 h-auto"
           />
           
           {/* Section 2 Bottom middle emoji */}
           <div 
             ref={section2EmojiRef}
-            className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-80 h-80 rounded-full overflow-hidden glass-sm"
+            className="absolute bottom-[2%] md:bottom-0 left-1/2 transform -translate-x-1/2 w-[45%] md:w-96 h-auto rounded-full md:rounded-none overflow-hidden glass-sm md:border-0 md:shadow-none"
           >
             <img 
               src="/subway/section2emoji.png" 
@@ -2972,9 +2996,9 @@ const NycSubway = ({ className }) => {
           {/* Section 3 Text Box 1 */}
           <div 
             ref={section3Text1Ref}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            className="absolute top-[45%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full mx-auto text-center"
           >
-            <h2 className="text-4.5xl font-medium text-foreground tracking-tight -mt-4">
+            <h2 className="text-4.5xl font-medium text-foreground tracking-tight w-[60%] mx-auto leading-[1]">
               We all already knew that.
             </h2>
             {/* Progress Line */}
@@ -2990,16 +3014,16 @@ const NycSubway = ({ className }) => {
             ref={section3Text2Ref}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
           >
-            <h2 className="text-4xl md:text-6xl font-medium text-foreground tracking-tight w-[40%] mx-auto -mt-4">
+            <h2 className="text-[24pt] md:text-6xl font-medium text-foreground tracking-tight w-[85%] md:w-[40%] mx-auto -mt-18 md:-mt-4 leading-[1] origin-center">
               However, I decided to take a crack at it anyway.
             </h2>
           </div>
           
           {/* Section 3 Bottom middle emoji */}
           <div 
-            className="absolute bottom-24 left-1/2 transform -translate-x-1/2 w-80 h-80"
+            className="absolute bottom-36 md:bottom-24 left-1/2 transform -translate-x-1/2 w-80 h-80"
           >
-            <div className="w-full h-full rounded-full overflow-hidden relative -z-50 scale-95 origin-bottom">
+            <div className="w-full h-full rounded-full overflow-hidden relative -z-50 scale-75 md:scale-95 origin-bottom">
               <img 
                 ref={section3EmojiRef}
                 src="/subway/section2emoji1.png" 
@@ -3052,37 +3076,37 @@ const NycSubway = ({ className }) => {
           }}
         />
         {/* Container */}
-        <div className="w-full ">
+        <div className="w-full h-full relative">
            
             {/* Text 1 */}
              <div 
                ref={section4Text1Ref}
-               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
              >
-                 <p className="text-2xl font-medium text-foreground tracking-tight">So to begin...</p>
+                 <p className="text-2xl font-medium text-foreground tracking-tight text-center">So to begin...</p>
 
              </div>
              
              {/* Text 2 */}
              <div 
                ref={section4Text2Ref}
-               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
              >
-                 <h2 className="text-4xl md:text-9xl whitespace-nowrap font-semibold text-foreground tracking-tight w-full mt-0">
-                    I looked inwards.
-                 </h2>
+              <h2 className="text-8xl md:text-9xl font-semibold text-foreground tracking-tight text-center mt-14 md:mt-0 leading-[0.9] md:whitespace-nowrap">
+                I looked inwards.
+              </h2>
              </div>
         </div>
         
         {/* Bottom middle emoji */}
         <div 
           ref={section4EmojiRef}
-          className="absolute bottom-0"
+          className="absolute bottom-0 z-40"
         >
           <img 
             src="/subway/section4emoji.png" 
             alt="Section 4 Emoji" 
-            className="max-w-full h-[29rem]"
+            className=" h-[20rem] md:h-[29rem] w-auto"
           />
         </div>
       </section>
@@ -3095,35 +3119,35 @@ const NycSubway = ({ className }) => {
         {/* Text Body - Phase 0 */}
         <div 
           ref={section5TextBodyRef}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full"
         >
-          <h2 className="text-4.5xl font-medium text-foreground tracking-tight -mt-4 leading-[3rem] w-[90%] mx-auto">
+          <h2 className="text-3xl md:text-4.5xl leading-[1.2] md:leading-[3rem] font-medium text-foreground tracking-tight -mt-4 md:-mt-4 w-[70%] md:w-[45%] mx-auto">
             And through my own lived experience, deduced the following personal insights.
           </h2>
         </div>
         
-        <div className="w-full max-w-5xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-28">
+        <div className="w-full max-w-5xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-28">
           
           {/* Text Column 1 */}
           <div 
             ref={section5Text1Ref}
-            className="text-center md:text-left -mt-10"
+            className="text-left md:-mt-10 w-3/4 md:w-full mx-auto md:mx-0"
           >
-            <div className="mb-6">
+            <div className="mb-3 md:mb-6">
               <img 
                 src="/subway/section5icon1.png" 
                 alt="Section 5 Icon 1" 
-                className="h-10 dark:invert w-auto"
+                className="h-8 md:h-10 dark:invert w-auto"
               />
             </div>
-            <h2 className="text-4xl font-semibold dark:font-medium tracking-tight mb-8 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent leading-[1]">
                  Making my way downtown. (or not) 
             </h2>
-            <p className="text-lg text-foreground leading-7">
+            <p className="text-sm md:text-lg text-foreground md:leading-7">
             Subway stations can have platforms on opposing sides of the tracks heading uptown/downtown respectively, with tracks running in the middle.
             </p>
 
-            <p className="mt-5 text-lg text-foreground leading-7">
+            <p className="mt-5 text-sm md:text-lg text-foreground md:leading-7">
             This, combined with the lack of options for crossing the tracks to get to the platform opposite can result in users entering the wrong platform via the wrong entrance and thus having to exit and re-enter.
             </p>
           </div>
@@ -3131,25 +3155,25 @@ const NycSubway = ({ className }) => {
           {/* Text Column 2 */}
           <div 
             ref={section5Text2Ref}
-            className="text-center md:text-left -mt-10"
+            className="text-left md:-mt-10 w-3/4 md:w-full mx-auto md:mx-0"
           >
-            <div className="mb-6">
+            <div className="mb-3 md:mb-6">
               <img 
                 src="/subway/section5icon2.png" 
                 alt="Section 5 Icon 2" 
-                className="h-10 dark:invert w-auto"
+                className="h-8 md:h-10 dark:invert w-auto"
               />
             </div>
-            <h2 className="text-4xl font-semibold dark:font-medium tracking-tight mb-8  bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-4xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent leading-[1]">
               Conduct yourself accordingly.
             </h2>
-            <p className="text-lg text-foreground leading-7">
+            <p className="text-sm md:text-lg text-foreground md:leading-7">
             Train conductors are a reliable source of information as well as safety.  
             </p>
-            <p className="mt-5 text-lg text-foreground leading-7">  
+            <p className="mt-3 md:mt-5 text-sm md:text-lg text-foreground md:leading-7">  
             They tend to be located in the middle of the train and it is a common sight for commuters to ask the conductors for directions/guidance at stations. 
             </p>
-            <p className="mt-5 text-lg text-foreground leading-7">
+            <p className="mt-3 md:mt-5 text-sm md:text-lg text-foreground md:leading-7">
             They are also figures of authority and representatives of the MTA while on the train and can be a support for help when it is required.
             </p>
             
@@ -3177,7 +3201,7 @@ const NycSubway = ({ className }) => {
             {/* Text 1 */}
              <div 
                ref={section6Text1Ref}
-               className="absolute top-[53%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+               className="absolute top-[50%] md:top-[53%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
              >
                  <p className="text-2xl font-medium text-foreground tracking-tight">After which...</p>
 
@@ -3186,9 +3210,9 @@ const NycSubway = ({ className }) => {
              {/* Text 2 */}
              <div 
                ref={section6Text2Ref}
-               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[75%]"
+               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full md:w-[75%]"
              >
-                 <p className="text-[68pt] -mt-4 font-semibold text-foreground tracking-tight mx-auto"
+                 <p className="text-[44pt] md:text-[68pt] font-semibold text-foreground tracking-tight mx-auto mt-8 md:mt-0"
                  style={{ lineHeight: '0.9' }}>
                  I looked to someone who knew what he was talking about.
                  </p>
@@ -3198,12 +3222,12 @@ const NycSubway = ({ className }) => {
         {/* Bottom middle emoji */}
         <div 
           ref={section6EmojiRef}
-          className="absolute bottom-0 right-28"
+          className="absolute bottom-0 right-4 md:right-28"
         >
           <img 
             src="/subway/section6emoji.png" 
             alt="Section 6 Emoji" 
-            className="max-w-full h-[24rem]"
+            className="max-w-full h-[16rem] md:h-[24rem] w-auto"
           />
         </div>
       </section>
@@ -3219,18 +3243,18 @@ const NycSubway = ({ className }) => {
             {/* Text 1 */}
              <div 
                ref={section7Text1Ref}
-               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+               className="absolute top-[53%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
              >
-              <p className="text-[60pt] py-10 font-semibold tracking-tight mx-auto bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent -mt-36">Sim Hao Jie</p>
+              <p className="text-[40pt] md:text-[60pt] py-10 font-semibold tracking-tight mx-auto bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent -mt-36">Sim Hao Jie</p>
 
              </div>
              
              {/* Text 2 */}
              <div 
                ref={section7Text2Ref}
-               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[65%]"
+               className="absolute top-[52%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full md:w-[65%]"
              >
-                 <p className="text-[20pt] mt-14 font-medium text-foreground w-[80%] mx-auto"
+                 <p className="text-[12pt] md:text-[20pt] mt-0 md:mt-14 font-medium text-foreground w-[80%] mx-auto"
                   style={{ lineHeight: '1.25' }}>
                  is a Service Designer based in New York City and has conducted studies with communities regarding the daily experience 
                  and situation of the New York City Subway.
@@ -3246,37 +3270,37 @@ const NycSubway = ({ className }) => {
           <img 
             src="/subway/section7emoji.png" 
             alt="Section 7 Emoji" 
-            className="max-w-full h-[22rem]"
+            className="max-w-full h-[18rem] md:h-[22rem] w-auto"
           />
         </div>
 
         {/* Section 8 Content - Overlaid on top */}
         <div className="absolute inset-0 w-full flex items-center justify-center">
-          <div className="grid grid-cols-4 gap-10 items-start max-w-7xl -mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 items-start max-w-7xl mt-0 md:-mt-10 ">
             
             {/* Column 1 - Emoji */}
             <div 
               ref={section8EmojiRef}
-              className="flex justify-center items-center -ml-20 mt-[40%]"
+              className="flex justify-center items-center md:-ml-20 mt-[40%] absolute bottom-10 left-1/2 transform -translate-x-1/2 mx-auto md:relative hidden md:block"
             >
-              <div className="bg-background dark:border-0 dark:glass-strong drop-shadow-xl w-64 h-64 rounded-full flex items-center justify-center relative">
+              <div className="bg-background dark:border-0 dark:glass-strong drop-shadow-xl w-44 h-44 md:w-64 md:h-64 rounded-full flex items-center justify-center relative">
                 <img 
                   ref={section8Emoji1Ref}
                   src="/subway/section7emoji1.png" 
                   alt="Section 7 Emoji 1" 
-                  className="max-w-full h-52 absolute inset-0 m-auto"
+                  className="max-w-full h-40 md:h-52 absolute inset-0 m-auto"
                 />
                 <img 
                   ref={section8Emoji2Ref}
                   src="/subway/section7emoji2.png" 
                   alt="Section 7 Emoji 2" 
-                  className="max-w-full h-52 absolute inset-0 m-auto"
+                  className="max-w-full h-40 md:h-52 absolute inset-0 m-auto"
                 />
                 <img 
                   ref={section8Emoji3Ref}
                   src="/subway/section7emoji3.png" 
                   alt="Section 7 Emoji 3" 
-                  className="max-w-full h-52 absolute inset-0 m-auto"
+                  className="max-w-full h-40 md:h-52 absolute inset-0 m-auto"
                 />
               </div>
             </div>
@@ -3284,23 +3308,23 @@ const NycSubway = ({ className }) => {
             {/* Column 2 - Text 1 */}
             <div 
               ref={section8Text1Ref}
-              className="flex items-start flex-col pt-20"
+              className="flex items-start flex-col pt-4 md:pt-20 w-[67%] md:w-full mx-auto"
             >
               <div className="mb-4">
                 <img 
                   src="/subway/section7icon1.png" 
                   alt="Safety Icon" 
-                  className="h-10 w-auto dark:invert"
+                  className="h-7 md:h-10 w-auto dark:invert"
                 />
               </div>
-              <h3 className="text-4.5xl font-semibold dark:font-medium tracking-tight mb-8 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-4">
+              <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4 ">
                 Safety
               </h3>
-              <p className="text-lg font-medium text-foreground text-left">
+              <p className="text-[9pt] md:text-lg font-medium text-foreground text-left leading-[1.5] md:leading-[1.6]">
               A sense of unease and lack of safety while commuting is exacerbated by the physical environments of certain stations within the system. 
               </p>
 
-              <p className="text-lg font-medium text-foreground text-left mt-8">
+              <p className="text-[9pt] md:text-lg font-medium text-foreground text-left mt-3 md:mt-8 leading-[1.5] md:leading-[1.6]">
               Unclear wayfinding within the system can result in a lack of confidence in navigating the system.
               </p>
             </div>
@@ -3308,23 +3332,23 @@ const NycSubway = ({ className }) => {
             {/* Column 3 - Text 2 */}
             <div 
               ref={section8Text2Ref}
-              className="flex flex-col pt-20"
+              className="flex flex-col pt-0 md:pt-20 w-[67%] md:w-full mx-auto"
             >
               <div className="mb-4">
                 <img 
                   src="/subway/section7icon2.png" 
                   alt="Wayfinding Icon" 
-                  className="h-10 w-auto dark:invert"
+                  className="h-7 md:h-10 w-auto dark:invert"
                 />
               </div>
-              <h3 className="text-4.5xl font-semibold dark:font-medium tracking-tight mb-10 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-4">
+              <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-10 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4">
                 Wayfinding
               </h3>
-              <p className="text-lg font-medium text-foreground text-left">
+              <p className="text-[9pt] md:text-lg font-medium text-foreground text-left leading-[1.5] md:leading-[1.6]">
               Station exits/entrances can be difficult to comprehend for a commuter. 
               </p>
 
-              <p className="text-lg font-medium text-foreground text-left mt-8">
+              <p className="text-[9pt] md:text-lg font-medium text-foreground text-left mt-3 md:mt-8 leading-[1.5] md:leading-[1.6]">
               Exits, in particular, can be confusing as they are labeled by road names and cardinal directions. A Southeast corner can be difficult to discern while underground with no visible landmarks to ground a directional cue like this.
               </p>
             </div>
@@ -3332,23 +3356,23 @@ const NycSubway = ({ className }) => {
             {/* Column 4 - Text 3 */}
             <div 
               ref={section8Text3Ref}
-              className="flex flex-col pt-20"
+              className="flex flex-col pt-0 md:pt-20 w-[67%] md:w-full mx-auto"
             >
               <div className="mb-4">
                 <img 
                   src="/subway/section7icon3.png" 
                   alt="Accessibility Icon" 
-                  className="h-10 w-auto dark:invert"
+                  className="h-7 md:h-10 w-auto dark:invert"
                 />
               </div>
-              <h3 className="text-4.5xl font-semibold dark:font-medium tracking-tight mb-10 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-4">
+              <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-10 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4">
                 Accessibility
               </h3>
-              <p className="text-lg font-medium text-foreground text-left">
+              <p className="text-[9pt] md:text-lg font-medium text-foreground text-left leading-[1.5] md:leading-[1.6]">
               Not all stations within the system are fully accessible.
               </p>
 
-              <p className="text-lg font-medium text-foreground text-left mt-8">
+              <p className="text-[9pt] md:text-lg font-medium text-foreground text-left mt-3 md:mt-8 leading-[1.5] md:leading-[1.6]">
               This has a major impact on commuters with movement disabilities and results in itineraries that differ for most commuters as their needs take into account stations with accessibility. 
               </p>
             </div>
@@ -3379,7 +3403,7 @@ const NycSubway = ({ className }) => {
         <div className="absolute flex flex-col items-center justify-center z-10 w-[75%] -mt-6">
           <h1 
             ref={section9TextRef}
-            className="text-[54pt] font-semibold text-foreground tracking-tight mx-auto text-center"
+            className="text-[32pt] md:text-[54pt] font-semibold text-foreground tracking-tight mx-auto text-center -mt-5 md:-mt-0"
             style={{ lineHeight: '1.05' }}
           >
             Navigating the NYC subway system comfortably can be challenging.
@@ -3390,9 +3414,9 @@ const NycSubway = ({ className }) => {
             ref={section9IconRef}
             src="/subway/section9icon1.png" 
             alt="Section 9 Icon" 
-            className="h-16 w-auto dark:invert opacity-0 absolute bottom-[33%] right-[42%]" 
-                          style={{
-                filter: 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(335deg) brightness(130%) contrast(97%)'
+            className="h-12 md:h-16 w-auto dark:invert opacity-0 absolute bottom-[240px] md:bottom-[320px] right-[110px] md:right-[42%]" 
+            style={{
+            filter: 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(335deg) brightness(130%) contrast(97%)'
               }}
         />
 
@@ -3401,43 +3425,43 @@ const NycSubway = ({ className }) => {
           ref={section9EmojiRef}
           src="/subway/section9emoji1.png"
           alt="Section 9 Icon"
-          className="absolute bottom-0 h-[350px] w-auto z-10"
+          className="absolute bottom-0 h-[280px] md:h-[350px] w-auto z-10"
         />
 
         {/* Rounded Rectangle - positioned in center */}
         <div 
           ref={section9RectangleRef}
-          className="absolute inset-0 h-[620px] w-[520px] m-auto rounded-[40pt] border-2 glass-strong backdrop-blur-lg backdrop-brightness-110 bg-white/60 z-5 flex flex-col items-start justify-start pl-14 opacity-0 overflow-hidden"
+          className="absolute inset-0 w-[90%] md:w-[520px] m-auto rounded-[40pt] border-2 glass-strong backdrop-blur-lg backdrop-brightness-110 bg-white/60 z-5 flex flex-col items-start justify-start pl-10 md:pl-14 opacity-0 overflow-hidden"
         >
           <img 
             src="/subway/section9icon2.png" 
             alt="Section 9 Icon" 
-            className="mt-9 h-16 w-auto mb-2" 
+            className="mt-9 h-12 md:h-16 w-auto mb-2" 
           />
           <div ref={section9TextContainerRef} className="flex flex-col">
             <h1 
-              className="text-6xl font-semibold text-black tracking-tight"
+              className="text-[3.5rem] md:text-6xl font-semibold text-black tracking-tight leading-[3.5rem] md:leading-none"
               ref={section9RectangleText1Ref}>
               How might we<span className="font-light">...</span>
             </h1>
 
             <h1 
-              className="text-6xl font-semibold text-black tracking-tight"
+              className="text-[3.5rem] md:text-6xl font-semibold text-black tracking-tight leading-[3.5rem] md:leading-none"
               ref={section9RectangleText2Ref}>
               provide 
             </h1>
             <h1 
-              className="text-6xl font-semibold text-black tracking-tight"
+              className="text-[3.5rem] md:text-6xl font-semibold text-black tracking-tight leading-[3.5rem] md:leading-none"
               ref={section9RectangleText3Ref}>
               commuters
             </h1>
             <h1 
-              className="text-6xl font-semibold text-black tracking-tight"
+              className="text-[3.5rem] md:text-6xl font-semibold text-black tracking-tight leading-[3.5rem] md:leading-none"
               ref={section9RectangleText4Ref}>
               confidence 
             </h1>
             <h1 
-              className="text-6xl font-semibold text-black tracking-tight"
+              className="text-[3.5rem] md:text-6xl font-semibold text-black tracking-tight leading-[3.5rem] md:leading-none"
               ref={section9RectangleText5Ref}>
               when <br/>navigating <br/>the system?
             </h1>

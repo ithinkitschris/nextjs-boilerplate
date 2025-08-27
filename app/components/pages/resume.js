@@ -184,17 +184,17 @@ export default function Resume({ className = "", toggleWork}) {
                   group scale-100 hover:scale-101 transition-all duration-300">
                     
                     {/* Image */}
-                    <div className="rounded-3xl h-full w-full relative shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden">
+                    <div className="rounded-[40pt] h-full w-full relative shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden">
                         <motion.img 
                             src='/profile/profilelandscape2.jpg'
                             className="rounded-3xl h-full w-full object-cover transition-all"
                             variants={animateInChild}
                         />
-                        <div className="absolute inset-0 rounded-3xl shadow-[inset_0px_0px_4px_0px_rgba(255,255,255,0.2)] pointer-events-none" />
+                        <div className="absolute inset-0 rounded-[40pt] shadow-[inset_0px_0px_4px_0px_rgba(255,255,255,0.2)] pointer-events-none" />
                     </div>
                     
                     {/* Text Container */}
-                    <div className="absolute inset-0 grid grid-cols-2 pl-10 text-white group">
+                    <div className="absolute inset-3 grid grid-cols-2 pl-10  text-white group">
 
                         {/* Desktop Name */}
                         <motion.h1
