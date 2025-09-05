@@ -168,12 +168,12 @@ export default function Resume({ className = "", toggleWork}) {
                     <div 
                     className="mb-12 lg:mb-0 px-5 md:px-0 ml-1 mt-14">
                         {/* <p className="text-xs tracking-tight -ml-1">01.</p> */}
-                        <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2 ml-1">1</span> I don&apos;t take anything too seriously.</p>
+                        <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2 ml-1">1</span> I don&apos;t take myself too seriously.</p>
                         <p className="text-xxs ml-2.5 opacity-35 mb-11 tracking-normal font-light">A bold opening statement; I know.</p>
-                        <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">2</span> I aim to have fun in everything I do.</p>
-                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">{"<p>I designed and coded this site from ground up.<br/>"}<br/>{"Fun? Curiosity? Self-hatred? <i>Possibly.</i></p>"}</p>
+                        <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">2</span> I aim to find fun in everything I do.</p>
+                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">Iteration becomes play, not work.</p>
                         <p className="text-[22px] tracking-tight -ml-4"><span className="text-[30px] opacity-100 font-script2 align-top relative -top-2 mr-2">3</span> Craft. Craft. Craft.</p>
-                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">Craft means everything to me. I have to <i>do</i>.<br/>I hope this comes across as you peruse my work.</p>
+                        <p className="text-xxs ml-3 mt-1 opacity-35 mb-10 tracking-normal font-light leading-[13px]">Craft is the process. I can't not create.</p>
                     </div>
 
                 </div>
