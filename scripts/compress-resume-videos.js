@@ -22,6 +22,11 @@ const CONFIG = {
 const RESUME_VIDEOS = [
   // Best Work videos
   {
+    name: 'isv-cover',
+    input: 'public/isv/cover.mp4',
+    outputDir: 'public/optimized/isv'
+  },
+  {
     name: 'bestworkmontage',
     input: 'public/CCS/bestworkmontage.mp4',
     outputDir: 'public/optimized/CCS'

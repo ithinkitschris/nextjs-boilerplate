@@ -96,6 +96,7 @@ export const getOptimizedVideoPath = (originalPath, options = {}) => {
       '/Cocktail/cover2.mp4': 'cocktail-cover2',
       '/Hemsaker/cover.mp4': 'hemsaker-cover',
       '/lounge/montage.mp4': 'lounge-montage',
+      '/isv/cover.mp4': 'isv-cover',
       
       // Motion videos
       '/nike/cover.mp4': 'nike-cover',

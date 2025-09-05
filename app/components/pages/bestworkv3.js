@@ -113,10 +113,38 @@ return (
               </button>
             ))}
           </div>
+
+          {/* ISV */}
+          <div 
+              ref={(el) => (itemsRef.current[0] = el)}
+              
+              onClick={() => {
+                toggleWork('isv')
+              }}
+              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
+            >
+            
+            <SideContainer
+              number="01"
+              title="In-Flight Safety Video"
+              subtitle="Brand Film for Singapore Airlines"
+              description="Singapore Airlines' 2025 In-Flight Safety Video that takes passengers on a journey through Singapore’s iconic landmarks and most importantly, diverse communities."
+              role="Art Director"
+              skills={["Art Direction"]}
+              hoverWidth="420px"
+            />
+
+            <CarouselVideo 
+              videoId="creative-isv"
+              src="/isv/bestworkcover.mp4"
+              poster="/poster/isv.png"
+              useOptimized={false}
+            />
+          </div>
           
           {/* Beyond The Cabin */}
           <div 
-              ref={(el) => (itemsRef.current[0] = el)}
+              ref={(el) => (itemsRef.current[1] = el)}
               
               onClick={() => {
                 toggleWork('cabin')
@@ -125,7 +153,7 @@ return (
             >
             
             <SideContainer
-              number="01"
+              number="02"
               title="Beyond The Cabin"
               subtitle="Brand Campaign for Singapore Airlines"
               description="6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world."
@@ -143,7 +171,7 @@ return (
 
           {/* Ghibli */}
           <div 
-              ref={(el) => (itemsRef.current[1] = el)}
+              ref={(el) => (itemsRef.current[2] = el)}
               
               onClick={() => {
                 toggleWork('ghibli')
@@ -152,7 +180,7 @@ return (
             >
 
             <SideContainer
-              number="02"
+              number="03"
               title="The World of Studio Ghibli"
               subtitle="Marketing Campaign for ArtScience Museum"
               description="Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more."
@@ -171,7 +199,7 @@ return (
 
           {/* Cocktail Conversations */}
           <div 
-              ref={(el) => (itemsRef.current[2] = el)}
+              ref={(el) => (itemsRef.current[3] = el)}
               
               onClick={() => {
                 toggleWork('cocktail')
@@ -180,7 +208,7 @@ return (
             >
             
             <SideContainer
-              number="03"
+              number="04"
               title="Cocktail Conversations"
               subtitle="Brand Campaign for Singapore Airlines"
               description="If there was a drink to match every personality, how would your bespoke cocktail look and taste like?"
@@ -199,7 +227,7 @@ return (
 
           {/* IKEA */}
           <div 
-              ref={(el) => (itemsRef.current[3] = el)}
+              ref={(el) => (itemsRef.current[4] = el)}
               
               onClick={() => {
                 toggleWork('hemsaker');
@@ -208,7 +236,7 @@ return (
             >
             
             <SideContainer
-              number="04"
+              number="05"
               title="Oops Happens"
               subtitle="Product Campaign for IKEA"
               description="With HEMSÄKER home insurance, everything will be exactly as if it never happened."
@@ -222,34 +250,6 @@ return (
               videoId="creative-hemsaker"
               src="/Hemsaker/cover.mp4"
               poster="/poster/hemsaker.jpg"
-            />
-          </div>
-
-          {/* Lounge */}
-          <div 
-              ref={(el) => (itemsRef.current[4] = el)}
-              
-              onClick={() => {
-                toggleWork('lounge');
-              }}
-              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
-            >
-            
-            <SideContainer
-              number="05"
-              title="SilverKris Lounge"
-              subtitle="Brand Campaign for Singapore Airlines"
-              description="If there was a drink to match every personality, how would your bespoke cocktail look and taste like?"
-              role="Art Director"
-              skills={["Creative Direction", "Motion + Graphic Design"]}
-              onExpand={() => toggleWork('lounge')}
-              hoverWidth="420px"
-            />
-
-            <CarouselVideo 
-              videoId="creative-lounge"
-              src="/lounge/montage.mp4"
-              poster="/poster/lounge.jpg"
             />
           </div>
 

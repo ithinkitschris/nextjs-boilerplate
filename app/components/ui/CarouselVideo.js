@@ -2,7 +2,7 @@
 
 import OptimizedVideo from './OptimizedVideo.js';
 
-const CarouselVideo = ({ src, poster, className = "", videoId }) => {
+const CarouselVideo = ({ src, poster, className = "", videoId, useOptimized = true }) => {
   return (
     <div className="rounded-3xl w-full col-span-full h-[520px] md:h-[760px] relative overflow-hidden border-l-2 border-t-2 border-white/0">
 
@@ -32,7 +32,7 @@ const CarouselVideo = ({ src, poster, className = "", videoId }) => {
         loop
         playsInline
         poster={poster}
-        useOptimized={true}
+        useOptimized={useOptimized}
       />
     </div>
   );

@@ -184,17 +184,17 @@ export default function Resume({ className = "", toggleWork}) {
                   group scale-100 hover:scale-101 transition-all duration-300">
                     
                     {/* Image */}
-                    <div className="rounded-3xl h-full w-full relative shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden">
+                    <div className="rounded-[40pt] h-full w-full relative shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden">
                         <motion.img 
                             src='/profile/profilelandscape2.jpg'
                             className="rounded-3xl h-full w-full object-cover transition-all"
                             variants={animateInChild}
                         />
-                        <div className="absolute inset-0 rounded-3xl shadow-[inset_0px_0px_4px_0px_rgba(255,255,255,0.2)] pointer-events-none" />
+                        <div className="absolute inset-0 rounded-[40pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
                     </div>
                     
                     {/* Text Container */}
-                    <div className="absolute inset-0 grid grid-cols-2 pl-10 text-white group">
+                    <div className="absolute inset-3 grid grid-cols-2 pl-10  text-white group">
 
                         {/* Desktop Name */}
                         <motion.h1
@@ -290,7 +290,7 @@ export default function Resume({ className = "", toggleWork}) {
                             variants={animateInChild}>
 
                             {/* Circle Header */}
-                            <h1 className="flex items-center justify-center border-1 rounded-full tracking-tight font-medium text-sm -mr-2 px-2 mb-1.5 whitespace-nowrap -ml-2">Senior Creative / Product Designer</h1>
+                            <h1 className="flex items-center justify-center border-1 rounded-full tracking-tight font-medium text-sm -mr-2 px-2 mb-1.5 whitespace-nowrap -ml-2">Senior Creative</h1>
                             <p><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2 italic">{timeNyc}</span>Based in New York City</p>
                             <i className="-ml-0.5"><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span>From Singapore</i>
                                 
@@ -320,10 +320,10 @@ export default function Resume({ className = "", toggleWork}) {
 
             {/* Currently */}
             <ResumeSectionHeader 
-                header="August 2025"
-                title="Everything I've been up to lately:"
+                header="What's new"
+                title="Everything I've been up to lately."
                 headerClassName="mt-20 md:mt-52 mb-1 dark:border-r-1 dark:border-b-1 dark:border-white/30 md:ml-1 bg-background dark:bg-transparent drop-shadow"
-                titleClassName="tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[52pt] mb-4 md:w-5/6 ml-1.5 md:ml-2"
+                titleClassName="tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[58pt] mb-4 md:w-5/6 ml-1.5 md:ml-2"
             />
             <Currently className='col-span-full -mt-12' key='currently' toggleWork={toggleWork}/>
 
