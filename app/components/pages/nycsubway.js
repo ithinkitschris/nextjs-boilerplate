@@ -672,17 +672,17 @@ const NycSubway = ({ className }) => {
     gsap.set(section13ImageRef.current, { opacity: 0.7, scale: 0.95, transformOrigin: "center center", filter: "blur(2px)" });
     gsap.set(section13ParagraphRef.current, { opacity: 0, y: 30 });
 
-    // Set initial state for section 14 (identical to section 13)
-    gsap.set(section14IconRef.current, { opacity: 0, scale: 0.8, y: 0, rotation: -21 });
-    gsap.set(section14Text1Ref.current, { opacity: 0, y: 30 });
+    // Set initial state for section 14 (header already visible)
+    gsap.set(section14IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
+    gsap.set(section14Text1Ref.current, { opacity: 1, y: 0 });
     gsap.set(section14ImageRef.current, { opacity: 1, transformOrigin: "center center" });
     gsap.set(section14LockscreenRef.current, { opacity: 0, scale: 1, transformOrigin: "center center" });
     gsap.set(section14Paragraph1Ref.current, { opacity: 0, y: 30 });
     gsap.set(section14Paragraph2Ref.current, { opacity: 0, y: 30 });
 
-    // Set initial state for section 15 (duplicate of section 14)
-    gsap.set(section15IconRef.current, { opacity: 0, scale: 0.8, y: 0, rotation: -21 });
-    gsap.set(section15Text1Ref.current, { opacity: 0, y: 30 });
+    // Set initial state for section 15 (header already visible)
+    gsap.set(section15IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
+    gsap.set(section15Text1Ref.current, { opacity: 1, y: 0 });
     gsap.set(section15ImageRef.current, { opacity: 1, transformOrigin: "center center" });
     gsap.set(section15LockscreenRef.current, { opacity: 0, scale: 1, transformOrigin: "center center" });
     gsap.set(section15Column3ImageRef.current, { opacity: 0, y: 30 });
@@ -698,16 +698,16 @@ const NycSubway = ({ className }) => {
     gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
     gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
     
-    // Set initial state for section 16 (identical to section 14)
-    gsap.set(section16IconRef.current, { opacity: 0, scale: 0.8, y: 0, rotation: -21 });
-    gsap.set(section16Text1Ref.current, { opacity: 0, y: 30 });
+    // Set initial state for section 16 (header already visible)
+    gsap.set(section16IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
+    gsap.set(section16Text1Ref.current, { opacity: 1, y: 0 });
     gsap.set(section16ImageRef.current, { opacity: 1, transformOrigin: "center center" });
     gsap.set(section16Paragraph1Ref.current, { opacity: 0, y: 30 });
     gsap.set(section16Paragraph2Ref.current, { opacity: 0, y: 30 });
 
-    // Set initial state for section 17 (duplicate of section 15)
-    gsap.set(section17IconRef.current, { opacity: 0, scale: 0.8, y: 0, rotation: -21 });
-    gsap.set(section17Text1Ref.current, { opacity: 0, y: 30 });
+    // Set initial state for section 17 (header already visible)
+    gsap.set(section17IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
+    gsap.set(section17Text1Ref.current, { opacity: 1, y: 0 });
     gsap.set(section17ImageRef.current, { opacity: 1, transformOrigin: "center center" });
     gsap.set(section17LockscreenRef.current, { opacity: 0, scale: 1, transformOrigin: "center center" });
     gsap.set(section17Paragraph1Ref.current, { opacity: 0, y: 30 });
@@ -719,16 +719,6 @@ const NycSubway = ({ className }) => {
     gsap.set(section17Phase3PhoneRef.current, { opacity: 0, x: 0 });
     gsap.set(section17Phase3TextRef.current, { opacity: 0, y: 30 });
     
-    // Set initial state for section 18 (all elements start hidden and scaled down)
-    gsap.set(section18Image1Ref.current, { opacity: 0, scale: 0.95 });
-    gsap.set(section18Image2Ref.current, { opacity: 0, scale: 0.95 });
-    gsap.set(section18Image3TopRef.current, { opacity: 0, scale: 0.95 });
-    gsap.set(section18Image3BottomRef.current, { opacity: 0, scale: 0.95 });
-    gsap.set(section18Image4Ref.current, { opacity: 0, scale: 0.95 });
-
-    // Set initial state for section 19 (all elements start hidden and scaled down)
-    gsap.set(section19Image1Ref.current, { opacity: 0, scale: 0.95 });
-    gsap.set(section19Image3Ref.current, { opacity: 0, scale: 0.95 });
     
     //#endregion
 
@@ -749,8 +739,6 @@ const NycSubway = ({ className }) => {
     let section15AnimationComplete = false;
     let section16AnimationComplete = false;
     let section17AnimationComplete = false;
-    let section18AnimationComplete = false;
-    let section19AnimationComplete = false;
     //#endregion
 
     // SECTION 2 (Bubbles) ANIMATION 
@@ -1315,7 +1303,7 @@ const NycSubway = ({ className }) => {
     ScrollTrigger.create({
       trigger: section9Ref.current,
       start: "bottom 100%",
-      end: "+=70%", // Extend the trigger area for scroll control
+      end: "+=120%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onEnter: () => {
@@ -2025,7 +2013,7 @@ const NycSubway = ({ className }) => {
     ScrollTrigger.create({
       trigger: section14Ref.current,
       start: "bottom 100%",
-      end: "+=100%", // Extend the trigger area for scroll control
+      end: "+=80%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
@@ -2033,43 +2021,17 @@ const NycSubway = ({ className }) => {
         
         // Section 14 animation - no longer controls isWhiteBG
         
-        // Phase 1: Initial animation (0-50%) - Original behavior
+        // Phase 2: Right text fades in (0-50%)
         if (progress <= 0.5) {
-          const phase1Progress = progress / 0.5; // 0 to 1 for phase 1
-          const easedLeftProgress = gsap.parseEase("elastic.inOut")(phase1Progress);
-          const normalEasedProgress = gsap.parseEase("power4.inOut")(phase1Progress);
-          
-          // Left text (Column 1) fades in first half
-          gsap.set(section14IconRef.current, {
-            opacity: easedLeftProgress,
-            scale: 0.8 + (0.2 * easedLeftProgress),
-            y: 0,
-            rotation: -21 + (21 * easedLeftProgress)
-          });
-          gsap.set(section14Text1Ref.current, {
-            opacity: normalEasedProgress,
-            y: 30 - (30 * normalEasedProgress)
-          });
-          
-          // Keep right text hidden during first half
-          gsap.set(section14Paragraph1Ref.current, { opacity: 0, y: 30 });
-          gsap.set(section14Paragraph2Ref.current, { opacity: 0, y: 30 });
-          
-          // Phone image stays in center
-          gsap.set(section14ImageRef.current, { 
-            opacity: 1, 
-            x: 0 // Center position
-          });
-        } 
-        // Phase 2: Right text fades in second half (50-75%)
-        else if (progress <= 0.75) {
-          const phase2Progress = (progress - 0.5) / 0.25; // 0 to 1 for phase 2
+          const phase2Progress = progress / 0.5; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
           
-          // Left text stays at full opacity during phase 2
+          // Header stays visible during phase 2
           gsap.set(section14IconRef.current, { 
             opacity: 1, 
-            y: 0
+            scale: 1,
+            y: 0,
+            rotation: 0
           });
           gsap.set(section14Text1Ref.current, { 
             opacity: 1, 
@@ -2092,15 +2054,17 @@ const NycSubway = ({ className }) => {
             x: 0
           });
         }
-        // Phase 3: Phone moves left, paragraph1 moves up and fades, paragraph2 fades in (75-100%)
+        // Phase 3: Phone moves left, paragraph1 moves up and fades, paragraph2 fades in (50-100%)
         else {
-          const phase3Progress = (progress - 0.75) / 0.25; // 0 to 1 for phase 3
+          const phase3Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
           
-          // Left text stays at full opacity (no fading out)
+          // Header stays visible (no fading out)
           gsap.set(section14IconRef.current, { 
             opacity: 1, 
-            y: 0
+            scale: 1,
+            y: 0,
+            rotation: 0
           });
           gsap.set(section14Text1Ref.current, { 
             opacity: 1, 
@@ -2149,7 +2113,7 @@ const NycSubway = ({ className }) => {
     ScrollTrigger.create({
       trigger: section15Ref.current,
       start: "bottom 100%",
-      end: "+=150%", // Extend the trigger area for scroll control to accommodate phase 3
+      end: "+=125%", // Extend the trigger area for scroll control to accommodate phase 3
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
@@ -2157,50 +2121,13 @@ const NycSubway = ({ className }) => {
         
         // Section 15 animation - no longer controls isWhiteBG
         
-        // Phase 1: Initial animation (0-25%) - Icon and header fade in
-        if (progress <= 0.25) {
-          const phase1Progress = progress / 0.25; // 0 to 1 for phase 1
-          const easedLeftProgress = gsap.parseEase("elastic.inOut")(phase1Progress);
-          const normalEasedProgress = gsap.parseEase("power4.inOut")(phase1Progress);
-          
-          // Left text (Column 1) fades in first half
-          gsap.set(section15IconRef.current, {
-            opacity: easedLeftProgress,
-            scale: 0.8 + (0.2 * easedLeftProgress),
-            y: 0,
-            rotation: -21 + (21 * easedLeftProgress)
-          });
-          gsap.set(section15Text1Ref.current, {
-            opacity: normalEasedProgress,
-            y: 30 - (30 * normalEasedProgress)
-          });
-          
-          // Keep right text hidden during first half
-          gsap.set(section15Paragraph1Ref.current, { opacity: 0, y: 30 });
-          gsap.set(section15Paragraph2Ref.current, { opacity: 0, y: 30 });
-          gsap.set(section15Column3ImageRef.current, { opacity: 0, y: 30 });
-          
-          // Phone image stays in center
-          gsap.set(section15ImageRef.current, { 
-            opacity: 1, 
-            x: 0 // Center position
-          });
-          
-          // Keep phase 3 and 4 elements hidden
-          gsap.set(section15Phase3IconRef.current, { opacity: 0, scale: 0.8, y: 30, rotation: -21 });
-          gsap.set(section15Phase3HeaderRef.current, { opacity: 0, y: 30 });
-          gsap.set(section15Phase3PhoneRef.current, { opacity: 0, scale: 0.9, x: 0 });
-          gsap.set(section15Phase3TextRef.current, { opacity: 0, y: 30 });
-          gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
-          gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
-        } 
-        // Phase 2: Right content fades in (25-50%)
-        else if (progress <= 0.5) {
-          const phase2Progress = (progress - 0.25) / 0.25; // 0 to 1 for phase 2
+        // Phase 2: Right content fades in (0-40%)
+        if (progress <= 0.4) {
+          const phase2Progress = progress / 0.4; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
           
-          // Left text stays visible
-          gsap.set(section15IconRef.current, { opacity: 1, y: 0 });
+          // Header stays visible
+          gsap.set(section15IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
           gsap.set(section15Text1Ref.current, { opacity: 1, y: 0 });
           
           // Split Phase 2 into two parts: image first (0-50%), then both paragraphs (50-100%)
@@ -2258,9 +2185,9 @@ const NycSubway = ({ className }) => {
           gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
           gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
         }
-        // Phase 3: Fade out current elements completely (50-65%)
-        else if (progress <= 0.65) {
-          const phase3Progress = (progress - 0.5) / 0.15; // 0 to 1 for phase 3 (fade out)
+        // Phase 3: Fade out current elements completely (40-50%)
+        else if (progress <= 0.5) {
+          const phase3Progress = (progress - 0.4) / 0.1; // 0 to 1 for phase 3 (fade out)
           const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
           
           // Fade out current elements completely to opacity 0
@@ -2302,15 +2229,15 @@ const NycSubway = ({ className }) => {
           gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
           gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
         }
-        // Phase 4: Fade in new elements (65-100%)
+        // Phase 4: Fade in new elements (50-100%)
         else {
-          const phase4Progress = (progress - 0.65) / 0.35; // 0 to 1 for phase 4 (fade in)
+          const phase4Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 4 (fade in)
           
-          // Split phase 4 into four parts: 4A (0-25%), 4B (25-50%), 4C (50-75%), 4D (75-100%)
-          if (phase4Progress <= 0.25) {
-            // Phase 4A: Icon and header animate in (65-74%)
-            const phase4AProgress = phase4Progress / 0.25; // 0 to 1 for phase 4A
-            const easedPhase4AProgress = gsap.parseEase("power3.inOut")(phase4AProgress);
+          // Split phase 4 into three parts: 4A+4B (0-50%), 4C (50-75%), 4D (75-100%)
+          if (phase4Progress <= 0.5) {
+            // Phase 4A+4B: Icon, header, and phone animate in together (50-75%)
+            const phase4ABProgress = phase4Progress / 0.5; // 0 to 1 for phase 4A+4B
+            const easedPhase4ABProgress = gsap.parseEase("power3.inOut")(phase4ABProgress);
             
             // Keep current elements at opacity 0
             gsap.set(section15IconRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
@@ -2319,42 +2246,19 @@ const NycSubway = ({ className }) => {
             gsap.set(section15Paragraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             gsap.set(section15Paragraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             
-            // Animate in icon and header
+            // Animate in icon, header, and phone together
             gsap.set(section15Phase3IconRef.current, {
-              opacity: easedPhase4AProgress,
-              scale: 0.8 + (0.2 * easedPhase4AProgress),
-              y: 30 - (30 * easedPhase4AProgress),
-              rotation: -21 + (21 * easedPhase4AProgress)
+              opacity: easedPhase4ABProgress,
+              scale: 0.8 + (0.2 * easedPhase4ABProgress),
+              y: 30 - (30 * easedPhase4ABProgress),
+              rotation: -21 + (21 * easedPhase4ABProgress)
             });
             gsap.set(section15Phase3HeaderRef.current, {
-              opacity: easedPhase4AProgress,
-              y: 30 - (30 * easedPhase4AProgress)
+              opacity: easedPhase4ABProgress,
+              y: 30 - (30 * easedPhase4ABProgress)
             });
-            
-            // Keep phone, text, and phase 4D elements hidden
-            gsap.set(section15Phase3PhoneRef.current, { opacity: 0, scale: 0.9, x: 0 });
-            gsap.set(section15Phase3TextRef.current, { opacity: 0, y: 30 });
-            gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
-            gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
-          } else if (phase4Progress <= 0.5) {
-            // Phase 4B: Phone animates in (74-83%)
-            const phase4BProgress = (phase4Progress - 0.25) / 0.25; // 0 to 1 for phase 4B
-            const easedPhase4BProgress = gsap.parseEase("power3.inOut")(phase4BProgress);
-            
-            // Keep current elements at opacity 0
-            gsap.set(section15IconRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Text1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Column3ImageRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Paragraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Paragraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            
-            // Keep icon and header at full opacity
-            gsap.set(section15Phase3IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
-            gsap.set(section15Phase3HeaderRef.current, { opacity: 1, y: 0 });
-            
-            // Animate in phone
             gsap.set(section15Phase3PhoneRef.current, {
-              opacity: easedPhase4BProgress,
+              opacity: easedPhase4ABProgress,
               scale: 0.9,
               x: 0
             });
@@ -2364,7 +2268,7 @@ const NycSubway = ({ className }) => {
             gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
             gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
           } else if (phase4Progress <= 0.75) {
-            // Phase 4C: Text animates in (83-92%)
+            // Phase 4C: Text animates in (75-87.5%)
             const phase4CProgress = (phase4Progress - 0.5) / 0.25; // 0 to 1 for phase 4C
             const easedPhase4CProgress = gsap.parseEase("power3.inOut")(phase4CProgress);
             
@@ -2390,7 +2294,7 @@ const NycSubway = ({ className }) => {
             gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
             gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
           } else {
-            // Phase 4D: Image and text animate in (92-100%)
+            // Phase 4D: Image and text animate in (87.5-100%)
             const phase4DProgress = (phase4Progress - 0.75) / 0.25; // 0 to 1 for phase 4D
             const easedPhase4DProgress = gsap.parseEase("power3.inOut")(phase4DProgress);
             
@@ -2436,7 +2340,7 @@ const NycSubway = ({ className }) => {
     ScrollTrigger.create({
       trigger: section16Ref.current,
       start: "bottom 100%",
-      end: "+=100%", // Extend the trigger area for scroll control
+      end: "+=80%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
@@ -2444,43 +2348,17 @@ const NycSubway = ({ className }) => {
         
         // Section 16 animation - no longer controls isWhiteBG
         
-        // Phase 1: Initial animation (0-50%) - Original behavior
+        // Phase 2: Right text fades in (0-50%)
         if (progress <= 0.5) {
-          const phase1Progress = progress / 0.5; // 0 to 1 for phase 1
-          const easedLeftProgress = gsap.parseEase("elastic.inOut")(phase1Progress);
-          const normalEasedProgress = gsap.parseEase("power4.inOut")(phase1Progress);
-          
-          // Left text (Column 1) fades in first half
-          gsap.set(section16IconRef.current, {
-            opacity: easedLeftProgress,
-            scale: 0.8 + (0.2 * easedLeftProgress),
-            y: 0,
-            rotation: -21 + (21 * easedLeftProgress)
-          });
-          gsap.set(section16Text1Ref.current, {
-            opacity: normalEasedProgress,
-            y: 30 - (30 * normalEasedProgress)
-          });
-          
-          // Keep right text hidden during first half
-          gsap.set(section16Paragraph1Ref.current, { opacity: 0, y: 30 });
-          gsap.set(section16Paragraph2Ref.current, { opacity: 0, y: 30 });
-          
-          // Phone image stays in center
-          gsap.set(section16ImageRef.current, { 
-            opacity: 1, 
-            x: 0 // Center position
-          });
-        } 
-        // Phase 2: Right text fades in second half (50-75%)
-        else if (progress <= 0.75) {
-          const phase2Progress = (progress - 0.5) / 0.25; // 0 to 1 for phase 2
+          const phase2Progress = progress / 0.5; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
           
-          // Left text stays at full opacity during phase 2
+          // Header stays visible during phase 2
           gsap.set(section16IconRef.current, { 
             opacity: 1, 
-            y: 0
+            scale: 1,
+            y: 0,
+            rotation: 0
           });
           gsap.set(section16Text1Ref.current, { 
             opacity: 1, 
@@ -2503,15 +2381,17 @@ const NycSubway = ({ className }) => {
             x: 0
           });
         }
-        // Phase 3: paragraph1 moves up and fades, paragraph2 fades in (75-100%)
+        // Phase 3: paragraph1 moves up and fades, paragraph2 fades in (50-100%)
         else {
-          const phase3Progress = (progress - 0.75) / 0.25; // 0 to 1 for phase 3
+          const phase3Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
           
-          // Left text stays at full opacity (no fading out)
+          // Header stays visible (no fading out)
           gsap.set(section16IconRef.current, { 
             opacity: 1, 
-            y: 0
+            scale: 1,
+            y: 0,
+            rotation: 0
           });
           gsap.set(section16Text1Ref.current, { 
             opacity: 1, 
@@ -2552,7 +2432,7 @@ const NycSubway = ({ className }) => {
     ScrollTrigger.create({
       trigger: section17Ref.current,
       start: "bottom 100%",
-      end: "+=150%", // Extend the trigger area for scroll control to accommodate phase 3
+      end: "+=125%", // Extend the trigger area for scroll control to accommodate phase 3
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
@@ -2560,47 +2440,13 @@ const NycSubway = ({ className }) => {
         
         // Section 17 animation - no longer controls isWhiteBG
         
-        // Phase 1: Initial animation (0-25%) - Icon and header fade in
-        if (progress <= 0.25) {
-          const phase1Progress = progress / 0.25; // 0 to 1 for phase 1
-          const easedLeftProgress = gsap.parseEase("elastic.inOut")(phase1Progress);
-          const normalEasedProgress = gsap.parseEase("power4.inOut")(phase1Progress);
-          
-          // Left text (Column 1) fades in first half
-          gsap.set(section17IconRef.current, {
-            opacity: easedLeftProgress,
-            scale: 0.8 + (0.2 * easedLeftProgress),
-            y: 0,
-            rotation: -21 + (21 * easedLeftProgress)
-          });
-          gsap.set(section17Text1Ref.current, {
-            opacity: normalEasedProgress,
-            y: 30 - (30 * normalEasedProgress)
-          });
-          
-          // Keep right text hidden during first half
-          gsap.set(section17Paragraph1Ref.current, { opacity: 0, y: 30 });
-          gsap.set(section17Paragraph2Ref.current, { opacity: 0, y: 30 });
-          
-          // Phone image stays in center
-          gsap.set(section17ImageRef.current, { 
-            opacity: 1, 
-            x: 0 // Center position
-          });
-          
-          // Keep phase 3 and 4 elements hidden
-          gsap.set(section17Phase3IconRef.current, { opacity: 0, scale: 0.8, y: 30, rotation: -21 });
-          gsap.set(section17Phase3HeaderRef.current, { opacity: 0, y: 30 });
-          gsap.set(section17Phase3PhoneRef.current, { opacity: 0, x: 0 });
-          gsap.set(section17Phase3TextRef.current, { opacity: 0, y: 30 });
-        } 
-        // Phase 2: Right content fades in (25-50%)
-        else if (progress <= 0.5) {
-          const phase2Progress = (progress - 0.25) / 0.25; // 0 to 1 for phase 2
+        // Phase 2: Right content fades in (0-40%)
+        if (progress <= 0.4) {
+          const phase2Progress = progress / 0.4; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
           
-          // Left text stays visible
-          gsap.set(section17IconRef.current, { opacity: 1, y: 0 });
+          // Header stays visible
+          gsap.set(section17IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
           gsap.set(section17Text1Ref.current, { opacity: 1, y: 0 });
           
                      // Split Phase 2 into two parts: first paragraph (0-50%), then second paragraph (50-100%)
@@ -2644,9 +2490,9 @@ const NycSubway = ({ className }) => {
           gsap.set(section17Phase3PhoneRef.current, { opacity: 0, x: 0 });
           gsap.set(section17Phase3TextRef.current, { opacity: 0, y: 30 });
         }
-        // Phase 3: Fade out current elements completely (50-65%)
-        else if (progress <= 0.65) {
-          const phase3Progress = (progress - 0.5) / 0.15; // 0 to 1 for phase 3 (fade out)
+        // Phase 3: Fade out current elements completely (40-50%)
+        else if (progress <= 0.5) {
+          const phase3Progress = (progress - 0.4) / 0.1; // 0 to 1 for phase 3 (fade out)
           const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
           
           // Fade out current elements completely to opacity 0
@@ -2681,64 +2527,43 @@ const NycSubway = ({ className }) => {
           gsap.set(section17Phase3PhoneRef.current, { opacity: 0, x: 0 });
           gsap.set(section17Phase3TextRef.current, { opacity: 0, y: 30 });
         }
-        // Phase 4: Fade in new elements (65-100%)
+        // Phase 4: Fade in new elements (50-100%)
         else {
-          const phase4Progress = (progress - 0.65) / 0.35; // 0 to 1 for phase 4 (fade in)
+          const phase4Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 4 (fade in)
           
-          // Split phase 4 into three parts: 4A (0-33%), 4B (33-66%), 4C (66-100%)
-          if (phase4Progress <= 0.33) {
-            // Phase 4A: Icon and header animate in (65-76%)
-            const phase4AProgress = phase4Progress / 0.33; // 0 to 1 for phase 4A
-            const easedPhase4AProgress = gsap.parseEase("power3.inOut")(phase4AProgress);
+          // Split phase 4 into two parts: 4A+4B (0-50%), 4C (50-100%)
+          if (phase4Progress <= 0.5) {
+            // Phase 4A+4B: Icon, header, and phone animate in together (50-75%)
+            const phase4ABProgress = phase4Progress / 0.5; // 0 to 1 for phase 4A+4B
+            const easedPhase4ABProgress = gsap.parseEase("power3.inOut")(phase4ABProgress);
             
             // Keep current elements at opacity 0
             gsap.set(section17IconRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             gsap.set(section17Text1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-
             gsap.set(section17Paragraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             gsap.set(section17Paragraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             
-            // Animate in icon and header
+            // Animate in icon, header, and phone together
             gsap.set(section17Phase3IconRef.current, {
-              opacity: easedPhase4AProgress,
-              scale: 0.8 + (0.2 * easedPhase4AProgress),
-              y: 30 - (30 * easedPhase4AProgress),
-              rotation: -21 + (21 * easedPhase4AProgress)
+              opacity: easedPhase4ABProgress,
+              scale: 0.8 + (0.2 * easedPhase4ABProgress),
+              y: 30 - (30 * easedPhase4ABProgress),
+              rotation: -21 + (21 * easedPhase4ABProgress)
             });
             gsap.set(section17Phase3HeaderRef.current, {
-              opacity: easedPhase4AProgress,
-              y: 30 - (30 * easedPhase4AProgress)
+              opacity: easedPhase4ABProgress,
+              y: 30 - (30 * easedPhase4ABProgress)
             });
-            
-            // Keep phone and text hidden
-            gsap.set(section17Phase3PhoneRef.current, { opacity: 0, x: 0 });
-            gsap.set(section17Phase3TextRef.current, { opacity: 0, y: 30 });
-          } else if (phase4Progress <= 0.66) {
-            // Phase 4B: Phone animates in (76-87%)
-            const phase4BProgress = (phase4Progress - 0.33) / 0.33; // 0 to 1 for phase 4B
-            const easedPhase4BProgress = gsap.parseEase("power3.inOut")(phase4BProgress);
-            
-            // Keep current elements at opacity 0
-            gsap.set(section17IconRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section17Text1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section17Paragraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section17Paragraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            
-            // Keep icon and header at full opacity
-            gsap.set(section17Phase3IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
-            gsap.set(section17Phase3HeaderRef.current, { opacity: 1, y: 0 });
-            
-            // Animate in phone
             gsap.set(section17Phase3PhoneRef.current, {
-              opacity: easedPhase4BProgress,
+              opacity: easedPhase4ABProgress,
               x: 0
             });
             
             // Keep text hidden
             gsap.set(section17Phase3TextRef.current, { opacity: 0, y: 30 });
           } else {
-            // Phase 4C: Text animates in (87-100%)
-            const phase4CProgress = (phase4Progress - 0.66) / 0.34; // 0 to 1 for phase 4C
+            // Phase 4C: Text animates in (75-100%)
+            const phase4CProgress = (phase4Progress - 0.5) / 0.5; // 0 to 1 for phase 4C
             const easedPhase4CProgress = gsap.parseEase("power3.inOut")(phase4CProgress);
             
             // Keep current elements at opacity 0
@@ -2773,86 +2598,6 @@ const NycSubway = ({ className }) => {
       }
     });
 
-    // SECTION 18 (Summary) ANIMATION
-    ScrollTrigger.create({
-      trigger: section18Ref.current,
-      start: "bottom 100%",
-      end: "+=50%", // Extend the trigger area for scroll control
-      pin: true, // Pin the section in place
-      scrub: 1, // Smooth scrubbing
-      onUpdate: (self) => {
-        const progress = self.progress; // 0 to 1
-        
-        // Each element animates in sequence with 20% delay between them
-        const section18Elements = [
-          section18Image1Ref.current,    // Error State
-          section18Image2Ref.current,    // Live Activity Cards
-          section18Image3TopRef.current, // Real-time directional navigation
-          section18Image3BottomRef.current, // Step-by-step itinerary
-          section18Image4Ref.current     // UWB-powered proximity guidance
-        ];
-        
-        section18Elements.forEach((element, index) => {
-          if (element) {
-            const elementStart = index * 0.2; // Each element starts 20% later
-            const elementEnd = elementStart + 0.2; // Each element has 20% duration
-            const elementProgress = Math.max(0, Math.min(1, (progress - elementStart) / (elementEnd - elementStart)));
-            
-            // Apply easing to the progress value before setting properties
-            const easedProgress = gsap.parseEase("back.out")(elementProgress);
-            
-            gsap.set(element, {
-              opacity: easedProgress,
-              scale: 0.97 + (0.03 * easedProgress) // Scale from 0.95 to 1.0
-            });
-            
-            // Mark animation as complete when all elements are visible
-            if (progress >= 1 && index === section18Elements.length - 1) {
-              section18AnimationComplete = true;
-            }
-          }
-        });
-      }
-    });
-
-    // SECTION 19 (End Frame)ANIMATION
-    ScrollTrigger.create({
-      trigger: section19Ref.current,
-      start: "bottom 100%",
-      end: "+=30%", // Extend the trigger area for scroll control
-      pin: true, // Pin the section in place
-      scrub: 1, // Smooth scrubbing
-      onUpdate: (self) => {
-        const progress = self.progress; // 0 to 1
-        
-        // Each element animates in sequence with 50% delay between them
-        const section19Elements = [
-          section19Image1Ref.current,    // Column 1
-          section19Image3Ref.current     // Column 3
-        ];
-        
-        section19Elements.forEach((element, index) => {
-          if (element) {
-            const elementStart = index * 0.5; // Each element starts 50% later
-            const elementEnd = elementStart + 0.5; // Each element has 50% duration
-            const elementProgress = Math.max(0, Math.min(1, (progress - elementStart) / (elementEnd - elementStart)));
-            
-            // Apply easing to the progress value before setting properties
-            const easedProgress = gsap.parseEase("back.out")(elementProgress);
-            
-            gsap.set(element, {
-              opacity: easedProgress,
-              scale: 0.9 + (0.1 * easedProgress) // Scale from 0.97 to 1.0
-            });
-            
-            // Mark animation as complete when all elements are visible
-            if (progress >= 1 && index === section19Elements.length - 1) {
-              section19AnimationComplete = true;
-            }
-          }
-        });
-      }
-    });
 
     // CLEANUP FUNCTION
     return () => {
@@ -4339,31 +4084,31 @@ const NycSubway = ({ className }) => {
         ref={section19Ref}
         className="min-h-screen flex items-center justify-center relative"
       >
-        <div className="w-full h-screen mx-auto px-56 flex flex-col md:flex-row items-center justify-between gap-8 bg-white/95">
+        <div className="w-full h-screen mx-auto flex items-center justify-center bg-white/95 relative">
           
-          {/* Column 1: Image */}
-
-          <img 
-          ref={section19Image1Ref}
-          src="/subway/section19logo1.png"   
-          alt="Section 19 Image 1" 
-          className="flex-2 w-[30%] h-auto"
-          />
+          {/* Logo Images - Side by side in the middle */}
+          <div className="flex items-center justify-center gap-10">
+            <img 
+              ref={section19Image1Ref}
+              src="/subway/section19logo1.png"   
+              alt="Section 19 Image 1" 
+              className="w-[25%] h-auto"
+            />
+            
+            <img 
+              ref={section19Image3Ref}
+              src="/subway/section19logo2.png"   
+              alt="Section 19 Image 3" 
+              className="w-[10%] h-auto"
+            />
+          </div>
           
-          {/* Column 2: Image */}
+          {/* Emoji - Unchanged positioning */}
           <img 
-          ref={section19Image2Ref}
-          src="/subway/section19emoji.png"   
-          alt="Section 19 Image 2" 
-          className="absolute bottom-0 left-[55%] transform -translate-x-1/2 w-[38%] h-auto"
-          />
-          
-          {/* Column 3: Image */}
-          <img 
-          ref={section19Image3Ref}
-          src="/subway/section19logo2.png"   
-          alt="Section 19 Image 3" 
-          className="flex-2 w-[10%] h-auto"
+            ref={section19Image2Ref}
+            src="/subway/section19emoji.png"   
+            alt="Section 19 Image 2" 
+            className="absolute bottom-0 left-[50%] transform -translate-x-1/2 w-[20%] h-auto"
           />
           
         </div>
