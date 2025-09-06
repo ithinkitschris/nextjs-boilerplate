@@ -264,7 +264,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         {/* Header Container */}
         <div className='ml-1 mt-4 md:mt-8 text-foreground col-span-full md:col-span-1'>
           
-          <h1 className={`tracking-tight font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-7`}>
+          <h1 className={`tracking-tight font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-[1.25]`}>
             On-device LLM Expense Tracker (iOS)
           </h1>
 
@@ -319,7 +319,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         {/* Header Container */}
         <div className='ml-1 mt-4 md:mt-8 text-foreground col-span-full md:col-span-1'>
           
-          <h1 className={`tracking-tight font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-7`}>
+          <h1 className={`tracking-tight font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-[1.25]`}>
             Human Car(mputer) Interaction
           </h1>
 

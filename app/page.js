@@ -32,7 +32,6 @@ import ThreeD from './components/pages/3d.js';
 import Leica from './components/pages/leica.js';
 import NycSubway from './components/pages/nycsubway.js';
 import Bloom from './components/pages/bloom.js';
-import ISV from './components/pages/isv.js';
 import Car from './components/pages/car.js';
 import { useBrowser } from './context/BrowserContext';
 import { useHideNav } from './context/HideNavContext';
@@ -92,8 +91,9 @@ function HomeContent() {
         </svg>
 
         {/* Entire Page column setup */}
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12
-        text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-full mx-auto">            
+          <div className={`grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 mt-12
+          text-sm font-[family-name:var(--font-geist-sans)] max-w-9xl w-full mx-auto 
+          ${selectedWork === 'subway' ? 'max-w-full' : 'max-w-9xl'}`}>            
 
           {/* Top Navbar */}
           <motion.div 
@@ -138,7 +138,7 @@ function HomeContent() {
 
           {/* Page Container (Adjust px here) */}
           <motion.div
-            className="col-span-full px-4 md:px-[7%]"  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className={`col-span-full ${selectedWork === 'subway' ? 'px-0' : 'px-4 md:px-[7%]'}`}  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 600, damping: 25 }}  
@@ -205,11 +205,9 @@ function HomeContent() {
                 ) : selectedWork === 'leica' ? (
                   <Leica key="leica" className="col-span-full"/>
                 ) : selectedWork === 'subway' ? (
-                  <NycSubway key="subway" className="col-span-full -px-[7%]"/>
+                  <NycSubway key="subway" className="col-span-full"/>
                 ) : selectedWork === 'bloom' ? (
                   <Bloom key="bloom" className="col-span-full -px-[7%]"/>
-                ) : selectedWork === 'isv' ? (
-                  <ISV key="isv" className="col-span-full -px-[7%]"/>
                 ) : selectedWork === 'car' ? (
                   <Car key="car" className="col-span-full" showNav={showNav}/>
                 ) : (
