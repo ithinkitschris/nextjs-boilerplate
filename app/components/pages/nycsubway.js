@@ -2621,7 +2621,7 @@ const NycSubway = ({ className }) => {
 
   // Body
   return (
-    <div className={`relative overflow-x-hidden col-span-full -mt-20 md:-mt-36 ${className || ''}`}>
+    <div className={`relative overflow-x-hidden col-span-full -mt-20 md:-mt-36 md:-mx-[8.2%] ${className || ''}`}>
       {/* Scroll Progress Tracker */}
       <ScrollProgressTracker currentSection={currentSection} totalSections={totalSections} sectionRefs={sectionRefs} />
 
@@ -3214,929 +3214,929 @@ const NycSubway = ({ className }) => {
       </div>
     </section>
 
-      {/* Section 11 – UWB Explanation with Animation */}
-      <section 
-        ref={section11Ref}
-        className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
+    {/* Section 11 – UWB Explanation with Animation */}
+    <section 
+      ref={section11Ref}
+      className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
+    >
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 brightness-75 contrast-[1.2]"
       >
-        {/* Background Video */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0 brightness-75 contrast-[1.2]"
-        >
-          <source src="/subway/Title Frame.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        
-        {/* 1st Rounded Rectangle */}
-        <div 
-          ref={section11OriginalRef}
-          className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[29%] h-[70%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden"
-          style={{ top: '4%' }}
-        >
-          {/* Text */}
-          <div className="pl-14 pt-10 text-left w-full">
+        <source src="/subway/Title Frame.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
+      {/* 1st Rounded Rectangle */}
+      <div 
+        ref={section11OriginalRef}
+        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[29%] h-[70%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden"
+        style={{ top: '4%' }}
+      >
+        {/* Text */}
+        <div className="pl-14 pt-10 text-left w-full">
 
-            {/* Icon */}
-            <img 
-              src="/subway/section11icon1.png" 
-              alt="Section 11 Icon" 
-              className="h-12 w-auto mb-6"/>
-
-            {/* Utilizing */}
-            <p className="text-[20pt] font-semibold tracking-tight text-left text-gray-600 mt-8 mb-4">
-            Utilizing...
-            </p>
-          
-            {/* Header */}
-            <h2 className="text-[38pt] font-semibold tracking-tight text-left bg-gradient-to-r to-[#3d9bff] from-[#0067d4] leading-[3rem] bg-clip-text text-transparent pb-2">
-              Ultra-Wideband Technology
-            </h2>
-
-          </div>
-
-          {/* Phone */}
+          {/* Icon */}
           <img 
-            src="/subway/section11phone2.png" 
+            src="/subway/section11icon1.png" 
             alt="Section 11 Icon" 
-            className="w-full h-auto object-cover mt-10 ml-20 scale-[120%]"
-          />
+            className="h-12 w-auto mb-6"/>
+
+          {/* Utilizing */}
+          <p className="text-[20pt] font-semibold tracking-tight text-left text-gray-600 mt-8 mb-4">
+          Utilizing...
+          </p>
+        
+          {/* Header */}
+          <h2 className="text-[38pt] font-semibold tracking-tight text-left bg-gradient-to-r to-[#3d9bff] from-[#0067d4] leading-[3rem] bg-clip-text text-transparent pb-2">
+            Ultra-Wideband Technology
+          </h2>
+
+        </div>
+
+        {/* Phone */}
+        <img 
+          src="/subway/section11phone2.png" 
+          alt="Section 11 Icon" 
+          className="w-full h-auto object-cover mt-10 ml-20 scale-[120%]"
+        />
+      </div>
+      
+      {/* 2nd Rounded Rectangle with 3 Text Columns */}
+      <div 
+        ref={section11NewRef}
+        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[60%] h-[50%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden pt-11 pr-14 pl-18"
+      >
+        {/* Header Container */}
+        <div className="flex items-center mb-4">
+          
+          <h2 
+            ref={section11Header1Ref}
+            className="text-6xl font-semibold tracking-tight text-black/80"
+          >
+            Ultra-wide
+          </h2>
+
+          <h2 
+            ref={section11Header2Ref}
+            className="text-6xl font-semibold tracking-tight bg-gradient-to-r from-[#528ee8] to-[#1a78dd] bg-clip-text  text-transparent italic -ml-0.5 pr-2"
+          >
+            what?
+          </h2>
+
+        </div>
+
+        {/* Phase 1 Content */}
+        <div ref={section11TopParagraphRef} className="text-left mb-12">
+
+          {/* Header Sub Paragraph */}
+          <p className="text-xl tracking-tight text-black/60 font-semibold w-[90%]">
+          Ultra-Wideband (UWB) is a short-range, high-bandwidth wireless communication technology, capable of providing precise spatial awareness and device tracking
+          </p>
+
         </div>
         
-        {/* 2nd Rounded Rectangle with 3 Text Columns */}
-        <div 
-          ref={section11NewRef}
-          className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[60%] h-[50%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden pt-11 pr-14 pl-18"
-        >
-          {/* Header Container */}
-          <div className="flex items-center mb-4">
-            
-            <h2 
-              ref={section11Header1Ref}
-              className="text-6xl font-semibold tracking-tight text-black/80"
-            >
-              Ultra-wide
-            </h2>
+        {/* Bottom 3 Columns */}
+        <div className="flex h-full flex-1 items-start justify-start gap-6">
 
-            <h2 
-              ref={section11Header2Ref}
-              className="text-6xl font-semibold tracking-tight bg-gradient-to-r from-[#528ee8] to-[#1a78dd] bg-clip-text  text-transparent italic -ml-0.5 pr-2"
-            >
-              what?
-            </h2>
+          {/* Column 1 */}
+          <div 
+            ref={section11Text1Ref}
+            className="flex-1 flex flex-col justify-center items-start"
+          >  
+            <img 
+              src="/subway/section11iconairtag.png" 
+              alt="UWB Icon" 
+              className="h-10 w-auto mb-4 -mt-1"
+            />
 
-          </div>
+            <h3 className="text-2xl tracking-tight font-semibold mb-4 text-black/90">
+              Airtag/Find My
+            </h3>
 
-          {/* Phase 1 Content */}
-          <div ref={section11TopParagraphRef} className="text-left mb-12">
-
-            {/* Header Sub Paragraph */}
-            <p className="text-xl tracking-tight text-black/60 font-semibold w-[90%]">
-            Ultra-Wideband (UWB) is a short-range, high-bandwidth wireless communication technology, capable of providing precise spatial awareness and device tracking
+            <p className="text-sm text-gray-700 font-medium text-left">
+              UWB enables an iPhone to measure its distance and direction from an AirTag, providing precision finding with centimeter-level accuracy.
             </p>
 
           </div>
           
-          {/* Bottom 3 Columns */}
-          <div className="flex h-full flex-1 items-start justify-start gap-6">
+          {/* Column 2 */}
+          <div 
+            ref={section11Text2Ref}
+            className="flex-1 flex flex-col justify-center items-start"
+          >
+            <img 
+              src="/subway/section11icon3.png" 
+              alt="UWB Icon" 
+              className="h-9 w-auto mb-4"
+            />
+
+            <h3 className="text-2xl tracking-tight font-semibold mb-4 text-black/90">
+              Handoff
+            </h3>
+
+            <p className="text-sm text-gray-700 font-medium text-left">
+              Handoff works more smoothly by prioritizing nearby devices. When you bring your iPhone close to a HomePod mini, a visual and haptic effect appears, making it easier to transfer music.
+            </p>
+              
+          </div>
+          
+          {/* Column 3 */}
+          <div 
+            ref={section11Text3Ref}
+            className="flex-1 flex flex-col justify-center items-start"
+          >
+            <img 
+              src="/subway/section11icon4.png" 
+              alt="UWB Icon" 
+              className="h-9 w-auto mb-4"
+            />
+
+            <h3 className="text-2xl tracking-tight font-semibold mb-4 text-black/90">
+              AirDrop
+            </h3>
+
+            <p className="text-sm text-gray-700 font-medium text-left">
+              UWB also enables better device-to-device awareness, improving AirDrop by detecting which person you&apos;re pointing at.
+            </p>
+
+          </div>
+        </div>
+        
+        {/* Phase 2 Content - Overlaid on top */}
+        <div 
+          ref={section11Phase2Ref}
+          className="absolute inset-0 pt-11 pl-18 pr-6"
+        >
+          {/* Top Paragraph */}
+          <div ref={section11Phase2TopParagraphRef} className="text-left mb-10">
+            <h2 className="text-6xl font-semibold tracking-[-0.09rem] mb-4 text-black/80 leading-[3.75rem] w-[60%]">
+              How it could work within the subway.
+            </h2>
+          </div>
+          
+          {/* Bottom Text */}
+          <div className="flex h-full flex-1 items-start justify-start gap-10">
 
             {/* Column 1 */}
             <div 
-              ref={section11Text1Ref}
+              ref={section11Phase2Text1Ref}
               className="flex-1 flex flex-col justify-center items-start"
             >  
               <img 
-                src="/subway/section11iconairtag.png" 
-                alt="UWB Icon" 
-                className="h-10 w-auto mb-4 -mt-1"
+                src="/subway/section11icon2.png" 
+                alt="Navigation Icon" 
+                className="h-9 w-auto mb-4 -ml-1"
               />
 
-              <h3 className="text-2xl tracking-tight font-semibold mb-4 text-black/90">
-                Airtag/Find My
-              </h3>
-
-              <p className="text-sm text-gray-700 font-medium text-left">
-                UWB enables an iPhone to measure its distance and direction from an AirTag, providing precision finding with centimeter-level accuracy.
+              <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem] ">
+              UWB base stations will be installed within subway stations, namely at entrances and exits, diverging paths within the station, and platforms. 
               </p>
 
             </div>
             
             {/* Column 2 */}
             <div 
-              ref={section11Text2Ref}
+              ref={section11Phase2Text2Ref}
               className="flex-1 flex flex-col justify-center items-start"
             >
               <img 
-                src="/subway/section11icon3.png" 
-                alt="UWB Icon" 
-                className="h-9 w-auto mb-4"
+                src="/subway/section11icon5.png" 
+                alt="Safety Icon" 
+                className="h-9 w-auto mb-4 -ml-1"
               />
 
-              <h3 className="text-2xl tracking-tight font-semibold mb-4 text-black/90">
-                Handoff
-              </h3>
-
-              <p className="text-sm text-gray-700 font-medium text-left">
-                Handoff works more smoothly by prioritizing nearby devices. When you bring your iPhone close to a HomePod mini, a visual and haptic effect appears, making it easier to transfer music.
+              <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem]">
+              The base stations will be programmed to transmit information regarding its respective location within stations.
               </p>
                 
             </div>
             
             {/* Column 3 */}
             <div 
-              ref={section11Text3Ref}
+              ref={section11Phase2Text3Ref}
               className="flex-1 flex flex-col justify-center items-start"
             >
               <img 
-                src="/subway/section11icon4.png" 
-                alt="UWB Icon" 
-                className="h-9 w-auto mb-4"
+                src="/subway/section11icon6.png" 
+                alt="Accessibility Icon" 
+                className="h-9 w-auto mb-4 -ml-1"
               />
 
-              <h3 className="text-2xl tracking-tight font-semibold mb-4 text-black/90">
-                AirDrop
-              </h3>
-
-              <p className="text-sm text-gray-700 font-medium text-left">
-                UWB also enables better device-to-device awareness, improving AirDrop by detecting which person you&apos;re pointing at.
+              <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem] ">
+              iPhones, in hand with Apple Maps, will query the base stations, resulting in precise spatial awareness within stations.
               </p>
 
-            </div>
-          </div>
-          
-          {/* Phase 2 Content - Overlaid on top */}
-          <div 
-            ref={section11Phase2Ref}
-            className="absolute inset-0 pt-11 pl-18 pr-6"
-          >
-            {/* Top Paragraph */}
-            <div ref={section11Phase2TopParagraphRef} className="text-left mb-10">
-              <h2 className="text-6xl font-semibold tracking-[-0.09rem] mb-4 text-black/80 leading-[3.75rem] w-[60%]">
-                How it could work within the subway.
-              </h2>
+                            </div>
             </div>
             
-            {/* Bottom Text */}
-            <div className="flex h-full flex-1 items-start justify-start gap-10">
+            {/* Phase 2 Emoji - Bottom Right */}
+            <div 
+              ref={section11Phase2EmojiRef}
+              className="absolute bottom-0 right-10"
+            >
+              <img 
+                src="/subway/section11emoji.png" 
+                alt="Section 11 Emoji" 
+                className="h-64 w-auto"
+              />
+            </div>
+          </div>
+        </div>
+      
+    </section>
 
-              {/* Column 1 */}
-              <div 
-                ref={section11Phase2Text1Ref}
-                className="flex-1 flex flex-col justify-center items-start"
-              >  
-                <img 
-                  src="/subway/section11icon2.png" 
-                  alt="Navigation Icon" 
-                  className="h-9 w-auto mb-4 -ml-1"
-                />
+    {/* Section 12 – How does it actually work? */}
+    <section 
+      ref={section12Ref}
+      className="min-h-screen flex items-center justify-center relative"
+    >
+      {/* Background gradient */}
+      <div 
+        ref={section12BackgroundRef}
+        className="absolute -inset-0"
+        style={{
+          background: 'radial-gradient(circle at bottom, #DECEBE 0%, #FF2020 100%)'
+        }}
+      />
+      {/* Container */}
+      <div className="w-full">
+          
+          {/* Text 1 */}
+            <div 
+              ref={section12Text1Ref}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-8"
+            >
+                <p className="text-2xl font-medium text-foreground tracking-tight">Wait, so how does it...</p>
 
-                <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem] ">
-                UWB base stations will be installed within subway stations, namely at entrances and exits, diverging paths within the station, and platforms. 
-                </p>
-
-              </div>
-              
-              {/* Column 2 */}
-              <div 
-                ref={section11Phase2Text2Ref}
-                className="flex-1 flex flex-col justify-center items-start"
-              >
-                <img 
-                  src="/subway/section11icon5.png" 
-                  alt="Safety Icon" 
-                  className="h-9 w-auto mb-4 -ml-1"
-                />
-
-                <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem]">
-                The base stations will be programmed to transmit information regarding its respective location within stations.
-                </p>
-                  
-              </div>
-              
-              {/* Column 3 */}
-              <div 
-                ref={section11Phase2Text3Ref}
-                className="flex-1 flex flex-col justify-center items-start"
-              >
-                <img 
-                  src="/subway/section11icon6.png" 
-                  alt="Accessibility Icon" 
-                  className="h-9 w-auto mb-4 -ml-1"
-                />
-
-                <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem] ">
-                iPhones, in hand with Apple Maps, will query the base stations, resulting in precise spatial awareness within stations.
-                </p>
-
-                             </div>
-             </div>
-             
-             {/* Phase 2 Emoji - Bottom Right */}
-             <div 
-               ref={section11Phase2EmojiRef}
-               className="absolute bottom-0 right-10"
-             >
-               <img 
-                 src="/subway/section11emoji.png" 
-                 alt="Section 11 Emoji" 
-                 className="h-64 w-auto"
-               />
-             </div>
-           </div>
-         </div>
-        
-      </section>
-
-      {/* Section 12 – How does it actually work? */}
-      <section 
-        ref={section12Ref}
-        className="min-h-screen flex items-center justify-center relative"
+            </div>
+            
+          {/* Text 2 */}
+            <div 
+              ref={section12Text2Ref}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-8"
+            >
+                <h2 className="text-4xl md:text-9xl whitespace-nowrap font-semibold text-foreground tracking-tight w-full -mt-4 relative">
+                  <span className="relative inline-block">
+                    actually
+                    <div 
+                      ref={section12UnderlineRef}
+                      className="absolute bottom-0 left-1.5 w-[84%] h-2 bg-foreground transform scale-x-0 origin-left"
+                      style={{ transform: 'scaleX(0)' }}
+                    />
+                  </span>
+                  <span className="ml-5">work?</span>
+                </h2>
+            </div>
+      </div>
+      
+      {/* Bottom middle emoji */}
+      <div 
+        ref={section12EmojiRef}
+        className="absolute bottom-0"
       >
-        {/* Background gradient */}
-        <div 
-          ref={section12BackgroundRef}
-          className="absolute -inset-0"
-          style={{
-            background: 'radial-gradient(circle at bottom, #DECEBE 0%, #FF2020 100%)'
-          }}
+        <img 
+          src="/subway/section12emoji1.png" 
+          alt="Section 12 Emoji" 
+          className="max-w-full h-[29rem]"
         />
-        {/* Container */}
-        <div className="w-full">
-           
-            {/* Text 1 */}
-             <div 
-               ref={section12Text1Ref}
-               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-8"
-             >
-                 <p className="text-2xl font-medium text-foreground tracking-tight">Wait, so how does it...</p>
+      </div>
+    </section>
 
-             </div>
-             
-            {/* Text 2 */}
-             <div 
-               ref={section12Text2Ref}
-               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-8"
-             >
-                 <h2 className="text-4xl md:text-9xl whitespace-nowrap font-semibold text-foreground tracking-tight w-full -mt-4 relative">
-                    <span className="relative inline-block">
-                      actually
-                      <div 
-                        ref={section12UnderlineRef}
-                        className="absolute bottom-0 left-1.5 w-[84%] h-2 bg-foreground transform scale-x-0 origin-left"
-                        style={{ transform: 'scaleX(0)' }}
-                      />
-                    </span>
-                    <span className="ml-5">work?</span>
-                 </h2>
-             </div>
+    {/* Section 13 – Mock: Set Destination */}
+    <section 
+      ref={section13Ref}
+      className="min-h-screen flex items-center justify-center relative bg-white/95"
+    >
+      <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
+        
+        {/* Column 1: Header */}
+        <div 
+          className="text-center md:text-left -mt-16 ml-10"
+        >
+          {/* Icon */}
+          <div 
+            ref={section13IconRef}
+            className="mb-4 flex justify-center md:justify-start"
+            style={{ transformOrigin: 'center', display: 'inline-block' }}
+          >
+            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+              <img 
+                src="/subway/section13icon1.png" 
+                alt="Section 13 Icon" 
+                className="h-12 w-auto ml-1"
+                style={{ transformOrigin: 'center', display: 'block' }}
+              />
+            </div>
+          </div>
+
+          {/* Text */}
+          <h2 
+            ref={section13Text1Ref}
+            className="text-[48pt] font-semibold tracking-tight leading-[3.75rem] text-black/80 w-[83%]"
+          >
+            Set a destination in your maps.
+          </h2>
+
         </div>
         
-        {/* Bottom middle emoji */}
+        {/* Column 2: Placeholder Image */}
         <div 
-          ref={section12EmojiRef}
-          className="absolute bottom-0"
+          ref={section13ImageRef}
+          className="flex items-center justify-center relative"
         >
           <img 
-            src="/subway/section12emoji1.png" 
-            alt="Section 12 Emoji" 
-            className="max-w-full h-[29rem]"
-          />
+              src="/subway/section13phone1.png" 
+              alt="Section 13 Icon" 
+              className="h-full w-auto scale-90 z-10"
+              style={{ transformOrigin: 'center' }}
+            />
+          {/* Line from middle to bottom edge */}
+          {/* <div 
+            className="absolute left-1/2 transform -translate-x-1/2 w-[15px] border-1 "
+            style={{ 
+              top: '50%',
+              height: '50vh',
+              zIndex: -1,
+              boxShadow: 'inset 0 0 5px rgba(0, 0, 0, 0.3)'
+            }}
+          /> */}
         </div>
-      </section>
-
-      {/* Section 13 – Mock: Set Destination */}
-      <section 
-        ref={section13Ref}
-        className="min-h-screen flex items-center justify-center relative bg-white/95"
-      >
-        <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
-          
-          {/* Column 1: Header */}
-          <div 
-            className="text-center md:text-left -mt-16 ml-10"
-          >
-            {/* Icon */}
-            <div 
-              ref={section13IconRef}
-              className="mb-4 flex justify-center md:justify-start"
-              style={{ transformOrigin: 'center', display: 'inline-block' }}
-            >
-              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-                <img 
-                  src="/subway/section13icon1.png" 
-                  alt="Section 13 Icon" 
-                  className="h-12 w-auto ml-1"
-                  style={{ transformOrigin: 'center', display: 'block' }}
-                />
-              </div>
-            </div>
-
-            {/* Text */}
-            <h2 
-              ref={section13Text1Ref}
-              className="text-[48pt] font-semibold tracking-tight leading-[3.75rem] text-black/80 w-[83%]"
-            >
-              Set a destination in your maps.
-            </h2>
-
-          </div>
-          
-          {/* Column 2: Placeholder Image */}
-          <div 
-            ref={section13ImageRef}
-            className="flex items-center justify-center relative"
-          >
-           <img 
-                src="/subway/section13phone1.png" 
-                alt="Section 13 Icon" 
-                className="h-full w-auto scale-90 z-10"
-                style={{ transformOrigin: 'center' }}
-              />
-            {/* Line from middle to bottom edge */}
-            {/* <div 
-              className="absolute left-1/2 transform -translate-x-1/2 w-[15px] border-1 "
-              style={{ 
-                top: '50%',
-                height: '50vh',
-                zIndex: -1,
-                boxShadow: 'inset 0 0 5px rgba(0, 0, 0, 0.3)'
-              }}
-            /> */}
-          </div>
-          
-          {/* Column 3: Text Paragraph */}
-          <div 
-            ref={section13ParagraphRef}
-            className="text-center md:text-left"
-          >
-            <p className="text-2xl font-medium text-black/50 leading-9 px-24 mt-2">
-            As Apple Maps is now aware of your itinerary, the logic within Apple Maps will also include specific entrances to take, directions to head towards the correct platform as well as the directions toward the Downtown platform instead of Uptown.
-            </p>
-          </div>
+        
+        {/* Column 3: Text Paragraph */}
+        <div 
+          ref={section13ParagraphRef}
+          className="text-center md:text-left"
+        >
+          <p className="text-2xl font-medium text-black/50 leading-9 px-24 mt-2">
+          As Apple Maps is now aware of your itinerary, the logic within Apple Maps will also include specific entrances to take, directions to head towards the correct platform as well as the directions toward the Downtown platform instead of Uptown.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Section 14 – Mock: Incorrect Entrance */}
-      <section 
-        ref={section14Ref}
-        className="min-h-screen flex items-center justify-center relative bg-white/95"
-      >
-        <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
-          
-          {/* Column 1: Header */}
+    {/* Section 14 – Mock: Incorrect Entrance */}
+    <section 
+      ref={section14Ref}
+      className="min-h-screen flex items-center justify-center relative bg-white/95"
+    >
+      <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
+        
+        {/* Column 1: Header */}
+        <div 
+          className="text-center md:text-left -mt-20 ml-10"
+        >
           <div 
-            className="text-center md:text-left -mt-20 ml-10"
+            ref={section14IconRef}
+            className="mb-4 flex justify-center md:justify-start"
+            style={{ transformOrigin: 'center', display: 'inline-block' }}
           >
-            <div 
-              ref={section14IconRef}
-              className="mb-4 flex justify-center md:justify-start"
-              style={{ transformOrigin: 'center', display: 'inline-block' }}
-            >
-              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-                <img 
-                  src="/subway/section9icon1.png" 
-                  alt="Section 14 Icon" 
-                  className="h-11 w-auto"
-                  style={{ transformOrigin: 'center', display: 'block' }}
-                />
-              </div>
-            </div>
-
-            <h2 
-              ref={section14Text1Ref}
-              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
-            >
-              You mistakenly approach the incorrect entrance for the station.
-            </h2>
-
-          </div>
-          
-          {/* Column 2: Placeholder Image */}
-          <div 
-            className="flex items-center justify-center relative"
-          >
-           <img 
-                ref={section14ImageRef}
-                src="/subway/section14phone1.png" 
+            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+              <img 
+                src="/subway/section9icon1.png" 
                 alt="Section 14 Icon" 
-                className="scale-90 ml-6 mt-10"
+                className="h-11 w-auto"
+                style={{ transformOrigin: 'center', display: 'block' }}
               />
-           <img 
-                ref={section14LockscreenRef}
-                src="/subway/section14lockscreen.png" 
-                alt="Section 14 Lockscreen" 
-                className="mx-auto absolute h-[72%] top-[14.5%] left-[14%] w-auto drop-shadow-[3px_4px_12px_rgba(0,0,0,0.2)]"
-                style={{ transformOrigin: 'center' }}
-              />
-          </div>
-          
-          {/* Column 3: Text Paragraph */}
-          <div 
-            className="text-center md:text-left"
-          >
-            <p 
-              ref={section14Paragraph1Ref}
-              className="text-2xl font-medium text-black/50 leading-9 px-24 mt-14"
-            >
-            Your iPhone begins to receive the transmission from the base station that is installed at the entrance.
-            </p>
-
-            <p 
-              ref={section14Paragraph2Ref}
-              className="text-2xl font-medium text-black/50 leading-9 px-24 -mt-48"
-            >
-            You receive a haptic buzz and a time-sensitive notification that you are approaching the wrong entrance for your trip.
-            </p>
-          </div>
-          
-        </div>
-      </section>
-
-      {/* Section 15 – Mock: Enter Correct Station */}
-      <section 
-        ref={section15Ref}
-        className="min-h-screen flex items-center justify-center relative bg-white/95"
-      >
-        <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
-          
-          {/* Column 1: Header */}
-          <div 
-            className="text-center md:text-left -mt-20 ml-10"
-          >
-            <div 
-              ref={section15IconRef}
-              className="mb-4 flex justify-center md:justify-start"
-              style={{ transformOrigin: 'center', display: 'inline-block' }}
-            >
-              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-                <img 
-                  src="/subway/section15icon1.png" 
-                  alt="Section 15 Icon" 
-                  className="h-14 w-auto"
-                  style={{ transformOrigin: 'center', display: 'block' }}
-                />
-              </div>
             </div>
-
-            <h2 
-              ref={section15Text1Ref}
-              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
-            >
-              You receive directions to the correct entrance.
-            </h2>
-
           </div>
-          
-          {/* Column 2: Placeholder Image */}
-          <div 
-            className="flex items-center justify-center relative"
+
+          <h2 
+            ref={section14Text1Ref}
+            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
           >
-           <img 
-              ref={section15ImageRef}
-              src="/subway/section15phone1.png" 
-              alt="Section 15 Icon" 
-              className="scale-90 ml-6 mt-10"
-              style={{ transformOrigin: 'center' }}
-            />
-           
-          </div>
-          
-          {/* Column 3: Text Paragraph */}
-          <div 
-            className="text-center md:text-left pl-14 pr-18"
-          >
-            <img 
-              ref={section15Column3ImageRef}
-              src="/subway/section15phase2.png" 
-              alt="Section 15 Column 3 Image" 
-              className="h-full w-auto"
-            />
-            <p 
-              ref={section15Paragraph1Ref}
-              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
-            >
-            A directional navigator shows up and guides you towards the direction of the correct entrance. 
-            </p>
+            You mistakenly approach the incorrect entrance for the station.
+          </h2>
 
-            <p 
-              ref={section15Paragraph2Ref}
-              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
-            >
-            You receive a haptic tap and the blue circle fills when you are oriented in the right direction.
-            </p>
-          </div>
-          
         </div>
         
-        {/* Phase 3 Overlay Elements */}
-        <div className="absolute inset-0 w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center pointer-events-none">
-          
-          {/* Phase 3 Column 1: New Header */}
-          <div 
-            className="text-center md:text-left -mt-20 ml-10"
-          >
-            <div 
-              ref={section15Phase3IconRef}
-              className="mb-4 flex justify-center md:justify-start"
-              style={{ transformOrigin: 'center', display: 'inline-block' }}
-            >
-              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-                <img 
-                  src="/subway/section15icon2.png" 
-                  alt="Section 15 Phase 3 Icon" 
-                  className="h-12 w-auto"
-                  style={{ transformOrigin: 'center', display: 'block' }}
-                />
-              </div>
-            </div>
-
-            <h2 
-              ref={section15Phase3HeaderRef}
-              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[75%]"
-            >
-              You enter the correct station.
-            </h2>
-
-          </div>
-          
-          {/* Phase 3 Column 2: New Phone */}
-          <div 
-            className="flex items-center justify-center relative"
-          >
-           <img 
-              ref={section15Phase3PhoneRef}
-              src="/subway/section15phone2.png" 
-              alt="Section 15 Icon" 
-              className="w-[82.3%] h-auto mt-0.5 ml-1.5"
-              
-            />
-           
-          </div>
-          
-          {/* Phase 3 Column 3: New Text */}
-          <div 
-            className="text-center md:text-left pl-14 pr-14"
-          >
-            <p 
-              ref={section15Phase3TextRef}
-              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4 mb-4"
-            >
-            Your iPhone knows where it is due to the base stations within the station. 
-            </p>
-
-            <img 
-              ref={section15Phase4DImageRef}
-              src="/subway/section15phase3.png" 
-              alt="Section 15 Phase 4D Image" 
-              className="h-auto w-[90%]"
-            />
-
-            <p 
-              ref={section15Phase4DTextRef}
-              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
-            >
-            The station&apos;s navigation system guides you to your platform with precision.
-            </p>
-            
-          </div>
-          
-        </div>
-      </section>
-
-      {/* Section 16 – Mock: Along the Platform */}
-      <section 
-        ref={section16Ref}
-        className="min-h-screen flex items-center justify-center relative bg-white/95"
-      >
-        <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
-          
-          {/* Column 1: Header */}
-          <div 
-            className="text-center md:text-left -mt-20 ml-10"
-          >
-            <div 
-              ref={section16IconRef}
-              className="mb-4 flex justify-center md:justify-start"
-              style={{ transformOrigin: 'center', display: 'inline-block' }}
-            >
-              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-                <img 
-                  src="/subway/section16icon1.png" 
-                  alt="Section 16 Icon" 
-                  className="h-12 w-auto"
-                  style={{ transformOrigin: 'center', display: 'block' }}
-                />
-              </div>
-            </div>
-
-            <h2 
-              ref={section16Text1Ref}
-              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
-            >
-              You head down to the platform.
-            </h2>
-
-          </div>
-          
-          {/* Column 2: Placeholder Image */}
-          <div 
-            className="flex items-center justify-center relative"
-          >
-           <img 
-                ref={section16ImageRef}
-                src="/subway/section16phone1.png" 
-                alt="Section 16 Icon" 
-                className="scale-90 ml-6 mt-10"
-              />
-          </div>
-          
-          {/* Column 3: Text Paragraph */}
-          <div 
-            className="text-center md:text-left"
-          >
-            <p 
-              ref={section16Paragraph1Ref}
-              className="text-2xl font-medium text-black/50 leading-9 px-24 mt-14"
-            >
-            As you descend to the platform, the iPhone is aware of your current location along the platform.
-            </p>
-
-            <p 
-              ref={section16Paragraph2Ref}
-              className="text-2xl font-medium text-black/50 leading-9 px-24 -mt-48"
-            >
-            You receive directions to head towards the front (in the direction of travel) of the platform as Apple Maps is aware of the exit to take at the destination station.
-            </p>
-          </div>
-          
-        </div>
-      </section>
-
-      {/* Section 17 – Mock: Reached Destination */}
-      <section 
-        ref={section17Ref}
-        className="min-h-screen flex items-center justify-center relative bg-white/95"
-      >
-        <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
-          
-          {/* Column 1: Header */}
-          <div 
-            className="text-center md:text-left -mt-20 ml-10"
-          >
-            <div 
-              ref={section17IconRef}
-              className="mb-4 flex justify-center md:justify-start"
-              style={{ transformOrigin: 'center', display: 'inline-block' }}
-            >
-              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-                <img 
-                  src="/subway/section17icon1.png" 
-                  alt="Section 17 Icon" 
-                  className="h-11 w-auto"
-                  style={{ transformOrigin: 'center', display: 'block' }}
-                />
-              </div>
-            </div>
-
-            <h2 
-              ref={section17Text1Ref}
-              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
-            >
-              You arrive at your destination station.
-            </h2>
-
-          </div>
-          
-          {/* Column 2: Placeholder Image */}
-          <div 
-            className="flex items-center justify-center relative"
-          >
-           <img 
-              ref={section17ImageRef}
-              src="/subway/section17phone1.png" 
-              alt="Section 17 Icon" 
-              className="w-[92%] h-auto ml-6 mt-10"
-              style={{ transformOrigin: 'center' }}
-            />
-           
-          </div>
-          
-          {/* Column 3: Text Paragraph */}
-          <div 
-            className="text-center md:text-left pl-14 pr-36"
-          >
-            <p 
-              ref={section17Paragraph1Ref}
-              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
-            >
-            The subway ride is uneventful (not necessarily a given in NYC), and you arrive at your destination station.
-            </p>
-
-            <p 
-              ref={section17Paragraph2Ref}
-              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
-            >
-            You get off from the front of the train and as per planned, you find the set of stairs up from the platform in front of you.
-            </p>
-          </div>
-          
-        </div>
-        
-        {/* Phase 3 Overlay Elements */}
-        <div className="absolute inset-0 w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center pointer-events-none">
-          
-          {/* Phase 3 Column 1: New Header */}
-          <div 
-            className="text-center md:text-left -mt-20 ml-10"
-          >
-            <div 
-              ref={section17Phase3IconRef}
-              className="mb-4 flex justify-center md:justify-start"
-              style={{ transformOrigin: 'center', display: 'inline-block' }}
-            >
-              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-                <img 
-                  src="/subway/section17icon2.png" 
-                  alt="Section 17 Phase 3 Icon" 
-                  className="h-11 w-auto"
-                  style={{ transformOrigin: 'center', display: 'block' }}
-                />
-              </div>
-            </div>
-
-            <h2 
-              ref={section17Phase3HeaderRef}
-              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[75%]"
-            >
-              You are guided to your exit from the station.
-            </h2>
-
-          </div>
-          
-          {/* Phase 3 Column 2: New Phone */}
-          <div 
-            className="flex items-center justify-center relative"
-          >
-           <img 
-              ref={section17Phase3PhoneRef}
-              src="/subway/section17phone2.png" 
-              alt="Section 17 Icon" 
-              className="w-[74%] h-auto ml-1 mb-0.5"
-              
-            />
-           
-          </div>
-          
-          {/* Phase 3 Column 3: New Text */}
-          <div 
-            className="text-center md:text-left pl-14 pr-40"
-          >
-            <p 
-              ref={section17Phase3TextRef}
-              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4 mb-4"
-            >
-            You continue to receive directions in the form of haptic feedback and time-sensitive notifications within the station that lead you to your specific exit from the station building.
-            </p>
-
-          </div>
-          
-        </div>
-      </section>
-
-      {/* Section 18 – 4 Column Layout */}
-      <section 
-        ref={section18Ref}
-        className="min-h-screen flex items-center justify-center relative bg-white/95"
-      >
-        <div className="w-full h-screen mx-auto px-20 flex flex-col md:flex-row items-center justify-center gap-6">
-          
-          {/* Column 1: Rounded Rectangle with Inset Image */}
-          <div 
-            className="flex-[4] flex flex-col items-center justify-between rounded-[35pt] h-[80%] bg-gray-50 drop-shadow-xl"
-            ref={section18Image1Ref}
-          >  
-            <img 
-              src="/subway/section18image1.png" 
-              alt="Section 18 Image 1" 
-              className="w-[90%] h-auto ml-1 mt-4 object-contain"
-              style={{ transformOrigin: 'center' }}
-            />
-
-            <p className="text-[18pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
-              Error State
-            </p>
-          </div>
-          
-          {/* Column 2: Rounded Rectangle with Inset Image */}
-          <div 
-            className="flex-[4] flex flex-col items-center justify-between rounded-[35pt] h-[80%] bg-gray-50 drop-shadow-xl"
-            ref={section18Image2Ref}
-          >
-            <img 
-              src="/subway/section18image2.png" 
-              alt="Section 18 Image 2" 
-              className="w-[90%] h-auto ml-1 mt-4 object-contain"
-              style={{ transformOrigin: 'center' }}
-            />
-
-            <p className="text-[18pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
-              Live Activity Cards
-            </p>
-          </div>
-          
-          {/* Column 3: 2 Stacked Images */}
-          <div 
-            className="flex-[3] h-[80%] flex flex-col items-center justify-center space-y-5"
-          >
-            <div 
-            ref={section18Image3TopRef}
-            className="flex flex-col items-center justify-between w-full h-full bg-white rounded-3xl drop-shadow-xl">
-              <img 
-                src="/subway/section18image3top.png" 
-                alt="Section 18 Image 3 Top" 
-                className="w-[90%] mt-4 h-auto"
-                style={{ transformOrigin: 'center' }}
-              />
-              <p className="text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-6 w-[80%]">
-                Real-time directional navigation
-              </p>
-            </div>
-
-            <div 
-            ref={section18Image3BottomRef}
-            className="flex flex-col items-center justify-between w-full h-full bg-white rounded-3xl drop-shadow-xl">
-              <img 
-                src="/subway/section18image3bottom.png" 
-                alt="Section 18 Image 3 Bottom" 
-                className="w-[90%] mt-4 h-auto"
-                style={{ transformOrigin: 'center' }}
-              />
-              <p className="text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-6">
-                Step-by-step itinerary
-              </p>
-            </div>
-          </div>
-          
-          {/* Column 4: Image */}
-            <div 
-              className="flex-[4] flex flex-col items-center justify-between rounded-[35pt] h-[80%] bg-gray-50 drop-shadow-xl"
-              ref={section18Image4Ref}
-            >
-            <img 
-              src="/subway/section18image4.png" 
-              alt="Section 18 Image 4" 
-              className="w-[90%] h-auto ml-1 mt-6 object-contain"
-              style={{ transformOrigin: 'center' }}
-            />
-
-            <p className="text-[18pt] text-center font-semibold text-gray-600 tracking-tight mb-6 leading-6 w-[80%]">
-              UWB-powered proximity guidance
-            </p>
-
-          </div>
-
-          
-          
-        </div>
-      </section>
-
-      {/* Section 19 – 3 Columns with 3 Images */}
-      <section 
-        ref={section19Ref}
-        className="min-h-screen flex items-center justify-center relative"
-      >
-        <div className="w-full h-screen mx-auto flex items-center justify-center bg-white/95 relative">
-          
-          {/* Logo Images - Side by side in the middle */}
-          <div className="flex items-center justify-center gap-10">
-            <img 
-              ref={section19Image1Ref}
-              src="/subway/section19logo1.png"   
-              alt="Section 19 Image 1" 
-              className="w-[25%] h-auto"
-            />
-            
-            <img 
-              ref={section19Image3Ref}
-              src="/subway/section19logo2.png"   
-              alt="Section 19 Image 3" 
-              className="w-[10%] h-auto"
-            />
-          </div>
-          
-          {/* Emoji - Unchanged positioning */}
+        {/* Column 2: Placeholder Image */}
+        <div 
+          className="flex items-center justify-center relative"
+        >
           <img 
-            ref={section19Image2Ref}
-            src="/subway/section19emoji.png"   
-            alt="Section 19 Image 2" 
-            className="absolute bottom-0 left-[50%] transform -translate-x-1/2 w-[20%] h-auto"
+              ref={section14ImageRef}
+              src="/subway/section14phone1.png" 
+              alt="Section 14 Icon" 
+              className="scale-90 ml-6 mt-10"
+            />
+          <img 
+              ref={section14LockscreenRef}
+              src="/subway/section14lockscreen.png" 
+              alt="Section 14 Lockscreen" 
+              className="mx-auto absolute h-[72%] top-[14.5%] left-[14%] w-auto drop-shadow-[3px_4px_12px_rgba(0,0,0,0.2)]"
+              style={{ transformOrigin: 'center' }}
+            />
+        </div>
+        
+        {/* Column 3: Text Paragraph */}
+        <div 
+          className="text-center md:text-left"
+        >
+          <p 
+            ref={section14Paragraph1Ref}
+            className="text-2xl font-medium text-black/50 leading-9 px-24 mt-14"
+          >
+          Your iPhone begins to receive the transmission from the base station that is installed at the entrance.
+          </p>
+
+          <p 
+            ref={section14Paragraph2Ref}
+            className="text-2xl font-medium text-black/50 leading-9 px-24 -mt-48"
+          >
+          You receive a haptic buzz and a time-sensitive notification that you are approaching the wrong entrance for your trip.
+          </p>
+        </div>
+        
+      </div>
+    </section>
+
+    {/* Section 15 – Mock: Enter Correct Station */}
+    <section 
+      ref={section15Ref}
+      className="min-h-screen flex items-center justify-center relative bg-white/95"
+    >
+      <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
+        
+        {/* Column 1: Header */}
+        <div 
+          className="text-center md:text-left -mt-20 ml-10"
+        >
+          <div 
+            ref={section15IconRef}
+            className="mb-4 flex justify-center md:justify-start"
+            style={{ transformOrigin: 'center', display: 'inline-block' }}
+          >
+            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+              <img 
+                src="/subway/section15icon1.png" 
+                alt="Section 15 Icon" 
+                className="h-14 w-auto"
+                style={{ transformOrigin: 'center', display: 'block' }}
+              />
+            </div>
+          </div>
+
+          <h2 
+            ref={section15Text1Ref}
+            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
+          >
+            You receive directions to the correct entrance.
+          </h2>
+
+        </div>
+        
+        {/* Column 2: Placeholder Image */}
+        <div 
+          className="flex items-center justify-center relative"
+        >
+          <img 
+            ref={section15ImageRef}
+            src="/subway/section15phone1.png" 
+            alt="Section 15 Icon" 
+            className="scale-90 ml-6 mt-10"
+            style={{ transformOrigin: 'center' }}
           />
           
         </div>
-      </section>
+        
+        {/* Column 3: Text Paragraph */}
+        <div 
+          className="text-center md:text-left pl-14 pr-18"
+        >
+          <img 
+            ref={section15Column3ImageRef}
+            src="/subway/section15phase2.png" 
+            alt="Section 15 Column 3 Image" 
+            className="h-full w-auto"
+          />
+          <p 
+            ref={section15Paragraph1Ref}
+            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
+          >
+          A directional navigator shows up and guides you towards the direction of the correct entrance. 
+          </p>
+
+          <p 
+            ref={section15Paragraph2Ref}
+            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
+          >
+          You receive a haptic tap and the blue circle fills when you are oriented in the right direction.
+          </p>
+        </div>
+        
+      </div>
+      
+      {/* Phase 3 Overlay Elements */}
+      <div className="absolute inset-0 w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center pointer-events-none">
+        
+        {/* Phase 3 Column 1: New Header */}
+        <div 
+          className="text-center md:text-left -mt-20 ml-10"
+        >
+          <div 
+            ref={section15Phase3IconRef}
+            className="mb-4 flex justify-center md:justify-start"
+            style={{ transformOrigin: 'center', display: 'inline-block' }}
+          >
+            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+              <img 
+                src="/subway/section15icon2.png" 
+                alt="Section 15 Phase 3 Icon" 
+                className="h-12 w-auto"
+                style={{ transformOrigin: 'center', display: 'block' }}
+              />
+            </div>
+          </div>
+
+          <h2 
+            ref={section15Phase3HeaderRef}
+            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[75%]"
+          >
+            You enter the correct station.
+          </h2>
+
+        </div>
+        
+        {/* Phase 3 Column 2: New Phone */}
+        <div 
+          className="flex items-center justify-center relative"
+        >
+          <img 
+            ref={section15Phase3PhoneRef}
+            src="/subway/section15phone2.png" 
+            alt="Section 15 Icon" 
+            className="w-[82.3%] h-auto mt-0.5 ml-1.5"
+            
+          />
+          
+        </div>
+        
+        {/* Phase 3 Column 3: New Text */}
+        <div 
+          className="text-center md:text-left pl-14 pr-14"
+        >
+          <p 
+            ref={section15Phase3TextRef}
+            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4 mb-4"
+          >
+          Your iPhone knows where it is due to the base stations within the station. 
+          </p>
+
+          <img 
+            ref={section15Phase4DImageRef}
+            src="/subway/section15phase3.png" 
+            alt="Section 15 Phase 4D Image" 
+            className="h-auto w-[90%]"
+          />
+
+          <p 
+            ref={section15Phase4DTextRef}
+            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
+          >
+          The station&apos;s navigation system guides you to your platform with precision.
+          </p>
+          
+        </div>
+        
+      </div>
+    </section>
+
+    {/* Section 16 – Mock: Along the Platform */}
+    <section 
+      ref={section16Ref}
+      className="min-h-screen flex items-center justify-center relative bg-white/95"
+    >
+      <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
+        
+        {/* Column 1: Header */}
+        <div 
+          className="text-center md:text-left -mt-20 ml-10"
+        >
+          <div 
+            ref={section16IconRef}
+            className="mb-4 flex justify-center md:justify-start"
+            style={{ transformOrigin: 'center', display: 'inline-block' }}
+          >
+            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+              <img 
+                src="/subway/section16icon1.png" 
+                alt="Section 16 Icon" 
+                className="h-12 w-auto"
+                style={{ transformOrigin: 'center', display: 'block' }}
+              />
+            </div>
+          </div>
+
+          <h2 
+            ref={section16Text1Ref}
+            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
+          >
+            You head down to the platform.
+          </h2>
+
+        </div>
+        
+        {/* Column 2: Placeholder Image */}
+        <div 
+          className="flex items-center justify-center relative"
+        >
+          <img 
+              ref={section16ImageRef}
+              src="/subway/section16phone1.png" 
+              alt="Section 16 Icon" 
+              className="scale-90 ml-6 mt-10"
+            />
+        </div>
+        
+        {/* Column 3: Text Paragraph */}
+        <div 
+          className="text-center md:text-left"
+        >
+          <p 
+            ref={section16Paragraph1Ref}
+            className="text-2xl font-medium text-black/50 leading-9 px-24 mt-14"
+          >
+          As you descend to the platform, the iPhone is aware of your current location along the platform.
+          </p>
+
+          <p 
+            ref={section16Paragraph2Ref}
+            className="text-2xl font-medium text-black/50 leading-9 px-24 -mt-48"
+          >
+          You receive directions to head towards the front (in the direction of travel) of the platform as Apple Maps is aware of the exit to take at the destination station.
+          </p>
+        </div>
+        
+      </div>
+    </section>
+
+    {/* Section 17 – Mock: Reached Destination */}
+    <section 
+      ref={section17Ref}
+      className="min-h-screen flex items-center justify-center relative bg-white/95"
+    >
+      <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
+        
+        {/* Column 1: Header */}
+        <div 
+          className="text-center md:text-left -mt-20 ml-10"
+        >
+          <div 
+            ref={section17IconRef}
+            className="mb-4 flex justify-center md:justify-start"
+            style={{ transformOrigin: 'center', display: 'inline-block' }}
+          >
+            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+              <img 
+                src="/subway/section17icon1.png" 
+                alt="Section 17 Icon" 
+                className="h-11 w-auto"
+                style={{ transformOrigin: 'center', display: 'block' }}
+              />
+            </div>
+          </div>
+
+          <h2 
+            ref={section17Text1Ref}
+            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
+          >
+            You arrive at your destination station.
+          </h2>
+
+        </div>
+        
+        {/* Column 2: Placeholder Image */}
+        <div 
+          className="flex items-center justify-center relative"
+        >
+          <img 
+            ref={section17ImageRef}
+            src="/subway/section17phone1.png" 
+            alt="Section 17 Icon" 
+            className="w-[92%] h-auto ml-6 mt-10"
+            style={{ transformOrigin: 'center' }}
+          />
+          
+        </div>
+        
+        {/* Column 3: Text Paragraph */}
+        <div 
+          className="text-center md:text-left pl-14 pr-36"
+        >
+          <p 
+            ref={section17Paragraph1Ref}
+            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
+          >
+          The subway ride is uneventful (not necessarily a given in NYC), and you arrive at your destination station.
+          </p>
+
+          <p 
+            ref={section17Paragraph2Ref}
+            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
+          >
+          You get off from the front of the train and as per planned, you find the set of stairs up from the platform in front of you.
+          </p>
+        </div>
+        
+      </div>
+      
+      {/* Phase 3 Overlay Elements */}
+      <div className="absolute inset-0 w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center pointer-events-none">
+        
+        {/* Phase 3 Column 1: New Header */}
+        <div 
+          className="text-center md:text-left -mt-20 ml-10"
+        >
+          <div 
+            ref={section17Phase3IconRef}
+            className="mb-4 flex justify-center md:justify-start"
+            style={{ transformOrigin: 'center', display: 'inline-block' }}
+          >
+            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+              <img 
+                src="/subway/section17icon2.png" 
+                alt="Section 17 Phase 3 Icon" 
+                className="h-11 w-auto"
+                style={{ transformOrigin: 'center', display: 'block' }}
+              />
+            </div>
+          </div>
+
+          <h2 
+            ref={section17Phase3HeaderRef}
+            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[75%]"
+          >
+            You are guided to your exit from the station.
+          </h2>
+
+        </div>
+        
+        {/* Phase 3 Column 2: New Phone */}
+        <div 
+          className="flex items-center justify-center relative"
+        >
+          <img 
+            ref={section17Phase3PhoneRef}
+            src="/subway/section17phone2.png" 
+            alt="Section 17 Icon" 
+            className="w-[74%] h-auto ml-1 mb-0.5"
+            
+          />
+          
+        </div>
+        
+        {/* Phase 3 Column 3: New Text */}
+        <div 
+          className="text-center md:text-left pl-14 pr-40"
+        >
+          <p 
+            ref={section17Phase3TextRef}
+            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4 mb-4"
+          >
+          You continue to receive directions in the form of haptic feedback and time-sensitive notifications within the station that lead you to your specific exit from the station building.
+          </p>
+
+        </div>
+        
+      </div>
+    </section>
+
+    {/* Section 18 – 4 Column Layout */}
+    <section 
+      ref={section18Ref}
+      className="min-h-screen flex items-center justify-center relative bg-white/95"
+    >
+      <div className="w-full h-screen mx-auto px-20 flex flex-col md:flex-row items-center justify-center gap-6">
+        
+        {/* Column 1: Rounded Rectangle with Inset Image */}
+        <div 
+          className="flex-[4] flex flex-col items-center justify-between rounded-[35pt] h-[80%] bg-gray-50 drop-shadow-xl"
+          ref={section18Image1Ref}
+        >  
+          <img 
+            src="/subway/section18image1.png" 
+            alt="Section 18 Image 1" 
+            className="w-[90%] h-auto ml-1 mt-4 object-contain"
+            style={{ transformOrigin: 'center' }}
+          />
+
+          <p className="text-[18pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
+            Error State
+          </p>
+        </div>
+        
+        {/* Column 2: Rounded Rectangle with Inset Image */}
+        <div 
+          className="flex-[4] flex flex-col items-center justify-between rounded-[35pt] h-[80%] bg-gray-50 drop-shadow-xl"
+          ref={section18Image2Ref}
+        >
+          <img 
+            src="/subway/section18image2.png" 
+            alt="Section 18 Image 2" 
+            className="w-[90%] h-auto ml-1 mt-4 object-contain"
+            style={{ transformOrigin: 'center' }}
+          />
+
+          <p className="text-[18pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
+            Live Activity Cards
+          </p>
+        </div>
+        
+        {/* Column 3: 2 Stacked Images */}
+        <div 
+          className="flex-[3] h-[80%] flex flex-col items-center justify-center space-y-5"
+        >
+          <div 
+          ref={section18Image3TopRef}
+          className="flex flex-col items-center justify-between w-full h-full bg-white rounded-3xl drop-shadow-xl">
+            <img 
+              src="/subway/section18image3top.png" 
+              alt="Section 18 Image 3 Top" 
+              className="w-[90%] mt-4 h-auto"
+              style={{ transformOrigin: 'center' }}
+            />
+            <p className="text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-6 w-[80%]">
+              Real-time directional navigation
+            </p>
+          </div>
+
+          <div 
+          ref={section18Image3BottomRef}
+          className="flex flex-col items-center justify-between w-full h-full bg-white rounded-3xl drop-shadow-xl">
+            <img 
+              src="/subway/section18image3bottom.png" 
+              alt="Section 18 Image 3 Bottom" 
+              className="w-[90%] mt-4 h-auto"
+              style={{ transformOrigin: 'center' }}
+            />
+            <p className="text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-6">
+              Step-by-step itinerary
+            </p>
+          </div>
+        </div>
+        
+        {/* Column 4: Image */}
+          <div 
+            className="flex-[4] flex flex-col items-center justify-between rounded-[35pt] h-[80%] bg-gray-50 drop-shadow-xl"
+            ref={section18Image4Ref}
+          >
+          <img 
+            src="/subway/section18image4.png" 
+            alt="Section 18 Image 4" 
+            className="w-[90%] h-auto ml-1 mt-6 object-contain"
+            style={{ transformOrigin: 'center' }}
+          />
+
+          <p className="text-[18pt] text-center font-semibold text-gray-600 tracking-tight mb-6 leading-6 w-[80%]">
+            UWB-powered proximity guidance
+          </p>
+
+        </div>
+
+        
+        
+      </div>
+    </section>
+
+    {/* Section 19 – 3 Columns with 3 Images */}
+    <section 
+      ref={section19Ref}
+      className="min-h-screen flex items-center justify-center relative"
+    >
+      <div className="w-full h-screen mx-auto flex items-center justify-center bg-white/95 relative">
+        
+        {/* Logo Images - Side by side in the middle */}
+        <div className="flex items-center justify-center gap-10">
+          <img 
+            ref={section19Image1Ref}
+            src="/subway/section19logo1.png"   
+            alt="Section 19 Image 1" 
+            className="w-[25%] h-auto"
+          />
+          
+          <img 
+            ref={section19Image3Ref}
+            src="/subway/section19logo2.png"   
+            alt="Section 19 Image 3" 
+            className="w-[10%] h-auto"
+          />
+        </div>
+        
+        {/* Emoji - Unchanged positioning */}
+        <img 
+          ref={section19Image2Ref}
+          src="/subway/section19emoji.png"   
+          alt="Section 19 Image 2" 
+          className="absolute bottom-0 left-[50%] transform -translate-x-1/2 w-[20%] h-auto"
+        />
+        
+      </div>
+    </section>
 
       
     </div>

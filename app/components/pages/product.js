@@ -136,6 +136,7 @@ return (
               videoId="product-subway"
               src="/subway/cover.mp4"
               poster="/poster/subway.png"
+              className="contrast-[1.15] brightness-[1.2]"
             />
           </div>
 
