@@ -672,7 +672,7 @@ const NycSubway = ({ className }) => {
     gsap.set(section13ImageRef.current, { opacity: 0.7, scale: 0.95, transformOrigin: "center center", filter: "blur(2px)" });
     gsap.set(section13ParagraphRef.current, { opacity: 0, y: 30 });
 
-    // Set initial state for section 14 (header already visible)
+    // Set initial state for section 14 (header and video already visible)
     gsap.set(section14IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
     gsap.set(section14Text1Ref.current, { opacity: 1, y: 0 });
     gsap.set(section14ImageRef.current, { opacity: 1, transformOrigin: "center center" });
@@ -2048,11 +2048,16 @@ const NycSubway = ({ className }) => {
             y: 30
           });
           
-          // Phone stays in center
+          // Video stays visible and plays
           gsap.set(section14ImageRef.current, { 
             opacity: 1, 
             x: 0
           });
+          
+          // Start playing video if not already playing
+          if (section14ImageRef.current && section14ImageRef.current.paused) {
+            section14ImageRef.current.play();
+          }
         }
         // Phase 3: Phone moves left, paragraph1 moves up and fades, paragraph2 fades in (50-100%)
         else {
@@ -2071,7 +2076,7 @@ const NycSubway = ({ className }) => {
             y: 0
           });
           
-          // Phone moves to the left and fades with blur
+          // Video moves to the left and fades with blur
           gsap.set(section14ImageRef.current, { 
             opacity: 1 - (0.85 * easedPhase3Progress),
             x: -100 * easedPhase3Progress, // Move left by 100px
@@ -2129,6 +2134,11 @@ const NycSubway = ({ className }) => {
           // Header stays visible
           gsap.set(section15IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
           gsap.set(section15Text1Ref.current, { opacity: 1, y: 0 });
+          
+          // Start playing video when phase 1 triggers
+          if (section15ImageRef.current && section15ImageRef.current.paused) {
+            section15ImageRef.current.play();
+          }
           
           // Split Phase 2 into two parts: image first (0-50%), then both paragraphs (50-100%)
           if (phase2Progress <= 0.5) {
@@ -2262,6 +2272,11 @@ const NycSubway = ({ className }) => {
               scale: 0.9,
               x: 0
             });
+            
+            // Start playing phase 3 video when phase 4 begins
+            if (section15Phase3PhoneRef.current && section15Phase3PhoneRef.current.paused) {
+              section15Phase3PhoneRef.current.play();
+            }
             
             // Keep text and phase 4D elements hidden
             gsap.set(section15Phase3TextRef.current, { opacity: 0, y: 30 });
@@ -3614,15 +3629,21 @@ const NycSubway = ({ className }) => {
 
         </div>
         
-        {/* Column 2: Placeholder Image */}
+        {/* Column 2: Video */}
         <div 
           className="flex items-center justify-center relative"
         >
-          <img 
+          <video 
               ref={section14ImageRef}
-              src="/subway/section14phone1.png" 
-              alt="Section 14 Icon" 
-              className="scale-90 ml-6 mt-10"
+              src="/subway/section14animation2.mp4" 
+              className="scale-95 ml-6 mt-10 object-cover"
+              style={{ 
+                backgroundColor: 'transparent',
+                clipPath: 'inset(1px 1px 1px 1px)'
+              }}
+              muted
+              loop
+              playsInline
             />
           <img 
               ref={section14LockscreenRef}
@@ -3690,16 +3711,21 @@ const NycSubway = ({ className }) => {
 
         </div>
         
-        {/* Column 2: Placeholder Image */}
+        {/* Column 2: Video */}
         <div 
           className="flex items-center justify-center relative"
         >
-          <img 
+          <video 
             ref={section15ImageRef}
-            src="/subway/section15phone1.png" 
-            alt="Section 15 Icon" 
-            className="scale-90 ml-6 mt-10"
-            style={{ transformOrigin: 'center' }}
+            src="/subway/section15animation_1.mp4" 
+            className="scale-90 ml-7 mt-10 object-cover"
+            style={{ 
+              transformOrigin: 'center',
+              backgroundColor: 'transparent'
+            }}
+            muted
+            loop
+            playsInline
           />
           
         </div>
@@ -3762,16 +3788,20 @@ const NycSubway = ({ className }) => {
 
         </div>
         
-        {/* Phase 3 Column 2: New Phone */}
+        {/* Phase 3 Column 2: New Video */}
         <div 
           className="flex items-center justify-center relative"
         >
-          <img 
+          <video 
             ref={section15Phase3PhoneRef}
-            src="/subway/section15phone2.png" 
-            alt="Section 15 Icon" 
-            className="w-[82.3%] h-auto mt-0.5 ml-1.5"
-            
+            src="/subway/section15animation2.mp4" 
+            className="scale-90 ml-7 mt-[2.375rem] object-cover"
+            style={{ 
+              backgroundColor: 'transparent'
+            }}
+            muted
+            loop
+            playsInline
           />
           
         </div>
