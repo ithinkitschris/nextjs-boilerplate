@@ -107,6 +107,23 @@ const ISV = ({ className }) => {
   const aquaImgRef = useRef(null);
   const hawkerImgRef = useRef(null);
   
+  // Video stack container ref
+  const videoStackRef = useRef(null);
+  
+  // Video sync refs for cover page
+  const coverVideoRef = useRef(null);
+  const glowVideoRef = useRef(null);
+  
+  // Safety instruction text refs
+  const preTakeoffRef = useRef(null);
+  const seatbeltRef = useRef(null);
+  const dashRef = useRef(null);
+  const oxygenMaskRef = useRef(null);
+  const emergencyExitsRef = useRef(null);
+  const bracePositionsRef = useRef(null);
+  const lifeVestsRef = useRef(null);
+  const electronicDevicesRef = useRef(null);
+  
   //#endregion
 
   // Section tracking for progress indicator
@@ -115,6 +132,36 @@ const ISV = ({ className }) => {
     section2Ref, // Section 2 (Intro Text)
     section5Ref, // Section 5 (New section 4)
   ];
+
+  // Video sync effect
+  useEffect(() => {
+    const coverVideo = coverVideoRef.current;
+    const glowVideo = glowVideoRef.current;
+    
+    if (coverVideo && glowVideo) {
+      const syncVideos = () => {
+        // Sync glow video to cover video time
+        if (Math.abs(coverVideo.currentTime - glowVideo.currentTime) > 0.1) {
+          glowVideo.currentTime = coverVideo.currentTime;
+        }
+      };
+      
+      // Sync on play/pause
+      const handlePlay = () => glowVideo.play();
+      const handlePause = () => glowVideo.pause();
+      const handleTimeUpdate = syncVideos;
+      
+      coverVideo.addEventListener('play', handlePlay);
+      coverVideo.addEventListener('pause', handlePause);
+      coverVideo.addEventListener('timeupdate', handleTimeUpdate);
+      
+      return () => {
+        coverVideo.removeEventListener('play', handlePlay);
+        coverVideo.removeEventListener('pause', handlePause);
+        coverVideo.removeEventListener('timeupdate', handleTimeUpdate);
+      };
+    }
+  }, []);
 
   // Animations
   useEffect(() => {
@@ -165,10 +212,7 @@ const ISV = ({ className }) => {
     gsap.set(section3LineRef.current, { opacity: 0, scaleX: 0 }); // Hidden initially, no scale
     
     
-    // Set initial state for section 5
-    gsap.set(section5TextRef.current, { opacity: 1, y: 0 }); // Visible initially
-    
-    // Set initial states for community items - all at 25% opacity initially
+    // Set initial states for community items - all at 25% opacity
     gsap.set(lionDanceRef.current, { opacity: 1 });
     gsap.set(familiesRef.current, { opacity: 0.25 });
     gsap.set(birdUnclesRef.current, { opacity: 0.25 });
@@ -179,18 +223,26 @@ const ISV = ({ className }) => {
     gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
     gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
     
-    // Set initial states for community images - only first image visible
+    // Set initial states for video stack - positioned vertically
+    gsap.set(videoStackRef.current, { y: 0 });
     gsap.set(lionDanceImgRef.current, { opacity: 1 });
-    gsap.set(familiesImgRef.current, { opacity: 0 });
-    gsap.set(birdImgRef.current, { opacity: 0 });
-    gsap.set(durianImgRef.current, { opacity: 0 });
-    gsap.set(rangoliImgRef.current, { opacity: 0 });
-    gsap.set(silatImgRef.current, { opacity: 0 });
-    gsap.set(aquaImgRef.current, { opacity: 0 });
-    gsap.set(hawkerImgRef.current, { opacity: 0 });
+    gsap.set(familiesImgRef.current, { opacity: 1 });
+    gsap.set(birdImgRef.current, { opacity: 1 });
+    gsap.set(durianImgRef.current, { opacity: 1 });
+    gsap.set(rangoliImgRef.current, { opacity: 1 });
+    gsap.set(silatImgRef.current, { opacity: 1 });
+    gsap.set(aquaImgRef.current, { opacity: 1 });
+    gsap.set(hawkerImgRef.current, { opacity: 1 });
     
-    // Set initial state for community container
-    gsap.set(communityContainerRef.current, { y: 0 });
+    // Set initial states for safety instruction texts - all hidden except pretakeoff
+    gsap.set(preTakeoffRef.current, { opacity: 1 });
+    gsap.set(seatbeltRef.current, { opacity: 0 });
+    gsap.set(dashRef.current, { opacity: 0 });
+    gsap.set(oxygenMaskRef.current, { opacity: 0 });
+    gsap.set(emergencyExitsRef.current, { opacity: 0 });
+    gsap.set(bracePositionsRef.current, { opacity: 0 });
+    gsap.set(lifeVestsRef.current, { opacity: 0 });
+    gsap.set(electronicDevicesRef.current, { opacity: 0 });
     
     
     //#endregion
@@ -405,73 +457,360 @@ const ISV = ({ className }) => {
       }
     });
     
-    // SECTION 5 - Community Animation (8 phases)
+    // SECTION 5 - Phase 1, 2, 3, 4, 5, 6 & 7 Animation
     ScrollTrigger.create({
       trigger: section5Ref.current,
       start: "bottom 100%",
-      end: "+=200%", // Extended trigger area for 8 phases
+      end: "+=175%", // Combined phases 1, 2, 3, 4, 5, 6 & 7
       pin: section5Ref.current,
       scrub: 1,
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        const phaseSize = 1 / 8; // Each phase is 1/8 of the total progress
         
-        // Determine current phase (0-7)
-        const currentPhase = Math.floor(progress / phaseSize);
-        const phaseProgress = (progress % phaseSize) / phaseSize; // Progress within current phase
-        
-        // Community items and images arrays for easy iteration
-        const communityRefs = [
-          lionDanceRef, familiesRef, birdUnclesRef, cyclistsRef,
-          durianLoversRef, rangoliRef, silatTeamRef, aquaAerobicsRef, hawkerLoversRef
-        ];
-        
-        const imageRefs = [
-          lionDanceImgRef, familiesImgRef, birdImgRef, durianImgRef,
-          rangoliImgRef, silatImgRef, aquaImgRef, hawkerImgRef
-        ];
-        
-        // Reset all community items to 25% opacity
-        communityRefs.forEach(ref => {
-          gsap.set(ref.current, { opacity: 0.25 });
-        });
-        
-        // Reset all images to 0 opacity
-        imageRefs.forEach(ref => {
-          gsap.set(ref.current, { opacity: 0 });
-        });
-        
-        // Animate container upward movement - each phase animates 30px upward
-        const baseY = -30 * currentPhase; // Base position for current phase
-        const containerPhaseProgress = (progress % phaseSize) / phaseSize; // Progress within current phase (0-1)
-        const containerY = baseY - (30 * containerPhaseProgress); // Animate 30px upward within each phase
-        gsap.set(communityContainerRef.current, { y: containerY });
-        
-        // Set current phase item to full opacity
-        if (currentPhase < communityRefs.length) {
-          gsap.set(communityRefs[currentPhase].current, { opacity: 1 });
-        }
-        
-        // Handle image transitions
-        if (currentPhase < imageRefs.length) {
-          // Fade in current image
-          gsap.set(imageRefs[currentPhase].current, { opacity: 1 });
+        // Phase 1: 0-14.3% progress
+        if (progress <= 0.143) {
+          const phase1Progress = progress / 0.143; // 0 to 1 for phase 1
+          const easedProgress = gsap.parseEase("power3.inOut")(phase1Progress);
           
-          // If we're in the middle of a phase transition, handle crossfade
-          if (phaseProgress > 0.5 && currentPhase < imageRefs.length - 1) {
-            const fadeProgress = (phaseProgress - 0.5) * 2; // 0 to 1 for fade
-            const easedFadeProgress = gsap.parseEase("power2.inOut")(fadeProgress);
-            
-            // Fade out current image
-            gsap.set(imageRefs[currentPhase].current, { 
-              opacity: 1 - easedFadeProgress 
-            });
-            
-            // Fade in next image
-            gsap.set(imageRefs[currentPhase + 1].current, { 
-              opacity: easedFadeProgress 
-            });
-          }
+          // Container animates upward by 35px
+          gsap.set(communityContainerRef.current, { 
+            y: -35 * easedProgress 
+          });
+          
+          // Video stack moves up to reveal families video (move up by 85vh)
+          gsap.set(videoStackRef.current, { 
+            y: -85 * easedProgress + 'vh'
+          });
+          
+          // Lion dance ref fades to 0.25 opacity
+          gsap.set(lionDanceRef.current, { 
+            opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Families ref fades in to opacity 1
+          gsap.set(familiesRef.current, { 
+            opacity: 0.25 + (0.75 * easedProgress) 
+          });
+          
+          // Safety instruction text animations
+          // Pre-takeoff moves up 20px and fades out
+          gsap.set(preTakeoffRef.current, { 
+            opacity: 1 - easedProgress,
+            y: -20 * easedProgress 
+          });
+          
+          // Dash moves up from below (20px) and fades in
+          gsap.set(seatbeltRef.current, { 
+            opacity: easedProgress,
+            y: 20 - (20 * easedProgress) 
+          });
+          
+          // Keep subsequent phases at initial state
+          gsap.set(birdUnclesRef.current, { opacity: 0.25 });
+          gsap.set(cyclistsRef.current, { opacity: 0.25 });
+          gsap.set(durianLoversRef.current, { opacity: 0.25 });
+          gsap.set(rangoliRef.current, { opacity: 0.25 });
+          gsap.set(silatTeamRef.current, { opacity: 0.25 });
+        }
+        // Phase 2: 14.3-28.6% progress
+        else if (progress <= 0.286) {
+          const phase2Progress = (progress - 0.143) / 0.143; // 0 to 1 for phase 2
+          const easedProgress = gsap.parseEase("power3.inOut")(phase2Progress);
+          
+          // Container animates upward by another 35px (cumulative -70px)
+          gsap.set(communityContainerRef.current, { 
+            y: -35 - (35 * easedProgress) 
+          });
+          
+          // Video stack moves up to reveal bird uncles video (cumulative -170vh)
+          gsap.set(videoStackRef.current, { 
+            y: -85 - (85 * easedProgress) + 'vh'
+          });
+          
+          // Keep lion dance at final phase 1 state
+          gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          
+          // Families ref fades to 0.25 opacity
+          gsap.set(familiesRef.current, { 
+            opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Bird uncles ref fades in to opacity 1
+          gsap.set(birdUnclesRef.current, { 
+            opacity: 0.25 + (0.75 * easedProgress) 
+          });
+          
+          // Cyclists ref also fades in to opacity 1
+          gsap.set(cyclistsRef.current, { 
+            opacity: 0.25 + (0.75 * easedProgress) 
+          });
+          
+          // Safety instruction text animations - Phase 2
+          // Seatbelt moves up 20px and fades out
+          gsap.set(seatbeltRef.current, { 
+            opacity: 1 - easedProgress,
+            y: -20 * easedProgress 
+          });
+          
+          // Dash moves up from below (20px) and fades in
+          gsap.set(dashRef.current, { 
+            opacity: easedProgress,
+            y: 20 - (20 * easedProgress) 
+          });
+          
+          // Keep subsequent phases at initial state
+          gsap.set(durianLoversRef.current, { opacity: 0.25 });
+          gsap.set(rangoliRef.current, { opacity: 0.25 });
+          gsap.set(silatTeamRef.current, { opacity: 0.25 });
+          gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
+          gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+        }
+        // Phase 3: 28.6-42.9% progress
+        else if (progress <= 0.429) {
+          const phase3Progress = (progress - 0.286) / 0.143; // 0 to 1 for phase 3
+          const easedProgress = gsap.parseEase("power3.inOut")(phase3Progress);
+          
+          // Container animates upward by another 70px (cumulative -140px)
+          gsap.set(communityContainerRef.current, { 
+            y: -70 - (70 * easedProgress) 
+          });
+          
+          // Video stack moves up to reveal durian video (cumulative -255vh)
+          gsap.set(videoStackRef.current, { 
+            y: -170 - (85 * easedProgress) + 'vh'
+          });
+          
+          // Keep previous phases at final state
+          gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(familiesRef.current, { opacity: 0.25 });
+          
+          // Bird uncles ref fades to 0.25 opacity
+          gsap.set(birdUnclesRef.current, { 
+            opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Cyclists ref fades to 0.25 opacity (since it's already at 1)
+          gsap.set(cyclistsRef.current, { 
+            opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Durian lovers ref fades in to opacity 1
+          gsap.set(durianLoversRef.current, { 
+            opacity: 0.25 + (0.75 * easedProgress) 
+          });
+          
+          // Safety instruction text animations - Phase 3
+          // Dash moves up 20px and fades out
+          gsap.set(dashRef.current, { 
+            opacity: 1 - easedProgress,
+            y: -20 * easedProgress 
+          });
+          
+          // Oxygen mask moves up from below (20px) and fades in
+          gsap.set(oxygenMaskRef.current, { 
+            opacity: easedProgress,
+            y: 20 - (20 * easedProgress) 
+          });
+          
+          // Keep subsequent phases at initial state
+          gsap.set(rangoliRef.current, { opacity: 0.25 });
+          gsap.set(silatTeamRef.current, { opacity: 0.25 });
+          gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
+          gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+        }
+        // Phase 4: 42.9-57.1% progress
+        else if (progress <= 0.571) {
+          const phase4Progress = (progress - 0.429) / 0.142; // 0 to 1 for phase 4
+          const easedProgress = gsap.parseEase("power3.inOut")(phase4Progress);
+          
+          // Container animates upward by another 35px (cumulative -175px)
+          gsap.set(communityContainerRef.current, { 
+            y: -140 - (35 * easedProgress) 
+          });
+          
+          // Video stack moves up to reveal rangoli video (cumulative -340vh)
+          gsap.set(videoStackRef.current, { 
+            y: -255 - (85 * easedProgress) + 'vh'
+          });
+          
+          // Keep previous phases at final state
+          gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(familiesRef.current, { opacity: 0.25 });
+          gsap.set(birdUnclesRef.current, { opacity: 0.25 });
+          gsap.set(cyclistsRef.current, { opacity: 0.25 });
+          
+          // Durian lovers ref fades to 0.25 opacity
+          gsap.set(durianLoversRef.current, { 
+            opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Rangoli ref fades in to opacity 1
+          gsap.set(rangoliRef.current, { 
+            opacity: 0.25 + (0.75 * easedProgress) 
+          });
+          
+          // Safety instruction text animations - Phase 4
+          // Oxygen mask moves up 20px and fades out
+          gsap.set(oxygenMaskRef.current, { 
+            opacity: 1 - easedProgress,
+            y: -20 * easedProgress 
+          });
+          
+          // Emergency exits moves up from below (20px) and fades in
+          gsap.set(emergencyExitsRef.current, { 
+            opacity: easedProgress,
+            y: 20 - (20 * easedProgress) 
+          });
+          
+          // Keep subsequent phases at initial state
+          gsap.set(silatTeamRef.current, { opacity: 0.25 });
+          gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
+          gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+        }
+        // Phase 5: 57.1-71.4% progress
+        else if (progress <= 0.714) {
+          const phase5Progress = (progress - 0.571) / 0.143; // 0 to 1 for phase 5
+          const easedProgress = gsap.parseEase("power3.inOut")(phase5Progress);
+          
+          // Container animates upward by another 35px (cumulative -210px)
+          gsap.set(communityContainerRef.current, { 
+            y: -175 - (35 * easedProgress) 
+          });
+          
+          // Video stack moves up to reveal silat video (cumulative -425vh)
+          gsap.set(videoStackRef.current, { 
+            y: -340 - (85 * easedProgress) + 'vh'
+          });
+          
+          // Keep previous phases at final state
+          gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(familiesRef.current, { opacity: 0.25 });
+          gsap.set(birdUnclesRef.current, { opacity: 0.25 });
+          gsap.set(cyclistsRef.current, { opacity: 0.25 });
+          gsap.set(durianLoversRef.current, { opacity: 0.25 });
+          
+          // Rangoli ref fades to 0.25 opacity
+          gsap.set(rangoliRef.current, { 
+            opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Silat team ref fades in to opacity 1
+          gsap.set(silatTeamRef.current, { 
+            opacity: 0.25 + (0.75 * easedProgress) 
+          });
+          
+          // Safety instruction text animations - Phase 5
+          // Emergency exits moves up 20px and fades out
+          gsap.set(emergencyExitsRef.current, { 
+            opacity: 1 - easedProgress,
+            y: -20 * easedProgress 
+          });
+          
+          // Brace positions moves up from below (20px) and fades in
+          gsap.set(bracePositionsRef.current, { 
+            opacity: easedProgress,
+            y: 20 - (20 * easedProgress) 
+          });
+          
+          // Keep subsequent phases at initial state
+          gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
+          gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+        }
+        // Phase 6: 71.4-85.7% progress
+        else if (progress <= 0.857) {
+          const phase6Progress = (progress - 0.714) / 0.143; // 0 to 1 for phase 6
+          const easedProgress = gsap.parseEase("power3.inOut")(phase6Progress);
+          
+          // Container animates upward by another 35px (cumulative -245px)
+          gsap.set(communityContainerRef.current, { 
+            y: -210 - (35 * easedProgress) 
+          });
+          
+          // Video stack moves up to reveal aqua aerobics video (cumulative -510vh)
+          gsap.set(videoStackRef.current, { 
+            y: -425 - (85 * easedProgress) + 'vh'
+          });
+          
+          // Keep previous phases at final state
+          gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(familiesRef.current, { opacity: 0.25 });
+          gsap.set(birdUnclesRef.current, { opacity: 0.25 });
+          gsap.set(cyclistsRef.current, { opacity: 0.25 });
+          gsap.set(durianLoversRef.current, { opacity: 0.25 });
+          gsap.set(rangoliRef.current, { opacity: 0.25 });
+          
+          // Silat team ref fades to 0.25 opacity
+          gsap.set(silatTeamRef.current, { 
+            opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Aqua aerobics ref fades in to opacity 1
+          gsap.set(aquaAerobicsRef.current, { 
+            opacity: 0.25 + (0.75 * easedProgress) 
+          });
+          
+          // Safety instruction text animations - Phase 6
+          // Brace positions moves up 20px and fades out
+          gsap.set(bracePositionsRef.current, { 
+            opacity: 1 - easedProgress,
+            y: -20 * easedProgress 
+          });
+          
+          // Life vests moves up from below (20px) and fades in
+          gsap.set(lifeVestsRef.current, { 
+            opacity: easedProgress,
+            y: 20 - (20 * easedProgress) 
+          });
+          
+          // Keep phase 7 at initial state
+          gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+        }
+        // Phase 7: 85.7-100% progress
+        else {
+          const phase7Progress = (progress - 0.857) / 0.143; // 0 to 1 for phase 7
+          const easedProgress = gsap.parseEase("power3.inOut")(phase7Progress);
+          
+          // Container animates upward by another 35px (cumulative -280px)
+          gsap.set(communityContainerRef.current, { 
+            y: -245 - (35 * easedProgress) 
+          });
+          
+          // Video stack moves up to reveal hawker lovers video (cumulative -595vh)
+          gsap.set(videoStackRef.current, { 
+            y: -510 - (85 * easedProgress) + 'vh'
+          });
+          
+          // Keep previous phases at final state
+          gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(familiesRef.current, { opacity: 0.25 });
+          gsap.set(birdUnclesRef.current, { opacity: 0.25 });
+          gsap.set(cyclistsRef.current, { opacity: 0.25 });
+          gsap.set(durianLoversRef.current, { opacity: 0.25 });
+          gsap.set(rangoliRef.current, { opacity: 0.25 });
+          gsap.set(silatTeamRef.current, { opacity: 0.25 });
+          
+          // Aqua aerobics ref fades to 0.25 opacity
+          gsap.set(aquaAerobicsRef.current, { 
+            opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Hawker lovers ref fades in to opacity 1
+          gsap.set(hawkerLoversRef.current, { 
+            opacity: 0.25 + (0.75 * easedProgress) 
+          });
+          
+          // Safety instruction text animations - Phase 7
+          // Life vests moves up 20px and fades out
+          gsap.set(lifeVestsRef.current, { 
+            opacity: 1 - easedProgress,
+            y: -20 * easedProgress 
+          });
+          
+          // Electronic devices moves up from below (20px) and fades in
+          gsap.set(electronicDevicesRef.current, { 
+            opacity: easedProgress,
+            y: 20 - (20 * easedProgress) 
+          });
         }
       }
     });
@@ -515,6 +854,7 @@ const ISV = ({ className }) => {
 
           {/* Video */}
           <video
+            ref={coverVideoRef}
             src="/isv/montage.mp4"
             autoPlay muted loop playsInline
             className="w-full h-full object-cover"
@@ -560,6 +900,7 @@ const ISV = ({ className }) => {
 
         {/* Background Glow */}
         <video
+          ref={glowVideoRef}
           src="/isv/montage_glow.mp4"
           autoPlay muted loop playsInline
           className="absolute inset-0 w-full h-full scale-75 object-cover blur-3xl -z-10 saturate-200 brightness-125"
@@ -778,20 +1119,25 @@ const ISV = ({ className }) => {
         ref={section5Ref}
         className="min-h-screen w-screen flex items-center justify-center relative bg-black"
       >
+        {/* Page Container */}
         <div className="w-[95%] h-screen mx-auto relative flex items-center">
           
           {/* Text Box - Positioned to the left */}
-           <div className="flex-[1] h-full flex flex-col pl-10">
+           <div className="flex-[1] h-[85%] flex flex-col pl-10">
              
              {/* Featuring... */}
              <h2
                ref={section5TextRef}
-               className="text-6xl font-medium text-white tracking-tight pt-18 -ml-1">
-                 Featuring<span className="font-light">...</span>
+               className="text-[28pt] leading-[1.1] font-medium text-white tracking-tight -ml-1 bg-black z-20">
+                 Featuring communities & locations across Singapore.
              </h2>
+             
+             {/* Top Gradient */}
+             <div className="bg-gradient-to-b from-black to-transparent h-[35%] z-10 -ml-1.5 "/>
 
              {/* Community Container */}
-             <div ref={communityContainerRef} className="flex-1 flex flex-col justify-center">
+             <div ref={communityContainerRef} className="flex-1 flex flex-col justify-center -mt-28">
+
                <p ref={lionDanceRef} className="text-[22pt] leading-[1.2] font-medium">
                  Lion Dance Troupe
                </p>
@@ -820,24 +1166,42 @@ const ISV = ({ className }) => {
                  Hawker Food Lovers
                </p>
              </div>
+
+              {/* Bottom Gradient */}
+              <div className="absolute bottom-32 left-0 w-[24%] bg-gradient-to-t from-black to-transparent h-[35%] z-10 -ml-1.5 "/>
+
+              {/* Safety Instruction */}
+              <div className="relative h-[45px]">
+              <p className="text-[12pt] font-semibold tracking-tight">Safety Instruction:</p>
+              <p ref={preTakeoffRef} className="absolute bottom-0 left-0 text-[12pt]">Pre-Takeoff Procedures</p>
+              <p ref={seatbeltRef} className="absolute bottom-0 left-0 text-[12pt]">Seatbelts</p>
+              <p ref={dashRef} className="absolute bottom-0 left-0 text-[12pt]">–</p>
+              <p ref={oxygenMaskRef} className="absolute bottom-0 left-0 text-[12pt]">Oxygen Mask</p>
+              <p ref={emergencyExitsRef} className="absolute bottom-0 left-0 text-[12pt]">Emergency Exits</p>
+              <p ref={bracePositionsRef} className="absolute bottom-0 left-0 text-[12pt]">Brace Positions + Evacuation</p>
+              <p ref={lifeVestsRef} className="absolute bottom-0 left-0 text-[12pt]">Life Vests</p>
+              <p ref={electronicDevicesRef} className="absolute bottom-0 left-0 text-[12pt]">Electronic Devices + No Smoking</p>
+              </div>
             
           </div>
           
-          {/* Right side - can be left empty or add visual elements later */}
-          <div className="flex-[2.5] h-[85%] rounded-[30pt] overflow-hidden glass relative">    
+          {/* Right side - Video stack container */}
+          <div className="flex-[3.5] h-[85%] rounded-[30pt] overflow-hidden glass relative">    
 
             {/* Glass Edge Effect */}
             <div className="absolute inset-0 rounded-[30pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_10px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-20"/>  
             
-            {/* Community Images - All positioned absolutely for fade transitions */}
-            <img ref={lionDanceImgRef} src="/isv/communities/liondance.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
-            <img ref={familiesImgRef} src="/isv/communities/families.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
-            <img ref={birdImgRef} src="/isv/communities/bird.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
-            <img ref={durianImgRef} src="/isv/communities/durian.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
-            <img ref={rangoliImgRef} src="/isv/communities/rangoli.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
-            <img ref={silatImgRef} src="/isv/communities/silat.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
-            <img ref={aquaImgRef} src="/isv/communities/aqua.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
-            <img ref={hawkerImgRef} src="/isv/communities/hawker.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
+            {/* Video Stack - Vertically stacked videos */}
+            <div ref={videoStackRef} className="w-full">
+              <video ref={lionDanceImgRef} src="/isv/liondance.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
+              <video ref={familiesImgRef} src="/isv/families.mp4" className="w-full h-[85vh] object-cover contrast-[1.15] block" autoPlay loop muted playsInline />
+              <video ref={birdImgRef} src="/isv/birduncles.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
+              <video ref={durianImgRef} src="/isv/durian.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
+              <video ref={rangoliImgRef} src="/isv/rangoli.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
+              <video ref={silatImgRef} src="/isv/silat.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
+              <video ref={aquaImgRef} src="/isv/lifevest.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
+              <video ref={hawkerImgRef} src="/isv/nosmoking.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
+            </div>
 
           </div>
           
