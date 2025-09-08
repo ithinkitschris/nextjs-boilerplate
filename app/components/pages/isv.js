@@ -107,9 +107,6 @@ const ISV = ({ className }) => {
   const aquaImgRef = useRef(null);
   const hawkerImgRef = useRef(null);
   
-  // Video stack container ref
-  const videoStackRef = useRef(null);
-  
   // Video sync refs for cover page
   const coverVideoRef = useRef(null);
   const glowVideoRef = useRef(null);
@@ -223,8 +220,7 @@ const ISV = ({ className }) => {
     gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
     gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
     
-    // Set initial states for video stack - positioned vertically
-    gsap.set(videoStackRef.current, { y: 0 });
+                // Set initial states for community images - all visible with opacity 1
     gsap.set(lionDanceImgRef.current, { opacity: 1 });
     gsap.set(familiesImgRef.current, { opacity: 1 });
     gsap.set(birdImgRef.current, { opacity: 1 });
@@ -477,14 +473,14 @@ const ISV = ({ className }) => {
             y: -35 * easedProgress 
           });
           
-          // Video stack moves up to reveal families video (move up by 85vh)
-          gsap.set(videoStackRef.current, { 
-            y: -85 * easedProgress + 'vh'
-          });
-          
           // Lion dance ref fades to 0.25 opacity
           gsap.set(lionDanceRef.current, { 
             opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Lion dance image fades to opacity 0
+          gsap.set(lionDanceImgRef.current, { 
+            opacity: 1 - easedProgress 
           });
           
           // Families ref fades in to opacity 1
@@ -511,6 +507,13 @@ const ISV = ({ className }) => {
           gsap.set(durianLoversRef.current, { opacity: 0.25 });
           gsap.set(rangoliRef.current, { opacity: 0.25 });
           gsap.set(silatTeamRef.current, { opacity: 0.25 });
+          gsap.set(familiesImgRef.current, { opacity: 1 });
+          gsap.set(birdImgRef.current, { opacity: 1 });
+          gsap.set(durianImgRef.current, { opacity: 1 });
+          gsap.set(rangoliImgRef.current, { opacity: 1 });
+          gsap.set(silatImgRef.current, { opacity: 1 });
+          gsap.set(aquaImgRef.current, { opacity: 1 });
+          gsap.set(hawkerImgRef.current, { opacity: 1 });
         }
         // Phase 2: 14.3-28.6% progress
         else if (progress <= 0.286) {
@@ -522,17 +525,18 @@ const ISV = ({ className }) => {
             y: -35 - (35 * easedProgress) 
           });
           
-          // Video stack moves up to reveal bird uncles video (cumulative -170vh)
-          gsap.set(videoStackRef.current, { 
-            y: -85 - (85 * easedProgress) + 'vh'
-          });
-          
           // Keep lion dance at final phase 1 state
           gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(lionDanceImgRef.current, { opacity: 0 });
           
           // Families ref fades to 0.25 opacity
           gsap.set(familiesRef.current, { 
             opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Families image fades to opacity 0
+          gsap.set(familiesImgRef.current, { 
+            opacity: 1 - easedProgress 
           });
           
           // Bird uncles ref fades in to opacity 1
@@ -564,6 +568,12 @@ const ISV = ({ className }) => {
           gsap.set(silatTeamRef.current, { opacity: 0.25 });
           gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
           gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+          gsap.set(birdImgRef.current, { opacity: 1 });
+          gsap.set(durianImgRef.current, { opacity: 1 });
+          gsap.set(rangoliImgRef.current, { opacity: 1 });
+          gsap.set(silatImgRef.current, { opacity: 1 });
+          gsap.set(aquaImgRef.current, { opacity: 1 });
+          gsap.set(hawkerImgRef.current, { opacity: 1 });
         }
         // Phase 3: 28.6-42.9% progress
         else if (progress <= 0.429) {
@@ -575,18 +585,20 @@ const ISV = ({ className }) => {
             y: -70 - (70 * easedProgress) 
           });
           
-          // Video stack moves up to reveal durian video (cumulative -255vh)
-          gsap.set(videoStackRef.current, { 
-            y: -170 - (85 * easedProgress) + 'vh'
-          });
-          
           // Keep previous phases at final state
           gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(lionDanceImgRef.current, { opacity: 0 });
           gsap.set(familiesRef.current, { opacity: 0.25 });
+          gsap.set(familiesImgRef.current, { opacity: 0 });
           
           // Bird uncles ref fades to 0.25 opacity
           gsap.set(birdUnclesRef.current, { 
             opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Bird uncles image fades to opacity 0
+          gsap.set(birdImgRef.current, { 
+            opacity: 1 - easedProgress 
           });
           
           // Cyclists ref fades to 0.25 opacity (since it's already at 1)
@@ -617,6 +629,11 @@ const ISV = ({ className }) => {
           gsap.set(silatTeamRef.current, { opacity: 0.25 });
           gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
           gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+          gsap.set(durianImgRef.current, { opacity: 1 });
+          gsap.set(rangoliImgRef.current, { opacity: 1 });
+          gsap.set(silatImgRef.current, { opacity: 1 });
+          gsap.set(aquaImgRef.current, { opacity: 1 });
+          gsap.set(hawkerImgRef.current, { opacity: 1 });
         }
         // Phase 4: 42.9-57.1% progress
         else if (progress <= 0.571) {
@@ -628,20 +645,23 @@ const ISV = ({ className }) => {
             y: -140 - (35 * easedProgress) 
           });
           
-          // Video stack moves up to reveal rangoli video (cumulative -340vh)
-          gsap.set(videoStackRef.current, { 
-            y: -255 - (85 * easedProgress) + 'vh'
-          });
-          
           // Keep previous phases at final state
           gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(lionDanceImgRef.current, { opacity: 0 });
           gsap.set(familiesRef.current, { opacity: 0.25 });
+          gsap.set(familiesImgRef.current, { opacity: 0 });
           gsap.set(birdUnclesRef.current, { opacity: 0.25 });
+          gsap.set(birdImgRef.current, { opacity: 0 });
           gsap.set(cyclistsRef.current, { opacity: 0.25 });
           
           // Durian lovers ref fades to 0.25 opacity
           gsap.set(durianLoversRef.current, { 
             opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Durian lovers image fades to opacity 0
+          gsap.set(durianImgRef.current, { 
+            opacity: 1 - easedProgress 
           });
           
           // Rangoli ref fades in to opacity 1
@@ -666,6 +686,10 @@ const ISV = ({ className }) => {
           gsap.set(silatTeamRef.current, { opacity: 0.25 });
           gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
           gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+          gsap.set(rangoliImgRef.current, { opacity: 1 });
+          gsap.set(silatImgRef.current, { opacity: 1 });
+          gsap.set(aquaImgRef.current, { opacity: 1 });
+          gsap.set(hawkerImgRef.current, { opacity: 1 });
         }
         // Phase 5: 57.1-71.4% progress
         else if (progress <= 0.714) {
@@ -677,21 +701,25 @@ const ISV = ({ className }) => {
             y: -175 - (35 * easedProgress) 
           });
           
-          // Video stack moves up to reveal silat video (cumulative -425vh)
-          gsap.set(videoStackRef.current, { 
-            y: -340 - (85 * easedProgress) + 'vh'
-          });
-          
           // Keep previous phases at final state
           gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(lionDanceImgRef.current, { opacity: 0 });
           gsap.set(familiesRef.current, { opacity: 0.25 });
+          gsap.set(familiesImgRef.current, { opacity: 0 });
           gsap.set(birdUnclesRef.current, { opacity: 0.25 });
+          gsap.set(birdImgRef.current, { opacity: 0 });
           gsap.set(cyclistsRef.current, { opacity: 0.25 });
           gsap.set(durianLoversRef.current, { opacity: 0.25 });
+          gsap.set(durianImgRef.current, { opacity: 0 });
           
           // Rangoli ref fades to 0.25 opacity
           gsap.set(rangoliRef.current, { 
             opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Rangoli image fades to opacity 0
+          gsap.set(rangoliImgRef.current, { 
+            opacity: 1 - easedProgress 
           });
           
           // Silat team ref fades in to opacity 1
@@ -715,6 +743,9 @@ const ISV = ({ className }) => {
           // Keep subsequent phases at initial state
           gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
           gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+          gsap.set(silatImgRef.current, { opacity: 1 });
+          gsap.set(aquaImgRef.current, { opacity: 1 });
+          gsap.set(hawkerImgRef.current, { opacity: 1 });
         }
         // Phase 6: 71.4-85.7% progress
         else if (progress <= 0.857) {
@@ -726,22 +757,27 @@ const ISV = ({ className }) => {
             y: -210 - (35 * easedProgress) 
           });
           
-          // Video stack moves up to reveal aqua aerobics video (cumulative -510vh)
-          gsap.set(videoStackRef.current, { 
-            y: -425 - (85 * easedProgress) + 'vh'
-          });
-          
           // Keep previous phases at final state
           gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(lionDanceImgRef.current, { opacity: 0 });
           gsap.set(familiesRef.current, { opacity: 0.25 });
+          gsap.set(familiesImgRef.current, { opacity: 0 });
           gsap.set(birdUnclesRef.current, { opacity: 0.25 });
+          gsap.set(birdImgRef.current, { opacity: 0 });
           gsap.set(cyclistsRef.current, { opacity: 0.25 });
           gsap.set(durianLoversRef.current, { opacity: 0.25 });
+          gsap.set(durianImgRef.current, { opacity: 0 });
           gsap.set(rangoliRef.current, { opacity: 0.25 });
+          gsap.set(rangoliImgRef.current, { opacity: 0 });
           
           // Silat team ref fades to 0.25 opacity
           gsap.set(silatTeamRef.current, { 
             opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Silat team image fades to opacity 0
+          gsap.set(silatImgRef.current, { 
+            opacity: 1 - easedProgress 
           });
           
           // Aqua aerobics ref fades in to opacity 1
@@ -764,6 +800,8 @@ const ISV = ({ className }) => {
           
           // Keep phase 7 at initial state
           gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+          gsap.set(aquaImgRef.current, { opacity: 1 });
+          gsap.set(hawkerImgRef.current, { opacity: 1 });
         }
         // Phase 7: 85.7-100% progress
         else {
@@ -775,23 +813,29 @@ const ISV = ({ className }) => {
             y: -245 - (35 * easedProgress) 
           });
           
-          // Video stack moves up to reveal hawker lovers video (cumulative -595vh)
-          gsap.set(videoStackRef.current, { 
-            y: -510 - (85 * easedProgress) + 'vh'
-          });
-          
           // Keep previous phases at final state
           gsap.set(lionDanceRef.current, { opacity: 0.25 });
+          gsap.set(lionDanceImgRef.current, { opacity: 0 });
           gsap.set(familiesRef.current, { opacity: 0.25 });
+          gsap.set(familiesImgRef.current, { opacity: 0 });
           gsap.set(birdUnclesRef.current, { opacity: 0.25 });
+          gsap.set(birdImgRef.current, { opacity: 0 });
           gsap.set(cyclistsRef.current, { opacity: 0.25 });
           gsap.set(durianLoversRef.current, { opacity: 0.25 });
+          gsap.set(durianImgRef.current, { opacity: 0 });
           gsap.set(rangoliRef.current, { opacity: 0.25 });
+          gsap.set(rangoliImgRef.current, { opacity: 0 });
           gsap.set(silatTeamRef.current, { opacity: 0.25 });
+          gsap.set(silatImgRef.current, { opacity: 0 });
           
           // Aqua aerobics ref fades to 0.25 opacity
           gsap.set(aquaAerobicsRef.current, { 
             opacity: 1 - (0.75 * easedProgress) 
+          });
+          
+          // Aqua aerobics image fades to opacity 0
+          gsap.set(aquaImgRef.current, { 
+            opacity: 1 - easedProgress 
           });
           
           // Hawker lovers ref fades in to opacity 1
@@ -1185,23 +1229,21 @@ const ISV = ({ className }) => {
             
           </div>
           
-          {/* Right side - Video stack container */}
+          {/* Right side - can be left empty or add visual elements later */}
           <div className="flex-[3.5] h-[85%] rounded-[30pt] overflow-hidden glass relative">    
 
             {/* Glass Edge Effect */}
             <div className="absolute inset-0 rounded-[30pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_10px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-20"/>  
             
-            {/* Video Stack - Vertically stacked videos */}
-            <div ref={videoStackRef} className="w-full">
-              <video ref={lionDanceImgRef} src="/isv/liondance.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
-              <video ref={familiesImgRef} src="/isv/families.mp4" className="w-full h-[85vh] object-cover contrast-[1.15] block" autoPlay loop muted playsInline />
-              <video ref={birdImgRef} src="/isv/birduncles.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
-              <video ref={durianImgRef} src="/isv/durian.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
-              <video ref={rangoliImgRef} src="/isv/rangoli.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
-              <video ref={silatImgRef} src="/isv/silat.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
-              <video ref={aquaImgRef} src="/isv/lifevest.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
-              <video ref={hawkerImgRef} src="/isv/nosmoking.mp4" className="w-full h-[85vh] object-cover contrast-[1.1] block" autoPlay loop muted playsInline />
-            </div>
+            {/* Community Images - All positioned absolutely for fade transitions */}
+            <video ref={hawkerImgRef} src="/isv/nosmoking.mp4" className="absolute inset-0 w-full h-full object-cover contrast-[1.1]" autoPlay loop muted playsInline />
+            <video ref={aquaImgRef} src="/isv/lifevest.mp4" className="absolute inset-0 w-full h-full object-cover contrast-[1.1]" autoPlay loop muted playsInline />
+            <video ref={silatImgRef} src="/isv/silat.mp4" className="absolute inset-0 w-full h-full object-cover contrast-[1.1]" autoPlay loop muted playsInline />
+            <video ref={rangoliImgRef} src="/isv/rangoli.mp4" className="absolute inset-0 w-full h-full object-cover contrast-[1.1]" autoPlay loop muted playsInline />
+            <video ref={durianImgRef} src="/isv/durian.mp4" className="absolute inset-0 w-full h-full object-cover contrast-[1.1]" autoPlay loop muted playsInline />
+            <video ref={birdImgRef} src="/isv/birduncles.mp4" className="absolute inset-0 w-full h-full object-cover contrast-[1.1]" autoPlay loop muted playsInline />
+            <video ref={familiesImgRef} src="/isv/families.mp4" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]" autoPlay loop muted playsInline />
+            <video ref={lionDanceImgRef} src="/isv/liondance.mp4" className="absolute w-full h-full object-cover contrast-[1.1]" autoPlay loop muted playsInline />
 
           </div>
           
