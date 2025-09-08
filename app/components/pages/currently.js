@@ -166,7 +166,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             damping: 15, 
           }}
           onClick={() => {
-            window.open('https://www.youtube.com/watch?v=dOpwFr5-iEw', '_blank');
+            toggleWork('isv');
           }}
           >
             

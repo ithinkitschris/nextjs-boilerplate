@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useHideNav } from '../../context/HideNavContext';
 import { useMobileDetection } from '../../hooks/useMobileDetection';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
@@ -298,7 +299,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) =
                 className={`tracking-tight font-medium text-foreground transition-all duration-300 cursor-pointer ${
                   currentGroupedSection === index + 1
                     ? ' text-white text-md font-semibold'
-                    : ' text-xs opacity-25 hover:text-base hover:opacity-100'
+                    : ' text-xs opacity-25 hover:text-base hover:opacity-100 text-white'
                 }`}
               >
                 {section}
@@ -2645,50 +2646,48 @@ const NycSubway = ({ className }) => {
       ref={section1Ref}
       className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
     >
+      {/* Video Container */}
+      <div className="w-[95%] h-[90%] rounded-[35pt] overflow-hidden relative">
 
-      {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-auto object-cover z-0"
-        style={{ 
-          width: '100vw',
-          height: '100%',
-          left: '50%',
-          transform: 'translateX(-50%)'
-        }}
-      >
-        <source src="/subway/Title Frame.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      
-      <div className="text-center relative z-10">
+        {/* Glass Edge Effect */}
+        <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_15px_0px_rgba(255,255,255,0.8)] pointer-events-none mix-blend-overlay z-10"/>
+
+        {/* Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+
+        >
+          <source src="/subway/Title Frame.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
         <img 
           src="/subway/lockup.png" 
           alt="NYC Subway Lockup" 
-          className="mx-auto md:ml-6 mb-8 max-w-full h-auto scale-[80%] md:scale-[55%]"
+          className="absolute top-[49%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-auto scale-[80%] md:scale-[50%] ml-6 z-10"
         />
+
+        {/* Bouncing Chevron Down */}
+        <div 
+          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
+          onClick={() => {
+            const nextSection = section2Ref.current;
+            if (nextSection) {
+              nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
+          <ChevronDownIcon className="w-auto h-10 text-white animate-bounce " />
+        </div>
+
+
       </div>
 
-      {/* Downward Chevron */}
-      {/* <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-10">
-        <svg 
-          className="w-8 h-8 text-white animate-bounce" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth={2} 
-            d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-          />
-        </svg>
-      </div> */}
+      
     </section>
 
     {/* Section 2 – Bubbles + Take a Crack at It (Combined) */}
@@ -3525,7 +3524,7 @@ const NycSubway = ({ className }) => {
     {/* Section 13 – Mock: Set Destination */}
     <section 
       ref={section13Ref}
-      className="min-h-screen flex items-center justify-center relative bg-white/95"
+      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
       <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
         
@@ -3597,7 +3596,7 @@ const NycSubway = ({ className }) => {
     {/* Section 14 – Mock: Incorrect Entrance */}
     <section 
       ref={section14Ref}
-      className="min-h-screen flex items-center justify-center relative bg-white/95"
+      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
       <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
         
@@ -3679,7 +3678,7 @@ const NycSubway = ({ className }) => {
     {/* Section 15 – Mock: Enter Correct Station */}
     <section 
       ref={section15Ref}
-      className="min-h-screen flex items-center justify-center relative bg-white/95"
+      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
       <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
         
@@ -3738,7 +3737,7 @@ const NycSubway = ({ className }) => {
             ref={section15Column3ImageRef}
             src="/subway/section15phase2.png" 
             alt="Section 15 Column 3 Image" 
-            className="h-full w-auto"
+            className="h-auto w-full"
           />
           <p 
             ref={section15Paragraph1Ref}
@@ -3839,7 +3838,7 @@ const NycSubway = ({ className }) => {
     {/* Section 16 – Mock: Along the Platform */}
     <section 
       ref={section16Ref}
-      className="min-h-screen flex items-center justify-center relative bg-white/95"
+      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
       <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
         
@@ -3908,7 +3907,7 @@ const NycSubway = ({ className }) => {
     {/* Section 17 – Mock: Reached Destination */}
     <section 
       ref={section17Ref}
-      className="min-h-screen flex items-center justify-center relative bg-white/95"
+      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
       <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
         
@@ -4036,93 +4035,121 @@ const NycSubway = ({ className }) => {
       </div>
     </section>
 
-    {/* Section 18 – 4 Column Layout */}
+    {/* Section 18 – Summary */}
     <section 
       ref={section18Ref}
-      className="min-h-screen flex items-center justify-center relative bg-white/95"
+      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
-      <div className="w-full h-screen mx-auto px-20 flex flex-col md:flex-row items-center justify-center gap-6">
+      <div className="w-full h-screen mx-auto px-20 flex flex-col md:flex-row items-center justify-center xl:gap-6 gap-3">
         
         {/* Column 1: Rounded Rectangle with Inset Image */}
         <div 
-          className="flex-[4] flex flex-col items-center justify-between rounded-[35pt] h-[80%] bg-gray-50 drop-shadow-xl"
+          className="flex-[4] flex flex-col items-center justify-between rounded-3xl xl:rounded-[35pt] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] bg-white drop-shadow-xl"
           ref={section18Image1Ref}
         >  
-          <img 
-            src="/subway/section18image1.png" 
-            alt="Section 18 Image 1" 
-            className="w-[90%] h-auto ml-1 mt-4 object-contain"
-            style={{ transformOrigin: 'center' }}
-          />
-
-          <p className="text-[18pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
+          <div className="flex flex-col items-center w-[98%] mt-5 rounded-2xl overflow-hidden h-auto "> 
+            <video 
+              src="/subway/section14animation1.mp4" 
+              alt="Section 14 Animation 1" 
+              className="w-auto h-full object-cover ml-5 scale-[1.04]"
+              style={{ transformOrigin: 'center' }}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          </div>
+          <p className="md:text-[13pt] xl:text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
             Error State
           </p>
         </div>
         
         {/* Column 2: Rounded Rectangle with Inset Image */}
         <div 
-          className="flex-[4] flex flex-col items-center justify-between rounded-[35pt] h-[80%] bg-gray-50 drop-shadow-xl"
+          className="flex-[4] flex flex-col items-center justify-between rounded-3xl xl:rounded-[35pt] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] bg-white drop-shadow-xl"
           ref={section18Image2Ref}
         >
-          <img 
-            src="/subway/section18image2.png" 
-            alt="Section 18 Image 2" 
-            className="w-[90%] h-auto ml-1 mt-4 object-contain"
-            style={{ transformOrigin: 'center' }}
-          />
+          <div className="flex flex-col items-center w-[90%] mt-5 rounded-2xl overflow-hidden h-auto "> 
+            <img 
+              src="/subway/section18image2.png" 
+              alt="Section 18 Image 2" 
+              className="h-[99%] w-auto ml-2 object-cover"
+              style={{ transformOrigin: 'center' }}
+            />
+          </div>
 
-          <p className="text-[18pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
+          <p className="md:text-[13pt] xl:text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
             Live Activity Cards
           </p>
         </div>
         
         {/* Column 3: 2 Stacked Images */}
         <div 
-          className="flex-[3] h-[80%] flex flex-col items-center justify-center space-y-5"
+          className="flex-[3] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] flex flex-col items-center justify-center space-y-2 xl:space-y-5"
         >
           <div 
           ref={section18Image3TopRef}
-          className="flex flex-col items-center justify-between w-full h-full bg-white rounded-3xl drop-shadow-xl">
+          className="flex flex-col items-center justify-between w-full h-1/2 bg-white rounded-3xl drop-shadow-xl">
             <img 
               src="/subway/section18image3top.png" 
               alt="Section 18 Image 3 Top" 
-              className="w-[90%] mt-4 h-auto"
+              className="w-[85%] h-auto py-4"
               style={{ transformOrigin: 'center' }}
             />
-            <p className="text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-6 w-[80%]">
+            <p className="md:text-[11pt] 2xl:text-[16pt] leading-[1] text-center font-semibold text-gray-600 tracking-tight mb-6 w-[90%]">
               Real-time directional navigation
             </p>
           </div>
 
           <div 
           ref={section18Image3BottomRef}
-          className="flex flex-col items-center justify-between w-full h-full bg-white rounded-3xl drop-shadow-xl">
-            <img 
-              src="/subway/section18image3bottom.png" 
-              alt="Section 18 Image 3 Bottom" 
-              className="w-[90%] mt-4 h-auto"
-              style={{ transformOrigin: 'center' }}
-            />
-            <p className="text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-6">
+          className="flex flex-col items-center justify-between w-full h-1/2 bg-white rounded-3xl drop-shadow-xl">
+            
+            <div className="flex flex-col items-center mt-4 w-[85%] h-auto rounded-2xl shadow-lg overflow-hidden">
+              <video 
+                src="/subway/itinerary.mp4" 
+                alt="Summary Itinerary Video" 
+                className="w-full h-auto object-cover scale-[1.03]"
+                style={{ transformOrigin: 'center' }}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            </div>
+
+            <p className="md:text-[13pt] 2xl:text-[16pt] leading-[1] text-center font-semibold text-gray-600 tracking-tight mb-6">
               Step-by-step itinerary
             </p>
           </div>
         </div>
         
         {/* Column 4: Image */}
-          <div 
-            className="flex-[4] flex flex-col items-center justify-between rounded-[35pt] h-[80%] bg-gray-50 drop-shadow-xl"
-            ref={section18Image4Ref}
-          >
-          <img 
-            src="/subway/section18image4.png" 
-            alt="Section 18 Image 4" 
-            className="w-[90%] h-auto ml-1 mt-6 object-contain"
-            style={{ transformOrigin: 'center' }}
-          />
+        <div 
+          className="flex-[4] flex flex-col items-center justify-between rounded-3xl xl:rounded-[35pt] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] bg-white drop-shadow-xl"
+          ref={section18Image4Ref}
+        >
+          <div className="flex flex-col items-center w-full h-auto max-h-[88%]">
+            <img 
+              src="/subway/section18image4.png" 
+              alt="Section 18 Image 4" 
+              className="w-[90%] h-auto ml-1 mt-6 object-contain"
+              style={{ transformOrigin: 'center' }}
+            />
+            <video 
+              src="/subway/navigator1.mp4" 
+              alt="Navigator Video" 
+              className="w-[90%] h-[90%] ml-1 mt-4 object-cover rounded-3xl shadow-lg"
+              style={{ transformOrigin: 'center' }}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          </div>
+          
 
-          <p className="text-[18pt] text-center font-semibold text-gray-600 tracking-tight mb-6 leading-6 w-[80%]">
+          <p className="md:text-[13pt] xl:text-[16pt] leading-[1.2] text-center font-semibold text-gray-600 tracking-tight mb-6 w-[80%]">
             UWB-powered proximity guidance
           </p>
 
@@ -4133,12 +4160,12 @@ const NycSubway = ({ className }) => {
       </div>
     </section>
 
-    {/* Section 19 – 3 Columns with 3 Images */}
+    {/* Section 19 – End */}
     <section 
       ref={section19Ref}
-      className="min-h-screen flex items-center justify-center relative"
+      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
-      <div className="w-full h-screen mx-auto flex items-center justify-center bg-white/95 relative">
+      <div className="w-full h-screen mx-auto flex items-center justify-center relative">
         
         {/* Logo Images - Side by side in the middle */}
         <div className="flex items-center justify-center gap-10">

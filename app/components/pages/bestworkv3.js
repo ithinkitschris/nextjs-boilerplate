@@ -130,7 +130,7 @@ return (
               subtitle="Brand Film for Singapore Airlines"
               description="Singapore Airlines' 2025 In-Flight Safety Video that takes passengers on a journey through Singapore’s iconic landmarks and most importantly, diverse communities."
               role="Art Director"
-              skills={["Art Direction"]}
+              skills={["Conceptualization", "Art Direction"]}
               hoverWidth="420px"
             />
 
@@ -141,37 +141,10 @@ return (
               useOptimized={false}
             />
           </div>
-          
-          {/* Beyond The Cabin */}
-          <div 
-              ref={(el) => (itemsRef.current[1] = el)}
-              
-              onClick={() => {
-                toggleWork('cabin')
-              }}
-              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
-            >
-            
-            <SideContainer
-              number="02"
-              title="Beyond The Cabin"
-              subtitle="Brand Campaign for Singapore Airlines"
-              description="6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world."
-              role="Art Director"
-              skills={["Creative Direction", "Motion + Graphic Design"]}
-              hoverWidth="420px"
-            />
-
-            <CarouselVideo 
-              videoId="creative-cabin"
-              src="/CCS/bestworkmontage.mp4"
-              poster="/poster/cabin.jpeg"
-            />
-          </div>
 
           {/* Ghibli */}
           <div 
-              ref={(el) => (itemsRef.current[2] = el)}
+              ref={(el) => (itemsRef.current[1] = el)}
               
               onClick={() => {
                 toggleWork('ghibli')
@@ -180,7 +153,7 @@ return (
             >
 
             <SideContainer
-              number="03"
+              number="02"
               title="The World of Studio Ghibli"
               subtitle="Marketing Campaign for ArtScience Museum"
               description="Be spirited away into magical scenes from iconic films through immersive theatrical sets, whimsical art installations and more."
@@ -194,6 +167,33 @@ return (
               videoId="creative-ghibli"
               src="/Ghibli/banner1.mp4"
               poster="/poster/ghibli.jpeg"
+            />
+          </div>
+          
+          {/* Beyond The Cabin */}
+          <div 
+              ref={(el) => (itemsRef.current[2] = el)}
+              
+              onClick={() => {
+                toggleWork('cabin')
+              }}
+              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
+            >
+            
+            <SideContainer
+              number="03"
+              title="Beyond The Cabin"
+              subtitle="Brand Campaign for Singapore Airlines"
+              description="6 Cities. 6 Cabin Crew. 6 Passions. Journey beyond the cabin with our cabin crew. You see them on board, now follow their travels around the world."
+              role="Art Director"
+              skills={["Creative Direction", "Motion + Graphic Design"]}
+              hoverWidth="420px"
+            />
+
+            <CarouselVideo 
+              videoId="creative-cabin"
+              src="/CCS/bestworkmontage.mp4"
+              poster="/poster/cabin.jpeg"
             />
           </div>
 
