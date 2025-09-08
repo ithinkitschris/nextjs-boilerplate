@@ -55,7 +55,7 @@ const ISV = ({ className }) => {
   const { setIsWhiteBG } = useHideNav();
   const isMobile = useMobileDetection();
   const [currentSection, setCurrentSection] = useState(1);
-  const totalSections = 4;
+  const totalSections = 5;
 
   //#region Refs
   // Section 1 refs (title)
@@ -68,25 +68,44 @@ const ISV = ({ className }) => {
   
   // Section 2 text refs (phases within section 2)
   const section3Text1Ref = useRef(null);
-  const section3Text2Ref = useRef(null);
-  const section3Text3Ref = useRef(null);
+  const section3Text1BRef = useRef(null);
   const section3ContainerRef = useRef(null);
+  const section2BackgroundRef = useRef(null);
   
   // Section 3 refs
-  const section3Ref = useRef(null);
-  const section3MainTitleRef = useRef(null);
-  const section3Text1Ref_new = useRef(null);
-  const section3BackgroundRef = useRef(null);
   const section3Text1Ref_phase3 = useRef(null);
   const section3Text1BRef_phase3 = useRef(null);
   const section3Text2Ref_phase3 = useRef(null);
   const section3Text2BRef_phase3 = useRef(null);
   const section3LineRef = useRef(null);
   
-  // Section 4 refs
-  const section4Ref = useRef(null);
-  const section4TextRef = useRef(null);
-  const section4Text2Ref = useRef(null);
+
+  
+  // Section 5 refs (new section 4)
+  const section5Ref = useRef(null);
+  const section5TextRef = useRef(null);
+  const communityContainerRef = useRef(null);
+  
+  // Section 5 community item refs
+  const lionDanceRef = useRef(null);
+  const familiesRef = useRef(null);
+  const birdUnclesRef = useRef(null);
+  const cyclistsRef = useRef(null);
+  const durianLoversRef = useRef(null);
+  const rangoliRef = useRef(null);
+  const silatTeamRef = useRef(null);
+  const aquaAerobicsRef = useRef(null);
+  const hawkerLoversRef = useRef(null);
+  
+  // Section 5 community image refs
+  const lionDanceImgRef = useRef(null);
+  const familiesImgRef = useRef(null);
+  const birdImgRef = useRef(null);
+  const durianImgRef = useRef(null);
+  const rangoliImgRef = useRef(null);
+  const silatImgRef = useRef(null);
+  const aquaImgRef = useRef(null);
+  const hawkerImgRef = useRef(null);
   
   //#endregion
 
@@ -94,8 +113,7 @@ const ISV = ({ className }) => {
   const sectionRefs = [
     section1Ref, // Section 1 (Title)
     section2Ref, // Section 2 (Intro Text)
-    section3Ref, // Section 3 (Duplicate of Section 2)
-    section4Ref, // Section 4 (New Section)
+    section5Ref, // Section 5 (New section 4)
   ];
 
   // Animations
@@ -134,23 +152,45 @@ const ISV = ({ className }) => {
     gsap.set(section2MainTitleRef.current, { opacity: 1, scale: 1 });
 
     // Set initial state for section 2
-    gsap.set(section3ContainerRef.current, { opacity: 0, y: 30 });
-    gsap.set(section3Text1Ref.current, { opacity: 1, y: 0 });
-    gsap.set(section3Text2Ref.current, { opacity: 0, y: 30 });
-    gsap.set(section3Text3Ref.current, { opacity: 0, y: 30 });
+    gsap.set(section3ContainerRef.current, { opacity: 0, y: 0 });
+    gsap.set(section3Text1Ref.current, { opacity: 0, y: 30 });
+    gsap.set(section3Text1BRef.current, { opacity: 0, y: 30 });
+    gsap.set(section2BackgroundRef.current, { opacity: 0 });
     
-    // Set initial state for section 3
-    gsap.set(section3MainTitleRef.current, { opacity: 1, scale: 1 });
-    gsap.set(section3Text1Ref_new.current, { opacity: 0, y: 0 }); // Hidden initially, in normal position
-    gsap.set(section3BackgroundRef.current, { opacity: 1 }); // Background image visible initially
+    // Set initial state for section 3 - all phase 3 elements hidden initially
     gsap.set(section3Text1Ref_phase3.current, { opacity: 0, y: 50, x: 0 }); // Hidden initially, 50px below, center
     gsap.set(section3Text1BRef_phase3.current, { opacity: 0, y: 50, x: 0 }); // Hidden initially, 50px below, center
     gsap.set(section3Text2Ref_phase3.current, { opacity: 0, y: 0, x: 0, scale: 1 }); // Hidden initially, center position
     gsap.set(section3Text2BRef_phase3.current, { opacity: 0, y: 50, x: 300 }); // Hidden initially, 50px below, right
     gsap.set(section3LineRef.current, { opacity: 0, scaleX: 0 }); // Hidden initially, no scale
     
-    // Set initial state for section 4
-    gsap.set(section4TextRef.current, { opacity: 1, y: 0 }); // Visible initially
+    
+    // Set initial state for section 5
+    gsap.set(section5TextRef.current, { opacity: 1, y: 0 }); // Visible initially
+    
+    // Set initial states for community items - all at 25% opacity initially
+    gsap.set(lionDanceRef.current, { opacity: 1 });
+    gsap.set(familiesRef.current, { opacity: 0.25 });
+    gsap.set(birdUnclesRef.current, { opacity: 0.25 });
+    gsap.set(cyclistsRef.current, { opacity: 0.25 });
+    gsap.set(durianLoversRef.current, { opacity: 0.25 });
+    gsap.set(rangoliRef.current, { opacity: 0.25 });
+    gsap.set(silatTeamRef.current, { opacity: 0.25 });
+    gsap.set(aquaAerobicsRef.current, { opacity: 0.25 });
+    gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
+    
+    // Set initial states for community images - only first image visible
+    gsap.set(lionDanceImgRef.current, { opacity: 1 });
+    gsap.set(familiesImgRef.current, { opacity: 0 });
+    gsap.set(birdImgRef.current, { opacity: 0 });
+    gsap.set(durianImgRef.current, { opacity: 0 });
+    gsap.set(rangoliImgRef.current, { opacity: 0 });
+    gsap.set(silatImgRef.current, { opacity: 0 });
+    gsap.set(aquaImgRef.current, { opacity: 0 });
+    gsap.set(hawkerImgRef.current, { opacity: 0 });
+    
+    // Set initial state for community container
+    gsap.set(communityContainerRef.current, { y: 0 });
     
     
     //#endregion
@@ -161,178 +201,110 @@ const ISV = ({ className }) => {
     let section3AnimationComplete = false;
     //#endregion
 
-    // SECTION 2 Intro Text
+    // SECTION 2 Combined Animation (Intro + Three-Column Text)
     ScrollTrigger.create({
       trigger: section2Ref.current,
       start: "bottom 100%",
-      end: "+=60%", // Extend the trigger area for scroll control to accommodate 3 phases
+      end: "+=150%", // Extended trigger area to accommodate all phases
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
-        // Phase 1: Cross fade (0-33%)
-        if (progress <= 0.33) {
-          const crossFadeProgress = progress / 0.33; // 0 to 1 for cross fade
+        // Phase 1: Cross fade (0-25%)
+        if (progress <= 0.25) {
+          const crossFadeProgress = progress / 0.25; // 0 to 1 for cross fade
           const easedFadeOutProgress = gsap.parseEase("expo.out")(crossFadeProgress);
           const easedCrossFadeProgress = gsap.parseEase("expo.inOut")(crossFadeProgress);
           
           // Fade out initial text
           gsap.set(section2MainTitleRef.current, { 
-            opacity: 1 - easedFadeOutProgress,
-            scale: 1 - (0.1 * easedFadeOutProgress)
+            opacity: 1 - easedCrossFadeProgress,
+            scale: 1 - (0.1 * easedCrossFadeProgress)
           });
           
           // Fade in phase 1 container
           gsap.set(section3ContainerRef.current, {
             opacity: easedCrossFadeProgress,
-            y: 30 - (30 * easedCrossFadeProgress)
+            y: 0 - (80 * easedCrossFadeProgress)
           });
           
-          // Keep phase 2 and 3 hidden
-          gsap.set(section3Text2Ref.current, { opacity: 0, y: 30 });
-          gsap.set(section3Text3Ref.current, { opacity: 0, y: 30 });
-        }
-        // Phase 2: Second textbox appears (33-66%)
-        else if (progress <= 0.66) {
-          const phase2Progress = (progress - 0.33) / 0.33; // 0 to 1 for phase 2
-          const easedPhase2Progress = gsap.parseEase("expo.inOut")(phase2Progress);
-          
-          // Keep initial text hidden
-          gsap.set(section2MainTitleRef.current, { opacity: 0, scale: 0.9 });
-          
-          // Keep phase 1 container visible and animate it upwards
-          gsap.set(section3ContainerRef.current, { 
-            opacity: 1, 
-            y: -50 * easedPhase2Progress // Animate container upwards by 50px
+          // Fade in both intro text boxes
+          gsap.set(section3Text1Ref.current, {
+            opacity: easedCrossFadeProgress,
+            
           });
           
-          // Fade phase 1 text to 20% opacity
-          gsap.set(section3Text1Ref.current, { 
-            opacity: 1 - (0.8 * easedPhase2Progress) // Fade from 1 to 0.2 (20%)
+          gsap.set(section3Text1BRef.current, {
+            opacity: easedCrossFadeProgress,
+           
           });
           
-          // Show phase 2 text
-          gsap.set(section3Text2Ref.current, {
-            opacity: easedPhase2Progress,
-            y: 30 - (30 * easedPhase2Progress)
+          // Fade in background image
+          gsap.set(section2BackgroundRef.current, {
+            opacity: easedCrossFadeProgress,
+            filter: `blur(${5 - (5 * easedCrossFadeProgress)}px)`
           });
           
-          // Keep phase 3 hidden
-          gsap.set(section3Text3Ref.current, { opacity: 0, y: 30 });
-        }
-        // Phase 3: Third textbox appears (66-100%)
-        else {
-          const phase3Progress = (progress - 0.66) / 0.34; // 0 to 1 for phase 3
-          const easedPhase3Progress = gsap.parseEase("expo.inOut")(phase3Progress);
-          
-          // Keep initial text hidden
-          gsap.set(section2MainTitleRef.current, { opacity: 0, scale: 0.9 });
-          
-          // Keep phase 1 container visible and animate it further upwards
-          gsap.set(section3ContainerRef.current, { 
-            opacity: 1, 
-            y: -50 - (30 * easedPhase3Progress) // Animate container further upwards by 30px
-          });
-          
-          // Fade phase 1 text to lower opacity
-          gsap.set(section3Text1Ref.current, { 
-            opacity: 0.2 - (0.1 * easedPhase3Progress) // Fade from 0.2 to 0.1
-          });
-          
-          // Fade phase 2 text to lower opacity and move up
-          gsap.set(section3Text2Ref.current, { 
-            opacity: 1 - (0.8 * easedPhase3Progress), // Fade from 1 to 0.2
-            y: -20 * easedPhase3Progress // Move up by 20px
-          });
-          
-          // Show phase 3 text from bottom
-          gsap.set(section3Text3Ref.current, {
-            opacity: easedPhase3Progress,
-            y: 30 - (30 * easedPhase3Progress)
-          });
-        }
-        
-        // Mark animations as complete when all phases finish
-        if (progress >= 1) {
-          section2AnimationComplete = true;
-        }
-      }
-    });
-    
-    // SECTION 3 Intro Text (simplified animation - Phase 1 only)
-    ScrollTrigger.create({
-      trigger: section3Ref.current,
-      start: "bottom 100%",
-      end: "+=50%", // Extend the trigger area for scroll control
-      pin: true, // Pin the section in place
-      scrub: 1, // Smooth scrubbing
-      onUpdate: (self) => {
-        const progress = self.progress; // 0 to 1
-        
-        // Phase 1: Main title animates upwards and fades slightly, new textbox animates upwards underneath (0-30%)
-        if (progress <= 0.30) {
-          const phase1Progress = progress / 0.30; // 0 to 1 for phase 1
-          const easedPhase1Progress = gsap.parseEase("expo.inOut")(phase1Progress);
-          
-          // Main title animates upwards and fades slightly
-          gsap.set(section3MainTitleRef.current, { 
-            opacity: 1 - (0.9 * easedPhase1Progress), // Fade from 100% to 10%
-            y: -160 * easedPhase1Progress // Move upwards by 80px
-          });
-          
-          // New textbox animates upwards underneath
-          gsap.set(section3Text1Ref_new.current, {
-            opacity: easedPhase1Progress,
-            y: 0 - (160 * easedPhase1Progress) // Animate from normal position to 80px up
-          });
-          
-          // Keep other elements hidden
-          gsap.set(section3BackgroundRef.current, { opacity: 1 });
+          // Keep three-column elements hidden
           gsap.set(section3Text1Ref_phase3.current, { opacity: 0, y: 50, x: 0 });
           gsap.set(section3Text1BRef_phase3.current, { opacity: 0, y: 50, x: 0 });
           gsap.set(section3Text2Ref_phase3.current, { opacity: 0, y: 0, x: 0, scale: 1 });
           gsap.set(section3Text2BRef_phase3.current, { opacity: 0, y: 50, x: 300 });
           gsap.set(section3LineRef.current, { opacity: 0, scaleX: 0 });
         }
-        // Phase 2: All text and background image fade (30-40%)
-        else if (progress <= 0.40) {
-          const phase2Progress = (progress - 0.30) / 0.10; // 0 to 1 for phase 2
-          const easedPhase2Progress = gsap.parseEase("expo.in")(phase2Progress);
+        // Phase 1B: Fade out phase 1 elements (25-35%)
+        else if (progress <= 0.35) {
+          const phase1BProgress = (progress - 0.25) / 0.10; // 0 to 1 for phase 1B
+          const easedPhase1BProgress = gsap.parseEase("expo.in")(phase1BProgress);
           
-          // Both text elements fade out
-          gsap.set(section3MainTitleRef.current, { 
-            opacity: 0.1 - (0.1 * easedPhase2Progress)
+          // Keep initial text hidden
+          gsap.set(section2MainTitleRef.current, { 
+            opacity: 0,
+            scale: 0.9
           });
           
-          gsap.set(section3Text1Ref_new.current, {
-            opacity: 1 - easedPhase2Progress,
+          // Fade out phase 1 container
+          gsap.set(section3ContainerRef.current, {
+            opacity: 1 - easedPhase1BProgress,
           });
           
-          // Background image fades out
-          gsap.set(section3BackgroundRef.current, {
-            opacity: 1 - easedPhase2Progress // Fade from 100% to 0%
+          // Fade out both intro text boxes
+          gsap.set(section3Text1Ref.current, {
+            opacity: 1 - easedPhase1BProgress,
           });
           
-          // Keep text elements hidden
+          gsap.set(section3Text1BRef.current, {
+            opacity: 1 - easedPhase1BProgress,
+          });
+          
+          // Fade out background image
+          gsap.set(section2BackgroundRef.current, {
+            opacity: 1 - (0.5 * easedPhase1BProgress),
+            filter: `blur(${0 + (50 * easedPhase1BProgress)}px)`
+          });
+          
+          // Keep three-column elements hidden
           gsap.set(section3Text1Ref_phase3.current, { opacity: 0, y: 50, x: 0 });
           gsap.set(section3Text1BRef_phase3.current, { opacity: 0, y: 50, x: 0 });
           gsap.set(section3Text2Ref_phase3.current, { opacity: 0, y: 0, x: 0, scale: 1 });
           gsap.set(section3Text2BRef_phase3.current, { opacity: 0, y: 50, x: 300 });
           gsap.set(section3LineRef.current, { opacity: 0, scaleX: 0 });
         }
-        // Phase 3: Three sub-phases (40-100%)
+        // Phase 2: Three-Column Text Animation (35-100%)
         else {
-          const phase3Progress = (progress - 0.40) / 0.60; // 0 to 1 for phase 3
+          const phase3Progress = (progress - 0.35) / 0.65; // 0 to 1 for phase 3
           
-          // Keep previous elements hidden
-          gsap.set(section3MainTitleRef.current, { opacity: 0, y: -100 });
-          gsap.set(section3Text1Ref_new.current, { opacity: 0, y: -100 });
-          gsap.set(section3BackgroundRef.current, { opacity: 0 });
+          // Keep intro elements hidden
+          gsap.set(section2MainTitleRef.current, { opacity: 0, scale: 0.9 });
+          gsap.set(section2BackgroundRef.current, { opacity: 0.5, filter: "blur(50px)" });
+          // gsap.set(section3ContainerRef.current, { opacity: 0, y: 0 });
+          gsap.set(section3Text1Ref.current, { opacity: 0, y: 30 });
+          gsap.set(section3Text1BRef.current, { opacity: 0, y: 30 });
           
-          // Phase 3A: text1 animates in, 2 and 2B hidden (66-77%)
-          if (phase3Progress <= 0.33) {
-            const phase3AProgress = phase3Progress / 0.33; // 0 to 1 for phase 3A
+          // Phase 2A: text1 animates in, 2 and 2B hidden (35-50%)
+          if (phase3Progress <= 0.23) {
+            const phase3AProgress = phase3Progress / 0.23; // 0 to 1 for phase 2A
             const easedPhase3AProgress = gsap.parseEase("expo.out")(phase3AProgress);
             
             // Text 1 animates in
@@ -348,14 +320,15 @@ const ISV = ({ className }) => {
             gsap.set(section3Text2BRef_phase3.current, { opacity: 0, y: 50, x: 300 });
             gsap.set(section3LineRef.current, { opacity: 0, scaleX: 0 });
           }
-          // Phase 3B: text1 moves left, text2 animates in (77-88%)
-          else if (phase3Progress <= 0.66) {
-            const phase3BProgress = (phase3Progress - 0.33) / 0.33; // 0 to 1 for phase 3B
+          // Phase 2B: text1 moves left, text2 animates in (50-65%)
+          else if (phase3Progress <= 0.46) {
+            const phase3BProgress = (phase3Progress - 0.23) / 0.23; // 0 to 1 for phase 2B
             const easedPhase3BProgress = gsap.parseEase("expo.inOut")(phase3BProgress);
             
-            // Text 1 moves left by 200px and fades to 10%
+            // Text 1 moves left by 300px and fades to 30%
             gsap.set(section3Text1Ref_phase3.current, {
-              opacity: 1 - (0.7 * easedPhase3BProgress), // Fade from 100% to 10%
+              opacity: 1 - (0.7 * easedPhase3BProgress), // Fade from 100% to 30%
+              scale: 1 - (0.33 * easedPhase3BProgress), // Scale down from 1 to 0.6
               y: 0,
               x: -300 * easedPhase3BProgress // Move left by 300px
             });
@@ -363,7 +336,7 @@ const ISV = ({ className }) => {
             // Text 2 animates in from left
             gsap.set(section3Text2Ref_phase3.current, {
               opacity: easedPhase3BProgress,
-              y: -13, // Keep at center vertically
+              y: 0, // Keep at center vertically
               x: 0 + (300 * easedPhase3BProgress), // Animate from left (0) to right (300px)
               scale: 1 // Keep at normal scale
             });
@@ -378,47 +351,48 @@ const ISV = ({ className }) => {
               scaleX: 0 // Keep hidden
             });
           }
-          // Phase 3C: text2 fades out, text2B animates in (88-100%)
+          // Phase 2C: text2 fades out, text2B animates in (65-100%)
           else {
-            const phase3CProgress = (phase3Progress - 0.66) / 0.34; // 0 to 1 for phase 3C
+            const phase3CProgress = (phase3Progress - 0.46) / 0.54; // 0 to 1 for phase 2C
             const easedPhase3CProgress = gsap.parseEase("expo.inOut")(phase3CProgress);
+            const easedPhase3CProgressFade = gsap.parseEase("power1.out")(phase3CProgress);
             
             // Text 1 fades out and scales down
             gsap.set(section3Text1Ref_phase3.current, {
-              opacity: 0.3 - easedPhase3CProgress, // Fade from 100% to 0%
+              opacity: 0.3 - easedPhase3CProgress, // Fade from 30% to 0%
               y: 0,
               x: -300, // Keep at left position
-              scale: 1 - (0.3 * easedPhase3CProgress) // Scale down from 1 to 0.7
+              scale: 0.67 - (0.3 * easedPhase3CProgress) // Scale down from 1 to 0.7
             });
             
             // Text 1B animates in at left position
             gsap.set(section3Text1BRef_phase3.current, {
               opacity: easedPhase3CProgress,
-              y: -20, // Keep at center position
-              x: -298, // Position to the left by 300px
-              scale: 0.9 + (0.1 * easedPhase3CProgress) // Scale up from 0.3 to 1
+              y: 0, // Keep at center position
+              x: -335, // Position to the left by 300px
+              scale: 1.2 - (0.2 * easedPhase3CProgress) // Scale up from 0.9 to 1
             });
             
             // Text 2 fades out and scales down
             gsap.set(section3Text2Ref_phase3.current, {
-              opacity: 1 - easedPhase3CProgress, // Fade from 100% to 0%
-              y: -13,
+              opacity: 1 - easedPhase3CProgressFade, // Fade from 100% to 0%
+              y: 0,
               x: 300, // Keep at right position
-              scale: 1 - (0.3 * easedPhase3CProgress) // Scale down from 1 to 0.7
+              scale: 1 - (0.15 * easedPhase3CProgress) // Scale down from 1 to 0.7
             });
             
             // Text 2B animates in to replace text2
             gsap.set(section3Text2BRef_phase3.current, {
               opacity: easedPhase3CProgress,
-              y: -20, // Animate from 50px below to 0
-              x: 302,
-              scale: 1.1 - (0.1 * easedPhase3CProgress), // Position to the right by 300px
+              y: 0, // Animate from 50px below to 0
+              x: 125,
+              scale: 1.2 - (0.2 * easedPhase3CProgress), // Position to the right by 300px
             });
             
             // Line animates from left to right in phase 3C
             gsap.set(section3LineRef.current, {
-              x: -25 + (25 * easedPhase3CProgress),
-              opacity: 0.5 + (0.5 * easedPhase3CProgress), // Always visible
+              x: 50 - (42 * easedPhase3CProgress),
+              opacity: 0 + (1 * easedPhase3CProgressFade), // Always visible
               scaleX: easedPhase3CProgress // Animate from 0 to 1 scale (left to right)
             });
           }
@@ -426,7 +400,78 @@ const ISV = ({ className }) => {
         
         // Mark animations as complete when phase finishes
         if (progress >= 1) {
-          section3AnimationComplete = true;
+          section2AnimationComplete = true;
+        }
+      }
+    });
+    
+    // SECTION 5 - Community Animation (8 phases)
+    ScrollTrigger.create({
+      trigger: section5Ref.current,
+      start: "bottom 100%",
+      end: "+=200%", // Extended trigger area for 8 phases
+      pin: section5Ref.current,
+      scrub: 1,
+      onUpdate: (self) => {
+        const progress = self.progress; // 0 to 1
+        const phaseSize = 1 / 8; // Each phase is 1/8 of the total progress
+        
+        // Determine current phase (0-7)
+        const currentPhase = Math.floor(progress / phaseSize);
+        const phaseProgress = (progress % phaseSize) / phaseSize; // Progress within current phase
+        
+        // Community items and images arrays for easy iteration
+        const communityRefs = [
+          lionDanceRef, familiesRef, birdUnclesRef, cyclistsRef,
+          durianLoversRef, rangoliRef, silatTeamRef, aquaAerobicsRef, hawkerLoversRef
+        ];
+        
+        const imageRefs = [
+          lionDanceImgRef, familiesImgRef, birdImgRef, durianImgRef,
+          rangoliImgRef, silatImgRef, aquaImgRef, hawkerImgRef
+        ];
+        
+        // Reset all community items to 25% opacity
+        communityRefs.forEach(ref => {
+          gsap.set(ref.current, { opacity: 0.25 });
+        });
+        
+        // Reset all images to 0 opacity
+        imageRefs.forEach(ref => {
+          gsap.set(ref.current, { opacity: 0 });
+        });
+        
+        // Animate container upward movement - each phase animates 30px upward
+        const baseY = -30 * currentPhase; // Base position for current phase
+        const containerPhaseProgress = (progress % phaseSize) / phaseSize; // Progress within current phase (0-1)
+        const containerY = baseY - (30 * containerPhaseProgress); // Animate 30px upward within each phase
+        gsap.set(communityContainerRef.current, { y: containerY });
+        
+        // Set current phase item to full opacity
+        if (currentPhase < communityRefs.length) {
+          gsap.set(communityRefs[currentPhase].current, { opacity: 1 });
+        }
+        
+        // Handle image transitions
+        if (currentPhase < imageRefs.length) {
+          // Fade in current image
+          gsap.set(imageRefs[currentPhase].current, { opacity: 1 });
+          
+          // If we're in the middle of a phase transition, handle crossfade
+          if (phaseProgress > 0.5 && currentPhase < imageRefs.length - 1) {
+            const fadeProgress = (phaseProgress - 0.5) * 2; // 0 to 1 for fade
+            const easedFadeProgress = gsap.parseEase("power2.inOut")(fadeProgress);
+            
+            // Fade out current image
+            gsap.set(imageRefs[currentPhase].current, { 
+              opacity: 1 - easedFadeProgress 
+            });
+            
+            // Fade in next image
+            gsap.set(imageRefs[currentPhase + 1].current, { 
+              opacity: easedFadeProgress 
+            });
+          }
         }
       }
     });
@@ -522,133 +567,108 @@ const ISV = ({ className }) => {
         
       </section>
 
-      {/* Section 2 – Intro */}
+      {/* Section 2 – Combined Intro + Strategy */}
       <section 
         ref={section2Ref}
         className="min-h-screen w-screen flex items-center justify-center relative "
       >
+        {/* Background Image */}
+        <div 
+          ref={section2BackgroundRef}
+          className="absolute inset-0 w-full h-full overflow-hidden"
+        >
+          <img 
+            src="/isv/section2.jpg" 
+            alt="Section 2 Background" 
+            className="w-full h-full object-cover object-[35%]"
+          />
+          <div className="absolute inset-0 w-[50%] h-full bg-gradient-to-r from-black to-transparent z-0"></div>
+        </div>
+        
         <div className="w-full mx-auto text-center relative h-screen">
           
-          {/* Phase 1: Plain text box in the middle */}
+          {/* Phase 1: in 2017... */}
           <div className="absolute top-1/2 left-[51%] transform -translate-x-1/2 -translate-y-1/2 w-full">
             <p 
               ref={section2MainTitleRef}
               className="text-[42pt] font-medium tracking-tight text-white w-[50%] mx-auto leading-[1.1]"
             >
-              <span className="text-[20pt] font-semibold">In 2017,</span> <br/>Singapore Airlines unveiled their <br/> new In-Flight Safety Video.
+              <span className="text-[20pt] font-semibold">In 2017,</span> <br/>Singapore Airlines unveiled <br/> a new in-flight safety video.
             </p>
           </div>
           
-          {/* Phase 3 & 4 Container */}
+          {/* Phase 2: Iconic Landmarks */}
           <div 
             ref={section3ContainerRef}
-            className="absolute top-1/2 left-[51%] transform -translate-x-1/2 -translate-y-1/2 mt-8 text-left"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
           >
             <h2 
               ref={section3Text1Ref}
-              className="text-[16pt] font-base text-white w-[50%] mx-auto leading-[1.5]"
+              className="absolute top-1/2 left-[10%] text-[17pt] font-medium text-white w-[420px] leading-[1.3] text-left z-10 "
             >
-            Shot across iconic landmarks in Singapore rather than inside the aircraft cabin, it redefined airline safety videos at the time.
+            Set across iconic landmarks in Singapore rather than within an aircraft cabin, it redefined airline safety videos at the time.
             </h2>
             
-            {/* Phase 4: Second plain textbox under phase 3 textbox */}
-            <div 
-              ref={section3Text2Ref}
-              className="w-[50%] mx-auto leading-[1.5]"
+            <h2 
+              ref={section3Text1BRef}
+              className="hidden absolute top-1/2 right-[10%] text-2xl font-base text-white w-[420px] mx-auto leading-[1.3] mb-4 text-left"
             >
-              <h2 className="text-[16pt] font-base text-white mx-auto mt-2">
-              Over seven years, the film's polished imagery and resonant score came to embody national pride, opening every Singapore Airlines journey worldwide.
-              </h2>
-            </div>
+            It also grew to become a symbol of Singapore's national pride.
+            </h2>
             
-            {/* Phase 5: Third plain textbox under phase 4 textbox */}
-            <div 
-              ref={section3Text3Ref}
-              className="w-[50%] mx-auto leading-[1.5]"
-            >
-              <h2 className="text-[16pt] font-base text-white mx-auto mt-2">
-              Personally, I was a student in design school then. The film inspired me to pursue a career in Advertising; that it was possible to create brand films so creative, so meticulously crafted, that it fostered love for a brand.
-              </h2>
-            </div>
           </div>
           
-        </div>
-      </section>
-
-      {/* Section 3 – Strategy */}
-      <section 
-        ref={section3Ref}
-        className="min-h-screen w-screen flex items-center justify-center relative "
-      >
-         {/* Phase 1 */}
-        <div className="absolute top-0 left-0 w-full h-screen mx-auto text-center">
-        
-        {/* Text Box */}
-        <div className="absolute top-[55%] left-[51%] transform -translate-x-1/2 -translate-y-1/2 w-full text-left leading-[1.11]">
-          <p 
-            ref={section3MainTitleRef}
-            className="text-[34pt] font-medium tracking-tight text-white w-[460px] mx-auto "
-          >
-            A few years later, I found myself as an Art Director for Singapore Airlines.
-          </p>
-          
-          <h2 
-            ref={section3Text1Ref_new}
-            className="text-[34pt] font-medium tracking-tight text-white w-[460px] mx-auto"
-          >
-            And we had just got the news to start work on a new safety video.
-          </h2>
-          
-        </div>
-
-        {/* Background Image */}
-        <img ref={section3BackgroundRef} src="/isv/bts1.jpg" className="absolute bottom-0 left-0 w-full h-full object-cover brightness-50 blur-[8px] -z-10"/>
-
-        {/* Black gradient overlay from top */}
-        <div
-          className="pointer-events-none absolute top-0 left-0 w-full h-40 z-20"
-          style={{
-            background: "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.0) 100%)"
-          }}
-        />
-        
-      
-        </div>
-
-         {/* Phase 3: 3 Column Text */}
-        <div className="absolute top-0 left-0 w-full h-screen mx-auto text-center">
+          {/* Phase 3: Insight + Strategy */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-
             {/* Text Container - Absolute positioning for overlap */}
-            <div className="relative w-[80%] mx-auto leading-[1.2] text-left h-[200px]">
+            <div className="relative w-[80%] mx-auto leading-[1.2] h-[200px]">
 
-              {/* Text 1 - Absolute positioned for easy animation */} 
-              <h3 ref={section3Text1Ref_phase3} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[18pt] font-medium text-white w-[370px]">The 2017 film did well to feature iconic landmarks, It highlighted the striking beauty of Singapore as a place.</h3>    
+              {/* Text 1 */} 
+              <h3 ref={section3Text1Ref_phase3} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[28pt] font-medium text-white w-[700px]">It grew to be a symbol of national pride,<br/> and presented the striking beauty of Singapore as a place to the world.</h3>    
 
-              {/* Text 1B - Absolute positioned for easy animation */}
-              <h3 ref={section3Text1BRef_phase3} className="absolute top-1/2 left-[51.5%] transform -translate-x-1/2 -translate-y-1/2 text-4xl font-medium tracking-tight text-white w-[370px]">Singapore as a place.</h3>
+              {/* Text 1B */}
+              <h3 ref={section3Text1BRef_phase3} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl font-medium tracking-tight text-white">Singapore as a place</h3>
         
-              {/* Text 2 - Absolute positioned for easy animation */}              
-              <h3 ref={section3Text2Ref_phase3} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[18pt] font-medium text-white w-[370px]">Building upon the legacy of the previous film, we sought to now feature homes and communities</h3>
+              {/* Text 2 */}              
+              <h3 ref={section3Text2Ref_phase3} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[18pt] font-medium text-white w-[440px]">Building upon the legacy of the previous film, we centred our focus on communities for the new 2025 ISV.</h3>
 
-              {/* Text 2B - Absolute positioned for easy animation */}
-              <h3 ref={section3Text2BRef_phase3} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl font-medium tracking-tight text-white w-[370px]">Singapore as a home.</h3>
+              {/* Text 2B */}
+              <h3 ref={section3Text2BRef_phase3} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl font-medium tracking-tight text-white ">Singapore as a home</h3>
 
-              {/* Line between text 1 and 2 */}
-              <div ref={section3LineRef} className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200px] h-[2px] bg-white origin-left"></div>
+              {/* Line */}
+              <div ref={section3LineRef} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[180px] h-[2px] bg-white origin-left"></div>
 
             </div>
           </div>
+          
         </div>
       </section>
 
       {/* Section 4 – Insight + Title*/}
       <section 
-        ref={section4Ref}
-        className="min-h-screen w-screen flex items-center justify-center relative"
+        className="min-h-screen w-screen flex items-center justify-center relative bg-black"
       >
         <div className="w-full mx-auto text-center relative h-screen">
 
+          {/* Text Container */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
+
+            {/* Text 1 */}
+            <h2 
+              className="text-[17pt] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-medium text-white w-[550px] mx-auto leading-[1.3]">
+              Our in-flight safety video takes travelers on a journey through Singapore’s rich and diverse communities, and in the process showcasing where Singaporeans live and thrive on our island home.
+            </h2>
+
+            {/* Text 2 */}
+            <p 
+              className="hidden text-[62pt] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-medium tracking-tight text-white w-[900px] mx-auto leading-[1.2]"
+            >
+              Welcome on Board.
+            </p>
+            
+          </div>
+
+          {/* Images */}
           <div className="w-[95%] h-[91%] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-row gap-2">
             
              {/* Column 1 */}
@@ -749,24 +769,76 @@ const ISV = ({ className }) => {
             
 
           </div>
+        
           
-          {/* Text Container */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
+        </div>
+      </section>
+      {/* Section 5 – Text Box Left */}
+      <section 
+        ref={section5Ref}
+        className="min-h-screen w-screen flex items-center justify-center relative bg-black"
+      >
+        <div className="w-[95%] h-screen mx-auto relative flex items-center">
+          
+          {/* Text Box - Positioned to the left */}
+           <div className="flex-[1] h-full flex flex-col pl-10">
+             
+             {/* Featuring... */}
+             <h2
+               ref={section5TextRef}
+               className="text-6xl font-medium text-white tracking-tight pt-18 -ml-1">
+                 Featuring<span className="font-light">...</span>
+             </h2>
 
-            {/* Text 1 */}
-            <p 
-              ref={section4TextRef}
-              className="hidden text-[62pt] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-medium tracking-tight text-white w-[900px] mx-auto leading-[1.2]"
-            >
-              Welcome on Board.
-            </p>
+             {/* Community Container */}
+             <div ref={communityContainerRef} className="flex-1 flex flex-col justify-center">
+               <p ref={lionDanceRef} className="text-[22pt] leading-[1.2] font-medium">
+                 Lion Dance Troupe
+               </p>
+               <p ref={familiesRef} className="text-[22pt] leading-[1.2] font-medium">
+                 Families
+               </p>
+               <p ref={birdUnclesRef} className="text-[22pt] leading-[1.2] font-medium -ml-1.5">
+                 'Bird Uncles'
+               </p>
+               <p ref={cyclistsRef} className="text-[22pt] leading-[1.2] font-medium">
+                 Recreational Cyclists
+               </p>
+               <p ref={durianLoversRef} className="text-[22pt] leading-[1.2] font-medium">
+                 Durian 'Lovers'
+               </p>
+               <p ref={rangoliRef} className="text-[22pt] leading-[1.2] font-medium">
+                 Rangoli
+               </p>
+               <p ref={silatTeamRef} className="text-[22pt] leading-[1.2] font-medium">
+                 National Silat Team
+               </p>
+               <p ref={aquaAerobicsRef} className="text-[22pt] leading-[1.2] font-medium">
+                 Aqua Aerobics
+               </p>
+               <p ref={hawkerLoversRef} className="text-[22pt] leading-[1.2] font-medium">
+                 Hawker Food Lovers
+               </p>
+             </div>
+            
+          </div>
+          
+          {/* Right side - can be left empty or add visual elements later */}
+          <div className="flex-[2.5] h-[85%] rounded-[30pt] overflow-hidden glass relative">    
 
-            {/* Text 2 */}
-            <h2 
-              ref={section4Text2Ref}
-              className="text-[17pt] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-medium tracking text-white w-[35%] mx-auto leading-[1.3]">
-              Beyond the four walls of a home, our in-flight safety video takes us on an unexpected journey through Singapore’s rich and diverse communities, and in the process showcasing where they live and thrive.
-            </h2>
+            {/* Glass Edge Effect */}
+            <div className="absolute inset-0 rounded-[30pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_10px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-20"/>  
+            
+            {/* Community Images - All positioned absolutely for fade transitions */}
+            <img ref={lionDanceImgRef} src="/isv/communities/liondance.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
+            <img ref={familiesImgRef} src="/isv/communities/families.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
+            <img ref={birdImgRef} src="/isv/communities/bird.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
+            <img ref={durianImgRef} src="/isv/communities/durian.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
+            <img ref={rangoliImgRef} src="/isv/communities/rangoli.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
+            <img ref={silatImgRef} src="/isv/communities/silat.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
+            <img ref={aquaImgRef} src="/isv/communities/aqua.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
+            <img ref={hawkerImgRef} src="/isv/communities/hawker.png" className="absolute inset-0 w-full h-full object-cover contrast-[1.15]"/>
+
           </div>
           
         </div>
