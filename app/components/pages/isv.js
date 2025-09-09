@@ -164,6 +164,19 @@ const ISV = ({ className }) => {
   useEffect(() => {
     // Clear any existing ScrollTriggers
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    
+    // Force enable pointer events on body and document
+    document.body.style.pointerEvents = 'auto';
+    document.documentElement.style.pointerEvents = 'auto';
+    
+    // Check for any global event listeners that might be preventing clicks
+    console.log('Document body style:', document.body.style.cssText);
+    console.log('Document element style:', document.documentElement.style.cssText);
+    
+    // Try to remove any potential event listeners
+    document.removeEventListener('click', (e) => e.preventDefault(), true);
+    document.removeEventListener('mousedown', (e) => e.preventDefault(), true);
+    document.removeEventListener('mouseup', (e) => e.preventDefault(), true);
 
     // Create intersection observer for section tracking
     const sectionObserver = new IntersectionObserver(
@@ -199,7 +212,7 @@ const ISV = ({ className }) => {
     gsap.set(section3ContainerRef.current, { opacity: 0, y: 0 });
     gsap.set(section3Text1Ref.current, { opacity: 0, y: 30 });
     gsap.set(section3Text1BRef.current, { opacity: 0, y: 30 });
-    gsap.set(section2BackgroundRef.current, { opacity: 0 });
+    gsap.set(section2BackgroundRef.current, { opacity: 0, scale: 1.03 });
     
     // Set initial state for section 3 - all phase 3 elements hidden initially
     gsap.set(section3Text1Ref_phase3.current, { opacity: 0, y: 50, x: 0 }); // Hidden initially, 50px below, center
@@ -231,14 +244,14 @@ const ISV = ({ className }) => {
     gsap.set(hawkerImgRef.current, { opacity: 1 });
     
     // Set initial states for safety instruction texts - all hidden except pretakeoff
-    gsap.set(preTakeoffRef.current, { opacity: 1 });
-    gsap.set(seatbeltRef.current, { opacity: 0 });
-    gsap.set(dashRef.current, { opacity: 0 });
-    gsap.set(oxygenMaskRef.current, { opacity: 0 });
-    gsap.set(emergencyExitsRef.current, { opacity: 0 });
-    gsap.set(bracePositionsRef.current, { opacity: 0 });
-    gsap.set(lifeVestsRef.current, { opacity: 0 });
-    gsap.set(electronicDevicesRef.current, { opacity: 0 });
+    gsap.set(preTakeoffRef.current, { opacity: 1, y: 0 });
+    gsap.set(seatbeltRef.current, { opacity: 0, y: 20 });
+    gsap.set(dashRef.current, { opacity: 0, y: 20 });
+    gsap.set(oxygenMaskRef.current, { opacity: 0, y: 20 });
+    gsap.set(emergencyExitsRef.current, { opacity: 0, y: 20 });
+    gsap.set(bracePositionsRef.current, { opacity: 0, y: 20 });
+    gsap.set(lifeVestsRef.current, { opacity: 0, y: 20 });
+    gsap.set(electronicDevicesRef.current, { opacity: 0, y: 20 });
     
     
     //#endregion
@@ -288,9 +301,11 @@ const ISV = ({ className }) => {
            
           });
           
-          // Fade in background image
+          // Fade in background image and scale down
+          const scaleProgress = gsap.parseEase("power2.out")(crossFadeProgress);
           gsap.set(section2BackgroundRef.current, {
             opacity: easedCrossFadeProgress,
+            scale: 1.05 - (0.05 * scaleProgress), // Scale from 1.03 to 1.0 with power2.out easing
             filter: `blur(${5 - (5 * easedCrossFadeProgress)}px)`
           });
           
@@ -329,6 +344,7 @@ const ISV = ({ className }) => {
           // Fade out background image
           gsap.set(section2BackgroundRef.current, {
             opacity: 1 - (0.5 * easedPhase1BProgress),
+            scale: 1.0, // Keep scale at 1.0
             filter: `blur(${0 + (50 * easedPhase1BProgress)}px)`
           });
           
@@ -345,7 +361,11 @@ const ISV = ({ className }) => {
           
           // Keep intro elements hidden
           gsap.set(section2MainTitleRef.current, { opacity: 0, scale: 0.9 });
-          gsap.set(section2BackgroundRef.current, { opacity: 0.5, filter: "blur(50px)" });
+          gsap.set(section2BackgroundRef.current, { 
+            opacity: 0.5, 
+            scale: 1.0 + (0.2 * phase3Progress), // Scale from 1.0 to 1.2 with linear easing
+            filter: "blur(50px)" 
+          });
           // gsap.set(section3ContainerRef.current, { opacity: 0, y: 0 });
           gsap.set(section3Text1Ref.current, { opacity: 0, y: 30 });
           gsap.set(section3Text1BRef.current, { opacity: 0, y: 30 });
@@ -457,7 +477,7 @@ const ISV = ({ className }) => {
     ScrollTrigger.create({
       trigger: section5Ref.current,
       start: "bottom 100%",
-      end: "+=175%", // Combined phases 1, 2, 3, 4, 5, 6 & 7
+      end: "+=125%", // Combined phases 1, 2, 3, 4, 5, 6 & 7
       pin: section5Ref.current,
       scrub: 1,
       onUpdate: (self) => {
@@ -478,9 +498,10 @@ const ISV = ({ className }) => {
             opacity: 1 - (0.75 * easedProgress) 
           });
           
-          // Lion dance image fades to opacity 0
+          // Lion dance image fades to opacity 0 with expo.out easing
+          const lionDanceVideoFadeOutProgress = gsap.parseEase("expo.out")(phase1Progress);
           gsap.set(lionDanceImgRef.current, { 
-            opacity: 1 - easedProgress 
+            opacity: 1 - lionDanceVideoFadeOutProgress 
           });
           
           // Families ref fades in to opacity 1
@@ -514,6 +535,14 @@ const ISV = ({ className }) => {
           gsap.set(silatImgRef.current, { opacity: 1 });
           gsap.set(aquaImgRef.current, { opacity: 1 });
           gsap.set(hawkerImgRef.current, { opacity: 1 });
+          
+          // Hide all other safety instruction texts
+          gsap.set(dashRef.current, { opacity: 0, y: 20 });
+          gsap.set(oxygenMaskRef.current, { opacity: 0, y: 20 });
+          gsap.set(emergencyExitsRef.current, { opacity: 0, y: 20 });
+          gsap.set(bracePositionsRef.current, { opacity: 0, y: 20 });
+          gsap.set(lifeVestsRef.current, { opacity: 0, y: 20 });
+          gsap.set(electronicDevicesRef.current, { opacity: 0, y: 20 });
         }
         // Phase 2: 14.3-28.6% progress
         else if (progress <= 0.286) {
@@ -534,9 +563,10 @@ const ISV = ({ className }) => {
             opacity: 1 - (0.75 * easedProgress) 
           });
           
-          // Families image fades to opacity 0
+          // Families image fades to opacity 0 with expo.out easing
+          const familiesVideoFadeOutProgress = gsap.parseEase("expo.out")(phase2Progress);
           gsap.set(familiesImgRef.current, { 
-            opacity: 1 - easedProgress 
+            opacity: 1 - familiesVideoFadeOutProgress 
           });
           
           // Bird uncles ref fades in to opacity 1
@@ -574,6 +604,14 @@ const ISV = ({ className }) => {
           gsap.set(silatImgRef.current, { opacity: 1 });
           gsap.set(aquaImgRef.current, { opacity: 1 });
           gsap.set(hawkerImgRef.current, { opacity: 1 });
+          
+          // Hide all other safety instruction texts
+          gsap.set(preTakeoffRef.current, { opacity: 0, y: -20 });
+          gsap.set(oxygenMaskRef.current, { opacity: 0, y: 20 });
+          gsap.set(emergencyExitsRef.current, { opacity: 0, y: 20 });
+          gsap.set(bracePositionsRef.current, { opacity: 0, y: 20 });
+          gsap.set(lifeVestsRef.current, { opacity: 0, y: 20 });
+          gsap.set(electronicDevicesRef.current, { opacity: 0, y: 20 });
         }
         // Phase 3: 28.6-42.9% progress
         else if (progress <= 0.429) {
@@ -596,9 +634,10 @@ const ISV = ({ className }) => {
             opacity: 1 - (0.75 * easedProgress) 
           });
           
-          // Bird uncles image fades to opacity 0
+          // Bird uncles image fades to opacity 0 with expo.out easing
+          const birdUnclesVideoFadeOutProgress = gsap.parseEase("expo.out")(phase3Progress);
           gsap.set(birdImgRef.current, { 
-            opacity: 1 - easedProgress 
+            opacity: 1 - birdUnclesVideoFadeOutProgress 
           });
           
           // Cyclists ref fades to 0.25 opacity (since it's already at 1)
@@ -634,6 +673,14 @@ const ISV = ({ className }) => {
           gsap.set(silatImgRef.current, { opacity: 1 });
           gsap.set(aquaImgRef.current, { opacity: 1 });
           gsap.set(hawkerImgRef.current, { opacity: 1 });
+          
+          // Hide all other safety instruction texts
+          gsap.set(preTakeoffRef.current, { opacity: 0, y: -20 });
+          gsap.set(seatbeltRef.current, { opacity: 0, y: -20 });
+          gsap.set(emergencyExitsRef.current, { opacity: 0, y: 20 });
+          gsap.set(bracePositionsRef.current, { opacity: 0, y: 20 });
+          gsap.set(lifeVestsRef.current, { opacity: 0, y: 20 });
+          gsap.set(electronicDevicesRef.current, { opacity: 0, y: 20 });
         }
         // Phase 4: 42.9-57.1% progress
         else if (progress <= 0.571) {
@@ -659,9 +706,10 @@ const ISV = ({ className }) => {
             opacity: 1 - (0.75 * easedProgress) 
           });
           
-          // Durian lovers image fades to opacity 0
+          // Durian lovers image fades to opacity 0 with expo.out easing
+          const durianLoversVideoFadeOutProgress = gsap.parseEase("expo.out")(phase4Progress);
           gsap.set(durianImgRef.current, { 
-            opacity: 1 - easedProgress 
+            opacity: 1 - durianLoversVideoFadeOutProgress 
           });
           
           // Rangoli ref fades in to opacity 1
@@ -690,6 +738,14 @@ const ISV = ({ className }) => {
           gsap.set(silatImgRef.current, { opacity: 1 });
           gsap.set(aquaImgRef.current, { opacity: 1 });
           gsap.set(hawkerImgRef.current, { opacity: 1 });
+          
+          // Hide all other safety instruction texts
+          gsap.set(preTakeoffRef.current, { opacity: 0, y: -20 });
+          gsap.set(seatbeltRef.current, { opacity: 0, y: -20 });
+          gsap.set(dashRef.current, { opacity: 0, y: -20 });
+          gsap.set(bracePositionsRef.current, { opacity: 0, y: 20 });
+          gsap.set(lifeVestsRef.current, { opacity: 0, y: 20 });
+          gsap.set(electronicDevicesRef.current, { opacity: 0, y: 20 });
         }
         // Phase 5: 57.1-71.4% progress
         else if (progress <= 0.714) {
@@ -717,9 +773,10 @@ const ISV = ({ className }) => {
             opacity: 1 - (0.75 * easedProgress) 
           });
           
-          // Rangoli image fades to opacity 0
+          // Rangoli image fades to opacity 0 with expo.out easing
+          const rangoliVideoFadeOutProgress = gsap.parseEase("expo.out")(phase5Progress);
           gsap.set(rangoliImgRef.current, { 
-            opacity: 1 - easedProgress 
+            opacity: 1 - rangoliVideoFadeOutProgress 
           });
           
           // Silat team ref fades in to opacity 1
@@ -746,6 +803,14 @@ const ISV = ({ className }) => {
           gsap.set(silatImgRef.current, { opacity: 1 });
           gsap.set(aquaImgRef.current, { opacity: 1 });
           gsap.set(hawkerImgRef.current, { opacity: 1 });
+          
+          // Hide all other safety instruction texts
+          gsap.set(preTakeoffRef.current, { opacity: 0, y: -20 });
+          gsap.set(seatbeltRef.current, { opacity: 0, y: -20 });
+          gsap.set(dashRef.current, { opacity: 0, y: -20 });
+          gsap.set(oxygenMaskRef.current, { opacity: 0, y: -20 });
+          gsap.set(lifeVestsRef.current, { opacity: 0, y: 20 });
+          gsap.set(electronicDevicesRef.current, { opacity: 0, y: 20 });
         }
         // Phase 6: 71.4-85.7% progress
         else if (progress <= 0.857) {
@@ -775,9 +840,10 @@ const ISV = ({ className }) => {
             opacity: 1 - (0.75 * easedProgress) 
           });
           
-          // Silat team image fades to opacity 0
+          // Silat team image fades to opacity 0 with expo.out easing
+          const silatTeamVideoFadeOutProgress = gsap.parseEase("expo.out")(phase6Progress);
           gsap.set(silatImgRef.current, { 
-            opacity: 1 - easedProgress 
+            opacity: 1 - silatTeamVideoFadeOutProgress 
           });
           
           // Aqua aerobics ref fades in to opacity 1
@@ -802,6 +868,14 @@ const ISV = ({ className }) => {
           gsap.set(hawkerLoversRef.current, { opacity: 0.25 });
           gsap.set(aquaImgRef.current, { opacity: 1 });
           gsap.set(hawkerImgRef.current, { opacity: 1 });
+          
+          // Hide all other safety instruction texts
+          gsap.set(preTakeoffRef.current, { opacity: 0, y: -20 });
+          gsap.set(seatbeltRef.current, { opacity: 0, y: -20 });
+          gsap.set(dashRef.current, { opacity: 0, y: -20 });
+          gsap.set(oxygenMaskRef.current, { opacity: 0, y: -20 });
+          gsap.set(emergencyExitsRef.current, { opacity: 0, y: -20 });
+          gsap.set(electronicDevicesRef.current, { opacity: 0, y: 20 });
         }
         // Phase 7: 85.7-100% progress
         else {
@@ -833,9 +907,10 @@ const ISV = ({ className }) => {
             opacity: 1 - (0.75 * easedProgress) 
           });
           
-          // Aqua aerobics image fades to opacity 0
+          // Aqua aerobics image fades to opacity 0 with expo.out easing
+          const aquaAerobicsVideoFadeOutProgress = gsap.parseEase("expo.out")(phase7Progress);
           gsap.set(aquaImgRef.current, { 
-            opacity: 1 - easedProgress 
+            opacity: 1 - aquaAerobicsVideoFadeOutProgress 
           });
           
           // Hawker lovers ref fades in to opacity 1
@@ -855,6 +930,14 @@ const ISV = ({ className }) => {
             opacity: easedProgress,
             y: 20 - (20 * easedProgress) 
           });
+          
+          // Hide all other safety instruction texts
+          gsap.set(preTakeoffRef.current, { opacity: 0, y: -20 });
+          gsap.set(seatbeltRef.current, { opacity: 0, y: -20 });
+          gsap.set(dashRef.current, { opacity: 0, y: -20 });
+          gsap.set(oxygenMaskRef.current, { opacity: 0, y: -20 });
+          gsap.set(emergencyExitsRef.current, { opacity: 0, y: -20 });
+          gsap.set(bracePositionsRef.current, { opacity: 0, y: -20 });
         }
       }
     });
@@ -865,6 +948,7 @@ const ISV = ({ className }) => {
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       document.body.style.overflow = 'auto';
+      document.body.style.pointerEvents = 'auto';
       
       // Cleanup section observer
       sectionObserver.disconnect();
@@ -883,7 +967,7 @@ const ISV = ({ className }) => {
 
   // Body
   return (
-      <div className={`relative overflow-x-hidden col-span-full bg-[#000000] -z-50 -mx-[8.5%] -mt-36 ${className || ''}`}>
+      <div className={`relative overflow-x-hidden col-span-full bg-[#000000] -mx-[8.5%] -mt-36 ${className || ''}`} style={{ pointerEvents: 'auto', zIndex: 1 }}>
 
       {/* Section 1 – Cover Page */}
       <section 
@@ -891,7 +975,7 @@ const ISV = ({ className }) => {
         className="h-screen w-full text-white relative flex flex-col items-center justify-center"
       >
         {/* Video Container */}
-        <div className="w-[94%] h-[90%] mt-2 rounded-[35pt] overflow-hidden relative">
+        <div className="w-[94%] h-[80%] md:h-[40%] lg:h-[60%] xl:h-[90%] md:max-h-[900px] mt-2 rounded-[35pt] overflow-hidden relative">
 
           {/* Glass Edge Effect */}
           <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_20px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
@@ -947,7 +1031,7 @@ const ISV = ({ className }) => {
           ref={glowVideoRef}
           src="/isv/montage_glow.mp4"
           autoPlay muted loop playsInline
-          className="absolute inset-0 w-full h-full scale-75 object-cover blur-3xl -z-10 saturate-200 brightness-125"
+          className="hidden xl:block absolute inset-0 w-full h-full scale-75 object-cover blur-3xl -z-10 saturate-200 brightness-125"
         />
         
       </section>
@@ -965,9 +1049,9 @@ const ISV = ({ className }) => {
           <img 
             src="/isv/section2.jpg" 
             alt="Section 2 Background" 
-            className="w-full h-full object-cover object-[35%]"
+            className="w-full h-auto absolute top-1/2 transform -translate-y-1/2"
           />
-          <div className="absolute inset-0 w-[50%] h-full bg-gradient-to-r from-black to-transparent z-0"></div>
+          <div className="absolute inset-0 w-[50%] h-full bg-gradient-to-r from-black/50 via-black/80 to-transparent z-0"></div>
         </div>
         
         <div className="w-full mx-auto text-center relative h-screen">
@@ -1033,7 +1117,7 @@ const ISV = ({ className }) => {
       <section 
         className="min-h-screen w-screen flex items-center justify-center relative bg-black"
       >
-        <div className="w-full mx-auto text-center relative h-screen">
+        <div className="w-full mx-auto text-center relative h-screen max-h-[1000px]">
 
           {/* Text Container */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
@@ -1158,84 +1242,85 @@ const ISV = ({ className }) => {
           
         </div>
       </section>
+      
       {/* Section 5 – Text Box Left */}
       <section 
         ref={section5Ref}
         className="min-h-screen w-screen flex items-center justify-center relative bg-black"
       >
         {/* Page Container */}
-        <div className="w-[95%] h-screen mx-auto relative flex items-center">
+        <div className="w-[95%] h-screen max-h-[900px] mx-auto relative flex items-center">
           
           {/* Text Box - Positioned to the left */}
            <div className="flex-[1] h-[85%] flex flex-col pl-10">
              
-             {/* Featuring... */}
-             <h2
-               ref={section5TextRef}
-               className="text-[28pt] leading-[1.1] font-medium text-white tracking-tight -ml-1 bg-black z-20">
-                 Featuring communities & locations across Singapore.
-             </h2>
-             
-             {/* Top Gradient */}
-             <div className="bg-gradient-to-b from-black to-transparent h-[35%] z-10 -ml-1.5 "/>
+            {/* Featuring... */}
+            <h2
+              ref={section5TextRef}
+              className="text-[28pt] leading-[1.1] font-medium text-white tracking-tight -ml-1 bg-black z-20 pr-14">
+                Featuring <br/>communities & locations across Singapore.
+            </h2>
+            
+            {/* Top Gradient */}
+            <div className="bg-gradient-to-b from-black to-transparent h-[35%] z-10 -ml-1.5 "/>
 
-             {/* Community Container */}
-             <div ref={communityContainerRef} className="flex-1 flex flex-col justify-center -mt-28">
+            {/* Community Container */}
+            <div ref={communityContainerRef} className="flex-1 flex flex-col justify-center -mt-28">
 
-               <p ref={lionDanceRef} className="text-[22pt] leading-[1.2] font-medium">
-                 Lion Dance Troupe
-               </p>
-               <p ref={familiesRef} className="text-[22pt] leading-[1.2] font-medium">
-                 Families
-               </p>
-               <p ref={birdUnclesRef} className="text-[22pt] leading-[1.2] font-medium -ml-1.5">
-                 'Bird Uncles'
-               </p>
-               <p ref={cyclistsRef} className="text-[22pt] leading-[1.2] font-medium">
-                 Recreational Cyclists
-               </p>
-               <p ref={durianLoversRef} className="text-[22pt] leading-[1.2] font-medium">
-                 Durian 'Lovers'
-               </p>
-               <p ref={rangoliRef} className="text-[22pt] leading-[1.2] font-medium">
-                 Rangoli
-               </p>
-               <p ref={silatTeamRef} className="text-[22pt] leading-[1.2] font-medium">
-                 National Silat Team
-               </p>
-               <p ref={aquaAerobicsRef} className="text-[22pt] leading-[1.2] font-medium">
-                 Aqua Aerobics
-               </p>
-               <p ref={hawkerLoversRef} className="text-[22pt] leading-[1.2] font-medium">
-                 Hawker Food Lovers
-               </p>
-             </div>
+              <p ref={lionDanceRef} className="text-[22pt] leading-[1.2] font-medium">
+                Lion Dance Troupe
+              </p>
+              <p ref={familiesRef} className="text-[22pt] leading-[1.2] font-medium">
+                Families
+              </p>
+              <p ref={birdUnclesRef} className="text-[22pt] leading-[1.2] font-medium -ml-1.5">
+                'Bird Uncles'
+              </p>
+              <p ref={cyclistsRef} className="text-[22pt] leading-[1.2] font-medium">
+                Recreational Cyclists
+              </p>
+              <p ref={durianLoversRef} className="text-[22pt] leading-[1.2] font-medium">
+                Durian 'Lovers'
+              </p>
+              <p ref={rangoliRef} className="text-[22pt] leading-[1.2] font-medium">
+                Rangoli
+              </p>
+              <p ref={silatTeamRef} className="text-[22pt] leading-[1.2] font-medium">
+                National Silat Team
+              </p>
+              <p ref={aquaAerobicsRef} className="text-[22pt] leading-[1.2] font-medium">
+                Aqua Aerobics
+              </p>
+              <p ref={hawkerLoversRef} className="text-[22pt] leading-[1.2] font-medium">
+                Hawker Food Lovers
+              </p>
+            </div>
 
-              {/* Bottom Gradient */}
-              <div className="absolute bottom-32 left-0 w-[24%] bg-gradient-to-t from-black to-transparent h-[35%] z-10 -ml-1.5 "/>
+            {/* Bottom Gradient */}
+            <div className="absolute bottom-32 left-0 w-[31%] 2xl:w-[24%] bg-gradient-to-t from-black to-transparent h-[35%] z-10 -ml-1.5"/>
 
-              {/* Safety Instruction */}
-              <div className="relative h-[45px]">
-              <p className="text-[12pt] font-semibold tracking-tight">Safety Instruction:</p>
-              <p ref={preTakeoffRef} className="absolute bottom-0 left-0 text-[12pt]">Pre-Takeoff Procedures</p>
-              <p ref={seatbeltRef} className="absolute bottom-0 left-0 text-[12pt]">Seatbelts</p>
-              <p ref={dashRef} className="absolute bottom-0 left-0 text-[12pt]">–</p>
-              <p ref={oxygenMaskRef} className="absolute bottom-0 left-0 text-[12pt]">Oxygen Mask</p>
-              <p ref={emergencyExitsRef} className="absolute bottom-0 left-0 text-[12pt]">Emergency Exits</p>
-              <p ref={bracePositionsRef} className="absolute bottom-0 left-0 text-[12pt]">Brace Positions + Evacuation</p>
-              <p ref={lifeVestsRef} className="absolute bottom-0 left-0 text-[12pt]">Life Vests</p>
-              <p ref={electronicDevicesRef} className="absolute bottom-0 left-0 text-[12pt]">Electronic Devices + No Smoking</p>
-              </div>
+            {/* Safety Instruction */}
+            <div className="relative h-[45px]">
+            <p className="text-[12pt] font-semibold tracking-tight">Safety Instruction:</p>
+            <p ref={preTakeoffRef} className="absolute bottom-0 left-0 text-[12pt]">Pre-Takeoff Procedures</p>
+            <p ref={seatbeltRef} className="absolute bottom-0 left-0 text-[12pt]">Seatbelts</p>
+            <p ref={dashRef} className="absolute bottom-0 left-0 text-[12pt]">–</p>
+            <p ref={oxygenMaskRef} className="absolute bottom-0 left-0 text-[12pt]">Oxygen Mask</p>
+            <p ref={emergencyExitsRef} className="absolute bottom-0 left-0 text-[12pt]">Emergency Exits</p>
+            <p ref={bracePositionsRef} className="absolute bottom-0 left-0 text-[12pt]">Brace Positions + Evacuation</p>
+            <p ref={lifeVestsRef} className="absolute bottom-0 left-0 text-[12pt]">Life Vests</p>
+            <p ref={electronicDevicesRef} className="absolute bottom-0 left-0 text-[12pt]">Electronic Devices + No Smoking</p>
+            </div>
             
           </div>
           
           {/* Right side - can be left empty or add visual elements later */}
-          <div className="flex-[3.5] h-[85%] rounded-[30pt] overflow-hidden glass relative">    
+          <div className="flex-[1.5] xl:flex-[2.5] 2xl:flex-[3.5] h-[85%] rounded-[30pt] overflow-hidden glass relative">    
 
             {/* Glass Edge Effect */}
             <div className="absolute inset-0 rounded-[30pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_10px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-20"/>  
             
-            {/* Community Images - All positioned absolutely for fade transitions */}
+            {/* Community Videos - All positioned absolutely for fade transitions */}
             <video ref={hawkerImgRef} src="/isv/nosmoking.mp4" className="absolute inset-0 w-full h-full object-cover contrast-[1.1]" autoPlay loop muted playsInline />
             <video ref={aquaImgRef} src="/isv/lifevest.mp4" className="absolute inset-0 w-full h-full object-cover contrast-[1.1]" autoPlay loop muted playsInline />
             <video ref={silatImgRef} src="/isv/silat.mp4" className="absolute inset-0 w-full h-full object-cover contrast-[1.1]" autoPlay loop muted playsInline />
@@ -1250,6 +1335,89 @@ const ISV = ({ className }) => {
         </div>
       </section>
 
+      {/* Section 6 – Direct YouTube Video Embed */}
+      <section className="min-h-screen w-screen flex items-center justify-center relative bg-black" style={{ pointerEvents: 'auto' }}>
+        <div className="w-full h-screen relative mx-auto" style={{ pointerEvents: 'auto' }}>
+          
+           <div className="w-[95%] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-3xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+             
+             <iframe
+               className="w-full h-full rounded-3xl"
+               src="https://www.youtube.com/embed/dOpwFr5-iEw?controls=1&showinfo=0&rel=0&modestbranding=1&enablejsapi=1"
+               title="YouTube video player"
+               frameBorder="0"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+               allowFullScreen
+               onLoad={() => console.log('YouTube iframe loaded')}
+             />
+             
+             {/* Glass Edge Effect */}
+             <div className="absolute inset-0 rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_20px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
+        
+        </div>
+      </div>
+    </section>
+
+    {/* Section 7 – Behind the Scenes */}
+    <section className="min-h-screen w-screen flex items-center justify-center relative bg-black">
+      {/* Images */}
+      <div className="w-[95%] h-[86%] max-h-[900px] absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-row gap-2">
+            
+            {/* Column 1 */}
+            <div className="flex-[1.2] gap-2 flex flex-col">
+
+              <div className="flex-[0.8]">
+                <h1 className="text-[32pt] xl:text-[40pt] 2xl:text-[47pt] tracking-tight leading-[0.9] font-medium text-white -mt-1.5 ml-0.5">Behind the Scenes</h1>
+              </div>
+
+              <div className="flex-[3] overflow-hidden rounded-[16pt]">
+                <img src="/isv/bts/7.jpeg" className="w-full h-full object-cover"/>
+              </div>
+
+              <div className="flex-[3] overflow-hidden rounded-[16pt]">
+                <img src="/isv/bts/11.jpeg" className="w-full h-full object-cover rounded-bl-[30pt]"/>
+              </div>
+
+            </div>
+
+           {/* Column 2 */}
+           <div className="flex-[1] gap-2 flex flex-col">
+
+             <div className="flex-1 overflow-hidden rounded-[16pt]">
+               <img src="/isv/bts/5.jpeg" className="w-full h-full object-cover"/>               
+             </div>
+
+             <div className="flex-1 overflow-hidden rounded-[16pt]">
+               <img src="/isv/bts/1.jpeg" className="w-full h-full object-cover"/>
+             </div>
+
+             <div className="flex-[1] overflow-hidden rounded-[16pt]">
+               <img src="/isv/bts/8.jpeg" className="w-full h-full object-cover"/>
+             </div>
+             
+
+           </div>
+
+           {/* Column 3 */}
+           <div className="flex-[1] gap-2 flex flex-col">
+
+             <div className="flex-[1] overflow-hidden rounded-[16pt]">
+               <img src="/isv/bts/9.jpeg" className="w-full h-full object-cover"/>
+             </div>
+
+             <div className="flex-[1] overflow-hidden rounded-[16pt]">
+               <img src="/isv/bts/3.jpeg" className="w-full h-full object-cover"/>
+             </div>
+
+             <div className="flex-[1.5] overflow-hidden rounded-[16pt]">
+               <img src="/isv/bts/10.jpeg" className="w-full h-full object-cover"/>
+             </div>
+
+           </div>
+         </div>
+    </section>
+
+ 
     </div>
   );
 };
