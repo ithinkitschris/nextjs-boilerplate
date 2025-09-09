@@ -1132,7 +1132,7 @@ const NycSubway = ({ className }) => {
         gsap.set(section6Text1Ref.current, {
           opacity: 1,
           scale: 2 - (0.8 * easedProgress), // Scales from 2 to 1
-          y: -140 * easedProgress // Moves up 40px as animation progresses
+          y: -120 * easedProgress // Moves up 40px as animation progresses
         });
         
         // Text 2 fades in, moves up, and scales up
@@ -2955,7 +2955,7 @@ const NycSubway = ({ className }) => {
         }}
       />
       {/* Container */}
-      <div className="w-full">
+      <div className="w-full h-full relative">
          
           {/* Text 1 */}
            <div 
@@ -2969,9 +2969,9 @@ const NycSubway = ({ className }) => {
            {/* Text 2 */}
            <div 
              ref={section6Text2Ref}
-             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full md:w-[75%]"
+             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[95%] md:w-[85%] 2xl:w-[75%]"
            >
-               <p className="text-[44pt] md:text-[68pt] font-semibold text-foreground tracking-tight mx-auto mt-8 md:mt-0"
+               <p className="text-[38pt] xl:text-[50pt] 2xl:text-[60pt] font-semibold text-foreground tracking-tight mx-auto mt-8 md:mt-0"
                style={{ lineHeight: '0.9' }}>
                I looked to someone who knew what he was talking about.
                </p>
@@ -3248,7 +3248,7 @@ const NycSubway = ({ className }) => {
       {/* 1st Rounded Rectangle */}
       <div 
         ref={section11OriginalRef}
-        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[29%] h-[70%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden"
+        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[475px] h-[700px] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden"
         style={{ top: '4%' }}
       >
         {/* Text */}
@@ -3283,7 +3283,7 @@ const NycSubway = ({ className }) => {
       {/* 2nd Rounded Rectangle with 3 Text Columns */}
       <div 
         ref={section11NewRef}
-        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[60%] h-[50%] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden pt-11 pr-14 pl-18"
+        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[1000px] h-[500px] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden pt-11 pr-14 pl-18"
       >
         {/* Header Container */}
         <div className="flex items-center mb-4">
