@@ -1000,7 +1000,7 @@ const ISV = ({ className }) => {
           <div 
             className="absolute top-0 left-0 w-full h-full mix-blend-multiply" 
             style={{
-              background: 'linear-gradient(to bottom right, rgba(0,0,0,9) 0%, rgba(0,0,0,0.7) 20%, rgba(0,0,0,0.01) 50%, transparent 100%)'
+              background: 'linear-gradient(to top right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.01) 50%, transparent 100%)'
             }}
           ></div>
           
@@ -1008,13 +1008,18 @@ const ISV = ({ className }) => {
           <div 
             className="absolute top-0 left-0 w-full h-full backdrop-blur-[3pt]" 
             style={{
-              mask: 'linear-gradient(to bottom right, black 0%, black 15%, transparent 40%, transparent 100%)',
-              WebkitMask: 'linear-gradient(to bottom right, black 0%, black 15%, transparent 40%, transparent 100%)'
+              mask: 'linear-gradient(to top right, black 0%, black 15%, transparent 40%, transparent 100%)',
+              WebkitMask: 'linear-gradient(to top right, black 0%, black 15%, transparent 40%, transparent 100%)'
             }}
           ></div>
          
           {/* Header */}
-          <h1 className="absolute top-12 left-16 text-[52pt] leading-[1] tracking-tight text-white font-medium w-[650px]">Singapore Airlines In-Flight Safety Video <span className="mix-blend-soft-light">2025</span></h1>
+          <div className="absolute bottom-10 left-14">
+          <h3 className="text-white ml-1 text-[12pt] mb-1 font-medium mix-blend-soft-light tracking-[0.2rem] mt-0 uppercase">Singapore Airlines</h3>
+          <h1 className="text-[52pt] leading-[1] tracking-tight text-white font-medium w-[450px]">In-Flight Safety Video <span className="mix-blend-soft-light"></span></h1>
+
+          <h3 className="text-white ml-1 text-xl mt-4">Taking travelers through our island home.</h3>
+          </div>
 
           {/* SIA Logo Bottom Corner*/}
           <img src="/isv/logo.png" className="absolute bottom-6 right-6 w-28 h-auto mix-blend-soft-light" />
