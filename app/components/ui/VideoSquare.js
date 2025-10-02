@@ -3,7 +3,15 @@ import { motion } from "framer-motion";
 import OptimizedVideo from './OptimizedVideo';
 import { scaleIn } from '../../constants/animations';
 
-const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, poster }) => {
+const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, poster, link }) => {
+  const handleClick = () => {
+    if (link) {
+      window.open(link, '_blank');
+    } else if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <motion.div
       lang='en'
@@ -12,7 +20,7 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
       animate="show"
       layout
       variants={scaleIn}
-      onClick={onClick}
+      onClick={handleClick}
     >
       {/* Square */}
       <motion.div 

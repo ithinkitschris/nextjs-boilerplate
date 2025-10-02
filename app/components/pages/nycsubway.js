@@ -4107,7 +4107,7 @@ const NycSubway = ({ className }) => {
             
             <div className="flex flex-col items-center mt-4 w-[85%] h-auto rounded-2xl shadow-lg overflow-hidden">
               <video 
-                src="/subway/itinerary.mp4" 
+                src="/subway/Itinerary.mp4" 
                 alt="Summary Itinerary Video" 
                 className="w-full h-auto object-cover scale-[1.03]"
                 style={{ transformOrigin: 'center' }}
