@@ -248,7 +248,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               pointer-events-none mix-blend-overlay z-10"/>
               <video 
                 videoId="currently-expense"
-                src="/expense/cover_1.mp4"
+                src="/expense/cover_2.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
                 autoPlay
                 muted

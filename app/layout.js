@@ -316,8 +316,31 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                           <div className="flex flex-col"> 
                             <p className='text-foreground font-medium'>Latest Iterations</p>
                           </div> 
+                          <div className="flex flex-col gap-3 leading-4 mb-4"> 
+                            <p className='text-foreground font-medium'>v2.14</p>
+                            
+                            <p>Updated the Expense Tracker cover video in the what's new section.</p>
+                            
+                          </div> 
 
+                          <div className="flex flex-col gap-3 leading-4 mb-4"> 
+                            <p className='text-foreground font-medium'>v2.13</p>
+                            
+                            <p>Created SIA ISV 2025 Page, added to what's new section, creative direction carousel and archive grid.</p>
+                            <p>Fixed a case sensitive bug within Subway page where a video was not loading in the production deployment of the site.</p>
+                            
+                          </div> 
 
+                    
+                        </div>
+                        
+                        {/* Right Column */}
+                        <div className="no-scrollbar col-span-full md:col-span-1 overflow-y-auto">
+
+                        <div className="flex flex-col"> 
+                            <p className='text-foreground font-medium mb-4'>Archive</p>
+                          </div>
+                          
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.12</p>
                             
@@ -333,14 +356,6 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                             <p>Completed NYC Subway page – Full GSAP implementation optimized for desktop experience. This was a multi-day endeavor and I am pleasantly surprised with how it turned out. Mobile adaptation will be required and user testing of the scroll behavior will have to be conducted.</p>
                             
                           </div> 
-                        </div>
-                        
-                        {/* Right Column */}
-                        <div className="no-scrollbar col-span-full md:col-span-1 overflow-y-auto">
-
-                        <div className="flex flex-col"> 
-                            <p className='text-foreground font-medium mb-4'>Archive</p>
-                          </div>
 
                           <div className="flex flex-col gap-3 leading-4 mb-4"> 
                             <p className='text-foreground font-medium'>v2.1</p>
