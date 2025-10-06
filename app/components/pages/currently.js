@@ -80,7 +80,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           <div className='ml-1 text-foreground col-span-2 '>
             
             <h3 className={`opacity-60 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
-              An ongoing research and design project based around enhancing the navigation experience within the New York City Subway system by providing precise turn-by-turn navigation within Apple Maps, powered by Ultra-Wideband (UWB) technology.
+              A hypothetical research & design project based around enhancing the navigation experience within the New York City Subway system by providing precise turn-by-turn navigation powered by Ultra-Wideband (UWB) technology within Apple Maps.
             </h3>
           </div>
         </div>
