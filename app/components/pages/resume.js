@@ -392,19 +392,11 @@ export default function Resume({ className = "", toggleWork }) {
             >
 
                 {/* Profile / Desktop Container */}
-                <div ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%] pt-36 mb-32">
-
-                    {/* Image Background */}
-                    <div className="relative rounded-[40pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden min-h-[700px]">
-                        <motion.img 
-                            src='/profile/profilelandscape2.jpg'
-                            className="absolute inset-0 rounded-[40pt] h-full w-full object-cover transition-all z-0"
-                            variants={animateInChild}
-                        />
-                        <div className="absolute inset-0 rounded-[40pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none z-[1]" />
-                        
-                        {/* Headers Container */}
-                        <div ref={headersContainerRef} className="pt-10 pl-18 relative z-10">
+                <div ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%]">
+                    
+                    
+                    {/* Headers Container */}
+                    <div ref={headersContainerRef} className="pt-72">
 
                         {/* Header 1 */}
                         <h1 
@@ -415,25 +407,24 @@ export default function Resume({ className = "", toggleWork }) {
                         </h1>
 
                         {/* Header 2 */}
-                        <h1
-                            className="pt-7 text-5xl font-medium tracking-[-1pt] w-[60%]"
+                        <h2
+                            className="pt-7 text-5xl font-medium tracking-[-1pt] w-[90%]"
                             variants={animateInChild}
                         >
                             <span ref={header2ContainerRef} style={{ display: 'inline-block' }}>
                                 <span ref={header2Ref}>Chris Leow is either a Product Designer with an intimate eye for Art Direction, </span>
                                 <span ref={header2Part2Ref}>or an Art Director with an equally intimate understanding of technology.</span>
                             </span>
-                        </h1>
+                        </h2>
 
                         {/* Header 3 */}
-                        <h2
-                            className="pt-7 text-3xl leading-[1.3] tracking-[-0.5pt] w-[60%]"
+                        <h3
+                            className="pt-7 text-3xl leading-[1.3] tracking-[-0.5pt] w-[90%]"
                             variants={animateInChild}
                         >
                             <span ref={header3Ref}>He could've been a doctor <span className="italic opacity-30">(not really)</span>, and his unhealthy obsession for craft and storytelling would still have wound him through a career leading campaigns for Studio Ghibli and Singapore Airlines, to motion design work for Nike and Uniqlo. </span>
                             <span ref={header3Part2Ref}>Today, he is a Graduate Student at the School of Visual Arts in NYC investigating user agency in Human–AI Interaction for an agentic future.</span>
-                        </h2>
-                        </div>
+                        </h3>
                     </div>
 
                     
@@ -450,10 +441,10 @@ export default function Resume({ className = "", toggleWork }) {
                 </div>
 
                 {/* Bottom Gradient Overlay - hidden */}
-                {/* <div className={`fixed bottom-0 left-0 right-0 h-[45vh] pointer-events-none z-50 transition-opacity duration-300 ease-in-out ${isAtTop ? 'opacity-100' : 'opacity-0'}`}>
+                <div className={`fixed bottom-0 left-0 right-0 h-[45vh] pointer-events-none z-50 transition-opacity duration-300 ease-in-out ${isAtTop ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="absolute inset-0 backdrop-blur-sm" style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 dark:via-background/50 dark:from-background to-transparent" />
-                </div> */}
+                </div>
 
                 {/* Memoji Wave - bottom left with same fade behavior */}
                 {/* <motion.div 
