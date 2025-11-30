@@ -392,7 +392,7 @@ export default function Resume({ className = "", toggleWork }) {
             >
 
                 {/* Profile / Desktop Container */}
-                <div ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%] pt-36">
+                <div ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%] pt-36 mb-32">
 
                     {/* Image Background */}
                     <div className="relative rounded-[40pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden min-h-[700px]">
@@ -404,7 +404,7 @@ export default function Resume({ className = "", toggleWork }) {
                         <div className="absolute inset-0 rounded-[40pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none z-[1]" />
                         
                         {/* Headers Container */}
-                        <div ref={headersContainerRef} className="pt-10 relative z-10">
+                        <div ref={headersContainerRef} className="pt-10 pl-18 relative z-10">
 
                         {/* Header 1 */}
                         <h1 
@@ -450,10 +450,10 @@ export default function Resume({ className = "", toggleWork }) {
                 </div>
 
                 {/* Bottom Gradient Overlay - hidden */}
-                <div className={`fixed bottom-0 left-0 right-0 h-[45vh] pointer-events-none z-50 transition-opacity duration-300 ease-in-out ${isAtTop ? 'opacity-100' : 'opacity-0'}`}>
+                {/* <div className={`fixed bottom-0 left-0 right-0 h-[45vh] pointer-events-none z-50 transition-opacity duration-300 ease-in-out ${isAtTop ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="absolute inset-0 backdrop-blur-sm" style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 dark:via-background/50 dark:from-background to-transparent" />
-                </div>
+                </div> */}
 
                 {/* Memoji Wave - bottom left with same fade behavior */}
                 {/* <motion.div 
