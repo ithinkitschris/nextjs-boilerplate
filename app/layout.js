@@ -112,7 +112,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
   
   return (
     <motion.div 
-      className="fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-50 flex justify-center scale-90 md:scale-105"
+      className="fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-50 flex justify-center "
       animate={{ 
         y: hideFooter ? 60 : 0
       }}
@@ -130,7 +130,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
           rounded-full 
           whitespace-nowrap 
           tracking-tight 
-          text-[9.5pt]
+          text-[10.5pt]
           font-medium
           cursor-pointer
           px-2
@@ -167,7 +167,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
         onClick={toggleChangelog}>
 
         <div className={`inline-flex ml-1.5 ${isWhiteBG ? 'text-black !text-black dark:!text-black font-semibold' : ''}`}>
-          Website built with React and Next.js
+          Built with React and Next.js
           {changelog ? (
               <ChevronDownIcon className={`h-3.5 w-auto ml-1.5 mt-[3px] ${isWhiteBG ? 'text-black !text-black dark:!text-black' : ''}`} />
           ) : (

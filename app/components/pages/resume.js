@@ -1,6 +1,6 @@
 'use client';
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import BestWorkPage3 from "./bestworkv3";
 import MotionDesignPage from "./motion";
@@ -9,14 +9,33 @@ import ContentPage from "./content";
 import ProductPage from "./product";
 import { animateInChild } from "../../constants/animations";
 import Currently from "./currently";
+import Archive from "./archive";
 import ResumeFooter from "../resume/ResumeFooter";
 import { useExperienceState } from "../../hooks/useExperienceState";
 import ResumeSectionHeader from "../resume/ResumeSectionHeader";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Resume({ className = "", toggleWork }) {
     const [timeNyc, setTimeNyc] = useState(null);
     const [timeSg, setTimeSg] = useState(null);
+    const [isAtTop, setIsAtTop] = useState(true);
     const { visibleSections, showStory } = useExperienceState();
+    
+    // GSAP scroll animation refs
+    const bioSectionRef = useRef(null);
+    const headersContainerRef = useRef(null);
+    const header1Ref = useRef(null);
+    const header2ContainerRef = useRef(null);
+    const header2Ref = useRef(null);
+    const header2Part2Ref = useRef(null);
+    const header3Ref = useRef(null);
+    const header3Part2Ref = useRef(null);
 
     const storyContainer = {
         hidden: { opacity: 0 },
@@ -80,6 +99,286 @@ export default function Resume({ className = "", toggleWork }) {
         return () => clearInterval(timer);
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsAtTop(window.scrollY < 1600); // Show gradient when within 100px of top
+        };
+
+        // Check initial scroll position
+        handleScroll();
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // GSAP ScrollTrigger for header fade animation with extended scroll
+    useEffect(() => {
+        // Set initial opacity, position, and scale states
+        if (headersContainerRef.current && header1Ref.current && header2ContainerRef.current && header2Ref.current && header2Part2Ref.current && header3Ref.current && header3Part2Ref.current && bioSectionRef.current) {
+            gsap.set(headersContainerRef.current, { y: 150 });
+            gsap.set(header1Ref.current, { opacity: 1, scale: 1.05, transformOrigin: "left" });
+            gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
+            gsap.set(header2Ref.current, { opacity: 0.2 });
+            gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+            gsap.set(header3Ref.current, { opacity: 0.1 });
+            gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+
+            // Create ScrollTrigger with extended scroll
+            const st = ScrollTrigger.create({
+                trigger: bioSectionRef.current,
+                start: "top top",
+                end: "+=150%", // Extend the scroll area by 100vh
+                pin: true, // Pin the section in place
+                pinSpacing: true,
+                scrub: 1, // Smooth scrubbing tied to scroll position
+                markers: false, // Set to true for debugging
+                anticipatePin: 1,
+                onUpdate: (self) => {
+                    const progress = self.progress; // 0 to 1
+                    
+                    // Phase 1: 0% to 11.33% of scroll (progress 0 to 0.1133)
+                    // Header 1 = 100% → 20%, Header 2 = 20% → 100%, Header 3 = 10% (held)
+                    // Container y-position moves from 150 to 0 (upward 150px)
+                    // Header 1 scale moves from 1.05x to 1x
+                    // Header 2 scale moves from 1x to 1.03x
+                    if (progress <= 0.1133) {
+                        const phase1Progress = progress / 0.1133; // Maps 0->0, 0.1133->1
+                        
+                        // Container: move from y: 150 to y: 0
+                        const containerY = gsap.utils.interpolate(150, 0, phase1Progress);
+                        gsap.set(headersContainerRef.current, { y: containerY });
+                        
+                        // Header 1: fade from 1 to 0.2, scale from 1.05 to 1
+                        const header1Opacity = gsap.utils.interpolate(1, 0.2, phase1Progress);
+                        const header1Scale = gsap.utils.interpolate(1.05, 1, phase1Progress);
+                        gsap.set(header1Ref.current, { opacity: header1Opacity, scale: header1Scale, transformOrigin: "left" });
+                        
+                        // Header 2 Container: scale from 1 to 1.03
+                        const header2ContainerScale = gsap.utils.interpolate(1, 1.03, phase1Progress);
+                        gsap.set(header2ContainerRef.current, { scale: header2ContainerScale, transformOrigin: "left" });
+                        
+                        // Header 2: fade from 0.2 to 1
+                        const header2Opacity = gsap.utils.interpolate(0.2, 1, phase1Progress);
+                        gsap.set(header2Ref.current, { opacity: header2Opacity });
+                        
+                        // Header 2 Part 2: stay at 0.2 opacity
+                        gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+                        
+                        // Header 3: stay at 0.1 opacity (do not fade out)
+                        gsap.set(header3Ref.current, { opacity: 0.1 });
+                        gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+                    }
+                    // Phase 2a1: 11.33% to 22.66% of scroll (progress 0.1133 to 0.2266)
+                    // Header 2 Part 2 remains at 0.2 opacity, Header 2 stays at 1.0
+                    else if (progress <= 0.2266) {
+                        // Container: stay at y: 0 (already at this value from Phase 1)
+                        gsap.set(headersContainerRef.current, { y: 0 });
+                        
+                        // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1)
+                        gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2 Container: stay at scale 1.03 (already at this value from Phase 1)
+                        gsap.set(header2ContainerRef.current, { scale: 1.03, transformOrigin: "left" });
+                        
+                        // Header 2: stay at 1 opacity (already at this value from Phase 1)
+                        gsap.set(header2Ref.current, { opacity: 1 });
+                        
+                        // Header 2 Part 2: stay at 0.2 opacity
+                        gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+                        
+                        // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
+                        gsap.set(header3Ref.current, { opacity: 0.1 });
+                        gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+                    }
+                    // Phase 2a2: 22.66% to 28.33% of scroll (progress 0.2266 to 0.2833)
+                    // Header 2 fades from 1 to 0.2, Header 2 Part 2 fades from 0.2 to 1
+                    else if (progress <= 0.2833) {
+                        const phase2a2Progress = (progress - 0.2266) / 0.0567; // Maps 0.2266->0, 0.2833->1
+                        
+                        // Container: stay at y: 0 (already at this value from Phase 1)
+                        gsap.set(headersContainerRef.current, { y: 0 });
+                        
+                        // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1)
+                        gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2 Container: stay at scale 1.03
+                        gsap.set(header2ContainerRef.current, { scale: 1.03, transformOrigin: "left" });
+                        
+                        // Header 2: fade from 1 to 0.2
+                        const header2Opacity = gsap.utils.interpolate(1, 0.2, phase2a2Progress);
+                        gsap.set(header2Ref.current, { opacity: header2Opacity });
+                        
+                        // Header 2 Part 2: fade from 0.2 to 1
+                        const header2Part2Opacity = gsap.utils.interpolate(0.2, 1, phase2a2Progress);
+                        gsap.set(header2Part2Ref.current, { opacity: header2Part2Opacity });
+                        
+                        // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
+                        gsap.set(header3Ref.current, { opacity: 0.1 });
+                        gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+                    }
+                    // Phase 2a3: 28.33% to 39.66% of scroll (progress 0.2833 to 0.3966)
+                    // Hold/pause - keep end state of Phase 2a2
+                    else if (progress <= 0.3966) {
+                        // Container: stay at y: 0 (already at this value from Phase 1)
+                        gsap.set(headersContainerRef.current, { y: 0 });
+                        
+                        // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1)
+                        gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2 Container: stay at scale 1.03 (end state of Phase 2a2)
+                        gsap.set(header2ContainerRef.current, { scale: 1.03, transformOrigin: "left" });
+                        
+                        // Header 2: stay at 0.2 opacity (end state of Phase 2a2)
+                        gsap.set(header2Ref.current, { opacity: 0.2 });
+                        
+                        // Header 2 Part 2: stay at 1 opacity (end state of Phase 2a2)
+                        gsap.set(header2Part2Ref.current, { opacity: 1 });
+                        
+                        // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
+                        gsap.set(header3Ref.current, { opacity: 0.1 });
+                        gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+                    }
+                    // Phase 2b1: 39.66% to 50.99% of scroll (progress 0.3966 to 0.5099)
+                    // Container moves upward (complete movement), Header 1 fades from 0.2 to 0.1, Header 2 stays at 0.2, Header 2 Part 2 fades from 1 to 0.2
+                    // Header 3 fades from 0.1 to 1, Header 3 Part 2 stays at 0.1
+                    // Header 2 scale moves from 1.03x to 1x
+                    else if (progress <= 0.5099) {
+                        const phase2b1Progress = (progress - 0.3966) / 0.1133; // Maps 0.3966->0, 0.5099->1
+                        
+                        // Container: move from y: 0 to y: -150 (complete upward movement of 150px)
+                        const containerY = gsap.utils.interpolate(0, -150, phase2b1Progress);
+                        gsap.set(headersContainerRef.current, { y: containerY });
+                        
+                        // Header 1: fade from 0.2 to 0.1 (from Phase 1 end state)
+                        const header1Opacity = gsap.utils.interpolate(0.2, 0.1, phase2b1Progress);
+                        gsap.set(header1Ref.current, { opacity: header1Opacity, scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2 Container: scale from 1.03 to 1
+                        const header2ContainerScale = gsap.utils.interpolate(1.03, 1, phase2b1Progress);
+                        gsap.set(header2ContainerRef.current, { scale: header2ContainerScale, transformOrigin: "left" });
+                        
+                        // Header 2: stay at 0.2 opacity
+                        gsap.set(header2Ref.current, { opacity: 0.2 });
+                        
+                        // Header 2 Part 2: fade from 1 to 0.2
+                        const header2Part2Opacity = gsap.utils.interpolate(1, 0.2, phase2b1Progress);
+                        gsap.set(header2Part2Ref.current, { opacity: header2Part2Opacity });
+                        
+                        // Header 3: fade from 0.1 to 1
+                        const header3Opacity = gsap.utils.interpolate(0.1, 1, phase2b1Progress);
+                        gsap.set(header3Ref.current, { opacity: header3Opacity });
+                        
+                        // Header 3 Part 2: stay at 0.1 opacity
+                        gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+                    }
+                    // Phase 2b1pause: 50.99% to 62.32% of scroll (progress 0.5099 to 0.6232)
+                    // Short pause/hold - keep end state of Phase 2b1
+                    else if (progress <= 0.6232) {
+                        // Container: stay at y: -150 (already at this value from Phase 2b1)
+                        gsap.set(headersContainerRef.current, { y: -150 });
+                        
+                        // Header 1: stay at 0.1 opacity and scale 1 (end state of Phase 2b1)
+                        gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2 Container: stay at scale 1 (end state of Phase 2b1)
+                        gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2: stay at 0.2 opacity (end state of Phase 2b1)
+                        gsap.set(header2Ref.current, { opacity: 0.2 });
+                        gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+                        
+                        // Header 3: stay at 1 opacity (end state of Phase 2b1)
+                        gsap.set(header3Ref.current, { opacity: 1 });
+                        
+                        // Header 3 Part 2: stay at 0.1 opacity (end state of Phase 2b1)
+                        gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+                    }
+                    // Phase 2b2: 62.32% to 73.65% of scroll (progress 0.6232 to 0.7365)
+                    // Container holds at -150, Header 1 holds at 0.1, Header 2 holds at 0.2, Header 2 Part 2 holds at 0.2
+                    // Header 3 fades from 1 to 0.2, Header 3 Part 2 fades from 0.1 to 1
+                    else if (progress <= 0.7365) {
+                        const phase2b2Progress = (progress - 0.6232) / 0.1133; // Maps 0.6232->0, 0.7365->1
+                        
+                        // Container: stay at y: -150 (already at this value from Phase 2b1pause)
+                        gsap.set(headersContainerRef.current, { y: -150 });
+                        
+                        // Header 1: stay at 0.1 opacity and scale 1 (already at this value from Phase 2b1pause)
+                        gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2 Container: stay at scale 1 (already at this value from Phase 2b1pause)
+                        gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2: stay at 0.2 opacity (already at this value from Phase 2b1pause)
+                        gsap.set(header2Ref.current, { opacity: 0.2 });
+                        gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+                        
+                        // Header 3: fade from 1 to 0.2
+                        const header3Opacity = gsap.utils.interpolate(1, 0.2, phase2b2Progress);
+                        gsap.set(header3Ref.current, { opacity: header3Opacity });
+                        
+                        // Header 3 Part 2: fade from 0.1 to 1
+                        const header3Part2Opacity = gsap.utils.interpolate(0.1, 1, phase2b2Progress);
+                        gsap.set(header3Part2Ref.current, { opacity: header3Part2Opacity });
+                    }
+                    // Phase 2c: 73.65% to 85% of scroll (progress 0.7365 to 0.85)
+                    // Container holds at -150, Header 1 holds at 0.1, Header 2 holds at 0.2
+                    // Header 3 holds at 0.2, Header 3 Part 2 holds at 1.0
+                    else if (progress <= 0.85) {
+                        
+                        // Container: stay at y: -150 (already at this value from Phase 2b2)
+                        gsap.set(headersContainerRef.current, { y: -150 });
+                        
+                        // Header 1: stay at 0.1 opacity and scale 1 (from Phase 2b2 end state)
+                        gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2 Container: stay at scale 1 (already at this value from Phase 2b2)
+                        gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2: stay at 0.2 opacity (already at these values from Phase 2b2)
+                        gsap.set(header2Ref.current, { opacity: 0.2 });
+                        gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+                        
+                        // Header 3: stay at 0.2 opacity (end state of Phase 2b2)
+                        gsap.set(header3Ref.current, { opacity: 0.2 });
+                        
+                        // Header 3 Part 2: stay at 1 opacity (end state of Phase 2b2)
+                        gsap.set(header3Part2Ref.current, { opacity: 1 });
+                    }
+                    // Phase 3: 85% to 100% of scroll (progress 0.85 to 1)
+                    // Header 3 stays at 0.2, Header 3 Part 2 fades from 1 to 0.2
+                    else {
+                        const phase3Progress = (progress - 0.85) / 0.15; // Maps 0.85->0, 1->1
+                        
+                        // Container: stay at y: -150 (already at this value from Phase 2c)
+                        gsap.set(headersContainerRef.current, { y: -150 });
+                        
+                        // Header 1: stay at 0.1 opacity and scale 1 (from Phase 2c end state)
+                        gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2 Container: stay at scale 1 (already at this value from Phase 2c)
+                        gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
+                        
+                        // Header 2: stay at 0.2 opacity (already at these values from Phase 2c)
+                        gsap.set(header2Ref.current, { opacity: 0.2 });
+                        gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+                        
+                        // Header 3: stay at 0.2 opacity (from Phase 2c end state)
+                        gsap.set(header3Ref.current, { opacity: 0.2 });
+                        
+                        // Header 3 Part 2: fade from 1 to 0.2
+                        const header3Part2Opacity = gsap.utils.interpolate(1, 0.2, phase3Progress);
+                        gsap.set(header3Part2Ref.current, { opacity: header3Part2Opacity });
+                    }
+                }
+            });
+        }
+
+        return () => {
+            // Clean up ScrollTrigger instances
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
+    }, []);
+
     return (
 
         <>
@@ -87,138 +386,114 @@ export default function Resume({ className = "", toggleWork }) {
             {/* Page Container */}
             <motion.div
                 key="page-container"
-                className={`grid grid-cols-1 lg:grid-cols-10 w-full mt-2 md:mt-8
+                className={`grid grid-cols-1 lg:grid-cols-10 w-full -mt-20 md:-mt-36
         items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
         gap-2 text-sm tracking-tight ${className}`}
             >
 
-                {/* Desktop Container */}
-                {/* <div className="col-span-full hidden md:block relative w-full md:h-[500px] lg:h-[550px] xl:h-[600px] 2xl:h-[650px] group scale-100 hover:scale-101 transition-all duration-300">
-                    
-  
-                <div className="rounded-[40pt] h-full w-full relative shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden">
-                    <motion.img 
-                        src='/profile/profilelandscape2.jpg'
-                        className="rounded-3xl h-full w-full object-cover transition-all"
-                        variants={animateInChild}
-                    />
-                    <div className="absolute inset-0 rounded-[40pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                </div>
-                    
-
-                <div className="absolute inset-3 pl-10  text-white group">
-
-                <h1
-                className="pt-7 text-5xl font-medium leading-[1.10] tracking-[]"
-                variants={animateInChild}>
-                Depending on your perspective, Chris is either a Product Designer with an intimate eye for Art Direction, or an Art Director with an equally intimate understanding of technology.
-                </h1>
-
-                <h1
-                    className="pt-7 text-2xl font- leading-[1.3] tracking-[-0.25pt] w-[40%]"
-                    variants={animateInChild}>
-                    Or perhaps job titles never made sense for him, and that it has always been his admittedly unhealthy obsession for craft and storytelling that has wound him through a career from leading brand and marketing campaigns for Studio Ghibli and Singapore Airlines, to motion design work for Nike, Samsung, and Uniqlo.  Today, he is a Graduate Student in Interaction Design at the School of Visual Arts in New York City investigating user agency in Human–AI Interaction for an agentic future.
-                </h1>
-
-
-                <motion.div className={`col-span-1 absolute right-12 bottom-18`}>
-
-
-                    <motion.div
-                    className="text-[#e9e9e9] dark:text-white flex flex-col items-end self-end"
-                    variants={animateInChild}>
-
-
-                    <h1 className="flex items-center justify-center border-1 rounded-full tracking-tight font-medium text-sm -mr-2 px-2 mb-1.5 whitespace-nowrap -ml-2">Senior Creative</h1>
-                    <p><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2 italic">{timeNyc}</span>Based in New York City</p>
-                    <i className="-ml-0.5"><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span>From Singapore</i>
-                        
-                    </motion.div>
-                </motion.div>   
-                </div>
-            </div> */}
-
                 {/* Profile / Desktop Container */}
-                <div key="bio-section" className="col-span-full relative hidden md:block w-[100%]">
+                <div ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%] pt-36">
 
-                    <h1 className="font-medium tracking-[-1.5pt] text-5xl md:text-[52pt] -mt-1 mb-3 col-span-full leading-[95%] w-[80%] md:w-2/3 ml-1.5 md:-ml-0.5">
-                        Who?
-                    </h1>
+                    {/* Image Background */}
+                    <div className="relative rounded-[40pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden min-h-[700px]">
+                        <motion.img 
+                            src='/profile/profilelandscape2.jpg'
+                            className="absolute inset-0 rounded-[40pt] h-full w-full object-cover transition-all z-0"
+                            variants={animateInChild}
+                        />
+                        <div className="absolute inset-0 rounded-[40pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none z-[1]" />
+                        
+                        {/* Headers Container */}
+                        <div ref={headersContainerRef} className="pt-10 relative z-10">
 
+                        {/* Header 1 */}
+                        <h1 
+                            ref={header1Ref}
+                            className="font-medium tracking-[-1pt] text-5xl mb-3 col-span-full"
+                        >
+                            Depending on your perspective<span className="opacity-100 font-light">...</span>
+                        </h1>
 
-                    <h1
-                        className="pt-7 text-5xl font-medium leading-[1.10] tracking-[]"
-                        variants={animateInChild}
-                    >
-                        Depending on your perspective, Chris is either a Product Designer with an intimate eye for Art Direction, or an Art Director with an equally intimate understanding of technology.
-                    </h1>
+                        {/* Header 2 */}
+                        <h1
+                            className="pt-7 text-5xl font-medium tracking-[-1pt] w-[60%]"
+                            variants={animateInChild}
+                        >
+                            <span ref={header2ContainerRef} style={{ display: 'inline-block' }}>
+                                <span ref={header2Ref}>Chris Leow is either a Product Designer with an intimate eye for Art Direction, </span>
+                                <span ref={header2Part2Ref}>or an Art Director with an equally intimate understanding of technology.</span>
+                            </span>
+                        </h1>
 
-                    <h2
-                        className="pt-7 text-2xl leading-[1.3] tracking-[-0.25pt]"
-                        variants={animateInChild}
-                    >
-                        Or perhaps job titles never made sense for him, and that it has always been his admittedly unhealthy obsession for craft and storytelling that has wound him through a career leading brand and marketing campaigns for Studio Ghibli and Singapore Airlines, to motion design work for Nike, Samsung, and Uniqlo.  Today, he is a Graduate Student in Interaction Design at the School of Visual Arts in New York City investigating user agency in Human–AI Interaction for an agentic future.
-                    </h2>
+                        {/* Header 3 */}
+                        <h2
+                            className="pt-7 text-3xl leading-[1.3] tracking-[-0.5pt] w-[60%]"
+                            variants={animateInChild}
+                        >
+                            <span ref={header3Ref}>He could've been a doctor <span className="italic opacity-30">(not really)</span>, and his unhealthy obsession for craft and storytelling would still have wound him through a career leading campaigns for Studio Ghibli and Singapore Airlines, to motion design work for Nike and Uniqlo. </span>
+                            <span ref={header3Part2Ref}>Today, he is a Graduate Student at the School of Visual Arts in NYC investigating user agency in Human–AI Interaction for an agentic future.</span>
+                        </h2>
+                        </div>
+                    </div>
 
-                    <h2
-                        className="pt-7 text-2xl leading-[1.3] tracking-[-0.25pt]"
-                        variants={animateInChild}
-                    >
-                        What a journey it's been.
-                    </h2>
+                    
+
+                    {/* <motion.div
+                    className="text-[#e9e9e9] dark:text-white flex flex-col items-start"
+                    variants={animateInChild}>
+
+                    <p>Based in New York City</p><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2 italic">{timeNyc}</span>
+                    <i className="-ml-0.5">From Singapore</i><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span>
+                        
+                    </motion.div> */}
+            
                 </div>
+
+                {/* Bottom Gradient Overlay - hidden */}
+                <div className={`fixed bottom-0 left-0 right-0 h-[45vh] pointer-events-none z-50 transition-opacity duration-300 ease-in-out ${isAtTop ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="absolute inset-0 backdrop-blur-sm" style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 dark:via-background/50 dark:from-background to-transparent" />
+                </div>
+
+                {/* Memoji Wave - bottom left with same fade behavior */}
+                {/* <motion.div 
+                    className="fixed bottom-0 left-[45%] -translate-x-1/2 pointer-events-none z-50"
+                    style={{ transformOrigin: "bottom" }}
+                    animate={{
+                        opacity: isAtTop ? 1 : 0,
+                        scale: isAtTop ? 1 : 0.5,
+                    }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 600,
+                        damping: 30,
+                        opacity: { duration: 0.1 }
+                    }}
+                >
+                    <Image 
+                        src="/resume/memojiwaveblackbg.svg" 
+                        alt="Memoji wave" 
+                        width={0} 
+                        height={0}
+                        className="w-72 h-72"
+                    />
+                </motion.div> */}
 
                 {/* Currently */}
                 <ResumeSectionHeader
-                    header="August 2025"
-                    title="The highlights."
-                    headerClassName="-mt-20 md:mt-52 mb-1 dark:border-r-1 dark:border-b-1 dark:border-white/30 md:ml-1 bg-background dark:bg-transparent drop-shadow"
-                    titleClassName="tracking-[-1.8pt] md:tracking-[-2.5pt] text-5xl md:text-[58pt] mb-4 md:w-5/6 ml-1.5 md:ml-2"
-                />
-                <Currently className='col-span-full -mt-12' key='currently' toggleWork={toggleWork} />
-
-                {/* Product Design */}
-                <ResumeSectionHeader
-                    header="UI/UX Design"
-                    title="Products of Design."
+                    header="Updated Dec '25"
+                    title="Here are the highlights."
                     headerClassName="md:ml-1"
                 />
-                <ProductPage className='col-span-full -mt-10' key='product' toggleWork={toggleWork} />
+                <Currently className='col-span-full mb-48' key='currently' toggleWork={toggleWork} />
 
-                {/* Creative Direction */}
+                {/* Archive */}
                 <ResumeSectionHeader
-                    header="Creative Direction"
-                    title="Creative Direction."
-                    headerClassName="dark:border-r-1 dark:border-b-1 dark:border-white/30 md:ml-0 bg-background dark:bg-transparent drop-shadow"
+                    header=""
+                    title="Here's everything"
+                    headerClassName="md:ml-1"
                 />
-                <BestWorkPage3 className='col-span-full -mt-[3.2rem]' key='bestwork' toggleWork={toggleWork} />
-
-                {/* Motion Design */}
-                <ResumeSectionHeader
-                    header="Motion Design"
-                    title=".blend-ing .ai, .ae and .js"
-                    headerClassName="ml-2 md:ml-1"
-                    titleClassName="ml-1.5 md:ml-0"
-                />
-                <MotionDesignPage className='col-span-full -mt-10' key='motion' toggleWork={toggleWork} />
-
-                {/* Photography */}
-                <ResumeSectionHeader
-                    header="Photography"
-                    title="Photographic Memories."
-                    headerClassName="mb-3 ml-1"
-                    titleClassName="ml-2 mb-3 w-[50%]"
-                />
-                <PhotographyPage className='col-span-full mt-8' key='photo' toggleWork={toggleWork} />
-
-                {/* Content */}
-                <ResumeSectionHeader
-                    header="Content Creation"
-                    title="Overthinking the Algorithm."
-                    headerClassName="mb-3 ml-1"
-                    titleClassName="ml-2 mb-3 w-[50%]"
-                />
-                <ContentPage className='col-span-full mt-8' key='content' />
+                <Archive className='col-span-full' key='archive' toggleWork={toggleWork} />
 
                 {/* CV */}
                 <ResumeSectionHeader
