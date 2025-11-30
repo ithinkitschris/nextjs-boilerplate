@@ -2637,7 +2637,7 @@ const NycSubway = ({ className }) => {
 
   // Body
   return (
-    <div className={`relative overflow-x-hidden col-span-full -mt-20 md:-mt-36 md:-mx-[8.2%] ${className || ''}`}>
+    <div className={`relative overflow-x-hidden col-span-full -mt-20 md:-mt-36 ${className || ''}`}>
       {/* Scroll Progress Tracker */}
       <ScrollProgressTracker currentSection={currentSection} totalSections={totalSections} sectionRefs={sectionRefs} />
 

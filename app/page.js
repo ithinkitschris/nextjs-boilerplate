@@ -138,7 +138,7 @@ function HomeContent() {
 
           {/* Page Container (Adjust px here) */}
           <motion.div
-            className="col-span-full px-4 md:px-[7%]"  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className="col-span-full px-4 md:px-[2%]"  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 600, damping: 25 }}  

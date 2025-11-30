@@ -101,7 +101,7 @@ export default function Resume({ className = "", toggleWork }) {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsAtTop(window.scrollY < 1600); // Show gradient when within 100px of top
+            setIsAtTop(window.scrollY < 500); // Show gradient when within 100px of top
         };
 
         // Check initial scroll position
@@ -396,33 +396,47 @@ export default function Resume({ className = "", toggleWork }) {
                     
                     
                     {/* Headers Container */}
-                    <div ref={headersContainerRef} className="pt-72">
+                    <div ref={headersContainerRef} className="pt-72 mx-[8%]">
 
                         {/* Header 1 */}
                         <h1 
                             ref={header1Ref}
-                            className="font-medium tracking-[-1pt] text-5xl mb-3 col-span-full"
+                            className="font-medium tracking-[-1pt] text-6xl col-span-full"
                         >
                             Depending on your perspective<span className="opacity-100 font-light">...</span>
                         </h1>
 
                         {/* Header 2 */}
-                        <h2
-                            className="pt-7 text-5xl font-medium tracking-[-1pt] w-[90%]"
-                            variants={animateInChild}
-                        >
-                            <span ref={header2ContainerRef} style={{ display: 'inline-block' }}>
-                                <span ref={header2Ref}>Chris Leow is either a Product Designer with an intimate eye for Art Direction, </span>
-                                <span ref={header2Part2Ref}>or an Art Director with an equally intimate understanding of technology.</span>
-                            </span>
-                        </h2>
+                        <div className="pt-10 flex items-start gap-24">
+                            <h2
+                                className="text-6xl font-medium tracking-[-1pt] flex-1"
+                                variants={animateInChild}
+                            >
+                                <span ref={header2ContainerRef} style={{ display: 'inline-block' }}>
+                                    <span ref={header2Ref}>Chris Leow is either a Product Designer with an intimate eye for Art Direction, </span>
+                                    <span ref={header2Part2Ref}>or an Art Director with an equally intimate understanding of technology.</span>
+                                </span>
+                            </h2>
+                            
+                            {/* Image */}
+                            <div className="rounded-full w-96 h-96 flex-shrink-0 relative shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden">
+                                <motion.img 
+                                    src='/profile/profilelandscape2.jpg'
+                                    className="rounded-full h-full w-full object-cover scale-[115%] origin-top transition-all"
+                                    style={{ objectPosition: '108% 70%' }}
+                                    variants={animateInChild}
+                                    alt="Chris Leow"
+                                />
+                                <div className="absolute inset-0 rounded-full shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                            </div>
+                        </div>
 
                         {/* Header 3 */}
                         <h3
-                            className="pt-7 text-3xl leading-[1.3] tracking-[-0.5pt] w-[90%]"
+                            className="pt-10 text-4xl leading-[1.3] tracking-[-0.5pt] "
                             variants={animateInChild}
                         >
-                            <span ref={header3Ref}>He could've been a doctor <span className="italic opacity-30">(not really)</span>, and his unhealthy obsession for craft and storytelling would still have wound him through a career leading campaigns for Studio Ghibli and Singapore Airlines, to motion design work for Nike and Uniqlo. </span>
+                            <span ref={header3Ref}>He could've been an astronaut <span className="italic opacity-30">(yeah,nah)</span>, and his unhealthy obsession for craft and storytelling would still have wound him through a career leading campaigns for Studio Ghibli and Singapore Airlines, to motion design work for Nike and Uniqlo. </span>
                             <span ref={header3Part2Ref}>Today, he is a Graduate Student at the School of Visual Arts in NYC investigating user agency in Human–AI Interaction for an agentic future.</span>
                         </h3>
                     </div>
@@ -441,14 +455,14 @@ export default function Resume({ className = "", toggleWork }) {
                 </div>
 
                 {/* Bottom Gradient Overlay - hidden */}
-                <div className={`fixed bottom-0 left-0 right-0 h-[45vh] pointer-events-none z-50 transition-opacity duration-300 ease-in-out ${isAtTop ? 'opacity-100' : 'opacity-0'}`}>
+                {/* <div className={`fixed bottom-0 left-0 right-0 h-[45vh] pointer-events-none z-50 transition-opacity duration-300 ease-in-out ${isAtTop ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="absolute inset-0 backdrop-blur-sm" style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 dark:via-background/50 dark:from-background to-transparent" />
-                </div>
+                </div> */}
 
                 {/* Memoji Wave - bottom left with same fade behavior */}
                 {/* <motion.div 
-                    className="fixed bottom-0 left-[45%] -translate-x-1/2 pointer-events-none z-50"
+                    className="fixed bottom-0 left-[42%] -translate-x-1/2 pointer-events-none z-50"
                     style={{ transformOrigin: "bottom" }}
                     animate={{
                         opacity: isAtTop ? 1 : 0,
@@ -471,11 +485,11 @@ export default function Resume({ className = "", toggleWork }) {
                 </motion.div> */}
 
                 {/* Currently */}
-                <ResumeSectionHeader
+                {/* <ResumeSectionHeader
                     header="Updated Dec '25"
                     title="Here are the highlights."
                     headerClassName="md:ml-1"
-                />
+                /> */}
                 <Currently className='col-span-full mb-48' key='currently' toggleWork={toggleWork} />
 
                 {/* Archive */}
