@@ -10,7 +10,10 @@ const MobileNavbar = ({
   toggleWork, 
   setShowWork, 
   toggleTag,
-  isSection13Active // Covers sections 13-15 in NYC Subway page
+  isSection13Active, // Covers sections 13-15 in NYC Subway page
+  scrollToArchive, // Function to scroll to archive section
+  homeOnly = false, // If true, only show Home button
+  onHomeClick // Optional custom handler for Home button click
 }) => {
   const toggleNav = () => {
     if (showNav) {
@@ -19,6 +22,11 @@ const MobileNavbar = ({
       setShowNav(true);
     }
   };
+
+  // Determine if Work button should be shown (only on resume page)
+  const showWorkButton = !homeOnly && selectedWork === 'resume';
+  // Calculate background width based on Work button visibility and expansion state
+  const backgroundWidth = homeOnly ? "5rem" : (showNav ? "16.5rem" : (showWorkButton ? "9.6rem" : "5rem"));
 
   return (
     <>
@@ -33,19 +41,21 @@ const MobileNavbar = ({
           hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
           dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
           ${isSection13Active ? 'text-black !text-black dark:!text-black mix-blend-normal !important' : ''}
-          
-          ${selectedWork === 'resume' 
-            ? '' 
-            : 'border-transparent'
-          }
         `}
         style={{
-          color: isSection13Active ? '#000000' : undefined
+          color: isSection13Active ? '#000000' : undefined,
+          borderColor: (homeOnly || selectedWork === 'resume')
+            ? 'rgba(255, 255, 255, 1)'
+            : 'rgba(255, 255, 255, 0.1)'
         }}
         onClick={() => {
-          toggleWork('resume');
-          setShowWork(false);
-          setShowNav(false);
+          if (onHomeClick) {
+            onHomeClick();
+          } else {
+            toggleWork('resume');
+            setShowWork(false);
+            setShowNav(false);
+          }
         }}
         whileHover={{ scale: 0.96 }}
         transition={{
@@ -57,34 +67,43 @@ const MobileNavbar = ({
         Home
       </motion.button>
 
-      {/* Mobile Work Button */}
-      <motion.button
-        className={`
-          md:hidden fixed top-[1.2rem] left-[50%] ml-1.5 z-50
-          rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
-          font-semibold tracking-[-0.2pt] whitespace-nowrap
-          text-white mix-blend-difference dark:mix-blend-normal
-          transition-colors duration-200
-          hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
-          dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-          ${isSection13Active ? 'text-black mix-blend-normal' : ''}
-          ${selectedTags.length > 0 || (selectedWork && selectedWork !== '' && selectedWork !== 'resume')
-            ? '' 
-            : 'border-transparent'
-          }
-        `}
-        onClick={() => {
-          toggleNav();
-        }}
-        whileHover={{ scale: 0.96 }}
-        transition={{
-          type: "spring",
-          stiffness: 600,
-          damping: 10
-        }}
-      >
-        Work
-      </motion.button>
+      {/* Mobile Work Button - Only show when on resume page */}
+      {showWorkButton && (
+        <motion.button
+          className={`
+            md:hidden fixed top-[1.2rem] left-[50%] ml-1.5 z-50
+            rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
+            font-semibold tracking-[-0.2pt] whitespace-nowrap
+            text-white mix-blend-difference dark:mix-blend-normal
+            transition-colors duration-200
+            hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
+            dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+            ${isSection13Active ? 'text-black mix-blend-normal' : ''}
+          `}
+          style={{
+            borderColor: (selectedTags.length > 0 || (selectedWork && selectedWork !== '' && selectedWork !== 'resume'))
+              ? 'rgba(255, 255, 255, 1)'
+              : 'rgba(255, 255, 255, 0.1)'
+          }}
+          onClick={() => {
+            if (selectedWork === 'resume') {
+              // Scroll to archive section when on resume page
+              scrollToArchive();
+            } else {
+              // Original behavior when not on resume page
+              toggleNav();
+            }
+          }}
+          whileHover={{ scale: 0.96 }}
+          transition={{
+            type: "spring",
+            stiffness: 600,
+            damping: 10
+          }}
+        >
+          Work
+        </motion.button>
+      )}
 
       {/* Mobile Navbar BG */}
       <motion.div
@@ -100,7 +119,7 @@ const MobileNavbar = ({
           transform: "translateX(-50%)",
         }}
         animate={{ 
-          width: showNav ? "16.5rem" : "9.6rem",
+          width: backgroundWidth,
           height: showNav ? "23.5rem" : "2.7rem",
           borderRadius: showNav ? "1.5rem" : "50rem"
         }}
@@ -123,13 +142,13 @@ const MobileNavbar = ({
 
       {/* Mobile Dropdown */}
       <motion.div
-        className={`${showNav ? "ml-8" : "opacity-0 pointer-events-none"}
+        className={`${showNav && !homeOnly ? "ml-8" : "opacity-0 pointer-events-none"}
         relative transition-opacity duration-300`} 
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }}
         variants={animateInChildMobile}
       >
-        {showNav && (
+        {showNav && !homeOnly && (
           <>
             {/* Mobile Dropdown Container */}
             <div className="lg:hidden flex flex-col gap-4 items-left justify-between z-50 fixed w-screen -ml-4 font-medium top-20">

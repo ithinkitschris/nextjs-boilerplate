@@ -147,20 +147,6 @@ export const getOptimizedVideoPath = (originalPath, options = {}) => {
   const optimizedFileName = `${baseName}_${resolution}.${format}`;
   const optimizedPath = `/optimized/${directory}/${optimizedFileName}`;
   
-  // Debug logging
-  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-    console.log('Video Optimizer Debug:', {
-      originalPath,
-      directory,
-      fileName,
-      baseName,
-      optimizedFileName,
-      optimizedPath,
-      format,
-      resolution
-    });
-  }
-  
   return optimizedPath;
 };
 

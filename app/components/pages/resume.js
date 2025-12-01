@@ -1,6 +1,6 @@
 'use client';
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from "react";
 import Image from "next/image";
 import BestWorkPage3 from "./bestworkv3";
 import MotionDesignPage from "./motion";
@@ -13,6 +13,7 @@ import Archive from "./archive";
 import ResumeFooter from "../resume/ResumeFooter";
 import { useExperienceState } from "../../hooks/useExperienceState";
 import ResumeSectionHeader from "../resume/ResumeSectionHeader";
+import { useHideNav } from "../../context/HideNavContext";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -21,11 +22,29 @@ if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function Resume({ className = "", toggleWork }) {
+const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const [timeNyc, setTimeNyc] = useState(null);
     const [timeSg, setTimeSg] = useState(null);
     const [isAtTop, setIsAtTop] = useState(true);
     const { visibleSections, showStory } = useExperienceState();
+    const { setIsArchiveInView, setHideNav, setRandomRotation } = useHideNav();
+    // Initialize cursor position to center horizontally, 75% down vertically on page load
+    const [cursorPosition, setCursorPosition] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return { 
+                x: window.innerWidth / 2, 
+                y: window.innerHeight * 0.75 
+            };
+        }
+        return { x: 0, y: 0 };
+    });
+    const [showImage, setShowImage] = useState(false);
+    const [showISVVideo, setShowISVVideo] = useState(false);
+    const [isHeader2AtOpacity1, setIsHeader2AtOpacity1] = useState(false);
+    const [isHeader2Part2AtOpacity1, setIsHeader2Part2AtOpacity1] = useState(false);
+    const [isHeader3AboveThreshold, setIsHeader3AboveThreshold] = useState(false);
+    const [isMouseOverBioSection, setIsMouseOverBioSection] = useState(false);
+    const [isCursorNearBorder, setIsCursorNearBorder] = useState(false);
     
     // GSAP scroll animation refs
     const bioSectionRef = useRef(null);
@@ -36,6 +55,9 @@ export default function Resume({ className = "", toggleWork }) {
     const header2Part2Ref = useRef(null);
     const header3Ref = useRef(null);
     const header3Part2Ref = useRef(null);
+    const hideISVVideoTimeoutRef = useRef(null);
+    const hideImageTimeoutRef = useRef(null);
+    const archiveSectionRef = useRef(null);
 
     const storyContainer = {
         hidden: { opacity: 0 },
@@ -121,6 +143,7 @@ export default function Resume({ className = "", toggleWork }) {
             gsap.set(header2Ref.current, { opacity: 0.2 });
             gsap.set(header2Part2Ref.current, { opacity: 0.2 });
             gsap.set(header3Ref.current, { opacity: 0.1 });
+            setIsHeader3AboveThreshold(false);
             gsap.set(header3Part2Ref.current, { opacity: 0.1 });
 
             // Create ScrollTrigger with extended scroll
@@ -133,8 +156,23 @@ export default function Resume({ className = "", toggleWork }) {
                 scrub: 1, // Smooth scrubbing tied to scroll position
                 markers: false, // Set to true for debugging
                 anticipatePin: 1,
+                onEnter: () => {
+                    // When entering the trigger, hide navbar and set random rotation
+                    setHideNav(true);
+                    const initialRandomRot = Math.random() * 60 - 20;
+                    setRandomRotation(initialRandomRot);
+                },
                 onUpdate: (self) => {
                     const progress = self.progress; // 0 to 1
+                    
+                    // Hide navbar during header animations (phases 1-3), show after phase 3 completes
+                    if (progress < 1) {
+                        // During phases 1-3 (progress 0 to < 1), hide navbar
+                        setHideNav(true);
+                    } else {
+                        // After phase 3 completes (progress >= 1), show navbar
+                        setHideNav(false);
+                    }
                     
                     // Phase 1: 0% to 11.33% of scroll (progress 0 to 0.1133)
                     // Header 1 = 100% → 20%, Header 2 = 20% → 100%, Header 3 = 10% (held)
@@ -160,12 +198,15 @@ export default function Resume({ className = "", toggleWork }) {
                         // Header 2: fade from 0.2 to 1
                         const header2Opacity = gsap.utils.interpolate(0.2, 1, phase1Progress);
                         gsap.set(header2Ref.current, { opacity: header2Opacity });
+                        setIsHeader2AtOpacity1(header2Opacity >= 0.21);
                         
                         // Header 2 Part 2: stay at 0.2 opacity
                         gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+                        setIsHeader2Part2AtOpacity1(false);
                         
                         // Header 3: stay at 0.1 opacity (do not fade out)
                         gsap.set(header3Ref.current, { opacity: 0.1 });
+                        setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
                     // Phase 2a1: 11.33% to 22.66% of scroll (progress 0.1133 to 0.2266)
@@ -182,12 +223,15 @@ export default function Resume({ className = "", toggleWork }) {
                         
                         // Header 2: stay at 1 opacity (already at this value from Phase 1)
                         gsap.set(header2Ref.current, { opacity: 1 });
+                        setIsHeader2AtOpacity1(true);
                         
                         // Header 2 Part 2: stay at 0.2 opacity
                         gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+                        setIsHeader2Part2AtOpacity1(false);
                         
                         // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
                         gsap.set(header3Ref.current, { opacity: 0.1 });
+                        setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
                     // Phase 2a2: 22.66% to 28.33% of scroll (progress 0.2266 to 0.2833)
@@ -207,13 +251,16 @@ export default function Resume({ className = "", toggleWork }) {
                         // Header 2: fade from 1 to 0.2
                         const header2Opacity = gsap.utils.interpolate(1, 0.2, phase2a2Progress);
                         gsap.set(header2Ref.current, { opacity: header2Opacity });
+                        setIsHeader2AtOpacity1(false);
                         
                         // Header 2 Part 2: fade from 0.2 to 1
                         const header2Part2Opacity = gsap.utils.interpolate(0.2, 1, phase2a2Progress);
                         gsap.set(header2Part2Ref.current, { opacity: header2Part2Opacity });
+                        setIsHeader2Part2AtOpacity1(header2Part2Opacity >= 0.21);
                         
                         // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
                         gsap.set(header3Ref.current, { opacity: 0.1 });
+                        setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
                     // Phase 2a3: 28.33% to 39.66% of scroll (progress 0.2833 to 0.3966)
@@ -233,9 +280,11 @@ export default function Resume({ className = "", toggleWork }) {
                         
                         // Header 2 Part 2: stay at 1 opacity (end state of Phase 2a2)
                         gsap.set(header2Part2Ref.current, { opacity: 1 });
+                        setIsHeader2Part2AtOpacity1(true);
                         
                         // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
                         gsap.set(header3Ref.current, { opacity: 0.1 });
+                        setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
                     // Phase 2b1: 39.66% to 50.99% of scroll (progress 0.3966 to 0.5099)
@@ -263,10 +312,12 @@ export default function Resume({ className = "", toggleWork }) {
                         // Header 2 Part 2: fade from 1 to 0.2
                         const header2Part2Opacity = gsap.utils.interpolate(1, 0.2, phase2b1Progress);
                         gsap.set(header2Part2Ref.current, { opacity: header2Part2Opacity });
+                        setIsHeader2Part2AtOpacity1(false);
                         
                         // Header 3: fade from 0.1 to 1
                         const header3Opacity = gsap.utils.interpolate(0.1, 1, phase2b1Progress);
                         gsap.set(header3Ref.current, { opacity: header3Opacity });
+                        setIsHeader3AboveThreshold(header3Opacity >= 0.4);
                         
                         // Header 3 Part 2: stay at 0.1 opacity
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
@@ -289,6 +340,7 @@ export default function Resume({ className = "", toggleWork }) {
                         
                         // Header 3: stay at 1 opacity (end state of Phase 2b1)
                         gsap.set(header3Ref.current, { opacity: 1 });
+                        setIsHeader3AboveThreshold(true);
                         
                         // Header 3 Part 2: stay at 0.1 opacity (end state of Phase 2b1)
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
@@ -315,6 +367,7 @@ export default function Resume({ className = "", toggleWork }) {
                         // Header 3: fade from 1 to 0.2
                         const header3Opacity = gsap.utils.interpolate(1, 0.2, phase2b2Progress);
                         gsap.set(header3Ref.current, { opacity: header3Opacity });
+                        setIsHeader3AboveThreshold(header3Opacity >= 0.6);
                         
                         // Header 3 Part 2: fade from 0.1 to 1
                         const header3Part2Opacity = gsap.utils.interpolate(0.1, 1, phase2b2Progress);
@@ -340,6 +393,7 @@ export default function Resume({ className = "", toggleWork }) {
                         
                         // Header 3: stay at 0.2 opacity (end state of Phase 2b2)
                         gsap.set(header3Ref.current, { opacity: 0.2 });
+                        setIsHeader3AboveThreshold(false);
                         
                         // Header 3 Part 2: stay at 1 opacity (end state of Phase 2b2)
                         gsap.set(header3Part2Ref.current, { opacity: 1 });
@@ -364,6 +418,7 @@ export default function Resume({ className = "", toggleWork }) {
                         
                         // Header 3: stay at 0.2 opacity (from Phase 2c end state)
                         gsap.set(header3Ref.current, { opacity: 0.2 });
+                        setIsHeader3AboveThreshold(false);
                         
                         // Header 3 Part 2: fade from 1 to 0.2
                         const header3Part2Opacity = gsap.utils.interpolate(1, 0.2, phase3Progress);
@@ -371,13 +426,192 @@ export default function Resume({ className = "", toggleWork }) {
                     }
                 }
             });
+
+            // Check initial progress and set navbar state accordingly
+            // This handles cases where the ScrollTrigger is already in view when created
+            const initialProgress = st.progress;
+            if (initialProgress < 1) {
+                setHideNav(true);
+                const initialRandomRot = Math.random() * 60 - 20;
+                setRandomRotation(initialRandomRot);
+            } else {
+                setHideNav(false);
+            }
         }
 
         return () => {
             // Clean up ScrollTrigger instances
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            // Show navbar when leaving resume page
+            setHideNav(false);
+        };
+    }, [setHideNav]);
+
+    // Mouse tracking for image popup
+    useEffect(() => {
+        // Track cursor position globally so we always have the current position
+        const handleGlobalMouseMove = (e) => {
+            setCursorPosition({ x: e.clientX, y: e.clientY });
+            
+            // Check if cursor is within 50px of the top navbar
+            const navbarThreshold = 200;
+            setIsCursorNearBorder(e.clientY < navbarThreshold);
+        };
+
+        let isInsideBioSection = false;
+
+        const handleBioSectionMouseMove = (e) => {
+            if (!isInsideBioSection) {
+                setIsMouseOverBioSection(true);
+                isInsideBioSection = true;
+            }
+            setCursorPosition({ x: e.clientX, y: e.clientY });
+        };
+
+        const handleMouseEnter = () => {
+            setIsMouseOverBioSection(true);
+            isInsideBioSection = true;
+        };
+
+        const handleMouseLeave = () => {
+            setIsMouseOverBioSection(false);
+            isInsideBioSection = false;
+        };
+
+        // Add global mousemove listener to always track cursor position
+        document.addEventListener('mousemove', handleGlobalMouseMove);
+
+        const bioSection = bioSectionRef.current;
+        if (bioSection) {
+            // Use mousemove on bioSection to capture position when over it
+            bioSection.addEventListener('mousemove', handleBioSectionMouseMove);
+            bioSection.addEventListener('mouseenter', handleMouseEnter);
+            bioSection.addEventListener('mouseleave', handleMouseLeave);
+        }
+
+        return () => {
+            document.removeEventListener('mousemove', handleGlobalMouseMove);
+            if (bioSection) {
+                bioSection.removeEventListener('mousemove', handleBioSectionMouseMove);
+                bioSection.removeEventListener('mouseenter', handleMouseEnter);
+                bioSection.removeEventListener('mouseleave', handleMouseLeave);
+            }
         };
     }, []);
+
+    // Update showImage based on both conditions with delay before hiding
+    useEffect(() => {
+        const isEitherHeaderAtOpacity1 = isHeader2AtOpacity1 || isHeader2Part2AtOpacity1;
+        const shouldShow = isMouseOverBioSection && isEitherHeaderAtOpacity1;
+        
+        // Clear any existing timeout
+        if (hideImageTimeoutRef.current) {
+            clearTimeout(hideImageTimeoutRef.current);
+            hideImageTimeoutRef.current = null;
+        }
+        
+        if (shouldShow) {
+            // Show immediately
+            setShowImage(true);
+        } else {
+            // Hide with 100ms delay
+            hideImageTimeoutRef.current = setTimeout(() => {
+                setShowImage(false);
+                hideImageTimeoutRef.current = null;
+            }, 100);
+        }
+        
+        // Cleanup timeout on unmount
+        return () => {
+            if (hideImageTimeoutRef.current) {
+                clearTimeout(hideImageTimeoutRef.current);
+                hideImageTimeoutRef.current = null;
+            }
+        };
+    }, [isMouseOverBioSection, isHeader2AtOpacity1, isHeader2Part2AtOpacity1]);
+
+    // Update showISVVideo based on header 3 opacity and cursor position with delay before hiding
+    useEffect(() => {
+        // Clear any existing timeout
+        if (hideISVVideoTimeoutRef.current) {
+            clearTimeout(hideISVVideoTimeoutRef.current);
+            hideISVVideoTimeoutRef.current = null;
+        }
+        
+        const shouldShow = isHeader3AboveThreshold && !isCursorNearBorder;
+        
+        if (shouldShow) {
+            // Show immediately
+            setShowISVVideo(true);
+        } else {
+            // Hide with 100ms delay
+            hideISVVideoTimeoutRef.current = setTimeout(() => {
+                setShowISVVideo(false);
+                hideISVVideoTimeoutRef.current = null;
+            }, 100);
+        }
+        
+        // Cleanup timeout on unmount
+        return () => {
+            if (hideISVVideoTimeoutRef.current) {
+                clearTimeout(hideISVVideoTimeoutRef.current);
+                hideISVVideoTimeoutRef.current = null;
+            }
+        };
+    }, [isHeader3AboveThreshold, isCursorNearBorder]);
+
+    // Hide cursor when image or ISV video is showing
+    useEffect(() => {
+        if (showImage || showISVVideo) {
+            document.body.style.cursor = 'none';
+        } else {
+            document.body.style.cursor = '';
+        }
+        
+        return () => {
+            document.body.style.cursor = '';
+        };
+    }, [showImage, showISVVideo]);
+
+    // IntersectionObserver to detect when Archive section is in view
+    useEffect(() => {
+        const archiveSection = archiveSectionRef.current;
+        if (!archiveSection) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    setIsArchiveInView(entry.isIntersecting);
+                });
+            },
+            {
+                threshold: 0.1, // Trigger when 10% of the section is visible
+                rootMargin: '-100px 0px -100px 0px' // Add some margin to trigger slightly before/after
+            }
+        );
+
+        observer.observe(archiveSection);
+
+        return () => {
+            observer.disconnect();
+        };
+    }, [setIsArchiveInView]);
+
+    // Expose scrollToArchive function via ref
+    useImperativeHandle(ref, () => ({
+        scrollToArchive: () => {
+            if (archiveSectionRef.current) {
+                const element = archiveSectionRef.current;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - 100; // 100px offset for navbar
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }));
 
     return (
 
@@ -387,8 +621,8 @@ export default function Resume({ className = "", toggleWork }) {
             <motion.div
                 key="page-container"
                 className={`grid grid-cols-1 lg:grid-cols-10 w-full -mt-20 md:-mt-36
-        items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
-        gap-2 text-sm tracking-tight ${className}`}
+                items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
+                gap-2 text-sm tracking-tight ${className}`}
             >
 
                 {/* Profile / Desktop Container */}
@@ -396,7 +630,7 @@ export default function Resume({ className = "", toggleWork }) {
                     
                     
                     {/* Headers Container */}
-                    <div ref={headersContainerRef} className="pt-72 mx-[8%]">
+                    <div ref={headersContainerRef} className="pt-64">
 
                         {/* Header 1 */}
                         <h1 
@@ -407,98 +641,106 @@ export default function Resume({ className = "", toggleWork }) {
                         </h1>
 
                         {/* Header 2 */}
-                        <div className="pt-10 flex items-start gap-24">
-                            <h2
-                                className="text-6xl font-medium tracking-[-1pt] flex-1"
-                                variants={animateInChild}
+                        <h2
+                            className="pt-10 text-6xl font-medium tracking-[-1pt] "
+                            variants={animateInChild}
+                        >
+                            <span ref={header2ContainerRef} style={{ display: 'inline-block' }}>
+                                <span ref={header2Ref}>Chris Leow is either a Product Designer with an intimate eye for Art Direction, </span>
+                                <span ref={header2Part2Ref}>or an Art Director with an equally intimate understanding of technology.</span>
+                            </span>
+                        </h2>
+
+                        {/* Image */}
+                    <AnimatePresence>
+                        {showImage && (
+                            <motion.div 
+                                className="rounded-full w-64 h-64 fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                style={{
+                                    left: `${cursorPosition.x - 256 - 20}px`, // Place image to the left of cursor with 20px spacing
+                                    top: `${cursorPosition.y - 128}px`,
+                                }}
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0 }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 600,
+                                    damping: 30,
+                                    duration: 0.1
+                                }}
                             >
-                                <span ref={header2ContainerRef} style={{ display: 'inline-block' }}>
-                                    <span ref={header2Ref}>Chris Leow is either a Product Designer with an intimate eye for Art Direction, </span>
-                                    <span ref={header2Part2Ref}>or an Art Director with an equally intimate understanding of technology.</span>
-                                </span>
-                            </h2>
-                            
-                            {/* Image */}
-                            <div className="rounded-full w-96 h-96 flex-shrink-0 relative shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden">
                                 <motion.img 
                                     src='/profile/profilelandscape2.jpg'
-                                    className="rounded-full h-full w-full object-cover scale-[115%] origin-top transition-all"
-                                    style={{ objectPosition: '108% 70%' }}
+                                    className="rounded-full h-full w-full scale-[120%] origin-top object-cover object-[107%_30%] transition-all"
                                     variants={animateInChild}
-                                    alt="Chris Leow"
                                 />
                                 <div className="absolute inset-0 rounded-full shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                            </div>
-                        </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
+                        {/* ISV Video - Disabled for now */}
+                    {/* <AnimatePresence>
+                        {showISVVideo && (
+                            <motion.div 
+                                className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                style={{
+                                    left: `${cursorPosition.x - 350}px`, // Center cursor horizontally (w-96 = 384px, half = 192px)
+                                    top: `${cursorPosition.y + 50}px`, // Center cursor vertically (aspect-video height ~216px, half = 108px)
+                                }}
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0 }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 600,
+                                    damping: 30,
+                                    duration: 0.1
+                                }}
+                            >
+                                <motion.video 
+                                    src="/isv/cover_2.mp4"
+                                    className=" h-full w-full object-cover transition-all"
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    variants={animateInChild}
+                                />
+                                <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                            </motion.div>
+                        )}
+                    </AnimatePresence> */}
 
                         {/* Header 3 */}
                         <h3
                             className="pt-10 text-4xl leading-[1.3] tracking-[-0.5pt] "
                             variants={animateInChild}
                         >
-                            <span ref={header3Ref}>He could've been an astronaut <span className="italic opacity-30">(yeah,nah)</span>, and his unhealthy obsession for craft and storytelling would still have wound him through a career leading campaigns for Studio Ghibli and Singapore Airlines, to motion design work for Nike and Uniqlo. </span>
+                            <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career leading campaigns for Studio Ghibli and Singapore Airlines, to motion design work for Nike and Uniqlo. </span>
                             <span ref={header3Part2Ref}>Today, he is a Graduate Student at the School of Visual Arts in NYC investigating user agency in Human–AI Interaction for an agentic future.</span>
                         </h3>
                     </div>
-
-                    
-
-                    {/* <motion.div
-                    className="text-[#e9e9e9] dark:text-white flex flex-col items-start"
-                    variants={animateInChild}>
-
-                    <p>Based in New York City</p><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2 italic">{timeNyc}</span>
-                    <i className="-ml-0.5">From Singapore</i><span className="text-white/55 text-xxs align-top ml-2 font-base tracking-wide mr-2">{timeSg}</span>
-                        
-                    </motion.div> */}
             
                 </div>
 
-                {/* Bottom Gradient Overlay - hidden */}
-                {/* <div className={`fixed bottom-0 left-0 right-0 h-[45vh] pointer-events-none z-50 transition-opacity duration-300 ease-in-out ${isAtTop ? 'opacity-100' : 'opacity-0'}`}>
-                    <div className="absolute inset-0 backdrop-blur-sm" style={{ maskImage: 'linear-gradient(to top, black, transparent)', WebkitMaskImage: 'linear-gradient(to top, black, transparent)' }} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 dark:via-background/50 dark:from-background to-transparent" />
-                </div> */}
-
-                {/* Memoji Wave - bottom left with same fade behavior */}
-                {/* <motion.div 
-                    className="fixed bottom-0 left-[42%] -translate-x-1/2 pointer-events-none z-50"
-                    style={{ transformOrigin: "bottom" }}
-                    animate={{
-                        opacity: isAtTop ? 1 : 0,
-                        scale: isAtTop ? 1 : 0.5,
-                    }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 600,
-                        damping: 30,
-                        opacity: { duration: 0.1 }
-                    }}
-                >
-                    <Image 
-                        src="/resume/memojiwaveblackbg.svg" 
-                        alt="Memoji wave" 
-                        width={0} 
-                        height={0}
-                        className="w-72 h-72"
-                    />
-                </motion.div> */}
 
                 {/* Currently */}
-                {/* <ResumeSectionHeader
-                    header="Updated Dec '25"
-                    title="Here are the highlights."
+                <ResumeSectionHeader
+                    header="December 2025"
+                    title="What's new?"
                     headerClassName="md:ml-1"
-                /> */}
+                />
                 <Currently className='col-span-full mb-48' key='currently' toggleWork={toggleWork} />
 
                 {/* Archive */}
                 <ResumeSectionHeader
-                    header=""
-                    title="Here's everything"
+                    header="2019 – 2025"
+                    title="All Work"
                     headerClassName="md:ml-1"
                 />
-                <Archive className='col-span-full' key='archive' toggleWork={toggleWork} />
+                <Archive ref={archiveSectionRef} className='col-span-full' key='archive' toggleWork={toggleWork} />
 
                 {/* CV */}
                 <ResumeSectionHeader
@@ -774,4 +1016,8 @@ export default function Resume({ className = "", toggleWork }) {
             </motion.div>
         </>
     );
-}
+});
+
+Resume.displayName = 'Resume';
+
+export default Resume;

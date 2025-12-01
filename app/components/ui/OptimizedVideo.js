@@ -37,19 +37,6 @@ const OptimizedVideo = ({
     ? [...optimizedSources, { src, type: 'video/mp4' }]
     : optimizedSources;
   
-  // Debug logging
-  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-          console.log('OptimizedVideo Debug:', {
-        originalSrc: src,
-        isAlreadyOptimized,
-        primarySrc,
-        optimizedSources,
-        finalSources,
-        useOptimized,
-        fallbackToOriginal
-      });
-  }
-  
   const { isLoaded, hidePoster } = useVideoOptimization(videoRef, primarySrc, {
     autoPlay,
     loop,

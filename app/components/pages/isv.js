@@ -176,17 +176,8 @@ const ISV = ({ className }) => {
     // Force enable pointer events on body and document
     document.body.style.pointerEvents = 'auto';
     document.documentElement.style.pointerEvents = 'auto';
-    
-    // Check for any global event listeners that might be preventing clicks
-    console.log('Document body style:', document.body.style.cssText);
-    console.log('Document element style:', document.documentElement.style.cssText);
-    
-    // Try to remove any potential event listeners
-    document.removeEventListener('click', (e) => e.preventDefault(), true);
-    document.removeEventListener('mousedown', (e) => e.preventDefault(), true);
-    document.removeEventListener('mouseup', (e) => e.preventDefault(), true);
 
-    // Create intersection observer for section tracking
+    // Create intersection observer for section tracking (outside initScrollTriggers for cleanup access)
     const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -212,6 +203,7 @@ const ISV = ({ className }) => {
       }
     });
 
+    // Initialize ScrollTriggers - no timing hacks needed since we're on a separate page
     //#region Initial States
     // Set initial state for section 2 main title
     gsap.set(section2MainTitleRef.current, { opacity: 1, scale: 1 });
@@ -277,6 +269,7 @@ const ISV = ({ className }) => {
       end: "+=150%", // Extended trigger area to accommodate all phases
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      invalidateOnRefresh: true, // Recalculate on resize/refresh
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -488,6 +481,7 @@ const ISV = ({ className }) => {
       end: "+=125%", // Combined phases 1, 2, 3, 4, 5, 6 & 7
       pin: section5Ref.current,
       scrub: 1,
+      invalidateOnRefresh: true, // Recalculate on resize/refresh
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -952,8 +946,18 @@ const ISV = ({ className }) => {
 
     // SECTION 4 - No animation, text is always visible
 
+    // Handle resize events - refresh ScrollTrigger when window size changes
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener('resize', handleResize);
+
+    // Refresh ScrollTrigger after initialization to ensure correct positions
+    ScrollTrigger.refresh();
+
     // CLEANUP FUNCTION
     return () => {
+      window.removeEventListener('resize', handleResize);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       document.body.style.overflow = 'auto';
       document.body.style.pointerEvents = 'auto';
@@ -975,7 +979,7 @@ const ISV = ({ className }) => {
 
   // Body
   return (
-      <div className={`relative overflow-x-hidden col-span-full bg-[#000000] -mx-[8.5%] -mt-36 ${className || ''}`} style={{ pointerEvents: 'auto', zIndex: 1 }}>
+      <div className={`relative overflow-x-hidden col-span-full mt-12 ${className || ''}`} style={{ pointerEvents: 'auto', zIndex: 1 }}>
 
       {/* Section 1 – Cover Page */}
       <section 

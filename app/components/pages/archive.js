@@ -1,39 +1,41 @@
 'use client'
 
-import React, { useState, useMemo } from 'react';
+import React, { useMemo, forwardRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import VideoSquare from '../ui/VideoSquare';
+import ContentPage from './content';
 import { videoData, skillsetData, workTags } from '../../data/videoData';
 import { animateIn } from '../../constants/animations';
+import { useHideNav } from '../../context/HideNavContext';
 
-const Archive = ({ className, toggleWork }) => {
-  const [selectedArchiveTags, setSelectedArchiveTags] = useState(['all']);
+const Archive = forwardRef(({ className, toggleWork }, ref) => {
+  const { archiveSelectedTags, setArchiveSelectedTags } = useHideNav();
 
   // Filter videos based on selected tags
   const filteredVideos = useMemo(() => {
-    if (selectedArchiveTags.includes('all')) {
+    if (archiveSelectedTags.includes('all')) {
       return videoData;
     }
 
-    if (!Array.isArray(selectedArchiveTags)) {
+    if (!Array.isArray(archiveSelectedTags)) {
       return [];
     }
 
     return videoData.filter((video) => 
-      selectedArchiveTags.some((tag) => video.tags.includes(tag))
+      archiveSelectedTags.some((tag) => video.tags.includes(tag))
     );
-  }, [selectedArchiveTags]);
+  }, [archiveSelectedTags]);
 
   // Handle category button click
   const handleCategoryClick = (tag) => {
     if (tag === 'all') {
-      setSelectedArchiveTags(['all']);
+      setArchiveSelectedTags(['all']);
     } else {
       // If clicking the same tag, toggle it off (go back to 'all')
-      if (selectedArchiveTags.includes(tag)) {
-        setSelectedArchiveTags(['all']);
+      if (archiveSelectedTags.includes(tag)) {
+        setArchiveSelectedTags(['all']);
       } else {
-        setSelectedArchiveTags([tag]);
+        setArchiveSelectedTags([tag]);
       }
     }
   };
@@ -62,70 +64,45 @@ const Archive = ({ className, toggleWork }) => {
     return [productWithLabel, creativeWithLabel, ...restWithLabels].filter(Boolean);
   }, []);
 
+  // Check if content tag is selected (Social)
+  const showContentPage = archiveSelectedTags.includes('content') && !archiveSelectedTags.includes('all');
+
   return (
     <motion.div
+      ref={ref}
       className={`font-[family-name:var(--font-geist-sans)] relative w-full mt-8 md:mt-12 ${className}`}
       initial="hidden"
       animate="show"
       variants={animateIn}
     >
-      {/* Category Buttons */}
-      <motion.div
-        className="flex flex-wrap gap-2 mb-6 md:mb-8"
-        variants={animateIn}
-      >
-        {/* All Button */}
-        <motion.button
-          className={`rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
-          font-semibold tracking-[-0.2pt] whitespace-nowrap 
-          dark:mix-blend-normal transition-colors duration-200 hover:text-background 
-          hover:bg-foreground hover:text-white hover:mix-blend-normal hover:border-foreground
-          dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-          ${selectedArchiveTags.includes('all') ? 'border-foreground' : 'border-transparent'}`}
-          whileHover={{ scale: 0.95 }}
-          onClick={() => handleCategoryClick('all')}
-        >
-          All
-        </motion.button>
-
-        {/* Skillset Buttons */}
-        {orderedSkillsets.map(({ tag, label }, index) => (
-          <motion.button
-            key={tag}
-            className={`rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
-            font-semibold tracking-[-0.2pt] whitespace-nowrap 
-            dark:mix-blend-normal transition-colors duration-200 hover:text-background 
-            hover:bg-foreground hover:text-white hover:mix-blend-normal hover:border-foreground
-            dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-            ${selectedArchiveTags.includes(tag) ? 'border-foreground' : 'border-transparent'}`}
-            whileHover={{ scale: 0.95 }}
-            onClick={() => handleCategoryClick(tag)}
-          >
-            {label}
-          </motion.button>
-        ))}
-      </motion.div>
-
-      {/* Video Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 md:gap-2.5">
-        <AnimatePresence>
-          {filteredVideos.map((video) => (
-            <VideoSquare
-              key={video.src}
-              videoSrc={video.src}
-              title={video.title}
-              subheader={video.subheader}
-              poster={video.poster}
-              tags={video.tags}
-              selectedTags={selectedArchiveTags}
-              onClick={() => handleVideoClick(video)}
-            />
-          ))}
-        </AnimatePresence>
-      </div>
+      {showContentPage ? (
+        // Show ContentPage when Social (content) is selected
+        <ContentPage className="col-span-full" />
+      ) : (
+        // Show Video Grid for other tags
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 md:gap-2.5">
+          <AnimatePresence>
+            {filteredVideos.map((video) => (
+              <VideoSquare
+                key={video.src}
+                videoSrc={video.src}
+                title={video.title}
+                subheader={video.subheader}
+                poster={video.poster}
+                tags={video.tags}
+                selectedTags={archiveSelectedTags}
+                link={video.link}
+                onClick={() => handleVideoClick(video)}
+              />
+            ))}
+          </AnimatePresence>
+        </div>
+      )}
     </motion.div>
   );
-};
+});
+
+Archive.displayName = 'Archive';
 
 export default Archive;
 

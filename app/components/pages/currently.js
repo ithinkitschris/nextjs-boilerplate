@@ -1,6 +1,7 @@
 'use client'
 
 import * as motion from "framer-motion/client"
+import { useRouter } from 'next/navigation';
 import CornerArrow from '../ui/CornerArrow.js';
 import OptimizedVideo from '../ui/OptimizedVideo.js';
 
@@ -13,6 +14,8 @@ const animateIn ={
 }
 
 const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
+  const router = useRouter();
+  
   return (
     <motion.div
     className={`font-[family-name:var(--font-geist-sans)] relative w-full mt-4 md:mt-8 grid grid-cols-2 md:grid-cols-8 gap-2 md:gap-4 ${className}`}
@@ -34,7 +37,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           }}
           
           onClick={() => {
-            toggleWork('subway');
+            router.push('/subway');
           }}
           >
 
@@ -166,7 +169,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             damping: 15, 
           }}
           onClick={() => {
-            toggleWork('isv');
+            router.push('/isv');
           }}
           >
             

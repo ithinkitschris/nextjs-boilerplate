@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { useBrowser } from '../../context/BrowserContext';
+import { useHideNav } from '../../context/HideNavContext';
 import { animateIn } from '../../constants/animations';
 
 const DesktopNavbar = ({ 
@@ -14,9 +15,22 @@ const DesktopNavbar = ({
   setShowWork, 
   skillsetData, 
   toggleTag,
-  isWhiteBG // Controls styling when white background sections are active
+  isWhiteBG, // Controls styling when white background sections are active
+  scrollToArchive, // Function to scroll to archive section
+  homeOnly = false, // If true, only show Home button
+  onHomeClick // Optional custom handler for Home button click
 }) => {
   const { browserType } = useBrowser();
+  const { isArchiveInView, archiveSelectedTags, setArchiveSelectedTags } = useHideNav();
+  
+  // Determine if Archive button should be shown (only on resume page)
+  const showArchiveButton = !homeOnly && selectedWork === 'resume';
+  // Determine if we're in Archive control mode
+  const isArchiveMode = !homeOnly && isArchiveInView && selectedWork === 'resume';
+  // Determine if navbar should be expanded (either manually opened or Archive mode)
+  const shouldExpandNav = !homeOnly && (showNav || isArchiveMode);
+  // Calculate navbar width based on Archive button visibility and expansion state
+  const navbarWidth = homeOnly ? '85px' : (shouldExpandNav ? '545px' : (showArchiveButton ? '152px' : '85.5px'));
 
   return (
     <motion.div
@@ -41,7 +55,7 @@ const DesktopNavbar = ({
         style={browserType === 'chrome' ? {
              backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
           } : {}}
-        animate={{ width: showNav ? '567px' : '167px' }}
+        animate={{ width: navbarWidth }}
         transition={{
           type: "spring",
           stiffness: 500,
@@ -51,123 +65,121 @@ const DesktopNavbar = ({
         {/* Button Container - Centers when closed, left-aligned when open */}
         <motion.div
           layout
-          className={`flex gap-1 w-full relative ${showNav ? 'ml-2' : 'ml-4'}`}
+          className={`flex gap-1 w-full relative ${shouldExpandNav ? 'ml-2' : 'ml-4'}`}
           transition={{
             type: "spring",
             stiffness: 500,
             damping: 27.5
           }}
         >
-          {/* Home/Back Button */}
-          <motion.button
-            layout='position'
-            className={`
-              rounded-full ${showNav ? 'px-0.5 py-0' : 'px-3 py-[3px]'} border-1.5
-              ${isWhiteBG ? 'font-medium' : 'font-semibold'} tracking-[-0.2pt] whitespace-nowrap text-sm lg:text-[15px] transition-colors duration-200
-              hover:text-background hover:bg-foreground hover:text-white ${isWhiteBG ? 'border-black' : 'border-foreground'}
-              dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-              ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : ''}
-              
-              ${showNav 
-                ? 'border-transparent' 
-                : selectedWork.includes('resume') 
-                  ? '' 
-                  : 'border-transparent'
-              }
-            `}
-            style={{
-              color: isWhiteBG ? '#000000' : undefined
-            }}
-            whileHover={{ scale: 0.96 }}
-            onClick={() => {
-              if (showNav) {
-                // If nav is open, close it and go back to resume
-                setShowNav(false);
-                toggleWork('resume');
-                setShowWork(false);
-              } else {
-                // If nav is closed, go to resume (home functionality)
-                toggleWork('resume');
-                setShowWork(false);
-                setShowNav(false);
-              }
-            }}
-            animate={{
-              x: showNav ? 0 : 0
-            }}
-            transition={{
-              duration: 0.2,  
-              type: "spring",
-              stiffness: 700, 
-              damping: 15, 
-            }}
-          >
-            {showNav ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-6 h-6"
-              >
-                <path d="m15 18-6-6 6-6"/>
-              </svg>
-            ) : (
-              'Home'
-            )}
-          </motion.button>
+          {/* Home Button - Only show when navbar is collapsed or homeOnly is true */}
+          {(!shouldExpandNav || homeOnly) && (
+            <motion.button
+              layout='position'
+              className={`
+                rounded-full px-3 py-[3px] border-1.5
+                ${isWhiteBG ? 'font-medium' : 'font-semibold'} tracking-[-0.2pt] whitespace-nowrap text-sm lg:text-[15px] transition-colors duration-200
+                hover:text-background hover:bg-foreground hover:text-white ${isWhiteBG ? 'hover:border-black' : 'hover:border-foreground'}
+                dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+                ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : ''}
+              `}
+              style={{
+                color: isWhiteBG ? '#000000' : undefined,
+                borderColor: (homeOnly || selectedWork === 'resume')
+                  ? (isWhiteBG ? 'rgba(0, 0, 0, 1)' : 'var(--foreground)')
+                  : (isWhiteBG 
+                    ? 'rgba(0, 0, 0, 0.1)' 
+                    : 'color-mix(in srgb, var(--foreground) 10%, transparent)')
+              }}
+              whileHover={{ scale: 0.96 }}
+              onClick={() => {
+                if (onHomeClick) {
+                  onHomeClick();
+                } else {
+                  // If nav is closed, go to resume (home functionality)
+                  toggleWork('resume');
+                  setShowWork(false);
+                  setShowNav(false);
+                }
+              }}
+              animate={{
+                x: 0
+              }}
+              transition={{
+                duration: 0.2,  
+                type: "spring",
+                stiffness: 700, 
+                damping: 15, 
+              }}
+            >
+              Home
+            </motion.button>
+          )}
 
-          {/* Work Button */}
-          <motion.button 
-            layout='position'
-            className={`
-              rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
-              font-medium tracking-[-0.2pt] whitespace-nowrap
-              transition-colors duration-200 ${isWhiteBG ? 'border-black' : 'border-foreground'}
-              hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
-              dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-              ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : showNav ? '' : 'text-black dark:text-white dark:hover:bg-transparent'}
-              ${selectedTags.includes('all')
-                ? '' 
-                : 'border-transparent'
-              }
-            `}
-            style={{
-              color: isWhiteBG ? '#000000' : undefined
-            }}
-            whileHover={{ scale: 0.95 }}
-            onClick={() => {
-              if (!showNav) {
-                setShowNav(true);
-                setSelectedTags(['all']);
-                setSelectedWork('');
-              } else {
-                setSelectedTags(['all']);
-                setSelectedWork('');
-              }
-            }}
-            animate={{
-              x: showNav ? 0 : 0
-            }}
-            transition={{
-              duration: 0.2,  
-              type: "spring",
-              stiffness: 700, 
-              damping: 15, 
-            }}
-          >
-            {showNav ? 'All' : 'Archive'}
-          </motion.button>
+          {/* Work Button - Only show when on resume page */}
+          {showArchiveButton && (
+            <motion.button 
+              layout='position'
+              className={`
+                rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
+                font-medium tracking-[-0.2pt] whitespace-nowrap
+                transition-colors duration-200 ${isWhiteBG ? 'hover:border-black' : 'hover:border-foreground'}
+                hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
+                dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+                ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : showNav ? '' : 'text-black dark:text-white dark:hover:bg-transparent'}
+              `}
+              style={{
+                color: isWhiteBG ? '#000000' : undefined,
+                borderColor: (isArchiveMode
+                  ? archiveSelectedTags.includes('all')
+                  : selectedTags.includes('all'))
+                  ? (isWhiteBG ? 'rgba(0, 0, 0, 1)' : 'var(--foreground)')
+                  : (isWhiteBG 
+                    ? 'rgba(0, 0, 0, 0.1)' 
+                    : 'color-mix(in srgb, var(--foreground) 10%, transparent)')
+              }}
+              whileHover={{ scale: 0.95 }}
+              onClick={() => {
+                if (selectedWork === 'resume') {
+                  if (shouldExpandNav) {
+                    // When navbar is expanded, filter archive to show all works
+                    setArchiveSelectedTags(['all']);
+                  } else {
+                    // When navbar is collapsed, scroll to archive section
+                    scrollToArchive();
+                  }
+                } else {
+                  // Original behavior when not on resume page
+                  if (!showNav) {
+                    setShowNav(true);
+                    setSelectedTags(['all']);
+                    setSelectedWork('');
+                  } else {
+                    setSelectedTags(['all']);
+                    setSelectedWork('');
+                  }
+                }
+              }}
+              animate={{
+                x: showNav ? 0 : 0
+              }}
+              transition={{
+                duration: 0.2,  
+                type: "spring",
+                stiffness: 700, 
+                damping: 15, 
+              }}
+            >
+              {shouldExpandNav ? 'All' : 'Work'}
+            </motion.button>
+          )}
 
-          {/* Skillset Buttons - Only show when nav is open */}
+          {/* Skillset Buttons - Only show when nav is open or Archive is in view */}
           <motion.div 
             layout
-            className={`flex gap-2 ${showNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`flex gap-2 ${shouldExpandNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             animate={{ 
-              x: showNav ? 0 : -20
+              x: shouldExpandNav ? 0 : -20
             }}
             transition={{
               type: "spring",
@@ -183,30 +195,51 @@ const DesktopNavbar = ({
                 dark:mix-blend-normal transition-colors duration-200 hover:text-background 
                 hover:bg-foreground hover:text-white hover:mix-blend-normal ${isWhiteBG ? 'hover:border-black' : 'hover:border-foreground'}
                 dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-                ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : ''}
-                ${selectedTags.includes(tag) || (tag === 'photography' && selectedWork === 'photography') || (tag === 'content' && selectedWork === 'content') ? (isWhiteBG ? 'border-black' : 'border-foreground') : 'border-transparent'}`}
+                ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : ''}`}
                 style={{
-                  color: isWhiteBG ? '#000000' : undefined
+                  color: isWhiteBG ? '#000000' : undefined,
+                  borderColor: (isArchiveMode 
+                    ? archiveSelectedTags.includes(tag)
+                    : (selectedTags.includes(tag) || (tag === 'photography' && selectedWork === 'photography') || (tag === 'content' && selectedWork === 'content')))
+                    ? (isWhiteBG ? 'rgba(0, 0, 0, 1)' : 'var(--foreground)')
+                    : (isWhiteBG 
+                      ? 'rgba(0, 0, 0, 0.1)' 
+                      : 'color-mix(in srgb, var(--foreground) 10%, transparent)')
                 }}
                 whileHover={{ scale: 0.9 }}
                 animate={{ 
-                  x: showNav ? 0 : -30
+                  x: shouldExpandNav ? 0 : -30
                 }}
                 transition={{
                   type: "spring",
                   stiffness: 1000,
                   damping: 20,
-                  delay: showNav ? index * 0 : 0
+                  delay: shouldExpandNav ? index * 0 : 0
                 }}
                 onClick={() => {
-                  if (work === 'clear') {
-                    // For skillset filtering, just set the tag and clear selected work
-                    toggleTag(tag);
-                    // setSelectedWork('');
+                  if (isArchiveMode) {
+                    // When in Archive mode, update Archive tags
+                    if (tag === 'all') {
+                      setArchiveSelectedTags(['all']);
+                    } else {
+                      // If clicking the same tag, toggle it off (go back to 'all')
+                      if (archiveSelectedTags.includes(tag)) {
+                        setArchiveSelectedTags(['all']);
+                      } else {
+                        setArchiveSelectedTags([tag]);
+                      }
+                    }
                   } else {
-                    // For specific work pages (like photography, content)
-                    toggleTag(tag);
-                    toggleWork(work);
+                    // Normal mode behavior
+                    if (work === 'clear') {
+                      // For skillset filtering, just set the tag and clear selected work
+                      toggleTag(tag);
+                      // setSelectedWork('');
+                    } else {
+                      // For specific work pages (like photography, content)
+                      toggleTag(tag);
+                      toggleWork(work);
+                    }
                   }
                 }}
               >

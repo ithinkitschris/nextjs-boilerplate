@@ -117,7 +117,7 @@ return (
           ref={(el) => (itemsRef.current[0] = el)}
           
           onClick={() => {
-            toggleWork('subway')
+            router.push('/subway');
           }}
           className="min-w-[90%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-300 rounded-3xl transition cursor-pointer relative hover:scale-98"
           >

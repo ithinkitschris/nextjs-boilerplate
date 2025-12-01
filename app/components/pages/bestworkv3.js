@@ -2,6 +2,7 @@
 
 import * as motion from "framer-motion/client"
 import { useRef, useState, useEffect } from "react";
+import { useRouter } from 'next/navigation';
 import SideContainer from '../ui/SideContainer';
 import CarouselVideo from '../ui/CarouselVideo';
 import CarouselNavButton from '../ui/CarouselNavButton';
@@ -15,7 +16,7 @@ const animateIn ={
 }
 
 const BestWorkPage3 = ({className, toggleWork}) => {
-
+  const router = useRouter();
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -119,7 +120,7 @@ return (
               ref={(el) => (itemsRef.current[0] = el)}
               
               onClick={() => {
-                toggleWork('isv')
+                router.push('/isv');
               }}
               className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
             >

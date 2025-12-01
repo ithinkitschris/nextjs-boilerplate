@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, Suspense, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import PhotographyPage from './components/pages/photography.js';
 import ContentPage from './components/pages/content.js';
@@ -30,9 +30,7 @@ import Nike from './components/pages/nike.js';
 import Iphone from './components/pages/iphone.js';
 import ThreeD from './components/pages/3d.js';
 import Leica from './components/pages/leica.js';
-import NycSubway from './components/pages/nycsubway.js';
 import Bloom from './components/pages/bloom.js';
-import ISV from './components/pages/isv.js';
 import Car from './components/pages/car.js';
 import { useBrowser } from './context/BrowserContext';
 import { useHideNav } from './context/HideNavContext';
@@ -49,7 +47,7 @@ import { skillsetData, workTags } from './data/videoData';
 // Main content component that uses useSearchParams
 function HomeContent() {
   const { browserType } = useBrowser();
-  const { hideNav, randomRotation, toggleHideNav, setIsWhiteBG, isWhiteBG } = useHideNav();
+  const { hideNav, randomRotation, toggleHideNav, setIsWhiteBG, isWhiteBG, setIsArchiveInView, setArchiveSelectedTags } = useHideNav();
 
   // Use custom hooks
   const isMobile = useMobileDetection();
@@ -58,13 +56,23 @@ function HomeContent() {
 
   const [showNav, setShowNav] = useState(false);
   const [showWork, setShowWork] = useState(false);
+  const resumeRef = useRef(null);
 
-  // Reset section 13-15 active state when navigating away from subway page
-  useEffect(() => {
-    if (selectedWork !== 'subway') {
-      setIsWhiteBG(false);
+  // Function to scroll to archive section
+  const scrollToArchive = () => {
+    if (selectedWork === 'resume' && resumeRef.current) {
+      resumeRef.current.scrollToArchive();
     }
-  }, [selectedWork, setIsWhiteBG]);
+  };
+
+
+  // Reset Archive state when navigating away from resume page
+  useEffect(() => {
+    if (selectedWork !== 'resume') {
+      setIsArchiveInView(false);
+      setArchiveSelectedTags(['all']);
+    }
+  }, [selectedWork, setIsArchiveInView, setArchiveSelectedTags]);
 
   return (
     <>
@@ -121,6 +129,7 @@ function HomeContent() {
               skillsetData={skillsetData}
               toggleTag={toggleTag}
               isWhiteBG={isWhiteBG}
+              scrollToArchive={scrollToArchive}
             />
           </motion.div>
 
@@ -134,11 +143,12 @@ function HomeContent() {
             setShowWork={setShowWork}
             toggleTag={toggleTag}
             isSection13Active={isWhiteBG}
+            scrollToArchive={scrollToArchive}
           />
 
           {/* Page Container (Adjust px here) */}
           <motion.div
-            className="col-span-full px-4 md:px-[2%]"  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className="col-span-full mx-[6%]"  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 600, damping: 25 }}  
@@ -169,7 +179,7 @@ function HomeContent() {
                 ) : selectedWork === 'bestwork' ? (
                   <BestWorkPage key="bestwork" className="col-span-full w-full" setSelectedWork={setSelectedWork}/>
                 ) : selectedWork === 'resume' && selectedTags.length === 0 ? (
-                  <Resume key="resume" className="col-span-full" showNav={showNav} toggleWork={toggleWork}/>
+                  <Resume ref={resumeRef} key="resume" className="col-span-full" showNav={showNav} toggleWork={toggleWork}/>
                 ) : selectedWork === 'samsung' ? (
                   <Samsung key="samsung" className="col-span-full"/>
                 ) : selectedWork === 'ghibli' ? (
@@ -204,34 +214,39 @@ function HomeContent() {
                   <Nike key="nike" className="col-span-full"/>
                 ) : selectedWork === 'leica' ? (
                   <Leica key="leica" className="col-span-full"/>
-                ) : selectedWork === 'subway' ? (
-                  <NycSubway key="subway" className="col-span-full -px-[7%]"/>
                 ) : selectedWork === 'bloom' ? (
                   <Bloom key="bloom" className="col-span-full -px-[7%]"/>
-                ) : selectedWork === 'isv' ? (
-                  <ISV key="isv" className="col-span-full -px-[7%]"/>
                 ) : selectedWork === 'car' ? (
                   <Car key="car" className="col-span-full" showNav={showNav}/>
                 ) : (
-                  filteredVideos.map((video) => (
-                    <VideoSquare
-                      key={video.src}
-                      videoSrc={video.src}
-                      title={video.title}
-                      subheader={video.subheader}
-                      poster={video.poster}
-                      link={video.link}
-                      tags={video.tags}
-                      loading="lazy"
-                      selectedTags={selectedTags}
-                      onClick={() => { 
-                        const matchedWork = workTags.find((tag) => video.tags.includes(tag));
-                        if (matchedWork) {
-                          toggleWork(matchedWork);
-                        }
-                      }}
-                    />
-                  ))
+                  filteredVideos.map((video) => {
+                    // Hardcode links for videos with separate pages - check by src path which is most reliable
+                    const isISV = video.src && video.src.includes('/isv/');
+                    const isSubway = video.src && video.src.includes('/subway/');
+                    const videoLink = isISV ? '/isv' : isSubway ? '/subway' : video.link;
+                    
+                    // Don't pass onClick if there's a link - let VideoSquare handle navigation
+                    const handleClick = videoLink ? undefined : () => { 
+                      const matchedWork = workTags.find((tag) => video.tags.includes(tag));
+                      if (matchedWork) {
+                        toggleWork(matchedWork);
+                      }
+                    };
+                    return (
+                      <VideoSquare
+                        key={video.src}
+                        videoSrc={video.src}
+                        title={video.title}
+                        subheader={video.subheader}
+                        poster={video.poster}
+                        link={videoLink}
+                        tags={video.tags}
+                        loading="lazy"
+                        selectedTags={selectedTags}
+                        onClick={handleClick}
+                      />
+                    );
+                  })
                 )}
               </AnimatePresence>
             </motion.div> 

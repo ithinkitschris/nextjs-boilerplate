@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const HideNavContext = createContext();
 
@@ -13,58 +13,12 @@ export const useHideNav = () => {
 };
 
 export const HideNavProvider = ({ children }) => {
-  const [hideNav, setHideNav] = useState(false);
+  const [hideNav, setHideNav] = useState(true);
   const [hideFooter, setHideFooter] = useState(false);
-  const [randomRotation, setRandomRotation] = useState(0);
+  const [randomRotation, setRandomRotation] = useState(() => Math.random() * 60 - 20);
   const [isWhiteBG, setIsWhiteBG] = useState(false);
-
-  // Scroll event listener for hiding/showing nav and footer
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-    const footerThreshold = 20; // Threshold for hiding footer when scrolling down
-    const navThreshold = 80; // Threshold for hiding top navbar when scrolling down
-    const scrollUpThreshold = 15; // Lower threshold for showing nav when scrolling up
-
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          const scrollDelta = Math.abs(currentScrollY - lastScrollY);
-          
-          // Two-step hiding when scrolling down
-          if (currentScrollY > lastScrollY && currentScrollY > 500) {
-            // Step 1: Hide footer at 40px threshold
-            if (scrollDelta > footerThreshold && !hideFooter) {
-              setHideFooter(true);
-            }
-            // Step 2: Hide navbar at 80px threshold
-            if (scrollDelta > navThreshold && !hideNav) {
-              setHideNav(true);
-              const randomRot = Math.random() * 60 - 20;
-              setRandomRotation(randomRot);
-            }
-          } 
-          // Show both when scrolling up
-          else if (currentScrollY < lastScrollY && scrollDelta > scrollUpThreshold) {
-            if (hideNav) {
-              setHideNav(false);
-            }
-            if (hideFooter) {
-              setHideFooter(false);
-            }
-          }
-          
-          lastScrollY = currentScrollY;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [hideNav, hideFooter]);
+  const [isArchiveInView, setIsArchiveInView] = useState(false);
+  const [archiveSelectedTags, setArchiveSelectedTags] = useState(['all']);
 
   const toggleHideNav = () => {
     if (!hideNav) {
@@ -84,7 +38,11 @@ export const HideNavProvider = ({ children }) => {
     setRandomRotation,
     toggleHideNav,
     isWhiteBG,
-    setIsWhiteBG
+    setIsWhiteBG,
+    isArchiveInView,
+    setIsArchiveInView,
+    archiveSelectedTags,
+    setArchiveSelectedTags
   };
 
   return (

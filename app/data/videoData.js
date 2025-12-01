@@ -1,8 +1,8 @@
 // Video data extracted from page.js
 export const videoData = [
-  { src: '/optimized/isv/covergrid.mp4', title:'In-Flight Safety Video', subheader:'Brand Film for Singapore Airlines', poster:'/poster/isv.jpg', tags: ['isv', 'all', 'creative'] },
+  { src: '/optimized/isv/covergrid.mp4', title:'In-Flight Safety Video', subheader:'Brand Film for Singapore Airlines', poster:'/poster/isv.jpg', tags: ['isv', 'all', 'creative'], link: '/isv' },
   { src: '/optimized/bloom/cover_grid.mp4', title:'Bloom', subheader:'UI/UX design – Stanford Longevity Design Challenge First Place.', poster:'/poster/bloom.jpg', tags: ['bloom', 'all', 'product'] },
-  { src: '/optimized/subway/coverportrait_1080p.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'/poster/subwayportrait.jpg', tags: ['subway', 'all', 'product'] },
+  { src: '/optimized/subway/coverportrait_1080p.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'/poster/subwayportrait.jpg', tags: ['subway', 'all', 'product'], link: '/subway' },
   { src: '/optimized/currently/car_1080p.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/car.png', tags: ['car', 'all', 'product'] },
   { src: '/optimized/website/website-cover_1080p.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.png', tags: ['website', 'all', 'product'] },
   { src: '/optimized/Ghibli/ghibli-banner1_1080p.mp4', title:'The World of Studio Ghibli', subheader:'Marketing Campaign for ArtScience Museum', poster:'/poster/ghibli.jpeg', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'] },
@@ -30,8 +30,8 @@ export const videoData = [
 
 // Skillset data for navbar
 export const skillsetData = [
+  { tag: 'product', label: 'Product', work: 'clear' },
   { tag: 'creative', label: 'Creative', work: 'clear' },
-  { tag: 'product', label: 'UI/UX', work: 'clear' },
   { tag: 'motion', label: 'Motion', work: 'clear' },
   { tag: 'edit', label: 'Edit', work: 'clear' },
   { tag: 'photography', label: 'Photo', work: 'clear' },
@@ -41,6 +41,6 @@ export const skillsetData = [
 // Work tags for mapping
 export const workTags = [
   'website', 'cabin', 'cocktail', 'ghibli', 'bbh', 'street', 'shotoniphone', 
-  'kris', 'iphone', '3d', 'car', 'subway', 'bloom', 'isv', 'travelbig', 'lounge', 'hemsaker', 
+  'kris', 'iphone', '3d', 'car', 'bloom', 'travelbig', 'lounge', 'hemsaker', 
   'ispy', 'jolli', 'uniqlo1', 'uniqlo2', 'oneshow', 'samsung', 'leica', 'nike', 'film'
 ]; 

@@ -1,9 +1,24 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import { useRouter } from 'next/navigation';
 import OptimizedVideo from './OptimizedVideo';
 import { scaleIn } from '../../constants/animations';
 
-const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, poster }) => {
+const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, poster, link }) => {
+  const router = useRouter();
+  
+  const handleClick = (e) => {
+    if (link && typeof link === 'string' && link.length > 0) {
+      e.preventDefault();
+      e.stopPropagation();
+      router.push(link);
+      return;
+    }
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <motion.div
       lang='en'
@@ -12,7 +27,7 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
       animate="show"
       layout
       variants={scaleIn}
-      onClick={onClick}
+      onClick={handleClick}
     >
       {/* Square */}
       <motion.div 
@@ -27,10 +42,10 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
         }}
       >
         {/* Corner Arrow */}
-        <button className="hidden lg:block absolute top-2 right-2 z-20 p-0 m-1 scale-100 
+        <div className={`hidden lg:block absolute top-2 right-2 z-20 p-0 m-1 scale-100 
         rounded-full border-1.5 text-white group-hover:text-black border-transparent group-hover:glass group-hover:bg-white/95
         group-hover:border-white group-hover:scale-125 group-hover:m-2 group-hover:p-0.5 group-hover:px-1
-        transition-all duration-200">
+        transition-all duration-200 ${link ? 'pointer-events-none' : ''}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="2 2 20 20"
@@ -45,10 +60,10 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
               className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <path d="M7 7h10v10" />
           </svg>
-        </button>
+        </div>
 
         {/* Text Container */}
-        <div className="absolute inset-0 md:inset-2.5 flex flex-col items-start justify-end pb-2.5 p-3 pl-3.5 w-full mb-1">
+        <div className="absolute inset-0 md:inset-2.5 flex flex-col items-start justify-end pb-2.5 p-3 pl-3.5 w-full mb-1 pointer-events-none">
           {/* Title */}
           <h1 className="tracking-tight font-medium z-30 w-[80%] text-xl 2xl:text-2xl leading-5 2xl:leading-6 mb-1.5 text-white">
             {title}
@@ -73,9 +88,9 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
         <OptimizedVideo
           videoId={`grid-${videoSrc}`}
           src={videoSrc}
-          className={`absolute inset-0 w-full h-full object-cover rounded-2xl 
+          className={`absolute inset-0 w-full h-full object-cover rounded-2xl pointer-events-none
             after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl after:shadow-[inset_0px_0px_3px_0px_rgba(255,255,255,0.2)]`}
-          style={{ clipPath: 'inset(0 round 0.5rem)' }}
+          style={{ clipPath: 'inset(0 round 0.5rem)', pointerEvents: 'none' }}
           poster={poster}
           autoPlay
           muted
