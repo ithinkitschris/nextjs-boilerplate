@@ -30,7 +30,7 @@ const MobileNavbar = ({
   // Determine if Work button should be shown (only on resume page)
   const showWorkButton = !homeOnly && selectedWork === 'resume';
   // Calculate background width based on Work button visibility and expansion state
-  const backgroundWidth = homeOnly ? "5rem" : (showNav ? "16.5rem" : (showWorkButton ? "9.6rem" : "5rem"));
+  const backgroundWidth = homeOnly ? "5rem" : (showNav ? "16.5rem" : (showWorkButton ? "11.5rem" : "5rem"));
 
   return (
     <>
@@ -107,7 +107,7 @@ const MobileNavbar = ({
             damping: 10
           }}
         >
-          Work
+          Archive
         </motion.button>
       )}
 

@@ -78,9 +78,12 @@ export const useVideoNavigation = () => {
       router.push(pathname + newURL);
     }
 
+    // Use immediate scroll for resume to ensure ScrollTrigger initializes correctly
+    // For other pages, smooth scroll is fine
+    const isResume = work === 'resume' || work === 'clear';
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: isResume ? 'auto' : 'smooth',
     });
   }, [router, pathname, getWorkTags]);
 

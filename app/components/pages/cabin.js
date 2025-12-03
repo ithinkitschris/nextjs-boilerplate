@@ -11,9 +11,10 @@ export default function CabinCrewStories({className="", isMobile}) {
     const backgroundGlowRef=useRef(null);
     const bannerVideoRef=useRef(null);
     const { browserType } = useBrowser();
+    const isChrome = browserType === 'chrome';
 
     useEffect(() => {
-        if (isMobile) return;
+        if (isMobile || !isChrome) return;
         
         const backgroundGlow = backgroundGlowRef.current;
         const bannerVideo = bannerVideoRef.current;
@@ -36,7 +37,7 @@ export default function CabinCrewStories({className="", isMobile}) {
           // Clean up the interval on component unmount
           return () => clearInterval(syncInterval);
         }
-      }, []);
+      }, [isMobile, isChrome]);
 
 
 const animateIn ={
@@ -64,17 +65,19 @@ show: {
         variants={animateIn}>
 
             {/* Background Glow */}
+            {isChrome && (
             <video 
             ref={backgroundGlowRef}
             src="/CCS/montageglow_1.mp4" 
-            className={`absolute mt-52 w-screen h-screen/1.2 object-cover rounded-full -z-10 
-            opacity-0 dark:opacity-100 -ml-4 blur-[300px] saturate-200 left-3 ${browserType !== 'chrome' ? '' : ''}`}
+            className="absolute mt-52 w-screen h-screen/1.2 object-cover rounded-full -z-10 
+            opacity-0 dark:opacity-100 -ml-4 blur-[300px] saturate-200 left-3"
             autoPlay 
             muted 
             loop
             playsInline
             loading="lazy"
             ></video>
+            )}
             
             {/* Header */}
             <ProjectHeader 

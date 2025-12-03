@@ -2,14 +2,12 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { PlayIcon, PauseIcon } from '@heroicons/react/24/solid';
-import { useBrowser } from '../../context/BrowserContext';
 import { useVideoContext } from '../../context/VideoContext';
 import { motion } from 'framer-motion';
 
 const GlobalVideoControl = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasVideos, setHasVideos] = useState(false);
-  const { browserType } = useBrowser();
   const { isGloballyPaused, setGlobalPause } = useVideoContext();
   const intervalRef = useRef(null);
 
@@ -169,38 +167,15 @@ const GlobalVideoControl = () => {
         damping: 24
       }}
     >
-      <button
+      <motion.button
         onClick={handleToggle}
-        className={`
-          transition-all
-          rounded-full
-          p-3
-          cursor-pointer
-          bg-background
-          dark:bg-transparent
-          dark:text-white
-          shadow-glass-border-xs md:glass
-          border-transparent
-          md:dark:hover:border-white
-          md:dark:hover:border-1
-          md:hover:bg-foreground
-          md:dark:hover:bg-transparent
-          md:hover:text-white
-          md:hover:scale-95
-          md:dark:border-white/25
-          flex items-center justify-center
-          ${browserType === 'chrome' 
-            ? '' 
-            : browserType === 'safari' 
-              ? 'backdrop-blur-3xl' 
-              : browserType === 'firefox' 
-                ? 'backdrop-blur-3xl' 
-                : 'backdrop-blur-3xl'
-          }
-        `}
-        style={browserType === 'chrome' ? {
-          backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
-        } : {}}
+        className="rounded-full p-3 cursor-pointer bg-white/10 hover:bg-white/20 flex items-center justify-center"
+        whileHover={{ scale: 0.9 }}
+        transition={{
+          type: "spring",
+          stiffness: 700,
+          damping: 10
+        }}
         aria-label={isPlaying ? 'Pause all videos' : 'Play all videos'}
       >
         {isPlaying ? (
@@ -208,7 +183,7 @@ const GlobalVideoControl = () => {
         ) : (
           <PlayIcon className="h-5 w-5" />
         )}
-      </button>
+      </motion.button>
     </motion.div>
   );
 };

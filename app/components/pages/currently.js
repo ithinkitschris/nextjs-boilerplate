@@ -649,7 +649,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               pointer-events-none mix-blend-overlay z-10"/>
               <OptimizedVideo 
                 videoId="currently-expense"
-                src="/expense/cover.mp4"
+                src="/optimized/expense/cover_1.mp4"
                 className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover object-[0%_10%]"
                 autoPlay
                 muted
@@ -1055,7 +1055,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="expense-title-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[22px] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[15pt] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] leading-[1.15] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -1073,7 +1073,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                 zIndex: 9999,
               }}
             >
-              On-device LLM Expense Tracker
+              On-device LLM<br/>Expense Tracker
             </motion.div>
             
             {/* Third tooltip - Description */}
@@ -1114,7 +1114,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="isv-title-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[22px] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[15pt] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] leading-[1.15] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -1132,7 +1132,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                 zIndex: 9999,
               }}
             >
-              Singapore Airlines In-Flight Safety Video
+              Singapore Airlines<br/>In-Flight<br/>Safety Video
             </motion.div>
             
             {/* Third tooltip - Description */}

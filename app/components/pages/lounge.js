@@ -4,14 +4,17 @@ import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
 import Image from 'next/image';
 import ProjectHeader from '../common/ProjectHeader';
+import { useBrowser } from '../../context/BrowserContext';
 
 export default function Lounge({className="", isMobile}) {
     
     const backgroundGlowRef=useRef(null);
     const bannerVideoRef=useRef(null);
+    const { browserType } = useBrowser();
+    const isChrome = browserType === 'chrome';
 
     useEffect(() => {
-        if (isMobile) return;
+        if (isMobile || !isChrome) return;
         
         const backgroundGlow = backgroundGlowRef.current;
         const bannerVideo = bannerVideoRef.current;
@@ -34,7 +37,7 @@ export default function Lounge({className="", isMobile}) {
           // Clean up the interval on component unmount
           return () => clearInterval(syncInterval);
         }
-      }, []);
+      }, [isMobile, isChrome]);
 
 
 const animateIn ={
@@ -62,6 +65,7 @@ show: {
         variants={animateIn}>
 
             {/* Background Glow */}
+            {isChrome && (
             <video 
             ref={backgroundGlowRef}
             src="/lounge/film_1.mp4" 
@@ -72,6 +76,7 @@ show: {
             loop
             playsInline
             ></video>
+            )}
             
             <ProjectHeader 
                 title="SilverKris Lounge"

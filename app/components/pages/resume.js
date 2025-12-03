@@ -114,6 +114,16 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const hideNikeVideoTimeoutRef = useRef(null);
     const hideSamsungVideoTimeoutRef = useRef(null);
     const hideImageTimeoutRef = useRef(null);
+    
+    // Refs for video elements and playback positions
+    const isvVideoRef = useRef(null);
+    const ghibliVideoRef = useRef(null);
+    const nikeVideoRef = useRef(null);
+    const samsungVideoRef = useRef(null);
+    const isvVideoTimeRef = useRef(0);
+    const ghibliVideoTimeRef = useRef(0);
+    const nikeVideoTimeRef = useRef(0);
+    const samsungVideoTimeRef = useRef(0);
     const archiveSectionRef = useRef(null);
 
     const storyContainer = {
@@ -197,8 +207,24 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
     // GSAP ScrollTrigger for header fade animation with extended scroll
     useEffect(() => {
-        // Set initial opacity, position, and scale states
-        if (headersContainerRef.current && header1Ref.current && header2ContainerRef.current && header2Ref.current && header2Part2Ref.current && header3Ref.current && header3Part2Ref.current && bioSectionRef.current) {
+        // Clear any existing ScrollTriggers first (like other pages do)
+        // This prevents interference from ScrollTriggers created by other pages
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+        // Immediately reset scroll to top BEFORE ScrollTrigger initializes
+        // This ensures ScrollTrigger calculates positions correctly when navigating from other pages
+        window.scrollTo({
+            top: 0,
+            behavior: 'auto',
+        });
+
+        // Wait for scroll position to actually be applied and DOM to be ready
+        // Using requestAnimationFrame ensures the browser has processed the scroll change
+        let rafId1, rafId2;
+        
+        const initializeScrollTrigger = () => {
+            // Set initial opacity, position, and scale states
+            if (headersContainerRef.current && header1Ref.current && header2ContainerRef.current && header2Ref.current && header2Part2Ref.current && header3Ref.current && header3Part2Ref.current && bioSectionRef.current) {
             gsap.set(headersContainerRef.current, { y: 150 });
             gsap.set(header1Ref.current, { opacity: 1, scale: 1.05, transformOrigin: "left" });
             gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
@@ -499,9 +525,36 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             } else {
                 setHideNav(false);
             }
-        }
+
+                    // Refresh ScrollTrigger after creation to ensure positions are recalculated correctly
+                    // This is especially important when navigating from other pages
+                    ScrollTrigger.refresh();
+                }
+            };
+        
+        rafId1 = requestAnimationFrame(() => {
+            rafId2 = requestAnimationFrame(() => {
+                // Double-check scroll position is at top before initializing ScrollTrigger
+                // Force reset if it's not (can happen with some browsers/pages)
+                if (window.scrollY !== 0) {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'auto',
+                    });
+                    // Wait one more frame after forced reset
+                    requestAnimationFrame(() => {
+                        initializeScrollTrigger();
+                    });
+                } else {
+                    initializeScrollTrigger();
+                }
+            });
+        });
 
         return () => {
+            // Cancel any pending requestAnimationFrame calls
+            if (rafId1) cancelAnimationFrame(rafId1);
+            if (rafId2) cancelAnimationFrame(rafId2);
             // Clean up ScrollTrigger instances
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
             // Show navbar when leaving resume page
@@ -658,6 +711,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             // Show immediately
             setShowISVVideo(true);
         } else {
+            // Save current playback time before hiding
+            if (isvVideoRef.current) {
+                isvVideoTimeRef.current = isvVideoRef.current.currentTime;
+            }
             // Hide with 100ms delay
             hideISVVideoTimeoutRef.current = setTimeout(() => {
                 setShowISVVideo(false);
@@ -688,6 +745,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             // Show immediately
             setShowGhibliVideo(true);
         } else {
+            // Save current playback time before hiding
+            if (ghibliVideoRef.current) {
+                ghibliVideoTimeRef.current = ghibliVideoRef.current.currentTime;
+            }
             // Hide with 100ms delay
             hideGhibliVideoTimeoutRef.current = setTimeout(() => {
                 setShowGhibliVideo(false);
@@ -718,6 +779,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             // Show immediately
             setShowNikeVideo(true);
         } else {
+            // Save current playback time before hiding
+            if (nikeVideoRef.current) {
+                nikeVideoTimeRef.current = nikeVideoRef.current.currentTime;
+            }
             // Hide with 100ms delay
             hideNikeVideoTimeoutRef.current = setTimeout(() => {
                 setShowNikeVideo(false);
@@ -748,6 +813,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             // Show immediately
             setShowSamsungVideo(true);
         } else {
+            // Save current playback time before hiding
+            if (samsungVideoRef.current) {
+                samsungVideoTimeRef.current = samsungVideoRef.current.currentTime;
+            }
             // Hide with 100ms delay
             hideSamsungVideoTimeoutRef.current = setTimeout(() => {
                 setShowSamsungVideo(false);
@@ -906,6 +975,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     }}
                                 >
                                     <motion.video 
+                                        ref={isvVideoRef}
                                         src="/isv/cover_2.mp4"
                                         className=" h-full w-full object-cover transition-all"
                                         autoPlay
@@ -913,6 +983,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         loop
                                         playsInline
                                         variants={animateInChild}
+                                        onLoadedData={(e) => {
+                                            if (isvVideoTimeRef.current > 0) {
+                                                e.target.currentTime = isvVideoTimeRef.current;
+                                            }
+                                        }}
+                                        onTimeUpdate={(e) => {
+                                            isvVideoTimeRef.current = e.target.currentTime;
+                                        }}
                                     />
                                     <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
                                 </motion.div>
@@ -942,6 +1020,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     }}
                                 >
                                     <motion.video 
+                                        ref={ghibliVideoRef}
                                         src="/Ghibli/banner1.mp4"
                                         className=" h-full w-full object-cover transition-all"
                                         autoPlay
@@ -949,6 +1028,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         loop
                                         playsInline
                                         variants={animateInChild}
+                                        onLoadedData={(e) => {
+                                            if (ghibliVideoTimeRef.current > 0) {
+                                                e.target.currentTime = ghibliVideoTimeRef.current;
+                                            }
+                                        }}
+                                        onTimeUpdate={(e) => {
+                                            ghibliVideoTimeRef.current = e.target.currentTime;
+                                        }}
                                     />
                                     <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
                                 </motion.div>
@@ -978,6 +1065,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     }}
                                 >
                                     <motion.video 
+                                        ref={nikeVideoRef}
                                         src="/nike/cover.mp4"
                                         className=" h-full w-full object-cover transition-all"
                                         autoPlay
@@ -985,6 +1073,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         loop
                                         playsInline
                                         variants={animateInChild}
+                                        onLoadedData={(e) => {
+                                            if (nikeVideoTimeRef.current > 0) {
+                                                e.target.currentTime = nikeVideoTimeRef.current;
+                                            }
+                                        }}
+                                        onTimeUpdate={(e) => {
+                                            nikeVideoTimeRef.current = e.target.currentTime;
+                                        }}
                                     />
                                     <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
                                 </motion.div>
@@ -1014,6 +1110,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     }}
                                 >
                                     <motion.video 
+                                        ref={samsungVideoRef}
                                         src="/samsung/montage.mp4"
                                         className=" h-full w-full object-cover transition-all"
                                         autoPlay
@@ -1021,6 +1118,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         loop
                                         playsInline
                                         variants={animateInChild}
+                                        onLoadedData={(e) => {
+                                            if (samsungVideoTimeRef.current > 0) {
+                                                e.target.currentTime = samsungVideoTimeRef.current;
+                                            }
+                                        }}
+                                        onTimeUpdate={(e) => {
+                                            samsungVideoTimeRef.current = e.target.currentTime;
+                                        }}
                                     />
                                     <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
                                 </motion.div>
@@ -1034,18 +1139,18 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             className="pt-10 text-4xl leading-[1.3] tracking-[-0.5pt]"
                             variants={animateInChild}
                         >
-                            <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career leading campaigns for <span 
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
-                                onMouseEnter={() => setIsHoveringStudioGhibli(true)}
-                                onMouseLeave={() => setIsHoveringStudioGhibli(false)}
-                                onClick={() => toggleWork && toggleWork('ghibli')}
-                            >Studio Ghibli</span> and <Link href="/isv">
+                            <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career leading campaigns for <Link href="/isv">
                                 <span 
                                     className="hover:opacity-80 transition-opacity underline"
                                     onMouseEnter={() => setIsHoveringSingaporeAirlines(true)}
                                     onMouseLeave={() => setIsHoveringSingaporeAirlines(false)}
                                 >Singapore Airlines</span>
-                            </Link>, to motion design work for <span 
+                            </Link> and <span 
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                onMouseEnter={() => setIsHoveringStudioGhibli(true)}
+                                onMouseLeave={() => setIsHoveringStudioGhibli(false)}
+                                onClick={() => toggleWork && toggleWork('ghibli')}
+                            >Studio Ghibli</span>, to motion design work for <span 
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity"
                                 onMouseEnter={() => setIsHoveringNike(true)}
                                 onMouseLeave={() => setIsHoveringNike(false)}
@@ -1074,7 +1179,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 {/* Archive */}
                 <ResumeSectionHeader
                     header="2019 – 2025"
-                    title="All Work"
+                    title="Archive"
                     headerClassName="md:ml-1"
                 />
                 <Archive ref={archiveSectionRef} className='col-span-full' key='archive' toggleWork={toggleWork} />

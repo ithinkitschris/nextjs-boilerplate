@@ -4,13 +4,18 @@ import {useEffect, useRef} from 'react'
 import * as motion from "framer-motion/client"
 import Image from 'next/image';
 import ProjectHeader from '../common/ProjectHeader';
+import { useBrowser } from '../../context/BrowserContext';
 
 export default function Ghibli({className=""}) {
 
 const backgroundGlowRef=useRef(null);
 const bannerVideoRef=useRef(null);
+const { browserType } = useBrowser();
+const isChrome = browserType === 'chrome';
 
 useEffect(() => {
+    if (!isChrome) return;
+    
     const backgroundGlow = backgroundGlowRef.current;
     const bannerVideo = bannerVideoRef.current;
 
@@ -32,7 +37,7 @@ useEffect(() => {
       // Clean up the interval on component unmount
       return () => clearInterval(syncInterval);
     }
-  }, []);
+  }, [isChrome]);
 
 
 const animateIn ={
@@ -60,6 +65,7 @@ const animateIn ={
             
                 
                 {/* Background Glow */}
+                {isChrome && (
                 <video 
                 ref={backgroundGlowRef}
                 src="/Ghibli/banner1.mp4" 
@@ -70,6 +76,7 @@ const animateIn ={
                 loop
                 playsInline
                 ></video>
+                )}
                 
                 {/* Header */}
                 <ProjectHeader 

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as motion from "framer-motion/client";
 import ProjectHeader from '../common/ProjectHeader';
+import { useBrowser } from '../../context/BrowserContext';
 
 export default function Oneshow({ className = "" }) {
   const animateIn = {
@@ -24,8 +25,12 @@ export default function Oneshow({ className = "" }) {
 
   const backgroundGlowRef = useRef(null);
   const bannerVideoRef = useRef(null);
+  const { browserType } = useBrowser();
+  const isChrome = browserType === 'chrome';
 
   useEffect(() => {
+    if (!isChrome) return;
+    
     const backgroundGlow = backgroundGlowRef.current;
     const bannerVideo = bannerVideoRef.current;
 
@@ -49,7 +54,7 @@ export default function Oneshow({ className = "" }) {
       // Clean up the interval on component unmount
       return () => clearInterval(syncInterval);
     }
-  }, []);
+  }, [isChrome]);
 
   return (
     <motion.div
@@ -60,6 +65,7 @@ export default function Oneshow({ className = "" }) {
       variants={animateIn}
     >
       {/* Background Glow */}
+      {isChrome && (
       <video
         ref={backgroundGlowRef}
         src="/oneshow/final.mp4"
@@ -71,6 +77,7 @@ export default function Oneshow({ className = "" }) {
         controls
         playsInline
       ></video>
+      )}
 
       <ProjectHeader 
         title="TBWA One Show Shortlist"
