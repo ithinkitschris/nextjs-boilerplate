@@ -10,6 +10,7 @@ export const VideoProvider = ({ children }) => {
     loadedVideos: 0,
     visibleVideos: 0
   });
+  const [isGloballyPaused, setIsGloballyPaused] = useState(false);
 
   const registerVideo = useCallback((videoId) => {
     setVisibleVideos(prev => {
@@ -67,6 +68,10 @@ export const VideoProvider = ({ children }) => {
     });
   }, []);
 
+  const setGlobalPause = useCallback((paused) => {
+    setIsGloballyPaused(paused);
+  }, []);
+
   return (
     <VideoContext.Provider value={{ 
       visibleVideos, 
@@ -75,7 +80,9 @@ export const VideoProvider = ({ children }) => {
       registerVideo, 
       unregisterVideo,
       markVideoLoaded,
-      markVideoUnloaded
+      markVideoUnloaded,
+      isGloballyPaused,
+      setGlobalPause
     }}>
       {children}
     </VideoContext.Provider>

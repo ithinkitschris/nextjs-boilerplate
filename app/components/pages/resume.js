@@ -58,6 +58,22 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const ghibliVideoXpx = useTransform(ghibliVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
     const ghibliVideoYpx = useTransform(ghibliVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
     
+    // Motion values for Nike video popup animation (reuse cursor tracking)
+    const nikeVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
+    const nikeVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
+    
+    // Convert Nike video motion values to pixel strings for positioning
+    const nikeVideoXpx = useTransform(nikeVideoX, (value) => `${value - 100}px`); // 100px to the right of default
+    const nikeVideoYpx = useTransform(nikeVideoY, (value) => `${value - 370}px`); // 120px up from default
+    
+    // Motion values for Samsung video popup animation (reuse cursor tracking)
+    const samsungVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
+    const samsungVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
+    
+    // Convert Samsung video motion values to pixel strings for positioning
+    const samsungVideoXpx = useTransform(samsungVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
+    const samsungVideoYpx = useTransform(samsungVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
+    
     // Rotation based on movement direction
     const imageRotation = useMotionValue(0);
     const springImageRotation = useSpring(imageRotation, { stiffness: 400, damping: 25 });
@@ -71,8 +87,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const [showImage, setShowImage] = useState(false);
     const [showISVVideo, setShowISVVideo] = useState(false);
     const [showGhibliVideo, setShowGhibliVideo] = useState(false);
+    const [showNikeVideo, setShowNikeVideo] = useState(false);
+    const [showSamsungVideo, setShowSamsungVideo] = useState(false);
     const [isHoveringSingaporeAirlines, setIsHoveringSingaporeAirlines] = useState(false);
     const [isHoveringStudioGhibli, setIsHoveringStudioGhibli] = useState(false);
+    const [isHoveringNike, setIsHoveringNike] = useState(false);
+    const [isHoveringSamsung, setIsHoveringSamsung] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
     const [isHeader2AtOpacity1, setIsHeader2AtOpacity1] = useState(false);
     const [isHeader2Part2AtOpacity1, setIsHeader2Part2AtOpacity1] = useState(false);
@@ -91,6 +111,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const header3Part2Ref = useRef(null);
     const hideISVVideoTimeoutRef = useRef(null);
     const hideGhibliVideoTimeoutRef = useRef(null);
+    const hideNikeVideoTimeoutRef = useRef(null);
+    const hideSamsungVideoTimeoutRef = useRef(null);
     const hideImageTimeoutRef = useRef(null);
     const archiveSectionRef = useRef(null);
 
@@ -682,6 +704,66 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         };
     }, [isHoveringStudioGhibli, isCursorNearBorder]);
 
+    // Update showNikeVideo based on hover over Nike with delay before hiding
+    useEffect(() => {
+        // Clear any existing timeout
+        if (hideNikeVideoTimeoutRef.current) {
+            clearTimeout(hideNikeVideoTimeoutRef.current);
+            hideNikeVideoTimeoutRef.current = null;
+        }
+        
+        const shouldShow = isHoveringNike && !isCursorNearBorder;
+        
+        if (shouldShow) {
+            // Show immediately
+            setShowNikeVideo(true);
+        } else {
+            // Hide with 100ms delay
+            hideNikeVideoTimeoutRef.current = setTimeout(() => {
+                setShowNikeVideo(false);
+                hideNikeVideoTimeoutRef.current = null;
+            }, 100);
+        }
+        
+        // Cleanup timeout on unmount
+        return () => {
+            if (hideNikeVideoTimeoutRef.current) {
+                clearTimeout(hideNikeVideoTimeoutRef.current);
+                hideNikeVideoTimeoutRef.current = null;
+            }
+        };
+    }, [isHoveringNike, isCursorNearBorder]);
+
+    // Update showSamsungVideo based on hover over Samsung with delay before hiding
+    useEffect(() => {
+        // Clear any existing timeout
+        if (hideSamsungVideoTimeoutRef.current) {
+            clearTimeout(hideSamsungVideoTimeoutRef.current);
+            hideSamsungVideoTimeoutRef.current = null;
+        }
+        
+        const shouldShow = isHoveringSamsung && !isCursorNearBorder;
+        
+        if (shouldShow) {
+            // Show immediately
+            setShowSamsungVideo(true);
+        } else {
+            // Hide with 100ms delay
+            hideSamsungVideoTimeoutRef.current = setTimeout(() => {
+                setShowSamsungVideo(false);
+                hideSamsungVideoTimeoutRef.current = null;
+            }, 100);
+        }
+        
+        // Cleanup timeout on unmount
+        return () => {
+            if (hideSamsungVideoTimeoutRef.current) {
+                clearTimeout(hideSamsungVideoTimeoutRef.current);
+                hideSamsungVideoTimeoutRef.current = null;
+            }
+        };
+    }, [isHoveringSamsung, isCursorNearBorder]);
+
     // Hide cursor when image is showing (but not for video popups)
     useEffect(() => {
         if (showImage) {
@@ -875,22 +957,105 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         document.body
                     )}
 
+                        {/* Nike Video - Rendered via portal outside pinned container */}
+                    {isMounted && createPortal(
+                        <AnimatePresence>
+                            {showNikeVideo && (
+                                <motion.div 
+                                    className="rounded-[20pt] w-48 aspect-[9/16] fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                    style={{
+                                        left: nikeVideoXpx,
+                                        top: nikeVideoYpx,
+                                    }}
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0 }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 600,
+                                        damping: 30,
+                                        duration: 0.1
+                                    }}
+                                >
+                                    <motion.video 
+                                        src="/nike/cover.mp4"
+                                        className=" h-full w-full object-cover transition-all"
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        variants={animateInChild}
+                                    />
+                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>,
+                        document.body
+                    )}
+
+                        {/* Samsung Video - Rendered via portal outside pinned container */}
+                    {isMounted && createPortal(
+                        <AnimatePresence>
+                            {showSamsungVideo && (
+                                <motion.div 
+                                    className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                    style={{
+                                        left: samsungVideoXpx,
+                                        top: samsungVideoYpx,
+                                    }}
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0 }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 600,
+                                        damping: 30,
+                                        duration: 0.1
+                                    }}
+                                >
+                                    <motion.video 
+                                        src="/samsung/montage.mp4"
+                                        className=" h-full w-full object-cover transition-all"
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        variants={animateInChild}
+                                    />
+                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>,
+                        document.body
+                    )}
+
                         {/* Header 3 */}
                         <h3
                             className="pt-10 text-4xl leading-[1.3] tracking-[-0.5pt]"
                             variants={animateInChild}
                         >
                             <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career leading campaigns for <span 
-                                className="underline"
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
                                 onMouseEnter={() => setIsHoveringStudioGhibli(true)}
                                 onMouseLeave={() => setIsHoveringStudioGhibli(false)}
+                                onClick={() => toggleWork && toggleWork('ghibli')}
                             >Studio Ghibli</span> and <Link href="/isv">
                                 <span 
                                     className="hover:opacity-80 transition-opacity underline"
                                     onMouseEnter={() => setIsHoveringSingaporeAirlines(true)}
                                     onMouseLeave={() => setIsHoveringSingaporeAirlines(false)}
                                 >Singapore Airlines</span>
-                            </Link>, to motion design work for <span className="underline">Nike</span> and <span className="underline">Uniqlo</span>. </span>
+                            </Link>, to motion design work for <span 
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                onMouseEnter={() => setIsHoveringNike(true)}
+                                onMouseLeave={() => setIsHoveringNike(false)}
+                                onClick={() => toggleWork && toggleWork('nike')}
+                            >Nike</span> and <span 
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                onMouseEnter={() => setIsHoveringSamsung(true)}
+                                onMouseLeave={() => setIsHoveringSamsung(false)}
+                                onClick={() => toggleWork && toggleWork('samsung')}
+                            >Samsung</span>. </span>
                             <span ref={header3Part2Ref}>Today, he is a Graduate Student at the School of Visual Arts in NYC investigating user agency in Human–AI Interaction for an agentic future.</span>
                         </h3>
                     </div>
@@ -1105,7 +1270,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     <motion.h1 className="text-lg lg:text-xl font-medium tracking-tight mb-4" variants={storyElement}>What?</motion.h1>
                                     <motion.div variants={storyElement}>
                                         <p className="mb-3 text-sm tracking-normal leading-[1.4rem]">As a multidisciplinary creative and former Creative Lead at the ArtScience Museum in Singapore,
-                                            he finds himself with eight of his best years of experience in graphic design and advertising. In that time, he honed his craft at two of Singapore’s leading creative agencies, BBH and TBWA, where he served as Art Director on multiple brand campaigns for Singapore Airlines and had the privilege of working with global brands like IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo.</p>
+                                            he finds himself with eight of his best years of experience in graphic design and advertising. In that time, he honed his craft at two of Singapore's leading creative agencies, BBH and TBWA, where he served as Art Director on multiple brand campaigns for Singapore Airlines and had the privilege of working with global brands like IKEA, Samsung, Nike, Studio Ghibli, and Uniqlo.</p>
 
                                         <p className="mt-4 text-sm tracking-normal leading-[1.4rem]">Now, seeking to further his craft, Chris dedicates himself to studying human-centered design principles <span className="italic mr-0.5">(debating them, honestly)</span> as he pursues a Master’s in Interaction Design.</p>
 

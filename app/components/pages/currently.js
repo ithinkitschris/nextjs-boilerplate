@@ -20,6 +20,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   const router = useRouter();
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [isBloomTooltipVisible, setIsBloomTooltipVisible] = useState(false);
+  const [isExpenseTooltipVisible, setIsExpenseTooltipVisible] = useState(false);
+  const [isIsvTooltipVisible, setIsIsvTooltipVisible] = useState(false);
   
   // Motion values for physics-based animation - First tooltip (title)
   const cursorX = useMotionValue(0);
@@ -73,6 +75,58 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   const springBloomSubtitleRotation = useSpring(bloomSubtitleRotation, { stiffness: 350, damping: 30 });
   const springBloomDescRotation = useSpring(bloomDescRotation, { stiffness: 300, damping: 35 });
   
+  // Expense tooltip motion values - Three bubbles with independent physics
+  const expenseCursorX = useMotionValue(0);
+  const expenseCursorY = useMotionValue(0);
+  const expenseTitleX = useSpring(expenseCursorX, { stiffness: 300, damping: 30 });
+  const expenseTitleY = useSpring(expenseCursorY, { stiffness: 300, damping: 30 });
+  const expenseSubtitleX = useSpring(expenseCursorX, { stiffness: 250, damping: 35 });
+  const expenseSubtitleY = useSpring(expenseCursorY, { stiffness: 250, damping: 35 });
+  const expenseDescX = useSpring(expenseCursorX, { stiffness: 220, damping: 40 });
+  const expenseDescY = useSpring(expenseCursorY, { stiffness: 220, damping: 40 });
+  
+  // Convert Expense motion values to pixel strings
+  const expenseTitleXpx = useTransform(expenseTitleX, (value) => `${value}px`);
+  const expenseTitleYpx = useTransform(expenseTitleY, (value) => `${value}px`);
+  const expenseSubtitleXpx = useTransform(expenseSubtitleX, (value) => `${value}px`);
+  const expenseSubtitleYpx = useTransform(expenseSubtitleY, (value) => `${value + 35}px`);
+  const expenseDescXpx = useTransform(expenseDescX, (value) => `${value}px`);
+  const expenseDescYpx = useTransform(expenseDescY, (value) => `${value + 65}px`);
+  
+  // Expense rotations - Independent
+  const expenseTitleRotation = useMotionValue(0);
+  const expenseSubtitleRotation = useMotionValue(0);
+  const expenseDescRotation = useMotionValue(0);
+  const springExpenseTitleRotation = useSpring(expenseTitleRotation, { stiffness: 400, damping: 25 });
+  const springExpenseSubtitleRotation = useSpring(expenseSubtitleRotation, { stiffness: 350, damping: 30 });
+  const springExpenseDescRotation = useSpring(expenseDescRotation, { stiffness: 300, damping: 35 });
+  
+  // ISV tooltip motion values - Three bubbles with independent physics
+  const isvCursorX = useMotionValue(0);
+  const isvCursorY = useMotionValue(0);
+  const isvTitleX = useSpring(isvCursorX, { stiffness: 300, damping: 30 });
+  const isvTitleY = useSpring(isvCursorY, { stiffness: 300, damping: 30 });
+  const isvSubtitleX = useSpring(isvCursorX, { stiffness: 250, damping: 35 });
+  const isvSubtitleY = useSpring(isvCursorY, { stiffness: 250, damping: 35 });
+  const isvDescX = useSpring(isvCursorX, { stiffness: 220, damping: 40 });
+  const isvDescY = useSpring(isvCursorY, { stiffness: 220, damping: 40 });
+  
+  // Convert ISV motion values to pixel strings
+  const isvTitleXpx = useTransform(isvTitleX, (value) => `${value}px`);
+  const isvTitleYpx = useTransform(isvTitleY, (value) => `${value}px`);
+  const isvSubtitleXpx = useTransform(isvSubtitleX, (value) => `${value}px`);
+  const isvSubtitleYpx = useTransform(isvSubtitleY, (value) => `${value + 35}px`);
+  const isvDescXpx = useTransform(isvDescX, (value) => `${value}px`);
+  const isvDescYpx = useTransform(isvDescY, (value) => `${value + 65}px`);
+  
+  // ISV rotations - Independent
+  const isvTitleRotation = useMotionValue(0);
+  const isvSubtitleRotation = useMotionValue(0);
+  const isvDescRotation = useMotionValue(0);
+  const springIsvTitleRotation = useSpring(isvTitleRotation, { stiffness: 400, damping: 25 });
+  const springIsvSubtitleRotation = useSpring(isvSubtitleRotation, { stiffness: 350, damping: 30 });
+  const springIsvDescRotation = useSpring(isvDescRotation, { stiffness: 300, damping: 35 });
+  
   // Track previous position for velocity calculation
   const prevPosRef = useRef({ x: 0, y: 0 });
   const lastUpdateRef = useRef(Date.now());
@@ -80,6 +134,12 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   const bloomPrevPosRef = useRef({ x: 0, y: 0 });
   const bloomLastUpdateRef = useRef(Date.now());
   const bloomHideTimeoutRef = useRef(null);
+  const expensePrevPosRef = useRef({ x: 0, y: 0 });
+  const expenseLastUpdateRef = useRef(Date.now());
+  const expenseHideTimeoutRef = useRef(null);
+  const isvPrevPosRef = useRef({ x: 0, y: 0 });
+  const isvLastUpdateRef = useRef(Date.now());
+  const isvHideTimeoutRef = useRef(null);
   
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -89,6 +149,12 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
       }
       if (bloomHideTimeoutRef.current) {
         clearTimeout(bloomHideTimeoutRef.current);
+      }
+      if (expenseHideTimeoutRef.current) {
+        clearTimeout(expenseHideTimeoutRef.current);
+      }
+      if (isvHideTimeoutRef.current) {
+        clearTimeout(isvHideTimeoutRef.current);
       }
     };
   }, []);
@@ -226,6 +292,136 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
     bloomPrevPosRef.current = { x: e.clientX, y: e.clientY };
   };
   
+  const handleExpenseMouseMove = (e) => {
+    if (typeof window === 'undefined') return;
+    
+    const tooltipOffset = 20;
+    const tooltipWidth = 350;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    const now = Date.now();
+    const deltaTime = Math.max(now - expenseLastUpdateRef.current, 1);
+    expenseLastUpdateRef.current = now;
+    
+    let targetX = e.clientX + tooltipOffset;
+    let targetY = e.clientY;
+    
+    // Prevent tooltip from going off right edge (no flip, just constrain to edge)
+    const tooltipHalfWidth = tooltipWidth / 2;
+    if (targetX + tooltipHalfWidth > viewportWidth) {
+      targetX = viewportWidth - tooltipHalfWidth;
+    }
+    
+    // Prevent tooltip from going off left edge
+    if (targetX - tooltipHalfWidth < 0) {
+      targetX = tooltipHalfWidth;
+    }
+    
+    // Prevent tooltip from going off bottom edge
+    if (targetY + 30 > viewportHeight) {
+      targetY = viewportHeight - 30;
+    }
+    
+    // Prevent tooltip from going off top edge
+    if (targetY - 30 < 0) {
+      targetY = 30;
+    }
+    
+    // Calculate velocity for rotation based on actual cursor movement (not adjusted position)
+    const cursorDeltaX = e.clientX - expensePrevPosRef.current.x;
+    const cursorDeltaY = e.clientY - expensePrevPosRef.current.y;
+    const velocityX = cursorDeltaX / deltaTime;
+    const speed = Math.sqrt(velocityX * velocityX + (cursorDeltaY / deltaTime) ** 2);
+    
+    // Calculate rotation based on horizontal movement direction and speed
+    const maxRotation = 10;
+    const rotationIntensity = Math.min(speed * 0.3, 1);
+    const horizontalInfluence = Math.sign(velocityX) || 0;
+    const verticalInfluence = Math.sign(cursorDeltaY) * 0.3;
+    
+    // Apply rotation with intensity based on speed - Different for each bubble
+    const titleRotationValue = (horizontalInfluence + verticalInfluence) * maxRotation * rotationIntensity;
+    const subtitleRotationValue = (horizontalInfluence + verticalInfluence * 0.5) * maxRotation * rotationIntensity * 0.8;
+    const descRotationValue = (horizontalInfluence + verticalInfluence * 0.3) * maxRotation * rotationIntensity * 0.6;
+    
+    expenseTitleRotation.set(Math.max(-maxRotation, Math.min(maxRotation, titleRotationValue)));
+    expenseSubtitleRotation.set(Math.max(-maxRotation, Math.min(maxRotation, subtitleRotationValue)));
+    expenseDescRotation.set(Math.max(-maxRotation, Math.min(maxRotation, descRotationValue)));
+    
+    // Update cursor position (this will trigger spring animation for all three bubbles)
+    expenseCursorX.set(targetX);
+    expenseCursorY.set(targetY);
+    
+    // Update previous position - store actual cursor position for velocity calculation
+    expensePrevPosRef.current = { x: e.clientX, y: e.clientY };
+  };
+  
+  const handleIsvMouseMove = (e) => {
+    if (typeof window === 'undefined') return;
+    
+    const tooltipOffset = 20;
+    const tooltipWidth = 350;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    const now = Date.now();
+    const deltaTime = Math.max(now - isvLastUpdateRef.current, 1);
+    isvLastUpdateRef.current = now;
+    
+    let targetX = e.clientX + tooltipOffset;
+    let targetY = e.clientY;
+    
+    // Prevent tooltip from going off right edge (no flip, just constrain to edge)
+    const tooltipHalfWidth = tooltipWidth / 2;
+    if (targetX + tooltipHalfWidth > viewportWidth) {
+      targetX = viewportWidth - tooltipHalfWidth;
+    }
+    
+    // Prevent tooltip from going off left edge
+    if (targetX - tooltipHalfWidth < 0) {
+      targetX = tooltipHalfWidth;
+    }
+    
+    // Prevent tooltip from going off bottom edge
+    if (targetY + 30 > viewportHeight) {
+      targetY = viewportHeight - 30;
+    }
+    
+    // Prevent tooltip from going off top edge
+    if (targetY - 30 < 0) {
+      targetY = 30;
+    }
+    
+    // Calculate velocity for rotation based on actual cursor movement (not adjusted position)
+    const cursorDeltaX = e.clientX - isvPrevPosRef.current.x;
+    const cursorDeltaY = e.clientY - isvPrevPosRef.current.y;
+    const velocityX = cursorDeltaX / deltaTime;
+    const speed = Math.sqrt(velocityX * velocityX + (cursorDeltaY / deltaTime) ** 2);
+    
+    // Calculate rotation based on horizontal movement direction and speed
+    const maxRotation = 10;
+    const rotationIntensity = Math.min(speed * 0.3, 1);
+    const horizontalInfluence = Math.sign(velocityX) || 0;
+    const verticalInfluence = Math.sign(cursorDeltaY) * 0.3;
+    
+    // Apply rotation with intensity based on speed - Different for each bubble
+    const titleRotationValue = (horizontalInfluence + verticalInfluence) * maxRotation * rotationIntensity;
+    const subtitleRotationValue = (horizontalInfluence + verticalInfluence * 0.5) * maxRotation * rotationIntensity * 0.8;
+    const descRotationValue = (horizontalInfluence + verticalInfluence * 0.3) * maxRotation * rotationIntensity * 0.6;
+    
+    isvTitleRotation.set(Math.max(-maxRotation, Math.min(maxRotation, titleRotationValue)));
+    isvSubtitleRotation.set(Math.max(-maxRotation, Math.min(maxRotation, subtitleRotationValue)));
+    isvDescRotation.set(Math.max(-maxRotation, Math.min(maxRotation, descRotationValue)));
+    
+    // Update cursor position (this will trigger spring animation for all three bubbles)
+    isvCursorX.set(targetX);
+    isvCursorY.set(targetY);
+    
+    // Update previous position - store actual cursor position for velocity calculation
+    isvPrevPosRef.current = { x: e.clientX, y: e.clientY };
+  };
+  
   return (
     <motion.div
     className={`font-[family-name:var(--font-geist-sans)] relative w-full mt-4 md:mt-8 grid grid-cols-2 md:grid-cols-8 gap-2 md:gap-4 ${className}`}
@@ -234,7 +430,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
     variants={animateIn}>
 
       {/* Subway */}
-      <motion.div className="col-span-full md:col-span-5 group cursor-pointer h-full relative group mb-4">
+      <motion.div className="col-span-full md:col-span-6 group cursor-pointer h-full relative group mb-4">
 
         {/* Video Container with Corner Arrow */}
         <motion.div 
@@ -329,7 +525,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-3xl w-full col-span-full h-[285px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
               pointer-events-none mix-blend-overlay z-10"/>
               <video 
@@ -355,8 +551,242 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       </motion.div>
 
+      {/* Expense Tracker */}
+      <motion.div className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group mb-4"
+      >
+        {/* Video Container with Corner Arrow */}
+        <motion.div 
+          className="relative col-span-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background rounded-3xl"
+          role="button"
+          tabIndex={0}
+          aria-label="On-device LLM Expense Tracker"
+          aria-describedby="expense-description-tooltip"
+          whileHover={{ scale: 0.97 }}
+          transition={{
+            type: "spring",
+            stiffness: 1200, 
+            damping: 22, 
+          }}
+          onMouseEnter={(e) => {
+            if (expenseHideTimeoutRef.current) {
+              clearTimeout(expenseHideTimeoutRef.current);
+              expenseHideTimeoutRef.current = null;
+            }
+            
+            setIsExpenseTooltipVisible(true);
+            if (typeof window !== 'undefined') {
+              const tooltipOffset = 20;
+              const targetX = e.clientX + tooltipOffset;
+              const targetY = e.clientY;
+              expenseCursorX.set(targetX);
+              expenseCursorY.set(targetY);
+              expensePrevPosRef.current = { x: e.clientX, y: e.clientY };
+              expenseTitleRotation.set(0);
+              expenseSubtitleRotation.set(0);
+              expenseDescRotation.set(0);
+            }
+          }}
+          onMouseLeave={() => {
+            if (expenseHideTimeoutRef.current) {
+              clearTimeout(expenseHideTimeoutRef.current);
+              expenseHideTimeoutRef.current = null;
+            }
+            
+            setIsExpenseTooltipVisible(false);
+            expenseTitleRotation.set(0);
+            expenseSubtitleRotation.set(0);
+            expenseDescRotation.set(0);
+          }}
+          onFocus={(e) => {
+            if (expenseHideTimeoutRef.current) {
+              clearTimeout(expenseHideTimeoutRef.current);
+              expenseHideTimeoutRef.current = null;
+            }
+            
+            setIsExpenseTooltipVisible(true);
+            if (typeof window !== 'undefined' && e.currentTarget) {
+              const rect = e.currentTarget.getBoundingClientRect();
+              const tooltipOffset = 20;
+              const targetX = rect.left + rect.width / 2 + tooltipOffset;
+              const targetY = rect.top + rect.height / 2;
+              expenseCursorX.set(targetX);
+              expenseCursorY.set(targetY);
+              expensePrevPosRef.current = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+              expenseTitleRotation.set(0);
+              expenseSubtitleRotation.set(0);
+              expenseDescRotation.set(0);
+            }
+          }}
+          onBlur={() => {
+            if (expenseHideTimeoutRef.current) {
+              clearTimeout(expenseHideTimeoutRef.current);
+              expenseHideTimeoutRef.current = null;
+            }
+            
+            setIsExpenseTooltipVisible(false);
+            expenseTitleRotation.set(0);
+            expenseSubtitleRotation.set(0);
+            expenseDescRotation.set(0);
+          }}
+          onMouseMove={handleExpenseMouseMove}
+          onClick={() => {
+            window.open('https://ithinkitschris.notion.site/local-expense-tracker', '_blank');
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              window.open('https://ithinkitschris.notion.site/local-expense-tracker', '_blank');
+            }
+          }}>
+            
+
+          {/* Corner Arrow */}
+          <CornerArrow />
+
+          {/* Video */}
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[285px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
+              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
+              pointer-events-none mix-blend-overlay z-10"/>
+              <OptimizedVideo 
+                videoId="currently-expense"
+                src="/expense/cover.mp4"
+                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover object-[0%_10%]"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/poster/expense.png"
+                useOptimized={useOptimizedVideos}
+              />
+          </motion.div>
+
+        </motion.div>
+        
+      </motion.div>
+
+      {/* ISV */}
+      <motion.div className="col-span-1 md:col-span-4 h-full relative md:mb-4 group">
+
+        {/* Video Container with Corner Arrow */}
+        <motion.div 
+          className="relative col-span-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background rounded-3xl"
+          role="button"
+          tabIndex={0}
+          aria-label="Singapore Airlines In-Flight Safety Video"
+          aria-describedby="isv-description-tooltip"
+          whileHover={{ scale: 0.98 }}
+          transition={{
+            type: "spring",
+            stiffness: 1000, 
+            damping: 15, 
+          }}
+          onMouseEnter={(e) => {
+            if (isvHideTimeoutRef.current) {
+              clearTimeout(isvHideTimeoutRef.current);
+              isvHideTimeoutRef.current = null;
+            }
+            
+            setIsIsvTooltipVisible(true);
+            if (typeof window !== 'undefined') {
+              const tooltipOffset = 20;
+              const targetX = e.clientX + tooltipOffset;
+              const targetY = e.clientY;
+              isvCursorX.set(targetX);
+              isvCursorY.set(targetY);
+              isvPrevPosRef.current = { x: e.clientX, y: e.clientY };
+              isvTitleRotation.set(0);
+              isvSubtitleRotation.set(0);
+              isvDescRotation.set(0);
+            }
+          }}
+          onMouseLeave={() => {
+            if (isvHideTimeoutRef.current) {
+              clearTimeout(isvHideTimeoutRef.current);
+              isvHideTimeoutRef.current = null;
+            }
+            
+            setIsIsvTooltipVisible(false);
+            isvTitleRotation.set(0);
+            isvSubtitleRotation.set(0);
+            isvDescRotation.set(0);
+          }}
+          onFocus={(e) => {
+            if (isvHideTimeoutRef.current) {
+              clearTimeout(isvHideTimeoutRef.current);
+              isvHideTimeoutRef.current = null;
+            }
+            
+            setIsIsvTooltipVisible(true);
+            if (typeof window !== 'undefined' && e.currentTarget) {
+              const rect = e.currentTarget.getBoundingClientRect();
+              const tooltipOffset = 20;
+              const targetX = rect.left + rect.width / 2 + tooltipOffset;
+              const targetY = rect.top + rect.height / 2;
+              isvCursorX.set(targetX);
+              isvCursorY.set(targetY);
+              isvPrevPosRef.current = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+              isvTitleRotation.set(0);
+              isvSubtitleRotation.set(0);
+              isvDescRotation.set(0);
+            }
+          }}
+          onBlur={() => {
+            if (isvHideTimeoutRef.current) {
+              clearTimeout(isvHideTimeoutRef.current);
+              isvHideTimeoutRef.current = null;
+            }
+            
+            setIsIsvTooltipVisible(false);
+            isvTitleRotation.set(0);
+            isvSubtitleRotation.set(0);
+            isvDescRotation.set(0);
+          }}
+          onMouseMove={handleIsvMouseMove}
+          onClick={() => {
+            router.push('/isv');
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              router.push('/isv');
+            }
+          }}
+          >
+            
+          {/* Corner Arrow */}
+          <CornerArrow />
+
+          {/* Lockup */}
+          <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-3 bottom-3 w-8 md:w-20 h-auto z-20 opacity-50" />
+
+          {/* Video */}
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
+              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
+
+              {/* WIP Overlay */}
+              {/* <div className="absolute inset-0 flex flex-col items-center justify-center w-[80%] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-40">
+                <h1 className="z-20 text-white text-2xl md:text-3xl tracking-tight leading-[1] w-[60%] font-medium text-center">Project page is currently work in progress.</h1>
+                <p className="z-20 text-white text-xs md:text-sm font-medium text-center leading-[1.4] mt-4">Check back soon! <br/>Click to watch the film.</p>
+              </div> */}
+
+              <video 
+                videoId="currently-isv"
+                src="/isv/cover_2.mp4"
+                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/poster/isv.png"
+              />
+          </motion.div>
+
+        </motion.div>
+
+      </motion.div>
+
       {/* Bloom */}
-      <motion.div className="col-span-1 md:col-span-3 group cursor-pointer h-full relative group mb-4">
+      <motion.div className="col-span-1 md:col-span-4 group cursor-pointer h-full relative group mb-4">
 
         {/* Video Container with Corner Arrow */}
         <motion.div 
@@ -447,7 +877,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           <CornerArrow />
 
           {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[520px] relative overflow-hidden border-b-1 border-white/15">
+          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
               <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
               {/* WIP Overlay */}
@@ -472,184 +902,6 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         </motion.div>
       </motion.div>
 
-      {/* ISV */}
-      <motion.div className="col-span-1 md:col-span-4 h-full relative md:mb-4 group">
-
-        {/* Video Container with Corner Arrow */}
-        <motion.div 
-          className="relative col-span-full cursor-pointer"
-          whileHover={{ scale: 0.98 }}
-          transition={{
-            type: "spring",
-            stiffness: 1000, 
-            damping: 15, 
-          }}
-          onClick={() => {
-            router.push('/isv');
-          }}
-          >
-            
-          {/* Corner Arrow */}
-          <CornerArrow />
-
-          {/* Lockup */}
-          <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-3 bottom-3 w-8 md:w-20 h-auto z-20 opacity-50" />
-
-          {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
-              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
-
-              {/* WIP Overlay */}
-              {/* <div className="absolute inset-0 flex flex-col items-center justify-center w-[80%] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-40">
-                <h1 className="z-20 text-white text-2xl md:text-3xl tracking-tight leading-[1] w-[60%] font-medium text-center">Project page is currently work in progress.</h1>
-                <p className="z-20 text-white text-xs md:text-sm font-medium text-center leading-[1.4] mt-4">Check back soon! <br/>Click to watch the film.</p>
-              </div> */}
-
-              <video 
-                videoId="currently-isv"
-                src="/isv/cover_2.mp4"
-                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="/poster/isv.png"
-              />
-          </motion.div>
-
-        </motion.div>
-
-        {/* Header and Description Container */}
-        <div className="grid grid-cols-3 mb-8 mt-4 md:mt-8">
-
-          <div className='ml-1 text-foreground col-span-full md:col-span-1'>
-
-            <h1 className="tracking-[-0.5pt] md:tracking-[-0.8pt] font-medium text-lg md:text-[16pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-6">
-              Singapore Airlines In-Flight Safety Video
-            </h1>
-            
-          </div>
-
-          {/* Description Container */}
-          <div className='ml-1 text-foreground col-span-full md:col-span-2 '>
-            
-            <h3 className={`opacity-60 mt-3 md:mt-0 col-span-2 md:col-span-2 md:group-hover:opacity-100 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
-            Singapore Airlines' 2025 In-Flight Safety Video that takes passengers on a journey through Singapore’s iconic landmarks and most importantly, diverse communities.
-            </h3>
-
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Expense Tracker */}
-      <motion.div className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group mb-8 md:mb-0"
-      >
-        {/* Video Container with Corner Arrow */}
-        <motion.div 
-          className="relative col-span-full cursor-pointer"
-          whileHover={{ scale: 0.97 }}
-          transition={{
-            type: "spring",
-            stiffness: 1200, 
-            damping: 22, 
-          }}
-          onClick={() => {
-            window.open('https://ithinkitschris.notion.site/local-expense-tracker', '_blank');
-          }}>
-            
-
-          {/* Corner Arrow */}
-          <CornerArrow />
-
-          {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
-              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
-              pointer-events-none mix-blend-overlay z-10"/>
-              <OptimizedVideo 
-                videoId="currently-expense"
-                src="/expense/cover.mp4"
-                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover object-[0%_10%]"
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="/poster/expense.png"
-                useOptimized={useOptimizedVideos}
-              />
-          </motion.div>
-
-        </motion.div>
-        
-        {/* Header Container */}
-        <div className='ml-1 mt-4 md:mt-8 text-foreground col-span-full md:col-span-1'>
-          
-          <h1 className={`tracking-tight font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-[1.25]`}>
-            On-device LLM Expense Tracker (iOS)
-          </h1>
-
-          <h3 className={`mt-4 opacity-60 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight`}>
-            A personal project into developing and designing an on-device LLM-powered personal expense tracker for iOS using React Native, FastAPI, Ollama and Gemma3n:e2b.
-          </h3>
-
-        </div>
-        
-      </motion.div>
-
-      {/* Car */}
-      <motion.div className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group"
-      >
-        {/* Video Container with Corner Arrow */}
-        <motion.div 
-          className="relative"
-          whileHover={{ scale: 0.98 }}
-          transition={{
-            type: "spring",
-            stiffness: 1200, 
-            damping: 22, 
-          }}
-          onClick={() => {
-            toggleWork('car')
-          }}>
-            
-
-          {/* Corner Arrow */}
-          <CornerArrow />
-
-          {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
-              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
-              pointer-events-none mix-blend-overlay z-10"/>
-              <OptimizedVideo 
-                videoId="currently-car"
-                src="/currently/car.mp4"
-                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="/poster/car.png"
-                useOptimized={useOptimizedVideos}
-              />
-          </motion.div>
-
-        </motion.div>
-        
-      
-        {/* Header Container */}
-        <div className='ml-1 mt-4 md:mt-8 text-foreground col-span-full md:col-span-1'>
-          
-          <h1 className={`tracking-tight font-medium text-lg md:text-[15pt] md:group-hover:ml-3 transition-all duration-200 leading-tight md:leading-[1.25]`}>
-            Human Car(mputer) Interaction
-          </h1>
-
-          <h3 className={`mt-4 opacity-60 md:group-hover:opacity-100 md:group-hover:ml-3 transition-all duration-300 tracking-normal md:pr-10 text-xs md:text-sm md:leading-tight md:w-4/5`}>
-            A deep dive into the Human Computer Interaction of the automobile through the lens of design history.
-          </h3>
-
-        </div>
-        
-      </motion.div>
-
       {/* Tooltips - Outside container to ensure proper z-index stacking */}
       <AnimatePresence>
         {isTooltipVisible && (
@@ -659,7 +911,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="subway-title-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-3 border-b-1 border-r-1.5 text-sm lg:text-[20px] font-semibold tracking-[-0.2pt]  bg-background max-w-[320px] leading-[1.1] border-foreground/10 text-foreground dark:bg-transparent dark:border-white/15 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-3 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[15pt] font-semibold tracking-[-0.2pt]  bg-background max-w-[320px] leading-[1.1] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -685,7 +937,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="subway-description-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9998] rounded-[20pt] pl-6 pr-5 py-4 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[360px] bg-background border-foreground/10 text-foreground dark:bg-transparent dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
+              className="fixed pointer-events-none z-[9998] rounded-[20pt] pl-6 pr-5 py-4 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[360px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -718,7 +970,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="bloom-title-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1.5 text-sm lg:text-[22px] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] border-foreground/10 text-foreground dark:bg-transparent dark:border-white/25 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[22px] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -744,7 +996,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="bloom-subtitle-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9998] rounded-[20pt] px-4 py-2 border-1.5 text-xs lg:text-[13px] font-semibold tracking-[-0.1pt] max-w-[220px] bg-background border-foreground/10 text-foreground dark:bg-transparent dark:border-white/15 dark:text-white drop-shadow-lg backdrop-blur-3xl"
+              className="fixed pointer-events-none z-[9998] rounded-[20pt] px-4 py-2 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-semibold tracking-[-0.1pt] max-w-[220px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -770,7 +1022,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="bloom-description-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[290px] bg-background border-foreground/10 text-foreground dark:bg-transparent dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
+              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[290px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -789,6 +1041,124 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               }}
             >
               The first digital tool that helps young Korean adults discover meaningful career paths by exploring their strengths and interests in a playful and social way.
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Expense Tooltips */}
+      <AnimatePresence>
+        {isExpenseTooltipVisible && (
+          <>
+            {/* First tooltip - Title */}
+            <motion.div
+              id="expense-title-tooltip"
+              role="tooltip"
+              aria-live="polite"
+              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[22px] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 600,
+                damping: 30,
+                duration: 0.1
+              }}
+              style={{
+                left: expenseTitleXpx,
+                top: expenseTitleYpx,
+                rotate: springExpenseTitleRotation,
+                transform: 'translate(-50%, -50%)',
+                zIndex: 9999,
+              }}
+            >
+              On-device LLM Expense Tracker
+            </motion.div>
+            
+            {/* Third tooltip - Description */}
+            <motion.div
+              id="expense-description-tooltip"
+              role="tooltip"
+              aria-live="polite"
+              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[290px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 600,
+                damping: 30,
+                duration: 0.1
+              }}
+              style={{
+                left: expenseDescXpx,
+                top: expenseDescYpx,
+                rotate: springExpenseDescRotation,
+                transform: 'translate(-50%, -50%)',
+                zIndex: 9997,
+              }}
+            >
+              A personal project into developing and designing an on-device LLM-powered personal expense tracker for iOS using React Native, FastAPI, Ollama and Gemma3n:e2b.
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* ISV Tooltips */}
+      <AnimatePresence>
+        {isIsvTooltipVisible && (
+          <>
+            {/* First tooltip - Title */}
+            <motion.div
+              id="isv-title-tooltip"
+              role="tooltip"
+              aria-live="polite"
+              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[22px] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 600,
+                damping: 30,
+                duration: 0.1
+              }}
+              style={{
+                left: isvTitleXpx,
+                top: isvTitleYpx,
+                rotate: springIsvTitleRotation,
+                transform: 'translate(-50%, -50%)',
+                zIndex: 9999,
+              }}
+            >
+              Singapore Airlines In-Flight Safety Video
+            </motion.div>
+            
+            {/* Third tooltip - Description */}
+            <motion.div
+              id="isv-description-tooltip"
+              role="tooltip"
+              aria-live="polite"
+              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[290px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 600,
+                damping: 30,
+                duration: 0.1
+              }}
+              style={{
+                left: isvDescXpx,
+                top: isvDescYpx,
+                rotate: springIsvDescRotation,
+                transform: 'translate(-50%, -50%)',
+                zIndex: 9997,
+              }}
+            >
+              Singapore Airlines' 2025 In-Flight Safety Video that takes passengers on a journey through Singapore's iconic landmarks and most importantly, diverse communities.
             </motion.div>
           </>
         )}

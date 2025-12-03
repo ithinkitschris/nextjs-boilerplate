@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useBrowser } from '../context/BrowserContext';
+import { useVideoContext } from '../context/VideoContext';
 
 export const useVideoCleanup = (videoRef) => {
   useEffect(() => {
@@ -22,6 +23,8 @@ export const useVideoCleanup = (videoRef) => {
 
 export const useVideoOptimization = (videoRef, src, options = {}) => {
   const { isMobile, browserType } = useBrowser();
+  const videoContext = useVideoContext();
+  const isGloballyPaused = videoContext?.isGloballyPaused || false;
   const [isInViewport, setIsInViewport] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hidePoster, setHidePoster] = useState(false);
@@ -203,15 +206,18 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
     };
   }, [rootMargin, threshold, isInViewport, unloadDelay]);
 
-  // Auto-play
+  // Auto-play (respect global pause state)
   useEffect(() => {
     const video = videoRef.current;
-    if (video && isLoaded && isInViewport && autoPlay) {
+    if (video && isLoaded && isInViewport && autoPlay && !isGloballyPaused) {
       video.play().catch(() => {
         // Ignore autoplay errors
       });
+    } else if (video && isGloballyPaused && !video.paused) {
+      // Pause video if global pause is active
+      video.pause();
     }
-  }, [isLoaded, isInViewport, autoPlay]);
+  }, [isLoaded, isInViewport, autoPlay, isGloballyPaused]);
 
   // Update src when prop changes
   useEffect(() => {

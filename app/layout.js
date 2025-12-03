@@ -10,6 +10,7 @@ import { VideoProvider } from './context/VideoContext';
 import { BrowserProvider, useBrowser } from './context/BrowserContext';
 import { HideNavProvider, useHideNav } from './context/HideNavContext';
 import VideoDebugger from './components/ui/VideoDebugger';
+import GlobalVideoControl from './components/ui/GlobalVideoControl';
 
 const animateIn = {
   hidden: { opacity: 0, y: 90, scale:0.99 },
@@ -197,6 +198,9 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
 
                 {/* Video Performance Monitor - Only in development */}
                 <VideoDebugger enabled={process.env.NODE_ENV === 'development'} />
+
+                {/* Global Video Play/Pause Control */}
+                <GlobalVideoControl />
 
                 {/* Backdrop Blur */}
                 <div className={`${changelog ? 'bg-black/60 backdrop-blur-sm' :'backdrop-blur-none pointer-events-none'}
