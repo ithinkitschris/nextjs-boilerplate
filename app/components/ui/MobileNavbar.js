@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import { useHideNav } from '../../context/HideNavContext';
 import { animateInChildMobile, skillContainer } from '../../constants/animations';
 
 const MobileNavbar = ({ 
@@ -15,6 +16,9 @@ const MobileNavbar = ({
   homeOnly = false, // If true, only show Home button
   onHomeClick // Optional custom handler for Home button click
 }) => {
+ 0
+  const { hideNav } = useHideNav();
+  
   const toggleNav = () => {
     if (showNav) {
       setShowNav(false);
@@ -32,6 +36,7 @@ const MobileNavbar = ({
     <>
       {/* Mobile Home Button */}
       <motion.button
+        tabIndex={hideNav ? -1 : 0}
         className={`
           md:hidden fixed top-[1.2rem] left-[50%] -ml-[4.3rem] z-50
           rounded-full px-3 py-[3px] border-1.5 
@@ -70,6 +75,7 @@ const MobileNavbar = ({
       {/* Mobile Work Button - Only show when on resume page */}
       {showWorkButton && (
         <motion.button
+          tabIndex={hideNav ? -1 : 0}
           className={`
             md:hidden fixed top-[1.2rem] left-[50%] ml-1.5 z-50
             rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
@@ -166,6 +172,7 @@ const MobileNavbar = ({
                 variants={skillContainer}
               >
                 <motion.button 
+                  tabIndex={hideNav ? -1 : 0}
                   className="text-left text-foreground font-normal mb-3 px-5 "
                   variants={animateInChildMobile}
                   onClick={() => {
@@ -179,6 +186,7 @@ const MobileNavbar = ({
                 </motion.button>
 
                 <motion.button 
+                  tabIndex={hideNav ? -1 : 0}
                   className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                   variants={animateInChildMobile}
                   onClick={() => {
@@ -192,6 +200,7 @@ const MobileNavbar = ({
                 </motion.button>
 
                 <motion.button 
+                  tabIndex={hideNav ? -1 : 0}
                   className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                   variants={animateInChildMobile}
                   onClick={() => {
@@ -205,6 +214,7 @@ const MobileNavbar = ({
                 </motion.button>
 
                 <motion.button 
+                  tabIndex={hideNav ? -1 : 0}
                   className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                   variants={animateInChildMobile}
                   onClick={() => {
@@ -218,6 +228,7 @@ const MobileNavbar = ({
                 </motion.button>
 
                 <motion.button 
+                  tabIndex={hideNav ? -1 : 0}
                   className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                   variants={animateInChildMobile}
                   onClick={() => {
@@ -231,6 +242,7 @@ const MobileNavbar = ({
                 </motion.button>
 
                 <motion.button 
+                  tabIndex={hideNav ? -1 : 0}
                   className="text-left text-foreground font-normal mt-1 mb-3 px-5 "
                   variants={animateInChildMobile}
                   onClick={() => {

@@ -153,16 +153,25 @@ export default function ResumeFooter() {
                     className="pt-12"
                 >
                     {/* Sub-accordion for SIA */}
-                    <motion.div
-                        className="flex justify-between cursor-pointer pr-1 mt-6"
+                    <motion.button
+                        className="flex justify-between cursor-pointer pr-1 mt-6 w-full text-left focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background rounded-lg"
                         onClick={() => toggleCvSection('sia')}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                toggleCvSection('sia');
+                            }
+                        }}
+                        aria-expanded={visibleSections.sia}
+                        aria-controls="dropdown-SIA"
+                        aria-label={`${visibleSections.sia ? 'Collapse' : 'Expand'} Singapore Airlines details`}
                         variants={dropdownChild}
-                        >
-                        <button className="text-lg whitespace-nowrap tracking-tight flex items-center font-medium">Singapore Airlines</button>
-                        <button className="flex items-center">{visibleSections.sia ? <ChevronUpIcon className="ml-1 h-4 w-4"/> : <ChevronDownIcon className="ml-1 h-4 w-4"/>}</button>
-                    </motion.div>
+                    >
+                        <span className="text-lg whitespace-nowrap tracking-tight flex items-center font-medium">Singapore Airlines</span>
+                        <span className="flex items-center" aria-hidden="true">{visibleSections.sia ? <ChevronUpIcon className="ml-1 h-4 w-4"/> : <ChevronDownIcon className="ml-1 h-4 w-4"/>}</span>
+                    </motion.button>
                     {visibleSections.sia && (
-                        <motion.div key="dropdown-SIA" initial="hidden" animate="show" variants={dropdown}>
+                        <motion.div id="dropdown-SIA" key="dropdown-SIA" initial="hidden" animate="show" variants={dropdown}>
                             <motion.div variants={dropdownChild}>
                                 <h1 className="mt-6  mb-4 opacity-90 font-base">Beyond The Cabin</h1>
                                 <p className="mb-4  opacity-50">Lead Creative and Motion Designer for Beyond The Cabin, an episodic brand campaign and content series that was centred around Singapore Airline&apos;s Cabin Crew&apos;s as World Class travellers with worldly passions.</p>
@@ -197,12 +206,26 @@ export default function ResumeFooter() {
                     )}
 
                     {/* Sub-accordion for IKEA */}
-                    <motion.div className="flex justify-between cursor-pointer pr-1 mt-2 " onClick={() => toggleCvSection('ikea')} variants={dropdownChild}>
-                        <button className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">IKEA</button>
-                        <button className=" flex items-center">{visibleSections.ikea ? <ChevronUpIcon className="ml-1 h-4 w-4"/> : <ChevronDownIcon className="ml-1 h-4 w-4"/>}</button>
-                    </motion.div>
+                    <motion.button 
+                        className="flex justify-between cursor-pointer pr-1 mt-2 w-full text-left focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background rounded-lg" 
+                        onClick={() => toggleCvSection('ikea')} 
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                toggleCvSection('ikea');
+                            }
+                        }}
+                        aria-expanded={visibleSections.ikea}
+                        aria-controls="dropdown-ikea"
+                        aria-label={`${visibleSections.ikea ? 'Collapse' : 'Expand'} IKEA details`}
+                        variants={dropdownChild}
+                    >
+                        <span className="text-lg whitespace-nowrap tracking-tight flex items-center font-medium">IKEA</span>
+                        <span className="flex items-center" aria-hidden="true">{visibleSections.ikea ? <ChevronUpIcon className="ml-1 h-4 w-4"/> : <ChevronDownIcon className="ml-1 h-4 w-4"/>}</span>
+                    </motion.button>
                     {visibleSections.ikea && (
                         <motion.div 
+                            id="dropdown-ikea"
                             key="dropdown-ikea"
                             initial="hidden"
                             animate="show"
@@ -216,12 +239,26 @@ export default function ResumeFooter() {
                     )}
 
                     {/* Sub-accordion for SC */}
-                    <motion.div className="flex justify-between cursor-pointer pr-1 mt-2" onClick={() => toggleCvSection('sc')} variants={dropdownChild}>
-                        <button className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">Standard Chartered</button>
-                        <button className=" flex items-center">{visibleSections.sc ? <ChevronUpIcon className="ml-1 h-4 w-4"/> : <ChevronDownIcon className="ml-1 h-4 w-4"/>}</button>
-                    </motion.div>
+                    <motion.button 
+                        className="flex justify-between cursor-pointer pr-1 mt-2 w-full text-left focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background rounded-lg" 
+                        onClick={() => toggleCvSection('sc')} 
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                toggleCvSection('sc');
+                            }
+                        }}
+                        aria-expanded={visibleSections.sc}
+                        aria-controls="dropdown-sc"
+                        aria-label={`${visibleSections.sc ? 'Collapse' : 'Expand'} Standard Chartered details`}
+                        variants={dropdownChild}
+                    >
+                        <span className="text-lg whitespace-nowrap tracking-tight flex items-center font-medium">Standard Chartered</span>
+                        <span className="flex items-center" aria-hidden="true">{visibleSections.sc ? <ChevronUpIcon className="ml-1 h-4 w-4"/> : <ChevronDownIcon className="ml-1 h-4 w-4"/>}</span>
+                    </motion.button>
                     {visibleSections.sc && (
                         <motion.div 
+                            id="dropdown-sc"
                             key="dropdown-sc"
                             initial="hidden"
                             animate="show"
@@ -248,28 +285,37 @@ export default function ResumeFooter() {
                     className="pt-12"   
                 >
                     {/* SAMSUNG Button Row */}
-                    <motion.div
-                    className="flex justify-between cursor-pointer pr-1 mt-6"
+                    <motion.button
+                    className="flex justify-between cursor-pointer pr-1 mt-6 w-full text-left focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background rounded-lg"
                     onClick={() => toggleCvSection('samsung')}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleCvSection('samsung');
+                        }
+                    }}
+                    aria-expanded={visibleSections.samsung}
+                    aria-controls="dropdown-samsung"
+                    aria-label={`${visibleSections.samsung ? 'Collapse' : 'Expand'} Samsung details`}
                     variants={dropdownChild}
                     layout='position'
                     >
-                        <button 
-                        className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
+                        <span className="text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
                             Samsung
-                        </button>
+                        </span>
 
-                        <button 
-                        className=" flex items-center">
+                        <span className="flex items-center" aria-hidden="true">
                         {visibleSections.samsung 
                         ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
                         : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
-                        </button>
-                    </motion.div>
+                        </span>
+                    </motion.button>
 
                     {/* Samsung Dropdown */}
                     {visibleSections.samsung && (
-                    <motion.div className=""
+                    <motion.div 
+                    id="dropdown-samsung"
+                    className=""
                     key="dropdown-samsung"
                     initial="hidden"
                     animate="show"
@@ -309,27 +355,35 @@ export default function ResumeFooter() {
                     )}
 
                     {/* Nike Button Row */}
-                    <motion.div
-                    className="flex justify-between cursor-pointer pr-1 mt-2"
+                    <motion.button
+                    className="flex justify-between cursor-pointer pr-1 mt-2 w-full text-left focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background rounded-lg"
                     onClick={() => toggleCvSection('nike')}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleCvSection('nike');
+                        }
+                    }}
+                    aria-expanded={visibleSections.nike}
+                    aria-controls="dropdown-nike"
+                    aria-label={`${visibleSections.nike ? 'Collapse' : 'Expand'} NIKE details`}
                     variants={dropdownChild}
                     >
-                        <button 
-                        className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
+                        <span className="text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
                             NIKE
-                        </button>
+                        </span>
 
-                        <button 
-                        className=" flex items-center">
+                        <span className="flex items-center" aria-hidden="true">
                         {visibleSections.nike 
                         ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
                         : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
-                        </button>
-                    </motion.div>
+                        </span>
+                    </motion.button>
                     
                     {/* Nike Dropdown */}
                     {visibleSections.nike && (
                     <motion.div 
+                        id="dropdown-nike"
                         key="dropdown-nike"
                         initial="hidden"
                         animate="show"
@@ -350,27 +404,35 @@ export default function ResumeFooter() {
                     )}
 
                     {/* Jollibee Button Row */}
-                    <motion.div
-                    className="flex justify-between cursor-pointer pr-1 mt-2 -ml-0.5"
+                    <motion.button
+                    className="flex justify-between cursor-pointer pr-1 mt-2 -ml-0.5 w-full text-left focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background rounded-lg"
                     onClick={() => toggleCvSection('jollibee')}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleCvSection('jollibee');
+                        }
+                    }}
+                    aria-expanded={visibleSections.jollibee}
+                    aria-controls="dropdown-jollibee"
+                    aria-label={`${visibleSections.jollibee ? 'Collapse' : 'Expand'} Jollibee details`}
                     variants={dropdownChild}
                     >
-                        <button 
-                        className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
+                        <span className="text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
                             Jollibee
-                        </button>
+                        </span>
 
-                        <button 
-                        className=" flex items-center">
+                        <span className="flex items-center" aria-hidden="true">
                         {visibleSections.jollibee 
                         ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
                         : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
-                        </button>
-                    </motion.div>
+                        </span>
+                    </motion.button>
 
                     {/* Jollibee Dropdown */}
                     {visibleSections.jollibee &&(
                     <motion.div 
+                        id="dropdown-jollibee"
                         key="dropdown-jollibee"
                         initial="hidden"
                         animate="show"
@@ -386,27 +448,36 @@ export default function ResumeFooter() {
                     )}
 
                     {/* Sentosa Button Row */}
-                    <motion.div
-                    className="flex justify-between cursor-pointer pr-1 mt-2"
+                    <motion.button
+                    className="flex justify-between cursor-pointer pr-1 mt-2 w-full text-left focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background rounded-lg"
                     onClick={() => toggleCvSection('sentosa')}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleCvSection('sentosa');
+                        }
+                    }}
+                    aria-expanded={visibleSections.sentosa}
+                    aria-controls="dropdown-sentosa"
+                    aria-label={`${visibleSections.sentosa ? 'Collapse' : 'Expand'} Sentosa details`}
                     variants={dropdownChild}
                     >
-                        <button 
-                        className=" text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
+                        <span className="text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
                             Sentosa
-                        </button>
+                        </span>
 
-                        <button 
-                        className=" flex items-center">
+                        <span className="flex items-center" aria-hidden="true">
                         {visibleSections.sentosa 
                         ? ( <ChevronUpIcon className="ml-1 h-4 w-4"/>)
                         : ( <ChevronDownIcon className="ml-1 h-4 w-4"/>)} 
-                        </button>
-                    </motion.div>
+                        </span>
+                    </motion.button>
 
                     {/* Sentosa Dropdown */}
                     {visibleSections.sentosa && (
-                    <motion.div className=""
+                    <motion.div 
+                    id="dropdown-sentosa"
+                    className=""
                     key="dropdown-sentosa"
                     initial="hidden"
                     animate="show"

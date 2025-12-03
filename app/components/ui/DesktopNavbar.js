@@ -21,7 +21,7 @@ const DesktopNavbar = ({
   onHomeClick // Optional custom handler for Home button click
 }) => {
   const { browserType } = useBrowser();
-  const { isArchiveInView, archiveSelectedTags, setArchiveSelectedTags } = useHideNav();
+  const { hideNav, isArchiveInView, archiveSelectedTags, setArchiveSelectedTags } = useHideNav();
   
   // Determine if Archive button should be shown (only on resume page)
   const showArchiveButton = !homeOnly && selectedWork === 'resume';
@@ -30,7 +30,7 @@ const DesktopNavbar = ({
   // Determine if navbar should be expanded (either manually opened or Archive mode)
   const shouldExpandNav = !homeOnly && (showNav || isArchiveMode);
   // Calculate navbar width based on Archive button visibility and expansion state
-  const navbarWidth = homeOnly ? '85px' : (shouldExpandNav ? '545px' : (showArchiveButton ? '152px' : '85.5px'));
+  const navbarWidth = homeOnly ? '86px' : (shouldExpandNav ? '545px' : (showArchiveButton ? '152px' : '85.5px'));
 
   return (
     <motion.div
@@ -75,6 +75,7 @@ const DesktopNavbar = ({
           {/* Home Button - Only show when navbar is collapsed or homeOnly is true */}
           {(!shouldExpandNav || homeOnly) && (
             <motion.button
+              tabIndex={hideNav ? -1 : 0}
               layout='position'
               className={`
                 rounded-full px-3 py-[3px] border-1.5
@@ -119,6 +120,7 @@ const DesktopNavbar = ({
           {/* Work Button - Only show when on resume page */}
           {showArchiveButton && (
             <motion.button 
+              tabIndex={hideNav ? -1 : 0}
               layout='position'
               className={`
                 rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
@@ -190,6 +192,7 @@ const DesktopNavbar = ({
             {skillsetData.map(({ tag, label, work }, index) => (
               <motion.button 
                 key={tag}
+                tabIndex={hideNav ? -1 : (shouldExpandNav ? 0 : -1)}
                 className={`rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
                 font-semibold tracking-[-0.2pt] whitespace-nowrap 
                 dark:mix-blend-normal transition-colors duration-200 hover:text-background 

@@ -37,7 +37,19 @@ const ExperienceCard = ({
 
       
 
-      <div className="cursor-pointer mt-4" onClick={onToggle}>
+      <button 
+        className="cursor-pointer mt-4 w-full text-left focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background rounded-lg"
+        onClick={onToggle}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onToggle();
+          }
+        }}
+        aria-expanded={isOpen}
+        aria-controls={`dropdown-${sectionKey}`}
+        aria-label={`${isOpen ? 'Collapse' : 'Expand'} ${title} details`}
+      >
         <div className="flex justify-between">
           <div
             className={`flex items-center justify-center -ml-2 border-1 border-black dark:border-white/50 transition-all duration-200 md:group-hover:bg-foreground md:group-hover:text-background rounded-full tracking-tight font-medium text-sm mb-2 whitespace-nowrap ${titleClassName} ${isOpen ? 'bg-foreground text-background scale-96' : ''}`}
@@ -46,6 +58,7 @@ const ExperienceCard = ({
           </div>
           <div
             className={`flex items-center justify-center border-0 border-black dark:border-white/50 transition-all duration-200 md:group-hover:bg-foreground md:group-hover:text-background rounded-full mb-2 px-1 ${isOpen ? 'bg-foreground text-background scale-96' : ''}`}
+            aria-hidden="true"
           >
             {isOpen ? (
               <ChevronUpIcon className="h-4 w-4" />
@@ -57,10 +70,11 @@ const ExperienceCard = ({
 
         <p className="">{company}</p>
         <i className="-ml-[1px] opacity-75">{duration}</i>
-      </div>
+      </button>
 
       {isOpen && (
         <motion.div
+          id={`dropdown-${sectionKey}`}
           key={`dropdown-${sectionKey}`}
           initial="hidden"
           animate="show"

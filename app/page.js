@@ -40,7 +40,6 @@ import VideoSquare from './components/ui/VideoSquare';
 import DesktopNavbar from './components/ui/DesktopNavbar';
 import MobileNavbar from './components/ui/MobileNavbar';
 import { useMobileDetection } from './hooks/useMobileDetection';
-import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { useVideoNavigation } from './hooks/useVideoNavigation';
 import { skillsetData, workTags } from './data/videoData';
 
@@ -52,7 +51,6 @@ function HomeContent() {
   // Use custom hooks
   const isMobile = useMobileDetection();
   const { selectedTags, setSelectedTags, selectedWork, setSelectedWork, toggleTag, toggleWork, filteredVideos } = useVideoNavigation();
-  useKeyboardShortcuts({ toggleHideNav, hideNav });
 
   const [showNav, setShowNav] = useState(false);
   const [showWork, setShowWork] = useState(false);
