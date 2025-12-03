@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import { useRouter } from 'next/navigation';
 import { useHideNav } from '../../context/HideNavContext';
 import { animateInChildMobile, skillContainer } from '../../constants/animations';
+import { workTags } from '../../data/videoData';
 
 const MobileNavbar = ({ 
   showNav, 
@@ -16,7 +18,7 @@ const MobileNavbar = ({
   homeOnly = false, // If true, only show Home button
   onHomeClick // Optional custom handler for Home button click
 }) => {
- 0
+  const router = useRouter();
   const { hideNav } = useHideNav();
   
   const toggleNav = () => {
@@ -234,7 +236,7 @@ const MobileNavbar = ({
                   onClick={() => {
                     toggleTag('photography');
                     toggleNav();
-                    toggleWork('photography');
+                    router.push('/photography');
                   }}
                 >
                   <span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>05 </span>
@@ -248,7 +250,7 @@ const MobileNavbar = ({
                   onClick={() => {
                     toggleTag('content');
                     toggleNav();
-                    toggleWork('content');
+                    router.push('/content');
                   }}
                 >
                   <span className='hidden mr-1 font-base opacity-35 text-xxs align-top'>06 </span>

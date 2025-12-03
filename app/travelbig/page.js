@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { useRouter } from 'next/navigation';
-import NycSubway from '../components/pages/nycsubway.js';
+import TravelBig from '../components/pages/travelbig.js';
 import DesktopNavbar from '../components/ui/DesktopNavbar';
 import MobileNavbar from '../components/ui/MobileNavbar';
 import { useMobileDetection } from '../hooks/useMobileDetection';
@@ -12,7 +12,7 @@ import { skillsetData } from '../data/videoData';
 import { useBrowser } from '../context/BrowserContext';
 import { useHideNav } from '../context/HideNavContext';
 
-export default function SubwayPage() {
+export default function TravelBigPage() {
   const router = useRouter();
   const { browserType } = useBrowser();
   const { hideNav, randomRotation, toggleHideNav, setIsWhiteBG, isWhiteBG, setIsArchiveInView, setArchiveSelectedTags } = useHideNav();
@@ -98,8 +98,8 @@ export default function SubwayPage() {
         />
 
         {/* Page Container */}
-        <div className="col-span-full">
-          <NycSubway className="col-span-full -px-[6%]" />
+        <div className="col-span-full px-[6%]">
+          <TravelBig className="col-span-full" />
         </div>
       </div>
     </>

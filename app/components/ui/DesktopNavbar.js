@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import { useRouter } from 'next/navigation';
 import { useBrowser } from '../../context/BrowserContext';
 import { useHideNav } from '../../context/HideNavContext';
 import { animateIn } from '../../constants/animations';
+import { workTags } from '../../data/videoData';
 
 const DesktopNavbar = ({ 
   showNav, 
@@ -20,6 +22,7 @@ const DesktopNavbar = ({
   homeOnly = false, // If true, only show Home button
   onHomeClick // Optional custom handler for Home button click
 }) => {
+  const router = useRouter();
   const { browserType } = useBrowser();
   const { hideNav, isArchiveInView, archiveSelectedTags, setArchiveSelectedTags } = useHideNav();
   
@@ -75,7 +78,7 @@ const DesktopNavbar = ({
           {/* Home Button - Only show when navbar is collapsed or homeOnly is true */}
           {(!shouldExpandNav || homeOnly) && (
             <motion.button
-              tabIndex={hideNav ? -1 : 0}
+              tabIndex={0}
               layout='position'
               className={`
                 rounded-full px-3 py-[3px] border-1.5
@@ -120,7 +123,7 @@ const DesktopNavbar = ({
           {/* Work Button - Only show when on resume page */}
           {showArchiveButton && (
             <motion.button 
-              tabIndex={hideNav ? -1 : 0}
+              tabIndex={0}
               layout='position'
               className={`
                 rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
@@ -192,7 +195,7 @@ const DesktopNavbar = ({
             {skillsetData.map(({ tag, label, work }, index) => (
               <motion.button 
                 key={tag}
-                tabIndex={hideNav ? -1 : (shouldExpandNav ? 0 : -1)}
+                tabIndex={shouldExpandNav ? 0 : -1}
                 className={`rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
                 font-semibold tracking-[-0.2pt] whitespace-nowrap 
                 dark:mix-blend-normal transition-colors duration-200 hover:text-background 
@@ -239,9 +242,14 @@ const DesktopNavbar = ({
                       toggleTag(tag);
                       // setSelectedWork('');
                     } else {
-                      // For specific work pages (like photography, content)
+                      // For specific work pages - use router navigation if route exists
                       toggleTag(tag);
-                      toggleWork(work);
+                      // Check if this work has a route (is in workTags)
+                      if (workTags.includes(work)) {
+                        router.push(`/${work}`);
+                      } else {
+                        toggleWork(work);
+                      }
                     }
                   }
                 }}

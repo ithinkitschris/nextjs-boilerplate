@@ -54,8 +54,8 @@ export default function ISVPage() {
         <motion.div 
           className="col-span-full fixed top-[0.4rem] md:top-10 z-[45] mb-4 w-screen max-w-9xl pl-3"
           animate={{ 
-            y: hideNav ? -240 : 0,
-            rotateZ: hideNav ? randomRotation : 0
+            y: 0, // DISABLED: hideNav ? -240 : 0,
+            rotateZ: 0 // DISABLED: hideNav ? randomRotation : 0
           }}
           transition={{
             type: "spring",
@@ -99,7 +99,7 @@ export default function ISVPage() {
 
         {/* Page Container */}
         <div className="col-span-full">
-          <ISV className="col-span-full -px-[7%]" />
+          <ISV className="col-span-full -px-[6%]" />
         </div>
       </div>
     </>

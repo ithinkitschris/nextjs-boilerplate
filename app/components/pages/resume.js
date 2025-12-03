@@ -4,11 +4,8 @@ import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } f
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
-import BestWorkPage3 from "./bestworkv3";
-import MotionDesignPage from "./motion";
 import PhotographyPage from "./photography";
 import ContentPage from "./content";
-import ProductPage from "./product";
 import { animateInChild } from "../../constants/animations";
 import Currently from "./currently";
 import Archive from "./archive";
@@ -16,6 +13,7 @@ import ResumeFooter from "../resume/ResumeFooter";
 import { useExperienceState } from "../../hooks/useExperienceState";
 import ResumeSectionHeader from "../resume/ResumeSectionHeader";
 import { useHideNav } from "../../context/HideNavContext";
+import { useRouter } from 'next/navigation';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -25,6 +23,7 @@ if (typeof window !== 'undefined') {
 }
 
 const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
+    const router = useRouter();
     const [timeNyc, setTimeNyc] = useState(null);
     const [timeSg, setTimeSg] = useState(null);
     const [isAtTop, setIsAtTop] = useState(true);
@@ -74,6 +73,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const samsungVideoXpx = useTransform(samsungVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
     const samsungVideoYpx = useTransform(samsungVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
     
+    // Motion values for Subway video popup animation (reuse cursor tracking)
+    const subwayVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
+    const subwayVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
+    
+    // Convert Subway video motion values to pixel strings for positioning
+    const subwayVideoXpx = useTransform(subwayVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
+    const subwayVideoYpx = useTransform(subwayVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
+    
     // Rotation based on movement direction
     const imageRotation = useMotionValue(0);
     const springImageRotation = useSpring(imageRotation, { stiffness: 400, damping: 25 });
@@ -89,10 +96,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const [showGhibliVideo, setShowGhibliVideo] = useState(false);
     const [showNikeVideo, setShowNikeVideo] = useState(false);
     const [showSamsungVideo, setShowSamsungVideo] = useState(false);
+    const [showSubwayVideo, setShowSubwayVideo] = useState(false);
     const [isHoveringSingaporeAirlines, setIsHoveringSingaporeAirlines] = useState(false);
     const [isHoveringStudioGhibli, setIsHoveringStudioGhibli] = useState(false);
     const [isHoveringNike, setIsHoveringNike] = useState(false);
     const [isHoveringSamsung, setIsHoveringSamsung] = useState(false);
+    const [isHoveringGraduateStudent, setIsHoveringGraduateStudent] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
     const [isHeader2AtOpacity1, setIsHeader2AtOpacity1] = useState(false);
     const [isHeader2Part2AtOpacity1, setIsHeader2Part2AtOpacity1] = useState(false);
@@ -113,6 +122,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const hideGhibliVideoTimeoutRef = useRef(null);
     const hideNikeVideoTimeoutRef = useRef(null);
     const hideSamsungVideoTimeoutRef = useRef(null);
+    const hideSubwayVideoTimeoutRef = useRef(null);
     const hideImageTimeoutRef = useRef(null);
     
     // Refs for video elements and playback positions
@@ -120,10 +130,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const ghibliVideoRef = useRef(null);
     const nikeVideoRef = useRef(null);
     const samsungVideoRef = useRef(null);
+    const subwayVideoRef = useRef(null);
     const isvVideoTimeRef = useRef(0);
     const ghibliVideoTimeRef = useRef(0);
     const nikeVideoTimeRef = useRef(0);
     const samsungVideoTimeRef = useRef(0);
+    const subwayVideoTimeRef = useRef(0);
     const archiveSectionRef = useRef(null);
 
     const storyContainer = {
@@ -833,6 +845,40 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         };
     }, [isHoveringSamsung, isCursorNearBorder]);
 
+    // Update showSubwayVideo based on hover over Graduate Student with delay before hiding
+    useEffect(() => {
+        // Clear any existing timeout
+        if (hideSubwayVideoTimeoutRef.current) {
+            clearTimeout(hideSubwayVideoTimeoutRef.current);
+            hideSubwayVideoTimeoutRef.current = null;
+        }
+        
+        const shouldShow = isHoveringGraduateStudent && !isCursorNearBorder;
+        
+        if (shouldShow) {
+            // Show immediately
+            setShowSubwayVideo(true);
+        } else {
+            // Save current playback time before hiding
+            if (subwayVideoRef.current) {
+                subwayVideoTimeRef.current = subwayVideoRef.current.currentTime;
+            }
+            // Hide with 100ms delay
+            hideSubwayVideoTimeoutRef.current = setTimeout(() => {
+                setShowSubwayVideo(false);
+                hideSubwayVideoTimeoutRef.current = null;
+            }, 100);
+        }
+        
+        // Cleanup timeout on unmount
+        return () => {
+            if (hideSubwayVideoTimeoutRef.current) {
+                clearTimeout(hideSubwayVideoTimeoutRef.current);
+                hideSubwayVideoTimeoutRef.current = null;
+            }
+        };
+    }, [isHoveringGraduateStudent, isCursorNearBorder]);
+
     // Hide cursor when image is showing (but not for video popups)
     useEffect(() => {
         if (showImage) {
@@ -1134,6 +1180,57 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         document.body
                     )}
 
+                        {/* Subway Video - Rendered via portal outside pinned container */}
+                    {isMounted && createPortal(
+                        <AnimatePresence>
+                            {showSubwayVideo && (
+                                <motion.div 
+                                    className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                    style={{
+                                        left: subwayVideoXpx,
+                                        top: subwayVideoYpx,
+                                    }}
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0 }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 600,
+                                        damping: 30,
+                                        duration: 0.1
+                                    }}
+                                >
+                                    <motion.video 
+                                        ref={subwayVideoRef}
+                                        src="/subway/cover_blank.mp4"
+                                        className="h-full w-full object-cover transition-all contrast-125 brightness-90"
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        variants={animateInChild}
+                                        onLoadedData={(e) => {
+                                            if (subwayVideoTimeRef.current > 0) {
+                                                e.target.currentTime = subwayVideoTimeRef.current;
+                                            }
+                                        }}
+                                        onTimeUpdate={(e) => {
+                                            subwayVideoTimeRef.current = e.target.currentTime;
+                                        }}
+                                    />
+                                    {/* Lockup overlay */}
+                                    <img 
+                                        src="/subway/lockup.png"
+                                        alt="Subway lockup"
+                                        className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[60%] h-auto object-contain pointer-events-none"
+                                    />
+                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>,
+                        document.body
+                    )}
+
                         {/* Header 3 */}
                         <h3
                             className="pt-10 text-4xl leading-[1.3] tracking-[-0.5pt]"
@@ -1149,19 +1246,24 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity"
                                 onMouseEnter={() => setIsHoveringStudioGhibli(true)}
                                 onMouseLeave={() => setIsHoveringStudioGhibli(false)}
-                                onClick={() => toggleWork && toggleWork('ghibli')}
+                                onClick={() => router.push('/ghibli')}
                             >Studio Ghibli</span>, to motion design work for <span 
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity"
                                 onMouseEnter={() => setIsHoveringNike(true)}
                                 onMouseLeave={() => setIsHoveringNike(false)}
-                                onClick={() => toggleWork && toggleWork('nike')}
+                                onClick={() => router.push('/nike')}
                             >Nike</span> and <span 
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity"
                                 onMouseEnter={() => setIsHoveringSamsung(true)}
                                 onMouseLeave={() => setIsHoveringSamsung(false)}
-                                onClick={() => toggleWork && toggleWork('samsung')}
+                                onClick={() => router.push('/samsung')}
                             >Samsung</span>. </span>
-                            <span ref={header3Part2Ref}>Today, he is a Graduate Student at the School of Visual Arts in NYC investigating user agency in Human–AI Interaction for an agentic future.</span>
+                            <span ref={header3Part2Ref}>Today, he is a <span 
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                onMouseEnter={() => setIsHoveringGraduateStudent(true)}
+                                onMouseLeave={() => setIsHoveringGraduateStudent(false)}
+                                onClick={() => router.push('/subway')}
+                            >Graduate Student</span> at the School of Visual Arts in NYC investigating user agency in Human–AI Interaction for an agentic future.</span>
                         </h3>
                     </div>
             

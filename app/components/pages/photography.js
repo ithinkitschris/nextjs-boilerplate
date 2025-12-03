@@ -2,6 +2,7 @@
 import { easeOut } from "framer-motion";
 import * as motion from "framer-motion/client"
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import CornerArrow from '../ui/CornerArrow.js';
 
 const animateIn ={
@@ -20,6 +21,7 @@ show: {
 }
 
 const PhotographyPage = ({className, toggleWork}) => {
+  const router = useRouter();
 
   return (
     <motion.div className={`grid grid-cols-2 lg:grid-cols-4 font-[family-name:var(--font-geist-sans)] gap-1.5 lg:gap-3 lg:h-[600px] 2xl:h-[800px] ${className}`}
@@ -34,7 +36,7 @@ const PhotographyPage = ({className, toggleWork}) => {
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
 
-        onClick={() => toggleWork('street')}>
+        onClick={() => router.push('/street')}>
 
             {/* Image */}
             <img 
@@ -65,7 +67,7 @@ const PhotographyPage = ({className, toggleWork}) => {
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
 
-        onClick={() => toggleWork('film')}>
+        onClick={() => router.push('/film')}>
         
         {/* Cover */}
         <img className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200" src="/Photography/film/cover4.jpg"/>
@@ -92,7 +94,7 @@ const PhotographyPage = ({className, toggleWork}) => {
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
 
-        onClick={() => toggleWork('shotoniphone')}>
+        onClick={() => router.push('/shotoniphone')}>
         
         {/* Cover */}
         <img className="w-full h-full inset-0 object-cover blur-none md:group-hover:blur-sm transition-all duration-200" src="/Photography/iphone/staticcover.jpg"/>
@@ -119,7 +121,7 @@ const PhotographyPage = ({className, toggleWork}) => {
         transition={{ duration: 0.15, ease: easeOut }}
         variants={animateInChild}
 
-        onClick={() => toggleWork('bbh')}>
+        onClick={() => router.push('/bbh')}>
         
         {/* Image */}
         <div className="w-full h-full overflow-hidden">

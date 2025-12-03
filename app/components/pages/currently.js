@@ -42,8 +42,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   const descriptionY = useSpring(cursorY, { stiffness: 250, damping: 35 });
   
   // Convert description motion values to pixel strings
-  const descriptionXpx = useTransform(descriptionX, (value) => `${value}px`);
-  const descriptionYpx = useTransform(descriptionY, (value) => `${value + 85}px`); // Offset 50px below
+  const descriptionXpx = useTransform(descriptionX, (value) => `${value + 20}px`);
+  const descriptionYpx = useTransform(descriptionY, (value) => `${value + 95}px`); // Offset 50px below
   
   // Rotation for description bubble - Independent
   const descriptionRotation = useMotionValue(0);
@@ -62,10 +62,10 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   // Convert Bloom motion values to pixel strings
   const bloomTitleXpx = useTransform(bloomTitleX, (value) => `${value}px`);
   const bloomTitleYpx = useTransform(bloomTitleY, (value) => `${value}px`);
-  const bloomSubtitleXpx = useTransform(bloomSubtitleX, (value) => `${value}px`);
-  const bloomSubtitleYpx = useTransform(bloomSubtitleY, (value) => `${value + 35}px`);
-  const bloomDescXpx = useTransform(bloomDescX, (value) => `${value}px`);
-  const bloomDescYpx = useTransform(bloomDescY, (value) => `${value + 100}px`);
+  const bloomSubtitleXpx = useTransform(bloomSubtitleX, (value) => `${value + 5}px`);
+  const bloomSubtitleYpx = useTransform(bloomSubtitleY, (value) => `${value + 42}px`);
+  const bloomDescXpx = useTransform(bloomDescX, (value) => `${value -20}px`);
+  const bloomDescYpx = useTransform(bloomDescY, (value) => `${value + 115}px`);
   
   // Bloom rotations - Independent
   const bloomTitleRotation = useMotionValue(0);
@@ -90,8 +90,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   const expenseTitleYpx = useTransform(expenseTitleY, (value) => `${value}px`);
   const expenseSubtitleXpx = useTransform(expenseSubtitleX, (value) => `${value}px`);
   const expenseSubtitleYpx = useTransform(expenseSubtitleY, (value) => `${value + 35}px`);
-  const expenseDescXpx = useTransform(expenseDescX, (value) => `${value}px`);
-  const expenseDescYpx = useTransform(expenseDescY, (value) => `${value + 65}px`);
+  const expenseDescXpx = useTransform(expenseDescX, (value) => `${value - 25}px`);
+  const expenseDescYpx = useTransform(expenseDescY, (value) => `${value + 95}px`);
   
   // Expense rotations - Independent
   const expenseTitleRotation = useMotionValue(0);
@@ -116,8 +116,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   const isvTitleYpx = useTransform(isvTitleY, (value) => `${value}px`);
   const isvSubtitleXpx = useTransform(isvSubtitleX, (value) => `${value}px`);
   const isvSubtitleYpx = useTransform(isvSubtitleY, (value) => `${value + 35}px`);
-  const isvDescXpx = useTransform(isvDescX, (value) => `${value}px`);
-  const isvDescYpx = useTransform(isvDescY, (value) => `${value + 65}px`);
+  const isvDescXpx = useTransform(isvDescX, (value) => `${value + 15}px`);
+  const isvDescYpx = useTransform(isvDescY, (value) => `${value + 95}px`);
   
   // ISV rotations - Independent
   const isvTitleRotation = useMotionValue(0);
@@ -911,7 +911,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="subway-title-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-3 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[15pt] font-semibold tracking-[-0.2pt]  bg-background max-w-[320px] leading-[1.1] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+              className="fixed pointer-events-none z-50 rounded-[25pt] px-6 py-3 border-1 border-b-1.5 border-r-1.5 text-[20pt] font-medium tracking-[-0.2pt] bg-background leading-[1.15] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -929,7 +929,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                 zIndex: 9999,
               }}
             >
-              Enhanced Subway Navigation with Apple Maps
+              Enhanced Subway Navigation<br/> with Apple Maps
             </motion.div>
             
             {/* Second tooltip - Description (smaller, independent physics) */}
@@ -970,7 +970,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="bloom-title-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[22px] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-3 border-1 border-b-1.5 border-r-1.5 text-[20pt] font-medium tracking-[-0.2pt] bg-background max-w-[300px] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -996,7 +996,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="bloom-subtitle-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9998] rounded-[20pt] px-4 py-2 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-semibold tracking-[-0.1pt] max-w-[220px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl"
+              className="fixed pointer-events-none z-[9998] rounded-[20pt] px-4 py-2 border-1 border-b-1.5 border-r-1.5 text-[15px] font-medium tracking-[-0.1pt] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -1014,7 +1014,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                 zIndex: 9998,
               }}
             >
-              Stanford Longevity Design Challenge – First Place
+              Stanford Longevity Design Challenge <br/>First Place
             </motion.div>
             
             {/* Third tooltip - Description */}
@@ -1022,7 +1022,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="bloom-description-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[290px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
+              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[315px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -1055,7 +1055,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="expense-title-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[15pt] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] leading-[1.15] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+              className="fixed pointer-events-none z-50 rounded-[25pt] px-6 py-3 border-1 border-b-1.5 border-r-1.5 text-[20pt] font-medium tracking-[-0.2pt] bg-background leading-[1.15] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -1114,7 +1114,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               id="isv-title-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9999] rounded-[20pt] px-5 py-2 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[15pt] font-semibold tracking-[-0.2pt] bg-background max-w-[300px] leading-[1.15] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+              className="fixed pointer-events-none z-50 rounded-[25pt] px-6 py-3 border-1 border-b-1.5 border-r-1.5 text-[20pt] font-medium tracking-[-0.2pt] bg-background leading-[1.15] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -1132,7 +1132,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                 zIndex: 9999,
               }}
             >
-              Singapore Airlines<br/>In-Flight<br/>Safety Video
+              Singapore Airlines<br/>In-Flight Safety Video
             </motion.div>
             
             {/* Third tooltip - Description */}

@@ -2,6 +2,7 @@
 
 import React, { useMemo, forwardRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from 'next/navigation';
 import VideoSquare from '../ui/VideoSquare';
 import ContentPage from './content';
 import { videoData, skillsetData, workTags } from '../../data/videoData';
@@ -9,6 +10,7 @@ import { animateIn } from '../../constants/animations';
 import { useHideNav } from '../../context/HideNavContext';
 
 const Archive = forwardRef(({ className, toggleWork }, ref) => {
+  const router = useRouter();
   const { archiveSelectedTags, setArchiveSelectedTags } = useHideNav();
 
   // Filter videos based on selected tags
@@ -42,6 +44,13 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
 
   // Handle video click - find matching work tag and navigate
   const handleVideoClick = (video) => {
+    // If video has a link, use router navigation (for car, ghibli, cabin, isv, subway)
+    if (video.link) {
+      router.push(video.link);
+      return;
+    }
+    
+    // Otherwise, use toggleWork for other pages
     const matchedWork = workTags.find((tag) => video.tags.includes(tag));
     if (matchedWork) {
       toggleWork(matchedWork);
