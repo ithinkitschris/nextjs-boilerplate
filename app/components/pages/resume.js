@@ -947,7 +947,6 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 {/* Profile / Desktop Container */}
                 <div ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%]">
                     
-                    
                     {/* Headers Container */}
                     <div ref={headersContainerRef} className="pt-64">
 
@@ -1258,12 +1257,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                 onMouseLeave={() => setIsHoveringSamsung(false)}
                                 onClick={() => router.push('/samsung')}
                             >Samsung</span>. </span>
-                            <span ref={header3Part2Ref}>Today, he is a <span 
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
-                                onMouseEnter={() => setIsHoveringGraduateStudent(true)}
-                                onMouseLeave={() => setIsHoveringGraduateStudent(false)}
-                                onClick={() => router.push('/subway')}
-                            >Graduate Student</span> at the School of Visual Arts in NYC investigating user agency in Human–AI Interaction for an agentic future.</span>
+                            <span ref={header3Part2Ref}>Today, he is pursuing a Master's in Interaction Design in New York City. He has spoken at Stanford, explored potential UWB applications, and is currently investigating user agency in Human–AI Interaction for his thesis.</span> 
                         </h3>
                     </div>
             
