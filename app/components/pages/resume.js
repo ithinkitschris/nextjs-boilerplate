@@ -1575,12 +1575,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 </div>
 
                 {/* Currently */}
-                <ResumeSectionHeader
+                {/* <ResumeSectionHeader
                     // header="December 2025"
                     // title="Highlights."
-                    headerClassName="md:ml-1"
-                />
-                <Currently className='col-span-full mb-64' key='currently' toggleWork={toggleWork} />
+                    headerClassName=""
+                /> */}
+                <Currently className='col-span-full mb-72 -mt-72' key='currently' toggleWork={toggleWork} />
 
                 {/* Archive */}
                 <ResumeSectionHeader
