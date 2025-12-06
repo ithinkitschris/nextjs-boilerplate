@@ -108,32 +108,6 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const thesisVideoXpx = useTransform(thesisVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
     const thesisVideoYpx = useTransform(thesisVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
 
-    // Thesis tooltip motion values - Three bubbles with independent physics
-    const thesisCursorX = useMotionValue(0);
-    const thesisCursorY = useMotionValue(0);
-    const thesisTitleX = useSpring(thesisCursorX, { stiffness: 300, damping: 30 });
-    const thesisTitleY = useSpring(thesisCursorY, { stiffness: 300, damping: 30 });
-    const thesisSubtitleX = useSpring(thesisCursorX, { stiffness: 250, damping: 35 });
-    const thesisSubtitleY = useSpring(thesisCursorY, { stiffness: 250, damping: 35 });
-    const thesisDescX = useSpring(thesisCursorX, { stiffness: 220, damping: 40 });
-    const thesisDescY = useSpring(thesisCursorY, { stiffness: 220, damping: 40 });
-
-    // Convert Thesis motion values to pixel strings
-    const thesisTitleXpx = useTransform(thesisTitleX, (value) => `${value}px`);
-    const thesisTitleYpx = useTransform(thesisTitleY, (value) => `${value}px`);
-    const thesisSubtitleXpx = useTransform(thesisSubtitleX, (value) => `${value + 0}px`);
-    const thesisSubtitleYpx = useTransform(thesisSubtitleY, (value) => `${value + 85}px`);
-    const thesisDescXpx = useTransform(thesisDescX, (value) => `${value}px`);
-    const thesisDescYpx = useTransform(thesisDescY, (value) => `${value + 130}px`);
-
-    // Thesis rotations - Independent
-    const thesisTitleRotation = useMotionValue(0);
-    const thesisSubtitleRotation = useMotionValue(0);
-    const thesisDescRotation = useMotionValue(0);
-    const springThesisTitleRotation = useSpring(thesisTitleRotation, { stiffness: 400, damping: 25 });
-    const springThesisSubtitleRotation = useSpring(thesisSubtitleRotation, { stiffness: 350, damping: 30 });
-    const springThesisDescRotation = useSpring(thesisDescRotation, { stiffness: 300, damping: 35 });
-
     // Rotation based on movement direction
     const imageRotation = useMotionValue(0);
     const springImageRotation = useSpring(imageRotation, { stiffness: 400, damping: 25 });
@@ -162,11 +136,11 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const [isHoveringNavigation, setIsHoveringNavigation] = useState(false);
     const [isHoveringThesis, setIsHoveringThesis] = useState(false);
     const [showCopiedMessage, setShowCopiedMessage] = useState(false);
-    const [isThesisTooltipVisible, setIsThesisTooltipVisible] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
     const [isHeader2AtOpacity1, setIsHeader2AtOpacity1] = useState(false);
     const [isHeader2Part2AtOpacity1, setIsHeader2Part2AtOpacity1] = useState(false);
     const [isHeader3AboveThreshold, setIsHeader3AboveThreshold] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
     const [isMouseOverBioSection, setIsMouseOverBioSection] = useState(false);
     const [isCursorNearBorder, setIsCursorNearBorder] = useState(false);
 
@@ -188,11 +162,6 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const hideStanfordVideoTimeoutRef = useRef(null);
     const hideNavigationVideoTimeoutRef = useRef(null);
     const hideThesisVideoTimeoutRef = useRef(null);
-    const hideImageTimeoutRef = useRef(null);
-    const showImageTimeoutRef = useRef(null);
-    const thesisPrevPosRef = useRef({ x: 0, y: 0 });
-    const thesisLastUpdateRef = useRef(Date.now());
-    const thesisHideTimeoutRef = useRef(null);
 
     // Refs for video elements and playback positions
     const isvVideoRef = useRef(null);
@@ -316,7 +285,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             gsap.set(header1Ref.current, { opacity: 1, scale: 1.05, transformOrigin: "left" });
             gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
             gsap.set(header2Ref.current, { opacity: 0.2 });
+            setIsHeader2AtOpacity1(false);
             gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+            setIsHeader2Part2AtOpacity1(false);
             gsap.set(header3Ref.current, { opacity: 0.1 });
             setIsHeader3AboveThreshold(false);
             gsap.set(header3Part2Ref.current, { opacity: 0.1 });
@@ -325,7 +296,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             const st = ScrollTrigger.create({
                 trigger: bioSectionRef.current,
                 start: "top top",
-                end: "+=150%", // Extend the scroll area by 100vh
+                end: "+=100%", // Extend the scroll area by 100vh
                 pin: true, // Pin the section in place
                 pinSpacing: true,
                 scrub: 1, // Smooth scrubbing tied to scroll position
@@ -339,6 +310,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 },
                 onUpdate: (self) => {
                     const progress = self.progress; // 0 to 1
+                    setScrollProgress(progress);
 
                     // Hide navbar during header animations (phases 1-3), show after phase 3 completes
                     if (progress < 1) {
@@ -349,29 +321,30 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         setHideNav(false);
                     }
 
-                    // Phase 1: 0% to 11.33% of scroll (progress 0 to 0.1133)
+                    // Phase 1a: 0% to 21.25% of scroll (progress 0 to 0.2125)
                     // Header 1 = 100% → 20%, Header 2 = 20% → 100%, Header 3 = 10% (held)
                     // Container y-position moves from 150 to 0 (upward 150px)
                     // Header 1 scale moves from 1.05x to 1x
                     // Header 2 scale moves from 1x to 1.03x
-                    if (progress <= 0.1133) {
-                        const phase1Progress = progress / 0.1133; // Maps 0->0, 0.1133->1
+                    if (progress <= 0.2125) {
+                        const phase1Progress = progress / 0.2125; // Maps 0->0, 0.2125->1
+                        const easedPhase1Progress = gsap.parseEase("power3.inOut")(phase1Progress);
 
                         // Container: move from y: 150 to y: 0
-                        const containerY = gsap.utils.interpolate(150, 0, phase1Progress);
+                        const containerY = gsap.utils.interpolate(150, 0, easedPhase1Progress);
                         gsap.set(headersContainerRef.current, { y: containerY });
 
                         // Header 1: fade from 1 to 0.2, scale from 1.05 to 1
-                        const header1Opacity = gsap.utils.interpolate(1, 0.2, phase1Progress);
-                        const header1Scale = gsap.utils.interpolate(1.05, 1, phase1Progress);
+                        const header1Opacity = gsap.utils.interpolate(1, 0.2, easedPhase1Progress);
+                        const header1Scale = gsap.utils.interpolate(1.05, 1, easedPhase1Progress);
                         gsap.set(header1Ref.current, { opacity: header1Opacity, scale: header1Scale, transformOrigin: "left" });
 
                         // Header 2 Container: scale from 1 to 1.03
-                        const header2ContainerScale = gsap.utils.interpolate(1, 1.03, phase1Progress);
+                        const header2ContainerScale = gsap.utils.interpolate(1, 1.03, easedPhase1Progress);
                         gsap.set(header2ContainerRef.current, { scale: header2ContainerScale, transformOrigin: "left" });
 
                         // Header 2: fade from 0.2 to 1
-                        const header2Opacity = gsap.utils.interpolate(0.2, 1, phase1Progress);
+                        const header2Opacity = gsap.utils.interpolate(0.2, 1, easedPhase1Progress);
                         gsap.set(header2Ref.current, { opacity: header2Opacity });
                         setIsHeader2AtOpacity1(header2Opacity >= 0.21);
 
@@ -384,174 +357,109 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
-                    // Phase 2a1: 11.33% to 22.66% of scroll (progress 0.1133 to 0.2266)
-                    // Header 2 Part 2 remains at 0.2 opacity, Header 2 stays at 1.0
-                    else if (progress <= 0.2266) {
-                        // Container: stay at y: 0 (already at this value from Phase 1)
-                        gsap.set(headersContainerRef.current, { y: 0 });
-
-                        // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1)
-                        gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
-
-                        // Header 2 Container: stay at scale 1.03 (already at this value from Phase 1)
-                        gsap.set(header2ContainerRef.current, { scale: 1.03, transformOrigin: "left" });
-
-                        // Header 2: stay at 1 opacity (already at this value from Phase 1)
-                        gsap.set(header2Ref.current, { opacity: 1 });
-                        setIsHeader2AtOpacity1(true);
-
-                        // Header 2 Part 2: stay at 0.2 opacity
-                        gsap.set(header2Part2Ref.current, { opacity: 0.2 });
-                        setIsHeader2Part2AtOpacity1(false);
-
-                        // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
-                        gsap.set(header3Ref.current, { opacity: 0.1 });
-                        setIsHeader3AboveThreshold(false);
-                        gsap.set(header3Part2Ref.current, { opacity: 0.1 });
-                    }
-                    // Phase 2a2: 22.66% to 28.33% of scroll (progress 0.2266 to 0.2833)
+                    // Phase 1b: 21.25% to 42.5% of scroll (progress 0.2125 to 0.425)
                     // Header 2 fades from 1 to 0.2, Header 2 Part 2 fades from 0.2 to 1
-                    else if (progress <= 0.2833) {
-                        const phase2a2Progress = (progress - 0.2266) / 0.0567; // Maps 0.2266->0, 0.2833->1
+                    else if (progress <= 0.425) {
+                        const phase1bProgress = (progress - 0.2125) / 0.2125; // Maps 0.2125->0, 0.425->1
+                        const easedPhase1bProgress = gsap.parseEase("expo.inOut")(phase1bProgress);
 
-                        // Container: stay at y: 0 (already at this value from Phase 1)
+                        // Container: stay at y: 0 (already at this value from Phase 1a)
                         gsap.set(headersContainerRef.current, { y: 0 });
 
-                        // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1)
+                        // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1a)
                         gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
 
                         // Header 2 Container: stay at scale 1.03
                         gsap.set(header2ContainerRef.current, { scale: 1.03, transformOrigin: "left" });
 
                         // Header 2: fade from 1 to 0.2
-                        const header2Opacity = gsap.utils.interpolate(1, 0.2, phase2a2Progress);
+                        const header2Opacity = gsap.utils.interpolate(1, 0.2, easedPhase1bProgress);
                         gsap.set(header2Ref.current, { opacity: header2Opacity });
-                        setIsHeader2AtOpacity1(false);
+                        setIsHeader2AtOpacity1(header2Opacity >= 0.21);
 
                         // Header 2 Part 2: fade from 0.2 to 1
-                        const header2Part2Opacity = gsap.utils.interpolate(0.2, 1, phase2a2Progress);
+                        const header2Part2Opacity = gsap.utils.interpolate(0.2, 1, easedPhase1bProgress);
                         gsap.set(header2Part2Ref.current, { opacity: header2Part2Opacity });
                         setIsHeader2Part2AtOpacity1(header2Part2Opacity >= 0.21);
 
-                        // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
+                        // Header 3: stay at 0.1 opacity (already at this value from Phase 1a)
                         gsap.set(header3Ref.current, { opacity: 0.1 });
                         setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
-                    // Phase 2a3: 28.33% to 39.66% of scroll (progress 0.2833 to 0.3966)
-                    // Hold/pause - keep end state of Phase 2a2
-                    else if (progress <= 0.3966) {
-                        // Container: stay at y: 0 (already at this value from Phase 1)
-                        gsap.set(headersContainerRef.current, { y: 0 });
-
-                        // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1)
-                        gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
-
-                        // Header 2 Container: stay at scale 1.03 (end state of Phase 2a2)
-                        gsap.set(header2ContainerRef.current, { scale: 1.03, transformOrigin: "left" });
-
-                        // Header 2: stay at 0.2 opacity (end state of Phase 2a2)
-                        gsap.set(header2Ref.current, { opacity: 0.2 });
-
-                        // Header 2 Part 2: stay at 1 opacity (end state of Phase 2a2)
-                        gsap.set(header2Part2Ref.current, { opacity: 1 });
-                        setIsHeader2Part2AtOpacity1(true);
-
-                        // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
-                        gsap.set(header3Ref.current, { opacity: 0.1 });
-                        setIsHeader3AboveThreshold(false);
-                        gsap.set(header3Part2Ref.current, { opacity: 0.1 });
-                    }
-                    // Phase 2b1: 39.66% to 50.99% of scroll (progress 0.3966 to 0.5099)
+                    // Phase 2b1: 42.5% to 63.75% of scroll (progress 0.425 to 0.6375)
                     // Container moves upward (complete movement), Header 1 fades from 0.2 to 0.1, Header 2 stays at 0.2, Header 2 Part 2 fades from 1 to 0.2
                     // Header 3 fades from 0.1 to 1, Header 3 Part 2 stays at 0.1
                     // Header 2 scale moves from 1.03x to 1x
-                    else if (progress <= 0.5099) {
-                        const phase2b1Progress = (progress - 0.3966) / 0.1133; // Maps 0.3966->0, 0.5099->1
+                    else if (progress <= 0.6375) {
+                        const phase2b1Progress = (progress - 0.425) / 0.2125; // Maps 0.425->0, 0.6375->1
+                        const easedPhase2b1Progress = gsap.parseEase("power3.inOut")(phase2b1Progress);
 
                         // Container: move from y: 0 to y: -150 (complete upward movement of 150px)
-                        const containerY = gsap.utils.interpolate(0, -150, phase2b1Progress);
+                        const containerY = gsap.utils.interpolate(0, -150, easedPhase2b1Progress);
                         gsap.set(headersContainerRef.current, { y: containerY });
 
                         // Header 1: fade from 0.2 to 0.1 (from Phase 1 end state)
-                        const header1Opacity = gsap.utils.interpolate(0.2, 0.1, phase2b1Progress);
+                        const header1Opacity = gsap.utils.interpolate(0.2, 0.1, easedPhase2b1Progress);
                         gsap.set(header1Ref.current, { opacity: header1Opacity, scale: 1, transformOrigin: "left" });
 
                         // Header 2 Container: scale from 1.03 to 1
-                        const header2ContainerScale = gsap.utils.interpolate(1.03, 1, phase2b1Progress);
+                        const header2ContainerScale = gsap.utils.interpolate(1.03, 1, easedPhase2b1Progress);
                         gsap.set(header2ContainerRef.current, { scale: header2ContainerScale, transformOrigin: "left" });
 
                         // Header 2: stay at 0.2 opacity
                         gsap.set(header2Ref.current, { opacity: 0.2 });
+                        setIsHeader2AtOpacity1(false);
 
                         // Header 2 Part 2: fade from 1 to 0.2
-                        const header2Part2Opacity = gsap.utils.interpolate(1, 0.2, phase2b1Progress);
+                        const header2Part2Opacity = gsap.utils.interpolate(1, 0.2, easedPhase2b1Progress);
                         gsap.set(header2Part2Ref.current, { opacity: header2Part2Opacity });
-                        setIsHeader2Part2AtOpacity1(false);
+                        setIsHeader2Part2AtOpacity1(header2Part2Opacity >= 0.21);
 
                         // Header 3: fade from 0.1 to 1
-                        const header3Opacity = gsap.utils.interpolate(0.1, 1, phase2b1Progress);
+                        const header3Opacity = gsap.utils.interpolate(0.1, 1, easedPhase2b1Progress);
                         gsap.set(header3Ref.current, { opacity: header3Opacity });
                         setIsHeader3AboveThreshold(header3Opacity >= 0.4);
 
                         // Header 3 Part 2: stay at 0.1 opacity
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
-                    // Phase 2b1pause: 50.99% to 62.32% of scroll (progress 0.5099 to 0.6232)
-                    // Short pause/hold - keep end state of Phase 2b1
-                    else if (progress <= 0.6232) {
+                    // Phase 2b2: 63.75% to 85% of scroll (progress 0.6375 to 0.85)
+                    // Container holds at -150, Header 1 holds at 0.1, Header 2 holds at 0.2, Header 2 Part 2 holds at 0.2
+                    // Header 3 fades from 1 to 0.2, Header 3 Part 2 fades from 0.1 to 1
+                    else if (progress <= 0.85) {
+                        const phase2b2Progress = (progress - 0.6375) / 0.2125; // Maps 0.6375->0, 0.85->1
+                        const easedPhase2b2Progress = gsap.parseEase("expo.inOut")(phase2b2Progress);
+
                         // Container: stay at y: -150 (already at this value from Phase 2b1)
                         gsap.set(headersContainerRef.current, { y: -150 });
 
-                        // Header 1: stay at 0.1 opacity and scale 1 (end state of Phase 2b1)
+                        // Header 1: stay at 0.1 opacity and scale 1 (already at this value from Phase 2b1)
                         gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
 
-                        // Header 2 Container: stay at scale 1 (end state of Phase 2b1)
+                        // Header 2 Container: stay at scale 1 (already at this value from Phase 2b1)
                         gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
 
-                        // Header 2: stay at 0.2 opacity (end state of Phase 2b1)
+                        // Header 2: stay at 0.2 opacity (already at this value from Phase 2b1)
                         gsap.set(header2Ref.current, { opacity: 0.2 });
+                        setIsHeader2AtOpacity1(false);
                         gsap.set(header2Part2Ref.current, { opacity: 0.2 });
-
-                        // Header 3: stay at 1 opacity (end state of Phase 2b1)
-                        gsap.set(header3Ref.current, { opacity: 1 });
-                        setIsHeader3AboveThreshold(true);
-
-                        // Header 3 Part 2: stay at 0.1 opacity (end state of Phase 2b1)
-                        gsap.set(header3Part2Ref.current, { opacity: 0.1 });
-                    }
-                    // Phase 2b2: 62.32% to 73.65% of scroll (progress 0.6232 to 0.7365)
-                    // Container holds at -150, Header 1 holds at 0.1, Header 2 holds at 0.2, Header 2 Part 2 holds at 0.2
-                    // Header 3 fades from 1 to 0.2, Header 3 Part 2 fades from 0.1 to 1
-                    else if (progress <= 0.7365) {
-                        const phase2b2Progress = (progress - 0.6232) / 0.1133; // Maps 0.6232->0, 0.7365->1
-
-                        // Container: stay at y: -150 (already at this value from Phase 2b1pause)
-                        gsap.set(headersContainerRef.current, { y: -150 });
-
-                        // Header 1: stay at 0.1 opacity and scale 1 (already at this value from Phase 2b1pause)
-                        gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
-
-                        // Header 2 Container: stay at scale 1 (already at this value from Phase 2b1pause)
-                        gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
-
-                        // Header 2: stay at 0.2 opacity (already at this value from Phase 2b1pause)
-                        gsap.set(header2Ref.current, { opacity: 0.2 });
-                        gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+                        setIsHeader2Part2AtOpacity1(false);
 
                         // Header 3: fade from 1 to 0.2
-                        const header3Opacity = gsap.utils.interpolate(1, 0.2, phase2b2Progress);
+                        const header3Opacity = gsap.utils.interpolate(1, 0.2, easedPhase2b2Progress);
                         gsap.set(header3Ref.current, { opacity: header3Opacity });
                         setIsHeader3AboveThreshold(header3Opacity >= 0.6);
 
                         // Header 3 Part 2: fade from 0.1 to 1
-                        const header3Part2Opacity = gsap.utils.interpolate(0.1, 1, phase2b2Progress);
+                        const header3Part2Opacity = gsap.utils.interpolate(0.1, 1, easedPhase2b2Progress);
                         gsap.set(header3Part2Ref.current, { opacity: header3Part2Opacity });
                     }
-                    // Phase 2c: 73.65% to 85% of scroll (progress 0.7365 to 0.85)
-                    // Container holds at -150, Header 1 holds at 0.1, Header 2 holds at 0.2
-                    // Header 3 holds at 0.2, Header 3 Part 2 holds at 1.0
-                    else if (progress <= 0.85) {
+                    // Phase 3: 85% to 100% of scroll (progress 0.85 to 1)
+                    // Header 3 stays at 0.2, Header 3 Part 2 fades from 1 to 0.2
+                    else {
+                        const phase3Progress = (progress - 0.85) / 0.15; // Maps 0.85->0, 1->1
+                        const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
 
                         // Container: stay at y: -150 (already at this value from Phase 2b2)
                         gsap.set(headersContainerRef.current, { y: -150 });
@@ -564,39 +472,16 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
                         // Header 2: stay at 0.2 opacity (already at these values from Phase 2b2)
                         gsap.set(header2Ref.current, { opacity: 0.2 });
+                        setIsHeader2AtOpacity1(false);
                         gsap.set(header2Part2Ref.current, { opacity: 0.2 });
+                        setIsHeader2Part2AtOpacity1(false);
 
-                        // Header 3: stay at 0.2 opacity (end state of Phase 2b2)
-                        gsap.set(header3Ref.current, { opacity: 0.2 });
-                        setIsHeader3AboveThreshold(false);
-
-                        // Header 3 Part 2: stay at 1 opacity (end state of Phase 2b2)
-                        gsap.set(header3Part2Ref.current, { opacity: 1 });
-                    }
-                    // Phase 3: 85% to 100% of scroll (progress 0.85 to 1)
-                    // Header 3 stays at 0.2, Header 3 Part 2 fades from 1 to 0.2
-                    else {
-                        const phase3Progress = (progress - 0.85) / 0.15; // Maps 0.85->0, 1->1
-
-                        // Container: stay at y: -150 (already at this value from Phase 2c)
-                        gsap.set(headersContainerRef.current, { y: -150 });
-
-                        // Header 1: stay at 0.1 opacity and scale 1 (from Phase 2c end state)
-                        gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
-
-                        // Header 2 Container: stay at scale 1 (already at this value from Phase 2c)
-                        gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
-
-                        // Header 2: stay at 0.2 opacity (already at these values from Phase 2c)
-                        gsap.set(header2Ref.current, { opacity: 0.2 });
-                        gsap.set(header2Part2Ref.current, { opacity: 0.2 });
-
-                        // Header 3: stay at 0.2 opacity (from Phase 2c end state)
+                        // Header 3: stay at 0.2 opacity (from Phase 2b2 end state)
                         gsap.set(header3Ref.current, { opacity: 0.2 });
                         setIsHeader3AboveThreshold(false);
 
                         // Header 3 Part 2: fade from 1 to 0.2
-                        const header3Part2Opacity = gsap.utils.interpolate(1, 0.2, phase3Progress);
+                        const header3Part2Opacity = gsap.utils.interpolate(1, 0.2, easedPhase3Progress);
                         gsap.set(header3Part2Ref.current, { opacity: header3Part2Opacity });
                     }
                 }
@@ -747,9 +632,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         };
     }, []);
 
-    // Update showImage based on both conditions with delay before hiding
+    // Update showImage based on scroll progress (not opacity)
     useEffect(() => {
-        const isEitherHeaderAtOpacity1 = isHeader2AtOpacity1 || isHeader2Part2AtOpacity1;
+        // Image should show from 5% to 45% of scroll progress
+        const isInHeader2Section = scrollProgress >= 0.03 && scrollProgress <= 0.44;
 
         // Check if any header 3 link is being hovered
         const isHoveringHeader3Link = isHoveringSingaporeAirlines ||
@@ -768,63 +654,34 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                   showStanfordVideo ||
                                   showNavigationVideo ||
                                   showThesisVideo;
-
-        // Safeguard: ensure photo is hidden when both header 2 parts are not in focus
-        const areBothHeadersNotInFocus = !isHeader2AtOpacity1 && !isHeader2Part2AtOpacity1;
         
         // Hide photo if hovering header 3 link or if any video is showing
-        const shouldShow = isEitherHeaderAtOpacity1 &&
+        const shouldShow = isInHeader2Section &&
                           !isHoveringHeader3Link &&
                           !isAnyVideoShowing;
 
-        // Clear any existing timeouts
-        if (hideImageTimeoutRef.current) {
-            clearTimeout(hideImageTimeoutRef.current);
-            hideImageTimeoutRef.current = null;
-        }
-        if (showImageTimeoutRef.current) {
-            clearTimeout(showImageTimeoutRef.current);
-            showImageTimeoutRef.current = null;
-        }
-
-        // Explicit safeguard: force hide if both headers are not in focus
-        if (areBothHeadersNotInFocus) {
+        // Explicit safeguard: force hide if not in header 2 section
+        if (!isInHeader2Section) {
             setShowImage(false);
             imageRotation.set(0);
             return;
         }
 
         if (shouldShow) {
-            // Show with 100ms delay before reappearing
-            showImageTimeoutRef.current = setTimeout(() => {
-                setShowImage(true);
-                // Initialize previous position when image appears
-                if (typeof window !== 'undefined') {
-                    imagePrevPosRef.current = { x: window.innerWidth / 2, y: window.innerHeight * 0.75 };
-                    imageRotation.set(0);
-                }
-                showImageTimeoutRef.current = null;
-            }, 100);
+            // Show immediately when entering the section
+            setShowImage(true);
+            // Initialize previous position when image appears
+            if (typeof window !== 'undefined') {
+                imagePrevPosRef.current = { x: window.innerWidth / 2, y: window.innerHeight * 0.75 };
+                imageRotation.set(0);
+            }
         } else {
             // Hide immediately (no delay)
             setShowImage(false);
             imageRotation.set(0); // Reset rotation when hiding
         }
-
-        // Cleanup timeouts on unmount
-        return () => {
-            if (hideImageTimeoutRef.current) {
-                clearTimeout(hideImageTimeoutRef.current);
-                hideImageTimeoutRef.current = null;
-            }
-            if (showImageTimeoutRef.current) {
-                clearTimeout(showImageTimeoutRef.current);
-                showImageTimeoutRef.current = null;
-            }
-        };
     }, [
-        isHeader2AtOpacity1,
-        isHeader2Part2AtOpacity1,
+        scrollProgress,
         isHoveringSingaporeAirlines,
         isHoveringStudioGhibli,
         isHoveringNike,
@@ -1165,80 +1022,6 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             }
         }
     }));
-
-    const handleThesisMouseMove = (e) => {
-        if (typeof window === 'undefined') return;
-
-        const tooltipOffset = 20;
-        const tooltipWidth = 350;
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-
-        const now = Date.now();
-        const deltaTime = Math.max(now - thesisLastUpdateRef.current, 1);
-        thesisLastUpdateRef.current = now;
-
-        let targetX = e.clientX + tooltipOffset;
-        let targetY = e.clientY;
-
-        // Prevent tooltip from going off right edge (no flip, just constrain to edge)
-        const tooltipHalfWidth = tooltipWidth / 2;
-        if (targetX + tooltipHalfWidth > viewportWidth) {
-            targetX = viewportWidth - tooltipHalfWidth;
-        }
-
-        // Prevent tooltip from going off left edge
-        if (targetX - tooltipHalfWidth < 0) {
-            targetX = tooltipHalfWidth;
-        }
-
-        // Prevent tooltip from going off bottom edge
-        if (targetY + 30 > viewportHeight) {
-            targetY = viewportHeight - 30;
-        }
-
-        // Prevent tooltip from going off top edge
-        if (targetY - 30 < 0) {
-            targetY = 30;
-        }
-
-        // Calculate velocity for rotation based on actual cursor movement (not adjusted position)
-        const cursorDeltaX = e.clientX - thesisPrevPosRef.current.x;
-        const cursorDeltaY = e.clientY - thesisPrevPosRef.current.y;
-        const velocityX = cursorDeltaX / deltaTime;
-        const speed = Math.sqrt(velocityX * velocityX + (cursorDeltaY / deltaTime) ** 2);
-
-        // Calculate rotation based on horizontal movement direction and speed
-        const maxRotation = 10;
-        const rotationIntensity = Math.min(speed * 0.3, 1);
-        const horizontalInfluence = Math.sign(velocityX) || 0;
-        const verticalInfluence = Math.sign(cursorDeltaY) * 0.3;
-
-        // Apply rotation with intensity based on speed - Different for each bubble
-        const titleRotationValue = (horizontalInfluence + verticalInfluence) * maxRotation * rotationIntensity;
-        const subtitleRotationValue = (horizontalInfluence + verticalInfluence * 0.5) * maxRotation * rotationIntensity * 0.8;
-        const descRotationValue = (horizontalInfluence + verticalInfluence * 0.3) * maxRotation * rotationIntensity * 0.6;
-
-        thesisTitleRotation.set(Math.max(-maxRotation, Math.min(maxRotation, titleRotationValue)));
-        thesisSubtitleRotation.set(Math.max(-maxRotation, Math.min(maxRotation, subtitleRotationValue)));
-        thesisDescRotation.set(Math.max(-maxRotation, Math.min(maxRotation, descRotationValue)));
-
-        // Update cursor position (this will trigger spring animation for all three bubbles)
-        thesisCursorX.set(targetX);
-        thesisCursorY.set(targetY);
-
-        // Update previous position - store actual cursor position for velocity calculation
-        thesisPrevPosRef.current = { x: e.clientX, y: e.clientY };
-    };
-
-    // Cleanup timeout on unmount
-    useEffect(() => {
-        return () => {
-            if (thesisHideTimeoutRef.current) {
-                clearTimeout(thesisHideTimeoutRef.current);
-            }
-        };
-    }, []);
     //#endregion
 
     return (
@@ -1791,173 +1574,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     </div>
                 </div>
 
-                {/* Thesis Cover Video */}
-                <motion.div
-                    className="col-span-full mb-64 cursor-pointer rounded-3xl relative overflow-hidden h-[650px] w-full -mt-4"
-                    whileHover={{ scale: 0.99 }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 1000,
-                        damping: 15,
-                    }}
-                    onMouseEnter={(e) => {
-                        if (thesisHideTimeoutRef.current) {
-                            clearTimeout(thesisHideTimeoutRef.current);
-                            thesisHideTimeoutRef.current = null;
-                        }
-
-                        setIsThesisTooltipVisible(true);
-                        if (typeof window !== 'undefined') {
-                            const tooltipOffset = 20;
-                            const targetX = e.clientX + tooltipOffset;
-                            const targetY = e.clientY;
-                            thesisCursorX.set(targetX);
-                            thesisCursorY.set(targetY);
-                            thesisPrevPosRef.current = { x: e.clientX, y: e.clientY };
-                            thesisTitleRotation.set(0);
-                            thesisSubtitleRotation.set(0);
-                            thesisDescRotation.set(0);
-                        }
-                    }}
-                    onMouseLeave={() => {
-                        if (thesisHideTimeoutRef.current) {
-                            clearTimeout(thesisHideTimeoutRef.current);
-                            thesisHideTimeoutRef.current = null;
-                        }
-
-                        setIsThesisTooltipVisible(false);
-                        thesisTitleRotation.set(0);
-                        thesisSubtitleRotation.set(0);
-                        thesisDescRotation.set(0);
-                    }}
-                    onFocus={(e) => {
-                        if (thesisHideTimeoutRef.current) {
-                            clearTimeout(thesisHideTimeoutRef.current);
-                            thesisHideTimeoutRef.current = null;
-                        }
-
-                        setIsThesisTooltipVisible(true);
-                        if (typeof window !== 'undefined' && e.currentTarget) {
-                            const rect = e.currentTarget.getBoundingClientRect();
-                            const tooltipOffset = 20;
-                            const targetX = rect.left + rect.width / 2 + tooltipOffset;
-                            const targetY = rect.top + rect.height / 2;
-                            thesisCursorX.set(targetX);
-                            thesisCursorY.set(targetY);
-                            thesisPrevPosRef.current = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
-                            thesisTitleRotation.set(0);
-                            thesisSubtitleRotation.set(0);
-                            thesisDescRotation.set(0);
-                        }
-                    }}
-                    onBlur={() => {
-                        if (thesisHideTimeoutRef.current) {
-                            clearTimeout(thesisHideTimeoutRef.current);
-                            thesisHideTimeoutRef.current = null;
-                        }
-
-                        setIsThesisTooltipVisible(false);
-                        thesisTitleRotation.set(0);
-                        thesisSubtitleRotation.set(0);
-                        thesisDescRotation.set(0);
-                    }}
-                    onMouseMove={handleThesisMouseMove}
-                    onClick={() => {
-                        window.open('https://bargainingwiththefuture.com', '_blank');
-                    }}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            window.open('https://bargainingwiththefuture.com', '_blank');
-                        }
-                    }}
-                    tabIndex={0}
-                    role="button"
-                    aria-label="Navigate to Bargaining with the Future"
-                    aria-describedby="thesis-description-tooltip"
-                >
-                    {/* Glass Edge Effect */}
-                    <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)]
-                    pointer-events-none mix-blend-overlay z-10"/>
-                    <video
-                        src="/thesis/lifeoscover2.mp4"
-                        className="w-full object-cover scale-120 rounded-[16pt] md:rounded-3xl brightness-75"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                    />
-                    {/* Lockup */}
-                    <img
-                        src="/thesis/lifeoslockup.svg"
-                        alt="LifeOS lockup"
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
-                    />
-                </motion.div>
-
-                {/* Thesis Tooltips */}
-                <AnimatePresence>
-                    {isThesisTooltipVisible && (
-                        <>
-                            {/* First tooltip - Title */}
-                            <motion.div
-                                id="thesis-title-tooltip"
-                                role="tooltip"
-                                aria-live="polite"
-                                className="fixed pointer-events-none z-50 rounded-[22pt] px-6 py-3 pb-4 border-b-1.5 border-r-1.5 text-[18pt] font-medium tracking-[-0.2pt] bg-background leading-[1.15] border-foreground/10 text-foreground dark:bg-black/30 dark:border-white/5 dark:text-white drop-shadow-xl backdrop-blur-3xl"
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0 }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 600,
-                                    damping: 30,
-                                    duration: 0.1
-                                }}
-                                style={{
-                                    left: thesisTitleXpx,
-                                    top: thesisTitleYpx,
-                                    rotate: springThesisTitleRotation,
-                                    transform: 'translate(-50%, -50%)',
-                                    zIndex: 9999,
-                                }}
-                            >
-                                Bargaining with the Future:<br /> <span className="block mt-1 text-[12pt]">Understanding Agency in Human-AI Interaction</span>
-                            </motion.div>
-
-                            {/* Second tooltip - Subtitle */}
-                            <motion.div
-                                id="thesis-subtitle-tooltip"
-                                role="tooltip"
-                                aria-live="polite"
-                                className="fixed pointer-events-none z-[9998] rounded-[20pt] px-6 py-4 border-b-1.5 border-r-1.5 text-[13px] font-medium tracking-[-0.1pt] bg-background border-foreground/10 text-foreground dark:bg-black/30 dark:border-white/5 dark:text-white drop-shadow-lg backdrop-blur-3xl max-w-[310px]"
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0 }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 600,
-                                    damping: 30,
-                                    duration: 0.1
-                                }}
-                                style={{
-                                    left: thesisSubtitleXpx,
-                                    top: thesisSubtitleYpx,
-                                    rotate: springThesisSubtitleRotation,
-                                    transform: 'translate(-50%, -50%)',
-                                    zIndex: 9998,
-                                }}
-                            >
-                                An ongoing speculative design thesis that investigates user agency within Human–AI interaction in a fully agentic future.
-                            </motion.div>
-                        </>
-                    )}
-                </AnimatePresence>
-
                 {/* Currently */}
                 <ResumeSectionHeader
                     // header="December 2025"
-                    title="Highlights."
+                    // title="Highlights."
                     headerClassName="md:ml-1"
                 />
                 <Currently className='col-span-full mb-64' key='currently' toggleWork={toggleWork} />
@@ -1972,10 +1592,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
                 {/* CV */}
                 <ResumeSectionHeader
-                    header="CV"
+                    // header="CV"
                     title="Info."
                     headerClassName="hidden md:block text-[12pt] mt-72 mb-3 ml-2"
-                    titleClassName="hidden md:block tracking-[-2.5pt] text-[64pt] mb-6 w-full"
+                    titleClassName="hidden md:block tracking-[-2.5pt] text-[64pt] mt-72 mb-6 w-full"
                 />
 
                 {/* Story Container */}

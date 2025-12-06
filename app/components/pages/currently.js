@@ -22,6 +22,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   const [isBloomTooltipVisible, setIsBloomTooltipVisible] = useState(false);
   const [isExpenseTooltipVisible, setIsExpenseTooltipVisible] = useState(false);
   const [isIsvTooltipVisible, setIsIsvTooltipVisible] = useState(false);
+  const [isThesisTooltipVisible, setIsThesisTooltipVisible] = useState(false);
   
   // Motion values for physics-based animation - First tooltip (title)
   const cursorX = useMotionValue(0);
@@ -127,6 +128,26 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   const springIsvSubtitleRotation = useSpring(isvSubtitleRotation, { stiffness: 350, damping: 30 });
   const springIsvDescRotation = useSpring(isvDescRotation, { stiffness: 300, damping: 35 });
   
+  // Thesis tooltip motion values - Two bubbles with independent physics
+  const thesisCursorX = useMotionValue(0);
+  const thesisCursorY = useMotionValue(0);
+  const thesisTitleX = useSpring(thesisCursorX, { stiffness: 300, damping: 30 });
+  const thesisTitleY = useSpring(thesisCursorY, { stiffness: 300, damping: 30 });
+  const thesisSubtitleX = useSpring(thesisCursorX, { stiffness: 250, damping: 35 });
+  const thesisSubtitleY = useSpring(thesisCursorY, { stiffness: 250, damping: 35 });
+  
+  // Convert Thesis motion values to pixel strings
+  const thesisTitleXpx = useTransform(thesisTitleX, (value) => `${value}px`);
+  const thesisTitleYpx = useTransform(thesisTitleY, (value) => `${value}px`);
+  const thesisSubtitleXpx = useTransform(thesisSubtitleX, (value) => `${value}px`);
+  const thesisSubtitleYpx = useTransform(thesisSubtitleY, (value) => `${value + 85}px`);
+  
+  // Thesis rotations - Independent
+  const thesisTitleRotation = useMotionValue(0);
+  const thesisSubtitleRotation = useMotionValue(0);
+  const springThesisTitleRotation = useSpring(thesisTitleRotation, { stiffness: 400, damping: 25 });
+  const springThesisSubtitleRotation = useSpring(thesisSubtitleRotation, { stiffness: 350, damping: 30 });
+  
   // Track previous position for velocity calculation
   const prevPosRef = useRef({ x: 0, y: 0 });
   const lastUpdateRef = useRef(Date.now());
@@ -140,6 +161,9 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   const isvPrevPosRef = useRef({ x: 0, y: 0 });
   const isvLastUpdateRef = useRef(Date.now());
   const isvHideTimeoutRef = useRef(null);
+  const thesisPrevPosRef = useRef({ x: 0, y: 0 });
+  const thesisLastUpdateRef = useRef(Date.now());
+  const thesisHideTimeoutRef = useRef(null);
   
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -155,6 +179,9 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
       }
       if (isvHideTimeoutRef.current) {
         clearTimeout(isvHideTimeoutRef.current);
+      }
+      if (thesisHideTimeoutRef.current) {
+        clearTimeout(thesisHideTimeoutRef.current);
       }
     };
   }, []);
@@ -422,6 +449,69 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
     isvPrevPosRef.current = { x: e.clientX, y: e.clientY };
   };
   
+  const handleThesisMouseMove = (e) => {
+    if (typeof window === 'undefined') return;
+    
+    const tooltipOffset = 20;
+    const tooltipWidth = 350;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    const now = Date.now();
+    const deltaTime = Math.max(now - thesisLastUpdateRef.current, 1);
+    thesisLastUpdateRef.current = now;
+    
+    let targetX = e.clientX + tooltipOffset;
+    let targetY = e.clientY;
+    
+    // Prevent tooltip from going off right edge (no flip, just constrain to edge)
+    const tooltipHalfWidth = tooltipWidth / 2;
+    if (targetX + tooltipHalfWidth > viewportWidth) {
+      targetX = viewportWidth - tooltipHalfWidth;
+    }
+    
+    // Prevent tooltip from going off left edge
+    if (targetX - tooltipHalfWidth < 0) {
+      targetX = tooltipHalfWidth;
+    }
+    
+    // Prevent tooltip from going off bottom edge
+    if (targetY + 30 > viewportHeight) {
+      targetY = viewportHeight - 30;
+    }
+    
+    // Prevent tooltip from going off top edge
+    if (targetY - 30 < 0) {
+      targetY = 30;
+    }
+    
+    // Calculate velocity for rotation based on actual cursor movement (not adjusted position)
+    const cursorDeltaX = e.clientX - thesisPrevPosRef.current.x;
+    const cursorDeltaY = e.clientY - thesisPrevPosRef.current.y;
+    const velocityX = cursorDeltaX / deltaTime;
+    const speed = Math.sqrt(velocityX * velocityX + (cursorDeltaY / deltaTime) ** 2);
+    
+    // Calculate rotation based on horizontal movement direction and speed
+    const maxRotation = 10;
+    const rotationIntensity = Math.min(speed * 0.3, 1);
+    const horizontalInfluence = Math.sign(velocityX) || 0;
+    const verticalInfluence = Math.sign(cursorDeltaY) * 0.3;
+    
+    // Apply rotation with intensity based on speed - Different for each bubble
+    const titleRotationValue = (horizontalInfluence + verticalInfluence) * maxRotation * rotationIntensity;
+    const subtitleRotationValue = (horizontalInfluence + verticalInfluence * 0.5) * maxRotation * rotationIntensity * 0.8;
+    
+    thesisTitleRotation.set(Math.max(-maxRotation, Math.min(maxRotation, titleRotationValue)));
+    thesisSubtitleRotation.set(Math.max(-maxRotation, Math.min(maxRotation, subtitleRotationValue)));
+    
+    // Update cursor position (this will trigger spring animation for both bubbles)
+    thesisCursorX.set(targetX);
+    thesisCursorY.set(targetY);
+    
+    // Update previous position - store actual cursor position for velocity calculation
+    thesisPrevPosRef.current = { x: e.clientX, y: e.clientY };
+  };
+  
   return (
     <motion.div
     className={`font-[family-name:var(--font-geist-sans)] relative w-full mt-4 md:mt-8 grid grid-cols-2 md:grid-cols-8 gap-2 md:gap-4 ${className}`}
@@ -429,8 +519,108 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
     animate="show"
     variants={animateIn}>
 
+      {/* Thesis Cover Video */}
+      <motion.div
+          className="col-span-full mb-0 cursor-pointer rounded-3xl relative overflow-hidden h-auto w-full"
+          whileHover={{ scale: 0.99 }}
+          transition={{
+              type: "spring",
+              stiffness: 1000,
+              damping: 15,
+          }}
+          onMouseEnter={(e) => {
+              if (thesisHideTimeoutRef.current) {
+                  clearTimeout(thesisHideTimeoutRef.current);
+                  thesisHideTimeoutRef.current = null;
+              }
+
+              setIsThesisTooltipVisible(true);
+              if (typeof window !== 'undefined') {
+                  const tooltipOffset = 20;
+                  const targetX = e.clientX + tooltipOffset;
+                  const targetY = e.clientY;
+                  thesisCursorX.set(targetX);
+                  thesisCursorY.set(targetY);
+                  thesisPrevPosRef.current = { x: e.clientX, y: e.clientY };
+                  thesisTitleRotation.set(0);
+                  thesisSubtitleRotation.set(0);
+              }
+          }}
+          onMouseLeave={() => {
+              if (thesisHideTimeoutRef.current) {
+                  clearTimeout(thesisHideTimeoutRef.current);
+                  thesisHideTimeoutRef.current = null;
+              }
+
+              setIsThesisTooltipVisible(false);
+              thesisTitleRotation.set(0);
+              thesisSubtitleRotation.set(0);
+          }}
+          onFocus={(e) => {
+              if (thesisHideTimeoutRef.current) {
+                  clearTimeout(thesisHideTimeoutRef.current);
+                  thesisHideTimeoutRef.current = null;
+              }
+
+              setIsThesisTooltipVisible(true);
+              if (typeof window !== 'undefined' && e.currentTarget) {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const tooltipOffset = 20;
+                  const targetX = rect.left + rect.width / 2 + tooltipOffset;
+                  const targetY = rect.top + rect.height / 2;
+                  thesisCursorX.set(targetX);
+                  thesisCursorY.set(targetY);
+                  thesisPrevPosRef.current = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+                  thesisTitleRotation.set(0);
+                  thesisSubtitleRotation.set(0);
+              }
+          }}
+          onBlur={() => {
+              if (thesisHideTimeoutRef.current) {
+                  clearTimeout(thesisHideTimeoutRef.current);
+                  thesisHideTimeoutRef.current = null;
+              }
+
+              setIsThesisTooltipVisible(false);
+              thesisTitleRotation.set(0);
+              thesisSubtitleRotation.set(0);
+          }}
+          onMouseMove={handleThesisMouseMove}
+          onClick={() => {
+              window.open('https://bargainingwiththefuture.com', '_blank');
+          }}
+          onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  window.open('https://bargainingwiththefuture.com', '_blank');
+              }
+          }}
+          tabIndex={0}
+          role="button"
+          aria-label="Navigate to Bargaining with the Future"
+          aria-describedby="thesis-description-tooltip"
+      >
+          {/* Glass Edge Effect */}
+          <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)]
+          pointer-events-none mix-blend-overlay z-10"/>
+          <video
+              src="/thesis/lifeoscover2.mp4"
+              className="w-full object-cover scale-120 rounded-[16pt] md:rounded-3xl brightness-75"
+              autoPlay
+              muted
+              loop
+              playsInline
+          />
+          {/* Lockup */}
+          <img
+              src="/thesis/lifeoslockup.svg"
+              alt="LifeOS lockup"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
+          />
+      </motion.div>
+
       {/* Subway */}
-      <motion.div className="col-span-full md:col-span-6 group cursor-pointer h-full relative group mb-4">
+      <motion.div className="col-span-full md:col-span-6 group cursor-pointer h-full relative group ">
 
         {/* Video Container with Corner Arrow */}
         <motion.div 
@@ -552,7 +742,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
       </motion.div>
 
       {/* Expense Tracker */}
-      <motion.div className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group mb-4"
+      <motion.div className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group "
       >
         {/* Video Container with Corner Arrow */}
         <motion.div 
@@ -655,7 +845,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                 muted
                 loop
                 playsInline
-                poster="/poster/expense.png"
+                poster=""
                 useOptimized={useOptimizedVideos}
               />
           </motion.div>
@@ -665,7 +855,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
       </motion.div>
 
       {/* ISV */}
-      <motion.div className="col-span-1 md:col-span-4 h-full relative md:mb-4 group">
+      <motion.div className="col-span-1 md:col-span-4 h-full relative md:mb-2 group">
 
         {/* Video Container with Corner Arrow */}
         <motion.div 
@@ -786,7 +976,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
       </motion.div>
 
       {/* Bloom */}
-      <motion.div className="col-span-1 md:col-span-4 group cursor-pointer h-full relative group mb-4">
+      <motion.div className="col-span-1 md:col-span-4 group cursor-pointer h-full relative group mb-2">
 
         {/* Video Container with Corner Arrow */}
         <motion.div 
@@ -1159,6 +1349,65 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               }}
             >
               Singapore Airlines' 2025 In-Flight Safety Video that takes passengers on a journey through Singapore's iconic landmarks and most importantly, diverse communities.
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Thesis Tooltips */}
+      <AnimatePresence>
+        {isThesisTooltipVisible && (
+          <>
+            {/* First tooltip - Title */}
+            <motion.div
+                id="thesis-title-tooltip"
+                role="tooltip"
+                aria-live="polite"
+                className="fixed pointer-events-none z-50 rounded-[22pt] px-6 py-3 pb-4 border-b-1.5 border-r-1.5 text-[18pt] font-medium tracking-[-0.2pt] bg-background leading-[1.15] border-foreground/10 text-foreground dark:bg-black/30 dark:border-white/5 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{
+                    type: "spring",
+                    stiffness: 600,
+                    damping: 30,
+                    duration: 0.1
+                }}
+                style={{
+                    left: thesisTitleXpx,
+                    top: thesisTitleYpx,
+                    rotate: springThesisTitleRotation,
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: 9999,
+                }}
+            >
+                Bargaining with the Future:<br /> <span className="block mt-1 text-[12pt]">Understanding Agency in Human-AI Interaction</span>
+            </motion.div>
+
+            {/* Second tooltip - Subtitle */}
+            <motion.div
+                id="thesis-subtitle-tooltip"
+                role="tooltip"
+                aria-live="polite"
+                className="fixed pointer-events-none z-[9998] rounded-[20pt] px-6 py-4 border-b-1.5 border-r-1.5 text-[13px] font-medium tracking-[-0.1pt] bg-background border-foreground/10 text-foreground dark:bg-black/30 dark:border-white/5 dark:text-white drop-shadow-lg backdrop-blur-3xl max-w-[310px]"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0 }}
+                transition={{
+                    type: "spring",
+                    stiffness: 600,
+                    damping: 30,
+                    duration: 0.1
+                }}
+                style={{
+                    left: thesisSubtitleXpx,
+                    top: thesisSubtitleYpx,
+                    rotate: springThesisSubtitleRotation,
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: 9998,
+                }}
+            >
+                An ongoing speculative design thesis that investigates user agency within Human–AI interaction in a fully agentic future.
             </motion.div>
           </>
         )}
