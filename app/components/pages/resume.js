@@ -13,6 +13,7 @@ import ResumeFooter from "../resume/ResumeFooter";
 import { useExperienceState } from "../../hooks/useExperienceState";
 import ResumeSectionHeader from "../resume/ResumeSectionHeader";
 import { useHideNav } from "../../context/HideNavContext";
+import { useBrowser } from "../../context/BrowserContext";
 import { useRouter } from 'next/navigation';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -23,7 +24,9 @@ if (typeof window !== 'undefined') {
 }
 
 const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
+    //#region States and Hooks
     const router = useRouter();
+    const { browserType } = useBrowser();
     const [timeNyc, setTimeNyc] = useState(null);
     const [timeSg, setTimeSg] = useState(null);
     const [isAtTop, setIsAtTop] = useState(true);
@@ -36,67 +39,75 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const imageCursorY = useMotionValue(initialY);
     const imageX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
     const imageY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
-    
+
     // Convert motion values to pixel strings for positioning
     const imageXpx = useTransform(imageX, (value) => `${value - 256 - 20}px`); // Place image to the left of cursor with 20px spacing
     const imageYpx = useTransform(imageY, (value) => `${value - 128}px`);
-    
+
     // Motion values for ISV video popup animation (reuse cursor tracking)
     const isvVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
     const isvVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
-    
+
     // Convert ISV video motion values to pixel strings for positioning
     const isvVideoXpx = useTransform(isvVideoX, (value) => `${value - 200}px`); // Same positioning as Ghibli video
     const isvVideoYpx = useTransform(isvVideoY, (value) => `${value - 250}px`); // Same positioning as Ghibli video
-    
+
     // Motion values for Ghibli video popup animation (reuse cursor tracking)
     const ghibliVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
     const ghibliVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
-    
+
     // Convert Ghibli video motion values to pixel strings for positioning
     const ghibliVideoXpx = useTransform(ghibliVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
     const ghibliVideoYpx = useTransform(ghibliVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
-    
+
     // Motion values for Nike video popup animation (reuse cursor tracking)
     const nikeVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
     const nikeVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
-    
+
     // Convert Nike video motion values to pixel strings for positioning
     const nikeVideoXpx = useTransform(nikeVideoX, (value) => `${value - 100}px`); // 100px to the right of default
     const nikeVideoYpx = useTransform(nikeVideoY, (value) => `${value - 370}px`); // 120px up from default
-    
+
     // Motion values for Samsung video popup animation (reuse cursor tracking)
     const samsungVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
     const samsungVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
-    
+
     // Convert Samsung video motion values to pixel strings for positioning
     const samsungVideoXpx = useTransform(samsungVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
     const samsungVideoYpx = useTransform(samsungVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
-    
+
     // Motion values for Subway video popup animation (reuse cursor tracking)
     const subwayVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
     const subwayVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
-    
+
     // Convert Subway video motion values to pixel strings for positioning
     const subwayVideoXpx = useTransform(subwayVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
     const subwayVideoYpx = useTransform(subwayVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
-    
+
     // Motion values for Stanford video popup animation (reuse cursor tracking)
     const stanfordVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
     const stanfordVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
-    
+
     // Convert Stanford video motion values to pixel strings for positioning
     const stanfordVideoXpx = useTransform(stanfordVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
     const stanfordVideoYpx = useTransform(stanfordVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
-    
+
     // Motion values for Navigation video popup animation (reuse cursor tracking)
     const navigationVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
     const navigationVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
-    
+
     // Convert Navigation video motion values to pixel strings for positioning
     const navigationVideoXpx = useTransform(navigationVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
     const navigationVideoYpx = useTransform(navigationVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
-    
+
+    // Motion values for Thesis video popup animation (reuse cursor tracking)
+    const thesisVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
+    const thesisVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
+
+    // Convert Thesis video motion values to pixel strings for positioning
+    const thesisVideoXpx = useTransform(thesisVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
+    const thesisVideoYpx = useTransform(thesisVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
+
     // Thesis tooltip motion values - Three bubbles with independent physics
     const thesisCursorX = useMotionValue(0);
     const thesisCursorY = useMotionValue(0);
@@ -106,15 +117,15 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const thesisSubtitleY = useSpring(thesisCursorY, { stiffness: 250, damping: 35 });
     const thesisDescX = useSpring(thesisCursorX, { stiffness: 220, damping: 40 });
     const thesisDescY = useSpring(thesisCursorY, { stiffness: 220, damping: 40 });
-    
+
     // Convert Thesis motion values to pixel strings
     const thesisTitleXpx = useTransform(thesisTitleX, (value) => `${value}px`);
     const thesisTitleYpx = useTransform(thesisTitleY, (value) => `${value}px`);
-    const thesisSubtitleXpx = useTransform(thesisSubtitleX, (value) => `${value +10}px`);
-    const thesisSubtitleYpx = useTransform(thesisSubtitleY, (value) => `${value + 45}px`);
+    const thesisSubtitleXpx = useTransform(thesisSubtitleX, (value) => `${value + 0}px`);
+    const thesisSubtitleYpx = useTransform(thesisSubtitleY, (value) => `${value + 85}px`);
     const thesisDescXpx = useTransform(thesisDescX, (value) => `${value}px`);
-    const thesisDescYpx = useTransform(thesisDescY, (value) => `${value + 100}px`);
-    
+    const thesisDescYpx = useTransform(thesisDescY, (value) => `${value + 130}px`);
+
     // Thesis rotations - Independent
     const thesisTitleRotation = useMotionValue(0);
     const thesisSubtitleRotation = useMotionValue(0);
@@ -122,17 +133,17 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const springThesisTitleRotation = useSpring(thesisTitleRotation, { stiffness: 400, damping: 25 });
     const springThesisSubtitleRotation = useSpring(thesisSubtitleRotation, { stiffness: 350, damping: 30 });
     const springThesisDescRotation = useSpring(thesisDescRotation, { stiffness: 300, damping: 35 });
-    
+
     // Rotation based on movement direction
     const imageRotation = useMotionValue(0);
     const springImageRotation = useSpring(imageRotation, { stiffness: 400, damping: 25 });
-    
+
     // Track previous position for velocity calculation
     const initialPrevX = typeof window !== 'undefined' ? window.innerWidth / 2 : 0;
     const initialPrevY = typeof window !== 'undefined' ? window.innerHeight * 0.75 : 0;
     const imagePrevPosRef = useRef({ x: initialPrevX, y: initialPrevY });
     const imageLastUpdateRef = useRef(Date.now());
-    
+
     const [showImage, setShowImage] = useState(false);
     const [showISVVideo, setShowISVVideo] = useState(false);
     const [showGhibliVideo, setShowGhibliVideo] = useState(false);
@@ -141,6 +152,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const [showSubwayVideo, setShowSubwayVideo] = useState(false);
     const [showStanfordVideo, setShowStanfordVideo] = useState(false);
     const [showNavigationVideo, setShowNavigationVideo] = useState(false);
+    const [showThesisVideo, setShowThesisVideo] = useState(false);
     const [isHoveringSingaporeAirlines, setIsHoveringSingaporeAirlines] = useState(false);
     const [isHoveringStudioGhibli, setIsHoveringStudioGhibli] = useState(false);
     const [isHoveringNike, setIsHoveringNike] = useState(false);
@@ -148,6 +160,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const [isHoveringGraduateStudent, setIsHoveringGraduateStudent] = useState(false);
     const [isHoveringStanford, setIsHoveringStanford] = useState(false);
     const [isHoveringNavigation, setIsHoveringNavigation] = useState(false);
+    const [isHoveringThesis, setIsHoveringThesis] = useState(false);
+    const [showCopiedMessage, setShowCopiedMessage] = useState(false);
     const [isThesisTooltipVisible, setIsThesisTooltipVisible] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
     const [isHeader2AtOpacity1, setIsHeader2AtOpacity1] = useState(false);
@@ -155,7 +169,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const [isHeader3AboveThreshold, setIsHeader3AboveThreshold] = useState(false);
     const [isMouseOverBioSection, setIsMouseOverBioSection] = useState(false);
     const [isCursorNearBorder, setIsCursorNearBorder] = useState(false);
-    
+
     // GSAP scroll animation refs
     const bioSectionRef = useRef(null);
     const headersContainerRef = useRef(null);
@@ -170,14 +184,16 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const hideNikeVideoTimeoutRef = useRef(null);
     const hideSamsungVideoTimeoutRef = useRef(null);
     const hideSubwayVideoTimeoutRef = useRef(null);
+    const copiedMessageTimeoutRef = useRef(null);
     const hideStanfordVideoTimeoutRef = useRef(null);
     const hideNavigationVideoTimeoutRef = useRef(null);
+    const hideThesisVideoTimeoutRef = useRef(null);
     const hideImageTimeoutRef = useRef(null);
     const showImageTimeoutRef = useRef(null);
     const thesisPrevPosRef = useRef({ x: 0, y: 0 });
     const thesisLastUpdateRef = useRef(Date.now());
     const thesisHideTimeoutRef = useRef(null);
-    
+
     // Refs for video elements and playback positions
     const isvVideoRef = useRef(null);
     const ghibliVideoRef = useRef(null);
@@ -186,6 +202,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const subwayVideoRef = useRef(null);
     const stanfordVideoRef = useRef(null);
     const navigationVideoRef = useRef(null);
+    const thesisVideoRef = useRef(null);
     const isvVideoTimeRef = useRef(0);
     const ghibliVideoTimeRef = useRef(0);
     const nikeVideoTimeRef = useRef(0);
@@ -193,6 +210,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const subwayVideoTimeRef = useRef(0);
     const stanfordVideoTimeRef = useRef(0);
     const navigationVideoTimeRef = useRef(0);
+    const thesisVideoTimeRef = useRef(0);
     const archiveSectionRef = useRef(null);
 
     const storyContainer = {
@@ -290,7 +308,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         // Wait for scroll position to actually be applied and DOM to be ready
         // Using requestAnimationFrame ensures the browser has processed the scroll change
         let rafId1, rafId2;
-        
+
         const initializeScrollTrigger = () => {
             // Set initial opacity, position, and scale states
             if (headersContainerRef.current && header1Ref.current && header2ContainerRef.current && header2Ref.current && header2Part2Ref.current && header3Ref.current && header3Part2Ref.current && bioSectionRef.current) {
@@ -321,7 +339,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 },
                 onUpdate: (self) => {
                     const progress = self.progress; // 0 to 1
-                    
+
                     // Hide navbar during header animations (phases 1-3), show after phase 3 completes
                     if (progress < 1) {
                         // During phases 1-3 (progress 0 to < 1), hide navbar
@@ -330,7 +348,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         // After phase 3 completes (progress >= 1), show navbar
                         setHideNav(false);
                     }
-                    
+
                     // Phase 1: 0% to 11.33% of scroll (progress 0 to 0.1133)
                     // Header 1 = 100% → 20%, Header 2 = 20% → 100%, Header 3 = 10% (held)
                     // Container y-position moves from 150 to 0 (upward 150px)
@@ -338,29 +356,29 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     // Header 2 scale moves from 1x to 1.03x
                     if (progress <= 0.1133) {
                         const phase1Progress = progress / 0.1133; // Maps 0->0, 0.1133->1
-                        
+
                         // Container: move from y: 150 to y: 0
                         const containerY = gsap.utils.interpolate(150, 0, phase1Progress);
                         gsap.set(headersContainerRef.current, { y: containerY });
-                        
+
                         // Header 1: fade from 1 to 0.2, scale from 1.05 to 1
                         const header1Opacity = gsap.utils.interpolate(1, 0.2, phase1Progress);
                         const header1Scale = gsap.utils.interpolate(1.05, 1, phase1Progress);
                         gsap.set(header1Ref.current, { opacity: header1Opacity, scale: header1Scale, transformOrigin: "left" });
-                        
+
                         // Header 2 Container: scale from 1 to 1.03
                         const header2ContainerScale = gsap.utils.interpolate(1, 1.03, phase1Progress);
                         gsap.set(header2ContainerRef.current, { scale: header2ContainerScale, transformOrigin: "left" });
-                        
+
                         // Header 2: fade from 0.2 to 1
                         const header2Opacity = gsap.utils.interpolate(0.2, 1, phase1Progress);
                         gsap.set(header2Ref.current, { opacity: header2Opacity });
                         setIsHeader2AtOpacity1(header2Opacity >= 0.21);
-                        
+
                         // Header 2 Part 2: stay at 0.2 opacity
                         gsap.set(header2Part2Ref.current, { opacity: 0.2 });
                         setIsHeader2Part2AtOpacity1(false);
-                        
+
                         // Header 3: stay at 0.1 opacity (do not fade out)
                         gsap.set(header3Ref.current, { opacity: 0.1 });
                         setIsHeader3AboveThreshold(false);
@@ -371,21 +389,21 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     else if (progress <= 0.2266) {
                         // Container: stay at y: 0 (already at this value from Phase 1)
                         gsap.set(headersContainerRef.current, { y: 0 });
-                        
+
                         // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1)
                         gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2 Container: stay at scale 1.03 (already at this value from Phase 1)
                         gsap.set(header2ContainerRef.current, { scale: 1.03, transformOrigin: "left" });
-                        
+
                         // Header 2: stay at 1 opacity (already at this value from Phase 1)
                         gsap.set(header2Ref.current, { opacity: 1 });
                         setIsHeader2AtOpacity1(true);
-                        
+
                         // Header 2 Part 2: stay at 0.2 opacity
                         gsap.set(header2Part2Ref.current, { opacity: 0.2 });
                         setIsHeader2Part2AtOpacity1(false);
-                        
+
                         // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
                         gsap.set(header3Ref.current, { opacity: 0.1 });
                         setIsHeader3AboveThreshold(false);
@@ -395,26 +413,26 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     // Header 2 fades from 1 to 0.2, Header 2 Part 2 fades from 0.2 to 1
                     else if (progress <= 0.2833) {
                         const phase2a2Progress = (progress - 0.2266) / 0.0567; // Maps 0.2266->0, 0.2833->1
-                        
+
                         // Container: stay at y: 0 (already at this value from Phase 1)
                         gsap.set(headersContainerRef.current, { y: 0 });
-                        
+
                         // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1)
                         gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2 Container: stay at scale 1.03
                         gsap.set(header2ContainerRef.current, { scale: 1.03, transformOrigin: "left" });
-                        
+
                         // Header 2: fade from 1 to 0.2
                         const header2Opacity = gsap.utils.interpolate(1, 0.2, phase2a2Progress);
                         gsap.set(header2Ref.current, { opacity: header2Opacity });
                         setIsHeader2AtOpacity1(false);
-                        
+
                         // Header 2 Part 2: fade from 0.2 to 1
                         const header2Part2Opacity = gsap.utils.interpolate(0.2, 1, phase2a2Progress);
                         gsap.set(header2Part2Ref.current, { opacity: header2Part2Opacity });
                         setIsHeader2Part2AtOpacity1(header2Part2Opacity >= 0.21);
-                        
+
                         // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
                         gsap.set(header3Ref.current, { opacity: 0.1 });
                         setIsHeader3AboveThreshold(false);
@@ -425,20 +443,20 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     else if (progress <= 0.3966) {
                         // Container: stay at y: 0 (already at this value from Phase 1)
                         gsap.set(headersContainerRef.current, { y: 0 });
-                        
+
                         // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1)
                         gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2 Container: stay at scale 1.03 (end state of Phase 2a2)
                         gsap.set(header2ContainerRef.current, { scale: 1.03, transformOrigin: "left" });
-                        
+
                         // Header 2: stay at 0.2 opacity (end state of Phase 2a2)
                         gsap.set(header2Ref.current, { opacity: 0.2 });
-                        
+
                         // Header 2 Part 2: stay at 1 opacity (end state of Phase 2a2)
                         gsap.set(header2Part2Ref.current, { opacity: 1 });
                         setIsHeader2Part2AtOpacity1(true);
-                        
+
                         // Header 3: stay at 0.1 opacity (already at this value from Phase 1)
                         gsap.set(header3Ref.current, { opacity: 0.1 });
                         setIsHeader3AboveThreshold(false);
@@ -450,32 +468,32 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     // Header 2 scale moves from 1.03x to 1x
                     else if (progress <= 0.5099) {
                         const phase2b1Progress = (progress - 0.3966) / 0.1133; // Maps 0.3966->0, 0.5099->1
-                        
+
                         // Container: move from y: 0 to y: -150 (complete upward movement of 150px)
                         const containerY = gsap.utils.interpolate(0, -150, phase2b1Progress);
                         gsap.set(headersContainerRef.current, { y: containerY });
-                        
+
                         // Header 1: fade from 0.2 to 0.1 (from Phase 1 end state)
                         const header1Opacity = gsap.utils.interpolate(0.2, 0.1, phase2b1Progress);
                         gsap.set(header1Ref.current, { opacity: header1Opacity, scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2 Container: scale from 1.03 to 1
                         const header2ContainerScale = gsap.utils.interpolate(1.03, 1, phase2b1Progress);
                         gsap.set(header2ContainerRef.current, { scale: header2ContainerScale, transformOrigin: "left" });
-                        
+
                         // Header 2: stay at 0.2 opacity
                         gsap.set(header2Ref.current, { opacity: 0.2 });
-                        
+
                         // Header 2 Part 2: fade from 1 to 0.2
                         const header2Part2Opacity = gsap.utils.interpolate(1, 0.2, phase2b1Progress);
                         gsap.set(header2Part2Ref.current, { opacity: header2Part2Opacity });
                         setIsHeader2Part2AtOpacity1(false);
-                        
+
                         // Header 3: fade from 0.1 to 1
                         const header3Opacity = gsap.utils.interpolate(0.1, 1, phase2b1Progress);
                         gsap.set(header3Ref.current, { opacity: header3Opacity });
                         setIsHeader3AboveThreshold(header3Opacity >= 0.4);
-                        
+
                         // Header 3 Part 2: stay at 0.1 opacity
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
@@ -484,21 +502,21 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     else if (progress <= 0.6232) {
                         // Container: stay at y: -150 (already at this value from Phase 2b1)
                         gsap.set(headersContainerRef.current, { y: -150 });
-                        
+
                         // Header 1: stay at 0.1 opacity and scale 1 (end state of Phase 2b1)
                         gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2 Container: stay at scale 1 (end state of Phase 2b1)
                         gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2: stay at 0.2 opacity (end state of Phase 2b1)
                         gsap.set(header2Ref.current, { opacity: 0.2 });
                         gsap.set(header2Part2Ref.current, { opacity: 0.2 });
-                        
+
                         // Header 3: stay at 1 opacity (end state of Phase 2b1)
                         gsap.set(header3Ref.current, { opacity: 1 });
                         setIsHeader3AboveThreshold(true);
-                        
+
                         // Header 3 Part 2: stay at 0.1 opacity (end state of Phase 2b1)
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
@@ -507,25 +525,25 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     // Header 3 fades from 1 to 0.2, Header 3 Part 2 fades from 0.1 to 1
                     else if (progress <= 0.7365) {
                         const phase2b2Progress = (progress - 0.6232) / 0.1133; // Maps 0.6232->0, 0.7365->1
-                        
+
                         // Container: stay at y: -150 (already at this value from Phase 2b1pause)
                         gsap.set(headersContainerRef.current, { y: -150 });
-                        
+
                         // Header 1: stay at 0.1 opacity and scale 1 (already at this value from Phase 2b1pause)
                         gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2 Container: stay at scale 1 (already at this value from Phase 2b1pause)
                         gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2: stay at 0.2 opacity (already at this value from Phase 2b1pause)
                         gsap.set(header2Ref.current, { opacity: 0.2 });
                         gsap.set(header2Part2Ref.current, { opacity: 0.2 });
-                        
+
                         // Header 3: fade from 1 to 0.2
                         const header3Opacity = gsap.utils.interpolate(1, 0.2, phase2b2Progress);
                         gsap.set(header3Ref.current, { opacity: header3Opacity });
                         setIsHeader3AboveThreshold(header3Opacity >= 0.6);
-                        
+
                         // Header 3 Part 2: fade from 0.1 to 1
                         const header3Part2Opacity = gsap.utils.interpolate(0.1, 1, phase2b2Progress);
                         gsap.set(header3Part2Ref.current, { opacity: header3Part2Opacity });
@@ -534,24 +552,24 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     // Container holds at -150, Header 1 holds at 0.1, Header 2 holds at 0.2
                     // Header 3 holds at 0.2, Header 3 Part 2 holds at 1.0
                     else if (progress <= 0.85) {
-                        
+
                         // Container: stay at y: -150 (already at this value from Phase 2b2)
                         gsap.set(headersContainerRef.current, { y: -150 });
-                        
+
                         // Header 1: stay at 0.1 opacity and scale 1 (from Phase 2b2 end state)
                         gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2 Container: stay at scale 1 (already at this value from Phase 2b2)
                         gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2: stay at 0.2 opacity (already at these values from Phase 2b2)
                         gsap.set(header2Ref.current, { opacity: 0.2 });
                         gsap.set(header2Part2Ref.current, { opacity: 0.2 });
-                        
+
                         // Header 3: stay at 0.2 opacity (end state of Phase 2b2)
                         gsap.set(header3Ref.current, { opacity: 0.2 });
                         setIsHeader3AboveThreshold(false);
-                        
+
                         // Header 3 Part 2: stay at 1 opacity (end state of Phase 2b2)
                         gsap.set(header3Part2Ref.current, { opacity: 1 });
                     }
@@ -559,24 +577,24 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     // Header 3 stays at 0.2, Header 3 Part 2 fades from 1 to 0.2
                     else {
                         const phase3Progress = (progress - 0.85) / 0.15; // Maps 0.85->0, 1->1
-                        
+
                         // Container: stay at y: -150 (already at this value from Phase 2c)
                         gsap.set(headersContainerRef.current, { y: -150 });
-                        
+
                         // Header 1: stay at 0.1 opacity and scale 1 (from Phase 2c end state)
                         gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2 Container: stay at scale 1 (already at this value from Phase 2c)
                         gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
-                        
+
                         // Header 2: stay at 0.2 opacity (already at these values from Phase 2c)
                         gsap.set(header2Ref.current, { opacity: 0.2 });
                         gsap.set(header2Part2Ref.current, { opacity: 0.2 });
-                        
+
                         // Header 3: stay at 0.2 opacity (from Phase 2c end state)
                         gsap.set(header3Ref.current, { opacity: 0.2 });
                         setIsHeader3AboveThreshold(false);
-                        
+
                         // Header 3 Part 2: fade from 1 to 0.2
                         const header3Part2Opacity = gsap.utils.interpolate(1, 0.2, phase3Progress);
                         gsap.set(header3Part2Ref.current, { opacity: header3Part2Opacity });
@@ -595,12 +613,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 setHideNav(false);
             }
 
-                    // Refresh ScrollTrigger after creation to ensure positions are recalculated correctly
-                    // This is especially important when navigating from other pages
-                    ScrollTrigger.refresh();
+            // Refresh ScrollTrigger after creation to ensure positions are recalculated correctly
+            // This is especially important when navigating from other pages
+            ScrollTrigger.refresh();
                 }
             };
-        
+
         rafId1 = requestAnimationFrame(() => {
             rafId2 = requestAnimationFrame(() => {
                 // Double-check scroll position is at top before initializing ScrollTrigger
@@ -639,30 +657,30 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             const now = Date.now();
             const deltaTime = Math.max(now - imageLastUpdateRef.current, 1);
             imageLastUpdateRef.current = now;
-            
+
             // Calculate velocity for rotation
             const cursorDeltaX = e.clientX - imagePrevPosRef.current.x;
             const cursorDeltaY = e.clientY - imagePrevPosRef.current.y;
             const velocityX = cursorDeltaX / deltaTime;
             const speed = Math.sqrt(velocityX * velocityX + (cursorDeltaY / deltaTime) ** 2);
-            
+
             // Calculate rotation based on movement direction and speed
             const maxRotation = 10;
             const rotationIntensity = Math.min(speed * 0.3, 1);
             const horizontalInfluence = Math.sign(velocityX) || 0;
             const verticalInfluence = Math.sign(cursorDeltaY) * 0.3;
-            
+
             // Apply rotation with intensity based on speed
             const rotationValue = (horizontalInfluence + verticalInfluence) * maxRotation * rotationIntensity;
             imageRotation.set(Math.max(-maxRotation, Math.min(maxRotation, rotationValue)));
-            
+
             // Update cursor position (this will trigger spring animation)
             imageCursorX.set(e.clientX);
             imageCursorY.set(e.clientY);
-            
+
             // Update previous position
             imagePrevPosRef.current = { x: e.clientX, y: e.clientY };
-            
+
             // Check if cursor is within 50px of the top navbar
             const navbarThreshold = 200;
             setIsCursorNearBorder(e.clientY < navbarThreshold);
@@ -679,20 +697,20 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             const now = Date.now();
             const deltaTime = Math.max(now - imageLastUpdateRef.current, 1);
             imageLastUpdateRef.current = now;
-            
+
             const cursorDeltaX = e.clientX - imagePrevPosRef.current.x;
             const cursorDeltaY = e.clientY - imagePrevPosRef.current.y;
             const velocityX = cursorDeltaX / deltaTime;
             const speed = Math.sqrt(velocityX * velocityX + (cursorDeltaY / deltaTime) ** 2);
-            
+
             const maxRotation = 10;
             const rotationIntensity = Math.min(speed * 0.3, 1);
             const horizontalInfluence = Math.sign(velocityX) || 0;
             const verticalInfluence = Math.sign(cursorDeltaY) * 0.3;
-            
+
             const rotationValue = (horizontalInfluence + verticalInfluence) * maxRotation * rotationIntensity;
             imageRotation.set(Math.max(-maxRotation, Math.min(maxRotation, rotationValue)));
-            
+
             imageCursorX.set(e.clientX);
             imageCursorY.set(e.clientY);
             imagePrevPosRef.current = { x: e.clientX, y: e.clientY };
@@ -732,28 +750,33 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     // Update showImage based on both conditions with delay before hiding
     useEffect(() => {
         const isEitherHeaderAtOpacity1 = isHeader2AtOpacity1 || isHeader2Part2AtOpacity1;
-        
+
         // Check if any header 3 link is being hovered
-        const isHoveringHeader3Link = isHoveringSingaporeAirlines || 
-                                      isHoveringStudioGhibli || 
-                                      isHoveringNike || 
-                                      isHoveringSamsung || 
-                                      isHoveringStanford || 
-                                      isHoveringNavigation;
-        
+        const isHoveringHeader3Link = isHoveringSingaporeAirlines ||
+                                      isHoveringStudioGhibli ||
+                                      isHoveringNike ||
+                                      isHoveringSamsung ||
+                                      isHoveringStanford ||
+                                      isHoveringNavigation ||
+                                      isHoveringThesis;
+
         // Check if any video popup is showing (only 1 pop-up at a time)
-        const isAnyVideoShowing = showISVVideo || 
-                                  showGhibliVideo || 
-                                  showNikeVideo || 
-                                  showSamsungVideo || 
-                                  showStanfordVideo || 
-                                  showNavigationVideo;
+        const isAnyVideoShowing = showISVVideo ||
+                                  showGhibliVideo ||
+                                  showNikeVideo ||
+                                  showSamsungVideo ||
+                                  showStanfordVideo ||
+                                  showNavigationVideo ||
+                                  showThesisVideo;
+
+        // Safeguard: ensure photo is hidden when both header 2 parts are not in focus
+        const areBothHeadersNotInFocus = !isHeader2AtOpacity1 && !isHeader2Part2AtOpacity1;
         
         // Hide photo if hovering header 3 link or if any video is showing
-        const shouldShow = isEitherHeaderAtOpacity1 && 
-                          !isHoveringHeader3Link && 
+        const shouldShow = isEitherHeaderAtOpacity1 &&
+                          !isHoveringHeader3Link &&
                           !isAnyVideoShowing;
-        
+
         // Clear any existing timeouts
         if (hideImageTimeoutRef.current) {
             clearTimeout(hideImageTimeoutRef.current);
@@ -763,7 +786,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             clearTimeout(showImageTimeoutRef.current);
             showImageTimeoutRef.current = null;
         }
-        
+
+        // Explicit safeguard: force hide if both headers are not in focus
+        if (areBothHeadersNotInFocus) {
+            setShowImage(false);
+            imageRotation.set(0);
+            return;
+        }
+
         if (shouldShow) {
             // Show with 100ms delay before reappearing
             showImageTimeoutRef.current = setTimeout(() => {
@@ -780,7 +810,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             setShowImage(false);
             imageRotation.set(0); // Reset rotation when hiding
         }
-        
+
         // Cleanup timeouts on unmount
         return () => {
             if (hideImageTimeoutRef.current) {
@@ -793,7 +823,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             }
         };
     }, [
-        isHeader2AtOpacity1, 
+        isHeader2AtOpacity1,
         isHeader2Part2AtOpacity1,
         isHoveringSingaporeAirlines,
         isHoveringStudioGhibli,
@@ -801,12 +831,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         isHoveringSamsung,
         isHoveringStanford,
         isHoveringNavigation,
+        isHoveringThesis,
         showISVVideo,
         showGhibliVideo,
         showNikeVideo,
         showSamsungVideo,
         showStanfordVideo,
-        showNavigationVideo
+        showNavigationVideo,
+        showThesisVideo
     ]);
 
     // Update showISVVideo based on hover over Singapore Airlines with delay before hiding
@@ -816,9 +848,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             clearTimeout(hideISVVideoTimeoutRef.current);
             hideISVVideoTimeoutRef.current = null;
         }
-        
+
         const shouldShow = isHoveringSingaporeAirlines && !isCursorNearBorder;
-        
+
         if (shouldShow) {
             // Show immediately
             setShowISVVideo(true);
@@ -833,7 +865,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideISVVideoTimeoutRef.current = null;
             }, 100);
         }
-        
+
         // Cleanup timeout on unmount
         return () => {
             if (hideISVVideoTimeoutRef.current) {
@@ -850,9 +882,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             clearTimeout(hideGhibliVideoTimeoutRef.current);
             hideGhibliVideoTimeoutRef.current = null;
         }
-        
+
         const shouldShow = isHoveringStudioGhibli && !isCursorNearBorder;
-        
+
         if (shouldShow) {
             // Show immediately
             setShowGhibliVideo(true);
@@ -867,7 +899,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideGhibliVideoTimeoutRef.current = null;
             }, 100);
         }
-        
+
         // Cleanup timeout on unmount
         return () => {
             if (hideGhibliVideoTimeoutRef.current) {
@@ -884,9 +916,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             clearTimeout(hideNikeVideoTimeoutRef.current);
             hideNikeVideoTimeoutRef.current = null;
         }
-        
+
         const shouldShow = isHoveringNike && !isCursorNearBorder;
-        
+
         if (shouldShow) {
             // Show immediately
             setShowNikeVideo(true);
@@ -901,7 +933,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideNikeVideoTimeoutRef.current = null;
             }, 100);
         }
-        
+
         // Cleanup timeout on unmount
         return () => {
             if (hideNikeVideoTimeoutRef.current) {
@@ -918,9 +950,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             clearTimeout(hideSamsungVideoTimeoutRef.current);
             hideSamsungVideoTimeoutRef.current = null;
         }
-        
+
         const shouldShow = isHoveringSamsung && !isCursorNearBorder;
-        
+
         if (shouldShow) {
             // Show immediately
             setShowSamsungVideo(true);
@@ -935,7 +967,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideSamsungVideoTimeoutRef.current = null;
             }, 100);
         }
-        
+
         // Cleanup timeout on unmount
         return () => {
             if (hideSamsungVideoTimeoutRef.current) {
@@ -952,9 +984,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             clearTimeout(hideSubwayVideoTimeoutRef.current);
             hideSubwayVideoTimeoutRef.current = null;
         }
-        
+
         const shouldShow = isHoveringGraduateStudent && !isCursorNearBorder;
-        
+
         if (shouldShow) {
             // Show immediately
             setShowSubwayVideo(true);
@@ -969,7 +1001,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideSubwayVideoTimeoutRef.current = null;
             }, 100);
         }
-        
+
         // Cleanup timeout on unmount
         return () => {
             if (hideSubwayVideoTimeoutRef.current) {
@@ -986,9 +1018,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             clearTimeout(hideStanfordVideoTimeoutRef.current);
             hideStanfordVideoTimeoutRef.current = null;
         }
-        
+
         const shouldShow = isHoveringStanford && !isCursorNearBorder;
-        
+
         if (shouldShow) {
             // Show immediately
             setShowStanfordVideo(true);
@@ -1003,7 +1035,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideStanfordVideoTimeoutRef.current = null;
             }, 100);
         }
-        
+
         // Cleanup timeout on unmount
         return () => {
             if (hideStanfordVideoTimeoutRef.current) {
@@ -1020,9 +1052,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             clearTimeout(hideNavigationVideoTimeoutRef.current);
             hideNavigationVideoTimeoutRef.current = null;
         }
-        
+
         const shouldShow = isHoveringNavigation && !isCursorNearBorder;
-        
+
         if (shouldShow) {
             // Show immediately
             setShowNavigationVideo(true);
@@ -1037,7 +1069,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideNavigationVideoTimeoutRef.current = null;
             }, 100);
         }
-        
+
         // Cleanup timeout on unmount
         return () => {
             if (hideNavigationVideoTimeoutRef.current) {
@@ -1047,6 +1079,40 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         };
     }, [isHoveringNavigation, isCursorNearBorder]);
 
+    // Update showThesisVideo based on hover over Thesis with delay before hiding
+    useEffect(() => {
+        // Clear any existing timeout
+        if (hideThesisVideoTimeoutRef.current) {
+            clearTimeout(hideThesisVideoTimeoutRef.current);
+            hideThesisVideoTimeoutRef.current = null;
+        }
+
+        const shouldShow = isHoveringThesis && !isCursorNearBorder;
+
+        if (shouldShow) {
+            // Show immediately
+            setShowThesisVideo(true);
+        } else {
+            // Save current playback time before hiding
+            if (thesisVideoRef.current) {
+                thesisVideoTimeRef.current = thesisVideoRef.current.currentTime;
+            }
+            // Hide with 100ms delay
+            hideThesisVideoTimeoutRef.current = setTimeout(() => {
+                setShowThesisVideo(false);
+                hideThesisVideoTimeoutRef.current = null;
+            }, 100);
+        }
+
+        // Cleanup timeout on unmount
+        return () => {
+            if (hideThesisVideoTimeoutRef.current) {
+                clearTimeout(hideThesisVideoTimeoutRef.current);
+                hideThesisVideoTimeoutRef.current = null;
+            }
+        };
+    }, [isHoveringThesis, isCursorNearBorder]);
+
     // Hide cursor when image is showing (but not for video popups)
     useEffect(() => {
         if (showImage) {
@@ -1054,7 +1120,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         } else {
             document.body.style.cursor = '';
         }
-        
+
         return () => {
             document.body.style.cursor = '';
         };
@@ -1091,7 +1157,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 const element = archiveSectionRef.current;
                 const elementPosition = element.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - 100; // 100px offset for navbar
-                
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
@@ -1102,65 +1168,65 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
     const handleThesisMouseMove = (e) => {
         if (typeof window === 'undefined') return;
-        
+
         const tooltipOffset = 20;
         const tooltipWidth = 350;
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
-        
+
         const now = Date.now();
         const deltaTime = Math.max(now - thesisLastUpdateRef.current, 1);
         thesisLastUpdateRef.current = now;
-        
+
         let targetX = e.clientX + tooltipOffset;
         let targetY = e.clientY;
-        
+
         // Prevent tooltip from going off right edge (no flip, just constrain to edge)
         const tooltipHalfWidth = tooltipWidth / 2;
         if (targetX + tooltipHalfWidth > viewportWidth) {
             targetX = viewportWidth - tooltipHalfWidth;
         }
-        
+
         // Prevent tooltip from going off left edge
         if (targetX - tooltipHalfWidth < 0) {
             targetX = tooltipHalfWidth;
         }
-        
+
         // Prevent tooltip from going off bottom edge
         if (targetY + 30 > viewportHeight) {
             targetY = viewportHeight - 30;
         }
-        
+
         // Prevent tooltip from going off top edge
         if (targetY - 30 < 0) {
             targetY = 30;
         }
-        
+
         // Calculate velocity for rotation based on actual cursor movement (not adjusted position)
         const cursorDeltaX = e.clientX - thesisPrevPosRef.current.x;
         const cursorDeltaY = e.clientY - thesisPrevPosRef.current.y;
         const velocityX = cursorDeltaX / deltaTime;
         const speed = Math.sqrt(velocityX * velocityX + (cursorDeltaY / deltaTime) ** 2);
-        
+
         // Calculate rotation based on horizontal movement direction and speed
         const maxRotation = 10;
         const rotationIntensity = Math.min(speed * 0.3, 1);
         const horizontalInfluence = Math.sign(velocityX) || 0;
         const verticalInfluence = Math.sign(cursorDeltaY) * 0.3;
-        
+
         // Apply rotation with intensity based on speed - Different for each bubble
         const titleRotationValue = (horizontalInfluence + verticalInfluence) * maxRotation * rotationIntensity;
         const subtitleRotationValue = (horizontalInfluence + verticalInfluence * 0.5) * maxRotation * rotationIntensity * 0.8;
         const descRotationValue = (horizontalInfluence + verticalInfluence * 0.3) * maxRotation * rotationIntensity * 0.6;
-        
+
         thesisTitleRotation.set(Math.max(-maxRotation, Math.min(maxRotation, titleRotationValue)));
         thesisSubtitleRotation.set(Math.max(-maxRotation, Math.min(maxRotation, subtitleRotationValue)));
         thesisDescRotation.set(Math.max(-maxRotation, Math.min(maxRotation, descRotationValue)));
-        
+
         // Update cursor position (this will trigger spring animation for all three bubbles)
         thesisCursorX.set(targetX);
         thesisCursorY.set(targetY);
-        
+
         // Update previous position - store actual cursor position for velocity calculation
         thesisPrevPosRef.current = { x: e.clientX, y: e.clientY };
     };
@@ -1173,27 +1239,26 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             }
         };
     }, []);
+    //#endregion
 
     return (
-
         <>
-
             {/* Page Container */}
             <motion.div
                 key="page-container"
                 className={`grid grid-cols-1 lg:grid-cols-10 w-full -mt-20 md:-mt-36
-                items-start justify-items-start font-[family-name:var(--font-geist-sans)] 
+                items-start justify-items-start font-[family-name:var(--font-geist-sans)]
                 gap-2 text-sm tracking-tight ${className}`}
             >
 
                 {/* Profile / Desktop Container */}
                 <div ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%]">
-                    
+
                     {/* Headers Container */}
                     <div ref={headersContainerRef} className="pt-64">
 
                         {/* Header 1 */}
-                        <h1 
+                        <h1
                             ref={header1Ref}
                             className="font-medium tracking-[-1pt] text-6xl col-span-full"
                         >
@@ -1212,9 +1277,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         </h2>
 
                         {/* Image */}
-                    <AnimatePresence>
+                        <AnimatePresence>
                         {showImage && (
-                            <motion.div 
+                            <motion.div
                                 className="rounded-full w-64 h-64 fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
                                 style={{
                                     left: imageXpx,
@@ -1231,7 +1296,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     duration: 0.1
                                 }}
                             >
-                                <motion.img 
+                                <motion.img
                                     src='/profile/profilelandscape2.jpg'
                                     className="rounded-full h-full w-full scale-[120%] origin-top object-cover object-[107%_30%] transition-all"
                                     variants={animateInChild}
@@ -1239,13 +1304,13 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                 <div className="absolute inset-0 rounded-full shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
                             </motion.div>
                         )}
-                    </AnimatePresence>
+                        </AnimatePresence>
 
-                        {/* ISV Video - Rendered via portal outside pinned container */}
-                    {isMounted && createPortal(
+                        {/* ISV Video */}
+                        {isMounted && createPortal(
                         <AnimatePresence>
                             {showISVVideo && (
-                                <motion.div 
+                                <motion.div
                                     className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
                                     style={{
                                         left: isvVideoXpx,
@@ -1261,10 +1326,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         duration: 0.1
                                     }}
                                 >
-                                    <motion.video 
+                                    <motion.video
                                         ref={isvVideoRef}
                                         src="/isv/cover_2.mp4"
-                                        className=" h-full w-full object-cover transition-all"
+                                        className="h-full w-full object-cover transition-all"
                                         autoPlay
                                         muted
                                         loop
@@ -1284,13 +1349,13 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             )}
                         </AnimatePresence>,
                         document.body
-                    )}
+                        )}
 
-                        {/* Ghibli Video - Rendered via portal outside pinned container */}
-                    {isMounted && createPortal(
+                        {/* Ghibli Video */}
+                        {isMounted && createPortal(
                         <AnimatePresence>
                             {showGhibliVideo && (
-                                <motion.div 
+                                <motion.div
                                     className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
                                     style={{
                                         left: ghibliVideoXpx,
@@ -1306,10 +1371,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         duration: 0.1
                                     }}
                                 >
-                                    <motion.video 
+                                    <motion.video
                                         ref={ghibliVideoRef}
                                         src="/Ghibli/banner1.mp4"
-                                        className=" h-full w-full object-cover transition-all"
+                                        className="h-full w-full object-cover transition-all"
                                         autoPlay
                                         muted
                                         loop
@@ -1329,13 +1394,13 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             )}
                         </AnimatePresence>,
                         document.body
-                    )}
+                        )}
 
-                        {/* Nike Video - Rendered via portal outside pinned container */}
-                    {isMounted && createPortal(
+                        {/* Nike Video */}
+                        {isMounted && createPortal(
                         <AnimatePresence>
                             {showNikeVideo && (
-                                <motion.div 
+                                <motion.div
                                     className="rounded-[20pt] w-48 aspect-[9/16] fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
                                     style={{
                                         left: nikeVideoXpx,
@@ -1351,10 +1416,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         duration: 0.1
                                     }}
                                 >
-                                    <motion.video 
+                                    <motion.video
                                         ref={nikeVideoRef}
                                         src="/nike/cover.mp4"
-                                        className=" h-full w-full object-cover transition-all"
+                                        className="h-full w-full object-cover transition-all"
                                         autoPlay
                                         muted
                                         loop
@@ -1374,13 +1439,13 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             )}
                         </AnimatePresence>,
                         document.body
-                    )}
+                        )}
 
-                        {/* Samsung Video - Rendered via portal outside pinned container */}
-                    {isMounted && createPortal(
+                        {/* Samsung Video */}
+                        {isMounted && createPortal(
                         <AnimatePresence>
                             {showSamsungVideo && (
-                                <motion.div 
+                                <motion.div
                                     className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
                                     style={{
                                         left: samsungVideoXpx,
@@ -1396,10 +1461,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         duration: 0.1
                                     }}
                                 >
-                                    <motion.video 
+                                    <motion.video
                                         ref={samsungVideoRef}
                                         src="/samsung/montage.mp4"
-                                        className=" h-full w-full object-cover transition-all"
+                                        className="h-full w-full object-cover transition-all"
                                         autoPlay
                                         muted
                                         loop
@@ -1419,13 +1484,13 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             )}
                         </AnimatePresence>,
                         document.body
-                    )}
+                        )}
 
-                        {/* Subway Video - Rendered via portal outside pinned container */}
-                    {isMounted && createPortal(
+                        {/* Subway Video */}
+                        {isMounted && createPortal(
                         <AnimatePresence>
                             {showSubwayVideo && (
-                                <motion.div 
+                                <motion.div
                                     className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
                                     style={{
                                         left: subwayVideoXpx,
@@ -1441,7 +1506,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         duration: 0.1
                                     }}
                                 >
-                                    <motion.video 
+                                    <motion.video
                                         ref={subwayVideoRef}
                                         src="/subway/cover_blank.mp4"
                                         className="h-full w-full object-cover transition-all contrast-125 brightness-90"
@@ -1460,7 +1525,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         }}
                                     />
                                     {/* Lockup overlay */}
-                                    <img 
+                                    <img
                                         src="/subway/lockup.png"
                                         alt="Subway lockup"
                                         className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[60%] h-auto object-contain pointer-events-none"
@@ -1470,13 +1535,13 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             )}
                         </AnimatePresence>,
                         document.body
-                    )}
+                        )}
 
-                        {/* Stanford Video - Rendered via portal outside pinned container */}
-                    {isMounted && createPortal(
+                        {/* Stanford Video */}
+                        {isMounted && createPortal(
                         <AnimatePresence>
                             {showStanfordVideo && (
-                                <motion.div 
+                                <motion.div
                                     className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
                                     style={{
                                         left: stanfordVideoXpx,
@@ -1492,10 +1557,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         duration: 0.1
                                     }}
                                 >
-                                    <motion.video 
+                                    <motion.video
                                         ref={stanfordVideoRef}
                                         src="/bloom/talk.mp4"
-                                        className=" h-full w-full object-cover transition-all"
+                                        className="h-full w-full object-cover transition-all"
                                         autoPlay
                                         muted
                                         loop
@@ -1515,13 +1580,13 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             )}
                         </AnimatePresence>,
                         document.body
-                    )}
+                        )}
 
-                        {/* Navigation Video - Rendered via portal outside pinned container */}
-                    {isMounted && createPortal(
+                        {/* Navigation Video */}
+                        {isMounted && createPortal(
                         <AnimatePresence>
                             {showNavigationVideo && (
-                                <motion.div 
+                                <motion.div
                                     className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
                                     style={{
                                         left: navigationVideoXpx,
@@ -1537,7 +1602,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         duration: 0.1
                                     }}
                                 >
-                                    <motion.video 
+                                    <motion.video
                                         ref={navigationVideoRef}
                                         src="/subway/cover_blank.mp4"
                                         className="h-full w-full object-cover transition-all contrast-125 brightness-90"
@@ -1556,10 +1621,61 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         }}
                                     />
                                     {/* Lockup overlay */}
-                                    <img 
+                                    <img
                                         src="/subway/lockup.png"
                                         alt="Subway lockup"
                                         className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[60%] h-auto object-contain pointer-events-none"
+                                    />
+                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>,
+                        document.body
+                        )}
+
+                        {/* Thesis Video */}
+                        {isMounted && createPortal(
+                        <AnimatePresence>
+                            {showThesisVideo && (
+                                <motion.div
+                                    className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                    style={{
+                                        left: thesisVideoXpx,
+                                        top: thesisVideoYpx,
+                                    }}
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0 }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 600,
+                                        damping: 30,
+                                        duration: 0.1
+                                    }}
+                                >
+                                    <motion.video
+                                        ref={thesisVideoRef}
+                                        src="/thesis/lifeoscover.mp4"
+                                        className="h-full w-full object-cover transition-all brightness-50"
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        variants={animateInChild}
+                                        onLoadedData={(e) => {
+                                            if (thesisVideoTimeRef.current > 0) {
+                                                e.target.currentTime = thesisVideoTimeRef.current;
+                                            }
+                                        }}
+                                        onTimeUpdate={(e) => {
+                                            thesisVideoTimeRef.current = e.target.currentTime;
+                                        }}
+                                    />
+                                    {/* Lockup overlay */}
+                                    <img
+                                        src="/thesis/lifeoslockup.svg"
+                                        alt="LifeOS lockup"
+                                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-100 h-auto object-contain pointer-events-none"
                                     />
                                     <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
                                 </motion.div>
@@ -1574,58 +1690,122 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             variants={animateInChild}
                         >
                             <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career leading campaigns for <Link href="/isv">
-                                <span 
+                                <span
                                     className="hover:opacity-80 transition-opacity underline"
                                     onMouseEnter={() => setIsHoveringSingaporeAirlines(true)}
                                     onMouseLeave={() => setIsHoveringSingaporeAirlines(false)}
                                 >Singapore Airlines</span>
-                            </Link> and <span 
+                            </Link> and <span
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity"
                                 onMouseEnter={() => setIsHoveringStudioGhibli(true)}
                                 onMouseLeave={() => setIsHoveringStudioGhibli(false)}
                                 onClick={() => router.push('/ghibli')}
-                            >Studio Ghibli</span>, to motion design work for <span 
+                            >Studio Ghibli</span>, to motion design work for <span
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity"
                                 onMouseEnter={() => setIsHoveringNike(true)}
                                 onMouseLeave={() => setIsHoveringNike(false)}
                                 onClick={() => router.push('/nike')}
-                            >Nike</span> and <span 
+                            >Nike</span> and <span
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity"
                                 onMouseEnter={() => setIsHoveringSamsung(true)}
                                 onMouseLeave={() => setIsHoveringSamsung(false)}
                                 onClick={() => router.push('/samsung')}
                             >Samsung</span>. </span>
-                            <span ref={header3Part2Ref}>Today, he is pursuing a Master's in Interaction Design in New York City. He has since spoken at <span 
+                            <span ref={header3Part2Ref}>Today, he is a Graduate Student in Interaction Design based in NYC. He has since spoken at <span
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity"
                                 onMouseEnter={() => setIsHoveringStanford(true)}
                                 onMouseLeave={() => setIsHoveringStanford(false)}
                                 onClick={() => window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer')}
-                            >Stanford</span>, reimagined navigation within the <span 
+                            >Stanford</span>, reimagined navigation within the <span
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity"
                                 onMouseEnter={() => setIsHoveringNavigation(true)}
                                 onMouseLeave={() => setIsHoveringNavigation(false)}
                                 onClick={() => router.push('/subway')}
-                            >NYC subway system</span>, and is currently investigating user agency in Human–AI Interaction for his thesis.</span> 
+                            >NYC subway system</span>, and is currently investigating user agency in Human–AI Interaction for his <span
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                onMouseEnter={() => setIsHoveringThesis(true)}
+                                onMouseLeave={() => setIsHoveringThesis(false)}
+                                onClick={() => window.open('https://bargainingwiththefuture.com', '_blank', 'noopener,noreferrer')}
+                            >thesis</span>.
+                            
+                            <br />
+                            <br />
+                            
+                            <span className="relative inline-block">
+                                <span
+                                    className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                    onClick={async () => {
+                                        try {
+                                            await navigator.clipboard.writeText('ithinkitschristopher@gmail.com');
+                                            setShowCopiedMessage(true);
+                                            if (copiedMessageTimeoutRef.current) {
+                                                clearTimeout(copiedMessageTimeoutRef.current);
+                                            }
+                                            copiedMessageTimeoutRef.current = setTimeout(() => {
+                                                setShowCopiedMessage(false);
+                                                copiedMessageTimeoutRef.current = null;
+                                            }, 2000);
+                                        } catch (err) {
+                                            console.error('Failed to copy email to clipboard:', err);
+                                        }
+                                    }}
+                                >Email</span>
+                                <AnimatePresence>
+                                    {showCopiedMessage && (
+                                        <motion.span
+                                            initial={{ opacity: 0, y: 0, scale: 1 }}
+                                            animate={{ opacity: 1, y: -10, scale: 1.2 }}
+                                            exit={{ opacity: 0, y: -20, scale: 1 }}
+                                            transition={{
+                                                type: "spring",
+                                                stiffness:900,
+                                                damping: 20
+                                            }}
+                                            className={`absolute left-3 bottom-full mb-2 px-3 py-1.5 rounded-full text-sm whitespace-nowrap pointer-events-none tracking-tight
+                                                border border-white/35 bg-white dark:bg-transparent text-foreground
+                                                shadow-glass-border-light dark:shadow-glass-border
+                                                ${browserType === 'chrome' 
+                                                    ? '' 
+                                                    : browserType === 'safari' 
+                                                        ? 'backdrop-blur-3xl bg-white' 
+                                                        : browserType === 'firefox' 
+                                                            ? 'backdrop-blur-3xl bg-white' 
+                                                            : 'backdrop-blur-3xl bg-white'
+                                                }`}
+                                            style={browserType === 'chrome' ? {
+                                                backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
+                                            } : {}}
+                                        >
+                                            Copied!
+                                        </motion.span>
+                                    )}
+                                </AnimatePresence>
+                            </span>/<span
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                onClick={() => window.open('https://www.linkedin.com/in/chris-leow-93372b184/', '_blank', 'noopener,noreferrer')}
+                            >LinkedIn</span>/<span
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                onClick={() => window.open('https://www.instagram.com/khristurtle/', '_blank', 'noopener,noreferrer')}
+                            >Social</span></span>
                         </h3>
                     </div>
-            
                 </div>
 
                 {/* Thesis Cover Video */}
-                <motion.div 
-                    className="col-span-full mb-80 cursor-pointer rounded-3xl relative overflow-hidden h-[650px] w-full -mt-4"
+                <motion.div
+                    className="col-span-full mb-64 cursor-pointer rounded-3xl relative overflow-hidden h-[650px] w-full -mt-4"
                     whileHover={{ scale: 0.99 }}
                     transition={{
                         type: "spring",
-                        stiffness: 1000, 
-                        damping: 15, 
+                        stiffness: 1000,
+                        damping: 15,
                     }}
                     onMouseEnter={(e) => {
                         if (thesisHideTimeoutRef.current) {
                             clearTimeout(thesisHideTimeoutRef.current);
                             thesisHideTimeoutRef.current = null;
                         }
-                        
+
                         setIsThesisTooltipVisible(true);
                         if (typeof window !== 'undefined') {
                             const tooltipOffset = 20;
@@ -1644,7 +1824,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             clearTimeout(thesisHideTimeoutRef.current);
                             thesisHideTimeoutRef.current = null;
                         }
-                        
+
                         setIsThesisTooltipVisible(false);
                         thesisTitleRotation.set(0);
                         thesisSubtitleRotation.set(0);
@@ -1655,7 +1835,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             clearTimeout(thesisHideTimeoutRef.current);
                             thesisHideTimeoutRef.current = null;
                         }
-                        
+
                         setIsThesisTooltipVisible(true);
                         if (typeof window !== 'undefined' && e.currentTarget) {
                             const rect = e.currentTarget.getBoundingClientRect();
@@ -1675,7 +1855,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             clearTimeout(thesisHideTimeoutRef.current);
                             thesisHideTimeoutRef.current = null;
                         }
-                        
+
                         setIsThesisTooltipVisible(false);
                         thesisTitleRotation.set(0);
                         thesisSubtitleRotation.set(0);
@@ -1697,10 +1877,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     aria-describedby="thesis-description-tooltip"
                 >
                     {/* Glass Edge Effect */}
-                    <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)] 
+                    <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)]
                     pointer-events-none mix-blend-overlay z-10"/>
                     <video
-                        src="/thesis/lifeoscover.mp4"
+                        src="/thesis/lifeoscover2.mp4"
                         className="w-full object-cover scale-120 rounded-[16pt] md:rounded-3xl brightness-75"
                         autoPlay
                         muted
@@ -1708,45 +1888,104 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         playsInline
                     />
                     {/* Lockup */}
-                    <img 
+                    <img
                         src="/thesis/lifeoslockup.svg"
                         alt="LifeOS lockup"
                         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
                     />
                 </motion.div>
 
+                {/* Thesis Tooltips */}
+                <AnimatePresence>
+                    {isThesisTooltipVisible && (
+                        <>
+                            {/* First tooltip - Title */}
+                            <motion.div
+                                id="thesis-title-tooltip"
+                                role="tooltip"
+                                aria-live="polite"
+                                className="fixed pointer-events-none z-50 rounded-[22pt] px-6 py-3 pb-4 border-b-1.5 border-r-1.5 text-[18pt] font-medium tracking-[-0.2pt] bg-background leading-[1.15] border-foreground/10 text-foreground dark:bg-black/30 dark:border-white/5 dark:text-white drop-shadow-xl backdrop-blur-3xl"
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0 }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 600,
+                                    damping: 30,
+                                    duration: 0.1
+                                }}
+                                style={{
+                                    left: thesisTitleXpx,
+                                    top: thesisTitleYpx,
+                                    rotate: springThesisTitleRotation,
+                                    transform: 'translate(-50%, -50%)',
+                                    zIndex: 9999,
+                                }}
+                            >
+                                Bargaining with the Future:<br /> <span className="block mt-1 text-[12pt]">Understanding Agency in Human-AI Interaction</span>
+                            </motion.div>
+
+                            {/* Second tooltip - Subtitle */}
+                            <motion.div
+                                id="thesis-subtitle-tooltip"
+                                role="tooltip"
+                                aria-live="polite"
+                                className="fixed pointer-events-none z-[9998] rounded-[20pt] px-6 py-4 border-b-1.5 border-r-1.5 text-[13px] font-medium tracking-[-0.1pt] bg-background border-foreground/10 text-foreground dark:bg-black/30 dark:border-white/5 dark:text-white drop-shadow-lg backdrop-blur-3xl max-w-[310px]"
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0 }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 600,
+                                    damping: 30,
+                                    duration: 0.1
+                                }}
+                                style={{
+                                    left: thesisSubtitleXpx,
+                                    top: thesisSubtitleYpx,
+                                    rotate: springThesisSubtitleRotation,
+                                    transform: 'translate(-50%, -50%)',
+                                    zIndex: 9998,
+                                }}
+                            >
+                                An ongoing speculative design thesis that investigates user agency within Human–AI interaction in a fully agentic future.
+                            </motion.div>
+                        </>
+                    )}
+                </AnimatePresence>
+
                 {/* Currently */}
                 <ResumeSectionHeader
-                    header="December 2025"
-                    title="What's new?"
+                    // header="December 2025"
+                    title="Highlights."
                     headerClassName="md:ml-1"
                 />
-                <Currently className='col-span-full mb-48' key='currently' toggleWork={toggleWork} />
+                <Currently className='col-span-full mb-64' key='currently' toggleWork={toggleWork} />
 
                 {/* Archive */}
                 <ResumeSectionHeader
-                    header="2019 – 2025"
-                    title="Archive"
+                    header="2016 – 2025"
+                    title="Work."
                     headerClassName="md:ml-1"
                 />
                 <Archive ref={archiveSectionRef} className='col-span-full' key='archive' toggleWork={toggleWork} />
 
                 {/* CV */}
                 <ResumeSectionHeader
-                    header="Curriculum Vitae"
-                    title="Story time."
+                    header="CV"
+                    title="Info."
                     headerClassName="hidden md:block text-[12pt] mt-72 mb-3 ml-2"
-                    titleClassName="hidden md:block tracking-[-2.5pt] text-[64pt] mb-8 w-full"
+                    titleClassName="hidden md:block tracking-[-2.5pt] text-[64pt] mb-6 w-full"
                 />
 
                 {/* Story Container */}
                 <motion.div
                     className={`
                   hidden md:grid
-                  border-r-[1.5px] border-b-[2px] border-t-[0.1px] border-l-[0.1px] 
-                  border-white/15 w-full rounded-3xl col-span-full 
+                  border-r-[1.5px] border-b-[2px] border-t-[0.1px] border-l-[0.1px]
+                  border-white/15 w-full rounded-3xl col-span-full
                   bg-background dark:bg-transparent leading-[150%]
-                  transition-non-color mb-14
+                  transition-non-color
                   shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_4px_0px_rgba(255,255,255,0.15)]
                   p-6 px-12 text-sm grid-cols-9 relative overflow-hidden
                 `}
@@ -1759,9 +1998,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     {/* Story Selector */}
                     <div className="col-span-2 transition-non-color flex flex-col gap-1.5 items-start">
 
-                        <p className=" font-medium text-lg lg:text-xl tracking-tight mb-4">But first, are you<span className="font-light text-lg lg:text-xl">...</span></p>
+                        <p className="font-medium text-lg lg:text-xl tracking-tight mb-4">But first, are you<span className="font-light text-lg lg:text-xl">...</span></p>
 
-                        <button 
+                        <button
                             className={`flex justify-center items-center text-md lg:text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                     border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
                     focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background
@@ -1777,7 +2016,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             aria-label="Show quick summary version"
                         >In a hurry?</button>
 
-                        <button 
+                        <button
                             className={`flex justify-center items-center text-md lg:text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                     border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
                     focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background
@@ -1793,7 +2032,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             aria-label="Show detailed version"
                         >Keen to know more?</button>
 
-                        <button 
+                        <button
                             className={`flex justify-center items-center text-md lg:text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                     border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
                     focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background
@@ -1812,7 +2051,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     </div>
 
                     {/* Line */}
-                    <div className="absolute h-[80%] w-[1px] bg-black/5 dark:bg-white/5 left-72 top-7" />
+                    {/* <div className="absolute h-[80%] w-[1px] bg-black/5 dark:bg-white/5 left-64 top-7" /> */}
 
                     {/* Stories */}
                     <AnimatePresence mode="wait">
@@ -2030,91 +2269,6 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         )}
                     </AnimatePresence>
                 </motion.div>
-
-                {/* Thesis Tooltips */}
-                <AnimatePresence>
-                    {isThesisTooltipVisible && (
-                        <>
-                            {/* First tooltip - Title */}
-                            <motion.div
-                                id="thesis-title-tooltip"
-                                role="tooltip"
-                                aria-live="polite"
-                                className="fixed pointer-events-none z-50 rounded-[25pt] px-6 py-2.5 border-1 border-b-1.5 border-r-1.5 text-[18pt] font-medium tracking-[-0.2pt] bg-background leading-[1.15] border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-xl backdrop-blur-3xl"
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0 }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 600,
-                                    damping: 30,
-                                    duration: 0.1
-                                }}
-                                style={{
-                                    left: thesisTitleXpx,
-                                    top: thesisTitleYpx,
-                                    rotate: springThesisTitleRotation,
-                                    transform: 'translate(-50%, -50%)',
-                                    zIndex: 9999,
-                                }}
-                            >
-                                Bargaining with the Future
-                            </motion.div>
-                            
-                            {/* Second tooltip - Subtitle */}
-                            <motion.div
-                                id="thesis-subtitle-tooltip"
-                                role="tooltip"
-                                aria-live="polite"
-                                className="fixed pointer-events-none z-[9998] rounded-[20pt] px-4 py-2 border-1 border-b-1.5 border-r-1.5 text-[15px] font-medium tracking-[-0.1pt] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl"
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0 }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 600,
-                                    damping: 30,
-                                    duration: 0.1
-                                }}
-                                style={{
-                                    left: thesisSubtitleXpx,
-                                    top: thesisSubtitleYpx,
-                                    rotate: springThesisSubtitleRotation,
-                                    transform: 'translate(-50%, -50%)',
-                                    zIndex: 9998,
-                                }}
-                            >
-                                Master's Thesis
-                            </motion.div>
-                            
-                            {/* Third tooltip - Description */}
-                            <motion.div
-                                id="thesis-description-tooltip"
-                                role="tooltip"
-                                aria-live="polite"
-                                className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[290px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0 }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 600,
-                                    damping: 30,
-                                    duration: 0.1
-                                }}
-                                style={{
-                                    left: thesisDescXpx,
-                                    top: thesisDescYpx,
-                                    rotate: springThesisDescRotation,
-                                    transform: 'translate(-50%, -50%)',
-                                    zIndex: 9997,
-                                }}
-                            >
-                                An ongoing speculative design exercise that seeks to investigate user agency in Human-AI Interaction for a fully agentic future.
-                            </motion.div>
-                        </>
-                    )}
-                </AnimatePresence>
 
                 {/* Resume Footer */}
                 <ResumeFooter />

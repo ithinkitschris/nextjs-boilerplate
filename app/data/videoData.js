@@ -1,10 +1,10 @@
 // Video data extracted from page.js
 export const videoData = [
   { src: '/optimized/isv/covergrid.mp4', title:'In-Flight Safety Video', subheader:'Brand Film for Singapore Airlines', poster:'/poster/isv.jpg', tags: ['isv', 'all', 'creative'], link: '/isv' },
-  { src: '/optimized/bloom/cover_grid.mp4', title:'Bloom', subheader:'UI/UX design – Stanford Longevity Design Challenge First Place.', poster:'/poster/bloom.jpg', tags: ['bloom', 'all', 'product'], link: '/bloom' },
+  { src: '/optimized/bloom/cover_grid.mp4', title:'Bloom', subheader:'UI/UX design – Stanford Longevity Design Challenge First Place.', poster:'/poster/bloom.jpg', tags: ['bloom', 'all', 'product'], link: 'https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476' },
   { src: '/optimized/subway/coverportrait_1080p.mp4', title:'Enhanced Subway Navigation with Apple Maps', subheader:'An exercise in UX, UI design and potential thesis topic.', poster:'/poster/subwayportrait.jpg', tags: ['subway', 'all', 'product'], link: '/subway' },
   { src: '/optimized/currently/car_1080p.mp4', title:'Human (Car)mputer Interaction', subheader:'A deep dive into the Human Computer Interaction of the automobile.', poster:'/poster/car.png', tags: ['car', 'all', 'product'], link: '/car' },
-  { src: '/optimized/website/website-cover_1080p.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.png', tags: ['website', 'all', 'product'], link: '/website' },
+  { src: '/optimized/website/website-cover_1080p.mp4', title:'This website, literally.', subheader:'UI Design + Web Development', poster:'/poster/website.png', tags: ['website', 'all', 'product'], link: 'https://ithinkitschris.notion.site/' },
   { src: '/optimized/Ghibli/ghibli-banner1_1080p.mp4', title:'The World of Studio Ghibli', subheader:'Marketing Campaign for ArtScience Museum', poster:'/poster/ghibli.jpeg', tags: ['ghibli', 'all', 'creative', 'asm', 'graphic', 'best'], link: '/ghibli' },
   { src: '/optimized/CCS/bestworkmontage_1080p.mp4', title:'Beyond the Cabin', subheader:'Brand Campaign for Singapore Airlines', poster:'/poster/cabinbest.jpg', tags: ['cabin', 'all', 'creative', 'sia', 'motion','graphic', 'best'], link: '/cabin' },
   { src: '/optimized/Cocktail/cocktail-cover2_1080p.mp4', title:'Cocktail Conversations', subheader:'Brand Campaign for Singapore Airlines', poster: '/poster/cocktail.jpg', tags: ['cocktail', 'all', 'creative', 'sia', 'motion','graphic', 'best'], link: '/cocktail' },

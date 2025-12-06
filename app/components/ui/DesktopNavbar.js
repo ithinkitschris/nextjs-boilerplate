@@ -33,7 +33,7 @@ const DesktopNavbar = ({
   // Determine if navbar should be expanded (either manually opened or Archive mode)
   const shouldExpandNav = !homeOnly && (showNav || isArchiveMode);
   // Calculate navbar width based on Archive button visibility and expansion state
-  const navbarWidth = homeOnly ? '86px' : (shouldExpandNav ? '545px' : (showArchiveButton ? '168px' : '85.5px'));
+  const navbarWidth = homeOnly ? '86px' : (shouldExpandNav ? '545px' : (showArchiveButton ? '152px' : '85.5px'));
 
   return (
     <motion.div
@@ -175,7 +175,7 @@ const DesktopNavbar = ({
                 damping: 15, 
               }}
             >
-              {shouldExpandNav ? 'All' : 'Archive'}
+              {shouldExpandNav ? 'All' : 'Work'}
             </motion.button>
           )}
 

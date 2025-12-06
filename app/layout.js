@@ -230,9 +230,9 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                     variants={animateIn}>
 
                       {/* Dark Mode Toggle - Top Right Corner */}
-                      <div className="absolute top-2 right-3 z-10">
+                      {/* <div className="absolute top-2 right-3 z-10">
                         <DarkModeToggle toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-                      </div>
+                      </div> */}
 
                       <h1 className="font-medium text-lg mb-4 md:-mt-1 tracking-tight text-foreground font-">About this site</h1>
                       <p className="mt-2 font-medium">Having being once told that my previous site on Squarespace was &apos;boy scout&apos; for someone who takes pride in his craft, this site was thus masochistically designed and hard-coded from ground up with Javascript, React and Next.js by yours truly.</p>

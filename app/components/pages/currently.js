@@ -864,11 +864,11 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             bloomDescRotation.set(0);
           }}
           onMouseMove={handleBloomMouseMove}
-          onClick={() => window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN', '_blank')}
+          onClick={() => window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer')}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
-              window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN', '_blank');
+              window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer');
             }
           }}
           >

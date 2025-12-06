@@ -11,7 +11,12 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
     if (link && typeof link === 'string' && link.length > 0) {
       e.preventDefault();
       e.stopPropagation();
-      router.push(link);
+      // Check if it's an external URL (starts with http:// or https://)
+      if (link.startsWith('http://') || link.startsWith('https://')) {
+        window.open(link, '_blank', 'noopener,noreferrer');
+      } else {
+        router.push(link);
+      }
       return;
     }
     if (onClick) {
