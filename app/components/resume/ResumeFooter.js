@@ -13,13 +13,11 @@ export default function ResumeFooter() {
             <motion.h1 
               className="text-[40px] md:text-3xl mt-20 tracking-tight font-medium text-black dark:text-white col-span-full hidden md:block" 
               key='brands-header'
-              layout
             >
               Worked with:
             </motion.h1>
             <motion.div 
               className="md:col-span-full md:w-full mix-blend-difference relative mb-10 hidden md:grid grid-cols-6 xl:grid-cols-11 gap-5 md:-mx-9 xl:mx-0 mt-4" 
-              layout 
               key='brands'
             >           
                 <div className="flex items-center justify-center">
@@ -298,7 +296,6 @@ export default function ResumeFooter() {
                     aria-controls="dropdown-samsung"
                     aria-label={`${visibleSections.samsung ? 'Collapse' : 'Expand'} Samsung details`}
                     variants={dropdownChild}
-                    layout='position'
                     >
                         <span className="text-lg whitespace-nowrap tracking-tight flex items-center font-medium">
                             Samsung

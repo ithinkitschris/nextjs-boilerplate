@@ -67,7 +67,7 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
     const productWithLabel = product ? { ...product, label: 'Product Design' } : null;
     const creativeWithLabel = creative ? { ...creative, label: 'Creative Direction' } : null;
     const restWithLabels = rest.map(item => 
-      item.tag === 'motion' ? { ...item, label: 'Motion Design' } : item
+      item.tag === 'motion' ? { ...item, label: 'Motion' } : item
     );
     
     return [productWithLabel, creativeWithLabel, ...restWithLabels].filter(Boolean);
@@ -79,11 +79,71 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
   return (
     <motion.div
       ref={ref}
-      className={`font-[family-name:var(--font-geist-sans)] relative w-full mt-8 md:mt-12 ${className}`}
+      className={`font-[family-name:var(--font-geist-sans)] relative w-full  ${className}`}
       initial="hidden"
       animate="show"
       variants={animateIn}
     >
+      {/* Category Selector */}
+      <motion.div 
+        className="flex flex-wrap gap-2 mb-6 md:mb-8"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* All button */}
+        <motion.button
+          className="rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
+            font-semibold tracking-[-0.2pt] whitespace-nowrap 
+            text-white mix-blend-difference dark:mix-blend-normal 
+            transition-colors duration-200 hover:text-background 
+            hover:bg-foreground hover:text-white hover:mix-blend-normal
+            dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white"
+          style={{
+            borderColor: archiveSelectedTags.includes('all')
+              ? 'var(--foreground)'
+              : 'color-mix(in srgb, var(--foreground) 10%, transparent)'
+          }}
+          whileHover={{ scale: 0.9 }}
+          transition={{
+            type: "spring",
+            stiffness: 1000,
+            damping: 20
+          }}
+          onClick={() => handleCategoryClick('all')}
+        >
+          All
+        </motion.button>
+
+        {/* Category buttons */}
+        {orderedSkillsets.map(({ tag, label }, index) => (
+          <motion.button
+            key={tag}
+            className="rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
+              font-semibold tracking-[-0.2pt] whitespace-nowrap 
+              text-white mix-blend-difference dark:mix-blend-normal 
+              transition-colors duration-200 hover:text-background 
+              hover:bg-foreground hover:text-white hover:mix-blend-normal
+              dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white"
+            style={{
+              borderColor: archiveSelectedTags.includes(tag)
+                ? 'var(--foreground)'
+                : 'color-mix(in srgb, var(--foreground) 10%, transparent)'
+            }}
+            whileHover={{ scale: 0.9 }}
+            transition={{
+              type: "spring",
+              stiffness: 1000,
+              damping: 20,
+              delay: index * 0.02
+            }}
+            onClick={() => handleCategoryClick(tag)}
+          >
+            {label}
+          </motion.button>
+        ))}
+      </motion.div>
+
       {showContentPage ? (
         // Show ContentPage when Social (content) is selected
         <ContentPage className="col-span-full" />
