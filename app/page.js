@@ -26,6 +26,7 @@ function HomeContent() {
   const [showNav, setShowNav] = useState(false);
   const [showWork, setShowWork] = useState(false);
   const resumeRef = useRef(null);
+  const videoGridRef = useRef(null);
 
   // Function to scroll to archive section
   const scrollToArchive = () => {
@@ -42,6 +43,19 @@ function HomeContent() {
       setArchiveSelectedTags(['all']);
     }
   }, [selectedWork, setIsArchiveInView, setArchiveSelectedTags]);
+
+  // Focus first VideoSquare when work section is shown (not resume)
+  useEffect(() => {
+    if (selectedWork !== 'resume' && selectedTags.length > 0 && videoGridRef.current) {
+      // Wait for DOM to update, then focus first button
+      setTimeout(() => {
+        const firstButton = videoGridRef.current?.querySelector('button');
+        if (firstButton) {
+          firstButton.focus();
+        }
+      }, 100);
+    }
+  }, [selectedWork, selectedTags]);
 
   return (
     <>
@@ -124,6 +138,7 @@ function HomeContent() {
           > 
             {/* Grid / Page */}
             <motion.div 
+            ref={videoGridRef}
             className={`grid col-span-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 md:gap-2.5 mt-8 md:mt-24`}>
 
               <AnimatePresence>

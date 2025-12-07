@@ -169,6 +169,7 @@ const GlobalVideoControl = () => {
     >
       <motion.button
         onClick={handleToggle}
+        tabIndex={-1}
         className="rounded-full p-3 cursor-pointer bg-white/10 hover:bg-white/20 flex items-center justify-center"
         whileHover={{ scale: 0.9 }}
         transition={{

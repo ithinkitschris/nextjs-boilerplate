@@ -2,7 +2,7 @@ import React from 'react';
 
 const CornerArrow = ({ className = '' }) => {
   return (
-    <button 
+    <div 
       className={`
         absolute top-0.5 right-0.5 md:top-2 md:right-2 z-20
         p-1.5 m-1 md:scale-125
@@ -12,6 +12,7 @@ const CornerArrow = ({ className = '' }) => {
         group-hover:m-3 md:group-hover:m-4 
         group-hover:p-0.5 group-hover:px-1
         transition-all duration-200
+        pointer-events-none
         ${className}
       `}
     >
@@ -31,7 +32,7 @@ const CornerArrow = ({ className = '' }) => {
         />
         <path d="M7 7h10v10" />
       </svg>
-    </button>
+    </div>
   );
 };
 

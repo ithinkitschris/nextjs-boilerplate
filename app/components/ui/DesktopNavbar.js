@@ -165,6 +165,29 @@ const DesktopNavbar = ({
                   }
                 }
               }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  // Trigger the same logic as onClick
+                  if (selectedWork === 'resume') {
+                    if (shouldExpandNav) {
+                      setArchiveSelectedTags(['all']);
+                    } else {
+                      scrollToArchive();
+                    }
+                  } else {
+                    if (!showNav) {
+                      setShowNav(true);
+                      setSelectedTags(['all']);
+                      setSelectedWork('');
+                    } else {
+                      setSelectedTags(['all']);
+                      setSelectedWork('');
+                    }
+                  }
+                  // Focus will be managed by useEffect in page.js
+                }
+              }}
               animate={{
                 x: showNav ? 0 : 0
               }}

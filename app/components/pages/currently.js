@@ -520,8 +520,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
     variants={animateIn}>
 
       {/* Thesis Cover Video */}
-      <motion.div
-          className="col-span-full mb-0 cursor-pointer rounded-3xl relative overflow-hidden h-auto w-full"
+      <motion.button
+          className="col-span-full mb-0 cursor-pointer rounded-3xl relative overflow-hidden h-auto w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           whileHover={{ scale: 0.99 }}
           transition={{
               type: "spring",
@@ -574,6 +574,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                   thesisTitleRotation.set(0);
                   thesisSubtitleRotation.set(0);
               }
+              // Center focused element in viewport
+              e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
           }}
           onBlur={() => {
               if (thesisHideTimeoutRef.current) {
@@ -589,14 +591,6 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           onClick={() => {
               window.open('https://bargainingwiththefuture.com', '_blank');
           }}
-          onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  window.open('https://bargainingwiththefuture.com', '_blank');
-              }
-          }}
-          tabIndex={0}
-          role="button"
           aria-label="Navigate to Bargaining with the Future"
           aria-describedby="thesis-description-tooltip"
       >
@@ -610,6 +604,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               muted
               loop
               playsInline
+              tabIndex={-1}
           />
           {/* Lockup */}
           <img
@@ -617,16 +612,14 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               alt="LifeOS lockup"
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
           />
-      </motion.div>
+      </motion.button>
 
       {/* Subway */}
       <motion.div className="col-span-full md:col-span-6 group cursor-pointer h-full relative group ">
 
         {/* Video Container with Corner Arrow */}
-        <motion.div 
-          className="relative col-span-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background rounded-3xl"
-          role="button"
-          tabIndex={0}
+        <motion.button 
+          className="relative w-full col-span-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
           aria-label="Enhanced Subway Navigation with Apple Maps"
           aria-describedby="subway-description-tooltip"
           whileHover={{ scale: 0.98 }}
@@ -686,6 +679,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               rotation.set(0);
               descriptionRotation.set(0);
             }
+            // Center focused element in viewport
+            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
           }}
           onBlur={() => {
             // Hide tooltip on blur
@@ -701,13 +696,6 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           onMouseMove={handleMouseMove}
           onClick={() => {
             router.push('/subway');
-          }}
-          onKeyDown={(e) => {
-            // Allow activation with Enter or Space
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              router.push('/subway');
-            }
           }}
           >
 
@@ -727,6 +715,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                 loop
                 playsInline
                 poster="/poster/subwaylandscape.jpg"
+                tabIndex={-1}
               />
 
               {/* Lockup */}
@@ -737,7 +726,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               />
           </motion.div>
 
-        </motion.div>
+        </motion.button>
 
       </motion.div>
 
@@ -745,10 +734,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
       <motion.div className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group "
       >
         {/* Video Container with Corner Arrow */}
-        <motion.div 
-          className="relative col-span-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background rounded-3xl"
-          role="button"
-          tabIndex={0}
+        <motion.button 
+          className="relative w-full col-span-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
           aria-label="On-device LLM Expense Tracker"
           aria-describedby="expense-description-tooltip"
           whileHover={{ scale: 0.97 }}
@@ -806,6 +793,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               expenseSubtitleRotation.set(0);
               expenseDescRotation.set(0);
             }
+            // Center focused element in viewport
+            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
           }}
           onBlur={() => {
             if (expenseHideTimeoutRef.current) {
@@ -822,12 +811,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           onClick={() => {
             window.open('https://ithinkitschris.notion.site/local-expense-tracker', '_blank');
           }}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              window.open('https://ithinkitschris.notion.site/local-expense-tracker', '_blank');
-            }
-          }}>
+          >
             
 
           {/* Corner Arrow */}
@@ -850,7 +834,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               />
           </motion.div>
 
-        </motion.div>
+        </motion.button>
         
       </motion.div>
 
@@ -858,10 +842,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
       <motion.div className="col-span-1 md:col-span-4 h-full relative md:mb-2 group">
 
         {/* Video Container with Corner Arrow */}
-        <motion.div 
-          className="relative col-span-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background rounded-3xl"
-          role="button"
-          tabIndex={0}
+        <motion.button 
+          className="relative w-full col-span-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
           aria-label="Singapore Airlines In-Flight Safety Video"
           aria-describedby="isv-description-tooltip"
           whileHover={{ scale: 0.98 }}
@@ -919,6 +901,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               isvSubtitleRotation.set(0);
               isvDescRotation.set(0);
             }
+            // Center focused element in viewport
+            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
           }}
           onBlur={() => {
             if (isvHideTimeoutRef.current) {
@@ -934,12 +918,6 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           onMouseMove={handleIsvMouseMove}
           onClick={() => {
             router.push('/isv');
-          }}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              router.push('/isv');
-            }
           }}
           >
             
@@ -968,10 +946,11 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                 loop
                 playsInline
                 poster="/poster/isv.png"
+                tabIndex={-1}
               />
           </motion.div>
 
-        </motion.div>
+        </motion.button>
 
       </motion.div>
 
@@ -979,10 +958,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
       <motion.div className="col-span-1 md:col-span-4 group cursor-pointer h-full relative group mb-2">
 
         {/* Video Container with Corner Arrow */}
-        <motion.div 
-          className="relative col-span-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background rounded-3xl"
-          role="button"
-          tabIndex={0}
+        <motion.button 
+          className="relative w-full col-span-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
           aria-label="Bloom"
           aria-describedby="bloom-description-tooltip"
           whileHover={{ scale: 0.98 }}
@@ -1041,6 +1018,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               bloomSubtitleRotation.set(0);
               bloomDescRotation.set(0);
             }
+            // Center focused element in viewport
+            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
           }}
           onBlur={() => {
             if (bloomHideTimeoutRef.current) {
@@ -1055,12 +1034,6 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           }}
           onMouseMove={handleBloomMouseMove}
           onClick={() => window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer')}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer');
-            }
-          }}
           >
             
           {/* Corner Arrow */}
@@ -1086,10 +1059,11 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                 loop
                 playsInline
                 poster="/poster/subwaylandscape.jpg"
+                tabIndex={-1}
               />
           </motion.div>
 
-        </motion.div>
+        </motion.button>
       </motion.div>
 
       {/* Tooltips - Outside container to ensure proper z-index stacking */}

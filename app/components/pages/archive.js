@@ -98,7 +98,8 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
             text-white mix-blend-difference dark:mix-blend-normal 
             transition-colors duration-200 hover:text-background 
             hover:bg-foreground hover:text-white hover:mix-blend-normal
-            dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white"
+            dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           style={{
             borderColor: archiveSelectedTags.includes('all')
               ? 'var(--foreground)'
@@ -111,6 +112,9 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
             damping: 20
           }}
           onClick={() => handleCategoryClick('all')}
+          onFocus={(e) => {
+            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+          }}
         >
           All
         </motion.button>
@@ -124,7 +128,8 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
               text-white mix-blend-difference dark:mix-blend-normal 
               transition-colors duration-200 hover:text-background 
               hover:bg-foreground hover:text-white hover:mix-blend-normal
-              dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white"
+              dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             style={{
               borderColor: archiveSelectedTags.includes(tag)
                 ? 'var(--foreground)'
@@ -138,6 +143,9 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
               delay: index * 0.02
             }}
             onClick={() => handleCategoryClick(tag)}
+            onFocus={(e) => {
+              e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+            }}
           >
             {label}
           </motion.button>

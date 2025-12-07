@@ -25,18 +25,21 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
   };
 
   return (
-    <motion.div
+    <motion.button
       lang='en'
-      className="cursor-pointer group"
+      className="w-full cursor-pointer group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-3xl"
       initial="hidden"
       animate="show"
       layout
       variants={scaleIn}
       onClick={handleClick}
+      onFocus={(e) => {
+        e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+      }}
     >
       {/* Square */}
       <motion.div 
-        className={`group relative overflow-hidden rounded-3xl pt-[135%]
+        className={`group relative overflow-hidden rounded-3xl pt-[135%] w-full
         shadow-[3px_3px_15px_rgba(0,0,0,0.2)] group-hover:shadow-none border-b-0 border-white/20
         after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl md:after:rounded-3xl after:shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)]`}
         whileHover={{ scale: 0.98 }}
@@ -105,7 +108,7 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
           useOptimized={true}
         />
       </motion.div>
-    </motion.div>
+    </motion.button>
   );
 };
 

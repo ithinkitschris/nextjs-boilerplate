@@ -80,6 +80,7 @@ const OptimizedVideo = ({
           playsInline={playsInline}
           loading={loading}
           preload={preload}
+          tabIndex={-1}
           {...props}
         >
         {isLoaded && finalSources.map((source, index) => (
@@ -102,6 +103,7 @@ const OptimizedVideo = ({
           playsInline={playsInline}
           loading={loading}
           preload={preload}
+          tabIndex={-1}
           {...props}
         >
           {isLoaded && finalSources.map((source, index) => (
@@ -135,6 +137,7 @@ const OptimizedVideo = ({
         playsInline={playsInline}
         loading={loading}
         preload={preload}
+        tabIndex={-1}
         {...props}
       >
         {isLoaded && finalSources.map((source, index) => (

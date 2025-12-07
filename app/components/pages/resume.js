@@ -1019,6 +1019,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
+
+                // Focus first focusable element in archive section after scroll
+                setTimeout(() => {
+                    const firstButton = archiveSectionRef.current?.querySelector('button');
+                    if (firstButton) {
+                        firstButton.focus();
+                    }
+                }, 500); // Wait for scroll animation to complete
             }
         }
     }));
@@ -1035,13 +1043,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             >
 
                 {/* Profile / Desktop Container */}
-                <div ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%]">
+                <main id="main-content" ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%]">
 
                     {/* Headers Container */}
                     <div ref={headersContainerRef} className="pt-64">
 
                         {/* Header 1 */}
                         <h1
+                            id="header-1"
                             ref={header1Ref}
                             className="font-medium tracking-[-1pt] text-6xl col-span-full"
                         >
@@ -1050,6 +1059,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
                         {/* Header 2 */}
                         <h2
+                            id="header-2"
                             className="pt-10 text-6xl font-medium tracking-[-1pt]"
                             variants={animateInChild}
                         >
@@ -1469,46 +1479,131 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
                         {/* Header 3 */}
                         <h3
+                            id="header-3"
                             className="pt-10 text-4xl leading-[1.3] tracking-[-0.5pt]"
                             variants={animateInChild}
                         >
                             <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career leading campaigns for <Link href="/isv">
                                 <span
-                                    className="hover:opacity-80 transition-opacity underline"
+                                    className="hover:opacity-80 transition-opacity underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                     onMouseEnter={() => setIsHoveringSingaporeAirlines(true)}
                                     onMouseLeave={() => setIsHoveringSingaporeAirlines(false)}
+                                    onFocus={(e) => {
+                                        // Override GSAP: set all headers to opacity 100% when focused
+                                        if (header1Ref.current) {
+                                            gsap.set(header1Ref.current, { opacity: 1 });
+                                        }
+                                        if (header2Ref.current) {
+                                            gsap.set(header2Ref.current, { opacity: 1 });
+                                        }
+                                        if (header2Part2Ref.current) {
+                                            gsap.set(header2Part2Ref.current, { opacity: 1 });
+                                        }
+                                        if (header3Ref.current) {
+                                            gsap.set(header3Ref.current, { opacity: 1 });
+                                        }
+                                        if (header3Part2Ref.current) {
+                                            gsap.set(header3Part2Ref.current, { opacity: 1 });
+                                        }
+                                        // Center focused element in viewport
+                                        e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                    }}
+                                    onBlur={() => {
+                                        // Let GSAP resume control - refresh ScrollTrigger to restore current scroll state
+                                        ScrollTrigger.refresh();
+                                    }}
                                 >Singapore Airlines</span>
                             </Link> and <span
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                tabIndex={0}
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                 onMouseEnter={() => setIsHoveringStudioGhibli(true)}
                                 onMouseLeave={() => setIsHoveringStudioGhibli(false)}
                                 onClick={() => router.push('/ghibli')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        router.push('/ghibli');
+                                    }
+                                }}
+                                onFocus={(e) => {
+                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                }}
                             >Studio Ghibli</span>, to motion design work for <span
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                tabIndex={0}
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                 onMouseEnter={() => setIsHoveringNike(true)}
                                 onMouseLeave={() => setIsHoveringNike(false)}
                                 onClick={() => router.push('/nike')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        router.push('/nike');
+                                    }
+                                }}
+                                onFocus={(e) => {
+                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                }}
                             >Nike</span> and <span
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                tabIndex={0}
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                 onMouseEnter={() => setIsHoveringSamsung(true)}
                                 onMouseLeave={() => setIsHoveringSamsung(false)}
                                 onClick={() => router.push('/samsung')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        router.push('/samsung');
+                                    }
+                                }}
+                                onFocus={(e) => {
+                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                }}
                             >Samsung</span>. </span>
                             <span ref={header3Part2Ref}>Today, he is a Graduate Student in Interaction Design based in NYC. He has since spoken at <span
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                tabIndex={0}
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                 onMouseEnter={() => setIsHoveringStanford(true)}
                                 onMouseLeave={() => setIsHoveringStanford(false)}
                                 onClick={() => window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer');
+                                    }
+                                }}
+                                onFocus={(e) => {
+                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                }}
                             >Stanford</span>, reimagined navigation within the <span
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                tabIndex={0}
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                 onMouseEnter={() => setIsHoveringNavigation(true)}
                                 onMouseLeave={() => setIsHoveringNavigation(false)}
                                 onClick={() => router.push('/subway')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        router.push('/subway');
+                                    }
+                                }}
+                                onFocus={(e) => {
+                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                }}
                             >NYC subway system</span>, and is currently investigating user agency in Human–AI Interaction for his <span
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                tabIndex={0}
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                 onMouseEnter={() => setIsHoveringThesis(true)}
                                 onMouseLeave={() => setIsHoveringThesis(false)}
                                 onClick={() => window.open('https://bargainingwiththefuture.com', '_blank', 'noopener,noreferrer')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        window.open('https://bargainingwiththefuture.com', '_blank', 'noopener,noreferrer');
+                                    }
+                                }}
+                                onFocus={(e) => {
+                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                }}
                             >thesis</span>.
                             
                             <br />
@@ -1516,7 +1611,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             
                             <span className="relative inline-block">
                                 <span
-                                    className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                    tabIndex={0}
+                                    className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                     onClick={async () => {
                                         try {
                                             await navigator.clipboard.writeText('ithinkitschristopher@gmail.com');
@@ -1531,6 +1627,27 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         } catch (err) {
                                             console.error('Failed to copy email to clipboard:', err);
                                         }
+                                    }}
+                                    onKeyDown={async (e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            try {
+                                                await navigator.clipboard.writeText('ithinkitschristopher@gmail.com');
+                                                setShowCopiedMessage(true);
+                                                if (copiedMessageTimeoutRef.current) {
+                                                    clearTimeout(copiedMessageTimeoutRef.current);
+                                                }
+                                                copiedMessageTimeoutRef.current = setTimeout(() => {
+                                                    setShowCopiedMessage(false);
+                                                    copiedMessageTimeoutRef.current = null;
+                                                }, 2000);
+                                            } catch (err) {
+                                                console.error('Failed to copy email to clipboard:', err);
+                                            }
+                                        }
+                                    }}
+                                    onFocus={(e) => {
+                                        e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
                                     }}
                                 >Email</span>
                                 <AnimatePresence>
@@ -1564,15 +1681,35 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     )}
                                 </AnimatePresence>
                             </span>/<span
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                tabIndex={0}
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                 onClick={() => window.open('https://www.linkedin.com/in/chris-leow-93372b184/', '_blank', 'noopener,noreferrer')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        window.open('https://www.linkedin.com/in/chris-leow-93372b184/', '_blank', 'noopener,noreferrer');
+                                    }
+                                }}
+                                onFocus={(e) => {
+                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                }}
                             >LinkedIn</span>/<span
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity"
+                                tabIndex={0}
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                 onClick={() => window.open('https://www.instagram.com/khristurtle/', '_blank', 'noopener,noreferrer')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        window.open('https://www.instagram.com/khristurtle/', '_blank', 'noopener,noreferrer');
+                                    }
+                                }}
+                                onFocus={(e) => {
+                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                }}
                             >Social</span></span>
                         </h3>
                     </div>
-                </div>
+                </main>
 
                 {/* Currently */}
                 {/* <ResumeSectionHeader
@@ -1623,7 +1760,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         <button
                             className={`flex justify-center items-center text-md lg:text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                     border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
-                    focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 dark:focus-visible:ring-offset-background
                     ${visibleSections.desktopAI ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
                             onClick={() => showStory('desktopAI')}
                             onKeyDown={(e) => {
@@ -1632,14 +1769,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     showStory('desktopAI');
                                 }
                             }}
-                            aria-pressed={visibleSections.desktopAI}
-                            aria-label="Show quick summary version"
                         >In a hurry?</button>
 
                         <button
                             className={`flex justify-center items-center text-md lg:text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                     border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
-                    focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 dark:focus-visible:ring-offset-background
                     ${visibleSections.desktopShort ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
                             onClick={() => showStory('desktopShort')}
                             onKeyDown={(e) => {
@@ -1648,14 +1783,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     showStory('desktopShort');
                                 }
                             }}
-                            aria-pressed={visibleSections.desktopShort}
-                            aria-label="Show detailed version"
                         >Keen to know more?</button>
 
                         <button
                             className={`flex justify-center items-center text-md lg:text-lg cursor-pointer hover:bg-foreground dark:hover:bg-transparent hover:text-background dark:hover:text-white
                     border-1.5 dark:hover:border-foreground transition-non-color rounded-full px-2.5 hover:scale-95 -ml-3
-                    focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 dark:focus-visible:ring-offset-background
                     ${visibleSections.desktopLong ? 'border-foreground dark:bg-transparent text-foreground' : 'border-transparent'}`}
                             onClick={() => showStory('desktopLong')}
                             onKeyDown={(e) => {
@@ -1664,8 +1797,6 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     showStory('desktopLong');
                                 }
                             }}
-                            aria-pressed={visibleSections.desktopLong}
-                            aria-label="Show full essay version"
                         >Down for an essay?</button>
 
                     </div>
@@ -1831,11 +1962,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         <p className="italic text-sm opacity-50 mt-4 pr-8">Only then do we sign our work:<br /> Designed by Apple in California</p>
 
                                         <a className="mt-6 -ml-1 flex justify-center rounded-full border-1 w-[135px] pl-1 border-black/20 dark:border-white/50 mb-2
-                                            focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 dark:focus:ring-offset-background"
+                                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 dark:focus-visible:ring-offset-background"
                                             href="https://www.youtube.com/watch?v=LcGPI2tV2yY"
                                             target="_blank"
-                                            rel="noopener noreferrer"
-                                            aria-label="Watch Intention video by Apple (opens in new tab)">
+                                            rel="noopener noreferrer">
 
                                             Intention – Apple
 
