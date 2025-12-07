@@ -918,7 +918,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
             <video 
               videoId="currently-isv"
-              src="/isv/cover_2.mp4"
+              src="/isv/montagenew.mp4"
               className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
               autoPlay
               muted

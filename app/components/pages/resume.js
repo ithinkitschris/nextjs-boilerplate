@@ -1119,7 +1119,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                 >
                                     <motion.video
                                         ref={isvVideoRef}
-                                        src="/isv/cover_2.mp4"
+                                        src="/isv/montagenew.mp4"
                                         className="h-full w-full object-cover transition-all"
                                         autoPlay
                                         muted
