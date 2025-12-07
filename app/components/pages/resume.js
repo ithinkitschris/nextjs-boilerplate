@@ -1020,13 +1020,11 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     behavior: 'smooth'
                 });
 
-                // Focus first focusable element in archive section after scroll
-                setTimeout(() => {
-                    const firstButton = archiveSectionRef.current?.querySelector('button');
-                    if (firstButton) {
-                        firstButton.focus();
-                    }
-                }, 500); // Wait for scroll animation to complete
+                // Focus the "All" button immediately
+                const allButton = archiveSectionRef.current?.querySelector('#archive-all-button');
+                if (allButton) {
+                    allButton.focus();
+                }
             }
         }
     }));
@@ -1036,7 +1034,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         <>
             {/* Page Container */}
             <motion.div
-                key="page-container"
+            key="page-container"
                 className={`grid grid-cols-1 lg:grid-cols-10 w-full -mt-20 md:-mt-36
                 items-start justify-items-start font-[family-name:var(--font-geist-sans)]
                 gap-2 text-sm tracking-tight ${className}`}
@@ -1722,7 +1720,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 {/* Archive */}
                 <ResumeSectionHeader
                     header="2016 – 2025"
-                    title="Work."
+                    title="Archive."
                     headerClassName="md:ml-1"
                 />
                 <Archive ref={archiveSectionRef} className='col-span-full' key='archive' toggleWork={toggleWork} />
