@@ -520,8 +520,9 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
     variants={animateIn}>
 
       {/* Thesis Cover Video */}
+      <div className="col-span-full w-full">
       <motion.button
-          className="col-span-full mb-0 cursor-pointer rounded-3xl relative overflow-hidden h-auto w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background group"
+          className="w-full mb-0 cursor-pointer rounded-3xl relative overflow-hidden h-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background group"
           whileHover={{ scale: 0.99 }}
           transition={{
               type: "spring",
@@ -615,10 +616,18 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
           />
       </motion.button>
+      
+      {/* Title and Description */}
+      <div className="w-full grid grid-cols-5 gap-4 pt-4 mb-12">
+        <h3 className="col-span-2 w-[80%] text-lg md:text-xl font-medium tracking-tight text-left ml-4" style={{ lineHeight: '1.1' }}>Bargaining with the Future: Understanding Agency in Human-AI Interaction</h3>
+        <p className="col-span-3 text-white/70 text-sm leading-tight tracking-normal text-left w-3/4">An ongoing speculative design thesis that investigates user agency within Human–AI interaction in a fully agentic future.</p>
+      </div>
+      </div>
 
       {/* Subway */}
+      <div className="col-span-full md:col-span-6 w-full">
       <motion.button 
-        className="col-span-full md:col-span-6 group cursor-pointer h-full relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        className="w-full group cursor-pointer relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
         aria-label="Enhanced Subway Navigation with Apple Maps"
         aria-describedby="subway-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -722,10 +731,18 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             />
         </motion.div>
       </motion.button>
+      
+      {/* Title and Description */}
+      <div className="w-full grid grid-cols-5 gap-4 pt-4 mb-12">
+        <h3 className="col-span-2 w-[80%] text-lg md:text-xl font-medium tracking-tight text-left ml-4" style={{ lineHeight: '1.1' }}>Enhanced Subway Navigation with Apple Maps</h3>
+        <p className="col-span-3 text-white/70 text-sm leading-tight tracking-normal text-left">A hypothetical project that enhances navigation within the NYC Subway system by providing precise turn-by-turn navigation within Apple Maps, powered by Ultra-Wideband (UWB) technology.</p>
+      </div>
+      </div>
 
       {/* Expense Tracker */}
+      <div className="col-span-1 md:col-span-2 w-full">
       <motion.button 
-        className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        className="w-full cursor-pointer transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
         aria-label="On-device LLM Expense Tracker"
         aria-describedby="expense-description-tooltip"
         whileHover={{ scale: 0.97 }}
@@ -821,10 +838,17 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             />
         </motion.div>
       </motion.button>
+      
+      {/* Title */}
+      <div className="w-full pt-4 mb-12">
+        <h3 className="w-full text-lg md:text-xl font-medium tracking-tight text-left ml-2" style={{ lineHeight: '1.1' }}>On-device LLM Expense Tracker</h3>
+      </div>
+      </div>
 
       {/* ISV */}
+      <div className="col-span-1 md:col-span-4 w-full">
       <motion.button 
-        className="col-span-1 md:col-span-4 h-full relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        className="w-full relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
         aria-label="Singapore Airlines In-Flight Safety Video"
         aria-describedby="isv-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -929,10 +953,18 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             />
         </motion.div>
       </motion.button>
+      
+      {/* Title and Description */}
+      <div className="w-full grid grid-cols-5 gap-4 pt-4 mb-12">
+        <h3 className="col-span-2 w-[80%] text-lg md:text-xl font-medium tracking-tight text-left ml-4" style={{ lineHeight: '1.1' }}>Singapore Airlines In-Flight Safety Video</h3>
+        <p className="col-span-3 text-white/70 text-sm leading-tight tracking-normal text-left">Singapore Airlines' 2025 In-Flight Safety Video that takes passengers on a journey through Singapore's iconic landmarks and most importantly, diverse communities.</p>
+      </div>
+      </div>
 
       {/* Bloom */}
+      <div className="col-span-1 md:col-span-4 w-full">
       <motion.button 
-        className="col-span-1 md:col-span-4 group cursor-pointer h-full relative  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        className="w-full group cursor-pointer relative  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
         aria-label="Bloom"
         aria-describedby="bloom-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -1033,6 +1065,13 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             />
         </motion.div>
       </motion.button>
+      
+      {/* Title and Description */}
+      <div className="w-full grid grid-cols-5 gap-4 pt-4 mb-12">
+        <h3 className="col-span-2 w-[80%] text-lg md:text-xl font-medium tracking-tight text-left ml-4" style={{ lineHeight: '1.1' }}>Bloom</h3>
+        <p className="col-span-3 text-white/70 text-sm leading-tight tracking-normal text-left">The first digital tool that helps young Korean adults discover meaningful career paths by exploring their strengths and interests in a playful and social way.</p>
+      </div>
+      </div>
 
       {/* Tooltips - Outside container to ensure proper z-index stacking */}
       <AnimatePresence>
