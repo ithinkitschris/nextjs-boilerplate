@@ -521,7 +521,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* Thesis Cover Video */}
       <motion.button
-          className="col-span-full mb-0 cursor-pointer rounded-3xl relative overflow-hidden h-auto w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="col-span-full mb-0 cursor-pointer rounded-3xl relative overflow-hidden h-auto w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background group"
           whileHover={{ scale: 0.99 }}
           transition={{
               type: "spring",
@@ -563,14 +563,13 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               }
 
               setIsThesisTooltipVisible(true);
-              if (typeof window !== 'undefined' && e.currentTarget) {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const tooltipOffset = 20;
-                  const targetX = rect.left + rect.width / 2 + tooltipOffset;
-                  const targetY = rect.top + rect.height / 2;
-                  thesisCursorX.set(targetX);
-                  thesisCursorY.set(targetY);
-                  thesisPrevPosRef.current = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+              if (typeof window !== 'undefined') {
+                  // Position tooltip in center of screen for keyboard navigation, offset 150px to the left
+                  const centerX = window.innerWidth / 2 - 150;
+                  const centerY = window.innerHeight / 2 - 150;
+                  thesisCursorX.set(centerX);
+                  thesisCursorY.set(centerY);
+                  thesisPrevPosRef.current = { x: centerX, y: centerY };
                   thesisTitleRotation.set(0);
                   thesisSubtitleRotation.set(0);
               }
@@ -594,6 +593,9 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           aria-label="Navigate to Bargaining with the Future"
           aria-describedby="thesis-description-tooltip"
       >
+          {/* Corner Arrow */}
+          <CornerArrow />
+
           {/* Glass Edge Effect */}
           <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)]
           pointer-events-none mix-blend-overlay z-10"/>
@@ -615,456 +617,422 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
       </motion.button>
 
       {/* Subway */}
-      <motion.div className="col-span-full md:col-span-6 group cursor-pointer h-full relative group ">
-
-        {/* Video Container with Corner Arrow */}
-        <motion.button 
-          className="relative w-full col-span-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
-          aria-label="Enhanced Subway Navigation with Apple Maps"
-          aria-describedby="subway-description-tooltip"
-          whileHover={{ scale: 0.98 }}
-          transition={{
-            type: "spring",
-            stiffness: 1000, 
-            damping: 15, 
-          }}
-          onMouseEnter={(e) => {
-            // Clear any pending hide timeout
-            if (hideTimeoutRef.current) {
-              clearTimeout(hideTimeoutRef.current);
-              hideTimeoutRef.current = null;
-            }
-            
-            setIsTooltipVisible(true);
-            // Initialize position immediately on enter
-            if (typeof window !== 'undefined') {
-              const tooltipOffset = 20;
-              const targetX = e.clientX + tooltipOffset;
-              const targetY = e.clientY;
-              cursorX.set(targetX);
-              cursorY.set(targetY);
-              prevPosRef.current = { x: targetX, y: targetY };
-              rotation.set(0);
-              descriptionRotation.set(0);
-            }
-          }}
-          onMouseLeave={() => {
-            // Clear any existing timeout
-            if (hideTimeoutRef.current) {
-              clearTimeout(hideTimeoutRef.current);
-              hideTimeoutRef.current = null;
-            }
-            
-            setIsTooltipVisible(false);
-            rotation.set(0); // Reset rotation on leave
-            descriptionRotation.set(0); // Reset description rotation on leave
-          }}
-          onFocus={(e) => {
-            // Show tooltip on keyboard focus
-            if (hideTimeoutRef.current) {
-              clearTimeout(hideTimeoutRef.current);
-              hideTimeoutRef.current = null;
-            }
-            
-            setIsTooltipVisible(true);
-            // Position tooltip relative to focused element (center it)
-            if (typeof window !== 'undefined' && e.currentTarget) {
-              const rect = e.currentTarget.getBoundingClientRect();
-              const tooltipOffset = 20;
-              const targetX = rect.left + rect.width / 2 + tooltipOffset;
-              const targetY = rect.top + rect.height / 2;
-              cursorX.set(targetX);
-              cursorY.set(targetY);
-              prevPosRef.current = { x: targetX, y: targetY };
-              rotation.set(0);
-              descriptionRotation.set(0);
-            }
-            // Center focused element in viewport
-            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-          }}
-          onBlur={() => {
-            // Hide tooltip on blur
-            if (hideTimeoutRef.current) {
-              clearTimeout(hideTimeoutRef.current);
-              hideTimeoutRef.current = null;
-            }
-            
-            setIsTooltipVisible(false);
+      <motion.button 
+        className="col-span-full md:col-span-6 group cursor-pointer h-full relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        aria-label="Enhanced Subway Navigation with Apple Maps"
+        aria-describedby="subway-description-tooltip"
+        whileHover={{ scale: 0.98 }}
+        transition={{
+          type: "spring",
+          stiffness: 1000, 
+          damping: 15, 
+        }}
+        onMouseEnter={(e) => {
+          // Clear any pending hide timeout
+          if (hideTimeoutRef.current) {
+            clearTimeout(hideTimeoutRef.current);
+            hideTimeoutRef.current = null;
+          }
+          
+          setIsTooltipVisible(true);
+          // Initialize position immediately on enter
+          if (typeof window !== 'undefined') {
+            const tooltipOffset = 20;
+            const targetX = e.clientX + tooltipOffset;
+            const targetY = e.clientY;
+            cursorX.set(targetX);
+            cursorY.set(targetY);
+            prevPosRef.current = { x: targetX, y: targetY };
             rotation.set(0);
             descriptionRotation.set(0);
-          }}
-          onMouseMove={handleMouseMove}
-          onClick={() => {
-            router.push('/subway');
-          }}
-          >
+          }
+        }}
+        onMouseLeave={() => {
+          // Clear any existing timeout
+          if (hideTimeoutRef.current) {
+            clearTimeout(hideTimeoutRef.current);
+            hideTimeoutRef.current = null;
+          }
+          
+          setIsTooltipVisible(false);
+          rotation.set(0); // Reset rotation on leave
+          descriptionRotation.set(0); // Reset description rotation on leave
+        }}
+        onFocus={(e) => {
+          // Show tooltip on keyboard focus
+          if (hideTimeoutRef.current) {
+            clearTimeout(hideTimeoutRef.current);
+            hideTimeoutRef.current = null;
+          }
+          
+          setIsTooltipVisible(true);
+          // Position tooltip in center of screen for keyboard navigation, offset 150px to the left
+          if (typeof window !== 'undefined') {
+            const centerX = window.innerWidth / 2 - 150;
+            const centerY = window.innerHeight / 2 - 150;
+            cursorX.set(centerX);
+            cursorY.set(centerY);
+            prevPosRef.current = { x: centerX, y: centerY };
+            rotation.set(0);
+            descriptionRotation.set(0);
+          }
+          // Center focused element in viewport
+          e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }}
+        onBlur={() => {
+          // Hide tooltip on blur
+          if (hideTimeoutRef.current) {
+            clearTimeout(hideTimeoutRef.current);
+            hideTimeoutRef.current = null;
+          }
+          
+          setIsTooltipVisible(false);
+          rotation.set(0);
+          descriptionRotation.set(0);
+        }}
+        onMouseMove={handleMouseMove}
+        onClick={() => {
+          router.push('/subway');
+        }}
+      >
+        {/* Corner Arrow */}
+        <CornerArrow />
 
-          {/* Corner Arrow */}
-          <CornerArrow />
+        {/* Video */}
+        <motion.div className="rounded-3xl w-full col-span-full h-[285px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
+            <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
+            pointer-events-none mix-blend-overlay z-10"/>
+            <video 
+              videoId="currently-subway"
+              src="/subway/cover_blank.mp4"
+              className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover contrast-125 brightness-90"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/poster/subwaylandscape.jpg"
+              tabIndex={-1}
+            />
 
-          {/* Video */}
-          <motion.div className="rounded-3xl w-full col-span-full h-[285px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
-              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
-              pointer-events-none mix-blend-overlay z-10"/>
-              <video 
-                videoId="currently-subway"
-                src="/subway/cover_blank.mp4"
-                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover contrast-125 brightness-90"
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="/poster/subwaylandscape.jpg"
-                tabIndex={-1}
-              />
-
-              {/* Lockup */}
-              <img 
-                src="/subway/lockup.png"
-                alt="Subway lockup"
-                className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[60%] h-auto object-contain"
-              />
-          </motion.div>
-
-        </motion.button>
-
-      </motion.div>
+            {/* Lockup */}
+            <img 
+              src="/subway/lockup.png"
+              alt="Subway lockup"
+              className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[60%] h-auto object-contain"
+            />
+        </motion.div>
+      </motion.button>
 
       {/* Expense Tracker */}
-      <motion.div className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group "
+      <motion.button 
+        className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        aria-label="On-device LLM Expense Tracker"
+        aria-describedby="expense-description-tooltip"
+        whileHover={{ scale: 0.97 }}
+        transition={{
+          type: "spring",
+          stiffness: 1200, 
+          damping: 22, 
+        }}
+        onMouseEnter={(e) => {
+          if (expenseHideTimeoutRef.current) {
+            clearTimeout(expenseHideTimeoutRef.current);
+            expenseHideTimeoutRef.current = null;
+          }
+          
+          setIsExpenseTooltipVisible(true);
+          if (typeof window !== 'undefined') {
+            const tooltipOffset = 20;
+            const targetX = e.clientX + tooltipOffset;
+            const targetY = e.clientY;
+            expenseCursorX.set(targetX);
+            expenseCursorY.set(targetY);
+            expensePrevPosRef.current = { x: e.clientX, y: e.clientY };
+            expenseTitleRotation.set(0);
+            expenseSubtitleRotation.set(0);
+            expenseDescRotation.set(0);
+          }
+        }}
+        onMouseLeave={() => {
+          if (expenseHideTimeoutRef.current) {
+            clearTimeout(expenseHideTimeoutRef.current);
+            expenseHideTimeoutRef.current = null;
+          }
+          
+          setIsExpenseTooltipVisible(false);
+          expenseTitleRotation.set(0);
+          expenseSubtitleRotation.set(0);
+          expenseDescRotation.set(0);
+        }}
+        onFocus={(e) => {
+          if (expenseHideTimeoutRef.current) {
+            clearTimeout(expenseHideTimeoutRef.current);
+            expenseHideTimeoutRef.current = null;
+          }
+          
+          setIsExpenseTooltipVisible(true);
+          if (typeof window !== 'undefined') {
+            // Position tooltip in center of screen for keyboard navigation, offset 150px to the left
+            const centerX = window.innerWidth / 2 - 150;
+            const centerY = window.innerHeight / 2 - 150;
+            expenseCursorX.set(centerX);
+            expenseCursorY.set(centerY);
+            expensePrevPosRef.current = { x: centerX, y: centerY };
+            expenseTitleRotation.set(0);
+            expenseSubtitleRotation.set(0);
+            expenseDescRotation.set(0);
+          }
+          // Center focused element in viewport
+          e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }}
+        onBlur={() => {
+          if (expenseHideTimeoutRef.current) {
+            clearTimeout(expenseHideTimeoutRef.current);
+            expenseHideTimeoutRef.current = null;
+          }
+          
+          setIsExpenseTooltipVisible(false);
+          expenseTitleRotation.set(0);
+          expenseSubtitleRotation.set(0);
+          expenseDescRotation.set(0);
+        }}
+        onMouseMove={handleExpenseMouseMove}
+        onClick={() => {
+          window.open('https://ithinkitschris.notion.site/local-expense-tracker', '_blank');
+        }}
       >
-        {/* Video Container with Corner Arrow */}
-        <motion.button 
-          className="relative w-full col-span-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
-          aria-label="On-device LLM Expense Tracker"
-          aria-describedby="expense-description-tooltip"
-          whileHover={{ scale: 0.97 }}
-          transition={{
-            type: "spring",
-            stiffness: 1200, 
-            damping: 22, 
-          }}
-          onMouseEnter={(e) => {
-            if (expenseHideTimeoutRef.current) {
-              clearTimeout(expenseHideTimeoutRef.current);
-              expenseHideTimeoutRef.current = null;
-            }
-            
-            setIsExpenseTooltipVisible(true);
-            if (typeof window !== 'undefined') {
-              const tooltipOffset = 20;
-              const targetX = e.clientX + tooltipOffset;
-              const targetY = e.clientY;
-              expenseCursorX.set(targetX);
-              expenseCursorY.set(targetY);
-              expensePrevPosRef.current = { x: e.clientX, y: e.clientY };
-              expenseTitleRotation.set(0);
-              expenseSubtitleRotation.set(0);
-              expenseDescRotation.set(0);
-            }
-          }}
-          onMouseLeave={() => {
-            if (expenseHideTimeoutRef.current) {
-              clearTimeout(expenseHideTimeoutRef.current);
-              expenseHideTimeoutRef.current = null;
-            }
-            
-            setIsExpenseTooltipVisible(false);
-            expenseTitleRotation.set(0);
-            expenseSubtitleRotation.set(0);
-            expenseDescRotation.set(0);
-          }}
-          onFocus={(e) => {
-            if (expenseHideTimeoutRef.current) {
-              clearTimeout(expenseHideTimeoutRef.current);
-              expenseHideTimeoutRef.current = null;
-            }
-            
-            setIsExpenseTooltipVisible(true);
-            if (typeof window !== 'undefined' && e.currentTarget) {
-              const rect = e.currentTarget.getBoundingClientRect();
-              const tooltipOffset = 20;
-              const targetX = rect.left + rect.width / 2 + tooltipOffset;
-              const targetY = rect.top + rect.height / 2;
-              expenseCursorX.set(targetX);
-              expenseCursorY.set(targetY);
-              expensePrevPosRef.current = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
-              expenseTitleRotation.set(0);
-              expenseSubtitleRotation.set(0);
-              expenseDescRotation.set(0);
-            }
-            // Center focused element in viewport
-            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-          }}
-          onBlur={() => {
-            if (expenseHideTimeoutRef.current) {
-              clearTimeout(expenseHideTimeoutRef.current);
-              expenseHideTimeoutRef.current = null;
-            }
-            
-            setIsExpenseTooltipVisible(false);
-            expenseTitleRotation.set(0);
-            expenseSubtitleRotation.set(0);
-            expenseDescRotation.set(0);
-          }}
-          onMouseMove={handleExpenseMouseMove}
-          onClick={() => {
-            window.open('https://ithinkitschris.notion.site/local-expense-tracker', '_blank');
-          }}
-          >
-            
+        {/* Corner Arrow */}
+        <CornerArrow />
 
-          {/* Corner Arrow */}
-          <CornerArrow />
-
-          {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[285px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
-              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
-              pointer-events-none mix-blend-overlay z-10"/>
-              <OptimizedVideo 
-                videoId="currently-expense"
-                src="/optimized/expense/cover_1.mp4"
-                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover object-[0%_10%]"
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster=""
-                useOptimized={useOptimizedVideos}
-              />
-          </motion.div>
-
-        </motion.button>
-        
-      </motion.div>
+        {/* Video */}
+        <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[285px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
+            <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
+            pointer-events-none mix-blend-overlay z-10"/>
+            <OptimizedVideo 
+              videoId="currently-expense"
+              src="/optimized/expense/cover_1.mp4"
+              className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover object-[0%_10%]"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster=""
+              useOptimized={useOptimizedVideos}
+            />
+        </motion.div>
+      </motion.button>
 
       {/* ISV */}
-      <motion.div className="col-span-1 md:col-span-4 h-full relative md:mb-2 group">
-
-        {/* Video Container with Corner Arrow */}
-        <motion.button 
-          className="relative w-full col-span-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
-          aria-label="Singapore Airlines In-Flight Safety Video"
-          aria-describedby="isv-description-tooltip"
-          whileHover={{ scale: 0.98 }}
-          transition={{
-            type: "spring",
-            stiffness: 1000, 
-            damping: 15, 
-          }}
-          onMouseEnter={(e) => {
-            if (isvHideTimeoutRef.current) {
-              clearTimeout(isvHideTimeoutRef.current);
-              isvHideTimeoutRef.current = null;
-            }
-            
-            setIsIsvTooltipVisible(true);
-            if (typeof window !== 'undefined') {
-              const tooltipOffset = 20;
-              const targetX = e.clientX + tooltipOffset;
-              const targetY = e.clientY;
-              isvCursorX.set(targetX);
-              isvCursorY.set(targetY);
-              isvPrevPosRef.current = { x: e.clientX, y: e.clientY };
-              isvTitleRotation.set(0);
-              isvSubtitleRotation.set(0);
-              isvDescRotation.set(0);
-            }
-          }}
-          onMouseLeave={() => {
-            if (isvHideTimeoutRef.current) {
-              clearTimeout(isvHideTimeoutRef.current);
-              isvHideTimeoutRef.current = null;
-            }
-            
-            setIsIsvTooltipVisible(false);
+      <motion.button 
+        className="col-span-1 md:col-span-4 h-full relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        aria-label="Singapore Airlines In-Flight Safety Video"
+        aria-describedby="isv-description-tooltip"
+        whileHover={{ scale: 0.98 }}
+        transition={{
+          type: "spring",
+          stiffness: 1000, 
+          damping: 15, 
+        }}
+        onMouseEnter={(e) => {
+          if (isvHideTimeoutRef.current) {
+            clearTimeout(isvHideTimeoutRef.current);
+            isvHideTimeoutRef.current = null;
+          }
+          
+          setIsIsvTooltipVisible(true);
+          if (typeof window !== 'undefined') {
+            const tooltipOffset = 20;
+            const targetX = e.clientX + tooltipOffset;
+            const targetY = e.clientY;
+            isvCursorX.set(targetX);
+            isvCursorY.set(targetY);
+            isvPrevPosRef.current = { x: e.clientX, y: e.clientY };
             isvTitleRotation.set(0);
             isvSubtitleRotation.set(0);
             isvDescRotation.set(0);
-          }}
-          onFocus={(e) => {
-            if (isvHideTimeoutRef.current) {
-              clearTimeout(isvHideTimeoutRef.current);
-              isvHideTimeoutRef.current = null;
-            }
-            
-            setIsIsvTooltipVisible(true);
-            if (typeof window !== 'undefined' && e.currentTarget) {
-              const rect = e.currentTarget.getBoundingClientRect();
-              const tooltipOffset = 20;
-              const targetX = rect.left + rect.width / 2 + tooltipOffset;
-              const targetY = rect.top + rect.height / 2;
-              isvCursorX.set(targetX);
-              isvCursorY.set(targetY);
-              isvPrevPosRef.current = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
-              isvTitleRotation.set(0);
-              isvSubtitleRotation.set(0);
-              isvDescRotation.set(0);
-            }
-            // Center focused element in viewport
-            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-          }}
-          onBlur={() => {
-            if (isvHideTimeoutRef.current) {
-              clearTimeout(isvHideTimeoutRef.current);
-              isvHideTimeoutRef.current = null;
-            }
-            
-            setIsIsvTooltipVisible(false);
+          }
+        }}
+        onMouseLeave={() => {
+          if (isvHideTimeoutRef.current) {
+            clearTimeout(isvHideTimeoutRef.current);
+            isvHideTimeoutRef.current = null;
+          }
+          
+          setIsIsvTooltipVisible(false);
+          isvTitleRotation.set(0);
+          isvSubtitleRotation.set(0);
+          isvDescRotation.set(0);
+        }}
+        onFocus={(e) => {
+          if (isvHideTimeoutRef.current) {
+            clearTimeout(isvHideTimeoutRef.current);
+            isvHideTimeoutRef.current = null;
+          }
+          
+          setIsIsvTooltipVisible(true);
+          if (typeof window !== 'undefined') {
+            // Position tooltip in center of screen for keyboard navigation, offset 150px to the left
+            const centerX = window.innerWidth / 2 - 150;
+            const centerY = window.innerHeight / 2 - 150;
+            isvCursorX.set(centerX);
+            isvCursorY.set(centerY);
+            isvPrevPosRef.current = { x: centerX, y: centerY };
             isvTitleRotation.set(0);
             isvSubtitleRotation.set(0);
             isvDescRotation.set(0);
-          }}
-          onMouseMove={handleIsvMouseMove}
-          onClick={() => {
-            router.push('/isv');
-          }}
-          >
-            
-          {/* Corner Arrow */}
-          <CornerArrow />
+          }
+          // Center focused element in viewport
+          e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }}
+        onBlur={() => {
+          if (isvHideTimeoutRef.current) {
+            clearTimeout(isvHideTimeoutRef.current);
+            isvHideTimeoutRef.current = null;
+          }
+          
+          setIsIsvTooltipVisible(false);
+          isvTitleRotation.set(0);
+          isvSubtitleRotation.set(0);
+          isvDescRotation.set(0);
+        }}
+        onMouseMove={handleIsvMouseMove}
+        onClick={() => {
+          router.push('/isv');
+        }}
+      >
+        {/* Corner Arrow */}
+        <CornerArrow />
 
-          {/* Lockup */}
-          <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-3 bottom-3 w-8 md:w-20 h-auto z-20 opacity-50" />
+        {/* Lockup */}
+        <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-3 bottom-3 w-8 md:w-20 h-auto z-20 opacity-50" />
 
-          {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
-              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
+        {/* Video */}
+        <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
+            <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
-              {/* WIP Overlay */}
-              {/* <div className="absolute inset-0 flex flex-col items-center justify-center w-[80%] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-40">
-                <h1 className="z-20 text-white text-2xl md:text-3xl tracking-tight leading-[1] w-[60%] font-medium text-center">Project page is currently work in progress.</h1>
-                <p className="z-20 text-white text-xs md:text-sm font-medium text-center leading-[1.4] mt-4">Check back soon! <br/>Click to watch the film.</p>
-              </div> */}
+            {/* WIP Overlay */}
+            {/* <div className="absolute inset-0 flex flex-col items-center justify-center w-[80%] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-40">
+              <h1 className="z-20 text-white text-2xl md:text-3xl tracking-tight leading-[1] w-[60%] font-medium text-center">Project page is currently work in progress.</h1>
+              <p className="z-20 text-white text-xs md:text-sm font-medium text-center leading-[1.4] mt-4">Check back soon! <br/>Click to watch the film.</p>
+            </div> */}
 
-              <video 
-                videoId="currently-isv"
-                src="/isv/cover_2.mp4"
-                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="/poster/isv.png"
-                tabIndex={-1}
-              />
-          </motion.div>
-
-        </motion.button>
-
-      </motion.div>
+            <video 
+              videoId="currently-isv"
+              src="/isv/cover_2.mp4"
+              className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/poster/isv.png"
+              tabIndex={-1}
+            />
+        </motion.div>
+      </motion.button>
 
       {/* Bloom */}
-      <motion.div className="col-span-1 md:col-span-4 group cursor-pointer h-full relative group mb-2">
-
-        {/* Video Container with Corner Arrow */}
-        <motion.button 
-          className="relative w-full col-span-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
-          aria-label="Bloom"
-          aria-describedby="bloom-description-tooltip"
-          whileHover={{ scale: 0.98 }}
-          transition={{
-            type: "spring",
-            stiffness: 1000, 
-            damping: 15, 
-          }}
-          onMouseEnter={(e) => {
-            if (bloomHideTimeoutRef.current) {
-              clearTimeout(bloomHideTimeoutRef.current);
-              bloomHideTimeoutRef.current = null;
-            }
-            
-            setIsBloomTooltipVisible(true);
-            if (typeof window !== 'undefined') {
-              const tooltipOffset = 20;
-              const targetX = e.clientX + tooltipOffset;
-              const targetY = e.clientY;
-              bloomCursorX.set(targetX);
-              bloomCursorY.set(targetY);
-              bloomPrevPosRef.current = { x: e.clientX, y: e.clientY };
-              bloomTitleRotation.set(0);
-              bloomSubtitleRotation.set(0);
-              bloomDescRotation.set(0);
-            }
-          }}
-          onMouseLeave={() => {
-            if (bloomHideTimeoutRef.current) {
-              clearTimeout(bloomHideTimeoutRef.current);
-              bloomHideTimeoutRef.current = null;
-            }
-            
-            setIsBloomTooltipVisible(false);
+      <motion.button 
+        className="col-span-1 md:col-span-4 group cursor-pointer h-full relative  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        aria-label="Bloom"
+        aria-describedby="bloom-description-tooltip"
+        whileHover={{ scale: 0.98 }}
+        transition={{
+          type: "spring",
+          stiffness: 1000, 
+          damping: 15, 
+        }}
+        onMouseEnter={(e) => {
+          if (bloomHideTimeoutRef.current) {
+            clearTimeout(bloomHideTimeoutRef.current);
+            bloomHideTimeoutRef.current = null;
+          }
+          
+          setIsBloomTooltipVisible(true);
+          if (typeof window !== 'undefined') {
+            const tooltipOffset = 20;
+            const targetX = e.clientX + tooltipOffset;
+            const targetY = e.clientY;
+            bloomCursorX.set(targetX);
+            bloomCursorY.set(targetY);
+            bloomPrevPosRef.current = { x: e.clientX, y: e.clientY };
             bloomTitleRotation.set(0);
             bloomSubtitleRotation.set(0);
             bloomDescRotation.set(0);
-          }}
-          onFocus={(e) => {
-            if (bloomHideTimeoutRef.current) {
-              clearTimeout(bloomHideTimeoutRef.current);
-              bloomHideTimeoutRef.current = null;
-            }
-            
-            setIsBloomTooltipVisible(true);
-            if (typeof window !== 'undefined' && e.currentTarget) {
-              const rect = e.currentTarget.getBoundingClientRect();
-              const tooltipOffset = 20;
-              const targetX = rect.left + rect.width / 2 + tooltipOffset;
-              const targetY = rect.top + rect.height / 2;
-              bloomCursorX.set(targetX);
-              bloomCursorY.set(targetY);
-              // Store center position for focus - no cursor movement on focus
-              bloomPrevPosRef.current = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
-              bloomTitleRotation.set(0);
-              bloomSubtitleRotation.set(0);
-              bloomDescRotation.set(0);
-            }
-            // Center focused element in viewport
-            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-          }}
-          onBlur={() => {
-            if (bloomHideTimeoutRef.current) {
-              clearTimeout(bloomHideTimeoutRef.current);
-              bloomHideTimeoutRef.current = null;
-            }
-            
-            setIsBloomTooltipVisible(false);
+          }
+        }}
+        onMouseLeave={() => {
+          if (bloomHideTimeoutRef.current) {
+            clearTimeout(bloomHideTimeoutRef.current);
+            bloomHideTimeoutRef.current = null;
+          }
+          
+          setIsBloomTooltipVisible(false);
+          bloomTitleRotation.set(0);
+          bloomSubtitleRotation.set(0);
+          bloomDescRotation.set(0);
+        }}
+        onFocus={(e) => {
+          if (bloomHideTimeoutRef.current) {
+            clearTimeout(bloomHideTimeoutRef.current);
+            bloomHideTimeoutRef.current = null;
+          }
+          
+          setIsBloomTooltipVisible(true);
+          if (typeof window !== 'undefined') {
+            // Position tooltip in center of screen for keyboard navigation, offset 150px to the left
+            const centerX = window.innerWidth / 2 - 150;
+            const centerY = window.innerHeight / 2 - 150;
+            bloomCursorX.set(centerX);
+            bloomCursorY.set(centerY);
+            bloomPrevPosRef.current = { x: centerX, y: centerY };
             bloomTitleRotation.set(0);
             bloomSubtitleRotation.set(0);
             bloomDescRotation.set(0);
-          }}
-          onMouseMove={handleBloomMouseMove}
-          onClick={() => window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer')}
-          >
-            
-          {/* Corner Arrow */}
-          <CornerArrow />
+          }
+          // Center focused element in viewport
+          e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }}
+        onBlur={() => {
+          if (bloomHideTimeoutRef.current) {
+            clearTimeout(bloomHideTimeoutRef.current);
+            bloomHideTimeoutRef.current = null;
+          }
+          
+          setIsBloomTooltipVisible(false);
+          bloomTitleRotation.set(0);
+          bloomSubtitleRotation.set(0);
+          bloomDescRotation.set(0);
+        }}
+        onMouseMove={handleBloomMouseMove}
+        onClick={() => window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer')}
+      >
+        {/* Corner Arrow */}
+        <CornerArrow />
 
-          {/* Video */}
-          <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
-              <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
+        {/* Video */}
+        <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
+            <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
-              {/* WIP Overlay */}
-              {/* <div className="absolute inset-0 flex flex-col items-center justify-center w-[80%] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-40">
-                <h1 className="z-20 text-white text-xl md:text-3xl tracking-tight leading-[1] w-[80%] font-medium text-center">Project page is currently work in progress.</h1>
-                <p className="z-20 text-white text-xxs md:text-sm leading-[1.2] w-[90%] font-medium text-center mt-4">Check back soon! <br/>Click to be directed to the project deck.</p>
-              </div> */}
+            {/* WIP Overlay */}
+            {/* <div className="absolute inset-0 flex flex-col items-center justify-center w-[80%] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-40">
+              <h1 className="z-20 text-white text-xl md:text-3xl tracking-tight leading-[1] w-[80%] font-medium text-center">Project page is currently work in progress.</h1>
+              <p className="z-20 text-white text-xxs md:text-sm leading-[1.2] w-[90%] font-medium text-center mt-4">Check back soon! <br/>Click to be directed to the project deck.</p>
+            </div> */}
 
-              {/* Video */}
-              <video 
-                videoId="currently-subway"
-                src="/bloom/cover.mp4"
-                className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="/poster/subwaylandscape.jpg"
-                tabIndex={-1}
-              />
-          </motion.div>
-
-        </motion.button>
-      </motion.div>
+            {/* Video */}
+            <video 
+              videoId="currently-subway"
+              src="/bloom/cover.mp4"
+              className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/poster/subwaylandscape.jpg"
+              tabIndex={-1}
+            />
+        </motion.div>
+      </motion.button>
 
       {/* Tooltips - Outside container to ensure proper z-index stacking */}
       <AnimatePresence>
