@@ -115,7 +115,9 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
     <motion.div 
       className="fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-50 flex justify-center "
       animate={{ 
-        y: hideFooter ? 60 : 0
+        y: hideFooter ? 60 : 0,
+        opacity: hideFooter ? 0 : 1,
+        pointerEvents: hideFooter ? 'none' : 'auto'
       }}
       transition={{
         type: "spring",

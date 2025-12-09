@@ -15,6 +15,7 @@ import ResumeSectionHeader from "../resume/ResumeSectionHeader";
 import { useHideNav } from "../../context/HideNavContext";
 import { useBrowser } from "../../context/BrowserContext";
 import { useRouter } from 'next/navigation';
+import { useMobileDetection } from "../../hooks/useMobileDetection";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -27,11 +28,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     //#region States and Hooks
     const router = useRouter();
     const { browserType } = useBrowser();
+    const isMobile = useMobileDetection();
     const [timeNyc, setTimeNyc] = useState(null);
     const [timeSg, setTimeSg] = useState(null);
     const [isAtTop, setIsAtTop] = useState(true);
     const { visibleSections, showStory } = useExperienceState();
-    const { setIsArchiveInView, setHideNav, setRandomRotation } = useHideNav();
+    const { setIsArchiveInView, setHideNav, setRandomRotation, setHideFooter } = useHideNav();
     // Motion values for physics-based image popup animation
     const initialX = typeof window !== 'undefined' ? window.innerWidth / 2 : 0;
     const initialY = typeof window !== 'undefined' ? window.innerHeight * 0.75 : 0;
@@ -281,8 +283,13 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         const initializeScrollTrigger = () => {
             // Set initial opacity, position, and scale states
             if (headersContainerRef.current && header1Ref.current && header2ContainerRef.current && header2Ref.current && header2Part2Ref.current && header3Ref.current && header3Part2Ref.current && bioSectionRef.current) {
-            gsap.set(headersContainerRef.current, { y: 150 });
-            gsap.set(header1Ref.current, { opacity: 1, scale: 1.05, transformOrigin: "left" });
+            // Mobile-adaptive animation values
+            const containerYInitial = 250;
+            const header1ScaleInitial = isMobile ? 1.02 : 1.05;
+            const header2ContainerScaleMax = isMobile ? 1.015 : 1.03;
+            
+            gsap.set(headersContainerRef.current, { y: containerYInitial });
+            gsap.set(header1Ref.current, { opacity: 1, scale: header1ScaleInitial, transformOrigin: "left" });
             gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
             gsap.set(header2Ref.current, { opacity: 0.2 });
             setIsHeader2AtOpacity1(false);
@@ -312,35 +319,42 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     const progress = self.progress; // 0 to 1
                     setScrollProgress(progress);
 
-                    // Hide navbar during header animations (phases 1-3), show after phase 3 completes
+                    // Hide navbar and footer during header animations (phases 1-3), show after phase 3 completes
                     if (progress < 1) {
-                        // During phases 1-3 (progress 0 to < 1), hide navbar
+                        // During phases 1-3 (progress 0 to < 1), hide navbar and footer
                         setHideNav(true);
+                        setHideFooter(true);
                     } else {
-                        // After phase 3 completes (progress >= 1), show navbar
+                        // After phase 3 completes (progress >= 1), show navbar and footer
                         setHideNav(false);
+                        setHideFooter(false);
                     }
 
                     // Phase 1a: 0% to 21.25% of scroll (progress 0 to 0.2125)
                     // Header 1 = 100% → 20%, Header 2 = 20% → 100%, Header 3 = 10% (held)
-                    // Container y-position moves from 150 to 0 (upward 150px)
-                    // Header 1 scale moves from 1.05x to 1x
-                    // Header 2 scale moves from 1x to 1.03x
+                    // Container y-position moves from 250 to -100
+                    // Header 1 scale moves from 1.05x to 1x - mobile: 1.02x to 1x
+                    // Header 2 scale moves from 1x to 1.03x - mobile: 1x to 1.015x
                     if (progress <= 0.2125) {
                         const phase1Progress = progress / 0.2125; // Maps 0->0, 0.2125->1
                         const easedPhase1Progress = gsap.parseEase("power3.inOut")(phase1Progress);
 
-                        // Container: move from y: 150 to y: 0
-                        const containerY = gsap.utils.interpolate(150, 0, easedPhase1Progress);
+                        // Mobile-adaptive animation values
+                        const containerYInitial = 250;
+                        const header1ScaleInitial = isMobile ? 1.02 : 1.05;
+                        const header2ContainerScaleMax = isMobile ? 1.015 : 1.03;
+
+                        // Container: move from y: 250 to y: -100
+                        const containerY = gsap.utils.interpolate(containerYInitial, -100, easedPhase1Progress);
                         gsap.set(headersContainerRef.current, { y: containerY });
 
-                        // Header 1: fade from 1 to 0.2, scale from 1.05 to 1
+                        // Header 1: fade from 1 to 0.2, scale from 1.05 to 1 (or 1.02 to 1 on mobile)
                         const header1Opacity = gsap.utils.interpolate(1, 0.2, easedPhase1Progress);
-                        const header1Scale = gsap.utils.interpolate(1.05, 1, easedPhase1Progress);
+                        const header1Scale = gsap.utils.interpolate(header1ScaleInitial, 1, easedPhase1Progress);
                         gsap.set(header1Ref.current, { opacity: header1Opacity, scale: header1Scale, transformOrigin: "left" });
 
-                        // Header 2 Container: scale from 1 to 1.03
-                        const header2ContainerScale = gsap.utils.interpolate(1, 1.03, easedPhase1Progress);
+                        // Header 2 Container: scale from 1 to 1.03 (or 1 to 1.015 on mobile)
+                        const header2ContainerScale = gsap.utils.interpolate(1, header2ContainerScaleMax, easedPhase1Progress);
                         gsap.set(header2ContainerRef.current, { scale: header2ContainerScale, transformOrigin: "left" });
 
                         // Header 2: fade from 0.2 to 1
@@ -363,14 +377,15 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         const phase1bProgress = (progress - 0.2125) / 0.2125; // Maps 0.2125->0, 0.425->1
                         const easedPhase1bProgress = gsap.parseEase("expo.inOut")(phase1bProgress);
 
-                        // Container: stay at y: 0 (already at this value from Phase 1a)
-                        gsap.set(headersContainerRef.current, { y: 0 });
+                        // Container: stay at y: -100 (already at this value from Phase 1a)
+                        gsap.set(headersContainerRef.current, { y: -100 });
 
                         // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1a)
                         gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
 
-                        // Header 2 Container: stay at scale 1.03
-                        gsap.set(header2ContainerRef.current, { scale: 1.03, transformOrigin: "left" });
+                        // Header 2 Container: stay at scale 1.03 (or 1.015 on mobile)
+                        const header2ContainerScaleMax = isMobile ? 1.015 : 1.03;
+                        gsap.set(header2ContainerRef.current, { scale: header2ContainerScaleMax, transformOrigin: "left" });
 
                         // Header 2: fade from 1 to 0.2
                         const header2Opacity = gsap.utils.interpolate(1, 0.2, easedPhase1bProgress);
@@ -390,21 +405,24 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     // Phase 2b1: 42.5% to 63.75% of scroll (progress 0.425 to 0.6375)
                     // Container moves upward (complete movement), Header 1 fades from 0.2 to 0.1, Header 2 stays at 0.2, Header 2 Part 2 fades from 1 to 0.2
                     // Header 3 fades from 0.1 to 1, Header 3 Part 2 stays at 0.1
-                    // Header 2 scale moves from 1.03x to 1x
+                    // Header 2 scale moves from 1.03x to 1x - mobile: 1.015x to 1x
                     else if (progress <= 0.6375) {
                         const phase2b1Progress = (progress - 0.425) / 0.2125; // Maps 0.425->0, 0.6375->1
                         const easedPhase2b1Progress = gsap.parseEase("power3.inOut")(phase2b1Progress);
 
-                        // Container: move from y: 0 to y: -150 (complete upward movement of 150px)
-                        const containerY = gsap.utils.interpolate(0, -150, easedPhase2b1Progress);
+                        // Mobile-adaptive animation values
+                        const header2ContainerScaleMax = isMobile ? 1.015 : 1.03;
+
+                        // Container: move from y: -100 to y: -400
+                        const containerY = gsap.utils.interpolate(-100, -400, easedPhase2b1Progress);
                         gsap.set(headersContainerRef.current, { y: containerY });
 
                         // Header 1: fade from 0.2 to 0.1 (from Phase 1 end state)
                         const header1Opacity = gsap.utils.interpolate(0.2, 0.1, easedPhase2b1Progress);
                         gsap.set(header1Ref.current, { opacity: header1Opacity, scale: 1, transformOrigin: "left" });
 
-                        // Header 2 Container: scale from 1.03 to 1
-                        const header2ContainerScale = gsap.utils.interpolate(1.03, 1, easedPhase2b1Progress);
+                        // Header 2 Container: scale from 1.03 to 1 (or 1.015 to 1 on mobile)
+                        const header2ContainerScale = gsap.utils.interpolate(header2ContainerScaleMax, 1, easedPhase2b1Progress);
                         gsap.set(header2ContainerRef.current, { scale: header2ContainerScale, transformOrigin: "left" });
 
                         // Header 2: stay at 0.2 opacity
@@ -425,14 +443,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
                     // Phase 2b2: 63.75% to 85% of scroll (progress 0.6375 to 0.85)
-                    // Container holds at -150, Header 1 holds at 0.1, Header 2 holds at 0.2, Header 2 Part 2 holds at 0.2
+                    // Container holds at -400, Header 1 holds at 0.1, Header 2 holds at 0.2, Header 2 Part 2 holds at 0.2
                     // Header 3 fades from 1 to 0.2, Header 3 Part 2 fades from 0.1 to 1
                     else if (progress <= 0.85) {
                         const phase2b2Progress = (progress - 0.6375) / 0.2125; // Maps 0.6375->0, 0.85->1
                         const easedPhase2b2Progress = gsap.parseEase("expo.inOut")(phase2b2Progress);
 
-                        // Container: stay at y: -150 (already at this value from Phase 2b1)
-                        gsap.set(headersContainerRef.current, { y: -150 });
+                        // Container: stay at y: -400
+                        gsap.set(headersContainerRef.current, { y: -400 });
 
                         // Header 1: stay at 0.1 opacity and scale 1 (already at this value from Phase 2b1)
                         gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
@@ -461,8 +479,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         const phase3Progress = (progress - 0.85) / 0.15; // Maps 0.85->0, 1->1
                         const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
 
-                        // Container: stay at y: -150 (already at this value from Phase 2b2)
-                        gsap.set(headersContainerRef.current, { y: -150 });
+                        // Container: stay at y: -400
+                        gsap.set(headersContainerRef.current, { y: -400 });
 
                         // Header 1: stay at 0.1 opacity and scale 1 (from Phase 2b2 end state)
                         gsap.set(header1Ref.current, { opacity: 0.1, scale: 1, transformOrigin: "left" });
@@ -487,15 +505,17 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 }
             });
 
-            // Check initial progress and set navbar state accordingly
+            // Check initial progress and set navbar and footer state accordingly
             // This handles cases where the ScrollTrigger is already in view when created
             const initialProgress = st.progress;
             if (initialProgress < 1) {
                 setHideNav(true);
+                setHideFooter(true);
                 const initialRandomRot = Math.random() * 60 - 20;
                 setRandomRotation(initialRandomRot);
             } else {
                 setHideNav(false);
+                setHideFooter(false);
             }
 
             // Refresh ScrollTrigger after creation to ensure positions are recalculated correctly
@@ -532,7 +552,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             // Show navbar when leaving resume page
             setHideNav(false);
         };
-    }, [setHideNav]);
+    }, [setHideNav, setRandomRotation, isMobile]);
 
     // Mouse tracking for image popup with physics
     useEffect(() => {
@@ -632,10 +652,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         };
     }, []);
 
+
     // Update showImage based on scroll progress (not opacity)
     useEffect(() => {
-        // Image should show from 5% to 45% of scroll progress
-        const isInHeader2Section = scrollProgress >= 0.03 && scrollProgress <= 0.44;
+        // Image should show from 5% to 45% of scroll progress (desktop)
+        // On mobile, show later: from 15% to 45% of scroll progress
+        const scrollStart = isMobile ? 0.1 : 0.03;
+        const scrollEnd = isMobile ? 0.53 : 0.44;
+        const isInHeader2Section = scrollProgress >= scrollStart && scrollProgress <= scrollEnd;
 
         // Check if any header 3 link is being hovered
         const isHoveringHeader3Link = isHoveringSingaporeAirlines ||
@@ -682,6 +706,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         }
     }, [
         scrollProgress,
+        isMobile,
         isHoveringSingaporeAirlines,
         isHoveringStudioGhibli,
         isHoveringNike,
@@ -1035,7 +1060,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             {/* Page Container */}
             <motion.div
             key="page-container"
-                className={`grid grid-cols-1 lg:grid-cols-10 w-full -mt-20 md:-mt-36
+                className={`grid grid-cols-1 lg:grid-cols-10 w-full -mt-36
                 items-start justify-items-start font-[family-name:var(--font-geist-sans)]
                 gap-2 text-sm tracking-tight ${className}`}
             >
@@ -1044,13 +1069,13 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 <main id="main-content" ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%]">
 
                     {/* Headers Container */}
-                    <div ref={headersContainerRef} className="pt-64">
+                    <div ref={headersContainerRef} className="pt-32 md:pt-64">
 
                         {/* Header 1 */}
                         <h1
                             id="header-1"
                             ref={header1Ref}
-                            className="font-medium tracking-[-1pt] text-6xl col-span-full"
+                            className={`font-medium tracking-[-1pt] text-4xl md:text-6xl col-span-full`}
                         >
                             Depending on your perspective<span className="opacity-100 font-light">...</span>
                         </h1>
@@ -1058,7 +1083,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         {/* Header 2 */}
                         <h2
                             id="header-2"
-                            className="pt-10 text-6xl font-medium tracking-[-1pt]"
+                            className={`pt-10 text-4xl md:text-6xl font-medium tracking-[-1pt]`}
                             variants={animateInChild}
                         >
                             <span ref={header2ContainerRef} style={{ display: 'inline-block' }}>
@@ -1067,12 +1092,18 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             </span>
                         </h2>
 
-                        {/* Image */}
+                        {/* Bio Image */}
                         <AnimatePresence>
                         {showImage && (
                             <motion.div
+                                id="bio-photo"
                                 className="rounded-full w-64 h-64 fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
-                                style={{
+                                style={isMobile ? {
+                                    left: '15%',
+                                    bottom: '18%',
+                                    transform: 'translateX(-50%)',
+                                    scale: 0.95,
+                                } : {
                                     left: imageXpx,
                                     top: imageYpx,
                                     rotate: springImageRotation,
@@ -1478,10 +1509,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         {/* Header 3 */}
                         <h3
                             id="header-3"
-                            className="pt-10 text-4xl leading-[1.3] tracking-[-0.5pt]"
+                            className={`pt-10 ${isMobile ? 'text-[17pt]' : 'text-4xl'} leading-[1.3] tracking-[-0.4pt]`}
                             variants={animateInChild}
                         >
-                            <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career leading campaigns for <Link href="/isv">
+                            <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career in Singapore leading campaigns for <Link href="/isv">
                                 <span
                                     className="hover:opacity-80 transition-opacity underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                     onMouseEnter={() => setIsHoveringSingaporeAirlines(true)}
@@ -1709,13 +1740,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     </div>
                 </main>
 
-                {/* Currently */}
-                {/* <ResumeSectionHeader
-                    // header="December 2025"
-                    // title="Highlights."
-                    headerClassName=""
-                /> */}
-                <Currently className='col-span-full mb-72 -mt-72' key='currently' toggleWork={toggleWork} />
+                <Currently className='col-span-full mb-72 -mt-[60%] md:-mt-72' key='currently' toggleWork={toggleWork} />
 
                 {/* Archive */}
                 <ResumeSectionHeader

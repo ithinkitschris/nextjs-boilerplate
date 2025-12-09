@@ -93,6 +93,7 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
       >
         {/* All button */}
         <motion.button
+          id="archive-all-button"
           className="rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
             font-semibold tracking-[-0.2pt] whitespace-nowrap 
             text-white mix-blend-difference dark:mix-blend-normal 
