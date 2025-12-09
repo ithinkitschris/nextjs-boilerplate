@@ -1062,8 +1062,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             variants={animateInChild}
                         >
                             <span ref={header2ContainerRef} style={{ display: 'inline-block' }}>
-                                <span ref={header2Ref}>Chris Leow is either a Product Designer with an intimate eye for Art Direction, </span>
-                                <span ref={header2Part2Ref}>or an Art Director with an equally intimate understanding of technology.</span>
+                                <span ref={header2Ref}>Chris Leow is either an Art Director with an intimate understanding of technology, </span>
+                                <span ref={header2Part2Ref}>or a Product Designer with an equally intimate eye for Art Direction.</span>
                             </span>
                         </h2>
 
