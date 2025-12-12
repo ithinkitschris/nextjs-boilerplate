@@ -11,6 +11,7 @@ import { BrowserProvider, useBrowser } from './context/BrowserContext';
 import { HideNavProvider, useHideNav } from './context/HideNavContext';
 import VideoDebugger from './components/ui/VideoDebugger';
 import GlobalVideoControl from './components/ui/GlobalVideoControl';
+import { Analytics } from '@vercel/analytics/react';
 
 const animateIn = {
   hidden: { opacity: 0, y: 90, scale:0.99 },
@@ -401,6 +402,7 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
             </VideoProvider>
           </HideNavProvider>
         </BrowserProvider>
+        <Analytics />
       </body>
     </html>
   );

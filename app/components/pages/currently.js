@@ -523,7 +523,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* Thesis Cover Video */}
       <motion.button
-          className="col-span-full mb-0 cursor-pointer rounded-[25pt] relative overflow-hidden h-[550px] md:h-auto w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background group"
+          className="col-span-full mb-0 cursor-pointer rounded-[25pt] relative overflow-hidden h-[600px] md:h-auto w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background group"
           whileHover={{ scale: 0.99 }}
           transition={{
               type: "spring",
@@ -631,7 +631,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           />
 
           {/* Text Container - Mobile Only */}
-          <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-5 w-full mb-1 pointer-events-none z-30 md:hidden">
+          <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
             {/* Title */}
             <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
               Bargaining with the Future:<br /> <span className="block mt-1 text-[11pt] md:text-[12pt] font-normal">Understanding Agency in Human-AI Interaction</span>
@@ -727,7 +727,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Video */}
-        <motion.div className="rounded-[25pt] w-full col-span-full h-[500px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
+        <motion.div className="rounded-[25pt] w-full col-span-full h-[530px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
             <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
             pointer-events-none mix-blend-overlay z-10"/>
             <OptimizedVideo 
@@ -759,7 +759,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             />
 
             {/* Text Container - Mobile Only */}
-            <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-5 w-full mb-1 pointer-events-none z-30 md:hidden">
+            <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
               {/* Title */}
               <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
           Enhanced Subway Navigation<br/> with Apple Maps
@@ -880,7 +880,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             />
 
             {/* Text Container - Mobile Only */}
-            <div className="absolute inset-0 flex flex-col items-start justify-end pb-6 pl-5 w-full mb-1 pointer-events-none z-30 md:hidden">
+            <div className="absolute inset-0 flex flex-col items-start justify-end pb-6 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
               {/* Title */}
               <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
                 On-device LLM<br/>Expense Tracker
@@ -895,7 +895,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* ISV */}
       <motion.button 
-        className="col-span-full md:col-span-4 h-full relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[20pt]"
+        className="col-span-full md:col-span-4 h-full relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt] md:rounded-[20pt]"
         aria-label="Singapore Airlines In-Flight Safety Video"
         aria-describedby="isv-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -976,16 +976,16 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Lockup */}
-        <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-4 bottom-4 w-14 md:w-20 h-auto z-20 opacity-50" />
+        <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-4 bottom-5 w-14 md:w-20 h-auto z-20 opacity-50" />
 
         {/* Video */}
-        <motion.div className="rounded-[20pt] w-full col-span-full h-[320px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
-            <div className="absolute inset-0 rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
+        <motion.div className="rounded-[25pt] md:rounded-[20pt] w-full col-span-full h-[320px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
+            <div className="absolute inset-0 rounded-[25pt] md:rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
             <OptimizedVideo 
               videoId="currently-isv"
               src="/isv/montagenew.mp4"
-              className="rounded-[20pt] w-full h-full object-cover"
+              className="rounded-[25pt] md:rounded-[20pt] w-full h-full object-cover"
               autoPlay
               muted
               loop
@@ -1004,7 +1004,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             />
 
             {/* Text Container - Mobile Only */}
-            <div className="absolute inset-0 flex flex-col items-start justify-end pb-2 pl-5 w-full mb-1 pointer-events-none z-30 md:hidden">
+            <div className="absolute inset-0 flex flex-col items-start justify-end pb-4 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
               {/* Title */}
               <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
           Singapore Airlines<br/>In-Flight Safety Video
@@ -1019,7 +1019,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* Bloom */}
       <motion.button 
-        className="col-span-full md:col-span-4 group cursor-pointer h-full relative  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[20pt]"
+        className="col-span-full md:col-span-4 group cursor-pointer h-full relative  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt] md:rounded-[20pt]"
         aria-label="Bloom"
         aria-describedby="bloom-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -1098,8 +1098,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Video */}
-        <motion.div className="rounded-[20pt] w-full col-span-full h-[420px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
-            <div className="absolute inset-0 rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
+        <motion.div className="rounded-[25pt] md:rounded-[20pt] w-full col-span-full h-[420px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
+            <div className="absolute inset-0 rounded-[25pt] md:rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
             {/* WIP Overlay */}
             {/* <div className="absolute inset-0 flex flex-col items-center justify-center w-[80%] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-40">
@@ -1111,7 +1111,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             <OptimizedVideo 
               videoId="currently-subway"
               src="/bloom/cover.mp4"
-              className="rounded-[20pt] w-full h-full object-cover"
+              className="rounded-[25pt] md:rounded-[20pt] w-full h-full object-cover"
               autoPlay
               muted
               loop
@@ -1130,7 +1130,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             />
 
             {/* Text Container - Mobile Only */}
-            <div className="absolute inset-0 flex flex-col items-start justify-end pb-3.5 pl-5 w-full mb-1 pointer-events-none z-30 md:hidden">
+            <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
               {/* Title */}
               <h2 className="tracking-tight font-medium z-30 w-[80%] text-[16pt] leading-none mb-0.5 text-white text-left">
                 Bloom
