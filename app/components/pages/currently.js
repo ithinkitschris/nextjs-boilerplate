@@ -895,7 +895,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* ISV */}
       <motion.button 
-        className="col-span-full md:col-span-4 h-full relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt] md:rounded-[20pt]"
+        className="col-span-full md:col-span-5 h-[420px] md:h-[340px] lg:h-[460px] 2xl:h-[550px] relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt] md:rounded-[20pt]"
         aria-label="Singapore Airlines In-Flight Safety Video"
         aria-describedby="isv-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -979,7 +979,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-4 bottom-5 w-14 md:w-20 h-auto z-20 opacity-50" />
 
         {/* Video */}
-        <motion.div className="rounded-[25pt] md:rounded-[20pt] w-full col-span-full h-[420px] md:h-full relative overflow-hidden border-b-1 border-white/15">
+        <motion.div className="rounded-[25pt] md:rounded-[20pt] w-full col-span-full h-[420px] md:h-[340px] lg:h-[460px] 2xl:h-[550px] relative overflow-hidden border-b-1 border-white/15">
             <div className="absolute inset-0 rounded-[25pt] md:rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
             <OptimizedVideo 
@@ -1019,7 +1019,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* Bloom */}
       <motion.button 
-        className="col-span-full md:col-span-4 group cursor-pointer h-full relative  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt] md:rounded-[20pt]"
+        className="col-span-full md:col-span-3 group cursor-pointer h-full relative  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt] md:rounded-[20pt]"
         aria-label="Bloom"
         aria-describedby="bloom-description-tooltip"
         whileHover={{ scale: 0.98 }}

@@ -1743,7 +1743,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
                 {/* Currently */}
                 <Currently 
-                    className='col-span-full mb-24 md:mb-72 mt-[75vh] md:mt-[95vh] relative z-10' 
+                    className='col-span-full mb-24 md:mb-56 mt-[75vh] md:mt-[95vh] relative z-10' 
                     style={{ willChange: 'transform' }}
                     key='currently' 
                     toggleWork={toggleWork} 
@@ -1760,8 +1760,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 <ResumeSectionHeader
                     // header="CV"
                     title="Info."
-                    headerClassName="hidden md:block text-[12pt] mt-72 mb-3 ml-2"
-                    titleClassName="hidden md:block tracking-[-2.5pt] text-[64pt] mt-72 mb-6 w-full"
+                    // headerClassName="hidden md:block text-[12pt] mt-72 mb-3 ml-2"
+                    titleClassName="hidden md:block tracking-[-2.5pt] text-[64pt] mt-44 mb-6 w-full"
                 />
 
                 {/* Story Container */}
