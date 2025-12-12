@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import ThreeD from '../components/pages/3d.js';
 import DesktopNavbar from '../components/ui/DesktopNavbar';
 import { useMobileDetection } from '../hooks/useMobileDetection';
-import { useVideoNavigation } from '../hooks/useVideoNavigation';
 import { skillsetData } from '../data/videoData';
 import { useBrowser } from '../context/BrowserContext';
 import { useHideNav } from '../context/HideNavContext';
@@ -16,7 +15,6 @@ export default function ThreeDPage() {
   const { browserType } = useBrowser();
   const { hideNav, randomRotation, toggleHideNav, setIsWhiteBG, isWhiteBG, setIsArchiveInView, setArchiveSelectedTags } = useHideNav();
   const isMobile = useMobileDetection();
-  const { selectedTags, setSelectedTags, selectedWork, setSelectedWork, toggleTag, toggleWork } = useVideoNavigation();
   
   const [showNav, setShowNav] = useState(false);
   const [showWork, setShowWork] = useState(false);
@@ -66,14 +64,14 @@ export default function ThreeDPage() {
           <DesktopNavbar 
             showNav={showNav}
             setShowNav={setShowNav}
-            selectedTags={selectedTags}
-            setSelectedTags={setSelectedTags}
-            selectedWork={selectedWork}
-            setSelectedWork={setSelectedWork}
-            toggleWork={toggleWork}
+            selectedTags={[]}
+            setSelectedTags={() => {}}
+            selectedWork=""
+            setSelectedWork={() => {}}
+            toggleWork={() => {}}
             setShowWork={setShowWork}
             skillsetData={skillsetData}
-            toggleTag={toggleTag}
+            toggleTag={() => {}}
             isWhiteBG={isWhiteBG}
             scrollToArchive={() => {}}
             homeOnly={true}
