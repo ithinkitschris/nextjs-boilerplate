@@ -3,12 +3,14 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { PlayIcon, PauseIcon } from '@heroicons/react/24/solid';
 import { useVideoContext } from '../../context/VideoContext';
+import { useBrowser } from '../../context/BrowserContext';
 import { motion } from 'framer-motion';
 
 const GlobalVideoControl = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasVideos, setHasVideos] = useState(false);
   const { isGloballyPaused, setGlobalPause } = useVideoContext();
+  const { browserType } = useBrowser();
   const intervalRef = useRef(null);
 
   // Get all video elements in the DOM
@@ -158,7 +160,7 @@ const GlobalVideoControl = () => {
 
   return (
     <motion.div
-      className="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-50"
+      className="fixed bottom-3.5 md:bottom-6 right-4 md:right-6 z-50"
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
@@ -170,12 +172,42 @@ const GlobalVideoControl = () => {
       <motion.button
         onClick={handleToggle}
         tabIndex={-1}
-        className="rounded-full p-3 cursor-pointer bg-white/10 hover:bg-white/20 flex items-center justify-center"
-        whileHover={{ scale: 0.9 }}
+        className={`
+          transition-all 
+          text-center 
+          rounded-full 
+          cursor-pointer
+          p-3
+          bg-background 
+          dark:bg-transparent 
+          dark:text-white
+          shadow-glass-border-xs md:glass
+          border-transparent 
+          md:dark:hover:border-white 
+          md:dark:hover:border-1
+          md:hover:bg-foreground 
+          md:dark:hover:bg-transparent 
+          md:hover:text-white 
+          md:hover:scale-95
+          flex items-center justify-center
+          ${browserType === 'chrome' 
+            ? '' 
+            : browserType === 'safari' 
+              ? 'backdrop-blur-3xl' 
+              : browserType === 'firefox' 
+                ? 'backdrop-blur-3xl' 
+                : 'backdrop-blur-3xl'
+          }
+          md:dark:border-white/25
+        `}
+        style={browserType === 'chrome' ? {
+             backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
+        } : {}}
+        whileHover={{ scale: 0.95 }}
         transition={{
           type: "spring",
-          stiffness: 700,
-          damping: 10
+          stiffness: 500,
+          damping: 24
         }}
         aria-label={isPlaying ? 'Pause all videos' : 'Play all videos'}
       >

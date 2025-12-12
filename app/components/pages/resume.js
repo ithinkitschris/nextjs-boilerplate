@@ -1713,6 +1713,19 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             >LinkedIn</span>/<span
                                 tabIndex={0}
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
+                                onClick={() => window.open('https://github.com/ithinkitschris', '_blank', 'noopener,noreferrer')}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        window.open('https://github.com/ithinkitschris', '_blank', 'noopener,noreferrer');
+                                    }
+                                }}
+                                onFocus={(e) => {
+                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                }}
+                            >GitHub</span>/<span
+                                tabIndex={0}
+                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-sm"
                                 onClick={() => window.open('https://www.instagram.com/khristurtle/', '_blank', 'noopener,noreferrer')}
                                 onKeyDown={(e) => {
                                     if (e.key === 'Enter' || e.key === ' ') {

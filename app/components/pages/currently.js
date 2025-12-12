@@ -189,7 +189,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   }, []);
   
   const handleMouseMove = (e) => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || isMobile) return;
     
     const tooltipOffset = 20;
     const tooltipWidth = 350; // Approximate width of tooltip
@@ -257,7 +257,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   };
   
   const handleBloomMouseMove = (e) => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || isMobile) return;
     
     const tooltipOffset = 20;
     const tooltipWidth = 350;
@@ -322,7 +322,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   };
   
   const handleExpenseMouseMove = (e) => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || isMobile) return;
     
     const tooltipOffset = 20;
     const tooltipWidth = 350;
@@ -387,7 +387,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   };
   
   const handleIsvMouseMove = (e) => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || isMobile) return;
     
     const tooltipOffset = 20;
     const tooltipWidth = 350;
@@ -452,7 +452,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   };
   
   const handleThesisMouseMove = (e) => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || isMobile) return;
     
     const tooltipOffset = 20;
     const tooltipWidth = 350;
@@ -516,7 +516,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   
   return (
     <motion.div
-    className={`font-[family-name:var(--font-geist-sans)] relative w-full mt-4 md:mt-8 grid grid-cols-2 md:grid-cols-8 gap-2 md:gap-4 ${className}`}
+    className={`font-[family-name:var(--font-geist-sans)] relative w-full mt-4 md:mt-8 grid grid-cols-2 md:grid-cols-8 gap-3 md:gap-4 ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
@@ -531,6 +531,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               damping: 15,
           }}
           onMouseEnter={(e) => {
+              if (isMobile) return;
               if (thesisHideTimeoutRef.current) {
                   clearTimeout(thesisHideTimeoutRef.current);
                   thesisHideTimeoutRef.current = null;
@@ -637,7 +638,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             </h2>
             {/* Description */}
             <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
-              Ongoing Interaction Design Master's Thesis.
+              Ongoing Master's Thesis in Interaction Design.
             </p>
           </div>
       </motion.button>
@@ -654,6 +655,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           damping: 15, 
         }}
         onMouseEnter={(e) => {
+          if (isMobile) return;
           // Clear any pending hide timeout
           if (hideTimeoutRef.current) {
             clearTimeout(hideTimeoutRef.current);
@@ -782,6 +784,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           damping: 22, 
         }}
         onMouseEnter={(e) => {
+          if (isMobile) return;
           if (expenseHideTimeoutRef.current) {
             clearTimeout(expenseHideTimeoutRef.current);
             expenseHideTimeoutRef.current = null;
@@ -902,6 +905,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           damping: 15, 
         }}
         onMouseEnter={(e) => {
+          if (isMobile) return;
           if (isvHideTimeoutRef.current) {
             clearTimeout(isvHideTimeoutRef.current);
             isvHideTimeoutRef.current = null;
@@ -1025,6 +1029,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           damping: 15, 
         }}
         onMouseEnter={(e) => {
+          if (isMobile) return;
           if (bloomHideTimeoutRef.current) {
             clearTimeout(bloomHideTimeoutRef.current);
             bloomHideTimeoutRef.current = null;
@@ -1131,7 +1136,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
                 Bloom
               </h2>
           {/* Subtitle */}
-          <h3 className="tracking-tight z-30 text-[9pt] leading-tight mix-blend-screen text-white mb-0 text-left opacity-50">
+          <h3 className="tracking-tight z-30 text-[9pt] leading-tight mix-blend-screen text-white mb-0 text-left opacity-70">
             Stanford Longevity Design Challenge First Place
           </h3>
               {/* Description */}
