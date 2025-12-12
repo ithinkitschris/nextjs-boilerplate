@@ -126,10 +126,6 @@ const config: Config = {
         '150': '37.5rem',
         '200': '42rem',
       },
-      margin: {
-        '-mt-6': '-5rem',
-        '-mt-[15vh]': '-15vh'
-      },
       inset: {
         '1/6': '16.6667%',
       },

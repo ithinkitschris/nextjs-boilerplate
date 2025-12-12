@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Uniqlo1 from '../components/pages/uniqlo1.js';
 import DesktopNavbar from '../components/ui/DesktopNavbar';
 import { useMobileDetection } from '../hooks/useMobileDetection';
-import { useVideoNavigation } from '../hooks/useVideoNavigation';
+import { useVideoNavigationSimple } from '../hooks/useVideoNavigationSimple';
 import { skillsetData } from '../data/videoData';
 import { useBrowser } from '../context/BrowserContext';
 import { useHideNav } from '../context/HideNavContext';
@@ -16,7 +16,7 @@ export default function Uniqlo1Page() {
   const { browserType } = useBrowser();
   const { hideNav, randomRotation, toggleHideNav, setIsWhiteBG, isWhiteBG, setIsArchiveInView, setArchiveSelectedTags } = useHideNav();
   const isMobile = useMobileDetection();
-  const { selectedTags, setSelectedTags, selectedWork, setSelectedWork, toggleTag, toggleWork } = useVideoNavigation();
+  const { selectedTags, setSelectedTags, selectedWork, setSelectedWork, toggleTag, toggleWork } = useVideoNavigationSimple();
   
   const [showNav, setShowNav] = useState(false);
   const [showWork, setShowWork] = useState(false);

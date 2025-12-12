@@ -604,7 +604,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
           {/* Video */}
           <video
-              src={isMobile ? "/thesis/lifeoscover2-mobile.mp4" : "/thesis/lifeoscover2.mp4"}
+              src={isMobile ? "/thesis/lifeoscover2.mp4" : "/thesis/lifeoscover2.mp4"}
               className="w-full h-full object-cover scale-120 rounded-[25pt] brightness-75"
               autoPlay
               muted
