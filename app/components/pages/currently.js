@@ -521,7 +521,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* Thesis Cover Video */}
       <motion.button
-          className="col-span-full mb-0 cursor-pointer rounded-3xl relative overflow-hidden h-auto w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background group"
+          className="col-span-full mb-0 cursor-pointer rounded-[25pt] relative overflow-hidden h-[550px] md:h-auto w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background group"
           whileHover={{ scale: 0.99 }}
           transition={{
               type: "spring",
@@ -597,11 +597,11 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           <CornerArrow />
 
           {/* Glass Edge Effect */}
-          <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)]
+          <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)]
           pointer-events-none mix-blend-overlay z-10"/>
           <video
               src="/thesis/lifeoscover2.mp4"
-              className="w-full object-cover scale-120 rounded-[16pt] md:rounded-3xl brightness-75"
+              className="w-full h-full object-cover scale-120 rounded-[25pt] brightness-75"
               autoPlay
               muted
               loop
@@ -612,13 +612,23 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           <img
               src="/thesis/lifeoslockup.svg"
               alt="LifeOS lockup"
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[125%] md:max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
           />
       </motion.button>
 
+      {/* Thesis Mobile Header & Description */}
+      <div className="col-span-full md:hidden mt-4 mb-16 px-1 mx-[4%] md:mx-0">
+        <h2 className="text-[18pt] font-medium tracking-[-0.2pt] leading-none text-foreground mb-3">
+          Bargaining with the Future:<br /> <span className="block mt-1 text-[12pt]">Understanding Agency in Human-AI Interaction</span>
+        </h2>
+        <p className="text-[13px] font-normal tracking-[-0.05pt] leading-[1.35] w-[95%] opacity-60">
+          An ongoing speculative design thesis that investigates user agency within Human–AI interaction in a fully agentic future.
+        </p>
+      </div>
+
       {/* Subway */}
       <motion.button 
-        className="col-span-full md:col-span-6 group cursor-pointer h-full relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        className="col-span-full md:col-span-6 group cursor-pointer h-full relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt]"
         aria-label="Enhanced Subway Navigation with Apple Maps"
         aria-describedby="subway-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -699,13 +709,13 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Video */}
-        <motion.div className="rounded-3xl w-full col-span-full h-[285px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
-            <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
+        <motion.div className="rounded-[25pt] w-full col-span-full h-[400px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
+            <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
             pointer-events-none mix-blend-overlay z-10"/>
             <video 
               videoId="currently-subway"
               src="/subway/cover_blank.mp4"
-              className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover contrast-125 brightness-90"
+              className="rounded-[25pt] w-full h-full object-cover contrast-125 brightness-90"
               autoPlay
               muted
               loop
@@ -718,14 +728,24 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             <img 
               src="/subway/lockup.png"
               alt="Subway lockup"
-              className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[60%] h-auto object-contain"
+              className="absolute top-1/2 left-[51%] md:left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[90%] md:max-w-[60%] h-auto object-contain"
             />
         </motion.div>
       </motion.button>
 
+      {/* Subway Mobile Header & Description */}
+      <div className="col-span-full md:hidden mt-4 mb-16 px-1 mx-[4%] md:mx-0">
+        <h2 className="text-[18pt] font-medium tracking-[-0.2pt] leading-none text-foreground mb-3">
+          Enhanced Subway Navigation<br/> with Apple Maps
+        </h2>
+        <p className="text-xs lg:text-[13px] font-normal tracking-[-0.05pt] leading-[1.35] w-[95%] opacity-60">
+          A hypothetical project that enhances navigation within the NYC Subway system by providing precise turn-by-turn navigation within Apple Maps, powered by Ultra-Wideband (UWB) technology.
+        </p>
+      </div>
+
       {/* Expense Tracker */}
       <motion.button 
-        className="col-span-1 md:col-span-2 cursor-pointer transition-all duration-200 h-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        className="hidden md:block col-span-full md:col-span-2 cursor-pointer transition-all duration-200 h-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt]"
         aria-label="On-device LLM Expense Tracker"
         aria-describedby="expense-description-tooltip"
         whileHover={{ scale: 0.97 }}
@@ -805,13 +825,13 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Video */}
-        <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[285px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
-            <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
+        <motion.div className="rounded-[25pt] w-full col-span-full h-[500px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
+            <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
             pointer-events-none mix-blend-overlay z-10"/>
             <OptimizedVideo 
               videoId="currently-expense"
               src="/optimized/expense/cover_1.mp4"
-              className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover object-[0%_10%]"
+              className="rounded-[25pt] w-full h-full object-cover object-[0%_10%]"
               autoPlay
               muted
               loop
@@ -824,7 +844,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* ISV */}
       <motion.button 
-        className="col-span-1 md:col-span-4 h-full relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        className="col-span-full md:col-span-4 h-full relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[20pt]"
         aria-label="Singapore Airlines In-Flight Safety Video"
         aria-describedby="isv-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -904,22 +924,16 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Lockup */}
-        <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-3 bottom-3 w-8 md:w-20 h-auto z-20 opacity-50" />
+        <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-4 bottom-4 w-14 md:w-20 h-auto z-20 opacity-50" />
 
         {/* Video */}
-        <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
-            <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
-
-            {/* WIP Overlay */}
-            {/* <div className="absolute inset-0 flex flex-col items-center justify-center w-[80%] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-40">
-              <h1 className="z-20 text-white text-2xl md:text-3xl tracking-tight leading-[1] w-[60%] font-medium text-center">Project page is currently work in progress.</h1>
-              <p className="z-20 text-white text-xs md:text-sm font-medium text-center leading-[1.4] mt-4">Check back soon! <br/>Click to watch the film.</p>
-            </div> */}
+        <motion.div className="rounded-[20pt] w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
+            <div className="absolute inset-0 rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
             <video 
               videoId="currently-isv"
               src="/isv/montagenew.mp4"
-              className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
+              className="rounded-[20pt] w-full h-full object-cover"
               autoPlay
               muted
               loop
@@ -930,9 +944,19 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         </motion.div>
       </motion.button>
 
+      {/* ISV Mobile Header & Description */}
+      <div className="col-span-full md:hidden mt-4 mb-16 px-1 mx-[4%] md:mx-0">
+        <h2 className="text-[18pt] font-medium tracking-[-0.2pt] leading-none text-foreground mb-3">
+          Singapore Airlines<br/>In-Flight Safety Video
+        </h2>
+        <p className="text-xs lg:text-[13px] font-normal tracking-[-0.05pt] leading-[1.35] w-[95%] opacity-60">
+          Singapore Airlines' 2025 In-Flight Safety Video that takes passengers on a journey through Singapore's iconic landmarks and most importantly, diverse communities.
+        </p>
+      </div>
+
       {/* Bloom */}
       <motion.button 
-        className="col-span-1 md:col-span-4 group cursor-pointer h-full relative  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-3xl"
+        className="col-span-full md:col-span-4 group cursor-pointer h-full relative  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[20pt]"
         aria-label="Bloom"
         aria-describedby="bloom-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -1010,8 +1034,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Video */}
-        <motion.div className="rounded-[16pt] md:rounded-3xl w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
-            <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
+        <motion.div className="rounded-[20pt] w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
+            <div className="absolute inset-0 rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
             {/* WIP Overlay */}
             {/* <div className="absolute inset-0 flex flex-col items-center justify-center w-[80%] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-40">
@@ -1023,7 +1047,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             <video 
               videoId="currently-subway"
               src="/bloom/cover.mp4"
-              className="rounded-[16pt] md:rounded-3xl w-full h-full object-cover"
+              className="rounded-[20pt] w-full h-full object-cover"
               autoPlay
               muted
               loop
@@ -1033,6 +1057,19 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             />
         </motion.div>
       </motion.button>
+
+      {/* Bloom Mobile Header & Description */}
+      <div className="col-span-full md:hidden mt-4 mb-16 px-1 mx-[4%] md:mx-0">
+        <h2 className="text-[18pt] font-medium tracking-[-0.2pt] leading-none text-foreground mb-3">
+          Bloom
+        </h2>
+        <h3 className="text-[15px] font-medium tracking-[-0.1pt] text-foreground/90 mb-2">
+          Stanford Longevity Design Challenge <br/>First Place
+        </h3>
+        <p className="text-xs lg:text-[13px] font-normal tracking-[-0.05pt] leading-[1.35] w-[95%] opacity-60">
+          The first digital tool that helps young Korean adults discover meaningful career paths by exploring their strengths and interests in a playful and social way.
+        </p>
+      </div>
 
       {/* Tooltips - Outside container to ensure proper z-index stacking */}
       <AnimatePresence>

@@ -37,6 +37,9 @@ const OptimizedVideo = ({
     ? [...optimizedSources, { src, type: 'video/mp4' }]
     : optimizedSources;
   
+  // Determine if we should use source tags (multiple sources) or direct src (single source)
+  const useSourceTags = finalSources.length > 1;
+  
   const { isLoaded, hidePoster } = useVideoOptimization(videoRef, primarySrc, {
     autoPlay,
     loop,
@@ -45,7 +48,8 @@ const OptimizedVideo = ({
     useCache,
     unloadDelay,
     rootMargin: '100px',
-    threshold: 0.1
+    threshold: 0.1,
+    useSourceTags // Pass flag to indicate we're using source tags
   });
 
   useEffect(() => {
@@ -71,19 +75,19 @@ const OptimizedVideo = ({
   // If no poster, render video directly without container
   if (!poster) {
     return (
-              <video
-          ref={videoRef}
-          className={className}
-          autoPlay={autoPlay}
-          loop={loop}
-          muted={muted}
-          playsInline={playsInline}
-          loading={loading}
-          preload={preload}
-          tabIndex={-1}
-          {...props}
-        >
-        {isLoaded && finalSources.map((source, index) => (
+      <video
+        ref={videoRef}
+        className={className}
+        autoPlay={autoPlay}
+        loop={loop}
+        muted={muted}
+        playsInline={playsInline}
+        loading={loading}
+        preload={preload}
+        tabIndex={-1}
+        {...props}
+      >
+        {isLoaded && useSourceTags && finalSources.map((source, index) => (
           <source key={index} src={source.src} type={source.type} />
         ))}
       </video>
@@ -106,7 +110,7 @@ const OptimizedVideo = ({
           tabIndex={-1}
           {...props}
         >
-          {isLoaded && finalSources.map((source, index) => (
+          {isLoaded && useSourceTags && finalSources.map((source, index) => (
             <source key={index} src={source.src} type={source.type} />
           ))}
         </video>
@@ -140,7 +144,7 @@ const OptimizedVideo = ({
         tabIndex={-1}
         {...props}
       >
-        {isLoaded && finalSources.map((source, index) => (
+        {isLoaded && useSourceTags && finalSources.map((source, index) => (
           <source key={index} src={source.src} type={source.type} />
         ))}
       </video>

@@ -86,7 +86,7 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
     >
       {/* Category Selector */}
       <motion.div 
-        className="flex flex-wrap gap-2 mb-6 md:mb-8"
+        className="flex flex-wrap gap-2 mb-6 md:mb-8 mx-[4%] md:mx-0"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
@@ -158,21 +158,28 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
         <ContentPage className="col-span-full" />
       ) : (
         // Show Video Grid for other tags
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 md:gap-2.5">
+        <div className={`grid ${archiveSelectedTags.includes('product') ? 'grid-cols-1' : 'grid-cols-2'} lg:grid-cols-3 xl:grid-cols-4 gap-1.5 md:gap-2.5`}>
           <AnimatePresence>
-            {filteredVideos.map((video) => (
-              <VideoSquare
-                key={video.src}
-                videoSrc={video.src}
-                title={video.title}
-                subheader={video.subheader}
-                poster={video.poster}
-                tags={video.tags}
-                selectedTags={archiveSelectedTags}
-                link={video.link}
-                onClick={() => handleVideoClick(video)}
-              />
-            ))}
+            {filteredVideos.map((video) => {
+              // Add col-span-full on mobile for product design items
+              const isProduct = video.tags.includes('product');
+              const gridClassName = isProduct ? 'col-span-full md:col-span-1' : '';
+              
+              return (
+                <VideoSquare
+                  key={video.src}
+                  videoSrc={video.src}
+                  title={video.title}
+                  subheader={video.subheader}
+                  poster={video.poster}
+                  tags={video.tags}
+                  selectedTags={archiveSelectedTags}
+                  link={video.link}
+                  onClick={() => handleVideoClick(video)}
+                  className={gridClassName}
+                />
+              );
+            })}
           </AnimatePresence>
         </div>
       )}

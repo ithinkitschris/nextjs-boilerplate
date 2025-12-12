@@ -9,7 +9,6 @@ import { useHideNav } from './context/HideNavContext';
 // Import new components and hooks
 import VideoSquare from './components/ui/VideoSquare';
 import DesktopNavbar from './components/ui/DesktopNavbar';
-import MobileNavbar from './components/ui/MobileNavbar';
 import { useMobileDetection } from './hooks/useMobileDetection';
 import { useVideoNavigation } from './hooks/useVideoNavigation';
 import { skillsetData, workTags } from './data/videoData';
@@ -116,22 +115,9 @@ function HomeContent() {
             />
           </motion.div>
 
-          {/* Mobile Navbar */}
-          <MobileNavbar 
-            showNav={showNav}
-            setShowNav={setShowNav}
-            selectedTags={selectedTags}
-            selectedWork={selectedWork}
-            toggleWork={toggleWork}
-            setShowWork={setShowWork}
-            toggleTag={toggleTag}
-            isSection13Active={isWhiteBG}
-            scrollToArchive={scrollToArchive}
-          />
-
           {/* Page Container (Adjust px here) */}
           <motion.div
-            className="col-span-full mx-[6%]"  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
+            className="col-span-full mx-[2%] md:mx-[6%]"  //shadow-mild rounded-2xl -mr-2 mt-4 pt-2 pb-6 px-6 dark:shadow-none  
             layout="position"
             layoutId='test'
             transition={{ type: "spring", stiffness: 600, damping: 25 }}  
@@ -156,19 +142,25 @@ function HomeContent() {
                         toggleWork(matchedWork);
                       }
                     };
+                    
+                    // Add col-span-full on mobile for product design items
+                    const isProduct = video.tags.includes('product');
+                    const gridClassName = isProduct ? 'col-span-full md:col-span-1' : '';
+                    
                     return (
-                      <VideoSquare
-                        key={video.src}
-                        videoSrc={video.src}
-                        title={video.title}
-                        subheader={video.subheader}
-                        poster={video.poster}
-                        link={videoLink}
-                        tags={video.tags}
-                        loading="lazy"
-                        selectedTags={selectedTags}
-                        onClick={handleClick}
-                      />
+                      <div key={video.src} className={gridClassName}>
+                        <VideoSquare
+                          videoSrc={video.src}
+                          title={video.title}
+                          subheader={video.subheader}
+                          poster={video.poster}
+                          link={videoLink}
+                          tags={video.tags}
+                          loading="lazy"
+                          selectedTags={selectedTags}
+                          onClick={handleClick}
+                        />
+                      </div>
                     );
                   })
                 )}

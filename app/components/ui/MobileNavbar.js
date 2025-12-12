@@ -1,3 +1,8 @@
+/**
+ * @deprecated This component is deprecated. DesktopNavbar now handles both desktop and mobile views.
+ * Use DesktopNavbar instead, which has been updated to work responsively on all screen sizes.
+ * This file is kept for reference but should not be imported or used in new code.
+ */
 import React from 'react';
 import { motion } from "framer-motion";
 import { useRouter } from 'next/navigation';

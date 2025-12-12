@@ -40,15 +40,27 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
     autoPlay = true,
     useCache = true,
     unloadDelay, // No default here - received from Video component
+    useSourceTags = false, // Flag to indicate if using <source> tags instead of direct src
   } = options;
 
   // Load video
   const loadVideo = () => {
     const video = videoRef.current;
     if (video && !isLoaded && originalSrc.current) {
-      if (!video.src || video.src !== originalSrc.current) {
-        video.src = originalSrc.current;
-        video.load();
+      if (useSourceTags) {
+        // When using source tags, don't set video.src - just call load() to process source tags
+        // Use setTimeout to ensure source tags are rendered by React first
+        setTimeout(() => {
+          if (video.querySelector('source')) {
+            video.load();
+          }
+        }, 0);
+      } else {
+        // When using direct src, set video.src as before
+        if (!video.src || video.src !== originalSrc.current) {
+          video.src = originalSrc.current;
+          video.load();
+        }
       }
       setIsLoaded(true);
       setHasBeenLoaded(true);
@@ -70,7 +82,14 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
       if (useCache && hasBeenLoaded) {
         video.currentTime = 0;
       } else {
-        video.removeAttribute('src');
+        if (useSourceTags) {
+          // When using source tags, remove all source elements
+          const sources = video.querySelectorAll('source');
+          sources.forEach(source => source.remove());
+        } else {
+          // When using direct src, remove src attribute
+          video.removeAttribute('src');
+        }
         video.load();
         setHasBeenLoaded(false);
       }

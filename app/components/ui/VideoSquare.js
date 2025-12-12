@@ -39,9 +39,9 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
     >
       {/* Square */}
       <motion.div 
-        className={`group relative overflow-hidden rounded-3xl pt-[135%] w-full
+        className={`group relative overflow-hidden ${selectedTags?.includes('product') ? 'rounded-[25pt]' : 'rounded-[15pt] md:rounded-3xl'} pt-[150%] md:pt-[135%] w-full
         shadow-[3px_3px_15px_rgba(0,0,0,0.2)] group-hover:shadow-none border-b-0 border-white/20
-        after:absolute after:inset-0 after:z-20 after:pointer-events-none after:rounded-2xl md:after:rounded-3xl after:shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)]`}
+        after:absolute after:inset-0 after:z-20 after:pointer-events-none ${selectedTags?.includes('product') ? 'after:rounded-[25pt]' : 'after:rounded-2xl md:after:rounded-3xl'} after:shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)]`}
         whileHover={{ scale: 0.98 }}
         transition={{
           type: "spring",
@@ -71,14 +71,15 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
         </div>
 
         {/* Text Container */}
-        <div className="absolute inset-0 md:inset-2.5 flex flex-col items-start justify-end pb-2.5 p-3 pl-3.5 w-full mb-1 pointer-events-none">
+        <div className={`absolute inset-0 md:inset-2.5 flex flex-col items-start justify-end ${selectedTags?.includes('product') ? 'pb-6 pl-5' : 'pb-2.5 p-3 pl-3.5'} w-full mb-1 pointer-events-none`}>
+
           {/* Title */}
-          <h1 className="tracking-tight font-medium z-30 w-[80%] text-xl 2xl:text-2xl leading-5 2xl:leading-6 mb-1.5 text-white">
+          <h1 className={`tracking-tight font-medium z-30 md:w-[80%] ${selectedTags?.includes('product') ? 'text-[20pt] leading-7' : 'text-lg 2xl:text-2xl leading-none 2xl:leading-6'} mb-1.5 text-white`}>
             {title}
           </h1>
 
           {/* Subheader */}
-          <h3 className={`tracking-tight z-30 w-[95%] text-[6pt] md:text-[8pt] 2xl:text-[9pt] 2xl:w-3/4 leading-tight opacity-60 mix-blend-screen text-white`}>
+          <h3 className={`tracking-tight z-30 w-[90%] md:w-[95%] ${selectedTags?.includes('product') ? 'text-[8pt]' : 'text-[7pt] md:text-[8pt] 2xl:text-[9pt]'} 2xl:w-3/4 leading-tight opacity-80 mix-blend-screen text-white`}>
             {subheader}
           </h3>
         </div>

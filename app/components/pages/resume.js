@@ -284,7 +284,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             // Set initial opacity, position, and scale states
             if (headersContainerRef.current && header1Ref.current && header2ContainerRef.current && header2Ref.current && header2Part2Ref.current && header3Ref.current && header3Part2Ref.current && bioSectionRef.current) {
             // Mobile-adaptive animation values
-            const containerYInitial = 250;
+            const containerYInitial = isMobile ? 200 : 250;
             const header1ScaleInitial = isMobile ? 1.02 : 1.05;
             const header2ContainerScaleMax = isMobile ? 1.015 : 1.03;
             
@@ -303,7 +303,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             const st = ScrollTrigger.create({
                 trigger: bioSectionRef.current,
                 start: "top top",
-                end: "+=100%", // Extend the scroll area by 100vh
+                end: isMobile ? "+=120%" : "+=100%", // Extend the scroll area by 120vh on mobile, 100vh on desktop
                 pin: true, // Pin the section in place
                 pinSpacing: true,
                 scrub: 1, // Smooth scrubbing tied to scroll position
@@ -330,21 +330,21 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         setHideFooter(false);
                     }
 
-                    // Phase 1a: 0% to 21.25% of scroll (progress 0 to 0.2125)
+                    // Phase 1a: 0% to 30% of scroll (progress 0 to 0.30)
                     // Header 1 = 100% → 20%, Header 2 = 20% → 100%, Header 3 = 10% (held)
-                    // Container y-position moves from 250 to -100
+                    // Container y-position moves from 200 (mobile) or 250 (desktop) to -100
                     // Header 1 scale moves from 1.05x to 1x - mobile: 1.02x to 1x
                     // Header 2 scale moves from 1x to 1.03x - mobile: 1x to 1.015x
-                    if (progress <= 0.2125) {
-                        const phase1Progress = progress / 0.2125; // Maps 0->0, 0.2125->1
+                    if (progress <= 0.30) {
+                        const phase1Progress = progress / 0.30; // Maps 0->0, 0.30->1
                         const easedPhase1Progress = gsap.parseEase("power3.inOut")(phase1Progress);
 
                         // Mobile-adaptive animation values
-                        const containerYInitial = 250;
+                        const containerYInitial = isMobile ? 200 : 250;
                         const header1ScaleInitial = isMobile ? 1.02 : 1.05;
                         const header2ContainerScaleMax = isMobile ? 1.015 : 1.03;
 
-                        // Container: move from y: 250 to y: -100
+                        // Container: move from y: 200 (mobile) or 250 (desktop) to y: -100
                         const containerY = gsap.utils.interpolate(containerYInitial, -100, easedPhase1Progress);
                         gsap.set(headersContainerRef.current, { y: containerY });
 
@@ -371,10 +371,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
-                    // Phase 1b: 21.25% to 42.5% of scroll (progress 0.2125 to 0.425)
+                    // Phase 1b: 30% to 45% of scroll (progress 0.30 to 0.45)
                     // Header 2 fades from 1 to 0.2, Header 2 Part 2 fades from 0.2 to 1
-                    else if (progress <= 0.425) {
-                        const phase1bProgress = (progress - 0.2125) / 0.2125; // Maps 0.2125->0, 0.425->1
+                    else if (progress <= 0.45) {
+                        const phase1bProgress = (progress - 0.30) / 0.15; // Maps 0.30->0, 0.45->1
                         const easedPhase1bProgress = gsap.parseEase("expo.inOut")(phase1bProgress);
 
                         // Container: stay at y: -100 (already at this value from Phase 1a)
@@ -402,12 +402,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
-                    // Phase 2b1: 42.5% to 63.75% of scroll (progress 0.425 to 0.6375)
+                    // Phase 2b1: 45% to 75% of scroll (progress 0.45 to 0.75)
                     // Container moves upward (complete movement), Header 1 fades from 0.2 to 0.1, Header 2 stays at 0.2, Header 2 Part 2 fades from 1 to 0.2
                     // Header 3 fades from 0.1 to 1, Header 3 Part 2 stays at 0.1
                     // Header 2 scale moves from 1.03x to 1x - mobile: 1.015x to 1x
-                    else if (progress <= 0.6375) {
-                        const phase2b1Progress = (progress - 0.425) / 0.2125; // Maps 0.425->0, 0.6375->1
+                    else if (progress <= 0.75) {
+                        const phase2b1Progress = (progress - 0.45) / 0.30; // Maps 0.45->0, 0.75->1
                         const easedPhase2b1Progress = gsap.parseEase("power3.inOut")(phase2b1Progress);
 
                         // Mobile-adaptive animation values
@@ -442,11 +442,11 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         // Header 3 Part 2: stay at 0.1 opacity
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
-                    // Phase 2b2: 63.75% to 85% of scroll (progress 0.6375 to 0.85)
+                    // Phase 2b2: 75% to 85% of scroll (progress 0.75 to 0.85)
                     // Container holds at -400, Header 1 holds at 0.1, Header 2 holds at 0.2, Header 2 Part 2 holds at 0.2
                     // Header 3 fades from 1 to 0.2, Header 3 Part 2 fades from 0.1 to 1
                     else if (progress <= 0.85) {
-                        const phase2b2Progress = (progress - 0.6375) / 0.2125; // Maps 0.6375->0, 0.85->1
+                        const phase2b2Progress = (progress - 0.75) / 0.10; // Maps 0.75->0, 0.85->1
                         const easedPhase2b2Progress = gsap.parseEase("expo.inOut")(phase2b2Progress);
 
                         // Container: stay at y: -400
@@ -1009,9 +1009,16 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     }, [showImage]);
 
     // IntersectionObserver to detect when Archive section is in view
+    // Disabled on mobile to prevent navbar expansion
     useEffect(() => {
         const archiveSection = archiveSectionRef.current;
         if (!archiveSection) return;
+        
+        // Don't set up observer on mobile - navbar should not expand
+        if (isMobile) {
+            setIsArchiveInView(false);
+            return;
+        }
 
         const observer = new IntersectionObserver(
             (entries) => {
@@ -1030,7 +1037,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         return () => {
             observer.disconnect();
         };
-    }, [setIsArchiveInView]);
+    }, [setIsArchiveInView, isMobile]);
 
     // Expose scrollToArchive function via ref
     useImperativeHandle(ref, () => ({
@@ -1069,7 +1076,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 <main id="main-content" ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%]">
 
                     {/* Headers Container */}
-                    <div ref={headersContainerRef} className="pt-32 md:pt-64">
+                    <div ref={headersContainerRef} className="pt-32 md:pt-64 mx-[5%] md:mx-0">
 
                         {/* Header 1 */}
                         <h1
@@ -1740,7 +1747,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     </div>
                 </main>
 
-                <Currently className='col-span-full mb-72 -mt-[60%] md:-mt-72' key='currently' toggleWork={toggleWork} />
+                <Currently className='col-span-full mb-24 md:mb-72 -mt-[85%] md:-mt-72' key='currently' toggleWork={toggleWork} />
 
                 {/* Archive */}
                 <ResumeSectionHeader

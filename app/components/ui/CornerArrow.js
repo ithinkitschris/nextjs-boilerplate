@@ -4,15 +4,16 @@ const CornerArrow = ({ className = '' }) => {
   return (
     <div 
       className={`
-        absolute top-0.5 right-0.5 md:top-2 md:right-2 z-20
-        p-1.5 m-1 md:scale-125
+        absolute top-2 right-2 z-20
+        p-1.5 m-1 scale-150 md:scale-125
         rounded-full border-1.5 text-white border-transparent
-        group-hover:text-black group-hover:glass group-hover:bg-white/95
-        group-hover:border-white group-hover:scale-[150%] 
-        group-hover:m-3 md:group-hover:m-4 
-        group-hover:p-0.5 group-hover:px-1
         transition-all duration-200
         pointer-events-none
+        group-hover:text-black group-hover:glass group-hover:bg-white/95
+        group-hover:border-white group-hover:scale-[150%]
+        group-hover:top-3 group-hover:right-3 md:group-hover:top-2 md:group-hover:right-2
+        group-hover:m-3 md:group-hover:m-4
+        group-hover:p-0.5 group-hover:px-1
         ${className}
       `}
     >

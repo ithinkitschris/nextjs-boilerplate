@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useRouter } from 'next/navigation';
 import { useBrowser } from '../../context/BrowserContext';
 import { useHideNav } from '../../context/HideNavContext';
+import { useMobileDetection } from '../../hooks/useMobileDetection';
 import { animateIn } from '../../constants/animations';
 import { workTags } from '../../data/videoData';
 
@@ -25,19 +26,28 @@ const DesktopNavbar = ({
   const router = useRouter();
   const { browserType } = useBrowser();
   const { hideNav, isArchiveInView, archiveSelectedTags, setArchiveSelectedTags } = useHideNav();
+  const isMobile = useMobileDetection();
   
   // Determine if Archive button should be shown (only on resume page)
   const showArchiveButton = !homeOnly && selectedWork === 'resume';
   // Determine if we're in Archive control mode
   const isArchiveMode = !homeOnly && isArchiveInView && selectedWork === 'resume';
   // Determine if navbar should be expanded (either manually opened or Archive mode)
-  const shouldExpandNav = !homeOnly && (showNav || isArchiveMode);
+  // Never expand on mobile - navbar stays collapsed
+  const shouldExpandNav = !homeOnly && !isMobile && (showNav || isArchiveMode);
   // Calculate navbar width based on Archive button visibility and expansion state
-  const navbarWidth = homeOnly ? '86px' : (shouldExpandNav ? '545px' : (showArchiveButton ? '168px' : '85.5px'));
+  // On mobile, collapsed width is 161px; on desktop, use original widths
+  const navbarWidth = homeOnly 
+    ? '86px' 
+    : (shouldExpandNav 
+      ? (isMobile ? '161px' : '545px')
+      : (showArchiveButton 
+        ? (isMobile ? '161px' : '168px')
+        : (isMobile ? '161px' : '85.5px')));
 
   return (
     <motion.div
-      className="hidden md:flex items-center justify-center non-chromium-ml w-full z-50"
+      className="flex items-center justify-center non-chromium-ml w-full z-50"
       initial="hidden"
       animate="show"
       variants={animateIn}

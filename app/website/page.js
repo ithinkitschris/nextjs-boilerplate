@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { useRouter } from 'next/navigation';
 import Website from '../components/pages/websitev2.js';
 import DesktopNavbar from '../components/ui/DesktopNavbar';
-import MobileNavbar from '../components/ui/MobileNavbar';
 import { useMobileDetection } from '../hooks/useMobileDetection';
 import { useVideoNavigation } from '../hooks/useVideoNavigation';
 import { skillsetData } from '../data/videoData';
@@ -81,21 +80,6 @@ export default function WebsitePage() {
             onHomeClick={() => router.push('/')}
           />
         </motion.div>
-
-        {/* Mobile Navbar */}
-        <MobileNavbar 
-          showNav={showNav}
-          setShowNav={setShowNav}
-          selectedTags={selectedTags}
-          selectedWork={selectedWork}
-          toggleWork={toggleWork}
-          setShowWork={setShowWork}
-          toggleTag={toggleTag}
-          isSection13Active={isWhiteBG}
-          scrollToArchive={() => {}}
-          homeOnly={true}
-          onHomeClick={() => router.push('/')}
-        />
 
         {/* Page Container */}
         <div className="col-span-full px-[6%]">
