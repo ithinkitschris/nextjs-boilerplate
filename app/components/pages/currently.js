@@ -523,7 +523,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* Thesis Cover Video */}
       <motion.button
-          className="col-span-full mb-0 cursor-pointer rounded-[25pt] relative overflow-hidden h-[600px] md:h-auto w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background group"
+          className="col-span-full mb-0 cursor-pointer rounded-[25pt] relative overflow-hidden h-[600px] md:h-auto w-full focus-visible-standard group"
           whileHover={{ scale: 0.99 }}
           transition={{
               type: "spring",
@@ -645,7 +645,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* Subway */}
       <motion.button 
-        className="col-span-full md:col-span-6 group cursor-pointer h-full relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt]"
+        className="col-span-full md:col-span-6 group cursor-pointer h-full relative focus-visible-standard rounded-[25pt]"
         aria-label="Enhanced Subway Navigation with Apple Maps"
         aria-describedby="subway-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -774,7 +774,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* Expense Tracker */}
       <motion.button 
-        className="hidden md:block col-span-full md:col-span-2 cursor-pointer h-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt]"
+        className="hidden md:block col-span-full md:col-span-2 cursor-pointer h-full group focus-visible-standard rounded-[25pt]"
         aria-label="On-device LLM Expense Tracker"
         aria-describedby="expense-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -895,7 +895,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* ISV */}
       <motion.button 
-        className="col-span-full md:col-span-5 h-[420px] md:h-[340px] lg:h-[460px] 2xl:h-[550px] relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt] md:rounded-[20pt]"
+        className="col-span-full md:col-span-5 h-[420px] md:h-[340px] lg:h-[460px] 2xl:h-[550px] relative group focus-visible-standard rounded-[25pt] md:rounded-[20pt]"
         aria-label="Singapore Airlines In-Flight Safety Video"
         aria-describedby="isv-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -1019,7 +1019,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* Bloom */}
       <motion.button 
-        className="col-span-full md:col-span-3 group cursor-pointer h-full relative  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt] md:rounded-[20pt]"
+        className="col-span-full md:col-span-3 group cursor-pointer h-full relative focus-visible-standard rounded-[25pt] md:rounded-[20pt]"
         aria-label="Bloom"
         aria-describedby="bloom-description-tooltip"
         whileHover={{ scale: 0.98 }}

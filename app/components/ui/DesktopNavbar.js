@@ -96,6 +96,7 @@ const DesktopNavbar = ({
                 hover:text-background hover:bg-foreground hover:text-white ${isWhiteBG ? 'hover:border-black' : 'hover:border-foreground'}
                 dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
                 ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : ''}
+                focus-visible-standard
               `}
               style={{
                 color: isWhiteBG ? '#000000' : undefined,
@@ -142,6 +143,7 @@ const DesktopNavbar = ({
                 hover:text-background hover:bg-foreground hover:text-white hover:mix-blend-normal
                 dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
                 ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : showNav ? '' : 'text-black dark:text-white dark:hover:bg-transparent'}
+                focus-visible-standard
               `}
               style={{
                 color: isWhiteBG ? '#000000' : undefined,
@@ -211,7 +213,8 @@ const DesktopNavbar = ({
                 dark:mix-blend-normal transition-colors duration-200 hover:text-background 
                 hover:bg-foreground hover:text-white hover:mix-blend-normal ${isWhiteBG ? 'hover:border-black' : 'hover:border-foreground'}
                 dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-                ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : ''}`}
+                ${isWhiteBG ? 'text-black !text-black dark:!text-black !important' : ''}
+                focus-visible-standard`}
                 style={{
                   color: isWhiteBG ? '#000000' : undefined,
                   borderColor: (isArchiveMode 

@@ -27,7 +27,7 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
   return (
     <motion.button
       lang='en'
-      className="w-full cursor-pointer group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:rounded-3xl"
+      className={`w-full cursor-pointer group text-left focus-visible-standard ${selectedTags?.includes('product') ? 'rounded-[25pt]' : 'rounded-[15pt] md:rounded-3xl'}`}
       initial="hidden"
       animate="show"
       layout

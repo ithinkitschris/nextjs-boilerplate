@@ -100,7 +100,7 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
             transition-colors duration-200 hover:text-background 
             hover:bg-foreground hover:text-white hover:mix-blend-normal
             dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            focus-visible-standard"
           style={{
             borderColor: archiveSelectedTags.includes('all')
               ? 'var(--foreground)'
@@ -127,7 +127,7 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
               transition-colors duration-200 hover:text-background 
               hover:bg-foreground hover:text-white hover:mix-blend-normal
               dark:hover:text-white dark:hover:bg-transparent dark:hover:border-white
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              focus-visible-standard"
             style={{
               borderColor: archiveSelectedTags.includes(tag)
                 ? 'var(--foreground)'

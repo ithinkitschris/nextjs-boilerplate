@@ -169,7 +169,7 @@ const config: Config = {
           '&::-webkit-scrollbar': {
             display: 'none'
           }
-        }
+        },
       })
     })
   ],
