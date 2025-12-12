@@ -113,9 +113,6 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
             damping: 20
           }}
           onClick={() => handleCategoryClick('all')}
-          onFocus={(e) => {
-            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-          }}
         >
           All
         </motion.button>
@@ -144,9 +141,6 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
               delay: index * 0.02
             }}
             onClick={() => handleCategoryClick(tag)}
-            onFocus={(e) => {
-              e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-            }}
           >
             {label}
           </motion.button>

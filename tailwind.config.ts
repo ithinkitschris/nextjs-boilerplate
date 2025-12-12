@@ -14,6 +14,8 @@ const config: Config = {
     'group-hover:w-[440px]',
     'group-hover:w-[460px]',
     'group-hover:w-[600px]',
+    '-mt-[350px]',
+    'md:-mt-[120px]',
   ],
   theme: {
     extend: {

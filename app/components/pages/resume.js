@@ -1054,7 +1054,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             >
 
                 {/* Bio */}
-                <main id="main-content" ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%]">
+                <main id="main-content" ref={bioSectionRef} key="bio-section" className="col-span-full relative w-[100%] isolate">
 
                     {/* Headers Container */}
                     <div ref={headersContainerRef} className="pt-32 md:pt-64 mx-[5%] md:mx-0">
@@ -1742,7 +1742,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 </main>
 
                 {/* Currently */}
-                <Currently className='col-span-full mb-24 md:mb-72 -mt-[340px] md:-mt-[80px]' key='currently' toggleWork={toggleWork} />
+                <Currently 
+                    className='col-span-full mb-24 md:mb-72 -mt-80 md:-mt-32 relative z-10' 
+                    style={{ willChange: 'transform' }}
+                    key='currently' 
+                    toggleWork={toggleWork} 
+                />
 
                 {/* Archive */}
                 <ResumeSectionHeader

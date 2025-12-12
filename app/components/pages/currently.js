@@ -727,7 +727,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Video */}
-        <motion.div className="rounded-[25pt] w-full col-span-full h-[530px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
+        <motion.div className="rounded-[25pt] w-full col-span-full h-[480px] md:h-full relative overflow-hidden border-b-1 border-white/15">
             <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
             pointer-events-none mix-blend-overlay z-10"/>
             <OptimizedVideo 
@@ -855,7 +855,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Video */}
-        <motion.div className="rounded-[25pt] w-full col-span-full h-[500px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
+        <motion.div className="rounded-[25pt] w-full col-span-full h-full relative overflow-hidden border-b-1 border-white/15">
             <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
             pointer-events-none mix-blend-overlay z-10"/>
             <OptimizedVideo 
@@ -979,7 +979,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-4 bottom-5 w-14 md:w-20 h-auto z-20 opacity-50" />
 
         {/* Video */}
-        <motion.div className="rounded-[25pt] md:rounded-[20pt] w-full col-span-full h-[320px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
+        <motion.div className="rounded-[25pt] md:rounded-[20pt] w-full col-span-full h-full relative overflow-hidden border-b-1 border-white/15">
             <div className="absolute inset-0 rounded-[25pt] md:rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
             <OptimizedVideo 
