@@ -516,7 +516,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   
   return (
     <motion.div
-    className={`font-[family-name:var(--font-geist-sans)] relative w-full mt-4 md:mt-8 grid grid-cols-2 md:grid-cols-8 gap-3 md:gap-4 ${className}`}
+    className={`font-[family-name:var(--font-geist-sans)] relative w-full grid grid-cols-2 md:grid-cols-8 gap-3 md:gap-4 ${className}`}
     initial="hidden"
     animate="show"
     variants={animateIn}>
@@ -774,14 +774,14 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
       {/* Expense Tracker */}
       <motion.button 
-        className="hidden md:block col-span-full md:col-span-2 cursor-pointer transition-all duration-200 h-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt]"
+        className="hidden md:block col-span-full md:col-span-2 cursor-pointer h-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[25pt]"
         aria-label="On-device LLM Expense Tracker"
         aria-describedby="expense-description-tooltip"
-        whileHover={{ scale: 0.97 }}
+        whileHover={{ scale: 0.98 }}
         transition={{
           type: "spring",
-          stiffness: 1200, 
-          damping: 22, 
+          stiffness: 1000, 
+          damping: 15, 
         }}
         onMouseEnter={(e) => {
           if (isMobile) return;

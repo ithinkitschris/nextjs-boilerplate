@@ -335,7 +335,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 start: "top top",
                 end: isMobile ? "+=120%" : "+=100%", // Extend the scroll area by 120vh on mobile, 100vh on desktop
                 pin: true, // Pin the section in place
-                pinSpacing: true,
+                pinSpacing: false, // Disable pin spacing to allow Currently to overlap
                 scrub: 1, // Smooth scrubbing tied to scroll position
                 markers: false, // Set to true for debugging
                 anticipatePin: 1,
@@ -1743,7 +1743,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
                 {/* Currently */}
                 <Currently 
-                    className='col-span-full mb-24 md:mb-72 -mt-80 md:-mt-32 relative z-10' 
+                    className='col-span-full mb-24 md:mb-72 mt-[75vh] md:mt-[95vh] relative z-10' 
                     style={{ willChange: 'transform' }}
                     key='currently' 
                     toggleWork={toggleWork} 
