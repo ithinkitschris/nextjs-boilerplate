@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useMotionValue, useSpring, useTransform } from 'framer-motion';
 import CornerArrow from '../ui/CornerArrow.js';
 import OptimizedVideo from '../ui/OptimizedVideo.js';
+import { useMobileDetection } from '../../hooks/useMobileDetection.js';
 
 const animateIn ={
     hidden: {opacity:0, y:20},
@@ -18,6 +19,7 @@ const animateIn ={
 
 const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
   const router = useRouter();
+  const isMobile = useMobileDetection();
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [isBloomTooltipVisible, setIsBloomTooltipVisible] = useState(false);
   const [isExpenseTooltipVisible, setIsExpenseTooltipVisible] = useState(false);
@@ -602,7 +604,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
           {/* Video */}
           <video
-              src="/thesis/lifeoscover2.mp4"
+              src={isMobile ? "/thesis/lifeoscover2-mobile.mp4" : "/thesis/lifeoscover2.mp4"}
               className="w-full h-full object-cover scale-120 rounded-[25pt] brightness-75"
               autoPlay
               muted
