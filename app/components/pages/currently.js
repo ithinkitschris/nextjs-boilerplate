@@ -614,17 +614,29 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               alt="LifeOS lockup"
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[125%] md:max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
           />
-      </motion.button>
 
-      {/* Thesis Mobile Header & Description */}
-      <div className="col-span-full md:hidden mt-4 mb-16 px-1 mx-[4%] md:mx-0">
-        <h2 className="text-[18pt] font-medium tracking-[-0.2pt] leading-none text-foreground mb-3">
-          Bargaining with the Future:<br /> <span className="block mt-1 text-[12pt]">Understanding Agency in Human-AI Interaction</span>
-        </h2>
-        <p className="text-[13px] font-normal tracking-[-0.05pt] leading-[1.35] w-[95%] opacity-60">
-          An ongoing speculative design thesis that investigates user agency within Human–AI interaction in a fully agentic future.
-        </p>
-      </div>
+          {/* Bottom Gradient Blur - Mobile Only */}
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-[60%] pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px] md:hidden"
+            style={{
+              maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
+              zIndex: 15
+            }}
+          />
+
+          {/* Text Container - Mobile Only */}
+          <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-5 w-full mb-1 pointer-events-none z-30 md:hidden">
+            {/* Title */}
+            <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
+              Bargaining with the Future:<br /> <span className="block mt-1 text-[11pt] md:text-[12pt] font-normal">Understanding Agency in Human-AI Interaction</span>
+            </h2>
+            {/* Description */}
+            <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
+              Ongoing Interaction Design Master's Thesis.
+            </p>
+          </div>
+      </motion.button>
 
       {/* Subway */}
       <motion.button 
@@ -730,18 +742,29 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               alt="Subway lockup"
               className="absolute top-1/2 left-[51%] md:left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[90%] md:max-w-[60%] h-auto object-contain"
             />
-        </motion.div>
-      </motion.button>
 
-      {/* Subway Mobile Header & Description */}
-      <div className="col-span-full md:hidden mt-4 mb-16 px-1 mx-[4%] md:mx-0">
-        <h2 className="text-[18pt] font-medium tracking-[-0.2pt] leading-none text-foreground mb-3">
+            {/* Bottom Gradient Blur */}
+            <div 
+              className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
+              style={{
+                maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'
+              }}
+            />
+
+            {/* Text Container - Mobile Only */}
+            <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-5 w-full mb-1 pointer-events-none z-30 md:hidden">
+              {/* Title */}
+              <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
           Enhanced Subway Navigation<br/> with Apple Maps
         </h2>
-        <p className="text-xs lg:text-[13px] font-normal tracking-[-0.05pt] leading-[1.35] w-[95%] opacity-60">
-          A hypothetical project that enhances navigation within the NYC Subway system by providing precise turn-by-turn navigation within Apple Maps, powered by Ultra-Wideband (UWB) technology.
+              {/* Description */}
+              <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1 w-[90%]">
+          Precise turn-by-turn navigation within the NYC Subway system, powered by Ultra-Wideband (UWB) technology.
         </p>
       </div>
+        </motion.div>
+      </motion.button>
 
       {/* Expense Tracker */}
       <motion.button 
@@ -839,6 +862,27 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               poster=""
               useOptimized={useOptimizedVideos}
             />
+
+            {/* Bottom Gradient Blur */}
+            <div 
+              className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
+              style={{
+                maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'
+              }}
+            />
+
+            {/* Text Container - Mobile Only */}
+            <div className="absolute inset-0 flex flex-col items-start justify-end pb-6 pl-5 w-full mb-1 pointer-events-none z-30 md:hidden">
+              {/* Title */}
+              <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
+                On-device LLM<br/>Expense Tracker
+              </h2>
+              {/* Description */}
+              <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
+                A personal project into developing and designing an on-device LLM-powered personal expense tracker for iOS using React Native, FastAPI, Ollama and Gemma3n:e2b.
+              </p>
+            </div>
         </motion.div>
       </motion.button>
 
@@ -927,7 +971,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <img src="/isv/logo.png" className="absolute md:right-5 md:bottom-5 right-4 bottom-4 w-14 md:w-20 h-auto z-20 opacity-50" />
 
         {/* Video */}
-        <motion.div className="rounded-[20pt] w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
+        <motion.div className="rounded-[20pt] w-full col-span-full h-[320px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
             <div className="absolute inset-0 rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
             <video 
@@ -941,18 +985,29 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               poster="/poster/isv.png"
               tabIndex={-1}
             />
-        </motion.div>
-      </motion.button>
 
-      {/* ISV Mobile Header & Description */}
-      <div className="col-span-full md:hidden mt-4 mb-16 px-1 mx-[4%] md:mx-0">
-        <h2 className="text-[18pt] font-medium tracking-[-0.2pt] leading-none text-foreground mb-3">
+            {/* Bottom Gradient Blur */}
+            <div 
+              className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
+              style={{
+                maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'
+              }}
+            />
+
+            {/* Text Container - Mobile Only */}
+            <div className="absolute inset-0 flex flex-col items-start justify-end pb-2 pl-5 w-full mb-1 pointer-events-none z-30 md:hidden">
+              {/* Title */}
+              <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
           Singapore Airlines<br/>In-Flight Safety Video
         </h2>
-        <p className="text-xs lg:text-[13px] font-normal tracking-[-0.05pt] leading-[1.35] w-[95%] opacity-60">
+        {/* Description */}
+        {/* <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
           Singapore Airlines' 2025 In-Flight Safety Video that takes passengers on a journey through Singapore's iconic landmarks and most importantly, diverse communities.
-        </p>
+        </p> */}
       </div>
+        </motion.div>
+      </motion.button>
 
       {/* Bloom */}
       <motion.button 
@@ -1034,7 +1089,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Video */}
-        <motion.div className="rounded-[20pt] w-full col-span-full h-[250px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
+        <motion.div className="rounded-[20pt] w-full col-span-full h-[420px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
             <div className="absolute inset-0 rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
             {/* WIP Overlay */}
@@ -1055,21 +1110,33 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               poster="/poster/subwaylandscape.jpg"
               tabIndex={-1}
             />
+
+            {/* Bottom Gradient Blur */}
+            <div 
+              className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
+              style={{
+                maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'
+              }}
+            />
+
+            {/* Text Container - Mobile Only */}
+            <div className="absolute inset-0 flex flex-col items-start justify-end pb-3.5 pl-5 w-full mb-1 pointer-events-none z-30 md:hidden">
+              {/* Title */}
+              <h2 className="tracking-tight font-medium z-30 w-[80%] text-[16pt] leading-none mb-0.5 text-white text-left">
+                Bloom
+              </h2>
+          {/* Subtitle */}
+          <h3 className="tracking-tight z-30 text-[9pt] leading-tight mix-blend-screen text-white mb-0 text-left opacity-50">
+            Stanford Longevity Design Challenge First Place
+          </h3>
+              {/* Description */}
+              {/* <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
+          Helping young Korean adults discover meaningful career paths.
+        </p> */}
+      </div>
         </motion.div>
       </motion.button>
-
-      {/* Bloom Mobile Header & Description */}
-      <div className="col-span-full md:hidden mt-4 mb-16 px-1 mx-[4%] md:mx-0">
-        <h2 className="text-[18pt] font-medium tracking-[-0.2pt] leading-none text-foreground mb-3">
-          Bloom
-        </h2>
-        <h3 className="text-[15px] font-medium tracking-[-0.1pt] text-foreground/90 mb-2">
-          Stanford Longevity Design Challenge <br/>First Place
-        </h3>
-        <p className="text-xs lg:text-[13px] font-normal tracking-[-0.05pt] leading-[1.35] w-[95%] opacity-60">
-          The first digital tool that helps young Korean adults discover meaningful career paths by exploring their strengths and interests in a playful and social way.
-        </p>
-      </div>
 
       {/* Tooltips - Outside container to ensure proper z-index stacking */}
       <AnimatePresence>
