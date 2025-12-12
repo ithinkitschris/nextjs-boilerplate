@@ -1,6 +1,6 @@
 'use client';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef, forwardRef, useImperativeHandle } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,6 +23,36 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
+
+// Phase boundaries for ScrollTrigger animation
+const PHASE_BOUNDARIES = {
+    PHASE_1A_END: 0.30,
+    PHASE_1B_END: 0.45,
+    PHASE_2B1_END: 0.75,
+    PHASE_2B2_END: 0.85,
+};
+
+// Animation values for mobile and desktop
+const ANIMATION_VALUES = {
+    mobile: {
+        containerYInitial: 200,
+        containerYEnd: -100,
+        containerYPhase2Start: -100,
+        containerYPhase2End: -400,
+        containerYPhase3Hold: -400,
+        header1ScaleInitial: 1.02,
+        header2ContainerScaleMax: 1.015,
+    },
+    desktop: {
+        containerYInitial: 200,
+        containerYEnd: 0,
+        containerYPhase2Start: 0,
+        containerYPhase2End: -200,
+        containerYPhase3Hold: -200,
+        header1ScaleInitial: 1.05,
+        header2ContainerScaleMax: 1.03,
+    },
+};
 
 const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     //#region States and Hooks
@@ -264,31 +294,30 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     }, []);
 
     // GSAP ScrollTrigger for header fade animation with extended scroll
-    useEffect(() => {
+    useLayoutEffect(() => {
         // Clear any existing ScrollTriggers first (like other pages do)
         // This prevents interference from ScrollTriggers created by other pages
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
-        // Immediately reset scroll to top BEFORE ScrollTrigger initializes
+        // Conditionally reset scroll to top only if not already at top
         // This ensures ScrollTrigger calculates positions correctly when navigating from other pages
-        window.scrollTo({
-            top: 0,
-            behavior: 'auto',
-        });
+        if (window.scrollY !== 0) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'auto',
+            });
+        }
 
-        // Wait for scroll position to actually be applied and DOM to be ready
-        // Using requestAnimationFrame ensures the browser has processed the scroll change
-        let rafId1, rafId2;
-
-        const initializeScrollTrigger = () => {
-            // Set initial opacity, position, and scale states
-            if (headersContainerRef.current && header1Ref.current && header2ContainerRef.current && header2Ref.current && header2Part2Ref.current && header3Ref.current && header3Part2Ref.current && bioSectionRef.current) {
+        // Set initial opacity, position, and scale states BEFORE ScrollTrigger creation
+        if (headersContainerRef.current && header1Ref.current && header2ContainerRef.current && header2Ref.current && header2Part2Ref.current && header3Ref.current && header3Part2Ref.current && bioSectionRef.current) {
             // Mobile-adaptive animation values - use direct media query check to avoid timing issues
             const isMobileDevice = typeof window !== 'undefined' ? window.matchMedia("(max-width: 640px)").matches : isMobile;
-            const containerYInitial = isMobileDevice ? 200 : 200;
-            const header1ScaleInitial = isMobileDevice ? 1.02 : 1.05;
-            const header2ContainerScaleMax = isMobileDevice ? 1.015 : 1.03;
+            const animValues = isMobileDevice ? ANIMATION_VALUES.mobile : ANIMATION_VALUES.desktop;
+            const containerYInitial = animValues.containerYInitial;
+            const header1ScaleInitial = animValues.header1ScaleInitial;
+            const header2ContainerScaleMax = animValues.header2ContainerScaleMax;
             
+            // Set initial states synchronously before ScrollTrigger creation
             gsap.set(headersContainerRef.current, { y: containerYInitial });
             gsap.set(header1Ref.current, { opacity: 1, scale: header1ScaleInitial, transformOrigin: "left" });
             gsap.set(header2ContainerRef.current, { scale: 1, transformOrigin: "left" });
@@ -300,7 +329,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             setIsHeader3AboveThreshold(false);
             gsap.set(header3Part2Ref.current, { opacity: 0.1 });
 
-            // Create ScrollTrigger with extended scroll
+            // Create ScrollTrigger with extended scroll (after initial states are set)
             const st = ScrollTrigger.create({
                 trigger: bioSectionRef.current,
                 start: "top top",
@@ -334,20 +363,21 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         setHideFooter(false);
                     }
 
-                    // Phase 1a: 0% to 30% of scroll (progress 0 to 0.30)
+                    // Phase 1a: 0% to 30% of scroll (progress 0 to PHASE_1A_END)
                     // Header 1 = 100% → 20%, Header 2 = 20% → 100%, Header 3 = 10% (held)
-                    // Container y-position moves from 200 to -100 (mobile) or 0 (desktop)
-                    // Header 1 scale moves from 1.05x to 1x - mobile: 1.02x to 1x
-                    // Header 2 scale moves from 1x to 1.03x - mobile: 1x to 1.015x
-                    if (progress <= 0.30) {
-                        const phase1Progress = progress / 0.30; // Maps 0->0, 0.30->1
+                    // Container y-position moves from initial to end position
+                    // Header 1 scale moves from initial to 1x
+                    // Header 2 scale moves from 1x to max
+                    if (progress <= PHASE_BOUNDARIES.PHASE_1A_END) {
+                        const phase1Progress = progress / PHASE_BOUNDARIES.PHASE_1A_END; // Maps 0->0, PHASE_1A_END->1
                         const easedPhase1Progress = gsap.parseEase("power3.inOut")(phase1Progress);
 
                         // Mobile-adaptive animation values
-                        const containerYInitial = isMobileDevice ? 200 : 200;
-                        const containerYEnd = isMobileDevice ? -100 : 0;
-                        const header1ScaleInitial = isMobileDevice ? 1.02 : 1.05;
-                        const header2ContainerScaleMax = isMobileDevice ? 1.015 : 1.03;
+                        const animValues = isMobileDevice ? ANIMATION_VALUES.mobile : ANIMATION_VALUES.desktop;
+                        const containerYInitial = animValues.containerYInitial;
+                        const containerYEnd = animValues.containerYEnd;
+                        const header1ScaleInitial = animValues.header1ScaleInitial;
+                        const header2ContainerScaleMax = animValues.header2ContainerScaleMax;
 
                         // Container: move from y: 200 to y: -100 (mobile) or 0 (desktop)
                         const containerY = gsap.utils.interpolate(containerYInitial, containerYEnd, easedPhase1Progress);
@@ -376,21 +406,22 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
-                    // Phase 1b: 30% to 45% of scroll (progress 0.30 to 0.45)
+                    // Phase 1b: 30% to 45% of scroll (progress PHASE_1A_END to PHASE_1B_END)
                     // Header 2 fades from 1 to 0.2, Header 2 Part 2 fades from 0.2 to 1
-                    else if (progress <= 0.45) {
-                        const phase1bProgress = (progress - 0.30) / 0.15; // Maps 0.30->0, 0.45->1
+                    else if (progress <= PHASE_BOUNDARIES.PHASE_1B_END) {
+                        const phase1bProgress = (progress - PHASE_BOUNDARIES.PHASE_1A_END) / (PHASE_BOUNDARIES.PHASE_1B_END - PHASE_BOUNDARIES.PHASE_1A_END); // Maps PHASE_1A_END->0, PHASE_1B_END->1
                         const easedPhase1bProgress = gsap.parseEase("expo.inOut")(phase1bProgress);
 
-                        // Container: stay at y: -100 (mobile) or 0 (desktop) (already at this value from Phase 1a)
-                        const containerYHold = isMobileDevice ? -100 : 0;
+                        // Container: stay at y: end position (already at this value from Phase 1a)
+                        const animValues = isMobileDevice ? ANIMATION_VALUES.mobile : ANIMATION_VALUES.desktop;
+                        const containerYHold = animValues.containerYEnd;
                         gsap.set(headersContainerRef.current, { y: containerYHold });
 
                         // Header 1: stay at 0.2 opacity and scale 1 (already at these values from Phase 1a)
                         gsap.set(header1Ref.current, { opacity: 0.2, scale: 1, transformOrigin: "left" });
 
-                        // Header 2 Container: stay at scale 1.03 (or 1.015 on mobile)
-                        const header2ContainerScaleMax = isMobileDevice ? 1.015 : 1.03;
+                        // Header 2 Container: stay at max scale
+                        const header2ContainerScaleMax = animValues.header2ContainerScaleMax;
                         gsap.set(header2ContainerRef.current, { scale: header2ContainerScaleMax, transformOrigin: "left" });
 
                         // Header 2: fade from 1 to 0.2
@@ -408,18 +439,19 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
-                    // Phase 2b1: 45% to 75% of scroll (progress 0.45 to 0.75)
+                    // Phase 2b1: 45% to 75% of scroll (progress PHASE_1B_END to PHASE_2B1_END)
                     // Container moves upward (complete movement), Header 1 fades from 0.2 to 0.1, Header 2 stays at 0.2, Header 2 Part 2 fades from 1 to 0.2
                     // Header 3 fades from 0.1 to 1, Header 3 Part 2 stays at 0.1
-                    // Header 2 scale moves from 1.03x to 1x - mobile: 1.015x to 1x
-                    else if (progress <= 0.75) {
-                        const phase2b1Progress = (progress - 0.45) / 0.30; // Maps 0.45->0, 0.75->1
+                    // Header 2 scale moves from max to 1x
+                    else if (progress <= PHASE_BOUNDARIES.PHASE_2B1_END) {
+                        const phase2b1Progress = (progress - PHASE_BOUNDARIES.PHASE_1B_END) / (PHASE_BOUNDARIES.PHASE_2B1_END - PHASE_BOUNDARIES.PHASE_1B_END); // Maps PHASE_1B_END->0, PHASE_2B1_END->1
                         const easedPhase2b1Progress = gsap.parseEase("power3.inOut")(phase2b1Progress);
 
                         // Mobile-adaptive animation values
-                        const header2ContainerScaleMax = isMobileDevice ? 1.015 : 1.03;
-                        const containerYStart = isMobileDevice ? -100 : 0;
-                        const containerYEnd = isMobileDevice ? -400 : -200;
+                        const animValues = isMobileDevice ? ANIMATION_VALUES.mobile : ANIMATION_VALUES.desktop;
+                        const header2ContainerScaleMax = animValues.header2ContainerScaleMax;
+                        const containerYStart = animValues.containerYPhase2Start;
+                        const containerYEnd = animValues.containerYPhase2End;
 
                         // Container: move from y: -100 (mobile) or 0 (desktop) to y: -400 (mobile) or -200 (desktop)
                         const containerY = gsap.utils.interpolate(containerYStart, containerYEnd, easedPhase2b1Progress);
@@ -450,15 +482,16 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         // Header 3 Part 2: stay at 0.1 opacity
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
                     }
-                    // Phase 2b2: 75% to 85% of scroll (progress 0.75 to 0.85)
-                    // Container holds at -400 (mobile) or -200 (desktop), Header 1 holds at 0.1, Header 2 holds at 0.2, Header 2 Part 2 holds at 0.2
+                    // Phase 2b2: 75% to 85% of scroll (progress PHASE_2B1_END to PHASE_2B2_END)
+                    // Container holds at phase 3 position, Header 1 holds at 0.1, Header 2 holds at 0.2, Header 2 Part 2 holds at 0.2
                     // Header 3 fades from 1 to 0.2, Header 3 Part 2 fades from 0.1 to 1
-                    else if (progress <= 0.85) {
-                        const phase2b2Progress = (progress - 0.75) / 0.10; // Maps 0.75->0, 0.85->1
+                    else if (progress <= PHASE_BOUNDARIES.PHASE_2B2_END) {
+                        const phase2b2Progress = (progress - PHASE_BOUNDARIES.PHASE_2B1_END) / (PHASE_BOUNDARIES.PHASE_2B2_END - PHASE_BOUNDARIES.PHASE_2B1_END); // Maps PHASE_2B1_END->0, PHASE_2B2_END->1
                         const easedPhase2b2Progress = gsap.parseEase("expo.inOut")(phase2b2Progress);
 
-                        // Container: stay at y: -400 (mobile) or -200 (desktop)
-                        const containerYHold = isMobileDevice ? -400 : -200;
+                        // Container: stay at y: phase 3 hold position
+                        const animValues = isMobileDevice ? ANIMATION_VALUES.mobile : ANIMATION_VALUES.desktop;
+                        const containerYHold = animValues.containerYPhase3Hold;
                         gsap.set(headersContainerRef.current, { y: containerYHold });
 
                         // Header 1: stay at 0.1 opacity and scale 1 (already at this value from Phase 2b1)
@@ -482,14 +515,15 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         const header3Part2Opacity = gsap.utils.interpolate(0.1, 1, easedPhase2b2Progress);
                         gsap.set(header3Part2Ref.current, { opacity: header3Part2Opacity });
                     }
-                    // Phase 3: 85% to 100% of scroll (progress 0.85 to 1)
+                    // Phase 3: 85% to 100% of scroll (progress PHASE_2B2_END to 1)
                     // Header 3 stays at 0.2, Header 3 Part 2 fades from 1 to 0.2
                     else {
-                        const phase3Progress = (progress - 0.85) / 0.15; // Maps 0.85->0, 1->1
+                        const phase3Progress = (progress - PHASE_BOUNDARIES.PHASE_2B2_END) / (1 - PHASE_BOUNDARIES.PHASE_2B2_END); // Maps PHASE_2B2_END->0, 1->1
                         const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
 
-                        // Container: stay at y: -400 (mobile) or -200 (desktop)
-                        const containerYHold = isMobileDevice ? -400 : -200;
+                        // Container: stay at y: phase 3 hold position
+                        const animValues = isMobileDevice ? ANIMATION_VALUES.mobile : ANIMATION_VALUES.desktop;
+                        const containerYHold = animValues.containerYPhase3Hold;
                         gsap.set(headersContainerRef.current, { y: containerYHold });
 
                         // Header 1: stay at 0.1 opacity and scale 1 (from Phase 2b2 end state)
@@ -531,32 +565,9 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             // Refresh ScrollTrigger after creation to ensure positions are recalculated correctly
             // This is especially important when navigating from other pages
             ScrollTrigger.refresh();
-                }
-            };
-
-        rafId1 = requestAnimationFrame(() => {
-            rafId2 = requestAnimationFrame(() => {
-                // Double-check scroll position is at top before initializing ScrollTrigger
-                // Force reset if it's not (can happen with some browsers/pages)
-                if (window.scrollY !== 0) {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'auto',
-                    });
-                    // Wait one more frame after forced reset
-                    requestAnimationFrame(() => {
-                        initializeScrollTrigger();
-                    });
-                } else {
-                    initializeScrollTrigger();
-                }
-            });
-        });
-
+        }
+        
         return () => {
-            // Cancel any pending requestAnimationFrame calls
-            if (rafId1) cancelAnimationFrame(rafId1);
-            if (rafId2) cancelAnimationFrame(rafId2);
             // Clean up ScrollTrigger instances
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
             // Show navbar when leaving resume page
@@ -566,8 +577,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
     // Mouse tracking for image popup with physics
     useEffect(() => {
-        // Track cursor position globally so we always have the current position
-        const handleGlobalMouseMove = (e) => {
+        // Consolidated handler that tracks cursor globally and checks bio section hover
+        const handleMouseMove = (e) => {
             // Update motion values for physics-based animation
             const now = Date.now();
             const deltaTime = Math.max(now - imageLastUpdateRef.current, 1);
@@ -596,69 +607,29 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             // Update previous position
             imagePrevPosRef.current = { x: e.clientX, y: e.clientY };
 
-            // Check if cursor is within 50px of the top navbar
+            // Check if cursor is within threshold of the top navbar
             const navbarThreshold = 200;
             setIsCursorNearBorder(e.clientY < navbarThreshold);
-        };
 
-        let isInsideBioSection = false;
-
-        const handleBioSectionMouseMove = (e) => {
-            if (!isInsideBioSection) {
-                setIsMouseOverBioSection(true);
-                isInsideBioSection = true;
+            // Check if cursor is over bio section using ref bounds
+            const bioSection = bioSectionRef.current;
+            if (bioSection) {
+                const rect = bioSection.getBoundingClientRect();
+                const isOverBioSection = 
+                    e.clientX >= rect.left &&
+                    e.clientX <= rect.right &&
+                    e.clientY >= rect.top &&
+                    e.clientY <= rect.bottom;
+                
+                setIsMouseOverBioSection(isOverBioSection);
             }
-            // Same physics calculation as global handler
-            const now = Date.now();
-            const deltaTime = Math.max(now - imageLastUpdateRef.current, 1);
-            imageLastUpdateRef.current = now;
-
-            const cursorDeltaX = e.clientX - imagePrevPosRef.current.x;
-            const cursorDeltaY = e.clientY - imagePrevPosRef.current.y;
-            const velocityX = cursorDeltaX / deltaTime;
-            const speed = Math.sqrt(velocityX * velocityX + (cursorDeltaY / deltaTime) ** 2);
-
-            const maxRotation = 10;
-            const rotationIntensity = Math.min(speed * 0.3, 1);
-            const horizontalInfluence = Math.sign(velocityX) || 0;
-            const verticalInfluence = Math.sign(cursorDeltaY) * 0.3;
-
-            const rotationValue = (horizontalInfluence + verticalInfluence) * maxRotation * rotationIntensity;
-            imageRotation.set(Math.max(-maxRotation, Math.min(maxRotation, rotationValue)));
-
-            imageCursorX.set(e.clientX);
-            imageCursorY.set(e.clientY);
-            imagePrevPosRef.current = { x: e.clientX, y: e.clientY };
-        };
-
-        const handleMouseEnter = () => {
-            setIsMouseOverBioSection(true);
-            isInsideBioSection = true;
-        };
-
-        const handleMouseLeave = () => {
-            setIsMouseOverBioSection(false);
-            isInsideBioSection = false;
         };
 
         // Add global mousemove listener to always track cursor position
-        document.addEventListener('mousemove', handleGlobalMouseMove);
-
-        const bioSection = bioSectionRef.current;
-        if (bioSection) {
-            // Use mousemove on bioSection to capture position when over it
-            bioSection.addEventListener('mousemove', handleBioSectionMouseMove);
-            bioSection.addEventListener('mouseenter', handleMouseEnter);
-            bioSection.addEventListener('mouseleave', handleMouseLeave);
-        }
+        document.addEventListener('mousemove', handleMouseMove);
 
         return () => {
-            document.removeEventListener('mousemove', handleGlobalMouseMove);
-            if (bioSection) {
-                bioSection.removeEventListener('mousemove', handleBioSectionMouseMove);
-                bioSection.removeEventListener('mouseenter', handleMouseEnter);
-                bioSection.removeEventListener('mouseleave', handleMouseLeave);
-            }
+            document.removeEventListener('mousemove', handleMouseMove);
         };
     }, []);
 
@@ -1758,7 +1729,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 </main>
 
                 {/* Currently */}
-                <Currently className='col-span-full mb-24 md:mb-72 -mt-[85%] md:-mt-[8%]' key='currently' toggleWork={toggleWork} />
+                <Currently className='col-span-full mb-24 md:mb-72 -mt-[42vh] md:-mt-[8vh]' key='currently' toggleWork={toggleWork} />
 
                 {/* Archive */}
                 <ResumeSectionHeader

@@ -599,6 +599,8 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           {/* Glass Edge Effect */}
           <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)]
           pointer-events-none mix-blend-overlay z-10"/>
+
+          {/* Video */}
           <video
               src="/thesis/lifeoscover2.mp4"
               className="w-full h-full object-cover scale-120 rounded-[25pt] brightness-75"
@@ -612,7 +614,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
           <img
               src="/thesis/lifeoslockup.svg"
               alt="LifeOS lockup"
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[125%] md:max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
+              className="absolute top-[48%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[125%] md:max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
           />
 
           {/* Bottom Gradient Blur - Mobile Only */}
@@ -721,10 +723,10 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <CornerArrow />
 
         {/* Video */}
-        <motion.div className="rounded-[25pt] w-full col-span-full h-[400px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
+        <motion.div className="rounded-[25pt] w-full col-span-full h-[500px] lg:h-[479px] 2xl:h-[593px] relative overflow-hidden border-b-1 border-white/15">
             <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_5px_0px_rgba(255,255,255,1)] 
             pointer-events-none mix-blend-overlay z-10"/>
-            <video 
+            <OptimizedVideo 
               videoId="currently-subway"
               src="/subway/cover_blank.mp4"
               className="rounded-[25pt] w-full h-full object-cover contrast-125 brightness-90"
@@ -732,20 +734,20 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               muted
               loop
               playsInline
-              poster="/poster/subwaylandscape.jpg"
-              tabIndex={-1}
+              poster="/poster/subwayportrait.jpg"
+              useOptimized={useOptimizedVideos}
             />
 
             {/* Lockup */}
             <img 
               src="/subway/lockup.png"
               alt="Subway lockup"
-              className="absolute top-1/2 left-[51%] md:left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[90%] md:max-w-[60%] h-auto object-contain"
+              className="absolute top-[48%] left-[51%] md:left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[90%] md:max-w-[60%] h-auto object-contain"
             />
 
             {/* Bottom Gradient Blur */}
             <div 
-              className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
+              className="absolute bottom-0 left-0 right-0 h-[60%] md:hidden z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
               style={{
                 maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
                 WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'
@@ -865,7 +867,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
 
             {/* Bottom Gradient Blur */}
             <div 
-              className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
+              className="absolute bottom-0 left-0 right-0 h-[60%] md:hidden z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
               style={{
                 maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
                 WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'
@@ -974,7 +976,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
         <motion.div className="rounded-[20pt] w-full col-span-full h-[320px] lg:h-[420px] 2xl:h-[450px] relative overflow-hidden border-b-1 border-white/15">
             <div className="absolute inset-0 rounded-[20pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_8px_0px_rgba(255,255,255,1)] pointer-events-none mix-blend-overlay z-10"/>
 
-            <video 
+            <OptimizedVideo 
               videoId="currently-isv"
               src="/isv/montagenew.mp4"
               className="rounded-[20pt] w-full h-full object-cover"
@@ -982,13 +984,13 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               muted
               loop
               playsInline
-              poster="/poster/isv.png"
-              tabIndex={-1}
+              poster="/poster/isv.jpg"
+              useOptimized={useOptimizedVideos}
             />
 
             {/* Bottom Gradient Blur */}
             <div 
-              className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
+              className="absolute bottom-0 left-0 right-0 h-[60%] md:hidden z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
               style={{
                 maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
                 WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'
@@ -1099,7 +1101,7 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
             </div> */}
 
             {/* Video */}
-            <video 
+            <OptimizedVideo 
               videoId="currently-subway"
               src="/bloom/cover.mp4"
               className="rounded-[20pt] w-full h-full object-cover"
@@ -1107,13 +1109,13 @@ const Currently = ({className, toggleWork, useOptimizedVideos = true}) => {
               muted
               loop
               playsInline
-              poster="/poster/subwaylandscape.jpg"
-              tabIndex={-1}
+              poster="/poster/bloom.jpg"
+              useOptimized={useOptimizedVideos}
             />
 
             {/* Bottom Gradient Blur */}
             <div 
-              className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
+              className="absolute bottom-0 left-0 right-0 h-[60%] md:hidden z-15 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
               style={{
                 maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
                 WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'

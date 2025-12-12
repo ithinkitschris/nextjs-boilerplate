@@ -183,13 +183,8 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
 };
   
   return (
-    <html lang="en">
-      <body>
-        <BrowserProvider>
-          <HideNavProvider>
-            <VideoProvider>
-            <html className={isDarkMode ? "dark" : ""}>
-              <body className={`
+    <html lang="en" className={isDarkMode ? "dark" : ""} suppressHydrationWarning>
+      <body className={`
               ${geistSans.variable} 
               ${geistMono.variable}
               ${modernLine.variable} 
@@ -197,6 +192,9 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
               antialiased flex flex-col min-h-screen font-sans
               bg-background transition-all duration-300`}
               suppressHydrationWarning>
+        <BrowserProvider>
+          <HideNavProvider>
+            <VideoProvider>
 
                 {/* Video Performance Monitor - Only in development */}
                 <VideoDebugger enabled={process.env.NODE_ENV === 'development'} />
@@ -400,8 +398,6 @@ const Footer = ({ changelog, toggleChangelog, footerRef }) => {
                 </motion.div>
               )}
 
-            </body>
-          </html>
             </VideoProvider>
           </HideNavProvider>
         </BrowserProvider>
