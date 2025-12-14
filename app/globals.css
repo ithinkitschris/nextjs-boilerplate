@@ -115,27 +115,20 @@ video {
   white-space: normal;
 }
 
-/* Standardized focus-visible styling for keyboard navigation */
-/* 
- * Usage: Add class "focus-visible-standard" to any focusable element
- * This matches your existing pattern: ring-2 ring-foreground ring-offset-2 ring-offset-background
- */
+
 @keyframes focus-ring-slim {
   0% {
     box-shadow: 
-      0 0 0 8px var(--foreground),
-      0 0 0 6px var(--background);
+      0 0 0 8px var(--foreground);
   }
   100% {
     box-shadow: 
-      0 0 0 2px var(--foreground),
-      0 0 0 4px var(--background);
+      0 0 0 2px var(--foreground);
   }
 }
 
 .focus-visible-standard:focus-visible {
   outline: none;
-  /* border-radius inherits from the element, so focus ring matches element's corners */
   animation: focus-ring-slim 0.3s ease-out forwards;
 }
 
