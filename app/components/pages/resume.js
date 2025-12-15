@@ -638,8 +638,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     useEffect(() => {
         // Image should show from 5% to 45% of scroll progress (desktop)
         // On mobile, show later: from 15% to 45% of scroll progress
-        const scrollStart = isMobile ? 0.1 : 0.03;
-        const scrollEnd = isMobile ? 0.53 : 0.44;
+        const scrollStart = isMobile ? 0.1 : 0.1;
+        const scrollEnd = isMobile ? 0.53 : 0.58;
         const isInHeader2Section = scrollProgress >= scrollStart && scrollProgress <= scrollEnd;
 
         // Check if any header 3 link is being hovered
@@ -1027,17 +1027,36 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 const element = archiveSectionRef.current;
                 const elementPosition = element.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - 100; // 100px offset for navbar
+                const startPosition = window.pageYOffset;
+                const distance = offsetPosition - startPosition;
+                const duration = 600; // 0.6 seconds
+                let startTime = null;
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-
-                // Focus the "All" button immediately
-                const allButton = archiveSectionRef.current?.querySelector('#archive-all-button');
-                if (allButton) {
-                    allButton.focus();
-                }
+                // Smooth scroll function using requestAnimationFrame
+                const smoothScroll = (currentTime) => {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    
+                    // Easing function (ease-in-out)
+                    const ease = progress < 0.5
+                        ? 2 * progress * progress
+                        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+                    
+                    window.scrollTo(0, startPosition + distance * ease);
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(smoothScroll);
+                    } else {
+                        // Focus the "All" button after scroll completes
+                        const allButton = archiveSectionRef.current?.querySelector('#archive-all-button');
+                        if (allButton) {
+                            allButton.focus();
+                        }
+                    }
+                };
+                
+                requestAnimationFrame(smoothScroll);
             }
         }
     }));
