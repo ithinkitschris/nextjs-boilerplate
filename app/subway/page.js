@@ -82,7 +82,7 @@ export default function SubwayPage() {
         </motion.div>
 
         {/* Page Container */}
-        <div className="col-span-full">
+        <div className="col-span-full -mt-12">
           <NycSubway className="col-span-full -px-[6%]" />
         </div>
       </div>

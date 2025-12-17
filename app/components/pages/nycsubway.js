@@ -556,6 +556,9 @@ const NycSubway = ({ className }) => {
     // Clear any existing ScrollTriggers
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
+    // MOBILE FIX: Enable normalized scrolling for touch devices
+    ScrollTrigger.normalizeScroll(true);
+
     // Create intersection observer for section tracking
     const sectionObserver = new IntersectionObserver(
       (entries) => {
@@ -582,10 +585,7 @@ const NycSubway = ({ className }) => {
       }
     });
 
-    // Track if section 2 has been visited
-    let section2FirstVisit = true;
-
-    // Set initial state for section 2 bubbles - start hidden for onEnter animation
+    // Set initial state for section 2 bubbles - start hidden for scroll animation
     section2BubbleRefs.current.forEach(bubble => {
       if (bubble) {
         gsap.set(bubble, { opacity: 0, scale: 0});
@@ -724,7 +724,6 @@ const NycSubway = ({ className }) => {
     //#endregion
 
     //#region Animation States
-    let section2AnimationComplete = false;
     let section3AnimationComplete = false;
     let section4AnimationComplete = false;
     let section5AnimationComplete = false;
@@ -749,86 +748,54 @@ const NycSubway = ({ className }) => {
       end: "+=220%", // Extend the trigger area for scroll control to accommodate 4 phases
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
-      onEnter: () => {
-        // Only play animation on first visit
-        if (!section2FirstVisit) {
-          // Set elements to their final state immediately for subsequent visits
-          section2BubbleRefs.current.forEach((bubble) => {
-            if (bubble) {
-              gsap.set(bubble, { opacity: 1, scale: 1 });
-            }
-          });
-          if (section2EmojiRef.current) {
-            gsap.set(section2EmojiRef.current, { opacity: 1, scale: 1 });
-          }
-          if (section2MainTitleRef.current) {
-            gsap.set(section2MainTitleRef.current, { opacity: 1, scale: 1 });
-          }
-          section2AnimationComplete = true;
-          return;
-        }
-
-        // Mark as visited
-        section2FirstVisit = false;
-        
-        // Disable scrolling during bubble animation
-        document.body.style.overflow = 'hidden';
-        
-        // Animate bubbles in sequentially
-        const totalBubbles = section2BubbleRefs.current.length;
-        const animationDuration = 0.2; // Duration for each bubble
-        
-        // Create timeline for sequential bubble animation
-        const tl = gsap.timeline({
-          onComplete: () => {
-            // Re-enable scrolling when animation is complete
-            document.body.style.overflow = 'auto';
-            // Set initial state for scroll animation (phase 2)
-            section2AnimationComplete = true;
-          }
-        });
-        
-        // Animate each bubble in sequentially
-        section2BubbleRefs.current.forEach((bubble, index) => {
-          if (bubble) {
-            tl.to(bubble, {
-              opacity: 1,
-              scale: 1,
-              duration: animationDuration,
-              ease: "back.out(0.8)"
-            }, index * 0.15); // Reduced delay between bubbles from 0.2 to 0.1
-          }
-        });
-        
-        // Animate emoji in with the first bubble
-        if (section2EmojiRef.current) {
-          tl.to(section2EmojiRef.current, {
-            opacity: 1,
-            scale: 1,
-            duration: animationDuration,
-            ease: "back.out(0.8)"
-          }, 0);
-        }
-        
-        // Keep main title visible (no animation needed)
-        if (section2MainTitleRef.current) {
-          gsap.set(section2MainTitleRef.current, {
-            opacity: 1,
-            scale: 1
-          });
-        }
-      },
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
-        // Only start scroll-based animation after bubble animation is complete
-        if (!section2AnimationComplete) {
-          return;
+        // Phase 1: Animate bubbles in with staggered timing (0-15%)
+        if (progress <= 0.15) {
+          const phase1Progress = progress / 0.15; // 0 to 1 for phase 1
+          const totalBubbles = section2BubbleRefs.current.length;
+          
+          section2BubbleRefs.current.forEach((bubble, index) => {
+            if (bubble) {
+              // Each bubble gets a portion of the phase 1 progress
+              const bubbleStart = index / totalBubbles;
+              const bubbleEnd = (index + 1) / totalBubbles;
+              const bubbleProgress = Math.max(0, Math.min(1, 
+                (phase1Progress - bubbleStart) / (bubbleEnd - bubbleStart)
+              ));
+              
+              const easedProgress = gsap.parseEase("back.out(0.8)")(bubbleProgress);
+              gsap.set(bubble, {
+                opacity: easedProgress,
+                scale: easedProgress
+              });
+            }
+          });
+          
+          // Emoji animates with first bubble
+          if (section2EmojiRef.current) {
+            const emojiProgress = Math.min(1, phase1Progress * totalBubbles);
+            const easedEmojiProgress = gsap.parseEase("back.out(0.8)")(emojiProgress);
+            gsap.set(section2EmojiRef.current, {
+              opacity: easedEmojiProgress,
+              scale: 0.9 + (0.1 * easedEmojiProgress)
+            });
+          }
+          
+          // Keep main title visible
+          gsap.set(section2MainTitleRef.current, { opacity: 1, scale: 1 });
+          
+          // Keep section 3 elements hidden
+          gsap.set(section3Text1Ref.current, { opacity: 0, scale: 1 });
+          gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
+          gsap.set(section3EmojiRef.current, { opacity: 0 });
+          gsap.set(section3Emoji2Ref.current, { opacity: 0 });
         }
-        
-        // Phase 2: Fade out bubbles, emoji, and main title (0-25%)
-        if (progress <= 0.25) {
-          const phase2Progress = progress / 0.25; // 0 to 1 for phase 2
+        // Phase 2: Fade out bubbles, emoji, and main title (15-40%)
+        else if (progress > 0.15 && progress <= 0.40) {
+          const phase2Progress = (progress - 0.15) / 0.25; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("power3.inOut")(phase2Progress);
           
           // Fade out all bubbles
@@ -859,9 +826,9 @@ const NycSubway = ({ className }) => {
           gsap.set(section3EmojiRef.current, { opacity: 0 });
           gsap.set(section3Emoji2Ref.current, { opacity: 0 });
         }
-        // Phase 3: "We all already knew that" (25-35%)
-        else if (progress <= 0.35) {
-          const phase3Progress = (progress - 0.25) / 0.1; // 0 to 1 for phase 3
+        // Phase 3: "We all already knew that" (40-50%)
+        else if (progress <= 0.50) {
+          const phase3Progress = (progress - 0.40) / 0.10; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("expo.out")(phase3Progress);
           
           // Keep everything hidden from previous phases
@@ -903,9 +870,9 @@ const NycSubway = ({ className }) => {
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
           gsap.set(section3Emoji2Ref.current, { opacity: 0 });
         }
-        // Phase 3b: Pause (35-65%)
-        else if (progress <= 0.65) {
-          const pauseProgress = (progress - 0.35) / 0.3; // 0 to 1 for pause duration
+        // Phase 3b: Pause (50-80%)
+        else if (progress <= 0.80) {
+          const pauseProgress = (progress - 0.50) / 0.30; // 0 to 1 for pause duration
           const easedPauseProgress = gsap.parseEase("power2.out")(pauseProgress);
           
           // Keep everything hidden from previous phases
@@ -944,9 +911,9 @@ const NycSubway = ({ className }) => {
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
           gsap.set(section3Emoji2Ref.current, { opacity: 0 });
         }
-        // Phase 4: "However, I decided to take a crack at it" (65-100%)
+        // Phase 4: "However, I decided to take a crack at it" (80-100%)
         else {
-          const phase4Progress = (progress - 0.65) / 0.35; // 0 to 1 for phase 4
+          const phase4Progress = (progress - 0.80) / 0.20; // 0 to 1 for phase 4
           const easedPhase4Progress = gsap.parseEase("back.out(2)")(phase4Progress);
           
           // Keep everything hidden from previous phases
@@ -1007,6 +974,7 @@ const NycSubway = ({ className }) => {
       end: "+=30%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -1059,6 +1027,7 @@ const NycSubway = ({ className }) => {
       end: "+=50%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -1115,6 +1084,7 @@ const NycSubway = ({ className }) => {
       end: "+=25%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -1167,6 +1137,7 @@ const NycSubway = ({ className }) => {
       end: "+=90%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -1307,6 +1278,7 @@ const NycSubway = ({ className }) => {
       end: "+=120%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onEnter: () => {
         // Set initial hidden state
         gsap.set(section9TextRef.current, { opacity: 1, y: 0 });
@@ -1563,13 +1535,14 @@ const NycSubway = ({ className }) => {
       }
     });
 
-    // SECTION 11 (UWB Explanation) ANIMATION 
+    // SECTION 11 (UWB Explanation) ANIMATION
     ScrollTrigger.create({
       trigger: section11Ref.current,
       start: "bottom 100%",
       end: "+=100%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -1856,13 +1829,14 @@ const NycSubway = ({ className }) => {
       }
     });
     
-    // SECTION 12 (How does it actually work?) ANIMATION 
+    // SECTION 12 (How does it actually work?) ANIMATION
     ScrollTrigger.create({
       trigger: section12Ref.current,
       start: "bottom 100%",
       end: "+=30%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -2010,13 +1984,14 @@ const NycSubway = ({ className }) => {
       }
     });
 
-    // SECTION 14 (Incorrect Entrance) ANIMATION 
+    // SECTION 14 (Incorrect Entrance) ANIMATION
     ScrollTrigger.create({
       trigger: section14Ref.current,
       start: "bottom 100%",
       end: "+=80%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -2115,13 +2090,14 @@ const NycSubway = ({ className }) => {
       }
     });
 
-    // SECTION 15 (Enter Station) ANIMATION 
+    // SECTION 15 (Enter Station) ANIMATION
     ScrollTrigger.create({
       trigger: section15Ref.current,
       start: "bottom 100%",
       end: "+=125%", // Extend the trigger area for scroll control to accommodate phase 3
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -2352,13 +2328,14 @@ const NycSubway = ({ className }) => {
       }
     });
 
-    // SECTION 16 (Platform) ANIMATION 
+    // SECTION 16 (Platform) ANIMATION
     ScrollTrigger.create({
       trigger: section16Ref.current,
       start: "bottom 100%",
       end: "+=80%", // Extend the trigger area for scroll control
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -2444,13 +2421,14 @@ const NycSubway = ({ className }) => {
       }
     });
 
-    // SECTION 17 (Destination) ANIMATION 
+    // SECTION 17 (Destination) ANIMATION
     ScrollTrigger.create({
       trigger: section17Ref.current,
       start: "bottom 100%",
       end: "+=125%", // Extend the trigger area for scroll control to accommodate phase 3
       pin: true, // Pin the section in place
       scrub: 1, // Smooth scrubbing
+      ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
         
@@ -2614,11 +2592,22 @@ const NycSubway = ({ className }) => {
       }
     });
 
+    // Handle mobile orientation changes
+    const handleOrientationChange = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('orientationchange', handleOrientationChange);
+    window.addEventListener('resize', handleOrientationChange);
 
     // CLEANUP FUNCTION
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       document.body.style.overflow = 'auto';
+      
+      // Cleanup orientation change handlers
+      window.removeEventListener('orientationchange', handleOrientationChange);
+      window.removeEventListener('resize', handleOrientationChange);
       
       // Cleanup section observer
       sectionObserver.disconnect();
@@ -2631,13 +2620,14 @@ const NycSubway = ({ className }) => {
   }, [setIsWhiteBG]);
 
   // Show mobile screen if on mobile device
-  if (isMobile) {
-    return <MobileErrorScreen />;
-  }
+  // DISABLED: Mobile check temporarily disabled
+  // if (isMobile) {
+  //   return <MobileErrorScreen />;
+  // }
 
   // Body
   return (
-    <div className={`relative overflow-x-hidden col-span-full  ${className || ''}`}>
+    <div className={`relative overflow-x-hidden col-span-full mt-0 pt-0 ${className || ''}`}>
       {/* Scroll Progress Tracker */}
       <ScrollProgressTracker currentSection={currentSection} totalSections={totalSections} sectionRefs={sectionRefs} />
 
@@ -2647,10 +2637,7 @@ const NycSubway = ({ className }) => {
       className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
     >
       {/* Video Container */}
-      <div className="w-[95%] h-[90%] rounded-[35pt] overflow-hidden relative">
-
-        {/* Glass Edge Effect */}
-        <div className="absolute inset-0 rounded-[16pt] md:rounded-3xl shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_15px_0px_rgba(255,255,255,0.8)] pointer-events-none mix-blend-overlay z-10"/>
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
 
         {/* Video */}
         <video
@@ -2757,7 +2744,7 @@ const NycSubway = ({ className }) => {
           ref={section3Text1Ref}
           className="absolute top-[45%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full mx-auto text-center"
         >
-          <h2 className="text-4.5xl font-medium text-foreground tracking-tight w-[60%] mx-auto leading-[1]">
+          <h2 className="text-4xl md:text-4.5xl font-medium text-foreground tracking-tight w-[70%] md:w-[60%] mx-auto leading-[1]">
             We all already knew that.
           </h2>
           {/* Progress Line */}
@@ -2773,14 +2760,14 @@ const NycSubway = ({ className }) => {
           ref={section3Text2Ref}
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
         >
-          <h2 className="text-[24pt] md:text-6xl font-medium text-foreground tracking-tight w-[85%] md:w-[40%] mx-auto -mt-18 md:-mt-4 leading-[1] origin-center">
+          <h2 className="text-[24pt] md:text-6xl font-medium text-foreground tracking-tight w-[70%] md:w-[40%] mx-auto -mt-18 md:-mt-4 leading-[1] origin-center">
             However, I decided to take a crack at it anyway.
           </h2>
         </div>
         
         {/* Section 3 Bottom middle emoji */}
         <div 
-          className="absolute bottom-36 md:bottom-24 left-1/2 transform -translate-x-1/2 w-80 h-80"
+          className="absolute bottom-20 md:bottom-24 left-1/2 transform -translate-x-1/2 w-80 h-80"
         >
           <div className="w-full h-full rounded-full overflow-hidden relative -z-50 scale-75 md:scale-95 origin-bottom">
             <img 
@@ -2842,7 +2829,7 @@ const NycSubway = ({ className }) => {
              ref={section4Text1Ref}
              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
            >
-               <p className="text-2xl font-medium text-foreground tracking-tight text-center">So to begin...</p>
+               <p className="text-xl md:text-2xl font-medium text-foreground tracking-tight text-center">So to begin...</p>
 
            </div>
            
@@ -2851,7 +2838,7 @@ const NycSubway = ({ className }) => {
              ref={section4Text2Ref}
              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
            >
-            <h2 className="text-8xl md:text-9xl font-semibold text-foreground tracking-tight text-center mt-14 md:mt-0 leading-[0.9] md:whitespace-nowrap">
+            <h2 className="text-[56pt] md:text-9xl font-semibold text-foreground w-full mx-auto tracking-tight text-center mt-6 md:mt-0 leading-[0.9] md:whitespace-nowrap">
               I looked inwards.
             </h2>
            </div>
@@ -2865,7 +2852,7 @@ const NycSubway = ({ className }) => {
         <img 
           src="/subway/section4emoji.png" 
           alt="Section 4 Emoji" 
-          className=" h-[20rem] md:h-[29rem] w-auto"
+          className=" h-[18rem] md:h-[29rem] w-auto"
         />
       </div>
     </section>
@@ -2880,7 +2867,7 @@ const NycSubway = ({ className }) => {
         ref={section5TextBodyRef}
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full"
       >
-        <h2 className="text-3xl md:text-4.5xl leading-[1.2] md:leading-[3rem] font-medium text-foreground tracking-tight -mt-4 md:-mt-4 w-[70%] md:w-[45%] mx-auto">
+        <h2 className="text-3xl md:text-4.5xl leading-[1.2] md:leading-[3rem] font-medium text-foreground tracking-tight mt-10 md:-mt-4 w-[80%] md:w-[45%] mx-auto">
           And through my own lived experience, deduced the following personal insights.
         </h2>
       </div>
@@ -2890,7 +2877,7 @@ const NycSubway = ({ className }) => {
         {/* Text Column 1 */}
         <div 
           ref={section5Text1Ref}
-          className="text-left md:-mt-10 w-3/4 md:w-full mx-auto md:mx-0"
+          className="text-left mt-4 md:-mt-10 w-[90%] md:w-full mx-auto md:mx-0"
         >
           <div className="mb-3 md:mb-6">
             <img 
@@ -2914,7 +2901,7 @@ const NycSubway = ({ className }) => {
         {/* Text Column 2 */}
         <div 
           ref={section5Text2Ref}
-          className="text-left md:-mt-10 w-3/4 md:w-full mx-auto md:mx-0"
+          className="text-left md:-mt-10 w-[90%] md:w-full mx-auto md:mx-0"
         >
           <div className="mb-3 md:mb-6">
             <img 
@@ -3002,7 +2989,7 @@ const NycSubway = ({ className }) => {
           {/* Text 1 */}
            <div 
              ref={section7Text1Ref}
-             className="absolute top-[53%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
+             className="absolute top-[55%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
            >
             <p className="text-[40pt] md:text-[60pt] py-10 font-semibold tracking-tight mx-auto bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent -mt-36">Sim Hao Jie</p>
 
@@ -3011,7 +2998,7 @@ const NycSubway = ({ className }) => {
            {/* Text 2 */}
            <div 
              ref={section7Text2Ref}
-             className="absolute top-[52%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full md:w-[65%]"
+             className="absolute top-[55%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full md:w-[65%]"
            >
                <p className="text-[12pt] md:text-[20pt] mt-0 md:mt-14 font-medium text-foreground w-[80%] mx-auto"
                 style={{ lineHeight: '1.25' }}>
@@ -3029,7 +3016,7 @@ const NycSubway = ({ className }) => {
         <img 
           src="/subway/section7emoji.png" 
           alt="Section 7 Emoji" 
-          className="max-w-full h-[18rem] md:h-[22rem] w-auto"
+          className="max-w-full h-[15rem] md:h-[22rem] w-auto"
         />
       </div>
 
