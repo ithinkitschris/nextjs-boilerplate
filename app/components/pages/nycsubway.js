@@ -13,7 +13,25 @@ if (typeof window !== 'undefined') {
 }
 
 // Scroll Progress Tracker Component
-const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) => {
+const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isMobile }) => {
+  // Check mobile state directly
+  const [isMobileState, setIsMobileState] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 640;
+    }
+    return false;
+  });
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const checkMobile = () => {
+        setIsMobileState(window.innerWidth < 640);
+      };
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+    }
+  }, []);
+  
   const [showDebug, setShowDebug] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [previousSection, setPreviousSection] = useState(currentSection);
@@ -245,10 +263,10 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs }) =
       )}
 
       {/* Progress Tracker */}
-      {isEnabled && (
+      {isEnabled && !isMobile && !isMobileState && (
         <div 
           ref={trackerRef}
-          className="fixed right-0 z-50"
+          className="fixed right-0 z-50 hidden md:block"
           style={{
             top: `${15 + (scrollProgress * 0.7)}%`,
             transform: 'translateY(-50%) scaleX(0)',
@@ -354,10 +372,18 @@ const MobileErrorScreen = () => {
 };
 
 const NycSubway = ({ className }) => {
-  const { setIsWhiteBG } = useHideNav();
+  const { setIsWhiteBG, setHideFooter } = useHideNav();
   const isMobile = useMobileDetection();
   const [currentSection, setCurrentSection] = useState(1);
   const totalSections = 7;
+
+  // Hide footer on this page
+  useEffect(() => {
+    setHideFooter(true);
+    return () => {
+      setHideFooter(false);
+    };
+  }, [setHideFooter]);
 
   //#region Refs
   // Section 1 refs (title)
@@ -1280,20 +1306,24 @@ const NycSubway = ({ className }) => {
       scrub: 1, // Smooth scrubbing
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onEnter: () => {
+        // Check if mobile at runtime
+        const isMobileCheck = typeof window !== 'undefined' && window.innerWidth < 768;
         // Set initial hidden state
         gsap.set(section9TextRef.current, { opacity: 1, y: 0 });
         gsap.set(section9IconRef.current, { opacity: 0, scale: 0.4, rotate: 80});
         gsap.set(section9BackgroundRef.current, { opacity: 0 });
-        gsap.set(section9RectangleRef.current, { opacity: 0, scale: 0.6, height: 240 });
+        gsap.set(section9RectangleRef.current, { opacity: 0, scale: 0.6, height: isMobileCheck ? "160px" : "240px" });
         gsap.set(section9TextContainerRef.current, { y: 0 }); // Start at final position
         gsap.set(section9RectangleText1Ref.current, { opacity: 0, y: 0 });
-        gsap.set(section9RectangleText2Ref.current, { opacity: 0, y: 40 });
-        gsap.set(section9RectangleText3Ref.current, { opacity: 0, y: 40 });
-        gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: 40 });
-        gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: 40 });
+        gsap.set(section9RectangleText2Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40 });
+        gsap.set(section9RectangleText3Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40 });
+        gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40 });
+        gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40 });
         gsap.set(section9EmojiRef.current, { opacity: 1 }); // Start visible
       },
       onUpdate: (self) => {
+        // Check if mobile at runtime
+        const isMobileCheck = typeof window !== 'undefined' && window.innerWidth < 768;
         const progress = self.progress; // 0 to 1
         
         // Phase 1: Text exists, warning icon animates in (0-20%)
@@ -1395,10 +1425,10 @@ const NycSubway = ({ className }) => {
           });
           
           // Other text elements remain hidden
-          gsap.set(section9RectangleText2Ref.current, { opacity: 0, y: 40, color: '#0067d4' });
-          gsap.set(section9RectangleText3Ref.current, { opacity: 0, y: 40, color: '#0067d4' });
-          gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: 40, color: '#0067d4' });
-          gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: 40, color: '#0067d4'});
+          gsap.set(section9RectangleText2Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40, color: '#0067d4' });
+          gsap.set(section9RectangleText3Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40, color: '#0067d4' });
+          gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40, color: '#0067d4' });
+          gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40, color: '#0067d4'});
         }
         // Phase 4: Sequential text animations (50-100%)
         else {
@@ -1437,10 +1467,12 @@ const NycSubway = ({ className }) => {
             const easedContainerProgress = gsap.parseEase("power2.out")(combinedProgress);
             
             // Rectangle maintains final phase 3 state and grows height
+            const mobileHeight4A = 160 + (80 * easedContainerProgress);
+            const desktopHeight4A = 240 + (120 * easedContainerProgress);
             gsap.set(section9RectangleRef.current, {
               opacity: 1,
               scale: 1,
-              height: 240 + (120 * easedContainerProgress)
+              height: isMobileCheck ? `${mobileHeight4A}px` : `${desktopHeight4A}px`
             });
             
             // Text1 fades to 0.2 during phase 4a
@@ -1451,17 +1483,18 @@ const NycSubway = ({ className }) => {
             });
             
             // Both text2 and text3 animate in together
+            const textYOffset = isMobileCheck ? 24 : 40;
             gsap.set(section9RectangleText2Ref.current, {
               opacity: easedCombinedProgress,
-              y: 40 - (40 * easedCombinedProgress)
+              y: textYOffset - (textYOffset * easedCombinedProgress)
             });
             gsap.set(section9RectangleText3Ref.current, {
               opacity: easedCombinedProgress,
-              y: 40 - (40 * easedCombinedProgress)
+              y: textYOffset - (textYOffset * easedCombinedProgress)
             });
             
-            gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: 40 });
-            gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: 40 });
+            gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40 });
+            gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40 });
           }
           // PHASE 4B
           else if (phase4Progress <= 0.75) {
@@ -1470,8 +1503,10 @@ const NycSubway = ({ className }) => {
             const easedContainer4Progress = gsap.parseEase("power2.out")(text4Progress);
             
             // Rectangle grows from 380px to 520px height
+            const mobileHeight4B = 240 + (30 * easedContainer4Progress);
+            const desktopHeight4B = 360 + (60 * easedContainer4Progress);
             gsap.set(section9RectangleRef.current, {
-              height: 360 + (60 * easedContainer4Progress)
+              height: isMobileCheck ? `${mobileHeight4B}px` : `${desktopHeight4B}px`
             });
             
             gsap.set(section9RectangleText1Ref.current, { opacity: 0.1, y: 0, color: '#000000' }); // Keep text1 black
@@ -1483,12 +1518,13 @@ const NycSubway = ({ className }) => {
               opacity: 1 - (0.9 * easedText4Progress),
               y: 0
             });
+            const text4YOffset = isMobileCheck ? 24 : 40;
             gsap.set(section9RectangleText4Ref.current, {
               opacity: easedText4Progress,
-              y: 40 - (40 * easedText4Progress)
+              y: text4YOffset - (text4YOffset * easedText4Progress)
             });
             
-            gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: 40 });
+            gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: isMobile ? 24 : 40 });
           }
           // PHASE 4C
           else {
@@ -1497,8 +1533,10 @@ const NycSubway = ({ className }) => {
             const easedContainer5Progress = gsap.parseEase("power2.out")(text5Progress);
             
             // Rectangle grows from 520px to 620px height (final height)
+            const mobileHeight4C = 270 + (150 * easedContainer5Progress);
+            const desktopHeight4C = 420 + (200 * easedContainer5Progress);
             gsap.set(section9RectangleRef.current, {
-              height: 420 + (200 * easedContainer5Progress)
+              height: isMobileCheck ? `${mobileHeight4C}px` : `${desktopHeight4C}px`
             });
             
             gsap.set(section9RectangleText1Ref.current, { 
@@ -1521,9 +1559,10 @@ const NycSubway = ({ className }) => {
               y: 0
             });
             
+            const text5YOffset = isMobileCheck ? 24 : 40;
             gsap.set(section9RectangleText5Ref.current, {
               opacity: easedText5Progress,
-              y: 40 - (40 * easedText5Progress),
+              y: text5YOffset - (text5YOffset * easedText5Progress),
             });
           }
         }
@@ -2629,7 +2668,7 @@ const NycSubway = ({ className }) => {
   return (
     <div className={`relative overflow-x-hidden col-span-full mt-0 pt-0 ${className || ''}`}>
       {/* Scroll Progress Tracker */}
-      <ScrollProgressTracker currentSection={currentSection} totalSections={totalSections} sectionRefs={sectionRefs} />
+      <ScrollProgressTracker currentSection={currentSection} totalSections={totalSections} sectionRefs={sectionRefs} isMobile={isMobile} />
 
     {/* Section 1 – Title */}
     <section 
@@ -2811,7 +2850,7 @@ const NycSubway = ({ className }) => {
     {/* Section 4 – Look Inwards */}
     <section 
       ref={section4Ref}
-      className="min-h-screen flex items-center justify-center relative"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden md:overflow-visible"
     >
       {/* Background gradient */}
       <div 
@@ -2847,7 +2886,7 @@ const NycSubway = ({ className }) => {
       {/* Bottom middle emoji */}
       <div 
         ref={section4EmojiRef}
-        className="absolute bottom-0 z-40"
+        className="absolute -bottom-8 md:bottom-0 z-40"
       >
         <img 
           src="/subway/section4emoji.png" 
@@ -2889,11 +2928,11 @@ const NycSubway = ({ className }) => {
           <h2 className="text-2xl md:text-4xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent leading-[1]">
                Making my way downtown. (or not) 
           </h2>
-          <p className="text-sm md:text-lg text-foreground md:leading-7">
+          <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">
           Subway stations can have platforms on opposing sides of the tracks heading uptown/downtown respectively, with tracks running in the middle.
           </p>
 
-          <p className="mt-5 text-sm md:text-lg text-foreground md:leading-7">
+          <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.4] md:leading-[1.6]">
           This, combined with the lack of options for crossing the tracks to get to the platform opposite can result in users entering the wrong platform via the wrong entrance and thus having to exit and re-enter.
           </p>
         </div>
@@ -2913,13 +2952,13 @@ const NycSubway = ({ className }) => {
           <h2 className="text-2xl md:text-4xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent leading-[1]">
             Conduct yourself accordingly.
           </h2>
-          <p className="text-sm md:text-lg text-foreground md:leading-7">
+          <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">
           Train conductors are a reliable source of information as well as safety.  
           </p>
-          <p className="mt-3 md:mt-5 text-sm md:text-lg text-foreground md:leading-7">  
+          <p className="mt-3 md:mt-5 text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">  
           They tend to be located in the middle of the train and it is a common sight for commuters to ask the conductors for directions/guidance at stations. 
           </p>
-          <p className="mt-3 md:mt-5 text-sm md:text-lg text-foreground md:leading-7">
+          <p className="mt-3 md:mt-8 text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">
           They are also figures of authority and representatives of the MTA while on the train and can be a support for help when it is required.
           </p>
           
@@ -2947,9 +2986,9 @@ const NycSubway = ({ className }) => {
           {/* Text 1 */}
            <div 
              ref={section6Text1Ref}
-             className="absolute top-[50%] md:top-[53%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+             className="absolute top-[51%] md:top-[53%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
            >
-               <p className="text-2xl font-medium text-foreground tracking-tight">After which...</p>
+               <p className="text-xl font-medium text-foreground tracking-tight">After which...</p>
 
            </div>
            
@@ -2958,7 +2997,7 @@ const NycSubway = ({ className }) => {
              ref={section6Text2Ref}
              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[95%] md:w-[85%] 2xl:w-[75%]"
            >
-               <p className="text-[38pt] xl:text-[50pt] 2xl:text-[60pt] font-semibold text-foreground tracking-tight mx-auto mt-8 md:mt-0"
+               <p className="text-[32pt] xl:text-[50pt] 2xl:text-[60pt] font-semibold text-foreground tracking-tight mx-auto mt-8 md:mt-0 w-[90%]"
                style={{ lineHeight: '0.9' }}>
                I looked to someone who knew what he was talking about.
                </p>
@@ -3022,7 +3061,8 @@ const NycSubway = ({ className }) => {
 
       {/* Section 8 Content - Overlaid on top */}
       <div className="absolute inset-0 w-full flex items-center justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 items-start max-w-7xl mt-0 md:-mt-10 ">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 items-start max-w-7xl mt-10
+         md:-mt-10 ">
           
           {/* Column 1 - Emoji */}
           <div 
@@ -3054,7 +3094,7 @@ const NycSubway = ({ className }) => {
           {/* Column 2 - Text 1 */}
           <div 
             ref={section8Text1Ref}
-            className="flex items-start flex-col pt-4 md:pt-20 w-[67%] md:w-full mx-auto"
+            className="flex items-start flex-col pt-4 md:pt-20 w-[80%] md:w-full mx-auto"
           >
             <div className="mb-4">
               <img 
@@ -3066,11 +3106,11 @@ const NycSubway = ({ className }) => {
             <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4 ">
               Safety
             </h3>
-            <p className="text-[9pt] md:text-lg font-medium text-foreground text-left leading-[1.5] md:leading-[1.6]">
+            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.3] md:leading-[1.6]">
             A sense of unease and lack of safety while commuting is exacerbated by the physical environments of certain stations within the system. 
             </p>
 
-            <p className="text-[9pt] md:text-lg font-medium text-foreground text-left mt-3 md:mt-8 leading-[1.5] md:leading-[1.6]">
+            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.3] md:leading-[1.6]">
             Unclear wayfinding within the system can result in a lack of confidence in navigating the system.
             </p>
           </div>
@@ -3078,7 +3118,7 @@ const NycSubway = ({ className }) => {
           {/* Column 3 - Text 2 */}
           <div 
             ref={section8Text2Ref}
-            className="flex flex-col pt-0 md:pt-20 w-[67%] md:w-full mx-auto"
+            className="flex flex-col pt-0 md:pt-20 w-[80%] md:w-full mx-auto"
           >
             <div className="mb-4">
               <img 
@@ -3090,11 +3130,11 @@ const NycSubway = ({ className }) => {
             <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-10 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4">
               Wayfinding
             </h3>
-            <p className="text-[9pt] md:text-lg font-medium text-foreground text-left leading-[1.5] md:leading-[1.6]">
+            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.3] md:leading-[1.6]">
             Station exits/entrances can be difficult to comprehend for a commuter. 
             </p>
 
-            <p className="text-[9pt] md:text-lg font-medium text-foreground text-left mt-3 md:mt-8 leading-[1.5] md:leading-[1.6]">
+            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.3] md:leading-[1.6]">
             Exits, in particular, can be confusing as they are labeled by road names and cardinal directions. A Southeast corner can be difficult to discern while underground with no visible landmarks to ground a directional cue like this.
             </p>
           </div>
@@ -3102,7 +3142,7 @@ const NycSubway = ({ className }) => {
           {/* Column 4 - Text 3 */}
           <div 
             ref={section8Text3Ref}
-            className="flex flex-col pt-0 md:pt-20 w-[67%] md:w-full mx-auto"
+            className="flex flex-col pt-0 md:pt-20 w-[80%] md:w-full mx-auto"
           >
             <div className="mb-4">
               <img 
@@ -3114,11 +3154,11 @@ const NycSubway = ({ className }) => {
             <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-10 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4">
               Accessibility
             </h3>
-            <p className="text-[9pt] md:text-lg font-medium text-foreground text-left leading-[1.5] md:leading-[1.6]">
+            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.3] md:leading-[1.6]">
             Not all stations within the system are fully accessible.
             </p>
 
-            <p className="text-[9pt] md:text-lg font-medium text-foreground text-left mt-3 md:mt-8 leading-[1.5] md:leading-[1.6]">
+            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.3] md:leading-[1.6]">
             This has a major impact on commuters with movement disabilities and results in itineraries that differ for most commuters as their needs take into account stations with accessibility. 
             </p>
           </div>
@@ -3146,10 +3186,10 @@ const NycSubway = ({ className }) => {
       </video>
 
       {/* Text and Icon - positioned independently */}
-      <div className="absolute flex flex-col items-center justify-center z-10 w-[75%] -mt-6">
+      <div className="absolute flex flex-col items-center justify-center z-10 w-[75%] md:-mt-6">
         <h1 
           ref={section9TextRef}
-          className="text-[32pt] md:text-[54pt] font-semibold text-foreground tracking-tight mx-auto text-center -mt-5 md:-mt-0"
+          className="text-[32pt] md:text-[54pt] font-semibold text-foreground tracking-tight mx-auto text-center -mt-16 md:-mt-0"
           style={{ lineHeight: '1.05' }}
         >
           Navigating the NYC subway system comfortably can be challenging.
@@ -3160,7 +3200,7 @@ const NycSubway = ({ className }) => {
           ref={section9IconRef}
           src="/subway/section9icon1.png" 
           alt="Section 9 Icon" 
-          className="h-12 md:h-16 w-auto dark:invert opacity-0 absolute bottom-[240px] md:bottom-[320px] right-[110px] md:right-[42%]" 
+          className="h-12 md:h-16 w-auto dark:invert opacity-0 absolute bottom-[200px] md:bottom-[320px] right-[60px] md:right-[42%]" 
           style={{
           filter: 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(335deg) brightness(130%) contrast(97%)'
             }}
@@ -3177,37 +3217,37 @@ const NycSubway = ({ className }) => {
       {/* Rounded Rectangle - positioned in center */}
       <div 
         ref={section9RectangleRef}
-        className="absolute inset-0 w-[90%] md:w-[520px] m-auto rounded-[40pt] border-2 glass-strong backdrop-blur-lg backdrop-brightness-110 bg-white/60 z-5 flex flex-col items-start justify-start pl-10 md:pl-14 opacity-0 overflow-hidden"
+        className="absolute inset-0 w-[340px] md:w-[475px] m-auto rounded-[24pt] md:rounded-[40pt] border-2 glass-strong backdrop-blur-lg backdrop-brightness-110 bg-white/60 z-5 flex flex-col items-start justify-start pl-8 md:pl-14 opacity-0 overflow-hidden"
       >
         <img 
           src="/subway/section9icon2.png" 
           alt="Section 9 Icon" 
-          className="mt-9 h-12 md:h-16 w-auto mb-2" 
+          className="mt-5 md:mt-9 h-12 md:h-16 w-auto mb-2" 
         />
         <div ref={section9TextContainerRef} className="flex flex-col">
           <h1 
-            className="text-[3.5rem] md:text-6xl font-semibold text-black tracking-tight leading-[3.5rem] md:leading-none"
+            className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
             ref={section9RectangleText1Ref}>
             How might we<span className="font-light">...</span>
           </h1>
 
           <h1 
-            className="text-[3.5rem] md:text-6xl font-semibold text-black tracking-tight leading-[3.5rem] md:leading-none"
+            className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
             ref={section9RectangleText2Ref}>
             provide 
           </h1>
           <h1 
-            className="text-[3.5rem] md:text-6xl font-semibold text-black tracking-tight leading-[3.5rem] md:leading-none"
+            className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
             ref={section9RectangleText3Ref}>
             commuters
           </h1>
           <h1 
-            className="text-[3.5rem] md:text-6xl font-semibold text-black tracking-tight leading-[3.5rem] md:leading-none"
+            className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
             ref={section9RectangleText4Ref}>
             confidence 
           </h1>
           <h1 
-            className="text-[3.5rem] md:text-6xl font-semibold text-black tracking-tight leading-[3.5rem] md:leading-none"
+            className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
             ref={section9RectangleText5Ref}>
             when <br/>navigating <br/>the system?
           </h1>
@@ -3235,36 +3275,38 @@ const NycSubway = ({ className }) => {
       {/* 1st Rounded Rectangle */}
       <div 
         ref={section11OriginalRef}
-        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[475px] h-[700px] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden"
+        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[28pt] md:rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[340px] h-[560px] md:w-[475px] md:h-[700px] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden scale-95 md:scale-100"
         style={{ top: '4%' }}
       >
         {/* Text */}
-        <div className="pl-14 pt-10 text-left w-full">
+        <div className="pl-8 pt-8 md:pl-14 md:pt-10 text-left w-full">
 
           {/* Icon */}
           <img 
             src="/subway/section11icon1.png" 
             alt="Section 11 Icon" 
-            className="h-12 w-auto mb-6"/>
+            className="h-10 w-auto mb-5 md:h-12 md:mb-6"/>
 
           {/* Utilizing */}
-          <p className="text-[20pt] font-semibold tracking-tight text-left text-gray-600 mt-8 mb-4">
+          <p className="text-[16pt] md:text-[20pt] font-semibold tracking-tight text-left text-gray-600 mt-5 mb-3 md:mt-8 md:mb-4">
           Utilizing...
           </p>
         
           {/* Header */}
-          <h2 className="text-[38pt] font-semibold tracking-tight text-left bg-gradient-to-r to-[#3d9bff] from-[#0067d4] leading-[3rem] bg-clip-text text-transparent pb-2">
+          <h2 className="text-[28pt] md:text-[38pt] font-semibold tracking-tight text-left bg-gradient-to-r to-[#3d9bff] from-[#0067d4] leading-[2.2rem] md:leading-[3rem] bg-clip-text text-transparent pb-1.5 md:pb-2">
             Ultra-Wideband Technology
           </h2>
 
         </div>
 
         {/* Phone */}
-        <img 
-          src="/subway/section11phone2.png" 
-          alt="Section 11 Icon" 
-          className="w-full h-auto object-cover mt-10 ml-20 scale-[120%]"
-        />
+        <div className="relative w-full h-full mt-8 md:mt-10">
+          <img 
+            src="/subway/section11phone2.png" 
+            alt="Section 11 Icon" 
+            className="absolute w-full h-auto object-cover scale-[130%] md:scale-[120%] left-[69%] top-[70%] -translate-x-[50%] -translate-y-[50%]"
+          />
+        </div>
       </div>
       
       {/* 2nd Rounded Rectangle with 3 Text Columns */}

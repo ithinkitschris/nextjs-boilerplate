@@ -1732,17 +1732,29 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             >LinkedIn</span>/<span
                                 tabIndex={0}
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
-                                onClick={() => window.open('https://github.com/ithinkitschris', '_blank', 'noopener,noreferrer')}
+                                onClick={() => {
+                                    const link = document.createElement('a');
+                                    link.href = '/resume/Resume (Chris Leow).pdf';
+                                    link.download = 'Resume (Chris Leow).pdf';
+                                    document.body.appendChild(link);
+                                    link.click();
+                                    document.body.removeChild(link);
+                                }}
                                 onKeyDown={(e) => {
                                     if (e.key === 'Enter' || e.key === ' ') {
                                         e.preventDefault();
-                                        window.open('https://github.com/ithinkitschris', '_blank', 'noopener,noreferrer');
+                                        const link = document.createElement('a');
+                                        link.href = '/resume/Resume (Chris Leow).pdf';
+                                        link.download = 'Resume (Chris Leow).pdf';
+                                        document.body.appendChild(link);
+                                        link.click();
+                                        document.body.removeChild(link);
                                     }
                                 }}
                                 onFocus={(e) => {
                                     e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
                                 }}
-                            >GitHub</span>/<span
+                            >Resume</span>/<span
                                 tabIndex={0}
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
                                 onClick={() => window.open('https://www.instagram.com/khristurtle/', '_blank', 'noopener,noreferrer')}
