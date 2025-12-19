@@ -486,6 +486,10 @@ const NycSubway = ({ className }) => {
   const section13Text1Ref = useRef(null);
   const section13ImageRef = useRef(null);
   const section13ParagraphRef = useRef(null);
+  // Section 13 mobile refs
+  const section13MobileCol1Ref = useRef(null);
+  const section13MobileImageRef = useRef(null);
+  const section13MobileParagraphRef = useRef(null);
 
   // Section 14 refs (3 columns: icon+text, image, paragraph) - identical to section 13
   const section14Ref = useRef(null);
@@ -495,6 +499,12 @@ const NycSubway = ({ className }) => {
   const section14LockscreenRef = useRef(null);
   const section14Paragraph1Ref = useRef(null);
   const section14Paragraph2Ref = useRef(null);
+  // Section 14 mobile refs
+  const section14MobileCol1Ref = useRef(null);
+  const section14MobileVideoRef = useRef(null);
+  const section14MobileLockscreenRef = useRef(null);
+  const section14MobileParagraph1Ref = useRef(null);
+  const section14MobileParagraph2Ref = useRef(null);
 
   // Section 15 refs (3 columns: icon+text, image, paragraph) - duplicate of section 14
   const section15Ref = useRef(null);
@@ -510,12 +520,19 @@ const NycSubway = ({ className }) => {
   const section15Phase3IconRef = useRef(null);
   const section15Phase3HeaderRef = useRef(null);
   const section15Phase3PhoneRef = useRef(null);
-  const section15Phase3TextRef = useRef(null);
-  
+
   // Phase 4D refs for section 15
   const section15Phase4DImageRef = useRef(null);
   const section15Phase4DTextRef = useRef(null);
-  
+
+  // Section 15 mobile refs
+  const section15MobileCol1Ref = useRef(null);
+  const section15MobileVideoRef = useRef(null);
+  const section15MobileCol3ImageRef = useRef(null);
+  // Section 15 mobile phase 3 refs
+  const section15MobilePhase3Col1Ref = useRef(null);
+  const section15MobilePhase3VideoRef = useRef(null);
+
   // Section 16 refs (3 columns: icon+text, image, paragraph) - identical to section 14
   const section16Ref = useRef(null);
   const section16IconRef = useRef(null);
@@ -523,6 +540,12 @@ const NycSubway = ({ className }) => {
   const section16ImageRef = useRef(null);
   const section16Paragraph1Ref = useRef(null);
   const section16Paragraph2Ref = useRef(null);
+
+  // Section 16 mobile refs
+  const section16MobileCol1Ref = useRef(null);
+  const section16MobileImageRef = useRef(null);
+  const section16MobileParagraph1Ref = useRef(null);
+  const section16MobileParagraph2Ref = useRef(null);
 
   // Section 17 refs (3 columns: icon+text, image, paragraph) - duplicate of section 15
   const section17Ref = useRef(null);
@@ -532,12 +555,21 @@ const NycSubway = ({ className }) => {
   const section17LockscreenRef = useRef(null);
   const section17Paragraph1Ref = useRef(null);
   const section17Paragraph2Ref = useRef(null);
-  
+
   // Section 17 phase 3 refs (second content replacement)
   const section17Phase3IconRef = useRef(null);
   const section17Phase3HeaderRef = useRef(null);
   const section17Phase3PhoneRef = useRef(null);
   const section17Phase3TextRef = useRef(null);
+
+  // Section 17 mobile refs
+  const section17MobileCol1Ref = useRef(null);
+  const section17MobileImageRef = useRef(null);
+  const section17MobileParagraph1Ref = useRef(null);
+  const section17MobileParagraph2Ref = useRef(null);
+  const section17MobilePhase3Col1Ref = useRef(null);
+  const section17MobilePhase3ImageRef = useRef(null);
+  const section17MobilePhase3TextRef = useRef(null);
   
   // Section 18 refs (4 columns: image, image, 2 stacked images, image)
   const section18Ref = useRef(null);
@@ -693,21 +725,37 @@ const NycSubway = ({ className }) => {
     gsap.set(section12BackgroundRef.current, { opacity: 0 });
     gsap.set(section12UnderlineRef.current, { scaleX: 0 });
     
-    // Set initial state for section 13
+    // Set initial state for section 13 (desktop)
     gsap.set(section13IconRef.current, { opacity: 0, scale: 0.6, y: 0, rotation: -15 });
     gsap.set(section13Text1Ref.current, { opacity: 0, y: 30 });
     gsap.set(section13ImageRef.current, { opacity: 0.7, scale: 0.95, transformOrigin: "center center", filter: "blur(2px)" });
     gsap.set(section13ParagraphRef.current, { opacity: 0, y: 30 });
+    // Set initial state for section 13 (mobile)
+    gsap.set(section13MobileCol1Ref.current, { opacity: 1, y: 0 });
+    gsap.set(section13MobileImageRef.current, { opacity: 0.7, scale: 0.95, transformOrigin: "center center", filter: "blur(2px)" });
+    gsap.set(section13MobileParagraphRef.current, { opacity: 0, y: 20 });
 
-    // Set initial state for section 14 (header and video already visible)
+    // Set initial state for section 14 (desktop - header and video already visible)
     gsap.set(section14IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
     gsap.set(section14Text1Ref.current, { opacity: 1, y: 0 });
     gsap.set(section14ImageRef.current, { opacity: 1, transformOrigin: "center center" });
     gsap.set(section14LockscreenRef.current, { opacity: 0, scale: 1, transformOrigin: "center center" });
     gsap.set(section14Paragraph1Ref.current, { opacity: 0, y: 30 });
     gsap.set(section14Paragraph2Ref.current, { opacity: 0, y: 30 });
+    // Set initial state for section 14 (mobile)
+    gsap.set(section14MobileCol1Ref.current, { opacity: 1, y: 0 });
+    gsap.set(section14MobileVideoRef.current, { opacity: 1, transformOrigin: "center top" });
+    gsap.set(section14MobileLockscreenRef.current, { opacity: 0, scale: 1.05, transformOrigin: "center top" });
+    gsap.set(section14MobileParagraph1Ref.current, { opacity: 0, y: 20 });
+    gsap.set(section14MobileParagraph2Ref.current, { opacity: 0, y: 20 });
+    // Start playing section 14 mobile video immediately
+    if (section14MobileVideoRef.current) {
+      section14MobileVideoRef.current.play().catch(() => {
+        // Ignore autoplay errors - video will play when user interacts
+      });
+    }
 
-    // Set initial state for section 15 (header already visible)
+    // Set initial state for section 15 (desktop - header already visible)
     gsap.set(section15IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
     gsap.set(section15Text1Ref.current, { opacity: 1, y: 0 });
     gsap.set(section15ImageRef.current, { opacity: 1, transformOrigin: "center center" });
@@ -719,18 +767,36 @@ const NycSubway = ({ className }) => {
     gsap.set(section15Phase3IconRef.current, { opacity: 0, scale: 0.8, y: 30, rotation: -21 });
     gsap.set(section15Phase3HeaderRef.current, { opacity: 0, y: 30 });
     gsap.set(section15Phase3PhoneRef.current, { opacity: 0, scale: 0.9, x: 0 });
-    gsap.set(section15Phase3TextRef.current, { opacity: 0, y: 30 });
-    
+
     // Initialize phase 4D elements as hidden
     gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
     gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
-    
+
+    // Set initial state for section 15 (mobile)
+    gsap.set(section15MobileCol1Ref.current, { opacity: 1, y: 0 });
+    gsap.set(section15MobileVideoRef.current, { opacity: 1, transformOrigin: "center top" });
+    gsap.set(section15MobileCol3ImageRef.current, { opacity: 0, y: 20 });
+    gsap.set(section15MobilePhase3Col1Ref.current, { opacity: 0, y: 20 });
+    gsap.set(section15MobilePhase3VideoRef.current, { opacity: 0, transformOrigin: "center top" });
+    // Start playing section 15 mobile video immediately
+    if (section15MobileVideoRef.current) {
+      section15MobileVideoRef.current.play().catch(() => {
+        // Ignore autoplay errors - video will play when user interacts
+      });
+    }
+
     // Set initial state for section 16 (header already visible)
     gsap.set(section16IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
     gsap.set(section16Text1Ref.current, { opacity: 1, y: 0 });
     gsap.set(section16ImageRef.current, { opacity: 1, transformOrigin: "center center" });
     gsap.set(section16Paragraph1Ref.current, { opacity: 0, y: 30 });
     gsap.set(section16Paragraph2Ref.current, { opacity: 0, y: 30 });
+
+    // Set initial state for section 16 (mobile)
+    gsap.set(section16MobileCol1Ref.current, { opacity: 1, y: 0 });
+    gsap.set(section16MobileImageRef.current, { opacity: 1, transformOrigin: "center top" });
+    gsap.set(section16MobileParagraph1Ref.current, { opacity: 0, y: 20 });
+    gsap.set(section16MobileParagraph2Ref.current, { opacity: 0, y: 20 });
 
     // Set initial state for section 17 (header already visible)
     gsap.set(section17IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
@@ -745,8 +811,17 @@ const NycSubway = ({ className }) => {
     gsap.set(section17Phase3HeaderRef.current, { opacity: 0, y: 30 });
     gsap.set(section17Phase3PhoneRef.current, { opacity: 0, x: 0 });
     gsap.set(section17Phase3TextRef.current, { opacity: 0, y: 30 });
-    
-    
+
+    // Set initial state for section 17 (mobile)
+    gsap.set(section17MobileCol1Ref.current, { opacity: 1, y: 0 });
+    gsap.set(section17MobileImageRef.current, { opacity: 1, transformOrigin: "center top" });
+    gsap.set(section17MobileParagraph1Ref.current, { opacity: 0, y: 20 });
+    gsap.set(section17MobileParagraph2Ref.current, { opacity: 0, y: 20 });
+    gsap.set(section17MobilePhase3Col1Ref.current, { opacity: 0, y: 20 });
+    gsap.set(section17MobilePhase3ImageRef.current, { opacity: 0, transformOrigin: "center top" });
+    gsap.set(section17MobilePhase3TextRef.current, { opacity: 0, y: 20 });
+
+
     //#endregion
 
     //#region Animation States
@@ -1575,6 +1650,8 @@ const NycSubway = ({ className }) => {
     });
 
     // SECTION 11 (UWB Explanation) ANIMATION
+    const isMobileSection11 = typeof window !== 'undefined' && window.innerWidth < 768;
+
     ScrollTrigger.create({
       trigger: section11Ref.current,
       start: "bottom 100%",
@@ -1584,7 +1661,114 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
+        // MOBILE: Simplified animation - entire container fades in as one unit
+        if (isMobileSection11) {
+          // Phase 1: Original rectangle fade out, new rectangle fade in (0-25%)
+          if (progress <= 0.25) {
+            const phase1Progress = progress / 0.25;
+            const easedProgress = gsap.parseEase("power3.inOut")(phase1Progress);
+
+            // Original rectangle fades out
+            gsap.set(section11OriginalRef.current, {
+              opacity: 1 - easedProgress,
+              y: -10 * easedProgress,
+              scale: 1 - (0.1 * easedProgress),
+              filter: `blur(${5 * easedProgress}px)`
+            });
+
+            // New rectangle + ALL content fades in together
+            gsap.set(section11NewRef.current, {
+              opacity: easedProgress,
+              y: 50 - (50 * easedProgress),
+              filter: `blur(${4 - (4 * easedProgress)}px)`
+            });
+
+            // All Phase 1 content fades in together (no stagger)
+            gsap.set(section11Header1Ref.current, { opacity: easedProgress, y: 20 - (20 * easedProgress) });
+            gsap.set(section11Header2Ref.current, { opacity: easedProgress, x: -20 + (20 * easedProgress) });
+            gsap.set(section11TopParagraphRef.current, { opacity: easedProgress, y: 20 - (20 * easedProgress) });
+            gsap.set(section11Text1Ref.current, { opacity: easedProgress, y: 30 - (30 * easedProgress) });
+            gsap.set(section11Text2Ref.current, { opacity: easedProgress, y: 30 - (30 * easedProgress) });
+            gsap.set(section11Text3Ref.current, { opacity: easedProgress, y: 30 - (30 * easedProgress) });
+
+            // Keep Phase 2 hidden
+            gsap.set(section11Phase2TopParagraphRef.current, { opacity: 0 });
+            gsap.set(section11Phase2Text1Ref.current, { opacity: 0 });
+            gsap.set(section11Phase2Text2Ref.current, { opacity: 0 });
+            gsap.set(section11Phase2Text3Ref.current, { opacity: 0 });
+            gsap.set(section11Phase2EmojiRef.current, { opacity: 0 });
+          }
+          // Phase 2: Hold Phase 1 content visible (25-50%)
+          else if (progress <= 0.5) {
+            gsap.set(section11OriginalRef.current, { opacity: 0, scale: 0.9 });
+            gsap.set(section11NewRef.current, { opacity: 1, y: 0, filter: 'blur(0px)' });
+            gsap.set(section11Header1Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Header2Ref.current, { opacity: 1, x: 0 });
+            gsap.set(section11TopParagraphRef.current, { opacity: 1, y: 0 });
+            gsap.set(section11Text1Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Text2Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Text3Ref.current, { opacity: 1, y: 0 });
+
+            // Keep Phase 2 hidden
+            gsap.set(section11Phase2TopParagraphRef.current, { opacity: 0 });
+            gsap.set(section11Phase2Text1Ref.current, { opacity: 0 });
+            gsap.set(section11Phase2Text2Ref.current, { opacity: 0 });
+            gsap.set(section11Phase2Text3Ref.current, { opacity: 0 });
+            gsap.set(section11Phase2EmojiRef.current, { opacity: 0 });
+          }
+          // Phase 3: Phase 1 content fades out, Phase 2 content fades in (50-75%)
+          else if (progress <= 0.75) {
+            const phase3Progress = (progress - 0.5) / 0.25;
+            const easedProgress = gsap.parseEase("power3.inOut")(phase3Progress);
+
+            gsap.set(section11OriginalRef.current, { opacity: 0, scale: 0.9 });
+            gsap.set(section11NewRef.current, { opacity: 1, y: 0, filter: 'blur(0px)' });
+
+            // Phase 1 content fades out
+            gsap.set(section11Header1Ref.current, { opacity: 1 - easedProgress });
+            gsap.set(section11Header2Ref.current, { opacity: 1 - easedProgress });
+            gsap.set(section11TopParagraphRef.current, { opacity: 1 - easedProgress });
+            gsap.set(section11Text1Ref.current, { opacity: 1 - easedProgress });
+            gsap.set(section11Text2Ref.current, { opacity: 1 - easedProgress });
+            gsap.set(section11Text3Ref.current, { opacity: 1 - easedProgress });
+
+            // Phase 2 content fades in together (no stagger)
+            gsap.set(section11Phase2TopParagraphRef.current, { opacity: easedProgress });
+            gsap.set(section11Phase2Text1Ref.current, { opacity: easedProgress, y: 30 - (30 * easedProgress) });
+            gsap.set(section11Phase2Text2Ref.current, { opacity: easedProgress, y: 30 - (30 * easedProgress) });
+            gsap.set(section11Phase2Text3Ref.current, { opacity: easedProgress, y: 30 - (30 * easedProgress) });
+            gsap.set(section11Phase2EmojiRef.current, { opacity: 0 }); // Hidden on mobile
+          }
+          // Phase 4: Hold Phase 2 content visible (75-100%)
+          else {
+            gsap.set(section11OriginalRef.current, { opacity: 0, scale: 0.9 });
+            gsap.set(section11NewRef.current, { opacity: 1, y: 0, filter: 'blur(0px)' });
+
+            // Phase 1 content stays hidden
+            gsap.set(section11Header1Ref.current, { opacity: 0 });
+            gsap.set(section11Header2Ref.current, { opacity: 0 });
+            gsap.set(section11TopParagraphRef.current, { opacity: 0 });
+            gsap.set(section11Text1Ref.current, { opacity: 0 });
+            gsap.set(section11Text2Ref.current, { opacity: 0 });
+            gsap.set(section11Text3Ref.current, { opacity: 0 });
+
+            // Phase 2 content stays visible
+            gsap.set(section11Phase2TopParagraphRef.current, { opacity: 1 });
+            gsap.set(section11Phase2Text1Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Phase2Text2Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Phase2Text3Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section11Phase2EmojiRef.current, { opacity: 0 }); // Hidden on mobile
+          }
+
+          if (progress >= 1) {
+            section11AnimationComplete = true;
+            section11Phase2AnimationComplete = true;
+          }
+          return; // Exit early for mobile
+        }
+
+        // DESKTOP: Original staggered animation behavior
         // Phase 1: Original rectangle fade out, new rectangle fade in (0-20%)
         if (progress <= 0.2) {
           const phase1Progress = progress / 0.2; // 0 to 1 for phase 1
@@ -1935,7 +2119,7 @@ const NycSubway = ({ className }) => {
       }
     });
     
-    // SECTION 13 (Set destination) ANIMATION 
+    // SECTION 13 (Set destination) ANIMATION
     ScrollTrigger.create({
       trigger: section13Ref.current,
       start: "bottom 100%",
@@ -1944,21 +2128,22 @@ const NycSubway = ({ className }) => {
       scrub: 1, // Smooth scrubbing
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Set isWhiteBG to true when scrolling down into section 13
         if (setIsWhiteBG && progress > 0) {
           setIsWhiteBG(true);
         }
-        
+
         // Animation happens from 0% to 100% of scroll
         const textProgress = progress; // 0 to 1 for animation
-        
+
         // Left text (Column 1) fades in first half
         if (progress <= 0.5) {
           const leftProgress = progress / 0.5; // 0 to 1 for left text
           const easedLeftProgress = gsap.parseEase("elastic.inOut")(leftProgress);
           const normalEasedProgress = gsap.parseEase("expo.out")(leftProgress);
-          
+
+          // Desktop animations
           gsap.set(section13IconRef.current, {
             opacity: easedLeftProgress,
             scale: 0.6 + (0.4 * easedLeftProgress),
@@ -1969,31 +2154,62 @@ const NycSubway = ({ className }) => {
             opacity: normalEasedProgress,
             y: 30 - (30 * normalEasedProgress)
           });
-          
-          // Phone scales up with icon and text
-          gsap.set(section13ImageRef.current, { 
-            opacity: 0.7 + (0.3 * normalEasedProgress), 
+
+          // Phone scales up with icon and text (desktop)
+          gsap.set(section13ImageRef.current, {
+            opacity: 0.7 + (0.3 * normalEasedProgress),
             scale: 0.95 + (0.05 * normalEasedProgress),
             transformOrigin: "center center",
             filter: `blur(${2 - (2 * normalEasedProgress)}px)`
           });
-          
-          // Keep right text hidden
+
+          // Keep right text hidden (desktop)
           gsap.set(section13ParagraphRef.current, { opacity: 0, y: 30 });
-        } 
+
+          // Mobile animations - Column 1 stays visible, Column 3 stays hidden
+          gsap.set(section13MobileCol1Ref.current, {
+            opacity: 1,
+            y: 0
+          });
+          gsap.set(section13MobileImageRef.current, {
+            opacity: 0.7 + (0.3 * normalEasedProgress),
+            scale: 0.95 + (0.05 * normalEasedProgress),
+            transformOrigin: "center center",
+            filter: `blur(${2 - (2 * normalEasedProgress)}px)`
+          });
+          gsap.set(section13MobileParagraphRef.current, { opacity: 0, y: 20 });
+        }
         // Right text (Column 3) fades in second half
         else {
           const rightProgress = (progress - 0.5) / 0.5; // 0 to 1 for right text
           const easedRightProgress = gsap.parseEase("back.out")(rightProgress);
-          
+
+          // Desktop - Column 1 stays visible, Column 3 fades in
           gsap.set(section13IconRef.current, { opacity: 1, y: 0 });
           gsap.set(section13Text1Ref.current, { opacity: 1, y: 0 });
           gsap.set(section13ParagraphRef.current, {
             opacity: easedRightProgress,
             y: 30 - (30 * easedRightProgress)
           });
+
+          // Mobile - Column 1 fades OUT, Column 3 fades IN (swap)
+          gsap.set(section13MobileCol1Ref.current, {
+            opacity: 1 - easedRightProgress,
+            y: 0
+          });
+          gsap.set(section13MobileParagraphRef.current, {
+            opacity: easedRightProgress,
+            y: 20 - (20 * easedRightProgress)
+          });
+          // Mobile image stays fully visible
+          gsap.set(section13MobileImageRef.current, {
+            opacity: 1,
+            scale: 1,
+            transformOrigin: "center center",
+            filter: "blur(0px)"
+          });
         }
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section13AnimationComplete = true;
@@ -2033,27 +2249,27 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Section 14 animation - no longer controls isWhiteBG
-        
-        // Phase 2: Right text fades in (0-50%)
+
+        // Phase 1: Right text fades in (0-50%)
         if (progress <= 0.5) {
           const phase2Progress = progress / 0.5; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
-          
-          // Header stays visible during phase 2
-          gsap.set(section14IconRef.current, { 
-            opacity: 1, 
+
+          // Desktop - Header stays visible during phase 1
+          gsap.set(section14IconRef.current, {
+            opacity: 1,
             scale: 1,
             y: 0,
             rotation: 0
           });
-          gsap.set(section14Text1Ref.current, { 
-            opacity: 1, 
+          gsap.set(section14Text1Ref.current, {
+            opacity: 1,
             y: 0
           });
-          
-          // Only paragraph1 fades in, paragraph2 stays hidden
+
+          // Desktop - Only paragraph1 fades in, paragraph2 stays hidden
           gsap.set(section14Paragraph1Ref.current, {
             opacity: easedPhase2Progress,
             y: 30 - (30 * easedPhase2Progress)
@@ -2062,63 +2278,115 @@ const NycSubway = ({ className }) => {
             opacity: 0, // Keep hidden
             y: 30
           });
-          
-          // Video stays visible and plays
-          gsap.set(section14ImageRef.current, { 
-            opacity: 1, 
+
+          // Desktop - Video stays visible and plays
+          gsap.set(section14ImageRef.current, {
+            opacity: 1,
             x: 0
           });
-          
-          // Start playing video if not already playing
+
+          // Start playing desktop video if not already playing
           if (section14ImageRef.current && section14ImageRef.current.paused) {
             section14ImageRef.current.play();
           }
+
+          // Mobile - Header fades out, Paragraph1 fades in
+          gsap.set(section14MobileCol1Ref.current, {
+            opacity: 1 - easedPhase2Progress,
+            y: 0
+          });
+          gsap.set(section14MobileParagraph1Ref.current, {
+            opacity: easedPhase2Progress,
+            y: 20 - (20 * easedPhase2Progress)
+          });
+          gsap.set(section14MobileParagraph2Ref.current, {
+            opacity: 0,
+            y: 20
+          });
+          // Mobile - Video stays visible
+          gsap.set(section14MobileVideoRef.current, {
+            opacity: 1
+          });
+          gsap.set(section14MobileLockscreenRef.current, {
+            opacity: 0,
+            scale: 1.05,
+            y: 0
+          });
+
+          // Start playing mobile video if not already playing
+          if (section14MobileVideoRef.current && section14MobileVideoRef.current.paused) {
+            section14MobileVideoRef.current.play();
+          }
         }
-        // Phase 3: Phone moves left, paragraph1 moves up and fades, paragraph2 fades in (50-100%)
+        // Phase 2: Phone moves left, paragraph1 moves up and fades, paragraph2 fades in (50-100%)
         else {
           const phase3Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
-          
-          // Header stays visible (no fading out)
-          gsap.set(section14IconRef.current, { 
-            opacity: 1, 
+
+          // Desktop - Header stays visible (no fading out)
+          gsap.set(section14IconRef.current, {
+            opacity: 1,
             scale: 1,
             y: 0,
             rotation: 0
           });
-          gsap.set(section14Text1Ref.current, { 
-            opacity: 1, 
+          gsap.set(section14Text1Ref.current, {
+            opacity: 1,
             y: 0
           });
-          
-          // Video moves to the left and fades with blur
-          gsap.set(section14ImageRef.current, { 
+
+          // Desktop - Video moves to the left and fades with blur
+          gsap.set(section14ImageRef.current, {
             opacity: 1 - (0.85 * easedPhase3Progress),
             x: -100 * easedPhase3Progress, // Move left by 100px
             filter: `blur(${2 * easedPhase3Progress}px)` // Add blur effect
           });
-          
-          // Lockscreen image appears over the phone
-          gsap.set(section14LockscreenRef.current, { 
+
+          // Desktop - Lockscreen image appears over the phone
+          gsap.set(section14LockscreenRef.current, {
             opacity: easedPhase3Progress, // Fade in
             scale: 1.05 - (0.05 * easedPhase3Progress), // Scale from 1.05 to 1.0
             x: 100 * easedPhase3Progress // Move left with the phone
           });
-          
-          // Paragraph1 moves up and fades to 0.75 opacity with blur
+
+          // Desktop - Paragraph1 moves up and fades to 0.75 opacity with blur
           gsap.set(section14Paragraph1Ref.current, {
             opacity: 1 - (0.85 * easedPhase3Progress), // Fade to 0.75 opacity
             y: -225 * easedPhase3Progress, // Move up by 225px
             filter: `blur(${1 * easedPhase3Progress}px)` // Add blur effect
           });
-          
-          // Paragraph2 fades in
+
+          // Desktop - Paragraph2 fades in
           gsap.set(section14Paragraph2Ref.current, {
             opacity: easedPhase3Progress, // Fade in
             y: 225 - (225 * easedPhase3Progress) // Move up from initial position
           });
+
+          // Mobile - Header stays hidden, Paragraph1 fades out, Paragraph2 fades in
+          gsap.set(section14MobileCol1Ref.current, {
+            opacity: 0,
+            y: 0
+          });
+          gsap.set(section14MobileParagraph1Ref.current, {
+            opacity: 1 - easedPhase3Progress,
+            y: 0
+          });
+          gsap.set(section14MobileParagraph2Ref.current, {
+            opacity: easedPhase3Progress,
+            y: 20 - (20 * easedPhase3Progress)
+          });
+          // Mobile - Video fades with blur, lockscreen appears
+          gsap.set(section14MobileVideoRef.current, {
+            opacity: 1 - (0.85 * easedPhase3Progress),
+            filter: `blur(${2 * easedPhase3Progress}px)`
+          });
+          gsap.set(section14MobileLockscreenRef.current, {
+            opacity: easedPhase3Progress,
+            scale: 1.05 - (0.05 * easedPhase3Progress),
+            y: -50 * easedPhase3Progress
+          });
         }
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section14AnimationComplete = true;
@@ -2146,21 +2414,21 @@ const NycSubway = ({ className }) => {
         if (progress <= 0.4) {
           const phase2Progress = progress / 0.4; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
-          
-          // Header stays visible
+
+          // Desktop - Header stays visible
           gsap.set(section15IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
           gsap.set(section15Text1Ref.current, { opacity: 1, y: 0 });
-          
-          // Start playing video when phase 1 triggers
+
+          // Start playing desktop video when phase 1 triggers
           if (section15ImageRef.current && section15ImageRef.current.paused) {
             section15ImageRef.current.play();
           }
-          
-          // Split Phase 2 into two parts: image first (0-50%), then both paragraphs (50-100%)
+
+          // Desktop - Split Phase 2 into two parts: image first (0-50%), then both paragraphs (50-100%)
           if (phase2Progress <= 0.5) {
             const imageProgress = phase2Progress / 0.5; // 0 to 1 for image
             const easedImageProgress = gsap.parseEase("back.out")(imageProgress);
-            
+
             // Only image fades in, paragraphs stay hidden
             gsap.set(section15Paragraph1Ref.current, {
               opacity: 0, // Keep hidden
@@ -2170,17 +2438,27 @@ const NycSubway = ({ className }) => {
               opacity: 0, // Keep hidden
               y: 30
             });
-            
+
             // Column 3 image fades in
             gsap.set(section15Column3ImageRef.current, {
               opacity: easedImageProgress,
               y: 30 - (30 * easedImageProgress)
             });
+
+            // Mobile - Header fades out, Combined paragraphs fade in
+            gsap.set(section15MobileCol1Ref.current, {
+              opacity: 1 - easedImageProgress,
+              y: 0
+            });
+            gsap.set(section15MobileCol3ImageRef.current, {
+              opacity: easedImageProgress,
+              y: 20 - (20 * easedImageProgress)
+            });
           } else {
             const paragraphsProgress = (phase2Progress - 0.5) / 0.5; // 0 to 1 for paragraphs
             const easedParagraphsProgress = gsap.parseEase("back.out")(paragraphsProgress);
-            
-            // Both paragraphs fade in together
+
+            // Desktop - Both paragraphs fade in together
             gsap.set(section15Paragraph1Ref.current, {
               opacity: easedParagraphsProgress,
               y: 30 - (30 * easedParagraphsProgress)
@@ -2189,49 +2467,67 @@ const NycSubway = ({ className }) => {
               opacity: easedParagraphsProgress,
               y: 30 - (30 * easedParagraphsProgress)
             });
-            
-            // Column 3 image stays visible
+
+            // Desktop - Column 3 image stays visible
             gsap.set(section15Column3ImageRef.current, {
               opacity: 1,
               y: 0
             });
+
+            // Mobile - Combined paragraphs stay visible
+            gsap.set(section15MobileCol1Ref.current, {
+              opacity: 0,
+              y: 0
+            });
+            gsap.set(section15MobileCol3ImageRef.current, {
+              opacity: 1,
+              y: 0
+            });
           }
-          
-          // Phone stays in center
-          gsap.set(section15ImageRef.current, { 
-            opacity: 1, 
+
+          // Desktop - Phone stays in center
+          gsap.set(section15ImageRef.current, {
+            opacity: 1,
             x: 0
           });
-          
+
+          // Mobile - Video plays
+          if (section15MobileVideoRef.current && section15MobileVideoRef.current.paused) {
+            section15MobileVideoRef.current.play();
+          }
+          gsap.set(section15MobileVideoRef.current, { opacity: 1 });
+
           // Keep phase 3 and 4 elements hidden
           gsap.set(section15Phase3IconRef.current, { opacity: 0, scale: 0.8, y: 30, rotation: -21 });
           gsap.set(section15Phase3HeaderRef.current, { opacity: 0, y: 30 });
           gsap.set(section15Phase3PhoneRef.current, { opacity: 0, scale: 0.9, x: 0 });
-          gsap.set(section15Phase3TextRef.current, { opacity: 0, y: 30 });
           gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
           gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
+          // Mobile phase 3
+          gsap.set(section15MobilePhase3Col1Ref.current, { opacity: 0, y: 20 });
+          gsap.set(section15MobilePhase3VideoRef.current, { opacity: 0 });
         }
         // Phase 3: Fade out current elements completely (40-50%)
         else if (progress <= 0.5) {
           const phase3Progress = (progress - 0.4) / 0.1; // 0 to 1 for phase 3 (fade out)
           const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
-          
-          // Fade out current elements completely to opacity 0
-          gsap.set(section15IconRef.current, { 
+
+          // Desktop - Fade out current elements completely to opacity 0
+          gsap.set(section15IconRef.current, {
             opacity: 1 - easedPhase3Progress, // Fade from 1 to 0
             y: 0,
             filter: `blur(${2 * easedPhase3Progress}px)` // Blur from 0 to 2px
           });
-          gsap.set(section15Text1Ref.current, { 
+          gsap.set(section15Text1Ref.current, {
             opacity: 1 - easedPhase3Progress, // Fade from 1 to 0
             y: 0,
             filter: `blur(${2 * easedPhase3Progress}px)` // Blur from 0 to 2px
           });
-          gsap.set(section15ImageRef.current, { 
+          gsap.set(section15ImageRef.current, {
             opacity: 1, // Keep at full opacity
             x: 0
           });
-          gsap.set(section15Column3ImageRef.current, { 
+          gsap.set(section15Column3ImageRef.current, {
             opacity: 1 - easedPhase3Progress, // Fade from 1 to 0
             y: 0,
             filter: `blur(${2 * easedPhase3Progress}px)` // Add blur effect
@@ -2246,112 +2542,88 @@ const NycSubway = ({ className }) => {
             y: 0,
             filter: `blur(${2 * easedPhase3Progress}px)` // Add blur effect
           });
-          
+
+          // Mobile - Combined paragraphs fade out, Phase 3 header fades in
+          gsap.set(section15MobileCol1Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section15MobileCol3ImageRef.current, {
+            opacity: 1 - easedPhase3Progress,
+            y: 0
+          });
+          gsap.set(section15MobilePhase3Col1Ref.current, {
+            opacity: easedPhase3Progress,
+            y: 20 - (20 * easedPhase3Progress)
+          });
+          // Mobile video swaps
+          gsap.set(section15MobileVideoRef.current, {
+            opacity: 1 - easedPhase3Progress
+          });
+          gsap.set(section15MobilePhase3VideoRef.current, {
+            opacity: easedPhase3Progress
+          });
+          // Start playing phase 3 video
+          if (section15MobilePhase3VideoRef.current && section15MobilePhase3VideoRef.current.paused) {
+            section15MobilePhase3VideoRef.current.play();
+          }
+
           // Keep phase 4 elements hidden during fade out
           gsap.set(section15Phase3IconRef.current, { opacity: 0, scale: 0.8, y: 30, rotation: -21 });
           gsap.set(section15Phase3HeaderRef.current, { opacity: 0, y: 30 });
           gsap.set(section15Phase3PhoneRef.current, { opacity: 0, scale: 0.9, x: 0 });
-          gsap.set(section15Phase3TextRef.current, { opacity: 0, y: 30 });
           gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
           gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
         }
         // Phase 4: Fade in new elements (50-100%)
         else {
           const phase4Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 4 (fade in)
-          
-          // Split phase 4 into three parts: 4A+4B (0-50%), 4C (50-75%), 4D (75-100%)
-          if (phase4Progress <= 0.5) {
-            // Phase 4A+4B: Icon, header, and phone animate in together (50-75%)
-            const phase4ABProgress = phase4Progress / 0.5; // 0 to 1 for phase 4A+4B
-            const easedPhase4ABProgress = gsap.parseEase("power3.inOut")(phase4ABProgress);
-            
-            // Keep current elements at opacity 0
-            gsap.set(section15IconRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Text1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Column3ImageRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Paragraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Paragraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            
-            // Animate in icon, header, and phone together
-            gsap.set(section15Phase3IconRef.current, {
-              opacity: easedPhase4ABProgress,
-              scale: 0.8 + (0.2 * easedPhase4ABProgress),
-              y: 30 - (30 * easedPhase4ABProgress),
-              rotation: -21 + (21 * easedPhase4ABProgress)
-            });
-            gsap.set(section15Phase3HeaderRef.current, {
-              opacity: easedPhase4ABProgress,
-              y: 30 - (30 * easedPhase4ABProgress)
-            });
-            gsap.set(section15Phase3PhoneRef.current, {
-              opacity: easedPhase4ABProgress,
-              scale: 0.9,
-              x: 0
-            });
-            
-            // Start playing phase 3 video when phase 4 begins
-            if (section15Phase3PhoneRef.current && section15Phase3PhoneRef.current.paused) {
-              section15Phase3PhoneRef.current.play();
-            }
-            
-            // Keep text and phase 4D elements hidden
-            gsap.set(section15Phase3TextRef.current, { opacity: 0, y: 30 });
-            gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
-            gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
-          } else if (phase4Progress <= 0.75) {
-            // Phase 4C: Text animates in (75-87.5%)
-            const phase4CProgress = (phase4Progress - 0.5) / 0.25; // 0 to 1 for phase 4C
-            const easedPhase4CProgress = gsap.parseEase("power3.inOut")(phase4CProgress);
-            
-            // Keep current elements at opacity 0
-            gsap.set(section15IconRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Text1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Column3ImageRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Paragraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Paragraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            
-            // Keep icon, header, and phone at full opacity
-            gsap.set(section15Phase3IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
-            gsap.set(section15Phase3HeaderRef.current, { opacity: 1, y: 0 });
-            gsap.set(section15Phase3PhoneRef.current, { opacity: 1, scale: 0.9, x: 0 });
-            
-            // Animate in text
-            gsap.set(section15Phase3TextRef.current, {
-              opacity: easedPhase4CProgress,
-              y: 30 - (30 * easedPhase4CProgress)
-            });
-            
-            // Keep phase 4D elements hidden
-            gsap.set(section15Phase4DImageRef.current, { opacity: 0, y: 30 });
-            gsap.set(section15Phase4DTextRef.current, { opacity: 0, y: 30 });
-          } else {
-            // Phase 4D: Image and text animate in (87.5-100%)
-            const phase4DProgress = (phase4Progress - 0.75) / 0.25; // 0 to 1 for phase 4D
-            const easedPhase4DProgress = gsap.parseEase("power3.inOut")(phase4DProgress);
-            
-            // Keep current elements at opacity 0
-            gsap.set(section15IconRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Text1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Column3ImageRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Paragraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            gsap.set(section15Paragraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            
-            // Keep icon, header, phone, and text at full opacity
-            gsap.set(section15Phase3IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
-            gsap.set(section15Phase3HeaderRef.current, { opacity: 1, y: 0 });
-            gsap.set(section15Phase3PhoneRef.current, { opacity: 1, scale: 0.9, x: 0 });
-            gsap.set(section15Phase3TextRef.current, { opacity: 1, y: 0 });
-            
-            // Animate in phase 4D elements
-            gsap.set(section15Phase4DImageRef.current, {
-              opacity: easedPhase4DProgress,
-              y: 30 - (30 * easedPhase4DProgress)
-            });
-            gsap.set(section15Phase4DTextRef.current, {
-              opacity: easedPhase4DProgress,
-              y: 30 - (30 * easedPhase4DProgress)
-            });
+
+          // Phase 4A+4B: Icon, header, phone, and text animate in together (50-100%)
+          const easedPhase4Progress = gsap.parseEase("power3.inOut")(phase4Progress);
+
+          // Desktop - Keep current elements at opacity 0
+          gsap.set(section15IconRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
+          gsap.set(section15Text1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
+          gsap.set(section15Column3ImageRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
+          gsap.set(section15Paragraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
+          gsap.set(section15Paragraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
+
+          // Desktop - Animate in icon, header, phone, and text together
+          gsap.set(section15Phase3IconRef.current, {
+            opacity: easedPhase4Progress,
+            scale: 0.8 + (0.2 * easedPhase4Progress),
+            y: 30 - (30 * easedPhase4Progress),
+            rotation: -21 + (21 * easedPhase4Progress)
+          });
+          gsap.set(section15Phase3HeaderRef.current, {
+            opacity: easedPhase4Progress,
+            y: 30 - (30 * easedPhase4Progress)
+          });
+          gsap.set(section15Phase3PhoneRef.current, {
+            opacity: easedPhase4Progress,
+            scale: 0.9,
+            x: 0
+          });
+
+          // Start playing phase 3 video when phase 4 begins
+          if (section15Phase3PhoneRef.current && section15Phase3PhoneRef.current.paused) {
+            section15Phase3PhoneRef.current.play();
           }
+
+          // Desktop - Animate in phase 4D elements
+          gsap.set(section15Phase4DImageRef.current, {
+            opacity: easedPhase4Progress,
+            y: 30 - (30 * easedPhase4Progress)
+          });
+          gsap.set(section15Phase4DTextRef.current, {
+            opacity: easedPhase4Progress,
+            y: 30 - (30 * easedPhase4Progress)
+          });
+
+          // Mobile - Phase 3 header stays visible
+          gsap.set(section15MobileCol1Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section15MobileCol3ImageRef.current, { opacity: 0, y: 0 });
+          gsap.set(section15MobilePhase3Col1Ref.current, { opacity: 1, y: 0 });
+          gsap.set(section15MobileVideoRef.current, { opacity: 0 });
+          gsap.set(section15MobilePhase3VideoRef.current, { opacity: 1 });
         }
         
         // Mark animation as complete when animation finishes (at 100% scroll)
@@ -2384,20 +2656,20 @@ const NycSubway = ({ className }) => {
         if (progress <= 0.5) {
           const phase2Progress = progress / 0.5; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
-          
-          // Header stays visible during phase 2
-          gsap.set(section16IconRef.current, { 
-            opacity: 1, 
+
+          // Desktop - Header stays visible during phase 2
+          gsap.set(section16IconRef.current, {
+            opacity: 1,
             scale: 1,
             y: 0,
             rotation: 0
           });
-          gsap.set(section16Text1Ref.current, { 
-            opacity: 1, 
+          gsap.set(section16Text1Ref.current, {
+            opacity: 1,
             y: 0
           });
-          
-          // Only paragraph1 fades in, paragraph2 stays hidden
+
+          // Desktop - Only paragraph1 fades in, paragraph2 stays hidden
           gsap.set(section16Paragraph1Ref.current, {
             opacity: easedPhase2Progress,
             y: 30 - (30 * easedPhase2Progress)
@@ -2406,47 +2678,78 @@ const NycSubway = ({ className }) => {
             opacity: 0, // Keep hidden
             y: 30
           });
-          
-          // Phone stays in center
-          gsap.set(section16ImageRef.current, { 
-            opacity: 1, 
+
+          // Desktop - Phone stays in center
+          gsap.set(section16ImageRef.current, {
+            opacity: 1,
             x: 0
+          });
+
+          // Mobile - Header fades out, Paragraph 1 fades in
+          gsap.set(section16MobileCol1Ref.current, {
+            opacity: 1 - easedPhase2Progress,
+            y: 0
+          });
+          gsap.set(section16MobileParagraph1Ref.current, {
+            opacity: easedPhase2Progress,
+            y: 20 - (20 * easedPhase2Progress)
+          });
+          gsap.set(section16MobileParagraph2Ref.current, {
+            opacity: 0,
+            y: 20
           });
         }
         // Phase 3: paragraph1 moves up and fades, paragraph2 fades in (50-100%)
         else {
           const phase3Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
-          
-          // Header stays visible (no fading out)
-          gsap.set(section16IconRef.current, { 
-            opacity: 1, 
+
+          // Desktop - Header stays visible (no fading out)
+          gsap.set(section16IconRef.current, {
+            opacity: 1,
             scale: 1,
             y: 0,
             rotation: 0
           });
-          gsap.set(section16Text1Ref.current, { 
-            opacity: 1, 
+          gsap.set(section16Text1Ref.current, {
+            opacity: 1,
             y: 0
           });
-          
-          // Phone stays in center (no animation)
-          gsap.set(section16ImageRef.current, { 
-            opacity: 1, 
+
+          // Desktop - Phone stays in center (no animation)
+          gsap.set(section16ImageRef.current, {
+            opacity: 1,
             x: 0
           });
-          
-          // Paragraph1 moves up and fades to 0.75 opacity with blur
+
+          // Desktop - Paragraph1 moves up and fades to 0.75 opacity with blur
           gsap.set(section16Paragraph1Ref.current, {
             opacity: 1 - (0.85 * easedPhase3Progress), // Fade to 0.75 opacity
             y: -225 * easedPhase3Progress, // Move up by 225px
             filter: `blur(${1 * easedPhase3Progress}px)` // Add blur effect
           });
-          
-          // Paragraph2 fades in
+
+          // Desktop - Paragraph2 fades in
           gsap.set(section16Paragraph2Ref.current, {
             opacity: easedPhase3Progress, // Fade in
             y: 225 - (225 * easedPhase3Progress) // Move up from initial position
+          });
+
+          // Mobile - Header stays hidden
+          gsap.set(section16MobileCol1Ref.current, {
+            opacity: 0,
+            y: 0
+          });
+
+          // Mobile - Paragraph 1 fades out/blurs, Paragraph 2 fades in
+          gsap.set(section16MobileParagraph1Ref.current, {
+            opacity: 1 - easedPhase3Progress,
+            y: 0,
+            filter: `blur(${2 * easedPhase3Progress}px)`
+          });
+          gsap.set(section16MobileParagraph2Ref.current, {
+            opacity: easedPhase3Progress,
+            y: 20 - (20 * easedPhase3Progress)
           });
         }
         
@@ -2477,69 +2780,103 @@ const NycSubway = ({ className }) => {
         if (progress <= 0.4) {
           const phase2Progress = progress / 0.4; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("back.out")(phase2Progress);
-          
-          // Header stays visible
+
+          // Desktop - Header stays visible
           gsap.set(section17IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
           gsap.set(section17Text1Ref.current, { opacity: 1, y: 0 });
-          
-                     // Split Phase 2 into two parts: first paragraph (0-50%), then second paragraph (50-100%)
-           if (phase2Progress <= 0.5) {
-             const firstParagraphProgress = phase2Progress / 0.5; // 0 to 1 for first paragraph
-             const easedFirstParagraphProgress = gsap.parseEase("back.out")(firstParagraphProgress);
-             
-             // First paragraph fades in, second paragraph stays hidden
-             gsap.set(section17Paragraph1Ref.current, {
-               opacity: easedFirstParagraphProgress,
-               y: 30 - (30 * easedFirstParagraphProgress)
-             });
-             gsap.set(section17Paragraph2Ref.current, {
-               opacity: 0, // Keep hidden
-               y: 30
-             });
-           } else {
-             const secondParagraphProgress = (phase2Progress - 0.5) / 0.5; // 0 to 1 for second paragraph
-             const easedSecondParagraphProgress = gsap.parseEase("back.out")(secondParagraphProgress);
-             
-             // First paragraph stays visible, second paragraph fades in
-             gsap.set(section17Paragraph1Ref.current, {
-               opacity: 1, // Keep visible
-               y: 0
-             });
-             gsap.set(section17Paragraph2Ref.current, {
-               opacity: easedSecondParagraphProgress,
-               y: 30 - (30 * easedSecondParagraphProgress)
-             });
-           }
-          
-          // Phone stays in center
-          gsap.set(section17ImageRef.current, { 
-            opacity: 1, 
+
+          // Desktop - Split Phase 2 into two parts: first paragraph (0-50%), then second paragraph (50-100%)
+          if (phase2Progress <= 0.5) {
+            const firstParagraphProgress = phase2Progress / 0.5; // 0 to 1 for first paragraph
+            const easedFirstParagraphProgress = gsap.parseEase("back.out")(firstParagraphProgress);
+
+            // First paragraph fades in, second paragraph stays hidden
+            gsap.set(section17Paragraph1Ref.current, {
+              opacity: easedFirstParagraphProgress,
+              y: 30 - (30 * easedFirstParagraphProgress)
+            });
+            gsap.set(section17Paragraph2Ref.current, {
+              opacity: 0, // Keep hidden
+              y: 30
+            });
+
+            // Mobile - Header fades out, Paragraph 1 fades in
+            gsap.set(section17MobileCol1Ref.current, {
+              opacity: 1 - easedFirstParagraphProgress,
+              y: 0
+            });
+            gsap.set(section17MobileParagraph1Ref.current, {
+              opacity: easedFirstParagraphProgress,
+              y: 20 - (20 * easedFirstParagraphProgress)
+            });
+            gsap.set(section17MobileParagraph2Ref.current, {
+              opacity: 0,
+              y: 20
+            });
+          } else {
+            const secondParagraphProgress = (phase2Progress - 0.5) / 0.5; // 0 to 1 for second paragraph
+            const easedSecondParagraphProgress = gsap.parseEase("back.out")(secondParagraphProgress);
+
+            // Desktop - First paragraph stays visible, second paragraph fades in
+            gsap.set(section17Paragraph1Ref.current, {
+              opacity: 1, // Keep visible
+              y: 0
+            });
+            gsap.set(section17Paragraph2Ref.current, {
+              opacity: easedSecondParagraphProgress,
+              y: 30 - (30 * easedSecondParagraphProgress)
+            });
+
+            // Mobile - Paragraph 1 fades out/blurs, Paragraph 2 fades in
+            gsap.set(section17MobileCol1Ref.current, {
+              opacity: 0,
+              y: 0
+            });
+            gsap.set(section17MobileParagraph1Ref.current, {
+              opacity: 1 - easedSecondParagraphProgress,
+              y: 0,
+              filter: `blur(${2 * easedSecondParagraphProgress}px)`
+            });
+            gsap.set(section17MobileParagraph2Ref.current, {
+              opacity: easedSecondParagraphProgress,
+              y: 20 - (20 * easedSecondParagraphProgress)
+            });
+          }
+
+          // Desktop - Phone stays in center
+          gsap.set(section17ImageRef.current, {
+            opacity: 1,
             x: 0
           });
-          
+
           // Keep phase 3 and 4 elements hidden
           gsap.set(section17Phase3IconRef.current, { opacity: 0, scale: 0.8, y: 30, rotation: -21 });
           gsap.set(section17Phase3HeaderRef.current, { opacity: 0, y: 30 });
           gsap.set(section17Phase3PhoneRef.current, { opacity: 0, x: 0 });
           gsap.set(section17Phase3TextRef.current, { opacity: 0, y: 30 });
+
+          // Mobile - Keep phase 3 elements hidden
+          gsap.set(section17MobilePhase3Col1Ref.current, { opacity: 0, y: 20 });
+          gsap.set(section17MobilePhase3ImageRef.current, { opacity: 0 });
+          gsap.set(section17MobilePhase3TextRef.current, { opacity: 0, y: 20 });
         }
         // Phase 3: Fade out current elements completely (40-50%)
         else if (progress <= 0.5) {
           const phase3Progress = (progress - 0.4) / 0.1; // 0 to 1 for phase 3 (fade out)
           const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
-          
-          // Fade out current elements completely to opacity 0
-          gsap.set(section17IconRef.current, { 
+
+          // Desktop - Fade out current elements completely to opacity 0
+          gsap.set(section17IconRef.current, {
             opacity: 1 - easedPhase3Progress, // Fade from 1 to 0
             y: 0,
             filter: `blur(${2 * easedPhase3Progress}px)` // Blur from 0 to 2px
           });
-          gsap.set(section17Text1Ref.current, { 
+          gsap.set(section17Text1Ref.current, {
             opacity: 1 - easedPhase3Progress, // Fade from 1 to 0
             y: 0,
             filter: `blur(${2 * easedPhase3Progress}px)` // Blur from 0 to 2px
           });
-          gsap.set(section17ImageRef.current, { 
+          gsap.set(section17ImageRef.current, {
             opacity: 1, // Keep at full opacity
             x: 0
           });
@@ -2553,12 +2890,34 @@ const NycSubway = ({ className }) => {
             y: 0,
             filter: `blur(${2 * easedPhase3Progress}px)` // Add blur effect
           });
-          
+
           // Keep phase 4 elements hidden during fade out
           gsap.set(section17Phase3IconRef.current, { opacity: 0, scale: 0.8, y: 30, rotation: -21 });
           gsap.set(section17Phase3HeaderRef.current, { opacity: 0, y: 30 });
           gsap.set(section17Phase3PhoneRef.current, { opacity: 0, x: 0 });
           gsap.set(section17Phase3TextRef.current, { opacity: 0, y: 30 });
+
+          // Mobile - Paragraph 2 fades out, Phase 3 header fades in
+          gsap.set(section17MobileCol1Ref.current, { opacity: 0, y: 0 });
+          gsap.set(section17MobileParagraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
+          gsap.set(section17MobileParagraph2Ref.current, {
+            opacity: 1 - easedPhase3Progress,
+            y: 0,
+            filter: `blur(${2 * easedPhase3Progress}px)`
+          });
+          gsap.set(section17MobilePhase3Col1Ref.current, {
+            opacity: easedPhase3Progress,
+            y: 20 - (20 * easedPhase3Progress)
+          });
+          // Mobile - Swap images
+          gsap.set(section17MobileImageRef.current, {
+            opacity: 1 - easedPhase3Progress
+          });
+          gsap.set(section17MobilePhase3ImageRef.current, {
+            opacity: easedPhase3Progress
+          });
+          // Keep phase 3 text hidden
+          gsap.set(section17MobilePhase3TextRef.current, { opacity: 0, y: 20 });
         }
         // Phase 4: Fade in new elements (50-100%)
         else {
@@ -2569,14 +2928,14 @@ const NycSubway = ({ className }) => {
             // Phase 4A+4B: Icon, header, and phone animate in together (50-75%)
             const phase4ABProgress = phase4Progress / 0.5; // 0 to 1 for phase 4A+4B
             const easedPhase4ABProgress = gsap.parseEase("power3.inOut")(phase4ABProgress);
-            
-            // Keep current elements at opacity 0
+
+            // Desktop - Keep current elements at opacity 0
             gsap.set(section17IconRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             gsap.set(section17Text1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             gsap.set(section17Paragraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             gsap.set(section17Paragraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            
-            // Animate in icon, header, and phone together
+
+            // Desktop - Animate in icon, header, and phone together
             gsap.set(section17Phase3IconRef.current, {
               opacity: easedPhase4ABProgress,
               scale: 0.8 + (0.2 * easedPhase4ABProgress),
@@ -2591,29 +2950,50 @@ const NycSubway = ({ className }) => {
               opacity: easedPhase4ABProgress,
               x: 0
             });
-            
-            // Keep text hidden
+
+            // Desktop - Keep text hidden
             gsap.set(section17Phase3TextRef.current, { opacity: 0, y: 30 });
+
+            // Mobile - Phase 3 header stays visible, keep text hidden
+            gsap.set(section17MobileCol1Ref.current, { opacity: 0, y: 0 });
+            gsap.set(section17MobileParagraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
+            gsap.set(section17MobileParagraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
+            gsap.set(section17MobilePhase3Col1Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section17MobileImageRef.current, { opacity: 0 });
+            gsap.set(section17MobilePhase3ImageRef.current, { opacity: 1 });
+            gsap.set(section17MobilePhase3TextRef.current, { opacity: 0, y: 20 });
           } else {
             // Phase 4C: Text animates in (75-100%)
             const phase4CProgress = (phase4Progress - 0.5) / 0.5; // 0 to 1 for phase 4C
             const easedPhase4CProgress = gsap.parseEase("power3.inOut")(phase4CProgress);
-            
-            // Keep current elements at opacity 0
+
+            // Desktop - Keep current elements at opacity 0
             gsap.set(section17IconRef.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             gsap.set(section17Text1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             gsap.set(section17Paragraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
             gsap.set(section17Paragraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
-            
-            // Keep icon, header, and phone at full opacity
+
+            // Desktop - Keep icon, header, and phone at full opacity
             gsap.set(section17Phase3IconRef.current, { opacity: 1, scale: 1, y: 0, rotation: 0 });
             gsap.set(section17Phase3HeaderRef.current, { opacity: 1, y: 0 });
             gsap.set(section17Phase3PhoneRef.current, { opacity: 1, x: 0 });
-            
-            // Animate in text
+
+            // Desktop - Animate in text
             gsap.set(section17Phase3TextRef.current, {
               opacity: easedPhase4CProgress,
               y: 30 - (30 * easedPhase4CProgress)
+            });
+
+            // Mobile - Phase 3 header stays, text fades in
+            gsap.set(section17MobileCol1Ref.current, { opacity: 0, y: 0 });
+            gsap.set(section17MobileParagraph1Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
+            gsap.set(section17MobileParagraph2Ref.current, { opacity: 0, y: 0, filter: 'blur(2px)' });
+            gsap.set(section17MobilePhase3Col1Ref.current, { opacity: 1, y: 0 });
+            gsap.set(section17MobileImageRef.current, { opacity: 0 });
+            gsap.set(section17MobilePhase3ImageRef.current, { opacity: 1 });
+            gsap.set(section17MobilePhase3TextRef.current, {
+              opacity: easedPhase4CProgress,
+              y: 20 - (20 * easedPhase4CProgress)
             });
           }
         }
@@ -2692,14 +3072,14 @@ const NycSubway = ({ className }) => {
         </video>
         
         <img 
-          src="/subway/lockup.png" 
+          src={isMobile ? "/subway/lockup(portrait).svg" : "/subway/lockup.png"} 
           alt="NYC Subway Lockup" 
-          className="absolute top-[49%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-auto scale-[80%] md:scale-[50%] ml-6 z-10"
+          className="absolute top-[45%] md:top-[49%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-auto scale-[65%] md:scale-[50%] ml-1.5 md:ml-6 z-10 drop-shadow-[3px_4px_12px_rgba(0,0,0,0.5)] md:drop-shadow-none"
         />
 
         {/* Bouncing Chevron Down */}
         <div 
-          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
+          className="absolute bottom-20 md:bottom-6 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
           onClick={() => {
             const nextSection = section2Ref.current;
             if (nextSection) {
@@ -3275,8 +3655,7 @@ const NycSubway = ({ className }) => {
       {/* 1st Rounded Rectangle */}
       <div 
         ref={section11OriginalRef}
-        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[28pt] md:rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[340px] h-[560px] md:w-[475px] md:h-[700px] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden scale-95 md:scale-100"
-        style={{ top: '4%' }}
+        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[28pt] md:rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[340px] h-[560px] md:w-[475px] md:h-[700px] mx-auto text-center absolute left-1/2 top-1/2 md:top-auto -translate-x-1/2 -translate-y-1/2 md:translate-y-0 md:inset-0 md:m-auto z-10 overflow-hidden scale-95 md:scale-100"
       >
         {/* Text */}
         <div className="pl-8 pt-8 md:pl-14 md:pt-10 text-left w-full">
@@ -3304,29 +3683,29 @@ const NycSubway = ({ className }) => {
           <img 
             src="/subway/section11phone2.png" 
             alt="Section 11 Icon" 
-            className="absolute w-full h-auto object-cover scale-[130%] md:scale-[120%] left-[69%] top-[70%] -translate-x-[50%] -translate-y-[50%]"
+            className="absolute w-full h-auto object-cover scale-[130%] md:scale-[120%] left-[69%] top-[65%] md:top-[70%] -translate-x-[50%] -translate-y-[50%]"
           />
         </div>
       </div>
       
       {/* 2nd Rounded Rectangle with 3 Text Columns */}
-      <div 
+      <div
         ref={section11NewRef}
-        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[1000px] h-[500px] mx-auto text-center absolute inset-0 m-auto z-10 overflow-hidden pt-11 pr-14 pl-18"
+        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[28pt] md:rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[360px] h-[650px] md:w-[1000px] md:h-[500px] mx-auto text-center absolute left-1/2 top-1/2 md:top-auto -translate-x-1/2 -translate-y-1/2 md:translate-y-0 md:inset-0 md:m-auto z-10 overflow-hidden pt-8 px-[25px] md:pt-11 md:pr-14 md:pl-18"
       >
         {/* Header Container */}
-        <div className="flex items-center mb-4">
-          
-          <h2 
+        <div className="flex flex-wrap items-center mb-2 md:mb-4">
+
+          <h2
             ref={section11Header1Ref}
-            className="text-6xl font-semibold tracking-tight text-black/80"
+            className="text-4xl md:text-6xl font-semibold tracking-tight text-black/80 px-1 md:px-0"
           >
             Ultra-wide
           </h2>
 
-          <h2 
+          <h2
             ref={section11Header2Ref}
-            className="text-6xl font-semibold tracking-tight bg-gradient-to-r from-[#528ee8] to-[#1a78dd] bg-clip-text  text-transparent italic -ml-0.5 pr-2"
+            className="text-4xl md:text-6xl font-semibold tracking-tight bg-gradient-to-r from-[#528ee8] to-[#1a78dd] bg-clip-text text-transparent italic -ml-0.5 pr-2"
           >
             what?
           </h2>
@@ -3334,76 +3713,76 @@ const NycSubway = ({ className }) => {
         </div>
 
         {/* Phase 1 Content */}
-        <div ref={section11TopParagraphRef} className="text-left mb-12">
+        <div ref={section11TopParagraphRef} className="text-left mb-6 md:mb-12">
 
           {/* Header Sub Paragraph */}
-          <p className="text-xl tracking-tight text-black/60 font-semibold w-[90%]">
+          <p className="text-sm md:text-xl tracking-tight text-black/60 font-semibold w-full md:w-[90%] px-2 md:px-0">
           Ultra-Wideband (UWB) is a short-range, high-bandwidth wireless communication technology, capable of providing precise spatial awareness and device tracking
           </p>
 
         </div>
-        
+
         {/* Bottom 3 Columns */}
-        <div className="flex h-full flex-1 items-start justify-start gap-6">
+        <div className="flex flex-col md:flex-row h-auto md:h-full items-start justify-start gap-4 md:gap-6 pb-4 md:pb-0">
 
           {/* Column 1 */}
-          <div 
+          <div
             ref={section11Text1Ref}
-            className="flex-1 flex flex-col justify-center items-start"
-          >  
-            <img 
-              src="/subway/section11iconairtag.png" 
-              alt="UWB Icon" 
-              className="h-10 w-auto mb-4 -mt-1"
+            className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
+          >
+            <img
+              src="/subway/section11iconairtag.png"
+              alt="UWB Icon"
+              className="h-6 md:h-8 w-auto mb-3 md:mb-4 md:-mt-1"
             />
 
-            <h3 className="text-2xl tracking-tight font-semibold mb-4 text-black/90">
+            <h3 className="text-xl md:text-2xl tracking-tight font-semibold mb-2 md:mb-4 text-black/90">
               Airtag/Find My
             </h3>
 
-            <p className="text-sm text-gray-700 font-medium text-left">
+            <p className="text-xs md:text-sm text-gray-700 font-medium text-left">
               UWB enables an iPhone to measure its distance and direction from an AirTag, providing precision finding with centimeter-level accuracy.
             </p>
 
           </div>
-          
+
           {/* Column 2 */}
-          <div 
+          <div
             ref={section11Text2Ref}
-            className="flex-1 flex flex-col justify-center items-start"
+            className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
           >
-            <img 
-              src="/subway/section11icon3.png" 
-              alt="UWB Icon" 
-              className="h-9 w-auto mb-4"
+            <img
+              src="/subway/section11icon3.png"
+              alt="UWB Icon"
+              className="h-6 md:h-7 w-auto mb-3 md:mb-4"
             />
 
-            <h3 className="text-2xl tracking-tight font-semibold mb-4 text-black/90">
+            <h3 className="text-xl md:text-2xl tracking-tight font-semibold mb-2 md:mb-4 text-black/90">
               Handoff
             </h3>
 
-            <p className="text-sm text-gray-700 font-medium text-left">
+            <p className="text-xs md:text-sm text-gray-700 font-medium text-left">
               Handoff works more smoothly by prioritizing nearby devices. When you bring your iPhone close to a HomePod mini, a visual and haptic effect appears, making it easier to transfer music.
             </p>
-              
+
           </div>
-          
+
           {/* Column 3 */}
-          <div 
+          <div
             ref={section11Text3Ref}
-            className="flex-1 flex flex-col justify-center items-start"
+            className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
           >
-            <img 
-              src="/subway/section11icon4.png" 
-              alt="UWB Icon" 
-              className="h-9 w-auto mb-4"
+            <img
+              src="/subway/section11icon4.png"
+              alt="UWB Icon"
+              className="h-6 md:h-7 w-auto mb-3 md:mb-4"
             />
 
-            <h3 className="text-2xl tracking-tight font-semibold mb-4 text-black/90">
+            <h3 className="text-xl md:text-2xl tracking-tight font-semibold mb-2 md:mb-4 text-black/90">
               AirDrop
             </h3>
 
-            <p className="text-sm text-gray-700 font-medium text-left">
+            <p className="text-xs md:text-sm text-gray-700 font-medium text-left">
               UWB also enables better device-to-device awareness, improving AirDrop by detecting which person you&apos;re pointing at.
             </p>
 
@@ -3411,85 +3790,85 @@ const NycSubway = ({ className }) => {
         </div>
         
         {/* Phase 2 Content - Overlaid on top */}
-        <div 
+        <div
           ref={section11Phase2Ref}
-          className="absolute inset-0 pt-11 pl-18 pr-6"
+          className="absolute inset-0 pt-8 px-[25px] md:pt-11 md:pl-18 md:pr-6"
         >
           {/* Top Paragraph */}
-          <div ref={section11Phase2TopParagraphRef} className="text-left mb-10">
-            <h2 className="text-6xl font-semibold tracking-[-0.09rem] mb-4 text-black/80 leading-[3.75rem] w-[60%]">
+          <div ref={section11Phase2TopParagraphRef} className="text-left mb-6 md:mb-10">
+            <h2 className="mt-3 text-3xl md:text-6xl font-semibold tracking-[-0.05rem] md:tracking-[-0.09rem] mb-2 md:mb-4 text-black/80 leading-[2.2rem] md:leading-[3.75rem] w-full md:w-[60%] px-1 md:px-0">
               How it could work within the subway.
             </h2>
           </div>
-          
+
           {/* Bottom Text */}
-          <div className="flex h-full flex-1 items-start justify-start gap-10">
+          <div className="flex flex-col md:flex-row h-auto md:h-full items-start justify-start gap-4 md:gap-10 pb-4 md:pb-0 mt-4 md:mt-0">
 
             {/* Column 1 */}
-            <div 
+            <div
               ref={section11Phase2Text1Ref}
-              className="flex-1 flex flex-col justify-center items-start"
-            >  
-              <img 
-                src="/subway/section11icon2.png" 
-                alt="Navigation Icon" 
-                className="h-9 w-auto mb-4 -ml-1"
+              className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
+            >
+              <img
+                src="/subway/section11icon2.png"
+                alt="Navigation Icon"
+                className="h-6 md:h-7 w-auto mb-3 md:mb-4 md:-ml-1"
               />
 
-              <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem] ">
-              UWB base stations will be installed within subway stations, namely at entrances and exits, diverging paths within the station, and platforms. 
+              <p className="text-sm md:text-lg font-medium text-gray-600 text-left leading-[1.25rem] md:leading-[1.7rem]">
+              UWB base stations will be installed within subway stations, namely at entrances and exits, diverging paths within the station, and platforms.
               </p>
 
             </div>
-            
+
             {/* Column 2 */}
-            <div 
+            <div
               ref={section11Phase2Text2Ref}
-              className="flex-1 flex flex-col justify-center items-start"
+              className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
             >
-              <img 
-                src="/subway/section11icon5.png" 
-                alt="Safety Icon" 
-                className="h-9 w-auto mb-4 -ml-1"
+              <img
+                src="/subway/section11icon5.png"
+                alt="Safety Icon"
+                className="h-6 md:h-7 w-auto mb-3 md:mb-4 md:-ml-1"
               />
 
-              <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem]">
+              <p className="text-sm md:text-lg font-medium text-gray-600 text-left leading-[1.25rem] md:leading-[1.7rem]">
               The base stations will be programmed to transmit information regarding its respective location within stations.
               </p>
-                
+
             </div>
-            
+
             {/* Column 3 */}
-            <div 
+            <div
               ref={section11Phase2Text3Ref}
-              className="flex-1 flex flex-col justify-center items-start"
+              className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
             >
-              <img 
-                src="/subway/section11icon6.png" 
-                alt="Accessibility Icon" 
-                className="h-9 w-auto mb-4 -ml-1"
+              <img
+                src="/subway/section11icon6.png"
+                alt="Accessibility Icon"
+                className="h-6 md:h-7 w-auto mb-3 md:mb-4 md:-ml-1"
               />
 
-              <p className="text-lg font-medium text-gray-600 text-left leading-[1.7rem] ">
+              <p className="text-sm md:text-lg font-medium text-gray-600 text-left leading-[1.25rem] md:leading-[1.7rem]">
               iPhones, in hand with Apple Maps, will query the base stations, resulting in precise spatial awareness within stations.
               </p>
 
-                            </div>
-            </div>
-            
-            {/* Phase 2 Emoji - Bottom Right */}
-            <div 
-              ref={section11Phase2EmojiRef}
-              className="absolute bottom-0 right-10"
-            >
-              <img 
-                src="/subway/section11emoji.png" 
-                alt="Section 11 Emoji" 
-                className="h-64 w-auto"
-              />
             </div>
           </div>
+
+          {/* Phase 2 Emoji - Bottom Right */}
+          <div
+            ref={section11Phase2EmojiRef}
+            className="absolute bottom-2 right-4 md:bottom-0 md:right-10 hidden md:block"
+          >
+            <img
+              src="/subway/section11emoji.png"
+              alt="Section 11 Emoji"
+              className="h-40 md:h-64 w-auto"
+            />
+          </div>
         </div>
+      </div>
       
     </section>
 
@@ -3514,25 +3893,25 @@ const NycSubway = ({ className }) => {
               ref={section12Text1Ref}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-8"
             >
-                <p className="text-2xl font-medium text-foreground tracking-tight">Wait, so how does it...</p>
+                <p className="text-[12pt] leading-none md:text-2xl font-medium text-foreground tracking-tight">Wait, so how does it...</p>
 
             </div>
             
           {/* Text 2 */}
-            <div 
+            <div
               ref={section12Text2Ref}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-8"
             >
-                <h2 className="text-4xl md:text-9xl whitespace-nowrap font-semibold text-foreground tracking-tight w-full -mt-4 relative">
+                <h2 className="text-7xl md:text-9xl md:whitespace-nowrap font-semibold text-foreground tracking-tight w-full mt-6 md:-mt-4 relative flex flex-col md:flex-row md:items-center">
                   <span className="relative inline-block">
                     actually
-                    <div 
+                    <div
                       ref={section12UnderlineRef}
-                      className="absolute bottom-0 left-1.5 w-[84%] h-2 bg-foreground transform scale-x-0 origin-left"
+                      className="absolute bottom-0 left-1.5 w-[84%] h-1.5 md:h-2 bg-foreground transform scale-x-0 origin-left"
                       style={{ transform: 'scaleX(0)' }}
                     />
                   </span>
-                  <span className="ml-5">work?</span>
+                  <span className="ml-8 md:ml-5">work?</span>
                 </h2>
             </div>
       </div>
@@ -3545,32 +3924,33 @@ const NycSubway = ({ className }) => {
         <img 
           src="/subway/section12emoji1.png" 
           alt="Section 12 Emoji" 
-          className="max-w-full h-[29rem]"
+          className="max-w-full h-[18rem] md:h-[29rem]"
         />
       </div>
     </section>
 
     {/* Section 13 – Mock: Set Destination */}
-    <section 
+    <section
       ref={section13Ref}
       className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
-      <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
-        
+      {/* Desktop layout */}
+      <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
+
         {/* Column 1: Header */}
-        <div 
-          className="text-center md:text-left -mt-16 ml-10"
+        <div
+          className="text-left -mt-16 ml-10"
         >
           {/* Icon */}
-          <div 
+          <div
             ref={section13IconRef}
-            className="mb-4 flex justify-center md:justify-start"
+            className="mb-4 flex justify-start"
             style={{ transformOrigin: 'center', display: 'inline-block' }}
           >
             <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img 
-                src="/subway/section13icon1.png" 
-                alt="Section 13 Icon" 
+              <img
+                src="/subway/section13icon1.png"
+                alt="Section 13 Icon"
                 className="h-12 w-auto ml-1"
                 style={{ transformOrigin: 'center', display: 'block' }}
               />
@@ -3578,7 +3958,7 @@ const NycSubway = ({ className }) => {
           </div>
 
           {/* Text */}
-          <h2 
+          <h2
             ref={section13Text1Ref}
             className="text-[48pt] font-semibold tracking-tight leading-[3.75rem] text-black/80 w-[83%]"
           >
@@ -3586,69 +3966,116 @@ const NycSubway = ({ className }) => {
           </h2>
 
         </div>
-        
+
         {/* Column 2: Placeholder Image */}
-        <div 
+        <div
           ref={section13ImageRef}
           className="flex items-center justify-center relative"
         >
-          <img 
-              src="/subway/section13phone1.png" 
-              alt="Section 13 Icon" 
+          <img
+              src="/subway/section13phone1.png"
+              alt="Section 13 Phone"
               className="h-full w-auto scale-90 z-10"
               style={{ transformOrigin: 'center' }}
             />
-          {/* Line from middle to bottom edge */}
-          {/* <div 
-            className="absolute left-1/2 transform -translate-x-1/2 w-[15px] border-1 "
-            style={{ 
-              top: '50%',
-              height: '50vh',
-              zIndex: -1,
-              boxShadow: 'inset 0 0 5px rgba(0, 0, 0, 0.3)'
-            }}
-          /> */}
         </div>
-        
+
         {/* Column 3: Text Paragraph */}
-        <div 
+        <div
           ref={section13ParagraphRef}
-          className="text-center md:text-left"
+          className="text-left"
         >
           <p className="text-2xl font-medium text-black/50 leading-9 px-24 mt-2">
           As Apple Maps is now aware of your itinerary, the logic within Apple Maps will also include specific entrances to take, directions to head towards the correct platform as well as the directions toward the Downtown platform instead of Uptown.
           </p>
         </div>
       </div>
+
+      {/* Mobile layout */}
+      <div className="flex md:hidden flex-col w-full h-screen">
+
+        {/* Top 1/3: Header (Column 1) and Paragraph (Column 3) swap area */}
+        <div className="h-[35%] flex items-end justify-center relative px-6">
+
+          {/* Column 1: Header - fades out when column 3 fades in */}
+          <div
+            ref={section13MobileCol1Ref}
+            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-0"
+          >
+            <div
+              className="mb-3 flex justify-center"
+              style={{ transformOrigin: 'center', display: 'inline-block' }}
+            >
+              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                <img
+                  src="/subway/section13icon1.png"
+                  alt="Section 13 Icon"
+                  className="h-10 w-auto"
+                  style={{ transformOrigin: 'center', display: 'block' }}
+                />
+              </div>
+            </div>
+            <h2
+              className="text-[28pt] font-semibold tracking-tight leading-[2.25rem] text-black/80"
+            >
+              Set a destination<br/> in your maps.
+            </h2>
+          </div>
+
+          {/* Column 3: Paragraph - fades in when column 1 fades out */}
+          <div
+            ref={section13MobileParagraphRef}
+            className="absolute inset-0 flex items-end justify-center text-center px-8 pb-0"
+          >
+            <p className="text-base font-medium text-black/70 leading-[1.4rem]">
+            As Apple Maps is now aware of your itinerary, the logic within Apple Maps will also include specific entrances to take, directions to head towards the correct platform as well as the directions toward the Downtown platform instead of Uptown.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom 2/3: Phone Image (Column 2) */}
+        <div
+          ref={section13MobileImageRef}
+          className="h-[65%] flex items-start justify-center relative overflow-hidden pt-8"
+        >
+          <img
+            src="/subway/section13phone1.png"
+            alt="Section 13 Phone"
+            className="h-[130%] w-auto object-contain z-10"
+            style={{ transformOrigin: 'center top' }}
+          />
+        </div>
+      </div>
     </section>
 
     {/* Section 14 – Mock: Incorrect Entrance */}
-    <section 
+    <section
       ref={section14Ref}
       className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
-      <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
-        
+      {/* Desktop layout */}
+      <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
+
         {/* Column 1: Header */}
-        <div 
-          className="text-center md:text-left -mt-20 ml-10"
+        <div
+          className="text-left -mt-20 ml-10"
         >
-          <div 
+          <div
             ref={section14IconRef}
-            className="mb-4 flex justify-center md:justify-start"
+            className="mb-4 flex justify-start"
             style={{ transformOrigin: 'center', display: 'inline-block' }}
           >
             <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img 
-                src="/subway/section9icon1.png" 
-                alt="Section 14 Icon" 
+              <img
+                src="/subway/section9icon1.png"
+                alt="Section 14 Icon"
                 className="h-11 w-auto"
                 style={{ transformOrigin: 'center', display: 'block' }}
               />
             </div>
           </div>
 
-          <h2 
+          <h2
             ref={section14Text1Ref}
             className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
           >
@@ -3656,16 +4083,16 @@ const NycSubway = ({ className }) => {
           </h2>
 
         </div>
-        
+
         {/* Column 2: Video */}
-        <div 
+        <div
           className="flex items-center justify-center relative"
         >
-          <video 
+          <video
               ref={section14ImageRef}
-              src="/subway/section14animation2.mp4" 
+              src="/subway/section14animation2.mp4"
               className="scale-95 ml-6 mt-10 object-cover"
-              style={{ 
+              style={{
                 backgroundColor: 'transparent',
                 clipPath: 'inset(1px 1px 1px 1px)'
               }}
@@ -3673,64 +4100,143 @@ const NycSubway = ({ className }) => {
               loop
               playsInline
             />
-          <img 
+          <img
               ref={section14LockscreenRef}
-              src="/subway/section14lockscreen.png" 
-              alt="Section 14 Lockscreen" 
+              src="/subway/section14lockscreen.png"
+              alt="Section 14 Lockscreen"
               className="mx-auto absolute h-[72%] top-[14.5%] left-[14%] w-auto drop-shadow-[3px_4px_12px_rgba(0,0,0,0.2)]"
               style={{ transformOrigin: 'center' }}
             />
         </div>
-        
+
         {/* Column 3: Text Paragraph */}
-        <div 
-          className="text-center md:text-left"
+        <div
+          className="text-left"
         >
-          <p 
+          <p
             ref={section14Paragraph1Ref}
             className="text-2xl font-medium text-black/50 leading-9 px-24 mt-14"
           >
           Your iPhone begins to receive the transmission from the base station that is installed at the entrance.
           </p>
 
-          <p 
+          <p
             ref={section14Paragraph2Ref}
             className="text-2xl font-medium text-black/50 leading-9 px-24 -mt-48"
           >
           You receive a haptic buzz and a time-sensitive notification that you are approaching the wrong entrance for your trip.
           </p>
         </div>
-        
+
+      </div>
+
+      {/* Mobile layout */}
+      <div className="flex md:hidden flex-col w-full h-screen">
+        {/* Top 1/3: Header (Column 1) and Paragraphs (Column 3) swap area */}
+        <div className="h-1/3 flex items-end justify-center relative px-6">
+          {/* Column 1: Header - fades out when paragraphs fade in */}
+          <div
+            ref={section14MobileCol1Ref}
+            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-4"
+          >
+            <div
+              className="mb-3 flex justify-center"
+              style={{ transformOrigin: 'center', display: 'inline-block' }}
+            >
+              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                <img
+                  src="/subway/section9icon1.png"
+                  alt="Section 14 Icon"
+                  className="h-9 w-auto"
+                  style={{ transformOrigin: 'center', display: 'block' }}
+                />
+              </div>
+            </div>
+            <h2
+              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+            >
+              You mistakenly approach the incorrect entrance for the station.
+            </h2>
+          </div>
+
+          {/* Column 3: Paragraph 1 - fades in then out */}
+          <div
+            ref={section14MobileParagraph1Ref}
+            className="absolute inset-0 flex items-end justify-center text-center px-10 pb-10"
+          >
+            <p className="text-base font-medium text-black/70 leading-5">
+            Your iPhone begins to receive the transmission from the base station that is installed at the entrance.
+            </p>
+          </div>
+
+          {/* Column 3: Paragraph 2 - fades in after paragraph 1 */}
+          <div
+            ref={section14MobileParagraph2Ref}
+            className="absolute inset-0 flex items-end justify-center text-center px-8 pb-10"
+          >
+            <p className="text-base font-medium text-black/70 leading-5">
+            You receive a haptic buzz and a time-sensitive notification that you are approaching the wrong entrance for your trip.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom 2/3: Video (Column 2) */}
+        <div
+          className="h-2/3 flex items-start justify-center relative overflow-hidden ml-3"
+        >
+          <video
+            ref={section14MobileVideoRef}
+            src="/subway/section14animation2.mp4"
+            className="h-[130%] w-auto object-contain z-10"
+            style={{
+              transformOrigin: 'center top',
+              backgroundColor: 'transparent',
+              clipPath: 'inset(1px 1px 1px 1px)'
+            }}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <img
+            ref={section14MobileLockscreenRef}
+            src="/subway/section14lockscreen.png"
+            alt="Section 14 Lockscreen"
+            className="mr-4 absolute h-[110%] top-[10%] w-auto drop-shadow-[3px_4px_12px_rgba(0,0,0,0.2)] z-20"
+            style={{ transformOrigin: 'center top' }}
+          />
+        </div>
       </div>
     </section>
 
     {/* Section 15 – Mock: Enter Correct Station */}
-    <section 
+    <section
       ref={section15Ref}
       className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
-      <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
-        
+      {/* Desktop layout */}
+      <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
+
         {/* Column 1: Header */}
-        <div 
-          className="text-center md:text-left -mt-20 ml-10"
+        <div
+          className="text-left -mt-20 ml-10"
         >
-          <div 
+          <div
             ref={section15IconRef}
-            className="mb-4 flex justify-center md:justify-start"
+            className="mb-4 flex justify-start"
             style={{ transformOrigin: 'center', display: 'inline-block' }}
           >
             <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img 
-                src="/subway/section15icon1.png" 
-                alt="Section 15 Icon" 
+              <img
+                src="/subway/section15icon1.png"
+                alt="Section 15 Icon"
                 className="h-14 w-auto"
                 style={{ transformOrigin: 'center', display: 'block' }}
               />
             </div>
           </div>
 
-          <h2 
+          <h2
             ref={section15Text1Ref}
             className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
           >
@@ -3738,16 +4244,16 @@ const NycSubway = ({ className }) => {
           </h2>
 
         </div>
-        
+
         {/* Column 2: Video */}
-        <div 
+        <div
           className="flex items-center justify-center relative"
         >
-          <video 
+          <video
             ref={section15ImageRef}
-            src="/subway/section15animation_1.mp4" 
+            src="/subway/section15animation_1.mp4"
             className="scale-90 ml-7 mt-10 object-cover"
-            style={{ 
+            style={{
               transformOrigin: 'center',
               backgroundColor: 'transparent'
             }}
@@ -3755,59 +4261,59 @@ const NycSubway = ({ className }) => {
             loop
             playsInline
           />
-          
+
         </div>
-        
+
         {/* Column 3: Text Paragraph */}
-        <div 
-          className="text-center md:text-left pl-14 pr-18"
+        <div
+          className="text-left pl-14 pr-18"
         >
-          <img 
+          <img
             ref={section15Column3ImageRef}
-            src="/subway/section15phase2.png" 
-            alt="Section 15 Column 3 Image" 
+            src="/subway/section15phase2.png"
+            alt="Section 15 Column 3 Image"
             className="h-auto w-full"
           />
-          <p 
+          <p
             ref={section15Paragraph1Ref}
             className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
           >
-          A directional navigator shows up and guides you towards the direction of the correct entrance. 
+          A directional navigator shows up and guides you towards the direction of the correct entrance.
           </p>
 
-          <p 
+          <p
             ref={section15Paragraph2Ref}
             className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
           >
           You receive a haptic tap and the blue circle fills when you are oriented in the right direction.
           </p>
         </div>
-        
+
       </div>
-      
-      {/* Phase 3 Overlay Elements */}
-      <div className="absolute inset-0 w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center pointer-events-none">
-        
+
+      {/* Desktop Phase 3 Overlay Elements */}
+      <div className="hidden md:grid absolute inset-0 w-full mx-auto px-20 grid-cols-3 items-center justify-center pointer-events-none">
+
         {/* Phase 3 Column 1: New Header */}
-        <div 
-          className="text-center md:text-left -mt-20 ml-10"
+        <div
+          className="text-left -mt-20 ml-10"
         >
-          <div 
+          <div
             ref={section15Phase3IconRef}
-            className="mb-4 flex justify-center md:justify-start"
+            className="mb-4 flex justify-start"
             style={{ transformOrigin: 'center', display: 'inline-block' }}
           >
             <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img 
-                src="/subway/section15icon2.png" 
-                alt="Section 15 Phase 3 Icon" 
+              <img
+                src="/subway/section15icon2.png"
+                alt="Section 15 Phase 3 Icon"
                 className="h-12 w-auto"
                 style={{ transformOrigin: 'center', display: 'block' }}
               />
             </div>
           </div>
 
-          <h2 
+          <h2
             ref={section15Phase3HeaderRef}
             className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[75%]"
           >
@@ -3815,82 +4321,179 @@ const NycSubway = ({ className }) => {
           </h2>
 
         </div>
-        
+
         {/* Phase 3 Column 2: New Video */}
-        <div 
+        <div
           className="flex items-center justify-center relative"
         >
-          <video 
+          <video
             ref={section15Phase3PhoneRef}
-            src="/subway/section15animation2.mp4" 
+            src="/subway/section15animation2.mp4"
             className="scale-90 ml-7 mt-[2.375rem] object-cover"
-            style={{ 
+            style={{
               backgroundColor: 'transparent'
             }}
             muted
             loop
             playsInline
           />
-          
-        </div>
-        
-        {/* Phase 3 Column 3: New Text */}
-        <div 
-          className="text-center md:text-left pl-14 pr-14"
-        >
-          <p 
-            ref={section15Phase3TextRef}
-            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4 mb-4"
-          >
-          Your iPhone knows where it is due to the base stations within the station. 
-          </p>
 
-          <img 
+        </div>
+
+        {/* Phase 3 Column 3: New Text */}
+        <div
+          className="text-left pl-14 pr-14"
+        >
+          <img
             ref={section15Phase4DImageRef}
-            src="/subway/section15phase3.png" 
-            alt="Section 15 Phase 4D Image" 
+            src="/subway/section15phase3.png"
+            alt="Section 15 Phase 4D Image"
             className="h-auto w-[90%]"
           />
 
-          <p 
+          <p
             ref={section15Phase4DTextRef}
             className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
           >
           The station&apos;s navigation system guides you to your platform with precision.
           </p>
-          
+
         </div>
-        
+
+      </div>
+
+      {/* Mobile layout */}
+      <div className="flex md:hidden flex-col w-full h-screen">
+        {/* Top 1/3: Header (Column 1) and Content (Column 3) swap area */}
+        <div className="h-[30%] flex items-end justify-center relative px-6">
+          {/* Column 1: Header - fades out when column 3 fades in */}
+          <div
+            ref={section15MobileCol1Ref}
+            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-6"
+          >
+            <div
+              className="mb-3 flex justify-center"
+              style={{ transformOrigin: 'center', display: 'inline-block' }}
+            >
+              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                <img
+                  src="/subway/section15icon1.png"
+                  alt="Section 15 Icon"
+                  className="h-11 w-auto"
+                  style={{ transformOrigin: 'center', display: 'block' }}
+                />
+              </div>
+            </div>
+            <h2
+              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+            >
+              You receive directions to the correct entrance.
+            </h2>
+          </div>
+
+          {/* Column 3: Combined Paragraphs - fades in together */}
+          <div
+            ref={section15MobileCol3ImageRef}
+            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-5"
+          >
+            <p className="text-base font-medium text-black/50 leading-5 mb-3">
+            A directional navigator shows up and guides you towards the direction of the correct entrance.
+            </p>
+            <p className="text-base font-medium text-black/50 leading-5">
+            You receive a haptic tap and the blue circle fills when you are oriented in the right direction.
+            </p>
+          </div>
+
+          {/* Phase 3 Column 1: New Header */}
+          <div
+            ref={section15MobilePhase3Col1Ref}
+            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-4"
+          >
+            <div
+              className="mb-3 flex justify-center"
+              style={{ transformOrigin: 'center', display: 'inline-block' }}
+            >
+              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                <img
+                  src="/subway/section15icon2.png"
+                  alt="Section 15 Phase 3 Icon"
+                  className="h-9 w-auto"
+                  style={{ transformOrigin: 'center', display: 'block' }}
+                />
+              </div>
+            </div>
+            <h2
+              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+            >
+              You enter the <br/>correct station.
+            </h2>
+          </div>
+
+        </div>
+
+        {/* Bottom 2/3: Video (Column 2) */}
+        <div
+          className="h-[70%] flex items-start justify-center relative overflow-hidden ml-4"
+        >
+          <video
+            ref={section15MobileVideoRef}
+            src="/subway/section15animation_1.mp4"
+            className="h-[130%] w-auto object-contain z-10"
+            style={{
+              transformOrigin: 'center top',
+              backgroundColor: 'transparent'
+            }}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+
+          {/* Phase 3 Video */}
+          <video
+            ref={section15MobilePhase3VideoRef}
+            src="/subway/section15animation2.mp4"
+            className="absolute h-[130%] w-auto object-contain z-10"
+            style={{
+              transformOrigin: 'center top',
+              backgroundColor: 'transparent'
+            }}
+            muted
+            loop
+            playsInline
+          />
+        </div>
       </div>
     </section>
 
     {/* Section 16 – Mock: Along the Platform */}
-    <section 
+    <section
       ref={section16Ref}
       className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
-      <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
-        
+      {/* Desktop layout */}
+      <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
+
         {/* Column 1: Header */}
-        <div 
-          className="text-center md:text-left -mt-20 ml-10"
+        <div
+          className="text-left -mt-20 ml-10"
         >
-          <div 
+          <div
             ref={section16IconRef}
-            className="mb-4 flex justify-center md:justify-start"
+            className="mb-4 flex justify-start"
             style={{ transformOrigin: 'center', display: 'inline-block' }}
           >
             <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img 
-                src="/subway/section16icon1.png" 
-                alt="Section 16 Icon" 
+              <img
+                src="/subway/section16icon1.png"
+                alt="Section 16 Icon"
                 className="h-12 w-auto"
                 style={{ transformOrigin: 'center', display: 'block' }}
               />
             </div>
           </div>
 
-          <h2 
+          <h2
             ref={section16Text1Ref}
             className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
           >
@@ -3898,68 +4501,131 @@ const NycSubway = ({ className }) => {
           </h2>
 
         </div>
-        
+
         {/* Column 2: Placeholder Image */}
-        <div 
+        <div
           className="flex items-center justify-center relative"
         >
-          <img 
+          <img
               ref={section16ImageRef}
-              src="/subway/section16phone1.png" 
-              alt="Section 16 Icon" 
+              src="/subway/section16phone1.png"
+              alt="Section 16 Icon"
               className="scale-90 ml-6 mt-10"
             />
         </div>
-        
+
         {/* Column 3: Text Paragraph */}
-        <div 
-          className="text-center md:text-left"
+        <div
+          className="text-left"
         >
-          <p 
+          <p
             ref={section16Paragraph1Ref}
             className="text-2xl font-medium text-black/50 leading-9 px-24 mt-14"
           >
           As you descend to the platform, the iPhone is aware of your current location along the platform.
           </p>
 
-          <p 
+          <p
             ref={section16Paragraph2Ref}
             className="text-2xl font-medium text-black/50 leading-9 px-24 -mt-48"
           >
           You receive directions to head towards the front (in the direction of travel) of the platform as Apple Maps is aware of the exit to take at the destination station.
           </p>
         </div>
-        
+
+      </div>
+
+      {/* Mobile layout */}
+      <div className="flex md:hidden flex-col w-full h-screen">
+        {/* Top 30%: Header (Column 1) and Paragraphs (Column 3) swap area */}
+        <div className="h-[30%] flex items-end justify-center relative px-6 pb-8">
+          {/* Column 1: Header - fades out when paragraphs fade in */}
+          <div
+            ref={section16MobileCol1Ref}
+            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-8"
+          >
+            <div
+              className="mb-3 flex justify-center"
+              style={{ transformOrigin: 'center', display: 'inline-block' }}
+            >
+              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                <img
+                  src="/subway/section16icon1.png"
+                  alt="Section 16 Icon"
+                  className="h-11 w-auto"
+                  style={{ transformOrigin: 'center', display: 'block' }}
+                />
+              </div>
+            </div>
+            <h2
+              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+            >
+              You head down <br/>to the platform.
+            </h2>
+          </div>
+
+          {/* Column 3: Paragraph 1 - fades in when column 1 fades out */}
+          <div
+            ref={section16MobileParagraph1Ref}
+            className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+          >
+            <p className="text-base font-medium text-black/50 leading-5">
+            As you descend to the platform, the iPhone is aware of your current location along the platform.
+            </p>
+          </div>
+
+          {/* Column 3: Paragraph 2 - fades in when paragraph 1 moves up */}
+          <div
+            ref={section16MobileParagraph2Ref}
+            className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+          >
+            <p className="text-base font-medium text-black/50 leading-5">
+            You receive directions to head towards the front (in the direction of travel) of the platform as Apple Maps is aware of the exit to take at the destination station.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom 70%: Phone Image (Column 2) */}
+        <div className="h-[70%] flex items-start justify-center relative overflow-hidden ml-4">
+          <img
+            ref={section16MobileImageRef}
+            src="/subway/section16phone1.png"
+            alt="Section 16 Phone"
+            className="h-[130%] w-auto object-contain z-10"
+            style={{ transformOrigin: 'center top' }}
+          />
+        </div>
       </div>
     </section>
 
     {/* Section 17 – Mock: Reached Destination */}
-    <section 
+    <section
       ref={section17Ref}
       className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
-      <div className="w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center">
-        
+      {/* Desktop layout */}
+      <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
+
         {/* Column 1: Header */}
-        <div 
-          className="text-center md:text-left -mt-20 ml-10"
+        <div
+          className="text-left -mt-20 ml-10"
         >
-          <div 
+          <div
             ref={section17IconRef}
-            className="mb-4 flex justify-center md:justify-start"
+            className="mb-4 flex justify-start"
             style={{ transformOrigin: 'center', display: 'inline-block' }}
           >
             <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img 
-                src="/subway/section17icon1.png" 
-                alt="Section 17 Icon" 
+              <img
+                src="/subway/section17icon1.png"
+                alt="Section 17 Icon"
                 className="h-11 w-auto"
                 style={{ transformOrigin: 'center', display: 'block' }}
               />
             </div>
           </div>
 
-          <h2 
+          <h2
             ref={section17Text1Ref}
             className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
           >
@@ -3967,65 +4633,65 @@ const NycSubway = ({ className }) => {
           </h2>
 
         </div>
-        
+
         {/* Column 2: Placeholder Image */}
-        <div 
+        <div
           className="flex items-center justify-center relative"
         >
-          <img 
+          <img
             ref={section17ImageRef}
-            src="/subway/section17phone1.png" 
-            alt="Section 17 Icon" 
+            src="/subway/section17phone1.png"
+            alt="Section 17 Icon"
             className="w-[92%] h-auto ml-6 mt-10"
             style={{ transformOrigin: 'center' }}
           />
-          
+
         </div>
-        
+
         {/* Column 3: Text Paragraph */}
-        <div 
-          className="text-center md:text-left pl-14 pr-36"
+        <div
+          className="text-left pl-14 pr-36"
         >
-          <p 
+          <p
             ref={section17Paragraph1Ref}
             className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
           >
           The subway ride is uneventful (not necessarily a given in NYC), and you arrive at your destination station.
           </p>
 
-          <p 
+          <p
             ref={section17Paragraph2Ref}
             className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
           >
           You get off from the front of the train and as per planned, you find the set of stairs up from the platform in front of you.
           </p>
         </div>
-        
+
       </div>
-      
-      {/* Phase 3 Overlay Elements */}
-      <div className="absolute inset-0 w-full mx-auto px-20 grid grid-cols-1 md:grid-cols-3 items-center justify-center pointer-events-none">
-        
+
+      {/* Desktop Phase 3 Overlay Elements */}
+      <div className="hidden md:grid absolute inset-0 w-full mx-auto px-20 grid-cols-3 items-center justify-center pointer-events-none">
+
         {/* Phase 3 Column 1: New Header */}
-        <div 
-          className="text-center md:text-left -mt-20 ml-10"
+        <div
+          className="text-left -mt-20 ml-10"
         >
-          <div 
+          <div
             ref={section17Phase3IconRef}
-            className="mb-4 flex justify-center md:justify-start"
+            className="mb-4 flex justify-start"
             style={{ transformOrigin: 'center', display: 'inline-block' }}
           >
             <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img 
-                src="/subway/section17icon2.png" 
-                alt="Section 17 Phase 3 Icon" 
+              <img
+                src="/subway/section17icon2.png"
+                alt="Section 17 Phase 3 Icon"
                 className="h-11 w-auto"
                 style={{ transformOrigin: 'center', display: 'block' }}
               />
             </div>
           </div>
 
-          <h2 
+          <h2
             ref={section17Phase3HeaderRef}
             className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[75%]"
           >
@@ -4033,26 +4699,26 @@ const NycSubway = ({ className }) => {
           </h2>
 
         </div>
-        
+
         {/* Phase 3 Column 2: New Phone */}
-        <div 
+        <div
           className="flex items-center justify-center relative"
         >
-          <img 
+          <img
             ref={section17Phase3PhoneRef}
-            src="/subway/section17phone2.png" 
-            alt="Section 17 Icon" 
+            src="/subway/section17phone2.png"
+            alt="Section 17 Icon"
             className="w-[74%] h-auto ml-1 mb-0.5"
-            
+
           />
-          
+
         </div>
-        
+
         {/* Phase 3 Column 3: New Text */}
-        <div 
-          className="text-center md:text-left pl-14 pr-40"
+        <div
+          className="text-left pl-14 pr-40"
         >
-          <p 
+          <p
             ref={section17Phase3TextRef}
             className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4 mb-4"
           >
@@ -4060,16 +4726,126 @@ const NycSubway = ({ className }) => {
           </p>
 
         </div>
-        
+
+      </div>
+
+      {/* Mobile layout */}
+      <div className="flex md:hidden flex-col w-full h-screen">
+        {/* Top 1/3: Header (Column 1) and Content (Column 3) swap area */}
+        <div className="h-1/3 flex items-end justify-center relative px-6 pb-8">
+          {/* Column 1: Header - fades out when paragraphs fade in */}
+          <div
+            ref={section17MobileCol1Ref}
+            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-8"
+          >
+            <div
+              className="mb-3 flex justify-center"
+              style={{ transformOrigin: 'center', display: 'inline-block' }}
+            >
+              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                <img
+                  src="/subway/section17icon1.png"
+                  alt="Section 17 Icon"
+                  className="h-9 w-auto"
+                  style={{ transformOrigin: 'center', display: 'block' }}
+                />
+              </div>
+            </div>
+            <h2
+              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+            >
+              You arrive at your destination station.
+            </h2>
+          </div>
+
+          {/* Column 3: Paragraph 1 - fades in when column 1 fades out */}
+          <div
+            ref={section17MobileParagraph1Ref}
+            className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+          >
+            <p className="text-base font-medium text-black/50 leading-5">
+            The subway ride is uneventful (not necessarily a given in NYC), and you arrive at your destination station.
+            </p>
+          </div>
+
+          {/* Column 3: Paragraph 2 - fades in after paragraph 1 */}
+          <div
+            ref={section17MobileParagraph2Ref}
+            className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+          >
+            <p className="text-base font-medium text-black/50 leading-5">
+            You get off from the front of the train and as per planned, you find the set of stairs up from the platform in front of you.
+            </p>
+          </div>
+
+          {/* Phase 3 Column 1: New Header */}
+          <div
+            ref={section17MobilePhase3Col1Ref}
+            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-8"
+          >
+            <div
+              className="mb-3 flex justify-center"
+              style={{ transformOrigin: 'center', display: 'inline-block' }}
+            >
+              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                <img
+                  src="/subway/section17icon2.png"
+                  alt="Section 17 Phase 3 Icon"
+                  className="h-9 w-auto"
+                  style={{ transformOrigin: 'center', display: 'block' }}
+                />
+              </div>
+            </div>
+            <h2
+              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+            >
+              You are guided to your exit from the station.
+            </h2>
+          </div>
+
+          {/* Phase 3 Column 3: Text */}
+          <div
+            ref={section17MobilePhase3TextRef}
+            className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+          >
+            <p className="text-base font-medium text-black/50 leading-5">
+            You continue to receive directions in the form of haptic feedback and time-sensitive notifications within the station that lead you to your specific exit from the station building.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom 2/3: Phone Image (Column 2) */}
+        <div className="h-2/3 flex items-start justify-center relative overflow-hidden pt-16">
+          <img
+            ref={section17MobileImageRef}
+            src="/subway/section17phone1.png"
+            alt="Section 17 Phone"
+            className="h-[120%] w-auto object-contain z-10"
+            style={{ transformOrigin: 'center top' }}
+          />
+
+          {/* Phase 3 Phone Image */}
+          <img
+            ref={section17MobilePhase3ImageRef}
+            src="/subway/section17phone2.png"
+            alt="Section 17 Phase 3 Phone"
+            className="absolute h-[120%] w-auto object-contain z-10"
+            style={{ transformOrigin: 'center top' }}
+          />
+        </div>
       </div>
     </section>
+
+    {/* Spacer */}
+    <div className="w-full h-32 bg-[#F5F5F5]"></div>
 
     {/* Section 18 – Summary */}
     <section 
       ref={section18Ref}
       className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
     >
-      <div className="w-full h-screen mx-auto px-20 flex flex-col md:flex-row items-center justify-center xl:gap-6 gap-3">
+      {/* Desktop layout */}
+      <div className="hidden md:flex w-full h-screen mx-auto px-20 flex-row items-center justify-center xl:gap-6 gap-3">
         
         {/* Column 1: Rounded Rectangle with Inset Image */}
         <div 
@@ -4184,8 +4960,126 @@ const NycSubway = ({ className }) => {
 
         </div>
 
+      </div>
+
+      {/* Mobile layout */}
+      <div className="flex md:hidden flex-col w-full min-h-screen mx-auto px-4 py-4 gap-3 items-center justify-center">
         
+        {/* Row 1: Cards 1 and 2 side by side */}
+        <div className="w-full flex flex-row gap-3">
+          {/* Card 1: Error State */}
+          <div 
+            className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+            ref={section18Image1Ref}
+          >  
+            <div className="flex flex-col items-center w-[90%] rounded-2xl overflow-hidden h-auto"> 
+              <video 
+                src="/subway/section14animation1.mp4" 
+                alt="Section 14 Animation 1" 
+                className="w-full h-auto object-cover"
+                style={{ transformOrigin: 'center' }}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            </div>
+            <p className="text-xs text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
+              Error State
+            </p>
+          </div>
+          
+          {/* Card 2: Live Activity Cards */}
+          <div 
+            className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+            ref={section18Image2Ref}
+          >
+            <div className="flex flex-col items-center w-[90%] rounded-[20pt] overflow-hidden h-auto"> 
+              <img 
+                src="/subway/section18image2.png" 
+                alt="Section 18 Image 2" 
+                className="w-full h-auto object-contain"
+                style={{ transformOrigin: 'center' }}
+              />
+            </div>
+
+            <p className="text-xs text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
+              Live Activity Cards
+            </p>
+          </div>
+        </div>
         
+        {/* Row 2: Cards 3 and 4 side by side */}
+        <div className="w-full flex flex-row gap-3">
+          {/* Card 3: Real-time directional navigation */}
+          <div 
+            ref={section18Image3TopRef}
+            className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+          >
+            <img 
+              src="/subway/section18image3top.png" 
+              alt="Section 18 Image 3 Top" 
+              className="w-[85%] h-auto py-1"
+              style={{ transformOrigin: 'center' }}
+            />
+            <p className="text-xs leading-tight text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
+              Real-time directional navigation
+            </p>
+          </div>
+
+          {/* Card 4: Step-by-step itinerary */}
+          <div 
+            ref={section18Image3BottomRef}
+            className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+          >
+            <div className="flex flex-col items-center w-[85%] h-auto rounded-lg shadow-lg overflow-hidden mt-1">
+              <video 
+                src="/subway/itinerary.mp4" 
+                alt="Summary Itinerary Video" 
+                className="w-full h-auto object-cover"
+                style={{ transformOrigin: 'center' }}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            </div>
+
+            <p className="text-xs leading-tight text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
+              Step-by-step itinerary
+            </p>
+          </div>
+        </div>
+        
+        {/* Card 5: UWB-powered proximity guidance */}
+        <div 
+          className="w-full flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+          ref={section18Image4Ref}
+        >
+          <div className="flex flex-col items-center w-full h-auto">
+            <img 
+              src="/subway/section18image4.png" 
+              alt="Section 18 Image 4" 
+              className="w-[90%] h-auto object-contain mt-2"
+              style={{ transformOrigin: 'center' }}
+            />
+            <video 
+              src="/subway/navigator1.mp4" 
+              alt="Navigator Video" 
+              className="w-[90%] h-auto mt-3 object-cover rounded-xl shadow-lg"
+              style={{ transformOrigin: 'center' }}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          </div>
+
+          <p className="text-sm leading-tight text-center font-semibold text-gray-600 tracking-tight mt-3 px-4">
+            UWB-powered proximity guidance
+          </p>
+        </div>
+
       </div>
     </section>
 
@@ -4202,14 +5096,14 @@ const NycSubway = ({ className }) => {
             ref={section19Image1Ref}
             src="/subway/section19logo1.png"   
             alt="Section 19 Image 1" 
-            className="w-[25%] h-auto"
+            className="w-[30%] md:w-[25%] h-auto"
           />
           
           <img 
             ref={section19Image3Ref}
             src="/subway/section19logo2.png"   
             alt="Section 19 Image 3" 
-            className="w-[10%] h-auto"
+            className="w-[15%] md:w-[10%] h-auto"
           />
         </div>
         
@@ -4218,7 +5112,7 @@ const NycSubway = ({ className }) => {
           ref={section19Image2Ref}
           src="/subway/section19emoji.png"   
           alt="Section 19 Image 2" 
-          className="absolute bottom-0 left-[50%] transform -translate-x-1/2 w-[20%] h-auto"
+          className="absolute bottom-0 left-[50%] transform -translate-x-1/2 w-[50%] md:w-[20%] h-auto"
         />
         
       </div>

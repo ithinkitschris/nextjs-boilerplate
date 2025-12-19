@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 import { useRouter } from 'next/navigation';
 import NycSubway from '../components/pages/nycsubway.js';
@@ -14,12 +14,57 @@ import { useHideNav } from '../context/HideNavContext';
 export default function SubwayPage() {
   const router = useRouter();
   const { browserType } = useBrowser();
-  const { hideNav, randomRotation, toggleHideNav, setIsWhiteBG, isWhiteBG, setIsArchiveInView, setArchiveSelectedTags } = useHideNav();
+  const { hideNav, randomRotation, toggleHideNav, setIsWhiteBG, isWhiteBG, setIsArchiveInView, setArchiveSelectedTags, setHideNav } = useHideNav();
   const isMobile = useMobileDetection();
   const { selectedTags, setSelectedTags, selectedWork, setSelectedWork, toggleTag, toggleWork } = useVideoNavigationSimple();
   
   const [showNav, setShowNav] = useState(false);
   const [showWork, setShowWork] = useState(false);
+  const lastScrollY = useRef(typeof window !== 'undefined' ? window.scrollY : 0);
+  const scrollThreshold = 10; // Minimum scroll distance to trigger hide/show
+  const scrollUpThreshold = 150; // Scroll up distance needed to show navbar
+  const hideNavScrollY = useRef(0); // Track scroll position when navbar was hidden
+
+  // Mobile-only scroll detection to hide/show navbar
+  useEffect(() => {
+    if (!isMobile) {
+      // On desktop, ensure navbar is visible
+      setHideNav(false);
+      return;
+    }
+
+    // Initialize scroll position
+    lastScrollY.current = window.scrollY;
+    // Ensure navbar starts visible on mobile
+    setHideNav(false);
+    hideNavScrollY.current = 0;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollDifference = Math.abs(currentScrollY - lastScrollY.current);
+
+      // Only update if scroll difference is significant
+      if (scrollDifference < scrollThreshold) return;
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 200) {
+        // Scrolling down - hide navbar
+        setHideNav(true);
+        hideNavScrollY.current = currentScrollY; // Track where navbar was hidden
+      } else if (currentScrollY < lastScrollY.current) {
+        // Scrolling up - show navbar only after scrolling up 150px from hide position
+        const scrollUpDistance = hideNavScrollY.current - currentScrollY;
+        if (scrollUpDistance >= scrollUpThreshold || hideNavScrollY.current === 0) {
+          setHideNav(false);
+          hideNavScrollY.current = 0; // Reset hide position
+        }
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobile, setHideNav]);
 
   return (
     <>
@@ -53,8 +98,8 @@ export default function SubwayPage() {
         <motion.div 
           className="col-span-full fixed top-[0.4rem] md:top-10 z-[45] mb-4 w-screen max-w-9xl pl-3"
           animate={{ 
-            y: 0, // DISABLED: hideNav ? -240 : 0,
-            rotateZ: 0 // DISABLED: hideNav ? randomRotation : 0
+            y: isMobile ? (hideNav ? -100 : 0) : 0,
+            rotateZ: isMobile ? 0 : (hideNav ? randomRotation : 0)
           }}
           transition={{
             type: "spring",
