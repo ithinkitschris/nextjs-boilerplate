@@ -1,9 +1,28 @@
 import type { Config } from "tailwindcss";
-import glass from './app/styles/glass';
+// Inlined glass plugin content to avoid resolution issues
+const glass = plugin(function ({ addComponents }) {
+  addComponents({
+    '.glass': {
+      '@apply border-b-1 border-r-1 border-white/35 shadow-glass-border': {},
+    },
+    '.glass-sm': {
+      '@apply border-t-1.5 border-l-1 border-transparent dark:border-white/25 shadow-glass-border-sm': {},
+    },
+    '.glass-xs': {
+      '@apply border-t-1 border-transparent dark:border-white/15 shadow-glass-border-sm': {},
+    },
+    '.glass-strong': {
+      '@apply border-t-1.5 border-l-1 border-transparent dark:border-white/45 shadow-glass-border': {},
+    },
+    '.glass-sidecontainer': {
+      '@apply border-t-1.5 border-l-1 border-white/35 shadow-glass-border-sm': {},
+    },
+  })
+});
 import plugin from 'tailwindcss/plugin';
 
-const config: Config = {
-  darkMode: 'class', 
+const config: any = {
+  darkMode: 'class',
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -19,9 +38,9 @@ const config: Config = {
     extend: {
       width: {
         62: '15.5rem',
-        '19' : '4.75rem',
-        '26' : '6.5rem',
-        '30' : '7.5rem',
+        '19': '4.75rem',
+        '26': '6.5rem',
+        '30': '7.5rem',
         'screen/1.5': '75%',
         'screen/1.75': '65%',
         'screen/2': '50%',
@@ -35,9 +54,9 @@ const config: Config = {
         '200': '42rem',
       },
       maxWidth: {
-        '8xl' : '96rem',
-        '9xl' : '120rem',
-        '10xl' : '144rem',
+        '8xl': '96rem',
+        '9xl': '120rem',
+        '10xl': '144rem',
         'screen-2.5xl': '1850px',
       },
       borderWidth: {
@@ -47,9 +66,9 @@ const config: Config = {
         1.7: '1.7px',
       },
       borderRadius: {
-        '3xl' : '30px',
-        '4xl' : '40px',
-        '5xl' : '45px',
+        '3xl': '30px',
+        '4xl': '40px',
+        '5xl': '45px',
       },
       spacing: {
         1.75: '0.4375rem',
@@ -145,13 +164,13 @@ const config: Config = {
         'glass-border-xs': '0px 3px 10px rgba(0,0,0,0.15), inset 0px 0px 4px -2px rgba(255,255,255,0.5)',
       },
       lineHeight: {
-        'tighter' : '0.92',
-        'tightest' : '0.6',
-        '11' : '2.7rem',
-        '12' : '3.25rem',
-        '13' : '3.5rem',
-        '14' : '3.75rem',
-        '15' : '4rem',
+        'tighter': '0.92',
+        'tightest': '0.6',
+        '11': '2.7rem',
+        '12': '3.25rem',
+        '13': '3.5rem',
+        '14': '3.75rem',
+        '15': '4rem',
       },
       transitionProperty: {
         'non-color': ' filter, transform, box-shadow, opacity', // Excludes color
@@ -160,7 +179,7 @@ const config: Config = {
   },
   plugins: [
     glass,
-    plugin(function({ addUtilities }) {
+    plugin(function ({ addUtilities }) {
       addUtilities({
         '.scrollbar-hide': {
           /* IE and Edge */

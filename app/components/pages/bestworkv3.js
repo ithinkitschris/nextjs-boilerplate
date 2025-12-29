@@ -6,15 +6,15 @@ import SideContainer from '../ui/SideContainer';
 import CarouselVideo from '../ui/CarouselVideo';
 import CarouselNavButton from '../ui/CarouselNavButton';
 
-const animateIn ={
-    hidden: {opacity:0, y:20},
-    show: {
-        opacity:1, y:0, 
-        transition: {staggerChildren: 0.2, duration:0.5, ease:"easeOut"}
-    }
+const animateIn = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1, y: 0,
+    transition: { staggerChildren: 0.2, duration: 0.5, ease: "easeOut" }
+  }
 }
 
-const BestWorkPage3 = ({className, toggleWork}) => {
+const BestWorkPage3 = ({ className, toggleWork }) => {
 
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
@@ -24,22 +24,22 @@ const BestWorkPage3 = ({className, toggleWork}) => {
     if (itemsRef.current[index]) {
       // Save current vertical scroll position
       const scrollY = window.scrollY;
-      
+
       // Scroll the item into view horizontally
       itemsRef.current[index].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-      
+
       // Restore vertical scroll position
       window.scrollTo({
         top: scrollY,
         behavior: "auto" // Use "auto" to prevent animation conflict
       });
-      
+
       // Prevent focus shift
       setTimeout(() => {
         document.activeElement?.blur();
       }, 100);
     }
-    
+
     setActiveIndex(index);
   };
 
@@ -74,17 +74,17 @@ const BestWorkPage3 = ({className, toggleWork}) => {
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
-return (
+  return (
     <motion.div
-    className={`font-[family-name:var(--font-geist-sans)] ${className} w-full overflow-x-hidden`}
-    initial="hidden"
-    animate="show"
-    variants={animateIn}>
+      className={`font-[family-name:var(--font-geist-sans)] ${className} w-full overflow-x-hidden`}
+      initial="hidden"
+      animate="show"
+      variants={animateIn}>
 
       <div className="relative w-full">
 
         {/* Top Navigation Arrows */}
-        <CarouselNavButton 
+        <CarouselNavButton
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
           scrollToIndex={scrollToIndex}
@@ -96,7 +96,7 @@ return (
 
           {/* Desktop Navigation Dots */}
           <div className="absolute left-0 right-0 bottom-5 z-20 justify-center gap-1 scale-90 hidden md:flex">
-            {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations', 'hemsaker', 'SilverKris Lounge'].map((title, index) => (
+            {['Beyond the Cabin', 'The World of Studio Ghibli', 'Cocktail Conversations', 'hemsaker', 'SilverKris Lounge'].map((title, index) => (
               <button
                 key={index}
                 onClick={() => scrollToIndex(index)}
@@ -115,15 +115,15 @@ return (
           </div>
 
           {/* ISV */}
-          <div 
-              ref={(el) => (itemsRef.current[0] = el)}
-              
-              onClick={() => {
-                toggleWork('isv')
-              }}
-              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
-            >
-            
+          <div
+            ref={(el) => (itemsRef.current[0] = el)}
+
+            onClick={() => {
+              toggleWork('isv')
+            }}
+            className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
+          >
+
             <SideContainer
               number="01"
               title="In-Flight Safety Video"
@@ -134,7 +134,7 @@ return (
               hoverWidth="420px"
             />
 
-            <CarouselVideo 
+            <CarouselVideo
               videoId="creative-isv"
               src="/isv/bestworkcover.mp4"
               poster="/poster/isv.png"
@@ -143,14 +143,14 @@ return (
           </div>
 
           {/* Ghibli */}
-          <div 
-              ref={(el) => (itemsRef.current[1] = el)}
-              
-              onClick={() => {
-                toggleWork('ghibli')
-              }}
-              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
-            >
+          <div
+            ref={(el) => (itemsRef.current[1] = el)}
+
+            onClick={() => {
+              toggleWork('ghibli')
+            }}
+            className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
+          >
 
             <SideContainer
               number="02"
@@ -163,23 +163,23 @@ return (
               hoverWidth="440px"
             />
 
-            <CarouselVideo 
+            <CarouselVideo
               videoId="creative-ghibli"
               src="/Ghibli/banner1.mp4"
               poster="/poster/ghibli.jpeg"
             />
           </div>
-          
+
           {/* Beyond The Cabin */}
-          <div 
-              ref={(el) => (itemsRef.current[2] = el)}
-              
-              onClick={() => {
-                toggleWork('cabin')
-              }}
-              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
-            >
-            
+          <div
+            ref={(el) => (itemsRef.current[2] = el)}
+
+            onClick={() => {
+              toggleWork('cabin')
+            }}
+            className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
+          >
+
             <SideContainer
               number="03"
               title="Beyond The Cabin"
@@ -190,7 +190,7 @@ return (
               hoverWidth="420px"
             />
 
-            <CarouselVideo 
+            <CarouselVideo
               videoId="creative-cabin"
               src="/CCS/bestworkmontage.mp4"
               poster="/poster/cabin.jpeg"
@@ -198,15 +198,15 @@ return (
           </div>
 
           {/* Cocktail Conversations */}
-          <div 
-              ref={(el) => (itemsRef.current[3] = el)}
-              
-              onClick={() => {
-                toggleWork('cocktail')
-              }}
-              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
-            >
-            
+          <div
+            ref={(el) => (itemsRef.current[3] = el)}
+
+            onClick={() => {
+              toggleWork('cocktail')
+            }}
+            className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
+          >
+
             <SideContainer
               number="04"
               title="Cocktail Conversations"
@@ -218,7 +218,7 @@ return (
               hoverWidth="460px"
             />
 
-            <CarouselVideo 
+            <CarouselVideo
               videoId="creative-cocktail"
               src="/Cocktail/cover2.mp4"
               poster="/poster/cocktail.jpg"
@@ -226,15 +226,15 @@ return (
           </div>
 
           {/* IKEA */}
-          <div 
-              ref={(el) => (itemsRef.current[4] = el)}
-              
-              onClick={() => {
-                toggleWork('hemsaker');
-              }}
-              className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
-            >
-            
+          <div
+            ref={(el) => (itemsRef.current[4] = el)}
+
+            onClick={() => {
+              toggleWork('hemsaker');
+            }}
+            className='min-w-[88%] snap-start col-span-full grid grid-cols-1 xl:grid-cols-9 group duration-200 transition-all cursor-pointer relative hover:scale-98'
+          >
+
             <SideContainer
               number="05"
               title="Oops Happens"
@@ -246,7 +246,7 @@ return (
               hoverWidth="370px"
             />
 
-            <CarouselVideo 
+            <CarouselVideo
               videoId="creative-hemsaker"
               src="/Hemsaker/cover.mp4"
               poster="/poster/hemsaker.jpg"
@@ -255,29 +255,29 @@ return (
 
         </div>
 
-      {/* Mobile Navigation Dots */}
-      <div className="z-20 mt-4 justify-center gap-1 scale-90 flex md:hidden">
-        {['Beyond the Cabin','The World of Studio Ghibli','Cocktail Conversations', 'hemsaker', 'SilverKris Lounge'].map((title, index) => (
-          <button
-            key={index}
-            onClick={() => scrollToIndex(index)}
-            className={`
+        {/* Mobile Navigation Dots */}
+        <div className="z-20 mt-4 justify-center gap-1 scale-90 flex md:hidden">
+          {['Beyond the Cabin', 'The World of Studio Ghibli', 'Cocktail Conversations', 'hemsaker', 'SilverKris Lounge'].map((title, index) => (
+            <button
+              key={index}
+              onClick={() => scrollToIndex(index)}
+              className={`
               text-[7pt] font-semibold rounded-full transition-all duration-300 
               flex items-center justify-center w-3.5 h-3.5 backdrop-blur-xl mix-blend-overlay
               ${activeIndex === index
-                ? "bg-white/75 scale-75 -mx-1 px-6 backdrop-blur-xl border-b-2 border-r-[1px] border-white drop-shadow-lg"
-                : "bg-white/35 text-white hover:bg-white/80 hover:scale-100 scale-[60%] drop-shadow-lg"
-              }
+                  ? "bg-white/75 scale-75 -mx-1 px-6 backdrop-blur-xl border-b-2 border-r-[1px] border-white drop-shadow-lg"
+                  : "bg-white/35 text-white hover:bg-white/80 hover:scale-100 scale-[60%] drop-shadow-lg"
+                }
             `}
-          >
-            {activeIndex === index ? '' : ''}
-          </button>
-        ))}
+            >
+              {activeIndex === index ? '' : ''}
+            </button>
+          ))}
+        </div>
+
       </div>
-        
-      </div>
-    </motion.div>  
- 
+    </motion.div>
+
   );
 };
 
