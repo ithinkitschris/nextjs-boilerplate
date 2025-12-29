@@ -7,16 +7,16 @@ import { useMobileDetection } from '../../hooks/useMobileDetection';
 import { animateIn } from '../../constants/animations';
 import { workTags } from '../../data/videoData';
 
-const DesktopNavbar = ({ 
-  showNav, 
-  setShowNav, 
-  selectedTags, 
-  setSelectedTags, 
-  selectedWork, 
+const DesktopNavbar = ({
+  showNav,
+  setShowNav,
+  selectedTags,
+  setSelectedTags,
+  selectedWork,
   setSelectedWork,
-  toggleWork, 
-  setShowWork, 
-  skillsetData, 
+  toggleWork,
+  setShowWork,
+  skillsetData,
   toggleTag,
   isWhiteBG, // Controls styling when white background sections are active
   scrollToArchive, // Function to scroll to archive section
@@ -27,7 +27,7 @@ const DesktopNavbar = ({
   const { browserType } = useBrowser();
   const { hideNav, isArchiveInView, archiveSelectedTags, setArchiveSelectedTags } = useHideNav();
   const isMobile = useMobileDetection();
-  
+
   // Determine if Archive button should be shown (only on resume page)
   const showArchiveButton = !homeOnly && selectedWork === 'resume';
   // Determine if we're in Archive control mode
@@ -37,11 +37,11 @@ const DesktopNavbar = ({
   const shouldExpandNav = !homeOnly && !isMobile && (showNav || isArchiveMode);
   // Calculate navbar width based on Archive button visibility and expansion state
   // On mobile, collapsed width is 161px; on desktop, use original widths
-  const navbarWidth = homeOnly 
-    ? '86px' 
-    : (shouldExpandNav 
+  const navbarWidth = homeOnly
+    ? (isMobile ? '83px' : '86px')
+    : (shouldExpandNav
       ? (isMobile ? '161px' : '545px')
-      : (showArchiveButton 
+      : (showArchiveButton
         ? (isMobile ? '161px' : '168px')
         : (isMobile ? '161px' : '85.5px')));
 
@@ -57,17 +57,17 @@ const DesktopNavbar = ({
         className={`rounded-full flex items-center justify-center
         h-[46px] dark:bg-transparent border border-white/35 bg-white
         shadow-glass-border-light dark:shadow-glass-border
-        ${browserType === 'chrome' 
-          ? '' 
-          : browserType === 'safari' 
-            ? 'backdrop-blur-3xl bg-white' 
-            : browserType === 'firefox' 
-              ? 'backdrop-blur-3xl bg-white' 
-              : 'backdrop-blur-3xl bg-white'
-        }`}
+        ${browserType === 'chrome'
+            ? ''
+            : browserType === 'safari'
+              ? 'backdrop-blur-3xl bg-white'
+              : browserType === 'firefox'
+                ? 'backdrop-blur-3xl bg-white'
+                : 'backdrop-blur-3xl bg-white'
+          }`}
         style={browserType === 'chrome' ? {
-             backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
-          } : {}}
+          backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
+        } : {}}
         animate={{ width: navbarWidth }}
         transition={{
           type: "spring",
@@ -102,8 +102,8 @@ const DesktopNavbar = ({
                 color: isWhiteBG ? '#000000' : undefined,
                 borderColor: (homeOnly || selectedWork === 'resume')
                   ? (isWhiteBG ? 'rgba(0, 0, 0, 1)' : 'var(--foreground)')
-                  : (isWhiteBG 
-                    ? 'rgba(0, 0, 0, 0.1)' 
+                  : (isWhiteBG
+                    ? 'rgba(0, 0, 0, 0.1)'
                     : 'color-mix(in srgb, var(--foreground) 10%, transparent)')
               }}
               whileHover={{ scale: 0.96 }}
@@ -121,10 +121,10 @@ const DesktopNavbar = ({
                 x: 0
               }}
               transition={{
-                duration: 0.2,  
+                duration: 0.2,
                 type: "spring",
-                stiffness: 700, 
-                damping: 15, 
+                stiffness: 700,
+                damping: 15,
               }}
             >
               Home
@@ -133,7 +133,7 @@ const DesktopNavbar = ({
 
           {/* Work Button - Only show when on resume page */}
           {showArchiveButton && (
-            <motion.button 
+            <motion.button
               tabIndex={0}
               layout='position'
               className={`
@@ -151,8 +151,8 @@ const DesktopNavbar = ({
                   ? archiveSelectedTags.includes('all')
                   : selectedTags.includes('all'))
                   ? (isWhiteBG ? 'rgba(0, 0, 0, 1)' : 'var(--foreground)')
-                  : (isWhiteBG 
-                    ? 'rgba(0, 0, 0, 0.1)' 
+                  : (isWhiteBG
+                    ? 'rgba(0, 0, 0, 0.1)'
                     : 'color-mix(in srgb, var(--foreground) 10%, transparent)')
               }}
               whileHover={{ scale: 0.95 }}
@@ -181,10 +181,10 @@ const DesktopNavbar = ({
                 x: showNav ? 0 : 0
               }}
               transition={{
-                duration: 0.2,  
+                duration: 0.2,
                 type: "spring",
-                stiffness: 700, 
-                damping: 15, 
+                stiffness: 700,
+                damping: 15,
               }}
             >
               {shouldExpandNav ? 'All' : 'Archive'}
@@ -192,10 +192,10 @@ const DesktopNavbar = ({
           )}
 
           {/* Skillset Buttons - Only show when nav is open or Archive is in view */}
-          <motion.div 
+          <motion.div
             layout
             className={`flex gap-2 ${shouldExpandNav ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-            animate={{ 
+            animate={{
               x: shouldExpandNav ? 0 : -20
             }}
             transition={{
@@ -205,7 +205,7 @@ const DesktopNavbar = ({
             }}
           >
             {skillsetData.map(({ tag, label, work }, index) => (
-              <motion.button 
+              <motion.button
                 key={tag}
                 tabIndex={shouldExpandNav ? 0 : -1}
                 className={`rounded-full px-3 py-[3px] border-1.5 text-sm lg:text-[15px]
@@ -217,16 +217,16 @@ const DesktopNavbar = ({
                 focus-visible-standard`}
                 style={{
                   color: isWhiteBG ? '#000000' : undefined,
-                  borderColor: (isArchiveMode 
+                  borderColor: (isArchiveMode
                     ? archiveSelectedTags.includes(tag)
                     : (selectedTags.includes(tag) || (tag === 'photography' && selectedWork === 'photography') || (tag === 'content' && selectedWork === 'content')))
                     ? (isWhiteBG ? 'rgba(0, 0, 0, 1)' : 'var(--foreground)')
-                    : (isWhiteBG 
-                      ? 'rgba(0, 0, 0, 0.1)' 
+                    : (isWhiteBG
+                      ? 'rgba(0, 0, 0, 0.1)'
                       : 'color-mix(in srgb, var(--foreground) 10%, transparent)')
                 }}
                 whileHover={{ scale: 0.9 }}
-                animate={{ 
+                animate={{
                   x: shouldExpandNav ? 0 : -30
                 }}
                 transition={{

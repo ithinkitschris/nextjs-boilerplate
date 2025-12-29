@@ -168,10 +168,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const [isHoveringNavigation, setIsHoveringNavigation] = useState(false);
     const [isHoveringThesis, setIsHoveringThesis] = useState(false);
     const [showCopiedMessage, setShowCopiedMessage] = useState(false);
+    const [showEmailText, setShowEmailText] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
     const [isHeader2AtOpacity1, setIsHeader2AtOpacity1] = useState(false);
     const [isHeader2Part2AtOpacity1, setIsHeader2Part2AtOpacity1] = useState(false);
     const [isHeader3AboveThreshold, setIsHeader3AboveThreshold] = useState(false);
+    const [isHeader3Part2AboveThreshold, setIsHeader3Part2AboveThreshold] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
     const [isMouseOverBioSection, setIsMouseOverBioSection] = useState(false);
     const [isCursorNearBorder, setIsCursorNearBorder] = useState(false);
@@ -328,6 +330,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             gsap.set(header3Ref.current, { opacity: 0.1 });
             setIsHeader3AboveThreshold(false);
             gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+            setIsHeader3Part2AboveThreshold(false);
 
             // Create ScrollTrigger with extended scroll (after initial states are set)
             const st = ScrollTrigger.create({
@@ -405,6 +408,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         gsap.set(header3Ref.current, { opacity: 0.1 });
                         setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+                        setIsHeader3Part2AboveThreshold(false);
                     }
                     // Phase 1b: 30% to 45% of scroll (progress PHASE_1A_END to PHASE_1B_END)
                     // Header 2 fades from 1 to 0.2, Header 2 Part 2 fades from 0.2 to 1
@@ -438,6 +442,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         gsap.set(header3Ref.current, { opacity: 0.1 });
                         setIsHeader3AboveThreshold(false);
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+                        setIsHeader3Part2AboveThreshold(false);
                     }
                     // Phase 2b1: 45% to 75% of scroll (progress PHASE_1B_END to PHASE_2B1_END)
                     // Container moves upward (complete movement), Header 1 fades from 0.2 to 0.1, Header 2 stays at 0.2, Header 2 Part 2 fades from 1 to 0.2
@@ -481,6 +486,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
                         // Header 3 Part 2: stay at 0.1 opacity
                         gsap.set(header3Part2Ref.current, { opacity: 0.1 });
+                        setIsHeader3Part2AboveThreshold(false);
                     }
                     // Phase 2b2: 75% to 85% of scroll (progress PHASE_2B1_END to PHASE_2B2_END)
                     // Container holds at phase 3 position, Header 1 holds at 0.1, Header 2 holds at 0.2, Header 2 Part 2 holds at 0.2
@@ -514,6 +520,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         // Header 3 Part 2: fade from 0.1 to 1
                         const header3Part2Opacity = gsap.utils.interpolate(0.1, 1, easedPhase2b2Progress);
                         gsap.set(header3Part2Ref.current, { opacity: header3Part2Opacity });
+                        setIsHeader3Part2AboveThreshold(header3Part2Opacity >= 0.6);
                     }
                     // Phase 3: 85% to 100% of scroll (progress PHASE_2B2_END to 1)
                     // Header 3 stays at 0.2, Header 3 Part 2 fades from 1 to 0.2
@@ -545,6 +552,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         // Header 3 Part 2: fade from 1 to 0.2
                         const header3Part2Opacity = gsap.utils.interpolate(1, 0.2, easedPhase3Progress);
                         gsap.set(header3Part2Ref.current, { opacity: header3Part2Opacity });
+                        setIsHeader3Part2AboveThreshold(header3Part2Opacity >= 0.6);
                     }
                 }
             });
@@ -712,7 +720,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             hideISVVideoTimeoutRef.current = null;
         }
 
-        const shouldShow = isHoveringSingaporeAirlines && !isCursorNearBorder;
+        const shouldShow = isHoveringSingaporeAirlines && !isCursorNearBorder && isHeader3AboveThreshold;
 
         if (shouldShow) {
             // Show immediately
@@ -736,7 +744,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideISVVideoTimeoutRef.current = null;
             }
         };
-    }, [isHoveringSingaporeAirlines, isCursorNearBorder]);
+    }, [isHoveringSingaporeAirlines, isCursorNearBorder, isHeader3AboveThreshold]);
 
     // Update showGhibliVideo based on hover over Studio Ghibli with delay before hiding
     useEffect(() => {
@@ -746,7 +754,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             hideGhibliVideoTimeoutRef.current = null;
         }
 
-        const shouldShow = isHoveringStudioGhibli && !isCursorNearBorder;
+        const shouldShow = isHoveringStudioGhibli && !isCursorNearBorder && isHeader3AboveThreshold;
 
         if (shouldShow) {
             // Show immediately
@@ -770,7 +778,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideGhibliVideoTimeoutRef.current = null;
             }
         };
-    }, [isHoveringStudioGhibli, isCursorNearBorder]);
+    }, [isHoveringStudioGhibli, isCursorNearBorder, isHeader3AboveThreshold]);
 
     // Update showNikeVideo based on hover over Nike with delay before hiding
     useEffect(() => {
@@ -780,7 +788,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             hideNikeVideoTimeoutRef.current = null;
         }
 
-        const shouldShow = isHoveringNike && !isCursorNearBorder;
+        const shouldShow = isHoveringNike && !isCursorNearBorder && isHeader3AboveThreshold;
 
         if (shouldShow) {
             // Show immediately
@@ -804,7 +812,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideNikeVideoTimeoutRef.current = null;
             }
         };
-    }, [isHoveringNike, isCursorNearBorder]);
+    }, [isHoveringNike, isCursorNearBorder, isHeader3AboveThreshold]);
 
     // Update showSamsungVideo based on hover over Samsung with delay before hiding
     useEffect(() => {
@@ -814,7 +822,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             hideSamsungVideoTimeoutRef.current = null;
         }
 
-        const shouldShow = isHoveringSamsung && !isCursorNearBorder;
+        const shouldShow = isHoveringSamsung && !isCursorNearBorder && isHeader3AboveThreshold;
 
         if (shouldShow) {
             // Show immediately
@@ -838,7 +846,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideSamsungVideoTimeoutRef.current = null;
             }
         };
-    }, [isHoveringSamsung, isCursorNearBorder]);
+    }, [isHoveringSamsung, isCursorNearBorder, isHeader3AboveThreshold]);
 
     // Update showSubwayVideo based on hover over Graduate Student with delay before hiding
     useEffect(() => {
@@ -848,7 +856,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             hideSubwayVideoTimeoutRef.current = null;
         }
 
-        const shouldShow = isHoveringGraduateStudent && !isCursorNearBorder;
+        const shouldShow = isHoveringGraduateStudent && !isCursorNearBorder && isHeader3Part2AboveThreshold;
 
         if (shouldShow) {
             // Show immediately
@@ -872,7 +880,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideSubwayVideoTimeoutRef.current = null;
             }
         };
-    }, [isHoveringGraduateStudent, isCursorNearBorder]);
+    }, [isHoveringGraduateStudent, isCursorNearBorder, isHeader3Part2AboveThreshold]);
 
     // Update showStanfordVideo based on hover over Stanford with delay before hiding
     useEffect(() => {
@@ -882,7 +890,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             hideStanfordVideoTimeoutRef.current = null;
         }
 
-        const shouldShow = isHoveringStanford && !isCursorNearBorder;
+        const shouldShow = isHoveringStanford && !isCursorNearBorder && isHeader3Part2AboveThreshold;
 
         if (shouldShow) {
             // Show immediately
@@ -906,7 +914,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideStanfordVideoTimeoutRef.current = null;
             }
         };
-    }, [isHoveringStanford, isCursorNearBorder]);
+    }, [isHoveringStanford, isCursorNearBorder, isHeader3Part2AboveThreshold]);
 
     // Update showNavigationVideo based on hover over Navigation with delay before hiding
     useEffect(() => {
@@ -916,7 +924,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             hideNavigationVideoTimeoutRef.current = null;
         }
 
-        const shouldShow = isHoveringNavigation && !isCursorNearBorder;
+        const shouldShow = isHoveringNavigation && !isCursorNearBorder && isHeader3Part2AboveThreshold;
 
         if (shouldShow) {
             // Show immediately
@@ -940,7 +948,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideNavigationVideoTimeoutRef.current = null;
             }
         };
-    }, [isHoveringNavigation, isCursorNearBorder]);
+    }, [isHoveringNavigation, isCursorNearBorder, isHeader3Part2AboveThreshold]);
 
     // Update showThesisVideo based on hover over Thesis with delay before hiding
     useEffect(() => {
@@ -950,7 +958,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             hideThesisVideoTimeoutRef.current = null;
         }
 
-        const shouldShow = isHoveringThesis && !isCursorNearBorder;
+        const shouldShow = isHoveringThesis && !isCursorNearBorder && isHeader3Part2AboveThreshold;
 
         if (shouldShow) {
             // Show immediately
@@ -974,7 +982,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 hideThesisVideoTimeoutRef.current = null;
             }
         };
-    }, [isHoveringThesis, isCursorNearBorder]);
+    }, [isHoveringThesis, isCursorNearBorder, isHeader3Part2AboveThreshold]);
 
     // Hide cursor when image is showing (but not for video popups)
     useEffect(() => {
@@ -1519,7 +1527,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             className={`pt-10 ${isMobile ? 'text-[17pt]' : 'text-4xl'} leading-[1.3] tracking-[-0.4pt]`}
                             variants={animateInChild}
                         >
-                            <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career in Singapore leading campaigns for <Link href="/isv" className="focus-visible-rounded">
+                            <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career in Singapore leading brand campaigns for <Link href="/isv" className="focus-visible-rounded">
                                 <span
                                     className="hover:opacity-80 transition-opacity underline focus-visible-rounded"
                                     onMouseEnter={() => setIsHoveringSingaporeAirlines(true)}
@@ -1653,6 +1661,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                             try {
                                                 await navigator.clipboard.writeText('ithinkitschristopher@gmail.com');
                                                 setShowCopiedMessage(true);
+                                                setShowEmailText(true);
                                                 if (copiedMessageTimeoutRef.current) {
                                                     clearTimeout(copiedMessageTimeoutRef.current);
                                                 }
@@ -1660,6 +1669,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                                     setShowCopiedMessage(false);
                                                     copiedMessageTimeoutRef.current = null;
                                                 }, 2000);
+                                                // Revert email text after 2.5 seconds
+                                                setTimeout(() => {
+                                                    setShowEmailText(false);
+                                                }, 2500);
                                             } catch (err) {
                                                 console.error('Failed to copy email to clipboard:', err);
                                             }
@@ -1670,6 +1683,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                                 try {
                                                     await navigator.clipboard.writeText('ithinkitschristopher@gmail.com');
                                                     setShowCopiedMessage(true);
+                                                    setShowEmailText(true);
                                                     if (copiedMessageTimeoutRef.current) {
                                                         clearTimeout(copiedMessageTimeoutRef.current);
                                                     }
@@ -1677,6 +1691,10 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                                         setShowCopiedMessage(false);
                                                         copiedMessageTimeoutRef.current = null;
                                                     }, 2000);
+                                                    // Revert email text after 2.5 seconds
+                                                    setTimeout(() => {
+                                                        setShowEmailText(false);
+                                                    }, 2500);
                                                 } catch (err) {
                                                     console.error('Failed to copy email to clipboard:', err);
                                                 }
@@ -1685,7 +1703,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                         onFocus={(e) => {
                                             e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
                                         }}
-                                    >Email</span>
+                                    >{showEmailText ? 'ithinkitschristopher@gmail.com' : 'Email'}</span>
                                     <AnimatePresence>
                                         {showCopiedMessage && (
                                             <motion.span

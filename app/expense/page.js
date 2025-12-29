@@ -78,7 +78,7 @@ export default function ExpensePage() {
                 {/* Page Container */}
                 <div className="col-span-full px-[6%]">
                     <motion.div
-                        className="grid grid-cols-8 gap-2 max-w-screen overflow-x-hidden sm:gap-3 font-[family-name:var(--font-geist-sans)] md:pt-18 pl-2"
+                        className="grid grid-cols-8 gap-2 max-w-screen overflow-x-hidden sm:gap-3 font-[family-name:var(--font-geist-sans)] pt-24 md:pt-18 md:pl-2"
                         initial="hidden"
                         animate="show"
                         variants={animateIn}
@@ -96,7 +96,7 @@ export default function ExpensePage() {
                             href="https://ithinkitschris.notion.site/local-expense-tracker"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="col-span-full flex items-center justify-center md:justify-start pl-5 text-[16px] pr-4 py-2 rounded-full hover:bg-foreground hover:text-background w-fit font-medium tracking-[-0.2px] glass -ml-2"
+                            className="col-span-full flex items-center justify-center md:justify-start pl-5 md:text-[16px] pr-4 pt-2 pb-1.5 md:py-2 rounded-full hover:bg-foreground hover:text-background w-fit font-medium tracking-[-0.2px] glass mx-auto md:-ml-2 md:mx-0"
                             variants={animateInChild}
                             whileHover={{ scale: 0.99 }}
                             transition={{
@@ -110,40 +110,40 @@ export default function ExpensePage() {
                         </motion.a>
 
                         {/* CLI Section */}
-                        <div className="col-span-full mt-20 mb-8">
-                            <h2 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">CLI</h2>
-                            <p className="text-xl md:text-2xl text-center md:text-left font-normal text-white/60 mt-2 tracking-[-0.08pt]">Ollama + Gemma Gemma3n:e2b</p>
+                        <div className="col-span-full mt-28 mb-8">
+                            <h2 className="text-5xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">CLI</h2>
+                            <p className="md:text-xl text-center md:text-left font-normal text-white/60 mt-2 tracking-[-0.08pt]">Ollama + Gemma Gemma3n:e2b</p>
                         </div>
 
-                        <motion.div className="col-span-full columns-2 md:columns-3 gap-3 mb-20 block" variants={animateInChild}>
+                        <motion.div className="col-span-full columns-1 md:columns-3 gap-3 mb-20 block" variants={animateInChild}>
                             <img
                                 src="/expense/cli-1.png"
                                 alt="CLI 1"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                             />
                             <img
                                 src="/expense/cli-2.png"
                                 alt="CLI 2"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                             />
                             <img
                                 src="/expense/cli-3.png"
                                 alt="CLI 3"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                             />
                             <img
                                 src="/expense/cli-4.png"
                                 alt="CLI 4"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                             />
                             <img
                                 src="/expense/cli-5.png"
                                 alt="CLI 5"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                             />
                             <video
                                 src="/expense/cli.mov"
-                                className="col-span-2 md:col-span-2 w-full h-auto object-cover rounded-3xl shadow-lg"
+                                className="col-span-2 md:col-span-2 w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg"
                                 autoPlay
                                 loop
                                 muted
@@ -152,35 +152,35 @@ export default function ExpensePage() {
                         </motion.div>
 
                         {/* V1 Section */}
-                        <div className="col-span-full mt-20 mb-8">
-                            <h2 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">v1</h2>
-                            <p className="text-xl md:text-2xl text-center md:text-left font-normal text-white/60 mt-2 tracking-[-0.08pt]">React Native + Cursor</p>
+                        <div className="col-span-full mt-10 mb-8">
+                            <h2 className="text-6xl text-center md:text-left tracking-[-2pt] font-medium">v1</h2>
+                            <p className="text-lg md:text-xl text-center md:text-left font-normal text-white/60 mt-2 tracking-[-0.08pt]">React Native + Cursor</p>
                         </div>
 
-                        <motion.div className="col-span-full columns-2 md:columns-4 gap-3 mb-20 block" variants={animateInChild}>
+                        <motion.div className="col-span-full columns-1 md:columns-4 gap-3 mb-20 block" variants={animateInChild}>
                             <video
                                 src="/expense/v2-1.mp4"
-                                className="w-full h-[670px] object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full md:h-[670px] object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                                 autoPlay
                                 loop
                                 muted
                                 playsInline
                             />
-                            <div className="rounded-3xl shadow-lg mb-3 break-inside-avoid overflow-hidden">
+                            <div className="rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid overflow-hidden">
                                 <img
                                     src="/expense/v1-3.png"
                                     alt="Expense Tracker V1-2"
                                     className="w-full h-auto object-cover -mt-[40px]"
                                 />
                             </div>
-                            <div className="rounded-3xl shadow-lg mb-3 break-inside-avoid overflow-hidden">
+                            <div className="rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid overflow-hidden">
                                 <img
                                     src="/expense/v1.png"
                                     alt="Expense Tracker V1-2"
                                     className="w-full h-auto object-cover -mt-[40px]"
                                 />
                             </div>
-                            <div className="rounded-3xl shadow-lg mb-3 break-inside-avoid overflow-hidden">
+                            <div className="rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid overflow-hidden">
                                 <img
                                     src="/expense/v1-1.png"
                                     alt="Expense Tracker V1-3"
@@ -190,15 +190,15 @@ export default function ExpensePage() {
                         </motion.div>
 
                         {/* V2 Section */}
-                        <div className="col-span-full mt-40 mb-8">
-                            <h2 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">v2</h2>
-                            <p className="text-xl md:text-2xl text-center md:text-left font-normal text-white/60 mt-2 tracking-[-0.08pt]">React Native + Cursor</p>
+                        <div className="col-span-full mt-10 md:mt-20 mb-8">
+                            <h2 className="text-6xl text-center md:text-left tracking-[-2pt] font-medium">v2</h2>
+                            <p className="text-lg md:text-2xl text-center md:text-left font-normal text-white/60 mt-2 tracking-[-0.08pt]">React Native + Cursor</p>
                         </div>
 
-                        <motion.div className="col-span-full columns-2 md:columns-4 gap-3 mb-20 block" variants={animateInChild}>
+                        <motion.div className="col-span-full columns-1 md:columns-4 gap-3 mb-20 block" variants={animateInChild}>
                             <video
                                 src="/expense/v2-2.mp4"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                                 autoPlay
                                 loop
                                 muted
@@ -206,7 +206,7 @@ export default function ExpensePage() {
                             />
                             <video
                                 src="/expense/v2.mp4"
-                                className="w-full h-[443px] object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full h-[443px] object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                                 autoPlay
                                 loop
                                 muted
@@ -219,7 +219,7 @@ export default function ExpensePage() {
                             /> */}
                             <video
                                 src="/expense/v2-scroll.mp4"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                                 autoPlay
                                 loop
                                 muted
@@ -228,7 +228,7 @@ export default function ExpensePage() {
                             <img
                                 src="/expense/v2-2.png"
                                 alt="Expense Tracker V2-2"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                             />
                             {/* 
                             <video
@@ -241,7 +241,7 @@ export default function ExpensePage() {
                             /> */}
                             <video
                                 src="/expense/v2-alt.mp4"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg mb-3 break-inside-avoid"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg mb-3 break-inside-avoid"
                                 autoPlay
                                 loop
                                 muted
@@ -250,15 +250,15 @@ export default function ExpensePage() {
                         </motion.div>
 
                         {/* V3 Section */}
-                        <div className="col-span-full mt-40 mb-8">
-                            <h2 className="text-4xl md:text-6xl text-center md:text-left tracking-[-2pt] font-medium">v3</h2>
-                            <p className="text-xl md:text-2xl text-center md:text-left font-normal text-white/60 mt-2 tracking-[-0.05pt]">Rebuilt from scratch with SwiftUI, Google Antigravity, and Xcode</p>
+                        <div className="col-span-full mt-10 md:mt-20 mb-8">
+                            <h2 className="text-6xl text-center md:text-left tracking-[-2pt] font-medium">v3</h2>
+                            <p className="text-lg md:text-xl text-center md:text-left font-normal text-white/60 mt-2 leading-tight tracking-[-0.05pt]">Rebuilt from scratch with SwiftUI, Google Antigravity, and Xcode</p>
                         </div>
 
-                        <motion.div className="col-span-full grid grid-cols-2 md:grid-cols-4 gap-3 mb-40" variants={animateInChild}>
+                        <motion.div className="col-span-full grid grid-cols-1 md:grid-cols-4 gap-3 mb-40" variants={animateInChild}>
                             <video
                                 src="/expense/v3-scroll.mp4"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg"
                                 autoPlay
                                 loop
                                 muted
@@ -266,7 +266,7 @@ export default function ExpensePage() {
                             />
                             <video
                                 src="/expense/v3-month.mp4"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg"
                                 autoPlay
                                 loop
                                 muted
@@ -274,7 +274,7 @@ export default function ExpensePage() {
                             />
                             <video
                                 src="/expense/v3-detail.mp4"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg"
                                 autoPlay
                                 loop
                                 muted
@@ -282,13 +282,13 @@ export default function ExpensePage() {
                             />
                             <video
                                 src="/expense/v3-add.mp4"
-                                className="w-full h-auto object-cover rounded-3xl shadow-lg"
+                                className="w-full h-auto object-cover rounded-[15pt] md:rounded-3xl shadow-lg"
                                 autoPlay
                                 loop
                                 muted
                                 playsInline
                             />
-                            <div className="rounded-3xl shadow-lg overflow-hidden col-span-1">
+                            <div className="rounded-[15pt] md:rounded-3xl shadow-lg overflow-hidden col-span-1">
                                 <video
                                     src="/expense/v3-recordAdd.mp4"
                                     className="w-full h-auto object-cover -mt-[44px]"
@@ -298,7 +298,7 @@ export default function ExpensePage() {
                                     playsInline
                                 />
                             </div>
-                            <div className="rounded-3xl shadow-lg overflow-hidden col-span-1">
+                            <div className="rounded-[15pt] md:rounded-3xl shadow-lg overflow-hidden col-span-1">
                                 <video
                                     src="/expense/v3-recordOverall1.mp4"
                                     className="w-full h-auto object-cover -mt-[44px]"

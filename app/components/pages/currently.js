@@ -611,6 +611,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
           muted
           loop
           playsInline
+          poster="/poster/thesis.jpg"
           tabIndex={-1}
         />
         {/* Lockup */}
@@ -633,11 +634,11 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
         {/* Text Container - Mobile Only */}
         <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
           {/* Title */}
-          <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
+          <h2 className="tracking-[-0.05pt] font-medium z-30 w-[95%] md:w-[80%] text-xl leading-none mb-1.5 text-white text-left">
             Bargaining with the Future:<br /> <span className="block mt-1 text-[11pt] md:text-[12pt] font-normal">Understanding Agency in Human-AI Interaction</span>
           </h2>
           {/* Description */}
-          <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
+          <p className="tracking-[-0.05pt] z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
             Ongoing Master's Thesis in Interaction Design.
           </p>
         </div>
@@ -761,11 +762,11 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
           {/* Text Container - Mobile Only */}
           <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
             {/* Title */}
-            <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
+            <h2 className="tracking-[-0.05pt] font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
               Enhanced Subway Navigation<br /> with Apple Maps
             </h2>
             {/* Description */}
-            <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1 w-[90%]">
+            <p className="tracking-[-0.05pt] z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1 w-[90%]">
               Precise turn-by-turn navigation within the NYC Subway system, powered by Ultra-Wideband (UWB) technology.
             </p>
           </div>
@@ -774,7 +775,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
 
       {/* Expense Tracker */}
       <motion.button
-        className="hidden md:block col-span-full md:col-span-2 cursor-pointer h-full group focus-visible-standard rounded-[25pt]"
+        className="col-span-full md:col-span-2 cursor-pointer h-full group focus-visible-standard rounded-[25pt]"
         aria-label="On-device LLM Expense Tracker"
         aria-describedby="expense-description-tooltip"
         whileHover={{ scale: 0.98 }}
@@ -866,7 +867,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
             muted
             loop
             playsInline
-            poster=""
+            poster="/poster/expense.jpg"
             useOptimized={useOptimizedVideos}
           />
 
@@ -882,11 +883,11 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
           {/* Text Container - Mobile Only */}
           <div className="absolute inset-0 flex flex-col items-start justify-end pb-6 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
             {/* Title */}
-            <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
+            <h2 className="tracking-[0.05pt] font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
               On-device LLM<br />Expense Tracker
             </h2>
             {/* Description */}
-            <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
+            <p className="tracking-[0.05pt] z-30 w-[95%] md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
               A personal pet project for frontend iOS development with Swift and Foundation Models React Native, FastAPI, and Ollama.
             </p>
           </div>
@@ -1006,11 +1007,11 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
           {/* Text Container - Mobile Only */}
           <div className="absolute inset-0 flex flex-col items-start justify-end pb-4 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
             {/* Title */}
-            <h2 className="tracking-tight font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
+            <h2 className="tracking-[-0.05pt] font-medium z-30 w-[80%] text-xl leading-none mb-1.5 text-white text-left">
               Singapore Airlines<br />In-Flight Safety Video
             </h2>
             {/* Description */}
-            {/* <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
+            {/* <p className="tracking-[-0.05pt] z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
           Singapore Airlines' 2025 In-Flight Safety Video that takes passengers on a journey through Singapore's iconic landmarks and most importantly, diverse communities.
         </p> */}
           </div>
@@ -1103,7 +1104,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
 
           {/* WIP Overlay */}
           {/* <div className="absolute inset-0 flex flex-col items-center justify-center w-[80%] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-300 z-40">
-              <h1 className="z-20 text-white text-xl md:text-3xl tracking-tight leading-[1] w-[80%] font-medium text-center">Project page is currently work in progress.</h1>
+              <h1 className="z-20 text-white text-xl md:text-3xl tracking-[-0.05pt] leading-[1] w-[80%] font-medium text-center">Project page is currently work in progress.</h1>
               <p className="z-20 text-white text-xxs md:text-sm leading-[1.2] w-[90%] font-medium text-center mt-4">Check back soon! <br/>Click to be directed to the project deck.</p>
             </div> */}
 
@@ -1132,15 +1133,15 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
           {/* Text Container - Mobile Only */}
           <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
             {/* Title */}
-            <h2 className="tracking-tight font-medium z-30 w-[80%] text-[16pt] leading-none mb-0.5 text-white text-left">
+            <h2 className="tracking-[-0.05pt] font-medium z-30 w-[80%] text-[16pt] leading-none mb-0.5 text-white text-left">
               Bloom
             </h2>
             {/* Subtitle */}
-            <h3 className="tracking-tight z-30 text-[9pt] leading-tight mix-blend-screen text-white mb-0 text-left opacity-70">
+            <h3 className="tracking-[-0.05pt] z-30 text-[9pt] leading-tight mix-blend-screen text-white mb-0 text-left opacity-70">
               Stanford Longevity Design Challenge First Place
             </h3>
             {/* Description */}
-            {/* <p className="tracking-tight z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
+            {/* <p className="tracking-[-0.05pt] z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
           Helping young Korean adults discover meaningful career paths.
         </p> */}
           </div>

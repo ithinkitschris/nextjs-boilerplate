@@ -21,7 +21,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isM
     }
     return false;
   });
-  
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const checkMobile = () => {
@@ -31,7 +31,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isM
       return () => window.removeEventListener('resize', checkMobile);
     }
   }, []);
-  
+
   const [showDebug, setShowDebug] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [previousSection, setPreviousSection] = useState(currentSection);
@@ -41,7 +41,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isM
   const hideTimerRef = useRef(null);
   const trackerRef = useRef(null);
   const contentRef = useRef(null);
-  
+
   const sections = [
     'Intro',
     'Personal',
@@ -74,16 +74,16 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isM
   // Show tracker when grouped section changes
   useEffect(() => {
     if (!isEnabled) return; // Don't show tracker if disabled
-    
+
     const currentGroupedSection = getGroupedSection(currentSection);
     const previousGroupedSection = getGroupedSection(previousSection);
-    
+
     if (currentGroupedSection !== previousGroupedSection) {
       // Clear any existing timer
       if (hideTimerRef.current) {
         clearTimeout(hideTimerRef.current);
       }
-      
+
       // Show tracker with GSAP animation
       if (trackerRef.current) {
         gsap.to(trackerRef.current, {
@@ -101,7 +101,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isM
       }
       setIsVisible(true);
       setPreviousSection(currentSection);
-      
+
       // COMMENTED OUT: Start hide timer only if not hovering
       // if (!isHovering) {
       //   hideTimerRef.current = setTimeout(() => {
@@ -129,7 +129,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isM
   // Handle hover state changes
   useEffect(() => {
     if (!isEnabled) return; // Don't handle hover if disabled
-    
+
     if (isVisible) {
       if (isHovering) {
         // Clear timer when hovering
@@ -202,7 +202,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isM
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Calculate initial progress
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -231,11 +231,11 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isM
       case 7: targetRef = sectionRefs[17]; break; // Summary: section 18
       default: targetRef = sectionRefs[0]; break;
     }
-    
+
     if (targetRef && targetRef.current) {
-      targetRef.current.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
+      targetRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
     } else {
       console.log(`Section ${groupNumber} not found or null`);
@@ -264,7 +264,7 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isM
 
       {/* Progress Tracker */}
       {isEnabled && !isMobile && !isMobileState && (
-        <div 
+        <div
           ref={trackerRef}
           className="fixed right-0 z-50 hidden md:block"
           style={{
@@ -276,56 +276,55 @@ const ScrollProgressTracker = ({ currentSection, totalSections, sectionRefs, isM
           onMouseLeave={() => setIsHovering(false)}
         >
 
-        <div 
-          ref={contentRef}
-          className="bg-black rounded-l-3xl pr-2 pl-2 py-8 relative drop-shadow-[3px_6px_7px_rgba(0,0,0,0.5)]"
-          style={{ transform: 'translateX(200%)' }}
-        >
-          
-          
-          {/* Top right rounded corner SVG */}
-          <svg 
-            className="absolute -top-6 right-0 w-6 h-6 drop-shadow-2xl"
-            viewBox="0 0 24 24" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            ref={contentRef}
+            className="bg-black rounded-l-3xl pr-2 pl-2 py-8 relative drop-shadow-[3px_6px_7px_rgba(0,0,0,0.5)]"
+            style={{ transform: 'translateX(200%)' }}
           >
-            <path 
-              d="M0 24 L24 24 L24 0 Q24 24 0 24 Z" 
-              fill="black"
-            />
-          </svg>
-          
-          {/* Bottom right rounded corner SVG */}
-          <svg 
-            className="absolute -bottom-6 right-0 w-6 h-6 drop-shadow-2xl"
-            viewBox="0 0 24 24" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path 
-              d="M0 0 L24 0 L24 24 Q24 0 0 0 Z" 
-              fill="black"
-            />
-          </svg>
-          
-          <div className="flex flex-col space-y-2 items-end">
-            {sections.map((section, index) => (
-              <button
-                key={index}
-                onClick={() => scrollToSection(index + 1)}
-                className={`tracking-tight font-medium text-foreground transition-all duration-300 cursor-pointer ${
-                  currentGroupedSection === index + 1
+
+
+            {/* Top right rounded corner SVG */}
+            <svg
+              className="absolute -top-6 right-0 w-6 h-6 drop-shadow-2xl"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 24 L24 24 L24 0 Q24 24 0 24 Z"
+                fill="black"
+              />
+            </svg>
+
+            {/* Bottom right rounded corner SVG */}
+            <svg
+              className="absolute -bottom-6 right-0 w-6 h-6 drop-shadow-2xl"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0 L24 0 L24 24 Q24 0 0 0 Z"
+                fill="black"
+              />
+            </svg>
+
+            <div className="flex flex-col space-y-2 items-end">
+              {sections.map((section, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToSection(index + 1)}
+                  className={`tracking-tight font-medium text-foreground transition-all duration-300 cursor-pointer ${currentGroupedSection === index + 1
                     ? ' text-white text-md font-semibold'
                     : ' text-xs opacity-25 hover:text-base hover:opacity-100 text-white'
-                }`}
-              >
-                {section}
-              </button>
-            ))}
+                    }`}
+                >
+                  {section}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
       )}
     </>
   );
@@ -339,14 +338,14 @@ const MobileErrorScreen = () => {
         {/* Icon */}
         <div className="mb-4 -mt-10">
           <img src="/subway/section2emoji2.png" alt="Section 1 Emoji" className="w-52 h-auto mx-auto" />
-          
+
         </div>
-        
+
         {/* Title */}
         <h1 className="text-4xl font-medium tracking-tight mb-10 text-white">
-          Check back soon! 
+          Check back soon!
         </h1>
-        
+
         {/* Message */}
         <p className="text text-gray-300 mb-6 leading-relaxed">
           I have unfortunately not had the courage to face the unsurmountable beast that is adapting this page that was meticulously designed and animated on desktop for the mobile experience.
@@ -355,17 +354,17 @@ const MobileErrorScreen = () => {
         <p className="text text-gray-300 mb-18 leading-relaxed">
           Rest assured, I will be getting to this in due time. For now, you may view this page on your desktop device.
         </p>
-        
-        
-        
+
+
+
         {/* CTA */}
-        <button 
+        <button
           onClick={() => window.history.back()}
           className=" text-white p-3 rounded-full border-1 glass-sm mt-4"
         >
           <ChevronLeftIcon className="w-8 h-8 " />
         </button>
-        
+
       </div>
     </div>
   );
@@ -388,7 +387,7 @@ const NycSubway = ({ className }) => {
   //#region Refs
   // Section 1 refs (title)
   const section1Ref = useRef(null);
-  
+
   // Section 2 refs (speech bubbles + section 3 content)
   const section2Ref = useRef(null);
   const section2BubbleRefs = useRef([]);
@@ -396,40 +395,40 @@ const NycSubway = ({ className }) => {
   const section2MainTitleRef = useRef(null);
   const section2ProgressLineRef = useRef(null);
   const section3EmojiProgressBorderRef = useRef(null);
-  
+
   // Section 3 refs (text replacement + emoji) - now part of section 2
   const section3Text1Ref = useRef(null);
   const section3Text2Ref = useRef(null);
   const section3EmojiRef = useRef(null);
   const section3Emoji2Ref = useRef(null);
-  
+
   // Section 4 refs (text addition + emoji + gradient)
   const section4Ref = useRef(null);
   const section4Text1Ref = useRef(null);
   const section4Text2Ref = useRef(null);
   const section4EmojiRef = useRef(null);
   const section4BackgroundRef = useRef(null);
-  
+
   // Section 5 refs (two text columns)
   const section5Ref = useRef(null);
   const section5Text1Ref = useRef(null);
   const section5Text2Ref = useRef(null);
   const section5TextBodyRef = useRef(null);
-  
+
   // Section 6 refs (identical to section 4)
   const section6Ref = useRef(null);
   const section6Text1Ref = useRef(null);
   const section6Text2Ref = useRef(null);
   const section6EmojiRef = useRef(null);
   const section6BackgroundRef = useRef(null);
-  
+
   // Section 7 refs (similar to section 6)
   const section7Ref = useRef(null);
   const section7Text1Ref = useRef(null);
   const section7Text2Ref = useRef(null);
   const section7EmojiRef = useRef(null);
   const section7BackgroundRef = useRef(null);
-  
+
   // Section 8 refs (four columns) - now part of section 7
   const section8EmojiRef = useRef(null);
   const section8Emoji1Ref = useRef(null);
@@ -461,7 +460,7 @@ const NycSubway = ({ className }) => {
   const section11Text2Ref = useRef(null);
   const section11Text3Ref = useRef(null);
   const section11TopParagraphRef = useRef(null);
-  
+
   // Section 11 phase 2 refs (second content replacement)
   const section11Phase2Ref = useRef(null);
   const section11Phase2Text1Ref = useRef(null);
@@ -471,7 +470,7 @@ const NycSubway = ({ className }) => {
   const section11Phase2EmojiRef = useRef(null);
   const section11Header1Ref = useRef(null);
   const section11Header2Ref = useRef(null);
-  
+
   // Section 12 refs (text addition + emoji + gradient) - duplicate of section 4
   const section12Ref = useRef(null);
   const section12Text1Ref = useRef(null);
@@ -479,7 +478,7 @@ const NycSubway = ({ className }) => {
   const section12EmojiRef = useRef(null);
   const section12BackgroundRef = useRef(null);
   const section12UnderlineRef = useRef(null);
-  
+
   // Section 13 refs (3 columns: icon+text, image, paragraph)
   const section13Ref = useRef(null);
   const section13IconRef = useRef(null);
@@ -515,7 +514,7 @@ const NycSubway = ({ className }) => {
   const section15Column3ImageRef = useRef(null);
   const section15Paragraph1Ref = useRef(null);
   const section15Paragraph2Ref = useRef(null);
-  
+
   // Phase 3 refs for section 15
   const section15Phase3IconRef = useRef(null);
   const section15Phase3HeaderRef = useRef(null);
@@ -570,7 +569,7 @@ const NycSubway = ({ className }) => {
   const section17MobilePhase3Col1Ref = useRef(null);
   const section17MobilePhase3ImageRef = useRef(null);
   const section17MobilePhase3TextRef = useRef(null);
-  
+
   // Section 18 refs (4 columns: image, image, 2 stacked images, image)
   const section18Ref = useRef(null);
   const section18Image1Ref = useRef(null);
@@ -646,52 +645,52 @@ const NycSubway = ({ className }) => {
     // Set initial state for section 2 bubbles - start hidden for scroll animation
     section2BubbleRefs.current.forEach(bubble => {
       if (bubble) {
-        gsap.set(bubble, { opacity: 0, scale: 0});
+        gsap.set(bubble, { opacity: 0, scale: 0 });
       }
     });
 
     // Set initial state for section 2 emoji - start hidden for onEnter animation
     gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
-    
+
     // Set initial state for section 2 main title - start visible for onEnter animation
     gsap.set(section2MainTitleRef.current, { opacity: 1, scale: 1 });
-    
+
     // Set initial state for section 2 progress line - start hidden
     gsap.set(section2ProgressLineRef.current, { scaleX: 0, opacity: 0.25 });
-    
+
     // Set initial state for emoji progress border - start hidden
-    gsap.set(section3EmojiProgressBorderRef.current, { 
+    gsap.set(section3EmojiProgressBorderRef.current, {
       strokeDasharray: '0, 1000',
-      opacity: 0 
+      opacity: 0
     });
 
     //#region Initial States
     // Set initial state for section 3
     gsap.set(section3Text1Ref.current, { opacity: 0, y: 75 });
-    gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2});
+    gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
     gsap.set(section3EmojiRef.current, { opacity: 0 });
     gsap.set(section3Emoji2Ref.current, { opacity: 0 });
-    
+
     // Set initial state for section 4
     gsap.set(section4Text1Ref.current, { opacity: 1, scale: 2, y: 0 });
     gsap.set(section4Text2Ref.current, { opacity: 0, scale: 1.1 });
     gsap.set(section4EmojiRef.current, { opacity: 0, y: 100 });
     gsap.set(section4BackgroundRef.current, { opacity: 0 });
-    
+
     // Set initial state for section 5
     gsap.set(section5Text1Ref.current, { opacity: 0, y: 50 });
     gsap.set(section5Text2Ref.current, { opacity: 0, y: 50 });
     gsap.set(section5TextBodyRef.current, { opacity: 1, y: 0 });
-    
+
     // Set initial state for section 6 (identical to section 4)
     gsap.set(section6Text1Ref.current, { opacity: 1, scale: 2, y: 0 });
     gsap.set(section6Text2Ref.current, { opacity: 0, scale: 1.1 });
     gsap.set(section6EmojiRef.current, { opacity: 0, y: 100 });
     gsap.set(section6BackgroundRef.current, { opacity: 0 });
-    
+
     // Set initial state for section 7
     gsap.set(section7BackgroundRef.current, { opacity: 0 });
-    
+
     // Set initial state for section 8 (now hidden initially since it's combined with section 7)
     gsap.set(section8EmojiRef.current, { opacity: 0, scale: 0.8 });
     gsap.set(section8Emoji1Ref.current, { opacity: 0 });
@@ -710,21 +709,21 @@ const NycSubway = ({ className }) => {
     gsap.set(section11TopParagraphRef.current, { opacity: 0, y: 20 });
     gsap.set(section11Header1Ref.current, { opacity: 0, y: 20 });
     gsap.set(section11Header2Ref.current, { opacity: 0, x: -20 });
-    
+
     // Set initial state for section 11 phase 2
     gsap.set(section11Phase2Text1Ref.current, { opacity: 0, y: 30 });
     gsap.set(section11Phase2Text2Ref.current, { opacity: 0, y: 30 });
     gsap.set(section11Phase2Text3Ref.current, { opacity: 0, y: 30 });
     gsap.set(section11Phase2TopParagraphRef.current, { opacity: 0 });
     gsap.set(section11Phase2EmojiRef.current, { opacity: 0, y: 100 });
-    
+
     // Set initial state for section 12 (identical to section 4)
     gsap.set(section12Text1Ref.current, { opacity: 1, scale: 2, y: 0 });
     gsap.set(section12Text2Ref.current, { opacity: 0, scale: 1.1 });
     gsap.set(section12EmojiRef.current, { opacity: 0, y: 100 });
     gsap.set(section12BackgroundRef.current, { opacity: 0 });
     gsap.set(section12UnderlineRef.current, { scaleX: 0 });
-    
+
     // Set initial state for section 13 (desktop)
     gsap.set(section13IconRef.current, { opacity: 0, scale: 0.6, y: 0, rotation: -15 });
     gsap.set(section13Text1Ref.current, { opacity: 0, y: 30 });
@@ -805,7 +804,7 @@ const NycSubway = ({ className }) => {
     gsap.set(section17LockscreenRef.current, { opacity: 0, scale: 1, transformOrigin: "center center" });
     gsap.set(section17Paragraph1Ref.current, { opacity: 0, y: 30 });
     gsap.set(section17Paragraph2Ref.current, { opacity: 0, y: 30 });
-    
+
     // Set initial state for section 17 phase 3
     gsap.set(section17Phase3IconRef.current, { opacity: 0, scale: 0.8, y: 30, rotation: -21 });
     gsap.set(section17Phase3HeaderRef.current, { opacity: 0, y: 30 });
@@ -830,9 +829,9 @@ const NycSubway = ({ className }) => {
     let section5AnimationComplete = false;
     let section6AnimationComplete = false;
     let section7AnimationComplete = false;
-      let section8AnimationComplete = false;
-  let section9AnimationComplete = false;
-  let section11AnimationComplete = false;
+    let section8AnimationComplete = false;
+    let section9AnimationComplete = false;
+    let section11AnimationComplete = false;
     let section11Phase2AnimationComplete = false;
     let section12AnimationComplete = false;
     let section13AnimationComplete = false;
@@ -852,21 +851,21 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Phase 1: Animate bubbles in with staggered timing (0-15%)
         if (progress <= 0.15) {
           const phase1Progress = progress / 0.15; // 0 to 1 for phase 1
           const totalBubbles = section2BubbleRefs.current.length;
-          
+
           section2BubbleRefs.current.forEach((bubble, index) => {
             if (bubble) {
               // Each bubble gets a portion of the phase 1 progress
               const bubbleStart = index / totalBubbles;
               const bubbleEnd = (index + 1) / totalBubbles;
-              const bubbleProgress = Math.max(0, Math.min(1, 
+              const bubbleProgress = Math.max(0, Math.min(1,
                 (phase1Progress - bubbleStart) / (bubbleEnd - bubbleStart)
               ));
-              
+
               const easedProgress = gsap.parseEase("back.out(0.8)")(bubbleProgress);
               gsap.set(bubble, {
                 opacity: easedProgress,
@@ -874,7 +873,7 @@ const NycSubway = ({ className }) => {
               });
             }
           });
-          
+
           // Emoji animates with first bubble
           if (section2EmojiRef.current) {
             const emojiProgress = Math.min(1, phase1Progress * totalBubbles);
@@ -884,10 +883,10 @@ const NycSubway = ({ className }) => {
               scale: 0.9 + (0.1 * easedEmojiProgress)
             });
           }
-          
+
           // Keep main title visible
           gsap.set(section2MainTitleRef.current, { opacity: 1, scale: 1 });
-          
+
           // Keep section 3 elements hidden
           gsap.set(section3Text1Ref.current, { opacity: 0, scale: 1 });
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
@@ -898,29 +897,29 @@ const NycSubway = ({ className }) => {
         else if (progress > 0.15 && progress <= 0.40) {
           const phase2Progress = (progress - 0.15) / 0.25; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("power3.inOut")(phase2Progress);
-          
+
           // Fade out all bubbles
           section2BubbleRefs.current.forEach((bubble) => {
             if (bubble) {
-              gsap.set(bubble, { 
-                opacity: 1 - easedPhase2Progress, 
-                scale: 1 - (0.2 * easedPhase2Progress) 
+              gsap.set(bubble, {
+                opacity: 1 - easedPhase2Progress,
+                scale: 1 - (0.2 * easedPhase2Progress)
               });
             }
           });
-          
+
           // Fade out section 2 emoji
-          gsap.set(section2EmojiRef.current, { 
-            opacity: 1 - easedPhase2Progress, 
-            scale: 1 - (0.1 * easedPhase2Progress) 
-          });
-          
-          // Fade out the main title text
-          gsap.set(section2MainTitleRef.current, { 
+          gsap.set(section2EmojiRef.current, {
             opacity: 1 - easedPhase2Progress,
             scale: 1 - (0.1 * easedPhase2Progress)
           });
-          
+
+          // Fade out the main title text
+          gsap.set(section2MainTitleRef.current, {
+            opacity: 1 - easedPhase2Progress,
+            scale: 1 - (0.1 * easedPhase2Progress)
+          });
+
           // Keep section 3 elements hidden during fade out phase
           gsap.set(section3Text1Ref.current, { opacity: 0, scale: 1 });
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
@@ -931,7 +930,7 @@ const NycSubway = ({ className }) => {
         else if (progress <= 0.50) {
           const phase3Progress = (progress - 0.40) / 0.10; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("expo.out")(phase3Progress);
-          
+
           // Keep everything hidden from previous phases
           section2BubbleRefs.current.forEach((bubble) => {
             if (bubble) {
@@ -939,34 +938,34 @@ const NycSubway = ({ className }) => {
             }
           });
           gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
-          
+
           // Keep main title hidden
           gsap.set(section2MainTitleRef.current, { opacity: 0, scale: 0.9 });
-          
+
           // Animate in "We all already knew that"
           gsap.set(section3Text1Ref.current, {
             opacity: easedPhase3Progress,
             y: 75 - (75 * easedPhase3Progress)
           });
-          
+
           // Animate in emoji in phase 3
           gsap.set(section3EmojiRef.current, {
             opacity: easedPhase3Progress,
             scale: 0.75 + (0.15 * easedPhase3Progress)
           });
-          
+
           // Keep progress line hidden in phase 3
           gsap.set(section2ProgressLineRef.current, {
             scaleX: 0,
             opacity: 0.25
           });
-          
+
           // Keep emoji progress border hidden in phase 3
           gsap.set(section3EmojiProgressBorderRef.current, {
             strokeDasharray: '0, 1000',
             opacity: 0
           });
-          
+
           // Keep other section 3 elements hidden
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
           gsap.set(section3Emoji2Ref.current, { opacity: 0 });
@@ -975,7 +974,7 @@ const NycSubway = ({ className }) => {
         else if (progress <= 0.80) {
           const pauseProgress = (progress - 0.50) / 0.30; // 0 to 1 for pause duration
           const easedPauseProgress = gsap.parseEase("power2.out")(pauseProgress);
-          
+
           // Keep everything hidden from previous phases
           section2BubbleRefs.current.forEach((bubble) => {
             if (bubble) {
@@ -983,22 +982,22 @@ const NycSubway = ({ className }) => {
             }
           });
           gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
-          
+
           // Keep main title hidden
           gsap.set(section2MainTitleRef.current, { opacity: 0, scale: 0.9 });
-          
+
           // Keep "We all already knew that" visible during pause
           gsap.set(section3Text1Ref.current, { opacity: 1, y: 0 });
-          
+
           // Keep emoji visible during pause
           gsap.set(section3EmojiRef.current, { opacity: 1, scale: 0.9 });
-          
+
           // Animate progress line to show pause progress
           gsap.set(section2ProgressLineRef.current, {
             scaleX: easedPauseProgress, // Animate from 0 to 1 during pause
             opacity: 0.25
           });
-          
+
           // Animate emoji progress border during pause
           const circumference = 2 * Math.PI * 160; // radius of 160px
           const dashOffset = circumference * (1 - easedPauseProgress);
@@ -1007,7 +1006,7 @@ const NycSubway = ({ className }) => {
             strokeDashoffset: dashOffset,
             opacity: 0.3
           });
-          
+
           // Keep other section 3 elements hidden
           gsap.set(section3Text2Ref.current, { opacity: 0, scale: 1.2 });
           gsap.set(section3Emoji2Ref.current, { opacity: 0 });
@@ -1016,7 +1015,7 @@ const NycSubway = ({ className }) => {
         else {
           const phase4Progress = (progress - 0.80) / 0.20; // 0 to 1 for phase 4
           const easedPhase4Progress = gsap.parseEase("back.out(2)")(phase4Progress);
-          
+
           // Keep everything hidden from previous phases
           section2BubbleRefs.current.forEach((bubble) => {
             if (bubble) {
@@ -1024,50 +1023,50 @@ const NycSubway = ({ className }) => {
             }
           });
           gsap.set(section2EmojiRef.current, { opacity: 0, scale: 0.9 });
-          
+
           // Keep main title hidden
           gsap.set(section2MainTitleRef.current, { opacity: 0, scale: 0.9 });
-          
+
           // "We all already knew that" scales down and fades out
-          gsap.set(section3Text1Ref.current, { 
+          gsap.set(section3Text1Ref.current, {
             opacity: 1 - easedPhase4Progress,
             scale: 1 - (0.2 * easedPhase4Progress)
           });
-          
+
           // Crossfade emoji in phase 4 - first emoji fades out, second emoji fades in
-          gsap.set(section3EmojiRef.current, { 
+          gsap.set(section3EmojiRef.current, {
             opacity: 1 - easedPhase4Progress,
             scale: 0.9
           });
-          gsap.set(section3Emoji2Ref.current, { 
+          gsap.set(section3Emoji2Ref.current, {
             opacity: easedPhase4Progress,
             scale: 0.9
           });
-          
+
           // Fade out progress line
           gsap.set(section2ProgressLineRef.current, {
             opacity: 0.25 - (0.25 * easedPhase4Progress) // Fade out from 0.25 to 0
           });
-          
+
           // Keep emoji progress border visible in phase 4
           gsap.set(section3EmojiProgressBorderRef.current, {
             opacity: 0.3
           });
-          
+
           // Animate in "However, I decided to take a crack at it"
           gsap.set(section3Text2Ref.current, {
             opacity: easedPhase4Progress,
             scale: 1.15 - (0.15 * easedPhase4Progress)
           });
         }
-        
+
         // Mark animations as complete when all phases finish
         if (progress >= 1) {
           section3AnimationComplete = true;
         }
       }
     });
-    
+
     // SECTION 4 (Look Inwards) ANIMATION
     ScrollTrigger.create({
       trigger: section4Ref.current,
@@ -1078,49 +1077,49 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Animation happens from 0% to 100% of scroll (no delays)
         const adjustedProgress = progress; // 0 to 1 for actual animation
-        
+
         // Text 1 stays, Text 2 fades in, Emoji appears, Background fades in
         const textProgress = Math.min(1, adjustedProgress); // Cap at 1
-        
+
         // Apply easing to the progress
         const easedBackProgress = gsap.parseEase("back.out")(textProgress);
         const easedProgress = gsap.parseEase("expo.out")(textProgress);
-        
+
         // Text 1 scales down and moves upward as text2 appears
         gsap.set(section4Text1Ref.current, {
           opacity: 1,
           scale: 2 - (0.8 * easedBackProgress), // Scales from 2 to 1
           y: -80 * easedBackProgress // Moves up 40px as animation progresses
         });
-        
+
         // Text 2 fades in, moves up, and scales up
         gsap.set(section4Text2Ref.current, {
           opacity: easedBackProgress,
           y: 80 - (80 * easedBackProgress), // Moves up from 120px below to 0px
           scale: 0.8 + (0.2 * easedBackProgress) // Scales from 0.8 to 1.0
         });
-        
+
         // Emoji fades in and moves up
         gsap.set(section4EmojiRef.current, {
           opacity: easedBackProgress,
           y: 80 - (80 * easedProgress)
         });
-        
+
         // Background gradient fades in
         gsap.set(section4BackgroundRef.current, {
           opacity: easedProgress
         });
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section4AnimationComplete = true;
         }
       }
     });
-    
+
     // SECTION 5 (Personal Insights) ANIMATION
     ScrollTrigger.create({
       trigger: section5Ref.current,
@@ -1131,19 +1130,19 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Phase 1: Text body cross-fades with Text 1 (0-50%)
         if (progress <= 0.5) {
           const phase1Progress = progress / 0.5; // 0 to 1 for phase 1
           const phase1FadeOutProgress = gsap.parseEase("expo.out")(phase1Progress);
           const phase1FadeInProgress = gsap.parseEase("power3.inOut")(phase1Progress);
-          
+
           // Text body fades out while Text 1 fades in (cross-fade)
           gsap.set(section5TextBodyRef.current, {
             opacity: 1 - phase1FadeOutProgress,
             y: 0
           });
-          
+
           gsap.set(section5Text1Ref.current, {
             opacity: phase1FadeInProgress,
             y: 50 - (50 * phase1FadeInProgress)
@@ -1152,15 +1151,15 @@ const NycSubway = ({ className }) => {
             opacity: 0,
             y: 50
           });
-        } 
+        }
         // Phase 2: Text 2 fades in (50-100%)
         else {
           const phase2Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("power4.out")(phase2Progress);
-          
+
           // Text body stays hidden
           gsap.set(section5TextBodyRef.current, { opacity: 0, y: 0 });
-          
+
           gsap.set(section5Text1Ref.current, {
             opacity: 1,
             y: 0
@@ -1170,14 +1169,14 @@ const NycSubway = ({ className }) => {
             y: 50 - (50 * easedPhase2Progress)
           });
         }
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section5AnimationComplete = true;
         }
       }
     });
-    
+
     // SECTION 6 (look to someone) ANIMATION
     ScrollTrigger.create({
       trigger: section6Ref.current,
@@ -1188,49 +1187,49 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Animation happens from 0% to 100% of scroll (no delays)
         const adjustedProgress = progress; // 0 to 1 for actual animation
-        
+
         // Text 1 stays, Text 2 fades in, Emoji appears, Background fades in
         const textProgress = Math.min(1, adjustedProgress); // Cap at 1
-        
+
         // Apply easing to the progress
         const easedProgress = gsap.parseEase("back.out")(textProgress);
         const easedExpoProgress = gsap.parseEase("expo.out")(textProgress);
-        
+
         // Text 1 scales down and moves upward as text2 appears
         gsap.set(section6Text1Ref.current, {
           opacity: 1,
           scale: 2 - (0.8 * easedProgress), // Scales from 2 to 1
           y: -120 * easedProgress // Moves up 40px as animation progresses
         });
-        
+
         // Text 2 fades in, moves up, and scales up
         gsap.set(section6Text2Ref.current, {
           opacity: easedProgress,
           y: 140 - (140 * easedProgress), // Moves up from 140px below to 0px
           scale: 0.8 + (0.2 * easedProgress) // Scales from 0.8 to 1.0
         });
-        
+
         // Emoji fades in and moves up
         gsap.set(section6EmojiRef.current, {
           opacity: easedProgress,
           y: 100 - (100 * easedExpoProgress)
         });
-        
+
         // Background gradient fades in
         gsap.set(section6BackgroundRef.current, {
           opacity: easedProgress
         });
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section6AnimationComplete = true;
         }
       }
     });
-    
+
     // SECTION 7+8 (Expert INsights) ANIMATION
     ScrollTrigger.create({
       trigger: section7Ref.current,
@@ -1241,27 +1240,27 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Phase 1: Fade out section 7 content (0-25%)
         if (progress <= 0.25) {
           const phase1Progress = progress / 0.25; // 0 to 1 for phase 1
           const easedPhase1Progress = gsap.parseEase("power3.inOut")(phase1Progress);
-          
+
           // Fade out section 7 content
           gsap.set(section7Text1Ref.current, {
             opacity: 1 - easedPhase1Progress,
             y: 0
           });
-          
+
           gsap.set(section7Text2Ref.current, {
             opacity: 1 - easedPhase1Progress,
             y: 0
           });
-          
+
           gsap.set(section7EmojiRef.current, {
             opacity: 1 - easedPhase1Progress
           });
-          
+
           // Keep section 8 content hidden during phase 1
           gsap.set(section8EmojiRef.current, { opacity: 0, scale: 0.8 });
           gsap.set(section8Emoji1Ref.current, { opacity: 0 });
@@ -1275,12 +1274,12 @@ const NycSubway = ({ className }) => {
         else if (progress <= 0.5) {
           const phase2Progress = (progress - 0.25) / 0.25; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("expo.out")(phase2Progress);
-          
+
           // Keep section 7 content hidden
           gsap.set(section7Text1Ref.current, { opacity: 0, y: 0 });
           gsap.set(section7Text2Ref.current, { opacity: 0, y: 0 });
           gsap.set(section7EmojiRef.current, { opacity: 0 });
-          
+
           // Animate section 8 emoji container and first emoji
           gsap.set(section8EmojiRef.current, {
             opacity: easedPhase2Progress,
@@ -1289,13 +1288,13 @@ const NycSubway = ({ className }) => {
           gsap.set(section8Emoji1Ref.current, {
             opacity: easedPhase2Progress
           });
-          
+
           // Animate first text column
           gsap.set(section8Text1Ref.current, {
             opacity: easedPhase2Progress,
             y: 50 - (50 * easedPhase2Progress)
           });
-          
+
           // Keep other section 8 content hidden
           gsap.set(section8Emoji2Ref.current, { opacity: 0 });
           gsap.set(section8Emoji3Ref.current, { opacity: 0 });
@@ -1306,16 +1305,16 @@ const NycSubway = ({ className }) => {
         else if (progress <= 0.75) {
           const phase3Progress = (progress - 0.5) / 0.25; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("expo.out")(phase3Progress);
-          
+
           // Keep section 7 content hidden
           gsap.set(section7Text1Ref.current, { opacity: 0, y: 0 });
           gsap.set(section7Text2Ref.current, { opacity: 0, y: 0 });
           gsap.set(section7EmojiRef.current, { opacity: 0 });
-          
+
           // Keep emoji container and first text column visible
           gsap.set(section8EmojiRef.current, { opacity: 1, scale: 1 });
           gsap.set(section8Text1Ref.current, { opacity: 1, y: 0 });
-          
+
           // Change emoji: emoji1 fades out, emoji2 fades in
           gsap.set(section8Emoji1Ref.current, {
             opacity: 1 - easedPhase3Progress
@@ -1323,13 +1322,13 @@ const NycSubway = ({ className }) => {
           gsap.set(section8Emoji2Ref.current, {
             opacity: easedPhase3Progress
           });
-          
+
           // Animate second text column
           gsap.set(section8Text2Ref.current, {
             opacity: easedPhase3Progress,
             y: 50 - (50 * easedPhase3Progress)
           });
-          
+
           // Keep third text column hidden
           gsap.set(section8Text3Ref.current, { opacity: 0, y: 50 });
           gsap.set(section8Emoji3Ref.current, { opacity: 0 });
@@ -1338,17 +1337,17 @@ const NycSubway = ({ className }) => {
         else {
           const phase4Progress = (progress - 0.75) / 0.25; // 0 to 1 for phase 4
           const easedPhase4Progress = gsap.parseEase("expo.out")(phase4Progress);
-          
+
           // Keep section 7 content hidden
           gsap.set(section7Text1Ref.current, { opacity: 0, y: 0 });
           gsap.set(section7Text2Ref.current, { opacity: 0, y: 0 });
           gsap.set(section7EmojiRef.current, { opacity: 0 });
-          
+
           // Keep emoji container and first two text columns visible
           gsap.set(section8EmojiRef.current, { opacity: 1, scale: 1 });
           gsap.set(section8Text1Ref.current, { opacity: 1, y: 0 });
           gsap.set(section8Text2Ref.current, { opacity: 1, y: 0 });
-          
+
           // Change emoji: emoji2 fades out, emoji3 fades in
           gsap.set(section8Emoji2Ref.current, {
             opacity: 1 - easedPhase4Progress
@@ -1356,14 +1355,14 @@ const NycSubway = ({ className }) => {
           gsap.set(section8Emoji3Ref.current, {
             opacity: easedPhase4Progress
           });
-          
+
           // Animate third text column
           gsap.set(section8Text3Ref.current, {
             opacity: easedPhase4Progress,
             y: 50 - (50 * easedPhase4Progress)
           });
         }
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section7AnimationComplete = true;
@@ -1385,9 +1384,9 @@ const NycSubway = ({ className }) => {
         const isMobileCheck = typeof window !== 'undefined' && window.innerWidth < 768;
         // Set initial hidden state
         gsap.set(section9TextRef.current, { opacity: 1, y: 0 });
-        gsap.set(section9IconRef.current, { opacity: 0, scale: 0.4, rotate: 80});
+        gsap.set(section9IconRef.current, { opacity: 0, scale: 0.4, rotate: 80 });
         gsap.set(section9BackgroundRef.current, { opacity: 0 });
-        gsap.set(section9RectangleRef.current, { opacity: 0, scale: 0.6, height: isMobileCheck ? "160px" : "240px" });
+        gsap.set(section9RectangleRef.current, { opacity: 0, scale: 0.6, height: isMobileCheck ? "160px" : "220px" });
         gsap.set(section9TextContainerRef.current, { y: 0 }); // Start at final position
         gsap.set(section9RectangleText1Ref.current, { opacity: 0, y: 0 });
         gsap.set(section9RectangleText2Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40 });
@@ -1400,24 +1399,24 @@ const NycSubway = ({ className }) => {
         // Check if mobile at runtime
         const isMobileCheck = typeof window !== 'undefined' && window.innerWidth < 768;
         const progress = self.progress; // 0 to 1
-        
+
         // Phase 1: Text exists, warning icon animates in (0-20%)
         if (progress <= 0.2) {
           const phase1Progress = progress / 0.2; // 0 to 1 for phase 1
           const easedPhase1Progress = gsap.parseEase("back.out")(phase1Progress);
-          
+
           // Icon animates in with scale and fade
           gsap.set(section9IconRef.current, {
             opacity: easedPhase1Progress,
             scale: 0.4 + (0.6 * easedPhase1Progress),
             rotate: -80 + (74 * easedPhase1Progress)
           });
-          
+
           // Background video hidden in phase 1
           gsap.set(section9BackgroundRef.current, {
             opacity: 0
           });
-          
+
           // Rectangle hidden in phase 1
           gsap.set(section9RectangleRef.current, {
             opacity: 0,
@@ -1428,27 +1427,27 @@ const NycSubway = ({ className }) => {
         else if (progress <= 0.3) {
           const phase2Progress = (progress - 0.2) / 0.1; // 0 to 1 for phase 2
           const easedPhase2Progress = gsap.parseEase("power2.in")(phase2Progress);
-          
+
           // Text and icon fade out
           gsap.set(section9TextRef.current, {
             opacity: 1 - easedPhase2Progress,
           });
-          
+
           gsap.set(section9IconRef.current, {
             opacity: 1 - easedPhase2Progress,
             scale: 1 - (0.2 * easedPhase2Progress),
           });
-          
+
           // Emoji fades out in phase 2
           gsap.set(section9EmojiRef.current, {
             opacity: 1 - easedPhase2Progress
           });
-          
+
           // Background video still hidden in phase 2
           gsap.set(section9BackgroundRef.current, {
             opacity: 0
           });
-          
+
           // Rectangle still hidden in phase 2
           gsap.set(section9RectangleRef.current, {
             opacity: 0,
@@ -1459,104 +1458,104 @@ const NycSubway = ({ className }) => {
         else if (progress <= 0.5) {
           const phase3Progress = (progress - 0.3) / 0.2; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("expo.out")(phase3Progress);
-          
+
           // Text and icon stay hidden
           gsap.set(section9TextRef.current, {
             opacity: 0,
             y: -20
           });
-          
+
           gsap.set(section9IconRef.current, {
             opacity: 0,
             scale: 0.8,
             y: -20
           });
-          
+
           // Emoji stays hidden
           gsap.set(section9EmojiRef.current, {
             opacity: 0
           });
-          
+
           // Background video fades in
           gsap.set(section9BackgroundRef.current, {
             opacity: easedPhase3Progress
           });
-          
+
           // Rectangle fades in and scales up from 0.6 to 1.0 with back.out easing
           gsap.set(section9RectangleRef.current, {
             opacity: easedPhase3Progress,
             scale: 0.6 + (0.4 * easedPhase3Progress)
           });
-          
+
           // Text container stays at final position during Phase 3
           gsap.set(section9TextContainerRef.current, {
             y: 0
           });
-          
+
           // Text1 animates in with rectangle (positioned in middle of container)
           gsap.set(section9RectangleText1Ref.current, {
             opacity: easedPhase3Progress,
             y: 0,
           });
-          
+
           // Other text elements remain hidden
           gsap.set(section9RectangleText2Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40, color: '#0067d4' });
           gsap.set(section9RectangleText3Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40, color: '#0067d4' });
           gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40, color: '#0067d4' });
-          gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40, color: '#0067d4'});
+          gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40, color: '#0067d4' });
         }
         // Phase 4: Sequential text animations (50-100%)
         else {
           const phase4Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 4
-          
+
           // Text and icon stay hidden
           gsap.set(section9TextRef.current, {
             opacity: 0,
             y: -20
           });
-          
+
           gsap.set(section9IconRef.current, {
             opacity: 0,
             scale: 0.8,
             y: -20
           });
-          
+
           // Emoji stays hidden
           gsap.set(section9EmojiRef.current, {
             opacity: 0
           });
-          
+
           // Background stays visible
           gsap.set(section9BackgroundRef.current, { opacity: 1 });
-          
+
           // Text container stays at final position
           gsap.set(section9TextContainerRef.current, { y: 0 });
-          
+
           // Text1 stays visible and starts black
-          gsap.set(section9RectangleText1Ref.current, { opacity: 1, y: 0});
-          
+          gsap.set(section9RectangleText1Ref.current, { opacity: 1, y: 0 });
+
           // PHASE 4A (60-80%)
           if (phase4Progress <= 0.5) {
             const combinedProgress = phase4Progress / 0.5;
             const easedCombinedProgress = gsap.parseEase("expo.out")(combinedProgress);
             const easedContainerProgress = gsap.parseEase("power2.out")(combinedProgress);
-            
+
             // Rectangle maintains final phase 3 state and grows height
             const mobileHeight4A = 160 + (80 * easedContainerProgress);
-            const desktopHeight4A = 240 + (120 * easedContainerProgress);
+            const desktopHeight4A = 220 + (80 * easedContainerProgress);
             gsap.set(section9RectangleRef.current, {
               opacity: 1,
               scale: 1,
               height: isMobileCheck ? `${mobileHeight4A}px` : `${desktopHeight4A}px`
             });
-            
+
             // Text1 fades to 0.2 during phase 4a
             gsap.set(section9RectangleText1Ref.current, {
               opacity: 1 - (0.9 * easedCombinedProgress), // Fade from 1 to 0.2
               y: 0,
               color: '#000000' // Stay black
             });
-            
+
             // Both text2 and text3 animate in together
             const textYOffset = isMobileCheck ? 24 : 40;
             gsap.set(section9RectangleText2Ref.current, {
@@ -1567,7 +1566,7 @@ const NycSubway = ({ className }) => {
               opacity: easedCombinedProgress,
               y: textYOffset - (textYOffset * easedCombinedProgress)
             });
-            
+
             gsap.set(section9RectangleText4Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40 });
             gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: isMobileCheck ? 24 : 40 });
           }
@@ -1576,20 +1575,20 @@ const NycSubway = ({ className }) => {
             const text4Progress = (phase4Progress - 0.5) / 0.25;
             const easedText4Progress = gsap.parseEase("expo.out")(text4Progress);
             const easedContainer4Progress = gsap.parseEase("power2.out")(text4Progress);
-            
-            // Rectangle grows from 380px to 520px height
+
+            // Rectangle grows height
             const mobileHeight4B = 240 + (30 * easedContainer4Progress);
-            const desktopHeight4B = 360 + (60 * easedContainer4Progress);
+            const desktopHeight4B = 300 + (50 * easedContainer4Progress);
             gsap.set(section9RectangleRef.current, {
               height: isMobileCheck ? `${mobileHeight4B}px` : `${desktopHeight4B}px`
             });
-            
+
             gsap.set(section9RectangleText1Ref.current, { opacity: 0.1, y: 0, color: '#000000' }); // Keep text1 black
-            gsap.set(section9RectangleText2Ref.current, { 
+            gsap.set(section9RectangleText2Ref.current, {
               opacity: 1 - (0.9 * easedText4Progress),
               y: 0
             });
-            gsap.set(section9RectangleText3Ref.current, { 
+            gsap.set(section9RectangleText3Ref.current, {
               opacity: 1 - (0.9 * easedText4Progress),
               y: 0
             });
@@ -1598,7 +1597,7 @@ const NycSubway = ({ className }) => {
               opacity: easedText4Progress,
               y: text4YOffset - (text4YOffset * easedText4Progress)
             });
-            
+
             gsap.set(section9RectangleText5Ref.current, { opacity: 0, y: isMobile ? 24 : 40 });
           }
           // PHASE 4C
@@ -1606,34 +1605,35 @@ const NycSubway = ({ className }) => {
             const text5Progress = (phase4Progress - 0.75) / 0.25;
             const easedText5Progress = gsap.parseEase("expo.out")(text5Progress);
             const easedContainer5Progress = gsap.parseEase("power2.out")(text5Progress);
-            
-            // Rectangle grows from 520px to 620px height (final height)
+
+            // Rectangle grows to final height
             const mobileHeight4C = 270 + (150 * easedContainer5Progress);
-            const desktopHeight4C = 420 + (200 * easedContainer5Progress);
+            const desktopHeight4C = 350 + (170 * easedContainer5Progress);
             gsap.set(section9RectangleRef.current, {
               height: isMobileCheck ? `${mobileHeight4C}px` : `${desktopHeight4C}px`
             });
-            
-            gsap.set(section9RectangleText1Ref.current, { 
-              opacity: 0.1,
-              y: 0, 
-              color: '#000000', 
-            }); 
 
-            gsap.set(section9RectangleText2Ref.current, { 
+            gsap.set(section9RectangleText1Ref.current, {
               opacity: 0.1,
               y: 0,
-            }); 
+              color: '#000000',
+            });
 
-            gsap.set(section9RectangleText3Ref.current, { 
+            gsap.set(section9RectangleText2Ref.current, {
               opacity: 0.1,
-              y: 0,});
+              y: 0,
+            });
 
-            gsap.set(section9RectangleText4Ref.current, { 
+            gsap.set(section9RectangleText3Ref.current, {
+              opacity: 0.1,
+              y: 0,
+            });
+
+            gsap.set(section9RectangleText4Ref.current, {
               opacity: 1 - (0.9 * easedText5Progress),
               y: 0
             });
-            
+
             const text5YOffset = isMobileCheck ? 24 : 40;
             gsap.set(section9RectangleText5Ref.current, {
               opacity: easedText5Progress,
@@ -1641,7 +1641,7 @@ const NycSubway = ({ className }) => {
             });
           }
         }
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section9AnimationComplete = true;
@@ -1773,7 +1773,7 @@ const NycSubway = ({ className }) => {
         if (progress <= 0.2) {
           const phase1Progress = progress / 0.2; // 0 to 1 for phase 1
           const easedPhase1Progress = gsap.parseEase("power3.inOut")(phase1Progress);
-          
+
           // Original rectangle fades out, slides up, scales down, and blurs
           gsap.set(section11OriginalRef.current, {
             opacity: 1 - easedPhase1Progress,
@@ -1781,21 +1781,21 @@ const NycSubway = ({ className }) => {
             scale: 1 - (0.1 * easedPhase1Progress),
             filter: `blur(${5 * easedPhase1Progress}px)`
           });
-          
+
           // New rectangle fades in and slides up
           gsap.set(section11NewRef.current, {
             opacity: easedPhase1Progress,
             y: 150 - (150 * easedPhase1Progress),
             filter: `blur(${4 - (4 * easedPhase1Progress)}px)`
           });
-          
+
           // Keep most text content hidden during rectangle transition
           gsap.set(section11TopParagraphRef.current, { opacity: 0, y: 20 });
           gsap.set(section11Header2Ref.current, { opacity: 0, x: -20 });
           gsap.set(section11Text1Ref.current, { opacity: 0, y: 30 });
           gsap.set(section11Text2Ref.current, { opacity: 0, y: 30 });
           gsap.set(section11Text3Ref.current, { opacity: 0, y: 30 });
-          
+
           // Header1 fades in during Phase 1
           gsap.set(section11Header1Ref.current, {
             opacity: easedPhase1Progress,
@@ -1807,35 +1807,35 @@ const NycSubway = ({ className }) => {
           const phase2aProgress = (progress - 0.2) / 0.05; // 0 to 1 for phase 2a
           const easedPhase2aProgress = gsap.parseEase("power3.inOut")(phase2aProgress);
           const header2Phase2aProgress = gsap.parseEase("back.out")(phase2aProgress);
-          
+
           // Original rectangle stays hidden
           gsap.set(section11OriginalRef.current, {
             opacity: 0,
             scale: 0.8
           });
-          
+
           // New rectangle stays visible
           gsap.set(section11NewRef.current, {
             opacity: 1,
             y: 0,
             filter: 'blur(0px)'
           });
-          
+
           // Header1 stays visible
           gsap.set(section11Header1Ref.current, { opacity: 1, y: 0 });
-          
+
           // Header2 fades in
           gsap.set(section11Header2Ref.current, {
             opacity: header2Phase2aProgress,
             x: -20 + (20 * header2Phase2aProgress)
           });
-          
+
           // Top paragraph fades in
           gsap.set(section11TopParagraphRef.current, {
             opacity: header2Phase2aProgress,
             y: -20 + (20 * header2Phase2aProgress),
           });
-          
+
           // Keep columns hidden
           gsap.set(section11Text1Ref.current, { opacity: 0, y: 30 });
           gsap.set(section11Text2Ref.current, { opacity: 0, y: 30 });
@@ -1845,32 +1845,32 @@ const NycSubway = ({ className }) => {
         else if (progress <= 0.5) {
           const phase2bProgress = (progress - 0.25) / 0.25; // 0 to 1 for phase 2b
           const easedPhase2bProgress = gsap.parseEase("power3.inOut")(phase2bProgress);
-          
+
           // Original rectangle stays hidden
           gsap.set(section11OriginalRef.current, {
             opacity: 0,
             scale: 0.8
           });
-          
+
           // New rectangle stays visible
           gsap.set(section11NewRef.current, {
             opacity: 1,
             y: 0,
             filter: 'blur(0px)'
           });
-          
+
           // Headers stay visible
           gsap.set(section11Header1Ref.current, { opacity: 1, y: 0 });
           gsap.set(section11Header2Ref.current, { opacity: 1, y: 0 });
-          
+
           // Top paragraph stays visible
           gsap.set(section11TopParagraphRef.current, { opacity: 1 });
-          
+
           // Three text columns fade in sequentially
           if (phase2bProgress <= 0.33) {
             const text1Progress = phase2bProgress / 0.33;
             const easedText1Progress = gsap.parseEase("power4.out")(text1Progress);
-            
+
             gsap.set(section11Text1Ref.current, {
               opacity: easedText1Progress,
               y: 30 - (30 * easedText1Progress)
@@ -1880,7 +1880,7 @@ const NycSubway = ({ className }) => {
           } else if (phase2bProgress <= 0.66) {
             const text2Progress = (phase2bProgress - 0.33) / 0.33;
             const easedText2Progress = gsap.parseEase("power4.out")(text2Progress);
-            
+
             gsap.set(section11Text1Ref.current, { opacity: 1, y: 0 });
             gsap.set(section11Text2Ref.current, {
               opacity: easedText2Progress,
@@ -1890,7 +1890,7 @@ const NycSubway = ({ className }) => {
           } else {
             const text3Progress = (phase2bProgress - 0.66) / 0.34;
             const easedText3Progress = gsap.parseEase("power4.out")(text3Progress);
-            
+
             gsap.set(section11Text1Ref.current, { opacity: 1, y: 0 });
             gsap.set(section11Text2Ref.current, { opacity: 1, y: 0 });
             gsap.set(section11Text3Ref.current, {
@@ -1903,19 +1903,19 @@ const NycSubway = ({ className }) => {
         else if (progress <= 0.6) {
           const phase3Progress = (progress - 0.5) / 0.1; // 0 to 1 for phase 3
           const easedPhase3Progress = gsap.parseEase("power3.inOut")(phase3Progress);
-          
+
           // Original rectangle stays hidden
           gsap.set(section11OriginalRef.current, {
             opacity: 0,
             scale: 0.8
           });
-          
+
           // New rectangle stays visible
           gsap.set(section11NewRef.current, {
             opacity: 1,
             scale: 1
           });
-          
+
           // All Phase 1 content fades out completely
           gsap.set(section11TopParagraphRef.current, {
             opacity: 1 - easedPhase3Progress
@@ -1940,13 +1940,13 @@ const NycSubway = ({ className }) => {
             opacity: 1 - easedPhase3Progress,
             y: 0
           });
-          
+
           // Phase 2 emoji fades out
           gsap.set(section11Phase2EmojiRef.current, {
             opacity: 0,
             y: 100
           });
-          
+
           // Keep Phase 2 content hidden during fade out
           gsap.set(section11Phase2TopParagraphRef.current, { opacity: 0 });
           gsap.set(section11Phase2Text1Ref.current, { opacity: 0, y: 30 });
@@ -1957,19 +1957,19 @@ const NycSubway = ({ className }) => {
         else {
           const phase4Progress = (progress - 0.6) / 0.4; // 0 to 1 for phase 4
           const easedPhase4Progress = gsap.parseEase("power3.inOut")(phase4Progress);
-          
+
           // Original rectangle stays hidden
           gsap.set(section11OriginalRef.current, {
             opacity: 0,
             scale: 0.8
           });
-          
+
           // New rectangle stays visible
           gsap.set(section11NewRef.current, {
             opacity: 1,
             scale: 1
           });
-          
+
           // Phase 1 content stays completely hidden
           gsap.set(section11TopParagraphRef.current, { opacity: 0 });
           gsap.set(section11Header1Ref.current, { opacity: 0, y: 0 });
@@ -1977,23 +1977,23 @@ const NycSubway = ({ className }) => {
           gsap.set(section11Text1Ref.current, { opacity: 0, y: 0 });
           gsap.set(section11Text2Ref.current, { opacity: 0, y: 0 });
           gsap.set(section11Text3Ref.current, { opacity: 0, y: 0 });
-          
+
           // Phase 4 animation sequence: top paragraph first, then columns
           if (phase4Progress <= 0.25) {
             // First 25%: Top paragraph fades in
             const topProgress = phase4Progress / 0.25;
             const easedTopProgress = gsap.parseEase("power4.out")(topProgress);
-            
+
             gsap.set(section11Phase2TopParagraphRef.current, {
               opacity: easedTopProgress
             });
-            
+
             // Emoji fades in and slides up with top paragraph
             gsap.set(section11Phase2EmojiRef.current, {
               opacity: easedTopProgress,
               y: 100 - (100 * easedTopProgress)
             });
-            
+
             // Keep columns hidden
             gsap.set(section11Phase2Text1Ref.current, { opacity: 0, y: 30 });
             gsap.set(section11Phase2Text2Ref.current, { opacity: 0, y: 30 });
@@ -2002,7 +2002,7 @@ const NycSubway = ({ className }) => {
             // 25-50%: Column 1 fades in
             const text1Progress = (phase4Progress - 0.25) / 0.25;
             const easedText1Progress = gsap.parseEase("power4.out")(text1Progress);
-            
+
             gsap.set(section11Phase2TopParagraphRef.current, { opacity: 1 });
             gsap.set(section11Phase2Text1Ref.current, {
               opacity: easedText1Progress,
@@ -2015,7 +2015,7 @@ const NycSubway = ({ className }) => {
             // 50-75%: Column 2 fades in
             const text2Progress = (phase4Progress - 0.5) / 0.25;
             const easedText2Progress = gsap.parseEase("power4.out")(text2Progress);
-            
+
             gsap.set(section11Phase2TopParagraphRef.current, { opacity: 1 });
             gsap.set(section11Phase2Text1Ref.current, { opacity: 1, y: 0 });
             gsap.set(section11Phase2Text2Ref.current, {
@@ -2028,7 +2028,7 @@ const NycSubway = ({ className }) => {
             // 75-100%: Column 3 fades in
             const text3Progress = (phase4Progress - 0.75) / 0.25;
             const easedText3Progress = gsap.parseEase("power4.out")(text3Progress);
-            
+
             gsap.set(section11Phase2TopParagraphRef.current, { opacity: 1 });
             gsap.set(section11Phase2Text1Ref.current, { opacity: 1, y: 0 });
             gsap.set(section11Phase2Text2Ref.current, { opacity: 1, y: 0 });
@@ -2043,7 +2043,7 @@ const NycSubway = ({ className }) => {
             });
           }
         }
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section11AnimationComplete = true;
@@ -2051,7 +2051,7 @@ const NycSubway = ({ className }) => {
         }
       }
     });
-    
+
     // SECTION 12 (How does it actually work?) ANIMATION
     ScrollTrigger.create({
       trigger: section12Ref.current,
@@ -2062,36 +2062,36 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Animation happens from 0% to 100% of scroll (no delays)
         const adjustedProgress = progress; // 0 to 1 for actual animation
-        
+
         // Text 1 stays, Text 2 fades in, Emoji appears, Background fades in
         const textProgress = Math.min(1, adjustedProgress); // Cap at 1
-        
+
         // Apply easing to the progress
         const easedProgress = gsap.parseEase("back.out")(textProgress);
         const easedExpoProgress = gsap.parseEase("expo.out")(textProgress);
-        
+
         // Text 1 scales down and moves upward as text2 appears
         gsap.set(section12Text1Ref.current, {
           opacity: 1,
           scale: 2 - (0.8 * easedProgress), // Scales from 2 to 1
           y: -80 * easedProgress // Moves up 40px as animation progresses
         });
-        
+
         // Text 2 fades in, moves up, and scales up
         gsap.set(section12Text2Ref.current, {
           opacity: easedProgress,
           y: 80 - (80 * easedProgress), // Moves up from 120px below to 0px
           scale: 0.8 + (0.2 * easedProgress) // Scales from 0.8 to 1.0
         });
-        
+
         // Animate the underline drawing out
         if (easedProgress > 0.6) { // Start underline animation after text is fully visible
           const underlineProgress = Math.min(1, (easedProgress - 0.6) / 0.4); // 0 to 1 for underline
           const easedUnderlineProgress = gsap.parseEase("power2.out")(underlineProgress);
-          
+
           gsap.set(section12UnderlineRef.current, {
             scaleX: easedUnderlineProgress // Scales from 0 to 1
           });
@@ -2100,25 +2100,25 @@ const NycSubway = ({ className }) => {
             scaleX: 0 // Keep hidden initially
           });
         }
-        
+
         // Emoji fades in and moves up
         gsap.set(section12EmojiRef.current, {
           opacity: easedProgress,
           y: 80 - (80 * easedExpoProgress)
         });
-        
+
         // Background gradient fades in
         gsap.set(section12BackgroundRef.current, {
           opacity: easedProgress
         });
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section12AnimationComplete = true;
         }
       }
     });
-    
+
     // SECTION 13 (Set destination) ANIMATION
     ScrollTrigger.create({
       trigger: section13Ref.current,
@@ -2407,9 +2407,9 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Section 15 animation - no longer controls isWhiteBG
-        
+
         // Phase 2: Right content fades in (0-40%)
         if (progress <= 0.4) {
           const phase2Progress = progress / 0.4; // 0 to 1 for phase 2
@@ -2625,7 +2625,7 @@ const NycSubway = ({ className }) => {
           gsap.set(section15MobileVideoRef.current, { opacity: 0 });
           gsap.set(section15MobilePhase3VideoRef.current, { opacity: 1 });
         }
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section15AnimationComplete = true;
@@ -2649,9 +2649,9 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Section 16 animation - no longer controls isWhiteBG
-        
+
         // Phase 2: Right text fades in (0-50%)
         if (progress <= 0.5) {
           const phase2Progress = progress / 0.5; // 0 to 1 for phase 2
@@ -2752,7 +2752,7 @@ const NycSubway = ({ className }) => {
             y: 20 - (20 * easedPhase3Progress)
           });
         }
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section16AnimationComplete = true;
@@ -2773,9 +2773,9 @@ const NycSubway = ({ className }) => {
       ignoreMobileResize: true, // Prevent iOS address bar from breaking pinning
       onUpdate: (self) => {
         const progress = self.progress; // 0 to 1
-        
+
         // Section 17 animation - no longer controls isWhiteBG
-        
+
         // Phase 2: Right content fades in (0-40%)
         if (progress <= 0.4) {
           const phase2Progress = progress / 0.4; // 0 to 1 for phase 2
@@ -2922,7 +2922,7 @@ const NycSubway = ({ className }) => {
         // Phase 4: Fade in new elements (50-100%)
         else {
           const phase4Progress = (progress - 0.5) / 0.5; // 0 to 1 for phase 4 (fade in)
-          
+
           // Split phase 4 into two parts: 4A+4B (0-50%), 4C (50-100%)
           if (phase4Progress <= 0.5) {
             // Phase 4A+4B: Icon, header, and phone animate in together (50-75%)
@@ -2997,7 +2997,7 @@ const NycSubway = ({ className }) => {
             });
           }
         }
-        
+
         // Mark animation as complete when animation finishes (at 100% scroll)
         if (progress >= 1) {
           section17AnimationComplete = true;
@@ -3023,14 +3023,14 @@ const NycSubway = ({ className }) => {
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       document.body.style.overflow = 'auto';
-      
+
       // Cleanup orientation change handlers
       window.removeEventListener('orientationchange', handleOrientationChange);
       window.removeEventListener('resize', handleOrientationChange);
-      
+
       // Cleanup section observer
       sectionObserver.disconnect();
-      
+
       // Reset section 13 active state when component unmounts
       if (setIsWhiteBG) {
         setIsWhiteBG(false);
@@ -3050,1045 +3050,1045 @@ const NycSubway = ({ className }) => {
       {/* Scroll Progress Tracker */}
       <ScrollProgressTracker currentSection={currentSection} totalSections={totalSections} sectionRefs={sectionRefs} isMobile={isMobile} />
 
-    {/* Section 1 – Title */}
-    <section 
-      ref={section1Ref}
-      className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
-    >
-      {/* Video Container */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
+      {/* Section 1 – Title */}
+      <section
+        ref={section1Ref}
+        className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
+      >
+        {/* Video Container */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
 
-        {/* Video */}
+          {/* Video */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
+
+          >
+            <source src="/subway/Title Frame.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          <img
+            src={isMobile ? "/subway/lockup(portrait).svg" : "/subway/lockup.png"}
+            alt="NYC Subway Lockup"
+            className="absolute top-[45%] md:top-[49%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-auto scale-[65%] md:scale-[50%] ml-1.5 md:ml-6 z-10 drop-shadow-[3px_4px_12px_rgba(0,0,0,0.5)] md:drop-shadow-none"
+          />
+
+          {/* Bouncing Chevron Down */}
+          <div
+            className="absolute bottom-20 md:bottom-6 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
+            onClick={() => {
+              const nextSection = section2Ref.current;
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            <ChevronDownIcon className="w-auto h-10 text-white animate-bounce " />
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+      {/* Section 2 – Bubbles + Take a Crack at It (Combined) */}
+      <section
+        ref={section2Ref}
+        className="min-h-screen flex items-center justify-center relative border-0 border-white/[20%]"
+      >
+        <div className="w-full mx-auto text-center relative h-screen">
+
+          {/* Section 2 Text Box */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2">
+            <p
+              ref={section2MainTitleRef}
+              className="text-4xl md:text-6xl font-semibold text-foreground tracking-tight w-[90%] md:w-2/3 mx-auto -mt-8 md:mt-0"
+              style={{ lineHeight: '0.9' }}
+            >
+              The New York City Subway is not great.
+            </p>
+          </div>
+
+          {/* Speech Bubbles */}
+          <img
+            ref={(el) => section2BubbleRefs.current[0] = el}
+            src="/subway/bubble1.png"
+            alt="Speech Bubble 1"
+            className="absolute bottom-[29%] md:bottom-[25%] -left-5 md:left-[10%] w-60 md:w-120 h-auto"
+          />
+          <img
+            ref={(el) => section2BubbleRefs.current[1] = el}
+            src="/subway/bubble4.png"
+            alt="Speech Bubble 2"
+            className="absolute bottom-[38%] md:bottom-[58%] left-[28%] md:left-[7%] w-[70%] md:w-[35%] h-auto blur-[0.6px] *:md:blur-[1.5px]"
+          />
+          <img
+            ref={(el) => section2BubbleRefs.current[2] = el}
+            src="/subway/bubble3.png"
+            alt="Speech Bubble 3"
+            className="absolute bottom-[58%] md:bottom-[69%] -right-[8%] md:right-[35%] w-[70%] md:w-120 h-auto blur-[1px] md:blur-[2px]"
+          />
+          <img
+            ref={(el) => section2BubbleRefs.current[3] = el}
+            src="/subway/bubble2.png"
+            alt="Speech Bubble 4"
+            className="absolute bottom-[68%] md:bottom-[50%] right-[35%] md:right-[3%] w-[67%] md:w-120 h-auto blur-[1px] md:blur-[3px]"
+          />
+          <img
+            ref={(el) => section2BubbleRefs.current[4] = el}
+            src="/subway/bubble5.png"
+            alt="Speech Bubble 5"
+            className="absolute bottom-[80%] md:bottom-[15%] right-[6%] md:right-[7%] w-[80%] md:w-135 h-auto"
+          />
+
+          {/* Section 2 Bottom middle emoji */}
+          <div
+            ref={section2EmojiRef}
+            className="absolute bottom-[2%] md:bottom-0 left-1/2 transform -translate-x-1/2 w-[45%] md:w-96 h-auto rounded-full md:rounded-none overflow-hidden glass-sm md:border-0 md:shadow-none"
+          >
+            <img
+              src="/subway/section2emoji.png"
+              alt="Section 1 Emoji"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Section 3 Text Box 1 */}
+          <div
+            ref={section3Text1Ref}
+            className="absolute top-[45%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full mx-auto text-center"
+          >
+            <h2 className="text-4xl md:text-4.5xl font-medium text-foreground tracking-tight w-[70%] md:w-[60%] mx-auto leading-[1]">
+              We all already knew that.
+            </h2>
+            {/* Progress Line */}
+            {/* <div 
+            ref={section2ProgressLineRef}
+            className="w-full h-1 bg-foreground mt-4 transform origin-left rounded-full"
+            style={{ transform: 'scaleX(0)' }}
+          /> */}
+          </div>
+
+          {/* Section 3 Text Box 2 */}
+          <div
+            ref={section3Text2Ref}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
+          >
+            <h2 className="text-[24pt] md:text-6xl font-medium text-foreground tracking-tight w-[70%] md:w-[40%] mx-auto -mt-18 md:-mt-4 leading-[1] origin-center">
+              However, I decided to take a crack at it anyway.
+            </h2>
+          </div>
+
+          {/* Section 3 Bottom middle emoji */}
+          <div
+            className="absolute bottom-20 md:bottom-24 left-1/2 transform -translate-x-1/2 w-80 h-80"
+          >
+            <div className="w-full h-full rounded-full overflow-hidden relative -z-50 scale-75 md:scale-95 origin-bottom">
+              <img
+                ref={section3EmojiRef}
+                src="/subway/section2emoji1.png"
+                alt="Section 1 Emoji"
+                className="w-auto h-full scale-90 object-cover origin-bottom"
+              />
+              <img
+                ref={section3Emoji2Ref}
+                src="/subway/section3emoji.png"
+                alt="Section 3 Emoji 2"
+                className="w-auto h-[120%] -mt-4 object-cover absolute inset-0 opacity-0"
+              />
+
+              {/* Progress Border */}
+              <svg
+                className="absolute inset-0 w-full h-full rotate-90 pointer-events-none"
+                viewBox="0 0 320 320"
+              >
+                <circle
+                  ref={section3EmojiProgressBorderRef}
+                  cx="160"
+                  cy="160"
+                  r="160"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  className="blur-[8px] dark:blur-[2px] text-black/30 dark:text-white"
+                  style={{
+                    strokeDasharray: '0, 1000',
+                    strokeLinecap: 'round'
+                  }}
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4 – Look Inwards */}
+      <section
+        ref={section4Ref}
+        className="min-h-screen flex items-center justify-center relative overflow-hidden md:overflow-visible"
+      >
+        {/* Background gradient */}
+        <div
+          ref={section4BackgroundRef}
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(circle at bottom, #6CFDFF 0%, #3B26FF 100%)'
+          }}
+        />
+        {/* Container */}
+        <div className="w-full h-full relative">
+
+          {/* Text 1 */}
+          <div
+            ref={section4Text1Ref}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+          >
+            <p className="text-xl md:text-2xl font-medium text-foreground tracking-tight text-center">So to begin...</p>
+
+          </div>
+
+          {/* Text 2 */}
+          <div
+            ref={section4Text2Ref}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+          >
+            <h2 className="text-[56pt] md:text-9xl font-semibold text-foreground w-full mx-auto tracking-tight text-center mt-6 md:mt-0 leading-[0.9] md:whitespace-nowrap">
+              I looked inwards.
+            </h2>
+          </div>
+        </div>
+
+        {/* Bottom middle emoji */}
+        <div
+          ref={section4EmojiRef}
+          className="absolute -bottom-8 md:bottom-0 z-40"
+        >
+          <img
+            src="/subway/section4emoji.png"
+            alt="Section 4 Emoji"
+            className=" h-[18rem] md:h-[29rem] w-auto"
+          />
+        </div>
+      </section>
+
+      {/* Section 5 – Personal Insights */}
+      <section
+        ref={section5Ref}
+        className="min-h-screen flex items-center justify-center relative"
+      >
+        {/* Text Body - Phase 0 */}
+        <div
+          ref={section5TextBodyRef}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full"
+        >
+          <h2 className="text-3xl md:text-4.5xl leading-[1.2] md:leading-[3rem] font-medium text-foreground tracking-tight mt-10 md:-mt-4 w-[80%] md:w-[45%] mx-auto">
+            And through my own lived experience, deduced the following personal insights.
+          </h2>
+        </div>
+
+        <div className="w-full max-w-5xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-28">
+
+          {/* Text Column 1 */}
+          <div
+            ref={section5Text1Ref}
+            className="text-left mt-4 md:-mt-10 w-[90%] md:w-full mx-auto md:mx-0"
+          >
+            <div className="mb-3 md:mb-6">
+              <img
+                src="/subway/section5icon1.png"
+                alt="Section 5 Icon 1"
+                className="h-8 md:h-10 dark:invert w-auto"
+              />
+            </div>
+            <h2 className="text-2xl md:text-4xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent leading-[1]">
+              Making my way downtown. (or not)
+            </h2>
+            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">
+              Subway stations can have platforms on opposing sides of the tracks heading uptown/downtown respectively, with tracks running in the middle.
+            </p>
+
+            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.4] md:leading-[1.6]">
+              This, combined with the lack of options for crossing the tracks to get to the platform opposite can result in users entering the wrong platform via the wrong entrance and thus having to exit and re-enter.
+            </p>
+          </div>
+
+          {/* Text Column 2 */}
+          <div
+            ref={section5Text2Ref}
+            className="text-left md:-mt-10 w-[90%] md:w-full mx-auto md:mx-0"
+          >
+            <div className="mb-3 md:mb-6">
+              <img
+                src="/subway/section5icon2.png"
+                alt="Section 5 Icon 2"
+                className="h-8 md:h-10 dark:invert w-auto"
+              />
+            </div>
+            <h2 className="text-2xl md:text-4xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent leading-[1]">
+              Conduct yourself accordingly.
+            </h2>
+            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">
+              Train conductors are a reliable source of information as well as safety.
+            </p>
+            <p className="mt-3 md:mt-5 text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">
+              They tend to be located in the middle of the train and it is a common sight for commuters to ask the conductors for directions/guidance at stations.
+            </p>
+            <p className="mt-3 md:mt-8 text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">
+              They are also figures of authority and representatives of the MTA while on the train and can be a support for help when it is required.
+            </p>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* Section 6 – Look to Someone Who Knows What He's Talking About */}
+      <section
+        ref={section6Ref}
+        className="min-h-screen flex items-center justify-center relative"
+      >
+        {/* Background gradient */}
+        <div
+          ref={section6BackgroundRef}
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(circle at bottom right, #FFB06B 0%, #FF4671 100%)'
+          }}
+        />
+        {/* Container */}
+        <div className="w-full h-full relative">
+
+          {/* Text 1 */}
+          <div
+            ref={section6Text1Ref}
+            className="absolute top-[51%] md:top-[53%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          >
+            <p className="text-xl font-medium text-foreground tracking-tight">After which...</p>
+
+          </div>
+
+          {/* Text 2 */}
+          <div
+            ref={section6Text2Ref}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[95%] md:w-[85%] 2xl:w-[75%]"
+          >
+            <p className="text-[32pt] xl:text-[50pt] 2xl:text-[60pt] font-semibold text-foreground tracking-tight mx-auto mt-8 md:mt-0 w-[90%]"
+              style={{ lineHeight: '0.9' }}>
+              I looked to someone who knew what he was talking about.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom middle emoji */}
+        <div
+          ref={section6EmojiRef}
+          className="absolute bottom-0 right-4 md:right-28"
+        >
+          <img
+            src="/subway/section6emoji.png"
+            alt="Section 6 Emoji"
+            className="max-w-full h-[16rem] md:h-[24rem] w-auto"
+          />
+        </div>
+      </section>
+
+      {/* Section 7+8 – Sim Hao Jie + Expert Insights */}
+      <section
+        ref={section7Ref}
+        className="min-h-screen flex items-center justify-center relative"
+      >
+        {/* Section 7 Content */}
+        <div className="w-full text-center">
+
+          {/* Text 1 */}
+          <div
+            ref={section7Text1Ref}
+            className="absolute top-[55%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
+          >
+            <p className="text-[40pt] md:text-[60pt] py-10 font-semibold tracking-tight mx-auto bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent -mt-36">Sim Hao Jie</p>
+
+          </div>
+
+          {/* Text 2 */}
+          <div
+            ref={section7Text2Ref}
+            className="absolute top-[55%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full md:w-[65%]"
+          >
+            <p className="text-[12pt] md:text-[20pt] mt-0 md:mt-14 font-medium text-foreground w-[80%] mx-auto"
+              style={{ lineHeight: '1.25' }}>
+              is a Service Designer based in New York City and has conducted studies with communities regarding the daily experience
+              and situation of the New York City Subway.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom middle emoji */}
+        <div
+          ref={section7EmojiRef}
+          className="absolute bottom-0"
+        >
+          <img
+            src="/subway/section7emoji.png"
+            alt="Section 7 Emoji"
+            className="max-w-full h-[15rem] md:h-[22rem] w-auto"
+          />
+        </div>
+
+        {/* Section 8 Content - Overlaid on top */}
+        <div className="absolute inset-0 w-full flex items-center justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 items-start max-w-7xl mt-10
+         md:-mt-10 ">
+
+            {/* Column 1 - Emoji */}
+            <div
+              ref={section8EmojiRef}
+              className="flex justify-center items-center md:-ml-20 mt-[40%] absolute bottom-10 left-1/2 transform -translate-x-1/2 mx-auto md:relative hidden md:block"
+            >
+              <div className="bg-background dark:border-0 dark:glass-strong drop-shadow-xl w-44 h-44 md:w-64 md:h-64 rounded-full flex items-center justify-center relative">
+                <img
+                  ref={section8Emoji1Ref}
+                  src="/subway/section7emoji1.png"
+                  alt="Section 7 Emoji 1"
+                  className="max-w-full h-40 md:h-52 absolute inset-0 m-auto"
+                />
+                <img
+                  ref={section8Emoji2Ref}
+                  src="/subway/section7emoji2.png"
+                  alt="Section 7 Emoji 2"
+                  className="max-w-full h-40 md:h-52 absolute inset-0 m-auto"
+                />
+                <img
+                  ref={section8Emoji3Ref}
+                  src="/subway/section7emoji3.png"
+                  alt="Section 7 Emoji 3"
+                  className="max-w-full h-40 md:h-52 absolute inset-0 m-auto"
+                />
+              </div>
+            </div>
+
+            {/* Column 2 - Text 1 */}
+            <div
+              ref={section8Text1Ref}
+              className="flex items-start flex-col pt-4 md:pt-20 w-[80%] md:w-full mx-auto"
+            >
+              <div className="mb-4">
+                <img
+                  src="/subway/section7icon1.png"
+                  alt="Safety Icon"
+                  className="h-7 md:h-10 w-auto dark:invert"
+                />
+              </div>
+              <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4 ">
+                Safety
+              </h3>
+              <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.3] md:leading-[1.6]">
+                A sense of unease and lack of safety while commuting is exacerbated by the physical environments of certain stations within the system.
+              </p>
+
+              <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.3] md:leading-[1.6]">
+                Unclear wayfinding within the system can result in a lack of confidence in navigating the system.
+              </p>
+            </div>
+
+            {/* Column 3 - Text 2 */}
+            <div
+              ref={section8Text2Ref}
+              className="flex flex-col pt-0 md:pt-20 w-[80%] md:w-full mx-auto"
+            >
+              <div className="mb-4">
+                <img
+                  src="/subway/section7icon2.png"
+                  alt="Wayfinding Icon"
+                  className="h-7 md:h-10 w-auto dark:invert"
+                />
+              </div>
+              <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-10 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4">
+                Wayfinding
+              </h3>
+              <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.3] md:leading-[1.6]">
+                Station exits/entrances can be difficult to comprehend for a commuter.
+              </p>
+
+              <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.3] md:leading-[1.6]">
+                Exits, in particular, can be confusing as they are labeled by road names and cardinal directions. A Southeast corner can be difficult to discern while underground with no visible landmarks to ground a directional cue like this.
+              </p>
+            </div>
+
+            {/* Column 4 - Text 3 */}
+            <div
+              ref={section8Text3Ref}
+              className="flex flex-col pt-0 md:pt-20 w-[80%] md:w-full mx-auto"
+            >
+              <div className="mb-4">
+                <img
+                  src="/subway/section7icon3.png"
+                  alt="Accessibility Icon"
+                  className="h-7 md:h-10 w-auto dark:invert"
+                />
+              </div>
+              <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-10 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4">
+                Accessibility
+              </h3>
+              <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.3] md:leading-[1.6]">
+                Not all stations within the system are fully accessible.
+              </p>
+
+              <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.3] md:leading-[1.6]">
+                This has a major impact on commuters with movement disabilities and results in itineraries that differ for most commuters as their needs take into account stations with accessibility.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Section 9 – Problem Statement */}
+      <section
+        ref={section9Ref}
+        className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
+      >
+        {/* Background Video */}
+        <video
+          ref={section9BackgroundRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-auto h-full object-cover z-0 opacity-0"
+        >
+          <source src="/subway/flyover.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Text and Icon - positioned independently */}
+        <div className="absolute flex flex-col items-center justify-center z-10 w-[75%] md:-mt-6">
+          <h1
+            ref={section9TextRef}
+            className="text-[32pt] md:text-[54pt] font-semibold text-foreground tracking-tight mx-auto text-center -mt-16 md:-mt-0"
+            style={{ lineHeight: '1.05' }}
+          >
+            Navigating the NYC subway system comfortably can be challenging.
+          </h1>
+        </div>
+
+        <img
+          ref={section9IconRef}
+          src="/subway/section9icon1.png"
+          alt="Section 9 Icon"
+          className="h-12 md:h-16 w-auto dark:invert opacity-0 absolute bottom-[200px] md:bottom-[320px] right-[60px] md:right-[42%]"
+          style={{
+            filter: 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(335deg) brightness(130%) contrast(97%)'
+          }}
+        />
+
+        {/* Emoji positioned at bottom of screen */}
+        <img
+          ref={section9EmojiRef}
+          src="/subway/section9emoji1.png"
+          alt="Section 9 Icon"
+          className="absolute bottom-0 h-[280px] md:h-[350px] w-auto z-10"
+        />
+
+        {/* Rounded Rectangle - positioned in center */}
+        <div
+          ref={section9RectangleRef}
+          className="absolute inset-0 w-[340px] md:w-[475px] m-auto rounded-[24pt] md:rounded-[40pt] border-2 glass-strong backdrop-blur-lg backdrop-brightness-110 bg-white/60 z-5 flex flex-col items-start justify-start pl-8 md:pl-14 opacity-0 overflow-hidden"
+        >
+          <img
+            src="/subway/section9icon2.png"
+            alt="Section 9 Icon"
+            className="mt-5 md:mt-9 h-12 md:h-16 w-auto mb-2"
+          />
+          <div ref={section9TextContainerRef} className="flex flex-col">
+            <h1
+              className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
+              ref={section9RectangleText1Ref}>
+              How might we<span className="font-light">...</span>
+            </h1>
+
+            <h1
+              className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
+              ref={section9RectangleText2Ref}>
+              provide
+            </h1>
+            <h1
+              className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
+              ref={section9RectangleText3Ref}>
+              commuters
+            </h1>
+            <h1
+              className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
+              ref={section9RectangleText4Ref}>
+              confidence
+            </h1>
+            <h1
+              className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
+              ref={section9RectangleText5Ref}>
+              when <br />navigating <br />the system?
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 11 – UWB Explanation with Animation */}
+      <section
+        ref={section11Ref}
+        className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
+      >
+        {/* Background Video */}
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-
+          className="absolute inset-0 w-full h-full object-cover z-0 brightness-75 contrast-[1.2]"
         >
           <source src="/subway/Title Frame.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        
-        <img 
-          src={isMobile ? "/subway/lockup(portrait).svg" : "/subway/lockup.png"} 
-          alt="NYC Subway Lockup" 
-          className="absolute top-[45%] md:top-[49%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-auto scale-[65%] md:scale-[50%] ml-1.5 md:ml-6 z-10 drop-shadow-[3px_4px_12px_rgba(0,0,0,0.5)] md:drop-shadow-none"
-        />
 
-        {/* Bouncing Chevron Down */}
-        <div 
-          className="absolute bottom-20 md:bottom-6 left-1/2 transform -translate-x-1/2 cursor-pointer z-20"
-          onClick={() => {
-            const nextSection = section2Ref.current;
-            if (nextSection) {
-              nextSection.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}
-        >
-          <ChevronDownIcon className="w-auto h-10 text-white animate-bounce " />
-        </div>
-
-
-      </div>
-
-      
-    </section>
-
-    {/* Section 2 – Bubbles + Take a Crack at It (Combined) */}
-    <section 
-      ref={section2Ref}
-      className="min-h-screen flex items-center justify-center relative border-0 border-white/[20%]"
-    >
-      <div className="w-full mx-auto text-center relative h-screen">
-        
-        {/* Section 2 Text Box */}
-         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-1/2">
-           <p 
-             ref={section2MainTitleRef}
-             className="text-4xl md:text-6xl font-semibold text-foreground tracking-tight w-[90%] md:w-2/3 mx-auto -mt-8 md:mt-0"
-             style={{ lineHeight: '0.9' }}
-           >
-           The New York City Subway is not great.
-           </p>
-         </div>
-        
-        {/* Speech Bubbles */}
-        <img 
-          ref={(el) => section2BubbleRefs.current[0] = el}
-          src="/subway/bubble1.png" 
-          alt="Speech Bubble 1" 
-          className="absolute bottom-[29%] md:bottom-[25%] -left-5 md:left-[10%] w-60 md:w-120 h-auto"
-        />
-        <img 
-          ref={(el) => section2BubbleRefs.current[1] = el}
-          src="/subway/bubble4.png" 
-          alt="Speech Bubble 2" 
-          className="absolute bottom-[38%] md:bottom-[58%] left-[28%] md:left-[7%] w-[70%] md:w-[35%] h-auto blur-[0.6px] *:md:blur-[1.5px]"
-        />
-        <img 
-          ref={(el) => section2BubbleRefs.current[2] = el}
-          src="/subway/bubble3.png" 
-          alt="Speech Bubble 3" 
-          className="absolute bottom-[58%] md:bottom-[69%] -right-[8%] md:right-[35%] w-[70%] md:w-120 h-auto blur-[1px] md:blur-[2px]"
-        />
-        <img 
-          ref={(el) => section2BubbleRefs.current[3] = el}
-          src="/subway/bubble2.png" 
-          alt="Speech Bubble 4" 
-          className="absolute bottom-[68%] md:bottom-[50%] right-[35%] md:right-[3%] w-[67%] md:w-120 h-auto blur-[1px] md:blur-[3px]"
-        />
-        <img 
-          ref={(el) => section2BubbleRefs.current[4] = el}
-          src="/subway/bubble5.png" 
-          alt="Speech Bubble 5" 
-          className="absolute bottom-[80%] md:bottom-[15%] right-[6%] md:right-[7%] w-[80%] md:w-135 h-auto"
-        />
-        
-        {/* Section 2 Bottom middle emoji */}
-        <div 
-          ref={section2EmojiRef}
-          className="absolute bottom-[2%] md:bottom-0 left-1/2 transform -translate-x-1/2 w-[45%] md:w-96 h-auto rounded-full md:rounded-none overflow-hidden glass-sm md:border-0 md:shadow-none"
-        >
-          <img 
-            src="/subway/section2emoji.png" 
-            alt="Section 1 Emoji" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Section 3 Text Box 1 */}
-        <div 
-          ref={section3Text1Ref}
-          className="absolute top-[45%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full mx-auto text-center"
-        >
-          <h2 className="text-4xl md:text-4.5xl font-medium text-foreground tracking-tight w-[70%] md:w-[60%] mx-auto leading-[1]">
-            We all already knew that.
-          </h2>
-          {/* Progress Line */}
-          {/* <div 
-            ref={section2ProgressLineRef}
-            className="w-full h-1 bg-foreground mt-4 transform origin-left rounded-full"
-            style={{ transform: 'scaleX(0)' }}
-          /> */}
-        </div>
-        
-        {/* Section 3 Text Box 2 */}
-        <div 
-          ref={section3Text2Ref}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
-        >
-          <h2 className="text-[24pt] md:text-6xl font-medium text-foreground tracking-tight w-[70%] md:w-[40%] mx-auto -mt-18 md:-mt-4 leading-[1] origin-center">
-            However, I decided to take a crack at it anyway.
-          </h2>
-        </div>
-        
-        {/* Section 3 Bottom middle emoji */}
-        <div 
-          className="absolute bottom-20 md:bottom-24 left-1/2 transform -translate-x-1/2 w-80 h-80"
-        >
-          <div className="w-full h-full rounded-full overflow-hidden relative -z-50 scale-75 md:scale-95 origin-bottom">
-            <img 
-              ref={section3EmojiRef}
-              src="/subway/section2emoji1.png" 
-              alt="Section 1 Emoji" 
-              className="w-auto h-full scale-90 object-cover origin-bottom"
-            />
-            <img 
-              ref={section3Emoji2Ref}
-              src="/subway/section3emoji.png" 
-              alt="Section 3 Emoji 2" 
-              className="w-auto h-[120%] -mt-4 object-cover absolute inset-0 opacity-0"
-            />
-            
-            {/* Progress Border */}
-            <svg 
-              className="absolute inset-0 w-full h-full rotate-90 pointer-events-none"
-              viewBox="0 0 320 320"
-            >
-              <circle
-                ref={section3EmojiProgressBorderRef}
-                cx="160"
-                cy="160"
-                r="160"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                className="blur-[8px] dark:blur-[2px] text-black/30 dark:text-white"
-                style={{
-                  strokeDasharray: '0, 1000',
-                  strokeLinecap: 'round'
-                }}
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Section 4 – Look Inwards */}
-    <section 
-      ref={section4Ref}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden md:overflow-visible"
-    >
-      {/* Background gradient */}
-      <div 
-        ref={section4BackgroundRef}
-        className="absolute inset-0"
-        style={{
-          background: 'radial-gradient(circle at bottom, #6CFDFF 0%, #3B26FF 100%)'
-        }}
-      />
-      {/* Container */}
-      <div className="w-full h-full relative">
-         
-          {/* Text 1 */}
-           <div 
-             ref={section4Text1Ref}
-             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
-           >
-               <p className="text-xl md:text-2xl font-medium text-foreground tracking-tight text-center">So to begin...</p>
-
-           </div>
-           
-           {/* Text 2 */}
-           <div 
-             ref={section4Text2Ref}
-             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
-           >
-            <h2 className="text-[56pt] md:text-9xl font-semibold text-foreground w-full mx-auto tracking-tight text-center mt-6 md:mt-0 leading-[0.9] md:whitespace-nowrap">
-              I looked inwards.
-            </h2>
-           </div>
-      </div>
-      
-      {/* Bottom middle emoji */}
-      <div 
-        ref={section4EmojiRef}
-        className="absolute -bottom-8 md:bottom-0 z-40"
-      >
-        <img 
-          src="/subway/section4emoji.png" 
-          alt="Section 4 Emoji" 
-          className=" h-[18rem] md:h-[29rem] w-auto"
-        />
-      </div>
-    </section>
-
-    {/* Section 5 – Personal Insights */}
-    <section 
-      ref={section5Ref}
-      className="min-h-screen flex items-center justify-center relative"
-    >
-      {/* Text Body - Phase 0 */}
-      <div 
-        ref={section5TextBodyRef}
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full"
-      >
-        <h2 className="text-3xl md:text-4.5xl leading-[1.2] md:leading-[3rem] font-medium text-foreground tracking-tight mt-10 md:-mt-4 w-[80%] md:w-[45%] mx-auto">
-          And through my own lived experience, deduced the following personal insights.
-        </h2>
-      </div>
-      
-      <div className="w-full max-w-5xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-28">
-        
-        {/* Text Column 1 */}
-        <div 
-          ref={section5Text1Ref}
-          className="text-left mt-4 md:-mt-10 w-[90%] md:w-full mx-auto md:mx-0"
-        >
-          <div className="mb-3 md:mb-6">
-            <img 
-              src="/subway/section5icon1.png" 
-              alt="Section 5 Icon 1" 
-              className="h-8 md:h-10 dark:invert w-auto"
-            />
-          </div>
-          <h2 className="text-2xl md:text-4xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent leading-[1]">
-               Making my way downtown. (or not) 
-          </h2>
-          <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">
-          Subway stations can have platforms on opposing sides of the tracks heading uptown/downtown respectively, with tracks running in the middle.
-          </p>
-
-          <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.4] md:leading-[1.6]">
-          This, combined with the lack of options for crossing the tracks to get to the platform opposite can result in users entering the wrong platform via the wrong entrance and thus having to exit and re-enter.
-          </p>
-        </div>
-        
-        {/* Text Column 2 */}
-        <div 
-          ref={section5Text2Ref}
-          className="text-left md:-mt-10 w-[90%] md:w-full mx-auto md:mx-0"
-        >
-          <div className="mb-3 md:mb-6">
-            <img 
-              src="/subway/section5icon2.png" 
-              alt="Section 5 Icon 2" 
-              className="h-8 md:h-10 dark:invert w-auto"
-            />
-          </div>
-          <h2 className="text-2xl md:text-4xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-r from-[#3d9bff] to-[#0067d4] bg-clip-text text-transparent leading-[1]">
-            Conduct yourself accordingly.
-          </h2>
-          <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">
-          Train conductors are a reliable source of information as well as safety.  
-          </p>
-          <p className="mt-3 md:mt-5 text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">  
-          They tend to be located in the middle of the train and it is a common sight for commuters to ask the conductors for directions/guidance at stations. 
-          </p>
-          <p className="mt-3 md:mt-8 text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.4] md:leading-[1.6]">
-          They are also figures of authority and representatives of the MTA while on the train and can be a support for help when it is required.
-          </p>
-          
-        </div>
-        
-      </div>
-    </section>
-
-    {/* Section 6 – Look to Someone Who Knows What He's Talking About */}
-    <section 
-      ref={section6Ref}
-      className="min-h-screen flex items-center justify-center relative"
-    >
-      {/* Background gradient */}
-      <div 
-        ref={section6BackgroundRef}
-        className="absolute inset-0"
-        style={{
-          background: 'radial-gradient(circle at bottom right, #FFB06B 0%, #FF4671 100%)'
-        }}
-      />
-      {/* Container */}
-      <div className="w-full h-full relative">
-         
-          {/* Text 1 */}
-           <div 
-             ref={section6Text1Ref}
-             className="absolute top-[51%] md:top-[53%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-           >
-               <p className="text-xl font-medium text-foreground tracking-tight">After which...</p>
-
-           </div>
-           
-           {/* Text 2 */}
-           <div 
-             ref={section6Text2Ref}
-             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-[95%] md:w-[85%] 2xl:w-[75%]"
-           >
-               <p className="text-[32pt] xl:text-[50pt] 2xl:text-[60pt] font-semibold text-foreground tracking-tight mx-auto mt-8 md:mt-0 w-[90%]"
-               style={{ lineHeight: '0.9' }}>
-               I looked to someone who knew what he was talking about.
-               </p>
-           </div>
-      </div>
-      
-      {/* Bottom middle emoji */}
-      <div 
-        ref={section6EmojiRef}
-        className="absolute bottom-0 right-4 md:right-28"
-      >
-        <img 
-          src="/subway/section6emoji.png" 
-          alt="Section 6 Emoji" 
-          className="max-w-full h-[16rem] md:h-[24rem] w-auto"
-        />
-      </div>
-    </section>
-
-    {/* Section 7+8 – Sim Hao Jie + Expert Insights */}
-    <section 
-      ref={section7Ref}
-      className="min-h-screen flex items-center justify-center relative"
-    >
-      {/* Section 7 Content */}
-      <div className="w-full text-center">
-         
-          {/* Text 1 */}
-           <div 
-             ref={section7Text1Ref}
-             className="absolute top-[55%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full"
-           >
-            <p className="text-[40pt] md:text-[60pt] py-10 font-semibold tracking-tight mx-auto bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent -mt-36">Sim Hao Jie</p>
-
-           </div>
-           
-           {/* Text 2 */}
-           <div 
-             ref={section7Text2Ref}
-             className="absolute top-[55%] md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full md:w-[65%]"
-           >
-               <p className="text-[12pt] md:text-[20pt] mt-0 md:mt-14 font-medium text-foreground w-[80%] mx-auto"
-                style={{ lineHeight: '1.25' }}>
-               is a Service Designer based in New York City and has conducted studies with communities regarding the daily experience 
-               and situation of the New York City Subway.
-               </p>
-           </div>
-      </div>
-      
-      {/* Bottom middle emoji */}
-      <div 
-        ref={section7EmojiRef}
-        className="absolute bottom-0"
-      >
-        <img 
-          src="/subway/section7emoji.png" 
-          alt="Section 7 Emoji" 
-          className="max-w-full h-[15rem] md:h-[22rem] w-auto"
-        />
-      </div>
-
-      {/* Section 8 Content - Overlaid on top */}
-      <div className="absolute inset-0 w-full flex items-center justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 items-start max-w-7xl mt-10
-         md:-mt-10 ">
-          
-          {/* Column 1 - Emoji */}
-          <div 
-            ref={section8EmojiRef}
-            className="flex justify-center items-center md:-ml-20 mt-[40%] absolute bottom-10 left-1/2 transform -translate-x-1/2 mx-auto md:relative hidden md:block"
-          >
-            <div className="bg-background dark:border-0 dark:glass-strong drop-shadow-xl w-44 h-44 md:w-64 md:h-64 rounded-full flex items-center justify-center relative">
-              <img 
-                ref={section8Emoji1Ref}
-                src="/subway/section7emoji1.png" 
-                alt="Section 7 Emoji 1" 
-                className="max-w-full h-40 md:h-52 absolute inset-0 m-auto"
-              />
-              <img 
-                ref={section8Emoji2Ref}
-                src="/subway/section7emoji2.png" 
-                alt="Section 7 Emoji 2" 
-                className="max-w-full h-40 md:h-52 absolute inset-0 m-auto"
-              />
-              <img 
-                ref={section8Emoji3Ref}
-                src="/subway/section7emoji3.png" 
-                alt="Section 7 Emoji 3" 
-                className="max-w-full h-40 md:h-52 absolute inset-0 m-auto"
-              />
-            </div>
-          </div>
-          
-          {/* Column 2 - Text 1 */}
-          <div 
-            ref={section8Text1Ref}
-            className="flex items-start flex-col pt-4 md:pt-20 w-[80%] md:w-full mx-auto"
-          >
-            <div className="mb-4">
-              <img 
-                src="/subway/section7icon1.png" 
-                alt="Safety Icon" 
-                className="h-7 md:h-10 w-auto dark:invert"
-              />
-            </div>
-            <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-8 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4 ">
-              Safety
-            </h3>
-            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.3] md:leading-[1.6]">
-            A sense of unease and lack of safety while commuting is exacerbated by the physical environments of certain stations within the system. 
-            </p>
-
-            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.3] md:leading-[1.6]">
-            Unclear wayfinding within the system can result in a lack of confidence in navigating the system.
-            </p>
-          </div>
-          
-          {/* Column 3 - Text 2 */}
-          <div 
-            ref={section8Text2Ref}
-            className="flex flex-col pt-0 md:pt-20 w-[80%] md:w-full mx-auto"
-          >
-            <div className="mb-4">
-              <img 
-                src="/subway/section7icon2.png" 
-                alt="Wayfinding Icon" 
-                className="h-7 md:h-10 w-auto dark:invert"
-              />
-            </div>
-            <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-10 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4">
-              Wayfinding
-            </h3>
-            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.3] md:leading-[1.6]">
-            Station exits/entrances can be difficult to comprehend for a commuter. 
-            </p>
-
-            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.3] md:leading-[1.6]">
-            Exits, in particular, can be confusing as they are labeled by road names and cardinal directions. A Southeast corner can be difficult to discern while underground with no visible landmarks to ground a directional cue like this.
-            </p>
-          </div>
-          
-          {/* Column 4 - Text 3 */}
-          <div 
-            ref={section8Text3Ref}
-            className="flex flex-col pt-0 md:pt-20 w-[80%] md:w-full mx-auto"
-          >
-            <div className="mb-4">
-              <img 
-                src="/subway/section7icon3.png" 
-                alt="Accessibility Icon" 
-                className="h-7 md:h-10 w-auto dark:invert"
-              />
-            </div>
-            <h3 className="text-2xl md:text-4.5xl font-semibold dark:font-medium tracking-tight mb-4 md:mb-10 bg-gradient-to-t from-[#ffa46b] to-[#ff5f46] bg-clip-text text-transparent py-0 md:py-4">
-              Accessibility
-            </h3>
-            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left leading-[1.3] md:leading-[1.6]">
-            Not all stations within the system are fully accessible.
-            </p>
-
-            <p className="text-[10pt] md:text-lg font-normal md:font-medium text-white/90 md:text-foreground text-left mt-3 md:mt-8 leading-[1.3] md:leading-[1.6]">
-            This has a major impact on commuters with movement disabilities and results in itineraries that differ for most commuters as their needs take into account stations with accessibility. 
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </section>
-
-    {/* Section 9 – Problem Statement */}
-    <section 
-      ref={section9Ref}
-      className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
-    >
-      {/* Background Video */}
-      <video
-        ref={section9BackgroundRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-auto h-full object-cover z-0 opacity-0"
-      >
-        <source src="/subway/flyover.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      {/* Text and Icon - positioned independently */}
-      <div className="absolute flex flex-col items-center justify-center z-10 w-[75%] md:-mt-6">
-        <h1 
-          ref={section9TextRef}
-          className="text-[32pt] md:text-[54pt] font-semibold text-foreground tracking-tight mx-auto text-center -mt-16 md:-mt-0"
-          style={{ lineHeight: '1.05' }}
-        >
-          Navigating the NYC subway system comfortably can be challenging.
-        </h1>
-      </div>
-
-      <img 
-          ref={section9IconRef}
-          src="/subway/section9icon1.png" 
-          alt="Section 9 Icon" 
-          className="h-12 md:h-16 w-auto dark:invert opacity-0 absolute bottom-[200px] md:bottom-[320px] right-[60px] md:right-[42%]" 
-          style={{
-          filter: 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(335deg) brightness(130%) contrast(97%)'
-            }}
-      />
-
-      {/* Emoji positioned at bottom of screen */}
-      <img
-        ref={section9EmojiRef}
-        src="/subway/section9emoji1.png"
-        alt="Section 9 Icon"
-        className="absolute bottom-0 h-[280px] md:h-[350px] w-auto z-10"
-      />
-
-      {/* Rounded Rectangle - positioned in center */}
-      <div 
-        ref={section9RectangleRef}
-        className="absolute inset-0 w-[340px] md:w-[475px] m-auto rounded-[24pt] md:rounded-[40pt] border-2 glass-strong backdrop-blur-lg backdrop-brightness-110 bg-white/60 z-5 flex flex-col items-start justify-start pl-8 md:pl-14 opacity-0 overflow-hidden"
-      >
-        <img 
-          src="/subway/section9icon2.png" 
-          alt="Section 9 Icon" 
-          className="mt-5 md:mt-9 h-12 md:h-16 w-auto mb-2" 
-        />
-        <div ref={section9TextContainerRef} className="flex flex-col">
-          <h1 
-            className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
-            ref={section9RectangleText1Ref}>
-            How might we<span className="font-light">...</span>
-          </h1>
-
-          <h1 
-            className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
-            ref={section9RectangleText2Ref}>
-            provide 
-          </h1>
-          <h1 
-            className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
-            ref={section9RectangleText3Ref}>
-            commuters
-          </h1>
-          <h1 
-            className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
-            ref={section9RectangleText4Ref}>
-            confidence 
-          </h1>
-          <h1 
-            className="text-[2.55rem] md:text-5xl font-semibold text-black tracking-tight leading-[2.55rem] md:leading-none"
-            ref={section9RectangleText5Ref}>
-            when <br/>navigating <br/>the system?
-          </h1>
-        </div>
-      </div>
-    </section>
-
-    {/* Section 11 – UWB Explanation with Animation */}
-    <section 
-      ref={section11Ref}
-      className="h-screen w-full flex items-center justify-center text-white relative overflow-hidden"
-    >
-      {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 brightness-75 contrast-[1.2]"
-      >
-        <source src="/subway/Title Frame.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      
-      {/* 1st Rounded Rectangle */}
-      <div 
-        ref={section11OriginalRef}
-        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[28pt] md:rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[340px] h-[560px] md:w-[475px] md:h-[700px] mx-auto text-center absolute left-1/2 top-1/2 md:top-auto -translate-x-1/2 -translate-y-1/2 md:translate-y-0 md:inset-0 md:m-auto z-10 overflow-hidden scale-95 md:scale-100"
-      >
-        {/* Text */}
-        <div className="pl-8 pt-8 md:pl-14 md:pt-10 text-left w-full">
-
-          {/* Icon */}
-          <img 
-            src="/subway/section11icon1.png" 
-            alt="Section 11 Icon" 
-            className="h-10 w-auto mb-5 md:h-12 md:mb-6"/>
-
-          {/* Utilizing */}
-          <p className="text-[16pt] md:text-[20pt] font-semibold tracking-tight text-left text-gray-600 mt-5 mb-3 md:mt-8 md:mb-4">
-          Utilizing...
-          </p>
-        
-          {/* Header */}
-          <h2 className="text-[28pt] md:text-[38pt] font-semibold tracking-tight text-left bg-gradient-to-r to-[#3d9bff] from-[#0067d4] leading-[2.2rem] md:leading-[3rem] bg-clip-text text-transparent pb-1.5 md:pb-2">
-            Ultra-Wideband Technology
-          </h2>
-
-        </div>
-
-        {/* Phone */}
-        <div className="relative w-full h-full mt-8 md:mt-10">
-          <img 
-            src="/subway/section11phone2.png" 
-            alt="Section 11 Icon" 
-            className="absolute w-full h-auto object-cover scale-[130%] md:scale-[120%] left-[69%] top-[65%] md:top-[70%] -translate-x-[50%] -translate-y-[50%]"
-          />
-        </div>
-      </div>
-      
-      {/* 2nd Rounded Rectangle with 3 Text Columns */}
-      <div
-        ref={section11NewRef}
-        className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[28pt] md:rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[360px] h-[650px] md:w-[1000px] md:h-[500px] mx-auto text-center absolute left-1/2 top-1/2 md:top-auto -translate-x-1/2 -translate-y-1/2 md:translate-y-0 md:inset-0 md:m-auto z-10 overflow-hidden pt-8 px-[25px] md:pt-11 md:pr-14 md:pl-18"
-      >
-        {/* Header Container */}
-        <div className="flex flex-wrap items-center mb-2 md:mb-4">
-
-          <h2
-            ref={section11Header1Ref}
-            className="text-4xl md:text-6xl font-semibold tracking-tight text-black/80 px-1 md:px-0"
-          >
-            Ultra-wide
-          </h2>
-
-          <h2
-            ref={section11Header2Ref}
-            className="text-4xl md:text-6xl font-semibold tracking-tight bg-gradient-to-r from-[#528ee8] to-[#1a78dd] bg-clip-text text-transparent italic -ml-0.5 pr-2"
-          >
-            what?
-          </h2>
-
-        </div>
-
-        {/* Phase 1 Content */}
-        <div ref={section11TopParagraphRef} className="text-left mb-6 md:mb-12">
-
-          {/* Header Sub Paragraph */}
-          <p className="text-sm md:text-xl tracking-tight text-black/60 font-semibold w-full md:w-[90%] px-2 md:px-0">
-          Ultra-Wideband (UWB) is a short-range, high-bandwidth wireless communication technology, capable of providing precise spatial awareness and device tracking
-          </p>
-
-        </div>
-
-        {/* Bottom 3 Columns */}
-        <div className="flex flex-col md:flex-row h-auto md:h-full items-start justify-start gap-4 md:gap-6 pb-4 md:pb-0">
-
-          {/* Column 1 */}
-          <div
-            ref={section11Text1Ref}
-            className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
-          >
-            <img
-              src="/subway/section11iconairtag.png"
-              alt="UWB Icon"
-              className="h-6 md:h-8 w-auto mb-3 md:mb-4 md:-mt-1"
-            />
-
-            <h3 className="text-xl md:text-2xl tracking-tight font-semibold mb-2 md:mb-4 text-black/90">
-              Airtag/Find My
-            </h3>
-
-            <p className="text-xs md:text-sm text-gray-700 font-medium text-left">
-              UWB enables an iPhone to measure its distance and direction from an AirTag, providing precision finding with centimeter-level accuracy.
-            </p>
-
-          </div>
-
-          {/* Column 2 */}
-          <div
-            ref={section11Text2Ref}
-            className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
-          >
-            <img
-              src="/subway/section11icon3.png"
-              alt="UWB Icon"
-              className="h-6 md:h-7 w-auto mb-3 md:mb-4"
-            />
-
-            <h3 className="text-xl md:text-2xl tracking-tight font-semibold mb-2 md:mb-4 text-black/90">
-              Handoff
-            </h3>
-
-            <p className="text-xs md:text-sm text-gray-700 font-medium text-left">
-              Handoff works more smoothly by prioritizing nearby devices. When you bring your iPhone close to a HomePod mini, a visual and haptic effect appears, making it easier to transfer music.
-            </p>
-
-          </div>
-
-          {/* Column 3 */}
-          <div
-            ref={section11Text3Ref}
-            className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
-          >
-            <img
-              src="/subway/section11icon4.png"
-              alt="UWB Icon"
-              className="h-6 md:h-7 w-auto mb-3 md:mb-4"
-            />
-
-            <h3 className="text-xl md:text-2xl tracking-tight font-semibold mb-2 md:mb-4 text-black/90">
-              AirDrop
-            </h3>
-
-            <p className="text-xs md:text-sm text-gray-700 font-medium text-left">
-              UWB also enables better device-to-device awareness, improving AirDrop by detecting which person you&apos;re pointing at.
-            </p>
-
-          </div>
-        </div>
-        
-        {/* Phase 2 Content - Overlaid on top */}
+        {/* 1st Rounded Rectangle */}
         <div
-          ref={section11Phase2Ref}
-          className="absolute inset-0 pt-8 px-[25px] md:pt-11 md:pl-18 md:pr-6"
+          ref={section11OriginalRef}
+          className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[28pt] md:rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[340px] h-[560px] md:w-[475px] md:h-[700px] mx-auto text-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 overflow-hidden scale-95 md:scale-100"
         >
-          {/* Top Paragraph */}
-          <div ref={section11Phase2TopParagraphRef} className="text-left mb-6 md:mb-10">
-            <h2 className="mt-3 text-3xl md:text-6xl font-semibold tracking-[-0.05rem] md:tracking-[-0.09rem] mb-2 md:mb-4 text-black/80 leading-[2.2rem] md:leading-[3.75rem] w-full md:w-[60%] px-1 md:px-0">
-              How it could work within the subway.
+          {/* Text */}
+          <div className="pl-8 pt-8 md:pl-14 md:pt-10 text-left w-full">
+
+            {/* Icon */}
+            <img
+              src="/subway/section11icon1.png"
+              alt="Section 11 Icon"
+              className="h-10 w-auto mb-5 md:h-12 md:mb-6" />
+
+            {/* Utilizing */}
+            <p className="text-[16pt] md:text-[20pt] font-semibold tracking-tight text-left text-gray-600 mt-5 mb-3 md:mt-8 md:mb-4">
+              Utilizing...
+            </p>
+
+            {/* Header */}
+            <h2 className="text-[28pt] md:text-[38pt] font-semibold tracking-tight text-left bg-gradient-to-r to-[#3d9bff] from-[#0067d4] leading-[2.2rem] md:leading-[3rem] bg-clip-text text-transparent pb-1.5 md:pb-2">
+              Ultra-Wideband Technology
             </h2>
+
           </div>
 
-          {/* Bottom Text */}
-          <div className="flex flex-col md:flex-row h-auto md:h-full items-start justify-start gap-4 md:gap-10 pb-4 md:pb-0 mt-4 md:mt-0">
+          {/* Phone */}
+          <div className="relative w-full h-full mt-8 md:mt-10">
+            <img
+              src="/subway/section11phone2.png"
+              alt="Section 11 Icon"
+              className="absolute w-full h-auto object-cover scale-[130%] md:scale-[120%] left-[69%] top-[65%] md:top-[70%] -translate-x-[50%] -translate-y-[50%]"
+            />
+          </div>
+        </div>
+
+        {/* 2nd Rounded Rectangle with 3 Text Columns */}
+        <div
+          ref={section11NewRef}
+          className="bg-white/80 backdrop-brightness-150 backdrop-blur-lg drop-shadow-xl rounded-[28pt] md:rounded-[40pt] glass-strong border-1 border-b-2 border-r-2 w-[360px] h-[650px] md:w-[1000px] md:h-[500px] mx-auto text-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 overflow-hidden pt-8 px-[25px] md:pt-11 md:pr-14 md:pl-18"
+        >
+          {/* Header Container */}
+          <div className="flex flex-wrap items-center mb-2 md:mb-4">
+
+            <h2
+              ref={section11Header1Ref}
+              className="text-4xl md:text-6xl font-semibold tracking-tight text-black/80 px-1 md:px-0"
+            >
+              Ultra-wide
+            </h2>
+
+            <h2
+              ref={section11Header2Ref}
+              className="text-4xl md:text-6xl font-semibold tracking-tight bg-gradient-to-r from-[#528ee8] to-[#1a78dd] bg-clip-text text-transparent italic -ml-0.5 pr-2"
+            >
+              what?
+            </h2>
+
+          </div>
+
+          {/* Phase 1 Content */}
+          <div ref={section11TopParagraphRef} className="text-left mb-6 md:mb-12">
+
+            {/* Header Sub Paragraph */}
+            <p className="text-sm md:text-xl tracking-tight text-black/60 font-semibold w-full md:w-[90%] px-2 md:px-0">
+              Ultra-Wideband (UWB) is a short-range, high-bandwidth wireless communication technology, capable of providing precise spatial awareness and device tracking
+            </p>
+
+          </div>
+
+          {/* Bottom 3 Columns */}
+          <div className="flex flex-col md:flex-row h-auto md:h-full items-start justify-start gap-4 md:gap-6 pb-4 md:pb-0">
 
             {/* Column 1 */}
             <div
-              ref={section11Phase2Text1Ref}
+              ref={section11Text1Ref}
               className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
             >
               <img
-                src="/subway/section11icon2.png"
-                alt="Navigation Icon"
-                className="h-6 md:h-7 w-auto mb-3 md:mb-4 md:-ml-1"
+                src="/subway/section11iconairtag.png"
+                alt="UWB Icon"
+                className="h-6 md:h-8 w-auto mb-3 md:mb-4 md:-mt-1"
               />
 
-              <p className="text-sm md:text-lg font-medium text-gray-600 text-left leading-[1.25rem] md:leading-[1.7rem]">
-              UWB base stations will be installed within subway stations, namely at entrances and exits, diverging paths within the station, and platforms.
+              <h3 className="text-xl md:text-2xl tracking-tight font-semibold mb-2 md:mb-4 text-black/90">
+                Airtag/Find My
+              </h3>
+
+              <p className="text-xs md:text-sm text-gray-700 font-medium text-left">
+                UWB enables an iPhone to measure its distance and direction from an AirTag, providing precision finding with centimeter-level accuracy.
               </p>
 
             </div>
 
             {/* Column 2 */}
             <div
-              ref={section11Phase2Text2Ref}
+              ref={section11Text2Ref}
               className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
             >
               <img
-                src="/subway/section11icon5.png"
-                alt="Safety Icon"
-                className="h-6 md:h-7 w-auto mb-3 md:mb-4 md:-ml-1"
+                src="/subway/section11icon3.png"
+                alt="UWB Icon"
+                className="h-6 md:h-7 w-auto mb-3 md:mb-4"
               />
 
-              <p className="text-sm md:text-lg font-medium text-gray-600 text-left leading-[1.25rem] md:leading-[1.7rem]">
-              The base stations will be programmed to transmit information regarding its respective location within stations.
+              <h3 className="text-xl md:text-2xl tracking-tight font-semibold mb-2 md:mb-4 text-black/90">
+                Handoff
+              </h3>
+
+              <p className="text-xs md:text-sm text-gray-700 font-medium text-left">
+                Handoff works more smoothly by prioritizing nearby devices. When you bring your iPhone close to a HomePod mini, a visual and haptic effect appears, making it easier to transfer music.
               </p>
 
             </div>
 
             {/* Column 3 */}
             <div
-              ref={section11Phase2Text3Ref}
+              ref={section11Text3Ref}
               className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
             >
               <img
-                src="/subway/section11icon6.png"
-                alt="Accessibility Icon"
-                className="h-6 md:h-7 w-auto mb-3 md:mb-4 md:-ml-1"
+                src="/subway/section11icon4.png"
+                alt="UWB Icon"
+                className="h-6 md:h-7 w-auto mb-3 md:mb-4"
               />
 
-              <p className="text-sm md:text-lg font-medium text-gray-600 text-left leading-[1.25rem] md:leading-[1.7rem]">
-              iPhones, in hand with Apple Maps, will query the base stations, resulting in precise spatial awareness within stations.
+              <h3 className="text-xl md:text-2xl tracking-tight font-semibold mb-2 md:mb-4 text-black/90">
+                AirDrop
+              </h3>
+
+              <p className="text-xs md:text-sm text-gray-700 font-medium text-left">
+                UWB also enables better device-to-device awareness, improving AirDrop by detecting which person you&apos;re pointing at.
               </p>
 
             </div>
           </div>
 
-          {/* Phase 2 Emoji - Bottom Right */}
+          {/* Phase 2 Content - Overlaid on top */}
           <div
-            ref={section11Phase2EmojiRef}
-            className="absolute bottom-2 right-4 md:bottom-0 md:right-10 hidden md:block"
+            ref={section11Phase2Ref}
+            className="absolute inset-0 pt-8 px-[25px] md:pt-11 md:pl-18 md:pr-6"
           >
-            <img
-              src="/subway/section11emoji.png"
-              alt="Section 11 Emoji"
-              className="h-40 md:h-64 w-auto"
-            />
-          </div>
-        </div>
-      </div>
-      
-    </section>
-
-    {/* Section 12 – How does it actually work? */}
-    <section 
-      ref={section12Ref}
-      className="min-h-screen flex items-center justify-center relative"
-    >
-      {/* Background gradient */}
-      <div 
-        ref={section12BackgroundRef}
-        className="absolute -inset-0"
-        style={{
-          background: 'radial-gradient(circle at bottom, #DECEBE 0%, #FF2020 100%)'
-        }}
-      />
-      {/* Container */}
-      <div className="w-full">
-          
-          {/* Text 1 */}
-            <div 
-              ref={section12Text1Ref}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-8"
-            >
-                <p className="text-[12pt] leading-none md:text-2xl font-medium text-foreground tracking-tight">Wait, so how does it...</p>
-
+            {/* Top Paragraph */}
+            <div ref={section11Phase2TopParagraphRef} className="text-left mb-6 md:mb-10">
+              <h2 className="mt-3 text-3xl md:text-6xl font-semibold tracking-[-0.05rem] md:tracking-[-0.09rem] mb-2 md:mb-4 text-black/80 leading-[2.2rem] md:leading-[3.75rem] w-full md:w-[60%] px-1 md:px-0">
+                How it could work within the subway.
+              </h2>
             </div>
-            
-          {/* Text 2 */}
+
+            {/* Bottom Text */}
+            <div className="flex flex-col md:flex-row h-auto md:h-full items-start justify-start gap-4 md:gap-10 pb-4 md:pb-0 mt-4 md:mt-0">
+
+              {/* Column 1 */}
+              <div
+                ref={section11Phase2Text1Ref}
+                className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
+              >
+                <img
+                  src="/subway/section11icon2.png"
+                  alt="Navigation Icon"
+                  className="h-6 md:h-7 w-auto mb-3 md:mb-4 md:-ml-1"
+                />
+
+                <p className="text-sm md:text-lg font-medium text-gray-600 text-left leading-[1.25rem] md:leading-[1.7rem]">
+                  UWB base stations will be installed within subway stations, namely at entrances and exits, diverging paths within the station, and platforms.
+                </p>
+
+              </div>
+
+              {/* Column 2 */}
+              <div
+                ref={section11Phase2Text2Ref}
+                className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
+              >
+                <img
+                  src="/subway/section11icon5.png"
+                  alt="Safety Icon"
+                  className="h-6 md:h-7 w-auto mb-3 md:mb-4 md:-ml-1"
+                />
+
+                <p className="text-sm md:text-lg font-medium text-gray-600 text-left leading-[1.25rem] md:leading-[1.7rem]">
+                  The base stations will be programmed to transmit information regarding its respective location within stations.
+                </p>
+
+              </div>
+
+              {/* Column 3 */}
+              <div
+                ref={section11Phase2Text3Ref}
+                className="flex-1 flex flex-col justify-center items-start flex-shrink-0 px-2 md:px-0"
+              >
+                <img
+                  src="/subway/section11icon6.png"
+                  alt="Accessibility Icon"
+                  className="h-6 md:h-7 w-auto mb-3 md:mb-4 md:-ml-1"
+                />
+
+                <p className="text-sm md:text-lg font-medium text-gray-600 text-left leading-[1.25rem] md:leading-[1.7rem]">
+                  iPhones, in hand with Apple Maps, will query the base stations, resulting in precise spatial awareness within stations.
+                </p>
+
+              </div>
+            </div>
+
+            {/* Phase 2 Emoji - Bottom Right */}
             <div
-              ref={section12Text2Ref}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-8"
+              ref={section11Phase2EmojiRef}
+              className="absolute bottom-2 right-4 md:bottom-0 md:right-10 hidden md:block"
             >
-                <h2 className="text-7xl md:text-9xl md:whitespace-nowrap font-semibold text-foreground tracking-tight w-full mt-6 md:-mt-4 relative flex flex-col md:flex-row md:items-center">
-                  <span className="relative inline-block">
-                    actually
-                    <div
-                      ref={section12UnderlineRef}
-                      className="absolute bottom-0 left-1.5 w-[84%] h-1.5 md:h-2 bg-foreground transform scale-x-0 origin-left"
-                      style={{ transform: 'scaleX(0)' }}
-                    />
-                  </span>
-                  <span className="ml-8 md:ml-5">work?</span>
-                </h2>
-            </div>
-      </div>
-      
-      {/* Bottom middle emoji */}
-      <div 
-        ref={section12EmojiRef}
-        className="absolute bottom-0"
-      >
-        <img 
-          src="/subway/section12emoji1.png" 
-          alt="Section 12 Emoji" 
-          className="max-w-full h-[18rem] md:h-[29rem]"
-        />
-      </div>
-    </section>
-
-    {/* Section 13 – Mock: Set Destination */}
-    <section
-      ref={section13Ref}
-      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
-    >
-      {/* Desktop layout */}
-      <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
-
-        {/* Column 1: Header */}
-        <div
-          className="text-left -mt-16 ml-10"
-        >
-          {/* Icon */}
-          <div
-            ref={section13IconRef}
-            className="mb-4 flex justify-start"
-            style={{ transformOrigin: 'center', display: 'inline-block' }}
-          >
-            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
               <img
-                src="/subway/section13icon1.png"
-                alt="Section 13 Icon"
-                className="h-12 w-auto ml-1"
-                style={{ transformOrigin: 'center', display: 'block' }}
+                src="/subway/section11emoji.png"
+                alt="Section 11 Emoji"
+                className="h-40 md:h-64 w-auto"
               />
             </div>
           </div>
-
-          {/* Text */}
-          <h2
-            ref={section13Text1Ref}
-            className="text-[48pt] font-semibold tracking-tight leading-[3.75rem] text-black/80 w-[83%]"
-          >
-            Set a destination in your maps.
-          </h2>
-
         </div>
 
-        {/* Column 2: Placeholder Image */}
+      </section>
+
+      {/* Section 12 – How does it actually work? */}
+      <section
+        ref={section12Ref}
+        className="min-h-screen flex items-center justify-center relative"
+      >
+        {/* Background gradient */}
         <div
-          ref={section13ImageRef}
-          className="flex items-center justify-center relative"
+          ref={section12BackgroundRef}
+          className="absolute -inset-0"
+          style={{
+            background: 'radial-gradient(circle at bottom, #DECEBE 0%, #FF2020 100%)'
+          }}
+        />
+        {/* Container */}
+        <div className="w-full">
+
+          {/* Text 1 */}
+          <div
+            ref={section12Text1Ref}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-8"
+          >
+            <p className="text-[12pt] leading-none md:text-2xl font-medium text-foreground tracking-tight">Wait, so how does it...</p>
+
+          </div>
+
+          {/* Text 2 */}
+          <div
+            ref={section12Text2Ref}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-8"
+          >
+            <h2 className="text-7xl md:text-9xl md:whitespace-nowrap font-semibold text-foreground tracking-tight w-full mt-6 md:-mt-4 relative flex flex-col md:flex-row md:items-center">
+              <span className="relative inline-block">
+                actually
+                <div
+                  ref={section12UnderlineRef}
+                  className="absolute bottom-0 left-1.5 w-[84%] h-1.5 md:h-2 bg-foreground transform scale-x-0 origin-left"
+                  style={{ transform: 'scaleX(0)' }}
+                />
+              </span>
+              <span className="ml-8 md:ml-5">work?</span>
+            </h2>
+          </div>
+        </div>
+
+        {/* Bottom middle emoji */}
+        <div
+          ref={section12EmojiRef}
+          className="absolute bottom-0"
         >
           <img
-              src="/subway/section13phone1.png"
-              alt="Section 13 Phone"
-              className="h-full w-auto scale-90 z-10"
-              style={{ transformOrigin: 'center' }}
-            />
+            src="/subway/section12emoji1.png"
+            alt="Section 12 Emoji"
+            className="max-w-full h-[18rem] md:h-[29rem]"
+          />
         </div>
+      </section>
 
-        {/* Column 3: Text Paragraph */}
-        <div
-          ref={section13ParagraphRef}
-          className="text-left"
-        >
-          <p className="text-2xl font-medium text-black/50 leading-9 px-24 mt-2">
-          As Apple Maps is now aware of your itinerary, the logic within Apple Maps will also include specific entrances to take, directions to head towards the correct platform as well as the directions toward the Downtown platform instead of Uptown.
-          </p>
-        </div>
-      </div>
+      {/* Section 13 – Mock: Set Destination */}
+      <section
+        ref={section13Ref}
+        className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
+      >
+        {/* Desktop layout */}
+        <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
 
-      {/* Mobile layout */}
-      <div className="flex md:hidden flex-col w-full h-screen">
-
-        {/* Top 1/3: Header (Column 1) and Paragraph (Column 3) swap area */}
-        <div className="h-[35%] flex items-end justify-center relative px-6">
-
-          {/* Column 1: Header - fades out when column 3 fades in */}
+          {/* Column 1: Header */}
           <div
-            ref={section13MobileCol1Ref}
-            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-0"
+            className="text-left -mt-16 ml-10"
           >
+            {/* Icon */}
             <div
-              className="mb-3 flex justify-center"
+              ref={section13IconRef}
+              className="mb-4 flex justify-start"
               style={{ transformOrigin: 'center', display: 'inline-block' }}
             >
               <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
                 <img
                   src="/subway/section13icon1.png"
                   alt="Section 13 Icon"
-                  className="h-10 w-auto"
+                  className="h-12 w-auto ml-1"
                   style={{ transformOrigin: 'center', display: 'block' }}
                 />
               </div>
             </div>
+
+            {/* Text */}
             <h2
-              className="text-[28pt] font-semibold tracking-tight leading-[2.25rem] text-black/80"
+              ref={section13Text1Ref}
+              className="text-[48pt] font-semibold tracking-tight leading-[3.75rem] text-black/80 w-[83%]"
             >
-              Set a destination<br/> in your maps.
+              Set a destination in your maps.
             </h2>
+
           </div>
 
-          {/* Column 3: Paragraph - fades in when column 1 fades out */}
+          {/* Column 2: Placeholder Image */}
           <div
-            ref={section13MobileParagraphRef}
-            className="absolute inset-0 flex items-end justify-center text-center px-8 pb-0"
+            ref={section13ImageRef}
+            className="flex items-center justify-center relative"
           >
-            <p className="text-base font-medium text-black/70 leading-[1.4rem]">
-            As Apple Maps is now aware of your itinerary, the logic within Apple Maps will also include specific entrances to take, directions to head towards the correct platform as well as the directions toward the Downtown platform instead of Uptown.
+            <img
+              src="/subway/section13phone1.png"
+              alt="Section 13 Phone"
+              className="h-full w-auto scale-90 z-10"
+              style={{ transformOrigin: 'center' }}
+            />
+          </div>
+
+          {/* Column 3: Text Paragraph */}
+          <div
+            ref={section13ParagraphRef}
+            className="text-left"
+          >
+            <p className="text-2xl font-medium text-black/50 leading-9 px-24 mt-2">
+              As Apple Maps is now aware of your itinerary, the logic within Apple Maps will also include specific entrances to take, directions to head towards the correct platform as well as the directions toward the Downtown platform instead of Uptown.
             </p>
           </div>
         </div>
 
-        {/* Bottom 2/3: Phone Image (Column 2) */}
-        <div
-          ref={section13MobileImageRef}
-          className="h-[65%] flex items-start justify-center relative overflow-hidden pt-8"
-        >
-          <img
-            src="/subway/section13phone1.png"
-            alt="Section 13 Phone"
-            className="h-[130%] w-auto object-contain z-10"
-            style={{ transformOrigin: 'center top' }}
-          />
-        </div>
-      </div>
-    </section>
+        {/* Mobile layout */}
+        <div className="flex md:hidden flex-col w-full h-screen">
 
-    {/* Section 14 – Mock: Incorrect Entrance */}
-    <section
-      ref={section14Ref}
-      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
-    >
-      {/* Desktop layout */}
-      <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
+          {/* Top 1/3: Header (Column 1) and Paragraph (Column 3) swap area */}
+          <div className="h-[35%] flex items-end justify-center relative px-6">
 
-        {/* Column 1: Header */}
-        <div
-          className="text-left -mt-20 ml-10"
-        >
-          <div
-            ref={section14IconRef}
-            className="mb-4 flex justify-start"
-            style={{ transformOrigin: 'center', display: 'inline-block' }}
-          >
-            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img
-                src="/subway/section9icon1.png"
-                alt="Section 14 Icon"
-                className="h-11 w-auto"
-                style={{ transformOrigin: 'center', display: 'block' }}
-              />
+            {/* Column 1: Header - fades out when column 3 fades in */}
+            <div
+              ref={section13MobileCol1Ref}
+              className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-0"
+            >
+              <div
+                className="mb-3 flex justify-center"
+                style={{ transformOrigin: 'center', display: 'inline-block' }}
+              >
+                <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                  <img
+                    src="/subway/section13icon1.png"
+                    alt="Section 13 Icon"
+                    className="h-10 w-auto"
+                    style={{ transformOrigin: 'center', display: 'block' }}
+                  />
+                </div>
+              </div>
+              <h2
+                className="text-[28pt] font-semibold tracking-tight leading-[2.25rem] text-black/80"
+              >
+                Set a destination<br /> in your maps.
+              </h2>
+            </div>
+
+            {/* Column 3: Paragraph - fades in when column 1 fades out */}
+            <div
+              ref={section13MobileParagraphRef}
+              className="absolute inset-0 flex items-end justify-center text-center px-8 pb-0"
+            >
+              <p className="text-base font-medium text-black/70 leading-[1.4rem]">
+                As Apple Maps is now aware of your itinerary, the logic within Apple Maps will also include specific entrances to take, directions to head towards the correct platform as well as the directions toward the Downtown platform instead of Uptown.
+              </p>
             </div>
           </div>
 
-          <h2
-            ref={section14Text1Ref}
-            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
+          {/* Bottom 2/3: Phone Image (Column 2) */}
+          <div
+            ref={section13MobileImageRef}
+            className="h-[65%] flex items-start justify-center relative overflow-hidden pt-8"
           >
-            You mistakenly approach the incorrect entrance for the station.
-          </h2>
-
+            <img
+              src="/subway/section13phone1.png"
+              alt="Section 13 Phone"
+              className="h-[130%] w-auto object-contain z-10"
+              style={{ transformOrigin: 'center top' }}
+            />
+          </div>
         </div>
+      </section>
 
-        {/* Column 2: Video */}
-        <div
-          className="flex items-center justify-center relative"
-        >
-          <video
+      {/* Section 14 – Mock: Incorrect Entrance */}
+      <section
+        ref={section14Ref}
+        className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
+      >
+        {/* Desktop layout */}
+        <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
+
+          {/* Column 1: Header */}
+          <div
+            className="text-left -mt-20 ml-10"
+          >
+            <div
+              ref={section14IconRef}
+              className="mb-4 flex justify-start"
+              style={{ transformOrigin: 'center', display: 'inline-block' }}
+            >
+              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                <img
+                  src="/subway/section9icon1.png"
+                  alt="Section 14 Icon"
+                  className="h-11 w-auto"
+                  style={{ transformOrigin: 'center', display: 'block' }}
+                />
+              </div>
+            </div>
+
+            <h2
+              ref={section14Text1Ref}
+              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
+            >
+              You mistakenly approach the incorrect entrance for the station.
+            </h2>
+
+          </div>
+
+          {/* Column 2: Video */}
+          <div
+            className="flex items-center justify-center relative"
+          >
+            <video
               ref={section14ImageRef}
               src="/subway/section14animation2.mp4"
               className="scale-95 ml-6 mt-10 object-cover"
@@ -4100,883 +4100,763 @@ const NycSubway = ({ className }) => {
               loop
               playsInline
             />
-          <img
+            <img
               ref={section14LockscreenRef}
               src="/subway/section14lockscreen.png"
               alt="Section 14 Lockscreen"
               className="mx-auto absolute h-[72%] top-[14.5%] left-[14%] w-auto drop-shadow-[3px_4px_12px_rgba(0,0,0,0.2)]"
               style={{ transformOrigin: 'center' }}
             />
-        </div>
+          </div>
 
-        {/* Column 3: Text Paragraph */}
-        <div
-          className="text-left"
-        >
-          <p
-            ref={section14Paragraph1Ref}
-            className="text-2xl font-medium text-black/50 leading-9 px-24 mt-14"
-          >
-          Your iPhone begins to receive the transmission from the base station that is installed at the entrance.
-          </p>
-
-          <p
-            ref={section14Paragraph2Ref}
-            className="text-2xl font-medium text-black/50 leading-9 px-24 -mt-48"
-          >
-          You receive a haptic buzz and a time-sensitive notification that you are approaching the wrong entrance for your trip.
-          </p>
-        </div>
-
-      </div>
-
-      {/* Mobile layout */}
-      <div className="flex md:hidden flex-col w-full h-screen">
-        {/* Top 1/3: Header (Column 1) and Paragraphs (Column 3) swap area */}
-        <div className="h-1/3 flex items-end justify-center relative px-6">
-          {/* Column 1: Header - fades out when paragraphs fade in */}
+          {/* Column 3: Text Paragraph */}
           <div
-            ref={section14MobileCol1Ref}
-            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-4"
+            className="text-left"
           >
-            <div
-              className="mb-3 flex justify-center"
-              style={{ transformOrigin: 'center', display: 'inline-block' }}
+            <p
+              ref={section14Paragraph1Ref}
+              className="text-2xl font-medium text-black/50 leading-9 px-24 mt-14"
             >
-              <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-                <img
-                  src="/subway/section9icon1.png"
-                  alt="Section 14 Icon"
-                  className="h-9 w-auto"
-                  style={{ transformOrigin: 'center', display: 'block' }}
-                />
+              Your iPhone begins to receive the transmission from the base station that is installed at the entrance.
+            </p>
+
+            <p
+              ref={section14Paragraph2Ref}
+              className="text-2xl font-medium text-black/50 leading-9 px-24 -mt-48"
+            >
+              You receive a haptic buzz and a time-sensitive notification that you are approaching the wrong entrance for your trip.
+            </p>
+          </div>
+
+        </div>
+
+        {/* Mobile layout */}
+        <div className="flex md:hidden flex-col w-full h-screen">
+          {/* Top 1/3: Header (Column 1) and Paragraphs (Column 3) swap area */}
+          <div className="h-1/3 flex items-end justify-center relative px-6">
+            {/* Column 1: Header - fades out when paragraphs fade in */}
+            <div
+              ref={section14MobileCol1Ref}
+              className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-4"
+            >
+              <div
+                className="mb-3 flex justify-center"
+                style={{ transformOrigin: 'center', display: 'inline-block' }}
+              >
+                <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                  <img
+                    src="/subway/section9icon1.png"
+                    alt="Section 14 Icon"
+                    className="h-9 w-auto"
+                    style={{ transformOrigin: 'center', display: 'block' }}
+                  />
+                </div>
               </div>
+              <h2
+                className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              >
+                You mistakenly approach the incorrect entrance for the station.
+              </h2>
             </div>
-            <h2
-              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+
+            {/* Column 3: Paragraph 1 - fades in then out */}
+            <div
+              ref={section14MobileParagraph1Ref}
+              className="absolute inset-0 flex items-end justify-center text-center px-10 pb-10"
             >
-              You mistakenly approach the incorrect entrance for the station.
-            </h2>
-          </div>
+              <p className="text-base font-medium text-black/70 leading-5">
+                Your iPhone begins to receive the transmission from the base station that is installed at the entrance.
+              </p>
+            </div>
 
-          {/* Column 3: Paragraph 1 - fades in then out */}
-          <div
-            ref={section14MobileParagraph1Ref}
-            className="absolute inset-0 flex items-end justify-center text-center px-10 pb-10"
-          >
-            <p className="text-base font-medium text-black/70 leading-5">
-            Your iPhone begins to receive the transmission from the base station that is installed at the entrance.
-            </p>
-          </div>
-
-          {/* Column 3: Paragraph 2 - fades in after paragraph 1 */}
-          <div
-            ref={section14MobileParagraph2Ref}
-            className="absolute inset-0 flex items-end justify-center text-center px-8 pb-10"
-          >
-            <p className="text-base font-medium text-black/70 leading-5">
-            You receive a haptic buzz and a time-sensitive notification that you are approaching the wrong entrance for your trip.
-            </p>
-          </div>
-        </div>
-
-        {/* Bottom 2/3: Video (Column 2) */}
-        <div
-          className="h-2/3 flex items-start justify-center relative overflow-hidden ml-3"
-        >
-          <video
-            ref={section14MobileVideoRef}
-            src="/subway/section14animation2.mp4"
-            className="h-[130%] w-auto object-contain z-10"
-            style={{
-              transformOrigin: 'center top',
-              backgroundColor: 'transparent',
-              clipPath: 'inset(1px 1px 1px 1px)'
-            }}
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
-          <img
-            ref={section14MobileLockscreenRef}
-            src="/subway/section14lockscreen.png"
-            alt="Section 14 Lockscreen"
-            className="mr-4 absolute h-[110%] top-[10%] w-auto drop-shadow-[3px_4px_12px_rgba(0,0,0,0.2)] z-20"
-            style={{ transformOrigin: 'center top' }}
-          />
-        </div>
-      </div>
-    </section>
-
-    {/* Section 15 – Mock: Enter Correct Station */}
-    <section
-      ref={section15Ref}
-      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
-    >
-      {/* Desktop layout */}
-      <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
-
-        {/* Column 1: Header */}
-        <div
-          className="text-left -mt-20 ml-10"
-        >
-          <div
-            ref={section15IconRef}
-            className="mb-4 flex justify-start"
-            style={{ transformOrigin: 'center', display: 'inline-block' }}
-          >
-            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img
-                src="/subway/section15icon1.png"
-                alt="Section 15 Icon"
-                className="h-14 w-auto"
-                style={{ transformOrigin: 'center', display: 'block' }}
-              />
+            {/* Column 3: Paragraph 2 - fades in after paragraph 1 */}
+            <div
+              ref={section14MobileParagraph2Ref}
+              className="absolute inset-0 flex items-end justify-center text-center px-8 pb-10"
+            >
+              <p className="text-base font-medium text-black/70 leading-5">
+                You receive a haptic buzz and a time-sensitive notification that you are approaching the wrong entrance for your trip.
+              </p>
             </div>
           </div>
 
-          <h2
-            ref={section15Text1Ref}
-            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
-          >
-            You receive directions to the correct entrance.
-          </h2>
-
-        </div>
-
-        {/* Column 2: Video */}
-        <div
-          className="flex items-center justify-center relative"
-        >
-          <video
-            ref={section15ImageRef}
-            src="/subway/section15animation_1.mp4"
-            className="scale-90 ml-7 mt-10 object-cover"
-            style={{
-              transformOrigin: 'center',
-              backgroundColor: 'transparent'
-            }}
-            muted
-            loop
-            playsInline
-          />
-
-        </div>
-
-        {/* Column 3: Text Paragraph */}
-        <div
-          className="text-left pl-14 pr-18"
-        >
-          <img
-            ref={section15Column3ImageRef}
-            src="/subway/section15phase2.png"
-            alt="Section 15 Column 3 Image"
-            className="h-auto w-full"
-          />
-          <p
-            ref={section15Paragraph1Ref}
-            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
-          >
-          A directional navigator shows up and guides you towards the direction of the correct entrance.
-          </p>
-
-          <p
-            ref={section15Paragraph2Ref}
-            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
-          >
-          You receive a haptic tap and the blue circle fills when you are oriented in the right direction.
-          </p>
-        </div>
-
-      </div>
-
-      {/* Desktop Phase 3 Overlay Elements */}
-      <div className="hidden md:grid absolute inset-0 w-full mx-auto px-20 grid-cols-3 items-center justify-center pointer-events-none">
-
-        {/* Phase 3 Column 1: New Header */}
-        <div
-          className="text-left -mt-20 ml-10"
-        >
+          {/* Bottom 2/3: Video (Column 2) */}
           <div
-            ref={section15Phase3IconRef}
-            className="mb-4 flex justify-start"
-            style={{ transformOrigin: 'center', display: 'inline-block' }}
+            className="h-2/3 flex items-start justify-center relative overflow-hidden ml-3"
           >
-            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img
-                src="/subway/section15icon2.png"
-                alt="Section 15 Phase 3 Icon"
-                className="h-12 w-auto"
-                style={{ transformOrigin: 'center', display: 'block' }}
-              />
-            </div>
+            <video
+              ref={section14MobileVideoRef}
+              src="/subway/section14animation2.mp4"
+              className="h-[130%] w-auto object-contain z-10"
+              style={{
+                transformOrigin: 'center top',
+                backgroundColor: 'transparent',
+                clipPath: 'inset(1px 1px 1px 1px)'
+              }}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+            <img
+              ref={section14MobileLockscreenRef}
+              src="/subway/section14lockscreen.png"
+              alt="Section 14 Lockscreen"
+              className="mr-4 absolute h-[110%] top-[10%] w-auto drop-shadow-[3px_4px_12px_rgba(0,0,0,0.2)] z-20"
+              style={{ transformOrigin: 'center top' }}
+            />
           </div>
-
-          <h2
-            ref={section15Phase3HeaderRef}
-            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[75%]"
-          >
-            You enter the correct station.
-          </h2>
-
         </div>
+      </section>
 
-        {/* Phase 3 Column 2: New Video */}
-        <div
-          className="flex items-center justify-center relative"
-        >
-          <video
-            ref={section15Phase3PhoneRef}
-            src="/subway/section15animation2.mp4"
-            className="scale-90 ml-7 mt-[2.375rem] object-cover"
-            style={{
-              backgroundColor: 'transparent'
-            }}
-            muted
-            loop
-            playsInline
-          />
+      {/* Section 15 – Mock: Enter Correct Station */}
+      <section
+        ref={section15Ref}
+        className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
+      >
+        {/* Desktop layout */}
+        <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
 
-        </div>
-
-        {/* Phase 3 Column 3: New Text */}
-        <div
-          className="text-left pl-14 pr-14"
-        >
-          <img
-            ref={section15Phase4DImageRef}
-            src="/subway/section15phase3.png"
-            alt="Section 15 Phase 4D Image"
-            className="h-auto w-[90%]"
-          />
-
-          <p
-            ref={section15Phase4DTextRef}
-            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
-          >
-          The station&apos;s navigation system guides you to your platform with precision.
-          </p>
-
-        </div>
-
-      </div>
-
-      {/* Mobile layout */}
-      <div className="flex md:hidden flex-col w-full h-screen">
-        {/* Top 1/3: Header (Column 1) and Content (Column 3) swap area */}
-        <div className="h-[30%] flex items-end justify-center relative px-6">
-          {/* Column 1: Header - fades out when column 3 fades in */}
+          {/* Column 1: Header */}
           <div
-            ref={section15MobileCol1Ref}
-            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-6"
+            className="text-left -mt-20 ml-10"
           >
             <div
-              className="mb-3 flex justify-center"
+              ref={section15IconRef}
+              className="mb-4 flex justify-start"
               style={{ transformOrigin: 'center', display: 'inline-block' }}
             >
               <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
                 <img
                   src="/subway/section15icon1.png"
                   alt="Section 15 Icon"
-                  className="h-11 w-auto"
+                  className="h-14 w-auto"
                   style={{ transformOrigin: 'center', display: 'block' }}
                 />
               </div>
             </div>
+
             <h2
-              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              ref={section15Text1Ref}
+              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
             >
               You receive directions to the correct entrance.
             </h2>
+
           </div>
 
-          {/* Column 3: Combined Paragraphs - fades in together */}
+          {/* Column 2: Video */}
           <div
-            ref={section15MobileCol3ImageRef}
-            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-5"
+            className="flex items-center justify-center relative"
           >
-            <p className="text-base font-medium text-black/50 leading-5 mb-3">
-            A directional navigator shows up and guides you towards the direction of the correct entrance.
+            <video
+              ref={section15ImageRef}
+              src="/subway/section15animation_1.mp4"
+              className="scale-90 ml-7 mt-10 object-cover"
+              style={{
+                transformOrigin: 'center',
+                backgroundColor: 'transparent'
+              }}
+              muted
+              loop
+              playsInline
+            />
+
+          </div>
+
+          {/* Column 3: Text Paragraph */}
+          <div
+            className="text-left pl-14 pr-18"
+          >
+            <img
+              ref={section15Column3ImageRef}
+              src="/subway/section15phase2.png"
+              alt="Section 15 Column 3 Image"
+              className="h-auto w-full"
+            />
+            <p
+              ref={section15Paragraph1Ref}
+              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
+            >
+              A directional navigator shows up and guides you towards the direction of the correct entrance.
             </p>
-            <p className="text-base font-medium text-black/50 leading-5">
-            You receive a haptic tap and the blue circle fills when you are oriented in the right direction.
+
+            <p
+              ref={section15Paragraph2Ref}
+              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
+            >
+              You receive a haptic tap and the blue circle fills when you are oriented in the right direction.
             </p>
           </div>
+
+        </div>
+
+        {/* Desktop Phase 3 Overlay Elements */}
+        <div className="hidden md:grid absolute inset-0 w-full mx-auto px-20 grid-cols-3 items-center justify-center pointer-events-none">
 
           {/* Phase 3 Column 1: New Header */}
           <div
-            ref={section15MobilePhase3Col1Ref}
-            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-4"
+            className="text-left -mt-20 ml-10"
           >
             <div
-              className="mb-3 flex justify-center"
+              ref={section15Phase3IconRef}
+              className="mb-4 flex justify-start"
               style={{ transformOrigin: 'center', display: 'inline-block' }}
             >
               <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
                 <img
                   src="/subway/section15icon2.png"
                   alt="Section 15 Phase 3 Icon"
-                  className="h-9 w-auto"
+                  className="h-12 w-auto"
                   style={{ transformOrigin: 'center', display: 'block' }}
                 />
               </div>
             </div>
+
             <h2
-              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              ref={section15Phase3HeaderRef}
+              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[75%]"
             >
-              You enter the <br/>correct station.
+              You enter the correct station.
             </h2>
+
           </div>
 
-        </div>
-
-        {/* Bottom 2/3: Video (Column 2) */}
-        <div
-          className="h-[70%] flex items-start justify-center relative overflow-hidden ml-4"
-        >
-          <video
-            ref={section15MobileVideoRef}
-            src="/subway/section15animation_1.mp4"
-            className="h-[130%] w-auto object-contain z-10"
-            style={{
-              transformOrigin: 'center top',
-              backgroundColor: 'transparent'
-            }}
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
-
-          {/* Phase 3 Video */}
-          <video
-            ref={section15MobilePhase3VideoRef}
-            src="/subway/section15animation2.mp4"
-            className="absolute h-[130%] w-auto object-contain z-10"
-            style={{
-              transformOrigin: 'center top',
-              backgroundColor: 'transparent'
-            }}
-            muted
-            loop
-            playsInline
-          />
-        </div>
-      </div>
-    </section>
-
-    {/* Section 16 – Mock: Along the Platform */}
-    <section
-      ref={section16Ref}
-      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
-    >
-      {/* Desktop layout */}
-      <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
-
-        {/* Column 1: Header */}
-        <div
-          className="text-left -mt-20 ml-10"
-        >
+          {/* Phase 3 Column 2: New Video */}
           <div
-            ref={section16IconRef}
-            className="mb-4 flex justify-start"
-            style={{ transformOrigin: 'center', display: 'inline-block' }}
+            className="flex items-center justify-center relative"
           >
-            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img
-                src="/subway/section16icon1.png"
-                alt="Section 16 Icon"
-                className="h-12 w-auto"
-                style={{ transformOrigin: 'center', display: 'block' }}
-              />
-            </div>
-          </div>
-
-          <h2
-            ref={section16Text1Ref}
-            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
-          >
-            You head down to the platform.
-          </h2>
-
-        </div>
-
-        {/* Column 2: Placeholder Image */}
-        <div
-          className="flex items-center justify-center relative"
-        >
-          <img
-              ref={section16ImageRef}
-              src="/subway/section16phone1.png"
-              alt="Section 16 Icon"
-              className="scale-90 ml-6 mt-10"
+            <video
+              ref={section15Phase3PhoneRef}
+              src="/subway/section15animation2.mp4"
+              className="scale-90 ml-7 mt-[2.375rem] object-cover"
+              style={{
+                backgroundColor: 'transparent'
+              }}
+              muted
+              loop
+              playsInline
             />
-        </div>
 
-        {/* Column 3: Text Paragraph */}
-        <div
-          className="text-left"
-        >
-          <p
-            ref={section16Paragraph1Ref}
-            className="text-2xl font-medium text-black/50 leading-9 px-24 mt-14"
-          >
-          As you descend to the platform, the iPhone is aware of your current location along the platform.
-          </p>
+          </div>
 
-          <p
-            ref={section16Paragraph2Ref}
-            className="text-2xl font-medium text-black/50 leading-9 px-24 -mt-48"
-          >
-          You receive directions to head towards the front (in the direction of travel) of the platform as Apple Maps is aware of the exit to take at the destination station.
-          </p>
-        </div>
-
-      </div>
-
-      {/* Mobile layout */}
-      <div className="flex md:hidden flex-col w-full h-screen">
-        {/* Top 30%: Header (Column 1) and Paragraphs (Column 3) swap area */}
-        <div className="h-[30%] flex items-end justify-center relative px-6 pb-8">
-          {/* Column 1: Header - fades out when paragraphs fade in */}
+          {/* Phase 3 Column 3: New Text */}
           <div
-            ref={section16MobileCol1Ref}
-            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-8"
+            className="text-left pl-14 pr-14"
+          >
+            <img
+              ref={section15Phase4DImageRef}
+              src="/subway/section15phase3.png"
+              alt="Section 15 Phase 4D Image"
+              className="h-auto w-[90%]"
+            />
+
+            <p
+              ref={section15Phase4DTextRef}
+              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
+            >
+              The station&apos;s navigation system guides you to your platform with precision.
+            </p>
+
+          </div>
+
+        </div>
+
+        {/* Mobile layout */}
+        <div className="flex md:hidden flex-col w-full h-screen">
+          {/* Top 1/3: Header (Column 1) and Content (Column 3) swap area */}
+          <div className="h-[30%] flex items-end justify-center relative px-6">
+            {/* Column 1: Header - fades out when column 3 fades in */}
+            <div
+              ref={section15MobileCol1Ref}
+              className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-6"
+            >
+              <div
+                className="mb-3 flex justify-center"
+                style={{ transformOrigin: 'center', display: 'inline-block' }}
+              >
+                <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                  <img
+                    src="/subway/section15icon1.png"
+                    alt="Section 15 Icon"
+                    className="h-11 w-auto"
+                    style={{ transformOrigin: 'center', display: 'block' }}
+                  />
+                </div>
+              </div>
+              <h2
+                className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              >
+                You receive directions to the correct entrance.
+              </h2>
+            </div>
+
+            {/* Column 3: Combined Paragraphs - fades in together */}
+            <div
+              ref={section15MobileCol3ImageRef}
+              className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-5"
+            >
+              <p className="text-base font-medium text-black/50 leading-5 mb-3">
+                A directional navigator shows up and guides you towards the direction of the correct entrance.
+              </p>
+              <p className="text-base font-medium text-black/50 leading-5">
+                You receive a haptic tap and the blue circle fills when you are oriented in the right direction.
+              </p>
+            </div>
+
+            {/* Phase 3 Column 1: New Header */}
+            <div
+              ref={section15MobilePhase3Col1Ref}
+              className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-4"
+            >
+              <div
+                className="mb-3 flex justify-center"
+                style={{ transformOrigin: 'center', display: 'inline-block' }}
+              >
+                <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                  <img
+                    src="/subway/section15icon2.png"
+                    alt="Section 15 Phase 3 Icon"
+                    className="h-9 w-auto"
+                    style={{ transformOrigin: 'center', display: 'block' }}
+                  />
+                </div>
+              </div>
+              <h2
+                className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              >
+                You enter the <br />correct station.
+              </h2>
+            </div>
+
+          </div>
+
+          {/* Bottom 2/3: Video (Column 2) */}
+          <div
+            className="h-[70%] flex items-start justify-center relative overflow-hidden ml-4"
+          >
+            <video
+              ref={section15MobileVideoRef}
+              src="/subway/section15animation_1.mp4"
+              className="h-[130%] w-auto object-contain z-10"
+              style={{
+                transformOrigin: 'center top',
+                backgroundColor: 'transparent'
+              }}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+
+            {/* Phase 3 Video */}
+            <video
+              ref={section15MobilePhase3VideoRef}
+              src="/subway/section15animation2.mp4"
+              className="absolute h-[130%] w-auto object-contain z-10"
+              style={{
+                transformOrigin: 'center top',
+                backgroundColor: 'transparent'
+              }}
+              muted
+              loop
+              playsInline
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Section 16 – Mock: Along the Platform */}
+      <section
+        ref={section16Ref}
+        className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
+      >
+        {/* Desktop layout */}
+        <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
+
+          {/* Column 1: Header */}
+          <div
+            className="text-left -mt-20 ml-10"
           >
             <div
-              className="mb-3 flex justify-center"
+              ref={section16IconRef}
+              className="mb-4 flex justify-start"
               style={{ transformOrigin: 'center', display: 'inline-block' }}
             >
               <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
                 <img
                   src="/subway/section16icon1.png"
                   alt="Section 16 Icon"
-                  className="h-11 w-auto"
+                  className="h-12 w-auto"
                   style={{ transformOrigin: 'center', display: 'block' }}
                 />
               </div>
             </div>
+
             <h2
-              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              ref={section16Text1Ref}
+              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
             >
-              You head down <br/>to the platform.
+              You head down to the platform.
             </h2>
+
           </div>
 
-          {/* Column 3: Paragraph 1 - fades in when column 1 fades out */}
+          {/* Column 2: Placeholder Image */}
           <div
-            ref={section16MobileParagraph1Ref}
-            className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+            className="flex items-center justify-center relative"
           >
-            <p className="text-base font-medium text-black/50 leading-5">
-            As you descend to the platform, the iPhone is aware of your current location along the platform.
+            <img
+              ref={section16ImageRef}
+              src="/subway/section16phone1.png"
+              alt="Section 16 Icon"
+              className="scale-90 ml-6 mt-10"
+            />
+          </div>
+
+          {/* Column 3: Text Paragraph */}
+          <div
+            className="text-left"
+          >
+            <p
+              ref={section16Paragraph1Ref}
+              className="text-2xl font-medium text-black/50 leading-9 px-24 mt-14"
+            >
+              As you descend to the platform, the iPhone is aware of your current location along the platform.
+            </p>
+
+            <p
+              ref={section16Paragraph2Ref}
+              className="text-2xl font-medium text-black/50 leading-9 px-24 -mt-48"
+            >
+              You receive directions to head towards the front (in the direction of travel) of the platform as Apple Maps is aware of the exit to take at the destination station.
             </p>
           </div>
 
-          {/* Column 3: Paragraph 2 - fades in when paragraph 1 moves up */}
-          <div
-            ref={section16MobileParagraph2Ref}
-            className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
-          >
-            <p className="text-base font-medium text-black/50 leading-5">
-            You receive directions to head towards the front (in the direction of travel) of the platform as Apple Maps is aware of the exit to take at the destination station.
-            </p>
-          </div>
         </div>
 
-        {/* Bottom 70%: Phone Image (Column 2) */}
-        <div className="h-[70%] flex items-start justify-center relative overflow-hidden ml-4">
-          <img
-            ref={section16MobileImageRef}
-            src="/subway/section16phone1.png"
-            alt="Section 16 Phone"
-            className="h-[130%] w-auto object-contain z-10"
-            style={{ transformOrigin: 'center top' }}
-          />
-        </div>
-      </div>
-    </section>
+        {/* Mobile layout */}
+        <div className="flex md:hidden flex-col w-full h-screen">
+          {/* Top 30%: Header (Column 1) and Paragraphs (Column 3) swap area */}
+          <div className="h-[30%] flex items-end justify-center relative px-6 pb-8">
+            {/* Column 1: Header - fades out when paragraphs fade in */}
+            <div
+              ref={section16MobileCol1Ref}
+              className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-8"
+            >
+              <div
+                className="mb-3 flex justify-center"
+                style={{ transformOrigin: 'center', display: 'inline-block' }}
+              >
+                <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                  <img
+                    src="/subway/section16icon1.png"
+                    alt="Section 16 Icon"
+                    className="h-11 w-auto"
+                    style={{ transformOrigin: 'center', display: 'block' }}
+                  />
+                </div>
+              </div>
+              <h2
+                className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              >
+                You head down <br />to the platform.
+              </h2>
+            </div>
 
-    {/* Section 17 – Mock: Reached Destination */}
-    <section
-      ref={section17Ref}
-      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
-    >
-      {/* Desktop layout */}
-      <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
+            {/* Column 3: Paragraph 1 - fades in when column 1 fades out */}
+            <div
+              ref={section16MobileParagraph1Ref}
+              className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+            >
+              <p className="text-base font-medium text-black/50 leading-5">
+                As you descend to the platform, the iPhone is aware of your current location along the platform.
+              </p>
+            </div>
 
-        {/* Column 1: Header */}
-        <div
-          className="text-left -mt-20 ml-10"
-        >
-          <div
-            ref={section17IconRef}
-            className="mb-4 flex justify-start"
-            style={{ transformOrigin: 'center', display: 'inline-block' }}
-          >
-            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img
-                src="/subway/section17icon1.png"
-                alt="Section 17 Icon"
-                className="h-11 w-auto"
-                style={{ transformOrigin: 'center', display: 'block' }}
-              />
+            {/* Column 3: Paragraph 2 - fades in when paragraph 1 moves up */}
+            <div
+              ref={section16MobileParagraph2Ref}
+              className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+            >
+              <p className="text-base font-medium text-black/50 leading-5">
+                You receive directions to head towards the front (in the direction of travel) of the platform as Apple Maps is aware of the exit to take at the destination station.
+              </p>
             </div>
           </div>
 
-          <h2
-            ref={section17Text1Ref}
-            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
-          >
-            You arrive at your destination station.
-          </h2>
-
-        </div>
-
-        {/* Column 2: Placeholder Image */}
-        <div
-          className="flex items-center justify-center relative"
-        >
-          <img
-            ref={section17ImageRef}
-            src="/subway/section17phone1.png"
-            alt="Section 17 Icon"
-            className="w-[92%] h-auto ml-6 mt-10"
-            style={{ transformOrigin: 'center' }}
-          />
-
-        </div>
-
-        {/* Column 3: Text Paragraph */}
-        <div
-          className="text-left pl-14 pr-36"
-        >
-          <p
-            ref={section17Paragraph1Ref}
-            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
-          >
-          The subway ride is uneventful (not necessarily a given in NYC), and you arrive at your destination station.
-          </p>
-
-          <p
-            ref={section17Paragraph2Ref}
-            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
-          >
-          You get off from the front of the train and as per planned, you find the set of stairs up from the platform in front of you.
-          </p>
-        </div>
-
-      </div>
-
-      {/* Desktop Phase 3 Overlay Elements */}
-      <div className="hidden md:grid absolute inset-0 w-full mx-auto px-20 grid-cols-3 items-center justify-center pointer-events-none">
-
-        {/* Phase 3 Column 1: New Header */}
-        <div
-          className="text-left -mt-20 ml-10"
-        >
-          <div
-            ref={section17Phase3IconRef}
-            className="mb-4 flex justify-start"
-            style={{ transformOrigin: 'center', display: 'inline-block' }}
-          >
-            <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
-              <img
-                src="/subway/section17icon2.png"
-                alt="Section 17 Phase 3 Icon"
-                className="h-11 w-auto"
-                style={{ transformOrigin: 'center', display: 'block' }}
-              />
-            </div>
+          {/* Bottom 70%: Phone Image (Column 2) */}
+          <div className="h-[70%] flex items-start justify-center relative overflow-hidden ml-4">
+            <img
+              ref={section16MobileImageRef}
+              src="/subway/section16phone1.png"
+              alt="Section 16 Phone"
+              className="h-[130%] w-auto object-contain z-10"
+              style={{ transformOrigin: 'center top' }}
+            />
           </div>
-
-          <h2
-            ref={section17Phase3HeaderRef}
-            className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[75%]"
-          >
-            You are guided to your exit from the station.
-          </h2>
-
         </div>
+      </section>
 
-        {/* Phase 3 Column 2: New Phone */}
-        <div
-          className="flex items-center justify-center relative"
-        >
-          <img
-            ref={section17Phase3PhoneRef}
-            src="/subway/section17phone2.png"
-            alt="Section 17 Icon"
-            className="w-[74%] h-auto ml-1 mb-0.5"
+      {/* Section 17 – Mock: Reached Destination */}
+      <section
+        ref={section17Ref}
+        className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
+      >
+        {/* Desktop layout */}
+        <div className="hidden md:grid w-full mx-auto px-20 grid-cols-3 items-center justify-center">
 
-          />
-
-        </div>
-
-        {/* Phase 3 Column 3: New Text */}
-        <div
-          className="text-left pl-14 pr-40"
-        >
-          <p
-            ref={section17Phase3TextRef}
-            className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4 mb-4"
-          >
-          You continue to receive directions in the form of haptic feedback and time-sensitive notifications within the station that lead you to your specific exit from the station building.
-          </p>
-
-        </div>
-
-      </div>
-
-      {/* Mobile layout */}
-      <div className="flex md:hidden flex-col w-full h-screen">
-        {/* Top 1/3: Header (Column 1) and Content (Column 3) swap area */}
-        <div className="h-1/3 flex items-end justify-center relative px-6 pb-8">
-          {/* Column 1: Header - fades out when paragraphs fade in */}
+          {/* Column 1: Header */}
           <div
-            ref={section17MobileCol1Ref}
-            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-8"
+            className="text-left -mt-20 ml-10"
           >
             <div
-              className="mb-3 flex justify-center"
+              ref={section17IconRef}
+              className="mb-4 flex justify-start"
               style={{ transformOrigin: 'center', display: 'inline-block' }}
             >
               <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
                 <img
                   src="/subway/section17icon1.png"
                   alt="Section 17 Icon"
-                  className="h-9 w-auto"
+                  className="h-11 w-auto"
                   style={{ transformOrigin: 'center', display: 'block' }}
                 />
               </div>
             </div>
+
             <h2
-              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              ref={section17Text1Ref}
+              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[83%]"
             >
               You arrive at your destination station.
             </h2>
+
           </div>
 
-          {/* Column 3: Paragraph 1 - fades in when column 1 fades out */}
+          {/* Column 2: Placeholder Image */}
           <div
-            ref={section17MobileParagraph1Ref}
-            className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+            className="flex items-center justify-center relative"
           >
-            <p className="text-base font-medium text-black/50 leading-5">
-            The subway ride is uneventful (not necessarily a given in NYC), and you arrive at your destination station.
+            <img
+              ref={section17ImageRef}
+              src="/subway/section17phone1.png"
+              alt="Section 17 Icon"
+              className="w-[92%] h-auto ml-6 mt-10"
+              style={{ transformOrigin: 'center' }}
+            />
+
+          </div>
+
+          {/* Column 3: Text Paragraph */}
+          <div
+            className="text-left pl-14 pr-36"
+          >
+            <p
+              ref={section17Paragraph1Ref}
+              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
+            >
+              The subway ride is uneventful (not necessarily a given in NYC), and you arrive at your destination station.
+            </p>
+
+            <p
+              ref={section17Paragraph2Ref}
+              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4"
+            >
+              You get off from the front of the train and as per planned, you find the set of stairs up from the platform in front of you.
             </p>
           </div>
 
-          {/* Column 3: Paragraph 2 - fades in after paragraph 1 */}
-          <div
-            ref={section17MobileParagraph2Ref}
-            className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
-          >
-            <p className="text-base font-medium text-black/50 leading-5">
-            You get off from the front of the train and as per planned, you find the set of stairs up from the platform in front of you.
-            </p>
-          </div>
+        </div>
+
+        {/* Desktop Phase 3 Overlay Elements */}
+        <div className="hidden md:grid absolute inset-0 w-full mx-auto px-20 grid-cols-3 items-center justify-center pointer-events-none">
 
           {/* Phase 3 Column 1: New Header */}
           <div
-            ref={section17MobilePhase3Col1Ref}
-            className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-8"
+            className="text-left -mt-20 ml-10"
           >
             <div
-              className="mb-3 flex justify-center"
+              ref={section17Phase3IconRef}
+              className="mb-4 flex justify-start"
               style={{ transformOrigin: 'center', display: 'inline-block' }}
             >
               <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
                 <img
                   src="/subway/section17icon2.png"
                   alt="Section 17 Phase 3 Icon"
-                  className="h-9 w-auto"
+                  className="h-11 w-auto"
                   style={{ transformOrigin: 'center', display: 'block' }}
                 />
               </div>
             </div>
+
             <h2
-              className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              ref={section17Phase3HeaderRef}
+              className="text-[46pt] font-semibold tracking-tight leading-[3.75rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent w-[75%]"
             >
               You are guided to your exit from the station.
             </h2>
+
           </div>
 
-          {/* Phase 3 Column 3: Text */}
+          {/* Phase 3 Column 2: New Phone */}
           <div
-            ref={section17MobilePhase3TextRef}
-            className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+            className="flex items-center justify-center relative"
           >
-            <p className="text-base font-medium text-black/50 leading-5">
-            You continue to receive directions in the form of haptic feedback and time-sensitive notifications within the station that lead you to your specific exit from the station building.
+            <img
+              ref={section17Phase3PhoneRef}
+              src="/subway/section17phone2.png"
+              alt="Section 17 Icon"
+              className="w-[74%] h-auto ml-1 mb-0.5"
+
+            />
+
+          </div>
+
+          {/* Phase 3 Column 3: New Text */}
+          <div
+            className="text-left pl-14 pr-40"
+          >
+            <p
+              ref={section17Phase3TextRef}
+              className="text-[16pt] font-medium text-black/50 leading-8 mt-6 ml-4 mb-4"
+            >
+              You continue to receive directions in the form of haptic feedback and time-sensitive notifications within the station that lead you to your specific exit from the station building.
             </p>
-          </div>
-        </div>
 
-        {/* Bottom 2/3: Phone Image (Column 2) */}
-        <div className="h-2/3 flex items-start justify-center relative overflow-hidden pt-16">
-          <img
-            ref={section17MobileImageRef}
-            src="/subway/section17phone1.png"
-            alt="Section 17 Phone"
-            className="h-[120%] w-auto object-contain z-10"
-            style={{ transformOrigin: 'center top' }}
-          />
-
-          {/* Phase 3 Phone Image */}
-          <img
-            ref={section17MobilePhase3ImageRef}
-            src="/subway/section17phone2.png"
-            alt="Section 17 Phase 3 Phone"
-            className="absolute h-[120%] w-auto object-contain z-10"
-            style={{ transformOrigin: 'center top' }}
-          />
-        </div>
-      </div>
-    </section>
-
-    {/* Spacer */}
-    <div className="w-full h-32 bg-[#F5F5F5]"></div>
-
-    {/* Section 18 – Summary */}
-    <section 
-      ref={section18Ref}
-      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
-    >
-      {/* Desktop layout */}
-      <div className="hidden md:flex w-full h-screen mx-auto px-20 flex-row items-center justify-center xl:gap-6 gap-3">
-        
-        {/* Column 1: Rounded Rectangle with Inset Image */}
-        <div 
-          className="flex-[4] flex flex-col items-center justify-between rounded-3xl xl:rounded-[35pt] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] bg-white drop-shadow-xl"
-          ref={section18Image1Ref}
-        >  
-          <div className="flex flex-col items-center w-[98%] mt-5 rounded-2xl overflow-hidden h-auto "> 
-            <video 
-              src="/subway/section14animation1.mp4" 
-              alt="Section 14 Animation 1" 
-              className="w-auto h-full object-cover ml-5 scale-[1.04]"
-              style={{ transformOrigin: 'center' }}
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
-          </div>
-          <p className="md:text-[13pt] xl:text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
-            Error State
-          </p>
-        </div>
-        
-        {/* Column 2: Rounded Rectangle with Inset Image */}
-        <div 
-          className="flex-[4] flex flex-col items-center justify-between rounded-3xl xl:rounded-[35pt] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] bg-white drop-shadow-xl"
-          ref={section18Image2Ref}
-        >
-          <div className="flex flex-col items-center w-[90%] mt-5 rounded-2xl overflow-hidden h-auto "> 
-            <img 
-              src="/subway/section18image2.png" 
-              alt="Section 18 Image 2" 
-              className="h-[99%] w-auto ml-2 object-cover"
-              style={{ transformOrigin: 'center' }}
-            />
           </div>
 
-          <p className="md:text-[13pt] xl:text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
-            Live Activity Cards
-          </p>
         </div>
-        
-        {/* Column 3: 2 Stacked Images */}
-        <div 
-          className="flex-[3] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] flex flex-col items-center justify-center space-y-2 xl:space-y-5"
-        >
-          <div 
-          ref={section18Image3TopRef}
-          className="flex flex-col items-center justify-between w-full h-1/2 bg-white rounded-3xl drop-shadow-xl">
-            <img 
-              src="/subway/section18image3top.png" 
-              alt="Section 18 Image 3 Top" 
-              className="w-[85%] h-auto py-4"
-              style={{ transformOrigin: 'center' }}
-            />
-            <p className="md:text-[11pt] 2xl:text-[16pt] leading-[1] text-center font-semibold text-gray-600 tracking-tight mb-6 w-[90%]">
-              Real-time directional navigation
-            </p>
-          </div>
 
-          <div 
-          ref={section18Image3BottomRef}
-          className="flex flex-col items-center justify-between w-full h-1/2 bg-white rounded-3xl drop-shadow-xl">
-            
-            <div className="flex flex-col items-center mt-4 w-[85%] h-auto rounded-2xl shadow-lg overflow-hidden">
-              <video 
-                src="/subway/itinerary.mp4" 
-                alt="Summary Itinerary Video" 
-                className="w-full h-auto object-cover scale-[1.03]"
-                style={{ transformOrigin: 'center' }}
-                autoPlay
-                loop
-                muted
-                playsInline
-              />
+        {/* Mobile layout */}
+        <div className="flex md:hidden flex-col w-full h-screen">
+          {/* Top 1/3: Header (Column 1) and Content (Column 3) swap area */}
+          <div className="h-1/3 flex items-end justify-center relative px-6 pb-8">
+            {/* Column 1: Header - fades out when paragraphs fade in */}
+            <div
+              ref={section17MobileCol1Ref}
+              className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-8"
+            >
+              <div
+                className="mb-3 flex justify-center"
+                style={{ transformOrigin: 'center', display: 'inline-block' }}
+              >
+                <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                  <img
+                    src="/subway/section17icon1.png"
+                    alt="Section 17 Icon"
+                    className="h-9 w-auto"
+                    style={{ transformOrigin: 'center', display: 'block' }}
+                  />
+                </div>
+              </div>
+              <h2
+                className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              >
+                You arrive at your destination station.
+              </h2>
             </div>
 
-            <p className="md:text-[13pt] 2xl:text-[16pt] leading-[1] text-center font-semibold text-gray-600 tracking-tight mb-6">
-              Step-by-step itinerary
-            </p>
+            {/* Column 3: Paragraph 1 - fades in when column 1 fades out */}
+            <div
+              ref={section17MobileParagraph1Ref}
+              className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+            >
+              <p className="text-base font-medium text-black/50 leading-5">
+                The subway ride is uneventful (not necessarily a given in NYC), and you arrive at your destination station.
+              </p>
+            </div>
+
+            {/* Column 3: Paragraph 2 - fades in after paragraph 1 */}
+            <div
+              ref={section17MobileParagraph2Ref}
+              className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+            >
+              <p className="text-base font-medium text-black/50 leading-5">
+                You get off from the front of the train and as per planned, you find the set of stairs up from the platform in front of you.
+              </p>
+            </div>
+
+            {/* Phase 3 Column 1: New Header */}
+            <div
+              ref={section17MobilePhase3Col1Ref}
+              className="absolute inset-0 flex flex-col items-center justify-end text-center px-6 pb-8"
+            >
+              <div
+                className="mb-3 flex justify-center"
+                style={{ transformOrigin: 'center', display: 'inline-block' }}
+              >
+                <div style={{ transformOrigin: 'center', display: 'inline-block' }}>
+                  <img
+                    src="/subway/section17icon2.png"
+                    alt="Section 17 Phase 3 Icon"
+                    className="h-9 w-auto"
+                    style={{ transformOrigin: 'center', display: 'block' }}
+                  />
+                </div>
+              </div>
+              <h2
+                className="text-[24pt] font-semibold tracking-tight leading-[2rem] bg-gradient-to-r from-black/80 to-gray-700 bg-clip-text text-transparent"
+              >
+                You are guided to your exit from the station.
+              </h2>
+            </div>
+
+            {/* Phase 3 Column 3: Text */}
+            <div
+              ref={section17MobilePhase3TextRef}
+              className="absolute inset-0 flex items-end justify-center text-center px-6 pb-8"
+            >
+              <p className="text-base font-medium text-black/50 leading-5">
+                You continue to receive directions in the form of haptic feedback and time-sensitive notifications within the station that lead you to your specific exit from the station building.
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom 2/3: Phone Image (Column 2) */}
+          <div className="h-2/3 flex items-start justify-center relative overflow-hidden pt-16">
+            <img
+              ref={section17MobileImageRef}
+              src="/subway/section17phone1.png"
+              alt="Section 17 Phone"
+              className="h-[120%] w-auto object-contain z-10"
+              style={{ transformOrigin: 'center top' }}
+            />
+
+            {/* Phase 3 Phone Image */}
+            <img
+              ref={section17MobilePhase3ImageRef}
+              src="/subway/section17phone2.png"
+              alt="Section 17 Phase 3 Phone"
+              className="absolute h-[120%] w-auto object-contain z-10"
+              style={{ transformOrigin: 'center top' }}
+            />
           </div>
         </div>
-        
-        {/* Column 4: Image */}
-        <div 
-          className="flex-[4] flex flex-col items-center justify-between rounded-3xl xl:rounded-[35pt] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] bg-white drop-shadow-xl"
-          ref={section18Image4Ref}
-        >
-          <div className="flex flex-col items-center w-full h-auto max-h-[88%]">
-            <img 
-              src="/subway/section18image4.png" 
-              alt="Section 18 Image 4" 
-              className="w-[90%] h-auto ml-1 mt-6 object-contain"
-              style={{ transformOrigin: 'center' }}
-            />
-            <video 
-              src="/subway/navigator1.mp4" 
-              alt="Navigator Video" 
-              className="w-[90%] h-[90%] ml-1 mt-4 object-cover rounded-3xl shadow-lg"
-              style={{ transformOrigin: 'center' }}
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
-          </div>
-          
+      </section>
 
-          <p className="md:text-[13pt] xl:text-[16pt] leading-[1.2] text-center font-semibold text-gray-600 tracking-tight mb-6 w-[80%]">
-            UWB-powered proximity guidance
-          </p>
+      {/* Spacer */}
+      <div className="w-full h-32 bg-[#F5F5F5]"></div>
 
-        </div>
+      {/* Section 18 – Summary */}
+      <section
+        ref={section18Ref}
+        className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
+      >
+        {/* Desktop layout */}
+        <div className="hidden md:flex w-full h-screen mx-auto px-20 flex-row items-center justify-center xl:gap-6 gap-3">
 
-      </div>
-
-      {/* Mobile layout */}
-      <div className="flex md:hidden flex-col w-full min-h-screen mx-auto px-4 py-4 gap-3 items-center justify-center">
-        
-        {/* Row 1: Cards 1 and 2 side by side */}
-        <div className="w-full flex flex-row gap-3">
-          {/* Card 1: Error State */}
-          <div 
-            className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+          {/* Column 1: Rounded Rectangle with Inset Image */}
+          <div
+            className="flex-[4] flex flex-col items-center justify-between rounded-3xl xl:rounded-[35pt] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] bg-white drop-shadow-xl"
             ref={section18Image1Ref}
-          >  
-            <div className="flex flex-col items-center w-[90%] rounded-2xl overflow-hidden h-auto"> 
-              <video 
-                src="/subway/section14animation1.mp4" 
-                alt="Section 14 Animation 1" 
-                className="w-full h-auto object-cover"
+          >
+            <div className="flex flex-col items-center w-[98%] mt-5 rounded-2xl overflow-hidden h-auto ">
+              <video
+                src="/subway/section14animation1.mp4"
+                alt="Section 14 Animation 1"
+                className="w-auto h-full object-cover ml-5 scale-[1.04]"
                 style={{ transformOrigin: 'center' }}
                 autoPlay
                 loop
@@ -4984,59 +4864,87 @@ const NycSubway = ({ className }) => {
                 playsInline
               />
             </div>
-            <p className="text-xs text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
+            <p className="md:text-[13pt] xl:text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
               Error State
             </p>
           </div>
-          
-          {/* Card 2: Live Activity Cards */}
-          <div 
-            className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+
+          {/* Column 2: Rounded Rectangle with Inset Image */}
+          <div
+            className="flex-[4] flex flex-col items-center justify-between rounded-3xl xl:rounded-[35pt] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] bg-white drop-shadow-xl"
             ref={section18Image2Ref}
           >
-            <div className="flex flex-col items-center w-[90%] rounded-[20pt] overflow-hidden h-auto"> 
-              <img 
-                src="/subway/section18image2.png" 
-                alt="Section 18 Image 2" 
-                className="w-full h-auto object-contain"
+            <div className="flex flex-col items-center w-[90%] mt-5 rounded-2xl overflow-hidden h-auto ">
+              <img
+                src="/subway/section18image2.png"
+                alt="Section 18 Image 2"
+                className="h-[99%] w-auto ml-2 object-cover"
                 style={{ transformOrigin: 'center' }}
               />
             </div>
 
-            <p className="text-xs text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
+            <p className="md:text-[13pt] xl:text-[16pt] text-center font-semibold text-gray-600 tracking-tight mb-7">
               Live Activity Cards
             </p>
           </div>
-        </div>
-        
-        {/* Row 2: Cards 3 and 4 side by side */}
-        <div className="w-full flex flex-row gap-3">
-          {/* Card 3: Real-time directional navigation */}
-          <div 
-            ref={section18Image3TopRef}
-            className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+
+          {/* Column 3: 2 Stacked Images */}
+          <div
+            className="flex-[3] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] flex flex-col items-center justify-center space-y-2 xl:space-y-5"
           >
-            <img 
-              src="/subway/section18image3top.png" 
-              alt="Section 18 Image 3 Top" 
-              className="w-[85%] h-auto py-1"
-              style={{ transformOrigin: 'center' }}
-            />
-            <p className="text-xs leading-tight text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
-              Real-time directional navigation
-            </p>
+            <div
+              ref={section18Image3TopRef}
+              className="flex flex-col items-center justify-between w-full h-1/2 bg-white rounded-3xl drop-shadow-xl">
+              <img
+                src="/subway/section18image3top.png"
+                alt="Section 18 Image 3 Top"
+                className="w-[85%] h-auto py-4"
+                style={{ transformOrigin: 'center' }}
+              />
+              <p className="md:text-[11pt] 2xl:text-[16pt] leading-[1] text-center font-semibold text-gray-600 tracking-tight mb-6 w-[90%]">
+                Real-time directional navigation
+              </p>
+            </div>
+
+            <div
+              ref={section18Image3BottomRef}
+              className="flex flex-col items-center justify-between w-full h-1/2 bg-white rounded-3xl drop-shadow-xl">
+
+              <div className="flex flex-col items-center mt-4 w-[85%] h-auto rounded-2xl shadow-lg overflow-hidden">
+                <video
+                  src="/subway/itinerary.mp4"
+                  alt="Summary Itinerary Video"
+                  className="w-full h-auto object-cover scale-[1.03]"
+                  style={{ transformOrigin: 'center' }}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              </div>
+
+              <p className="md:text-[13pt] 2xl:text-[16pt] leading-[1] text-center font-semibold text-gray-600 tracking-tight mb-6">
+                Step-by-step itinerary
+              </p>
+            </div>
           </div>
 
-          {/* Card 4: Step-by-step itinerary */}
-          <div 
-            ref={section18Image3BottomRef}
-            className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+          {/* Column 4: Image */}
+          <div
+            className="flex-[4] flex flex-col items-center justify-between rounded-3xl xl:rounded-[35pt] md:h-[480px] lg:h-[550px] xl:h-[640px] 2xl:h-[780px] bg-white drop-shadow-xl"
+            ref={section18Image4Ref}
           >
-            <div className="flex flex-col items-center w-[85%] h-auto rounded-lg shadow-lg overflow-hidden mt-1">
-              <video 
-                src="/subway/itinerary.mp4" 
-                alt="Summary Itinerary Video" 
-                className="w-full h-auto object-cover"
+            <div className="flex flex-col items-center w-full h-auto max-h-[88%]">
+              <img
+                src="/subway/section18image4.png"
+                alt="Section 18 Image 4"
+                className="w-[90%] h-auto ml-1 mt-6 object-contain"
+                style={{ transformOrigin: 'center' }}
+              />
+              <video
+                src="/subway/navigator1.mp4"
+                alt="Navigator Video"
+                className="w-[90%] h-[90%] ml-1 mt-4 object-cover rounded-3xl shadow-lg"
                 style={{ transformOrigin: 'center' }}
                 autoPlay
                 loop
@@ -5045,80 +4953,172 @@ const NycSubway = ({ className }) => {
               />
             </div>
 
-            <p className="text-xs leading-tight text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
-              Step-by-step itinerary
+
+            <p className="md:text-[13pt] xl:text-[16pt] leading-[1.2] text-center font-semibold text-gray-600 tracking-tight mb-6 w-[80%]">
+              UWB-powered proximity guidance
+            </p>
+
+          </div>
+
+        </div>
+
+        {/* Mobile layout */}
+        <div className="flex md:hidden flex-col w-full min-h-screen mx-auto px-4 py-4 gap-3 items-center justify-center">
+
+          {/* Row 1: Cards 1 and 2 side by side */}
+          <div className="w-full flex flex-row gap-3">
+            {/* Card 1: Error State */}
+            <div
+              className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+              ref={section18Image1Ref}
+            >
+              <div className="flex flex-col items-center w-[90%] rounded-2xl overflow-hidden h-auto">
+                <video
+                  src="/subway/section14animation1.mp4"
+                  alt="Section 14 Animation 1"
+                  className="w-full h-auto object-cover"
+                  style={{ transformOrigin: 'center' }}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              </div>
+              <p className="text-xs text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
+                Error State
+              </p>
+            </div>
+
+            {/* Card 2: Live Activity Cards */}
+            <div
+              className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+              ref={section18Image2Ref}
+            >
+              <div className="flex flex-col items-center w-[90%] rounded-[20pt] overflow-hidden h-auto">
+                <img
+                  src="/subway/section18image2.png"
+                  alt="Section 18 Image 2"
+                  className="w-full h-auto object-contain"
+                  style={{ transformOrigin: 'center' }}
+                />
+              </div>
+
+              <p className="text-xs text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
+                Live Activity Cards
+              </p>
+            </div>
+          </div>
+
+          {/* Row 2: Cards 3 and 4 side by side */}
+          <div className="w-full flex flex-row gap-3">
+            {/* Card 3: Real-time directional navigation */}
+            <div
+              ref={section18Image3TopRef}
+              className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+            >
+              <img
+                src="/subway/section18image3top.png"
+                alt="Section 18 Image 3 Top"
+                className="w-[85%] h-auto py-1"
+                style={{ transformOrigin: 'center' }}
+              />
+              <p className="text-xs leading-tight text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
+                Real-time directional navigation
+              </p>
+            </div>
+
+            {/* Card 4: Step-by-step itinerary */}
+            <div
+              ref={section18Image3BottomRef}
+              className="flex-1 flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+            >
+              <div className="flex flex-col items-center w-[85%] h-auto rounded-lg shadow-lg overflow-hidden mt-1">
+                <video
+                  src="/subway/itinerary.mp4"
+                  alt="Summary Itinerary Video"
+                  className="w-full h-auto object-cover"
+                  style={{ transformOrigin: 'center' }}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              </div>
+
+              <p className="text-xs leading-tight text-center font-semibold text-gray-600 tracking-tight mt-2 px-2">
+                Step-by-step itinerary
+              </p>
+            </div>
+          </div>
+
+          {/* Card 5: UWB-powered proximity guidance */}
+          <div
+            className="w-full flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
+            ref={section18Image4Ref}
+          >
+            <div className="flex flex-col items-center w-full h-auto">
+              <img
+                src="/subway/section18image4.png"
+                alt="Section 18 Image 4"
+                className="w-[90%] h-auto object-contain mt-2"
+                style={{ transformOrigin: 'center' }}
+              />
+              <video
+                src="/subway/navigator1.mp4"
+                alt="Navigator Video"
+                className="w-[90%] h-auto mt-3 object-cover rounded-xl shadow-lg"
+                style={{ transformOrigin: 'center' }}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            </div>
+
+            <p className="text-sm leading-tight text-center font-semibold text-gray-600 tracking-tight mt-3 px-4">
+              UWB-powered proximity guidance
             </p>
           </div>
+
         </div>
-        
-        {/* Card 5: UWB-powered proximity guidance */}
-        <div 
-          className="w-full flex flex-col items-center justify-between rounded-[20pt] bg-white drop-shadow-xl py-4"
-          ref={section18Image4Ref}
-        >
-          <div className="flex flex-col items-center w-full h-auto">
-            <img 
-              src="/subway/section18image4.png" 
-              alt="Section 18 Image 4" 
-              className="w-[90%] h-auto object-contain mt-2"
-              style={{ transformOrigin: 'center' }}
+      </section>
+
+      {/* Section 19 – End */}
+      <section
+        ref={section19Ref}
+        className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
+      >
+        <div className="w-full h-screen mx-auto flex items-center justify-center relative">
+
+          {/* Logo Images - Side by side in the middle */}
+          <div className="flex items-center justify-center gap-10">
+            <img
+              ref={section19Image1Ref}
+              src="/subway/section19logo1.png"
+              alt="Section 19 Image 1"
+              className="w-[30%] md:w-[25%] h-auto"
             />
-            <video 
-              src="/subway/navigator1.mp4" 
-              alt="Navigator Video" 
-              className="w-[90%] h-auto mt-3 object-cover rounded-xl shadow-lg"
-              style={{ transformOrigin: 'center' }}
-              autoPlay
-              loop
-              muted
-              playsInline
+
+            <img
+              ref={section19Image3Ref}
+              src="/subway/section19logo2.png"
+              alt="Section 19 Image 3"
+              className="w-[15%] md:w-[10%] h-auto"
             />
           </div>
 
-          <p className="text-sm leading-tight text-center font-semibold text-gray-600 tracking-tight mt-3 px-4">
-            UWB-powered proximity guidance
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    {/* Section 19 – End */}
-    <section 
-      ref={section19Ref}
-      className="min-h-screen flex items-center justify-center relative bg-[#F5F5F5]"
-    >
-      <div className="w-full h-screen mx-auto flex items-center justify-center relative">
-        
-        {/* Logo Images - Side by side in the middle */}
-        <div className="flex items-center justify-center gap-10">
-          <img 
-            ref={section19Image1Ref}
-            src="/subway/section19logo1.png"   
-            alt="Section 19 Image 1" 
-            className="w-[30%] md:w-[25%] h-auto"
+          {/* Emoji - Unchanged positioning */}
+          <img
+            ref={section19Image2Ref}
+            src="/subway/section19emoji.png"
+            alt="Section 19 Image 2"
+            className="absolute bottom-0 left-[50%] transform -translate-x-1/2 w-[50%] md:w-[20%] h-auto"
           />
-          
-          <img 
-            ref={section19Image3Ref}
-            src="/subway/section19logo2.png"   
-            alt="Section 19 Image 3" 
-            className="w-[15%] md:w-[10%] h-auto"
-          />
-        </div>
-        
-        {/* Emoji - Unchanged positioning */}
-        <img 
-          ref={section19Image2Ref}
-          src="/subway/section19emoji.png"   
-          alt="Section 19 Image 2" 
-          className="absolute bottom-0 left-[50%] transform -translate-x-1/2 w-[50%] md:w-[20%] h-auto"
-        />
-        
-      </div>
-    </section>
 
-      
+        </div>
+      </section>
+
+
     </div>
   );
 };
