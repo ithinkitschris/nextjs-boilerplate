@@ -316,7 +316,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             const containerYInitial = animValues.containerYInitial;
             const header1ScaleInitial = animValues.header1ScaleInitial;
             const header2ContainerScaleMax = animValues.header2ContainerScaleMax;
-            
+
             // Set initial states synchronously before ScrollTrigger creation
             gsap.set(headersContainerRef.current, { y: containerYInitial });
             gsap.set(header1Ref.current, { opacity: 1, scale: header1ScaleInitial, transformOrigin: "left" });
@@ -566,7 +566,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             // This is especially important when navigating from other pages
             ScrollTrigger.refresh();
         }
-        
+
         return () => {
             // Clean up ScrollTrigger instances
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -615,12 +615,12 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
             const bioSection = bioSectionRef.current;
             if (bioSection) {
                 const rect = bioSection.getBoundingClientRect();
-                const isOverBioSection = 
+                const isOverBioSection =
                     e.clientX >= rect.left &&
                     e.clientX <= rect.right &&
                     e.clientY >= rect.top &&
                     e.clientY <= rect.bottom;
-                
+
                 setIsMouseOverBioSection(isOverBioSection);
             }
         };
@@ -644,26 +644,26 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
         // Check if any header 3 link is being hovered
         const isHoveringHeader3Link = isHoveringSingaporeAirlines ||
-                                      isHoveringStudioGhibli ||
-                                      isHoveringNike ||
-                                      isHoveringSamsung ||
-                                      isHoveringStanford ||
-                                      isHoveringNavigation ||
-                                      isHoveringThesis;
+            isHoveringStudioGhibli ||
+            isHoveringNike ||
+            isHoveringSamsung ||
+            isHoveringStanford ||
+            isHoveringNavigation ||
+            isHoveringThesis;
 
         // Check if any video popup is showing (only 1 pop-up at a time)
         const isAnyVideoShowing = showISVVideo ||
-                                  showGhibliVideo ||
-                                  showNikeVideo ||
-                                  showSamsungVideo ||
-                                  showStanfordVideo ||
-                                  showNavigationVideo ||
-                                  showThesisVideo;
-        
+            showGhibliVideo ||
+            showNikeVideo ||
+            showSamsungVideo ||
+            showStanfordVideo ||
+            showNavigationVideo ||
+            showThesisVideo;
+
         // Hide photo if hovering header 3 link or if any video is showing
         const shouldShow = isInHeader2Section &&
-                          !isHoveringHeader3Link &&
-                          !isAnyVideoShowing;
+            !isHoveringHeader3Link &&
+            !isAnyVideoShowing;
 
         // Explicit safeguard: force hide if not in header 2 section
         if (!isInHeader2Section) {
@@ -994,7 +994,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     useEffect(() => {
         const archiveSection = archiveSectionRef.current;
         if (!archiveSection) return;
-        
+
         // Don't set up observer on mobile - navbar should not expand
         if (isMobile) {
             setIsArchiveInView(false);
@@ -1037,14 +1037,14 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                     if (startTime === null) startTime = currentTime;
                     const timeElapsed = currentTime - startTime;
                     const progress = Math.min(timeElapsed / duration, 1);
-                    
+
                     // Easing function (ease-in-out)
                     const ease = progress < 0.5
                         ? 2 * progress * progress
                         : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-                    
+
                     window.scrollTo(0, startPosition + distance * ease);
-                    
+
                     if (progress < 1) {
                         requestAnimationFrame(smoothScroll);
                     } else {
@@ -1055,7 +1055,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         }
                     }
                 };
-                
+
                 requestAnimationFrame(smoothScroll);
             }
         }
@@ -1066,7 +1066,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
         <>
             {/* Page Container */}
             <motion.div
-            key="page-container"
+                key="page-container"
                 className={`grid grid-cols-1 lg:grid-cols-10 w-full -mt-36
                 items-start justify-items-start font-[family-name:var(--font-geist-sans)]
                 gap-2 text-sm tracking-tight ${className}`}
@@ -1101,417 +1101,417 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
 
                         {/* Bio Image */}
                         <AnimatePresence>
-                        {showImage && (
-                            <motion.div
-                                id="bio-photo"
-                                className="rounded-full w-64 h-64 fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
-                                style={isMobile ? {
-                                    left: '15%',
-                                    bottom: '18%',
-                                    transform: 'translateX(-50%)',
-                                    scale: 0.95,
-                                } : {
-                                    left: imageXpx,
-                                    top: imageYpx,
-                                    rotate: springImageRotation,
-                                }}
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0 }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 600,
-                                    damping: 30,
-                                    duration: 0.1
-                                }}
-                            >
-                                <motion.img
-                                    src='/profile/profilelandscape2.jpg'
-                                    className="rounded-full h-full w-full scale-[120%] origin-top object-cover object-[107%_30%] transition-all"
-                                    variants={animateInChild}
-                                />
-                                <div className="absolute inset-0 rounded-full shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                            </motion.div>
-                        )}
+                            {showImage && (
+                                <motion.div
+                                    id="bio-photo"
+                                    className="rounded-full w-64 h-64 fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                    style={isMobile ? {
+                                        left: '15%',
+                                        bottom: '18%',
+                                        transform: 'translateX(-50%)',
+                                        scale: 0.95,
+                                    } : {
+                                        left: imageXpx,
+                                        top: imageYpx,
+                                        rotate: springImageRotation,
+                                    }}
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0 }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 600,
+                                        damping: 30,
+                                        duration: 0.1
+                                    }}
+                                >
+                                    <motion.img
+                                        src='/profile/profilelandscape2.jpg'
+                                        className="rounded-full h-full w-full scale-[120%] origin-top object-cover object-[107%_30%] transition-all"
+                                        variants={animateInChild}
+                                    />
+                                    <div className="absolute inset-0 rounded-full shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                </motion.div>
+                            )}
                         </AnimatePresence>
 
                         {/* ISV Video */}
                         {isMounted && createPortal(
-                        <AnimatePresence>
-                            {showISVVideo && (
-                                <motion.div
-                                    className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
-                                    style={{
-                                        left: isvVideoXpx,
-                                        top: isvVideoYpx,
-                                    }}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0 }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 600,
-                                        damping: 30,
-                                        duration: 0.1
-                                    }}
-                                >
-                                    <motion.video
-                                        ref={isvVideoRef}
-                                        src="/isv/montagenew.mp4"
-                                        className="h-full w-full object-cover transition-all"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        variants={animateInChild}
-                                        onLoadedData={(e) => {
-                                            if (isvVideoTimeRef.current > 0) {
-                                                e.target.currentTime = isvVideoTimeRef.current;
-                                            }
+                            <AnimatePresence>
+                                {showISVVideo && (
+                                    <motion.div
+                                        className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                        style={{
+                                            left: isvVideoXpx,
+                                            top: isvVideoYpx,
                                         }}
-                                        onTimeUpdate={(e) => {
-                                            isvVideoTimeRef.current = e.target.currentTime;
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 600,
+                                            damping: 30,
+                                            duration: 0.1
                                         }}
-                                    />
-                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>,
-                        document.body
+                                    >
+                                        <motion.video
+                                            ref={isvVideoRef}
+                                            src="/isv/montagenew.mp4"
+                                            className="h-full w-full object-cover transition-all"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            variants={animateInChild}
+                                            onLoadedData={(e) => {
+                                                if (isvVideoTimeRef.current > 0) {
+                                                    e.target.currentTime = isvVideoTimeRef.current;
+                                                }
+                                            }}
+                                            onTimeUpdate={(e) => {
+                                                isvVideoTimeRef.current = e.target.currentTime;
+                                            }}
+                                        />
+                                        <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>,
+                            document.body
                         )}
 
                         {/* Ghibli Video */}
                         {isMounted && createPortal(
-                        <AnimatePresence>
-                            {showGhibliVideo && (
-                                <motion.div
-                                    className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
-                                    style={{
-                                        left: ghibliVideoXpx,
-                                        top: ghibliVideoYpx,
-                                    }}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0 }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 600,
-                                        damping: 30,
-                                        duration: 0.1
-                                    }}
-                                >
-                                    <motion.video
-                                        ref={ghibliVideoRef}
-                                        src="/Ghibli/banner1.mp4"
-                                        className="h-full w-full object-cover transition-all"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        variants={animateInChild}
-                                        onLoadedData={(e) => {
-                                            if (ghibliVideoTimeRef.current > 0) {
-                                                e.target.currentTime = ghibliVideoTimeRef.current;
-                                            }
+                            <AnimatePresence>
+                                {showGhibliVideo && (
+                                    <motion.div
+                                        className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                        style={{
+                                            left: ghibliVideoXpx,
+                                            top: ghibliVideoYpx,
                                         }}
-                                        onTimeUpdate={(e) => {
-                                            ghibliVideoTimeRef.current = e.target.currentTime;
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 600,
+                                            damping: 30,
+                                            duration: 0.1
                                         }}
-                                    />
-                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>,
-                        document.body
+                                    >
+                                        <motion.video
+                                            ref={ghibliVideoRef}
+                                            src="/Ghibli/banner1.mp4"
+                                            className="h-full w-full object-cover transition-all"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            variants={animateInChild}
+                                            onLoadedData={(e) => {
+                                                if (ghibliVideoTimeRef.current > 0) {
+                                                    e.target.currentTime = ghibliVideoTimeRef.current;
+                                                }
+                                            }}
+                                            onTimeUpdate={(e) => {
+                                                ghibliVideoTimeRef.current = e.target.currentTime;
+                                            }}
+                                        />
+                                        <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>,
+                            document.body
                         )}
 
                         {/* Nike Video */}
                         {isMounted && createPortal(
-                        <AnimatePresence>
-                            {showNikeVideo && (
-                                <motion.div
-                                    className="rounded-[20pt] w-48 aspect-[9/16] fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
-                                    style={{
-                                        left: nikeVideoXpx,
-                                        top: nikeVideoYpx,
-                                    }}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0 }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 600,
-                                        damping: 30,
-                                        duration: 0.1
-                                    }}
-                                >
-                                    <motion.video
-                                        ref={nikeVideoRef}
-                                        src="/nike/cover.mp4"
-                                        className="h-full w-full object-cover transition-all"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        variants={animateInChild}
-                                        onLoadedData={(e) => {
-                                            if (nikeVideoTimeRef.current > 0) {
-                                                e.target.currentTime = nikeVideoTimeRef.current;
-                                            }
+                            <AnimatePresence>
+                                {showNikeVideo && (
+                                    <motion.div
+                                        className="rounded-[20pt] w-48 aspect-[9/16] fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                        style={{
+                                            left: nikeVideoXpx,
+                                            top: nikeVideoYpx,
                                         }}
-                                        onTimeUpdate={(e) => {
-                                            nikeVideoTimeRef.current = e.target.currentTime;
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 600,
+                                            damping: 30,
+                                            duration: 0.1
                                         }}
-                                    />
-                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>,
-                        document.body
+                                    >
+                                        <motion.video
+                                            ref={nikeVideoRef}
+                                            src="/nike/cover.mp4"
+                                            className="h-full w-full object-cover transition-all"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            variants={animateInChild}
+                                            onLoadedData={(e) => {
+                                                if (nikeVideoTimeRef.current > 0) {
+                                                    e.target.currentTime = nikeVideoTimeRef.current;
+                                                }
+                                            }}
+                                            onTimeUpdate={(e) => {
+                                                nikeVideoTimeRef.current = e.target.currentTime;
+                                            }}
+                                        />
+                                        <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>,
+                            document.body
                         )}
 
                         {/* Samsung Video */}
                         {isMounted && createPortal(
-                        <AnimatePresence>
-                            {showSamsungVideo && (
-                                <motion.div
-                                    className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
-                                    style={{
-                                        left: samsungVideoXpx,
-                                        top: samsungVideoYpx,
-                                    }}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0 }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 600,
-                                        damping: 30,
-                                        duration: 0.1
-                                    }}
-                                >
-                                    <motion.video
-                                        ref={samsungVideoRef}
-                                        src="/samsung/montage.mp4"
-                                        className="h-full w-full object-cover transition-all"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        variants={animateInChild}
-                                        onLoadedData={(e) => {
-                                            if (samsungVideoTimeRef.current > 0) {
-                                                e.target.currentTime = samsungVideoTimeRef.current;
-                                            }
+                            <AnimatePresence>
+                                {showSamsungVideo && (
+                                    <motion.div
+                                        className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                        style={{
+                                            left: samsungVideoXpx,
+                                            top: samsungVideoYpx,
                                         }}
-                                        onTimeUpdate={(e) => {
-                                            samsungVideoTimeRef.current = e.target.currentTime;
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 600,
+                                            damping: 30,
+                                            duration: 0.1
                                         }}
-                                    />
-                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>,
-                        document.body
+                                    >
+                                        <motion.video
+                                            ref={samsungVideoRef}
+                                            src="/samsung/montage.mp4"
+                                            className="h-full w-full object-cover transition-all"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            variants={animateInChild}
+                                            onLoadedData={(e) => {
+                                                if (samsungVideoTimeRef.current > 0) {
+                                                    e.target.currentTime = samsungVideoTimeRef.current;
+                                                }
+                                            }}
+                                            onTimeUpdate={(e) => {
+                                                samsungVideoTimeRef.current = e.target.currentTime;
+                                            }}
+                                        />
+                                        <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>,
+                            document.body
                         )}
 
                         {/* Subway Video */}
                         {isMounted && createPortal(
-                        <AnimatePresence>
-                            {showSubwayVideo && (
-                                <motion.div
-                                    className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
-                                    style={{
-                                        left: subwayVideoXpx,
-                                        top: subwayVideoYpx,
-                                    }}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0 }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 600,
-                                        damping: 30,
-                                        duration: 0.1
-                                    }}
-                                >
-                                    <motion.video
-                                        ref={subwayVideoRef}
-                                        src="/subway/cover_blank.mp4"
-                                        className="h-full w-full object-cover transition-all contrast-125 brightness-90"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        variants={animateInChild}
-                                        onLoadedData={(e) => {
-                                            if (subwayVideoTimeRef.current > 0) {
-                                                e.target.currentTime = subwayVideoTimeRef.current;
-                                            }
+                            <AnimatePresence>
+                                {showSubwayVideo && (
+                                    <motion.div
+                                        className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                        style={{
+                                            left: subwayVideoXpx,
+                                            top: subwayVideoYpx,
                                         }}
-                                        onTimeUpdate={(e) => {
-                                            subwayVideoTimeRef.current = e.target.currentTime;
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 600,
+                                            damping: 30,
+                                            duration: 0.1
                                         }}
-                                    />
-                                    {/* Lockup overlay */}
-                                    <img
-                                        src="/subway/lockup.png"
-                                        alt="Subway lockup"
-                                        className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[60%] h-auto object-contain pointer-events-none"
-                                    />
-                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>,
-                        document.body
+                                    >
+                                        <motion.video
+                                            ref={subwayVideoRef}
+                                            src="/subway/cover_blank.mp4"
+                                            className="h-full w-full object-cover transition-all contrast-125 brightness-90"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            variants={animateInChild}
+                                            onLoadedData={(e) => {
+                                                if (subwayVideoTimeRef.current > 0) {
+                                                    e.target.currentTime = subwayVideoTimeRef.current;
+                                                }
+                                            }}
+                                            onTimeUpdate={(e) => {
+                                                subwayVideoTimeRef.current = e.target.currentTime;
+                                            }}
+                                        />
+                                        {/* Lockup overlay */}
+                                        <img
+                                            src="/subway/lockup.png"
+                                            alt="Subway lockup"
+                                            className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[60%] h-auto object-contain pointer-events-none"
+                                        />
+                                        <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>,
+                            document.body
                         )}
 
                         {/* Stanford Video */}
                         {isMounted && createPortal(
-                        <AnimatePresence>
-                            {showStanfordVideo && (
-                                <motion.div
-                                    className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
-                                    style={{
-                                        left: stanfordVideoXpx,
-                                        top: stanfordVideoYpx,
-                                    }}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0 }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 600,
-                                        damping: 30,
-                                        duration: 0.1
-                                    }}
-                                >
-                                    <motion.video
-                                        ref={stanfordVideoRef}
-                                        src="/bloom/talk.mp4"
-                                        className="h-full w-full object-cover transition-all"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        variants={animateInChild}
-                                        onLoadedData={(e) => {
-                                            if (stanfordVideoTimeRef.current > 0) {
-                                                e.target.currentTime = stanfordVideoTimeRef.current;
-                                            }
+                            <AnimatePresence>
+                                {showStanfordVideo && (
+                                    <motion.div
+                                        className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                        style={{
+                                            left: stanfordVideoXpx,
+                                            top: stanfordVideoYpx,
                                         }}
-                                        onTimeUpdate={(e) => {
-                                            stanfordVideoTimeRef.current = e.target.currentTime;
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 600,
+                                            damping: 30,
+                                            duration: 0.1
                                         }}
-                                    />
-                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>,
-                        document.body
+                                    >
+                                        <motion.video
+                                            ref={stanfordVideoRef}
+                                            src="/bloom/talk.mp4"
+                                            className="h-full w-full object-cover transition-all"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            variants={animateInChild}
+                                            onLoadedData={(e) => {
+                                                if (stanfordVideoTimeRef.current > 0) {
+                                                    e.target.currentTime = stanfordVideoTimeRef.current;
+                                                }
+                                            }}
+                                            onTimeUpdate={(e) => {
+                                                stanfordVideoTimeRef.current = e.target.currentTime;
+                                            }}
+                                        />
+                                        <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>,
+                            document.body
                         )}
 
                         {/* Navigation Video */}
                         {isMounted && createPortal(
-                        <AnimatePresence>
-                            {showNavigationVideo && (
-                                <motion.div
-                                    className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
-                                    style={{
-                                        left: navigationVideoXpx,
-                                        top: navigationVideoYpx,
-                                    }}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0 }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 600,
-                                        damping: 30,
-                                        duration: 0.1
-                                    }}
-                                >
-                                    <motion.video
-                                        ref={navigationVideoRef}
-                                        src="/subway/cover_blank.mp4"
-                                        className="h-full w-full object-cover transition-all contrast-125 brightness-90"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        variants={animateInChild}
-                                        onLoadedData={(e) => {
-                                            if (navigationVideoTimeRef.current > 0) {
-                                                e.target.currentTime = navigationVideoTimeRef.current;
-                                            }
+                            <AnimatePresence>
+                                {showNavigationVideo && (
+                                    <motion.div
+                                        className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                        style={{
+                                            left: navigationVideoXpx,
+                                            top: navigationVideoYpx,
                                         }}
-                                        onTimeUpdate={(e) => {
-                                            navigationVideoTimeRef.current = e.target.currentTime;
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 600,
+                                            damping: 30,
+                                            duration: 0.1
                                         }}
-                                    />
-                                    {/* Lockup overlay */}
-                                    <img
-                                        src="/subway/lockup.png"
-                                        alt="Subway lockup"
-                                        className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[60%] h-auto object-contain pointer-events-none"
-                                    />
-                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>,
-                        document.body
+                                    >
+                                        <motion.video
+                                            ref={navigationVideoRef}
+                                            src="/subway/cover_blank.mp4"
+                                            className="h-full w-full object-cover transition-all contrast-125 brightness-90"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            variants={animateInChild}
+                                            onLoadedData={(e) => {
+                                                if (navigationVideoTimeRef.current > 0) {
+                                                    e.target.currentTime = navigationVideoTimeRef.current;
+                                                }
+                                            }}
+                                            onTimeUpdate={(e) => {
+                                                navigationVideoTimeRef.current = e.target.currentTime;
+                                            }}
+                                        />
+                                        {/* Lockup overlay */}
+                                        <img
+                                            src="/subway/lockup.png"
+                                            alt="Subway lockup"
+                                            className="absolute top-1/2 left-[52.5%] transform -translate-x-1/2 -translate-y-1/2 z-20 max-w-[60%] h-auto object-contain pointer-events-none"
+                                        />
+                                        <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>,
+                            document.body
                         )}
 
                         {/* Thesis Video */}
                         {isMounted && createPortal(
-                        <AnimatePresence>
-                            {showThesisVideo && (
-                                <motion.div
-                                    className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
-                                    style={{
-                                        left: thesisVideoXpx,
-                                        top: thesisVideoYpx,
-                                    }}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0 }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 600,
-                                        damping: 30,
-                                        duration: 0.1
-                                    }}
-                                >
-                                    <motion.video
-                                        ref={thesisVideoRef}
-                                        src="/thesis/lifeoscover.mp4"
-                                        className="h-full w-full object-cover transition-all brightness-50"
-                                        autoPlay
-                                        muted
-                                        loop
-                                        playsInline
-                                        variants={animateInChild}
-                                        onLoadedData={(e) => {
-                                            if (thesisVideoTimeRef.current > 0) {
-                                                e.target.currentTime = thesisVideoTimeRef.current;
-                                            }
+                            <AnimatePresence>
+                                {showThesisVideo && (
+                                    <motion.div
+                                        className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                        style={{
+                                            left: thesisVideoXpx,
+                                            top: thesisVideoYpx,
                                         }}
-                                        onTimeUpdate={(e) => {
-                                            thesisVideoTimeRef.current = e.target.currentTime;
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 600,
+                                            damping: 30,
+                                            duration: 0.1
                                         }}
-                                    />
-                                    {/* Lockup overlay */}
-                                    <img
-                                        src="/thesis/lifeoslockup.svg"
-                                        alt="LifeOS lockup"
-                                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-100 h-auto object-contain pointer-events-none"
-                                    />
-                                    <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>,
-                        document.body
-                    )}
+                                    >
+                                        <motion.video
+                                            ref={thesisVideoRef}
+                                            src="/thesis/lifeoscover.mp4"
+                                            className="h-full w-full object-cover transition-all brightness-50"
+                                            autoPlay
+                                            muted
+                                            loop
+                                            playsInline
+                                            variants={animateInChild}
+                                            onLoadedData={(e) => {
+                                                if (thesisVideoTimeRef.current > 0) {
+                                                    e.target.currentTime = thesisVideoTimeRef.current;
+                                                }
+                                            }}
+                                            onTimeUpdate={(e) => {
+                                                thesisVideoTimeRef.current = e.target.currentTime;
+                                            }}
+                                        />
+                                        {/* Lockup overlay */}
+                                        <img
+                                            src="/thesis/lifeoslockup.svg"
+                                            alt="LifeOS lockup"
+                                            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-100 h-auto object-contain pointer-events-none"
+                                        />
+                                        <div className="absolute inset-0 rounded-[3pt] shadow-[inset_0px_0px_10px_0px_rgba(255,255,255,0.15)] pointer-events-none" />
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>,
+                            document.body
+                        )}
 
                         {/* Header 3 */}
                         <h3
@@ -1521,7 +1521,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                         >
                             <span ref={header3Ref}>His admittedly unhealthy obsession for craft and storytelling has wound him through a career in Singapore leading campaigns for <Link href="/isv" className="focus-visible-rounded">
                                 <span
-                                className="hover:opacity-80 transition-opacity underline focus-visible-rounded"
+                                    className="hover:opacity-80 transition-opacity underline focus-visible-rounded"
                                     onMouseEnter={() => setIsHoveringSingaporeAirlines(true)}
                                     onMouseLeave={() => setIsHoveringSingaporeAirlines(false)}
                                     onFocus={(e) => {
@@ -1600,11 +1600,11 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                 className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
                                 onMouseEnter={() => setIsHoveringStanford(true)}
                                 onMouseLeave={() => setIsHoveringStanford(false)}
-                                onClick={() => window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer')}
+                                onClick={() => window.open('https://youtu.be/JnypQzmz0wo?si=hxaH7OmHlAZ2C0l1&t=149', '_blank', 'noopener,noreferrer')}
                                 onKeyDown={(e) => {
                                     if (e.key === 'Enter' || e.key === ' ') {
                                         e.preventDefault();
-                                        window.open('https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476', '_blank', 'noopener,noreferrer');
+                                        window.open('https://youtu.be/JnypQzmz0wo?si=hxaH7OmHlAZ2C0l1&t=149', '_blank', 'noopener,noreferrer');
                                     }
                                 }}
                                 onFocus={(e) => {
@@ -1641,32 +1641,15 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
                                 }}
                             >thesis</span>.
-                            
-                            <br />
-                            <br />
-                            
-                            <span className="relative inline-block">
-                                <span
-                                    tabIndex={0}
-                                    className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
-                                    onClick={async () => {
-                                        try {
-                                            await navigator.clipboard.writeText('ithinkitschristopher@gmail.com');
-                                            setShowCopiedMessage(true);
-                                            if (copiedMessageTimeoutRef.current) {
-                                                clearTimeout(copiedMessageTimeoutRef.current);
-                                            }
-                                            copiedMessageTimeoutRef.current = setTimeout(() => {
-                                                setShowCopiedMessage(false);
-                                                copiedMessageTimeoutRef.current = null;
-                                            }, 2000);
-                                        } catch (err) {
-                                            console.error('Failed to copy email to clipboard:', err);
-                                        }
-                                    }}
-                                    onKeyDown={async (e) => {
-                                        if (e.key === 'Enter' || e.key === ' ') {
-                                            e.preventDefault();
+
+                                <br />
+                                <br />
+
+                                <span className="relative inline-block">
+                                    <span
+                                        tabIndex={0}
+                                        className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
+                                        onClick={async () => {
                                             try {
                                                 await navigator.clipboard.writeText('ithinkitschristopher@gmail.com');
                                                 setShowCopiedMessage(true);
@@ -1680,111 +1663,128 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                             } catch (err) {
                                                 console.error('Failed to copy email to clipboard:', err);
                                             }
+                                        }}
+                                        onKeyDown={async (e) => {
+                                            if (e.key === 'Enter' || e.key === ' ') {
+                                                e.preventDefault();
+                                                try {
+                                                    await navigator.clipboard.writeText('ithinkitschristopher@gmail.com');
+                                                    setShowCopiedMessage(true);
+                                                    if (copiedMessageTimeoutRef.current) {
+                                                        clearTimeout(copiedMessageTimeoutRef.current);
+                                                    }
+                                                    copiedMessageTimeoutRef.current = setTimeout(() => {
+                                                        setShowCopiedMessage(false);
+                                                        copiedMessageTimeoutRef.current = null;
+                                                    }, 2000);
+                                                } catch (err) {
+                                                    console.error('Failed to copy email to clipboard:', err);
+                                                }
+                                            }
+                                        }}
+                                        onFocus={(e) => {
+                                            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                        }}
+                                    >Email</span>
+                                    <AnimatePresence>
+                                        {showCopiedMessage && (
+                                            <motion.span
+                                                initial={{ opacity: 0, y: 0, scale: 1 }}
+                                                animate={{ opacity: 1, y: -10, scale: 1.2 }}
+                                                exit={{ opacity: 0, y: -20, scale: 1 }}
+                                                transition={{
+                                                    type: "spring",
+                                                    stiffness: 900,
+                                                    damping: 20
+                                                }}
+                                                className={`absolute left-3 bottom-full mb-2 px-3 py-1.5 rounded-full text-sm whitespace-nowrap pointer-events-none tracking-tight
+                                                border border-white/35 bg-white dark:bg-transparent text-foreground
+                                                shadow-glass-border-light dark:shadow-glass-border
+                                                ${browserType === 'chrome'
+                                                        ? ''
+                                                        : browserType === 'safari'
+                                                            ? 'backdrop-blur-3xl bg-white'
+                                                            : browserType === 'firefox'
+                                                                ? 'backdrop-blur-3xl bg-white'
+                                                                : 'backdrop-blur-3xl bg-white'
+                                                    }`}
+                                                style={browserType === 'chrome' ? {
+                                                    backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
+                                                } : {}}
+                                            >
+                                                Copied!
+                                            </motion.span>
+                                        )}
+                                    </AnimatePresence>
+                                </span>/<span
+                                    tabIndex={0}
+                                    className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
+                                    onClick={() => window.open('https://www.linkedin.com/in/chris-leow-93372b184/', '_blank', 'noopener,noreferrer')}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            window.open('https://www.linkedin.com/in/chris-leow-93372b184/', '_blank', 'noopener,noreferrer');
                                         }
                                     }}
                                     onFocus={(e) => {
                                         e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
                                     }}
-                                >Email</span>
-                                <AnimatePresence>
-                                    {showCopiedMessage && (
-                                        <motion.span
-                                            initial={{ opacity: 0, y: 0, scale: 1 }}
-                                            animate={{ opacity: 1, y: -10, scale: 1.2 }}
-                                            exit={{ opacity: 0, y: -20, scale: 1 }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness:900,
-                                                damping: 20
-                                            }}
-                                            className={`absolute left-3 bottom-full mb-2 px-3 py-1.5 rounded-full text-sm whitespace-nowrap pointer-events-none tracking-tight
-                                                border border-white/35 bg-white dark:bg-transparent text-foreground
-                                                shadow-glass-border-light dark:shadow-glass-border
-                                                ${browserType === 'chrome' 
-                                                    ? '' 
-                                                    : browserType === 'safari' 
-                                                        ? 'backdrop-blur-3xl bg-white' 
-                                                        : browserType === 'firefox' 
-                                                            ? 'backdrop-blur-3xl bg-white' 
-                                                            : 'backdrop-blur-3xl bg-white'
-                                                }`}
-                                            style={browserType === 'chrome' ? {
-                                                backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
-                                            } : {}}
-                                        >
-                                            Copied!
-                                        </motion.span>
-                                    )}
-                                </AnimatePresence>
-                            </span>/<span
-                                tabIndex={0}
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
-                                onClick={() => window.open('https://www.linkedin.com/in/chris-leow-93372b184/', '_blank', 'noopener,noreferrer')}
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter' || e.key === ' ') {
-                                        e.preventDefault();
-                                        window.open('https://www.linkedin.com/in/chris-leow-93372b184/', '_blank', 'noopener,noreferrer');
-                                    }
-                                }}
-                                onFocus={(e) => {
-                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-                                }}
-                            >LinkedIn</span>/<span
-                                tabIndex={0}
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
-                                onClick={() => {
-                                    const link = document.createElement('a');
-                                    link.href = '/resume/Resume (Chris Leow).pdf';
-                                    link.download = 'Resume (Chris Leow).pdf';
-                                    document.body.appendChild(link);
-                                    link.click();
-                                    document.body.removeChild(link);
-                                }}
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter' || e.key === ' ') {
-                                        e.preventDefault();
+                                >LinkedIn</span>/<span
+                                    tabIndex={0}
+                                    className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
+                                    onClick={() => {
                                         const link = document.createElement('a');
                                         link.href = '/resume/Resume (Chris Leow).pdf';
                                         link.download = 'Resume (Chris Leow).pdf';
                                         document.body.appendChild(link);
                                         link.click();
                                         document.body.removeChild(link);
-                                    }
-                                }}
-                                onFocus={(e) => {
-                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-                                }}
-                            >Resume</span>/<span
-                                tabIndex={0}
-                                className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
-                                onClick={() => window.open('https://www.instagram.com/khristurtle/', '_blank', 'noopener,noreferrer')}
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter' || e.key === ' ') {
-                                        e.preventDefault();
-                                        window.open('https://www.instagram.com/khristurtle/', '_blank', 'noopener,noreferrer');
-                                    }
-                                }}
-                                onFocus={(e) => {
-                                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-                                }}
-                            >Social</span></span>
+                                    }}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            const link = document.createElement('a');
+                                            link.href = '/resume/Resume (Chris Leow).pdf';
+                                            link.download = 'Resume (Chris Leow).pdf';
+                                            document.body.appendChild(link);
+                                            link.click();
+                                            document.body.removeChild(link);
+                                        }
+                                    }}
+                                    onFocus={(e) => {
+                                        e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                    }}
+                                >Resume</span>/<span
+                                    tabIndex={0}
+                                    className="underline cursor-pointer hover:opacity-80 transition-opacity focus-visible-rounded"
+                                    onClick={() => window.open('https://www.instagram.com/khristurtle/', '_blank', 'noopener,noreferrer')}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            window.open('https://www.instagram.com/khristurtle/', '_blank', 'noopener,noreferrer');
+                                        }
+                                    }}
+                                    onFocus={(e) => {
+                                        e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                                    }}
+                                >Social</span></span>
                         </h3>
                     </div>
                 </main>
 
                 {/* Currently */}
-                <Currently 
-                    className='col-span-full mb-24 md:mb-56 mt-[75vh] md:mt-[95vh] relative z-10' 
+                <Currently
+                    className='col-span-full mb-24 md:mb-56 mt-[75vh] md:mt-[95vh] relative z-10'
                     style={{ willChange: 'transform' }}
-                    key='currently' 
-                    toggleWork={toggleWork} 
+                    key='currently'
+                    toggleWork={toggleWork}
                 />
 
                 {/* Archive */}
                 <ResumeSectionHeader
                     header="2016 – 2025"
                     title="Archive."
-                    headerClassName="md:ml-1"/>
+                    headerClassName="md:ml-1" />
                 <Archive ref={archiveSectionRef} className='col-span-full' key='archive' toggleWork={toggleWork} />
 
                 {/* CV */}

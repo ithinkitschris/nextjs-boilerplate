@@ -9,7 +9,7 @@ const animateInChild = {
     }
 };
 
-const ProjectHeader = ({ title, subtitle, subtitleBrand }) => {
+const ProjectHeader = ({ title, subtitle, subtitleBrand, subtitleClassName = '' }) => {
     return (
         <motion.div
             className="tracking-tighter col-span-full mt-8 md:mt-6 mb-8"
@@ -22,7 +22,9 @@ const ProjectHeader = ({ title, subtitle, subtitleBrand }) => {
             </h1>
 
             {/* Subheader */}
-            <p className="text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left">
+            <p className={subtitleClassName
+                ? `text-xl md:text-3xl font-normal md:text-[27px] text-center md:text-left ${subtitleClassName}`
+                : `text-xl md:text-3xl font-normal tracking-[-0.9px] mt-4 md:mt-0 md:text-[27px] text-center md:text-left`}>
                 {subtitle}
                 {subtitleBrand && (
                     <span className="relative left-1.5 ">
