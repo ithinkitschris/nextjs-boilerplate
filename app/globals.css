@@ -1,13 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.ts";
 
 :root {
   --background: #f3f3f3;
   --foreground: #2f2f2f;
   --midground: #a0a0a0;
   --font-serif: var(--font-quicksand);
-  --font-mono: var(--font-quicksand); /* Add Playfair Display font variable */
+  --font-mono: var(--font-quicksand);
+  /* Add Playfair Display font variable */
 }
 
 .dark {
@@ -35,18 +35,27 @@ body {
   font-family: Arial, Helvetica, sans-serif var(--font-quicksand), serif var(--font-quicksand), serif;
 }
 
-html, body {
-  position: static; /* Ensure there is no relative positioning */
-  overflow: visible; /* Make sure overflow is not hidden or clipped */
-  height: 100%; /* Ensure they take the full height of the viewport */
-  margin: 0; /* Remove any default margins */
+html,
+body {
+  position: static;
+  /* Ensure there is no relative positioning */
+  overflow: visible;
+  /* Make sure overflow is not hidden or clipped */
+  height: 100%;
+  /* Ensure they take the full height of the viewport */
+  margin: 0;
+  /* Remove any default margins */
 }
 
 video {
-  controls-list: nofullscreen; /* Disable fullscreen controls */
-  -webkit-user-select: none;   /* Prevent fullscreen via double-click */
-  -webkit-playsinline: true;   /* Ensure inline playback on Safari/iOS */
-  playsinline: true;           /* Ensure inline playback across modern browsers */
+  controls-list: nofullscreen;
+  /* Disable fullscreen controls */
+  -webkit-user-select: none;
+  /* Prevent fullscreen via double-click */
+  -webkit-playsinline: true;
+  /* Ensure inline playback on Safari/iOS */
+  playsinline: true;
+  /* Ensure inline playback across modern browsers */
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -54,5 +63,6 @@ video {
 }
 
 .no-scrollbar {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
+  /* Firefox */
 }
