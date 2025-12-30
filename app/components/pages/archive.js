@@ -23,7 +23,7 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
       return [];
     }
 
-    return videoData.filter((video) => 
+    return videoData.filter((video) =>
       archiveSelectedTags.some((tag) => video.tags.includes(tag))
     );
   }, [archiveSelectedTags]);
@@ -49,7 +49,7 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
       router.push(video.link);
       return;
     }
-    
+
     // Otherwise, use toggleWork for other pages
     const matchedWork = workTags.find((tag) => video.tags.includes(tag));
     if (matchedWork) {
@@ -62,14 +62,14 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
     const product = skillsetData.find(item => item.tag === 'product');
     const creative = skillsetData.find(item => item.tag === 'creative');
     const rest = skillsetData.filter(item => item.tag !== 'product' && item.tag !== 'creative');
-    
+
     // Override labels for product, creative, and motion
     const productWithLabel = product ? { ...product, label: 'Product Design' } : null;
     const creativeWithLabel = creative ? { ...creative, label: 'Creative Direction' } : null;
-    const restWithLabels = rest.map(item => 
+    const restWithLabels = rest.map(item =>
       item.tag === 'motion' ? { ...item, label: 'Motion' } : item
     );
-    
+
     return [productWithLabel, creativeWithLabel, ...restWithLabels].filter(Boolean);
   }, []);
 
@@ -85,7 +85,7 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
       variants={animateIn}
     >
       {/* Category Selector */}
-      <motion.div 
+      <motion.div
         className="flex flex-wrap gap-2 mb-6 md:mb-8 mx-[4%] md:mx-0"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -152,13 +152,10 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
         <ContentPage className="col-span-full" />
       ) : (
         // Show Video Grid for other tags
-        <div className={`grid ${archiveSelectedTags.includes('product') ? 'grid-cols-1' : 'grid-cols-2'} lg:grid-cols-3 xl:grid-cols-4 gap-1.5 md:gap-2.5`}>
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5 md:gap-2.5">
           <AnimatePresence>
             {filteredVideos.map((video) => {
-              // Add col-span-full on mobile for product design items
-              const isProduct = video.tags.includes('product');
-              const gridClassName = isProduct ? 'col-span-full md:col-span-1' : '';
-              
+
               return (
                 <VideoSquare
                   key={video.src}
@@ -170,7 +167,7 @@ const Archive = forwardRef(({ className, toggleWork }, ref) => {
                   selectedTags={archiveSelectedTags}
                   link={video.link}
                   onClick={() => handleVideoClick(video)}
-                  className={gridClassName}
+
                 />
               );
             })}

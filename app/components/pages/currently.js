@@ -516,7 +516,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
 
   return (
     <motion.div
-      className={`font-[family-name:var(--font-geist-sans)] relative w-full grid grid-cols-2 md:grid-cols-8 gap-3 md:gap-4 ${className}`}
+      className={`font-[family-name:var(--font-geist-sans)] relative w-full grid grid-cols-2 md:grid-cols-8 px-3.5 gap-5 md:gap-4 ${className}`}
       initial="hidden"
       animate="show"
       variants={animateIn}>
@@ -606,7 +606,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
         {/* Video */}
         <video
           src={isMobile ? "/thesis/lifeoscover2.mp4" : "/thesis/lifeoscover2.mp4"}
-          className="w-full h-full object-cover scale-120 rounded-[25pt] brightness-75"
+          className="w-full h-full object-cover scale-120 rounded-[25pt] brightness-75 z-20"
           autoPlay
           muted
           loop
@@ -775,7 +775,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
 
       {/* Expense Tracker */}
       <motion.button
-        className="col-span-full md:col-span-2 cursor-pointer h-full group focus-visible-standard rounded-[25pt]"
+        className="col-span-full md:col-span-2 cursor-pointer h-full group focus-visible-standard rounded-[25pt] relative"
         aria-label="On-device LLM Expense Tracker"
         aria-describedby="expense-description-tooltip"
         whileHover={{ scale: 0.98 }}

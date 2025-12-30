@@ -5,12 +5,12 @@ import { useVideoOptimization } from '../../hooks/useVideoCleanup';
 import { useVideoContext } from '../../context/VideoContext';
 import { getOptimizedVideoPath, getOptimizedVideoSources } from '../../utils/videoOptimizer';
 
-const OptimizedVideo = ({ 
-  src, 
-  className = "", 
-  autoPlay = true, 
-  loop = true, 
-  muted = true, 
+const OptimizedVideo = ({
+  src,
+  className = "",
+  autoPlay = true,
+  loop = true,
+  muted = true,
   playsInline = true,
   poster = "",
   loading = "lazy",
@@ -20,26 +20,26 @@ const OptimizedVideo = ({
   videoId,
   useOptimized = true, // Toggle to use optimized videos
   fallbackToOriginal = true, // Fallback to original video if optimized fails
-  ...props 
+  ...props
 }) => {
   const videoRef = useRef(null);
   const { registerVideo, unregisterVideo, markVideoLoaded, markVideoUnloaded } = useVideoContext();
-  
+
   // Check if the src is already an optimized path
   const isAlreadyOptimized = src.includes('/optimized/');
-  
+
   // Get optimized video sources
   const optimizedSources = useOptimized && !isAlreadyOptimized ? getOptimizedVideoSources(src) : [{ src, type: 'video/mp4' }];
   const primarySrc = optimizedSources[0].src;
-  
+
   // If fallback is enabled and we're using optimized sources, ensure original is included
   const finalSources = fallbackToOriginal && useOptimized && !isAlreadyOptimized
     ? [...optimizedSources, { src, type: 'video/mp4' }]
     : optimizedSources;
-  
+
   // Determine if we should use source tags (multiple sources) or direct src (single source)
   const useSourceTags = finalSources.length > 1;
-  
+
   const { isLoaded, hidePoster } = useVideoOptimization(videoRef, primarySrc, {
     autoPlay,
     loop,
@@ -114,12 +114,12 @@ const OptimizedVideo = ({
             <source key={index} src={source.src} type={source.type} />
           ))}
         </video>
-        
+
         {/* CSS overlay poster image positioned absolutely */}
         {!hidePoster && (
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center pointer-events-none"
-            style={{ 
+            style={{
               backgroundImage: `url(${poster})`,
               zIndex: 1
             }}
@@ -148,12 +148,12 @@ const OptimizedVideo = ({
           <source key={index} src={source.src} type={source.type} />
         ))}
       </video>
-      
+
       {/* CSS overlay poster image for Safari compatibility */}
       {!hidePoster && (
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center pointer-events-none"
-          style={{ 
+          style={{
             backgroundImage: `url(${poster})`,
             zIndex: 1
           }}

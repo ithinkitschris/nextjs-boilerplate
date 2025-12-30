@@ -55,15 +55,15 @@ const DesktopNavbar = ({
       {/* Navbar Background with Buttons */}
       <motion.div
         className={`rounded-full flex items-center justify-center
-        h-[46px] dark:bg-transparent border border-white/35 bg-white
+        h-[46px] dark:bg-transparent border-b-1 border-t-0 border-1 border-white/25 bg-white
         shadow-glass-border-light dark:shadow-glass-border
         ${browserType === 'chrome'
             ? ''
             : browserType === 'safari'
-              ? 'backdrop-blur-3xl bg-white'
+              ? 'backdrop-blur-xl bg-white'
               : browserType === 'firefox'
-                ? 'backdrop-blur-3xl bg-white'
-                : 'backdrop-blur-3xl bg-white'
+                ? 'backdrop-blur-xl bg-white'
+                : 'backdrop-blur-xl bg-white'
           }`}
         style={browserType === 'chrome' ? {
           backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',

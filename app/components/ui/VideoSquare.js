@@ -73,15 +73,15 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
         </div>
 
         {/* Text Container */}
-        <div className={`absolute inset-0 md:inset-2.5 flex flex-col items-start justify-end ${isMobile && selectedTags?.includes('product') ? 'pb-5 pl-6' : 'pb-2.5 p-3 pl-3.5'} w-full mb-1 pointer-events-none`}>
+        <div className="absolute inset-0 md:inset-2.5 flex flex-col items-start justify-end pb-2.5 p-3 pl-3.5 w-full mb-1 pointer-events-none">
 
           {/* Title */}
-          <h1 className={`tracking-tight font-medium z-30 w-[90%] md:w-[80%] ${isMobile && selectedTags?.includes('product') ? 'text-2xl' : 'text-lg'} 2xl:text-2xl leading-none 2xl:leading-6 mb-1.5 text-white`}>
+          <h1 className="tracking-tight font-medium z-30 w-[90%] md:w-[80%] text-lg 2xl:text-2xl leading-none 2xl:leading-6 mb-1.5 text-white">
             {title}
           </h1>
 
           {/* Subheader */}
-          <h3 className={`tracking-tight z-30 w-[90%] md:w-[95%] ${isMobile && selectedTags?.includes('product') ? 'text-[9pt]' : 'text-[7pt]'} md:text-[8pt] 2xl:text-[9pt] 2xl:w-3/4 leading-tight opacity-80 mix-blend-screen text-white`}>
+          <h3 className="tracking-tight z-30 w-[90%] md:w-[95%] text-[7pt] md:text-[8pt] 2xl:text-[9pt] 2xl:w-3/4 leading-tight opacity-80 mix-blend-screen text-white">
             {subheader}
           </h3>
         </div>
@@ -90,6 +90,7 @@ const VideoSquare = ({ videoSrc, tags, onClick, title, subheader, selectedTags, 
         <div
           className="absolute bottom-0 left-0 right-0 h-[60%] md:h-[50%] z-10 pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px]"
           style={{
+            background: 'linear-gradient(to top, #000000bd 0%, #0000008c 40%, transparent 100%)',
             maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
             WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)'
           }}
