@@ -238,10 +238,31 @@ export default function RootLayout({ children }) {
                       </div> */}
 
                     <h1 className="font-medium text-lg mb-4 md:-mt-1 tracking-tight text-foreground font-">About this website</h1>
-                    <p className="font-medium">Yearning for full source code control after years of Squarespace; this site was initially hardcoded from scratch with Javascript and React <span className="italic opacity-50">(when vibe-coding innocuously meant coding to lofi jazz).</span></p>
-                    <p className="mt-2 font-medium">It is now on it's v3 incarnation and is now a personal playground of mine for frontend web development with Google Antigravity.</p>
-                    <p className="mt-2 font-medium">Backend framework and core architecture have since been refactored with vibe-code. Design, tailwind styling, animation values, and GSAP scroll timings remain manually hardcoded.</p>
-                    <a className="relative inline-flex mt-6 -ml-1.5 border-1 pl-2 px-1 py-0.5 rounded-full text-black dark:text-white border-black/25 dark:border-white/65 
+                    <p className="font-medium">Yearning for full source code control after years of Squarespace; this site was initially hardcoded from scratch with Javascript and React <span className="italic opacity-50">(when vibe-coding innocuously meant coding to lofi jazz)</span>.</p>
+                    <p className="mt-2 font-medium">It is now on it's v3 incarnation and is a personal playground of mine for frontend web development.</p>
+                    <p className="mt-2 font-medium">React architecture and backend frameworks have since been refactored from v1 with vibe-code. Design, layout, tailwind styling, animation values, and GSAP scroll timings remain very stubbornly manually hardcoded.</p>
+
+                    {/* Version Buttons */}
+                    <div className="flex gap-2 mt-6 -ml-0.5">
+                      <a
+                        className="relative inline-flex items-center justify-center w-7 h-7 border-1 rounded-full text-black dark:text-white border-black/25 dark:border-white/65 duration-100 text-xs
+                          hover:bg-foreground hover:text-background dark:hover:text-black transition-all md:hover:scale-95"
+                        href='https://v1.ithinkitschris.com'
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        v1
+                      </a>
+                      <a
+                        className="relative inline-flex items-center justify-center w-7 h-7 border-1 rounded-full text-black dark:text-white border-black/25 dark:border-white/65 duration-100 text-xs
+                          hover:bg-foreground hover:text-background dark:hover:text-black transition-all md:hover:scale-95"
+                        href='https://v2.ithinkitschris.com'
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        v2
+                      </a>
+                    </div>
+
+                    <a className="relative inline-flex mt-4 -ml-1 border-1 pl-2 px-1 py-0.5 rounded-full text-black dark:text-white border-black/25 dark:border-white/65 
                       hover:bg-foreground hover:text-background dark:hover:text-black transition-all md:hover:scale-95"
                       href='https://ithinkitschris.notion.site/Portfolio-Website-127a92ab668680ed91ddd0619057466f' target="blank">
                       Read the documentation here
@@ -272,10 +293,13 @@ export default function RootLayout({ children }) {
 
                     <h1 className="font-medium text-lg text-foreground tracking-tight">To do:</h1>
 
+
                     <div>
                       <p className='mt-2 text-foreground font-medium text-xxs'>01</p>
-                      <p className="line-through">Adapt NYC Subway project page for mobile.</p>
+                      <p className="">Implement screen reader capability.</p>
+
                     </div>
+
 
                     <div>
                       <p className='mt-2 text-foreground font-medium text-xxs'>02</p>
@@ -285,16 +309,21 @@ export default function RootLayout({ children }) {
 
                     <div>
                       <p className='mt-2 text-foreground font-medium text-xxs'>03</p>
-                      <p className="line-through">Build out Bloom, ISV, Expense Tracker, and Website project pages.</p>
+                      <p className="line-through">Adapt NYC Subway project page for mobile.</p>
                     </div>
 
                     <div>
                       <p className='mt-2 text-foreground font-medium text-xxs'>04</p>
-                      <p className="line-through">#ShotOniPhone photography album.</p>
+                      <p className="line-through">Build out Bloom, ISV, Expense Tracker, and Website project pages.</p>
                     </div>
 
                     <div>
                       <p className='mt-2 text-foreground font-medium text-xxs'>05</p>
+                      <p className="line-through">#ShotOniPhone photography album.</p>
+                    </div>
+
+                    <div>
+                      <p className='mt-2 text-foreground font-medium text-xxs'>06</p>
                       <p className="line-through">Develop page design for Product Design case studies. (GSAP Integration)</p>
                     </div>
 
@@ -349,6 +378,8 @@ export default function RootLayout({ children }) {
                           <p>Highlights grid now employs an experimental cursor-based floating tooltip that displays project information. <span className="italic opacity-50">(Personally still evaluating the clarity of this approach)</span></p>
 
                           <p>Keyboard tab navigation has also been implemented for the home page of this website, try it out!</p>
+
+                          <p>Added universal play/pause button for video playback.</p>
 
                         </div>
 

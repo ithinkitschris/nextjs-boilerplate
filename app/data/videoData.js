@@ -18,15 +18,15 @@ export const videoData = [
   { src: '/optimized/jollieverafter/jollieverafter-favpagecover_1080p.mp4', title: 'JolliEverAfter', subheader: 'Social Media Campaign for Jollibee', poster: '/poster/jolli.jpg', tags: ['jolli', 'all', 'motion', 'edit', 'best'], link: '/jolli' },
   { src: '/optimized/samsung/samsung-montage_1080p.mp4', title: 'Samsung Lifestyle Displays', subheader: 'Content Creation for Samsung', poster: '/poster/samsung.jpg', tags: ['samsung', 'all', 'motion', 'edit'], link: '/samsung' },
   { src: '/optimized/nike/nike-cover_1080p.mp4', title: 'Nike Athlete Stories: Koy & Toon', subheader: 'Social Media Campaign for Nike', poster: '/poster/nike.jpg', tags: ['nike', 'all', 'motion', 'edit'], link: '/nike' },
-  { src: '/optimized/3dpersonal/3dpersonal-glass1_1080p.mp4', title: '3D Motion Explorations', subheader: 'Personal Explorations', poster: '/poster/3d.jpeg', tags: ['3d', 'all', 'motion'], link: '/3d' },
+  { src: '/optimized/3dpersonal/3dpersonal-glass1_1080p.mp4', title: '3D Motion Experiments', subheader: '3D Motion Design', poster: '/poster/3d.jpeg', tags: ['3d', 'all', 'motion'], link: '/3d' },
   { src: '/optimized/uniqlo2/Cover_1080p.mp4', title: 'New Style Fresh Start', subheader: 'Motion Design for Uniqlo', poster: '/poster/uniqlo2.jpeg', tags: ['uniqlo2', 'all', 'motion'], link: '/uniqlo2' },
   { src: '/optimized/uniqlo1/cover_1080p.mp4', title: 'Your Stage Now Live', subheader: 'Motion Design for Uniqlo', poster: '/poster/uniqlo1.jpg', tags: ['uniqlo1', 'all', 'motion'], link: '/uniqlo1' },
   { src: '/optimized/Photography/street/Cover2_2_1080p.mp4', title: 'Digital', subheader: 'Personal Photography', poster: '', tags: ['street', 'all', 'photography'], link: '/street' },
   { src: '/optimized/Photography/film/cover4_1080p.mp4', title: 'Film', subheader: 'Personal Photography', poster: '', tags: ['film', 'all', 'photography'], link: '/film' },
   { src: '/optimized/Photography/iphone/cover_1080p.mp4', title: '#shotoniPhone', subheader: 'Personal Photography', poster: '/Photography/iphone/cover.jpg', tags: ['shotoniphone', 'all', 'photography'], link: '/shotoniphone' },
   { src: '/optimized/Photography/bbh/cover_1080p.mp4', title: 'BBH Profile Headshots', subheader: 'Portrait series', poster: '', tags: ['bbh', 'all', 'photography'], link: '/bbh' },
-  { src: '/optimized/oneshow/cover_1080p.mp4', title: 'TBWA One Show Shortlists', subheader: 'Social media post', poster: '/poster/oneshow.jpeg', tags: ['oneshow', 'all', 'motion'], link: '/oneshow' },
-  { src: '/optimized/iphone/intro_1080p.mp4', title: 'iPhone 15 Pro', subheader: 'Personal explorations', poster: '/poster/iphone15.jpeg', tags: ['iphone', 'all', 'motion'], link: '/iphone' },
+  { src: '/optimized/oneshow/cover_1080p.mp4', title: 'TBWA One Show Shortlists', subheader: '3D Motion Design', poster: '/poster/oneshow.jpeg', tags: ['oneshow', 'all', 'motion'], link: '/oneshow' },
+  { src: '/optimized/iphone/intro_1080p.mp4', title: 'iPhone 15 Pro', subheader: '3D Motion Design', poster: '/poster/iphone15.jpeg', tags: ['iphone', 'all', 'motion'], link: '/iphone' },
   { src: '/optimized/leica/leica_1080p.mp4', title: 'Leica M-10P', subheader: '3D Motion Design', poster: '/poster/leica.jpeg', tags: ['leica', 'all', 'motion'], link: '/leica' },
 ];
 
