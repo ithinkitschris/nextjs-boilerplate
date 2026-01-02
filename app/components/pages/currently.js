@@ -604,15 +604,16 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
           pointer-events-none mix-blend-overlay z-10"/>
 
         {/* Video */}
-        <video
-          src={isMobile ? "/thesis/lifeoscover2.mp4" : "/thesis/lifeoscover2.mp4"}
+        <OptimizedVideo
+          videoId="currently-thesis"
+          src="/thesis/lifeoscover2.mp4"
           className="w-full h-full object-cover scale-120 rounded-[25pt] brightness-75 z-20"
           autoPlay
           muted
           loop
           playsInline
           poster="/poster/thesis.jpg"
-          tabIndex={-1}
+          useOptimized={useOptimizedVideos}
         />
         {/* Lockup */}
         <img
@@ -1110,7 +1111,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
 
           {/* Video */}
           <OptimizedVideo
-            videoId="currently-subway"
+            videoId="currently-bloom"
             src="/bloom/cover.mp4"
             className="rounded-[25pt] md:rounded-[20pt] w-full h-full object-cover"
             autoPlay

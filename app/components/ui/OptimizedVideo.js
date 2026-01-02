@@ -1,11 +1,11 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { useVideoOptimization } from '../../hooks/useVideoCleanup';
 import { useVideoContext } from '../../context/VideoContext';
 import { getOptimizedVideoPath, getOptimizedVideoSources } from '../../utils/videoOptimizer';
 
-const OptimizedVideo = ({
+const OptimizedVideo = forwardRef(({
   src,
   className = "",
   autoPlay = true,
@@ -21,9 +21,10 @@ const OptimizedVideo = ({
   useOptimized = true, // Toggle to use optimized videos
   fallbackToOriginal = true, // Fallback to original video if optimized fails
   ...props
-}) => {
-  const videoRef = useRef(null);
-  const { registerVideo, unregisterVideo, markVideoLoaded, markVideoUnloaded } = useVideoContext();
+}, ref) => {
+  const localVideoRef = useRef(null);
+  const videoRef = ref || localVideoRef;
+  const { registerVideo, unregisterVideo, markVideoLoaded, markVideoUnloaded, isGloballyPaused } = useVideoContext();
 
   // Check if the src is already an optimized path
   const isAlreadyOptimized = src.includes('/optimized/');
@@ -78,7 +79,7 @@ const OptimizedVideo = ({
       <video
         ref={videoRef}
         className={className}
-        autoPlay={autoPlay}
+        autoPlay={autoPlay && !isGloballyPaused}
         loop={loop}
         muted={muted}
         playsInline={playsInline}
@@ -101,7 +102,7 @@ const OptimizedVideo = ({
         <video
           ref={videoRef}
           className={className}
-          autoPlay={autoPlay}
+          autoPlay={autoPlay && !isGloballyPaused}
           loop={loop}
           muted={muted}
           playsInline={playsInline}
@@ -135,7 +136,7 @@ const OptimizedVideo = ({
       <video
         ref={videoRef}
         className="w-full h-full object-cover"
-        autoPlay={autoPlay}
+        autoPlay={autoPlay && !isGloballyPaused}
         loop={loop}
         muted={muted}
         playsInline={playsInline}
@@ -161,6 +162,6 @@ const OptimizedVideo = ({
       )}
     </div>
   );
-};
+});
 
 export default OptimizedVideo; 

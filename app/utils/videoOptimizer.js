@@ -35,10 +35,10 @@ export const getOptimalFormat = () => {
 // Get optimal resolution based on screen size and connection
 export const getOptimalResolution = () => {
   if (typeof window === 'undefined') return '720p'; // Default for SSR
-  
+
   const width = window.innerWidth;
   const connection = navigator.connection || navigator.mozConnection;
-  
+
   // Check connection speed
   let connectionSpeed = 'fast';
   if (connection) {
@@ -48,17 +48,17 @@ export const getOptimalResolution = () => {
       connectionSpeed = 'medium';
     }
   }
-  
+
   // Mobile devices
   if (width <= 768) {
     return connectionSpeed === 'slow' ? '480p' : '720p';
   }
-  
+
   // Tablet devices
   if (width <= 1024) {
     return connectionSpeed === 'slow' ? '720p' : '720p';
   }
-  
+
   // Desktop devices
   return connectionSpeed === 'slow' ? '720p' : '720p';
 };
@@ -70,26 +70,26 @@ export const getOptimizedVideoPath = (originalPath, options = {}) => {
     resolution = getOptimalResolution(),
     fallbackToOriginal = true
   } = options;
-  
+
   // Extract path components
   const pathParts = originalPath.split('/');
   const fileName = pathParts[pathParts.length - 1];
   const directory = pathParts.slice(1, -1).join('/');
-  
+
   // Map original filenames to the naming convention used by compression script
   // Use full path as key to avoid conflicts
   const getBaseName = (originalPath, fileName) => {
     const pathMap = {
       // Currently videos
       '/subway/cover2.mp4': 'subway-cover',
-      '/expense/cover.mp4': 'expense-cover', 
+      '/expense/cover.mp4': 'expense-cover',
       '/currently/car.mp4': 'car',
       '/website/coverproper.mp4': 'website-cover',
-      
+
       // Product videos
       '/subway/cover.mp4': 'subway-cover',
       '/website/cover.mp4': 'website-cover',
-      
+
       // Best Work videos
       '/CCS/bestworkmontage.mp4': 'bestworkmontage',
       '/Ghibli/banner1.mp4': 'ghibli-banner1',
@@ -97,13 +97,13 @@ export const getOptimizedVideoPath = (originalPath, options = {}) => {
       '/Hemsaker/cover.mp4': 'hemsaker-cover',
       '/lounge/montage.mp4': 'lounge-montage',
       '/isv/cover.mp4': 'isv-cover',
-      
+
       // Motion videos
       '/nike/cover.mp4': 'nike-cover',
       '/jollieverafter/favpagecover.mp4': 'jollieverafter-favpagecover',
       '/3dpersonal/glass1.mp4': '3dpersonal-glass1',
       '/samsung/montage.mp4': 'samsung-montage',
-      
+
       // Content videos
       '/content/taycan.mp4': 'content-taycan',
       '/content/m3.mp4': 'content-m3',
@@ -134,19 +134,27 @@ export const getOptimizedVideoPath = (originalPath, options = {}) => {
       '/content/3.mp4': 'content-3',
       '/content/17.mp4': 'content-17',
       '/content/5.mp4': 'content-5',
-      '/content/2.mp4': 'content-2'
+      '/content/2.mp4': 'content-2',
+
+      // New mappings for Resume and Archive
+      '/isv/montagenew.mp4': 'isv-montagenew',
+      '/ghibli/KVanimated.mp4': 'ghibli-KVanimated',
+      '/subway/cover_blank.mp4': 'subway-cover_blank',
+      '/bloom/talk.mp4': 'bloom-talk',
+      '/thesis/lifeoscover.mp4': 'thesis-lifeoscover',
+      '/thesis/lifeoscover2.mp4': 'thesis-lifeoscover2'
     };
-    
+
     return pathMap[originalPath] || fileName.replace(/\.[^/.]+$/, '');
   };
-  
+
   // Get the base name used by compression script
   const baseName = getBaseName(originalPath, fileName);
-  
+
   // Create optimized path using the compression script naming convention
   const optimizedFileName = `${baseName}_${resolution}.${format}`;
   const optimizedPath = `/optimized/${directory}/${optimizedFileName}`;
-  
+
   return optimizedPath;
 };
 
@@ -154,21 +162,21 @@ export const getOptimizedVideoPath = (originalPath, options = {}) => {
 export const getOptimizedVideoSources = (originalPath) => {
   const format = getOptimalFormat();
   const resolution = getOptimalResolution();
-  
+
   const sources = [];
-  
+
   // Add optimal source first (720p)
   sources.push({
     src: getOptimizedVideoPath(originalPath, { format, resolution: '720p' }),
     type: format === 'webm' ? 'video/webm' : 'video/mp4'
   });
-  
+
   // Add 480p fallback for slower connections
   sources.push({
     src: getOptimizedVideoPath(originalPath, { format, resolution: '480p' }),
     type: format === 'webm' ? 'video/webm' : 'video/mp4'
   });
-  
+
   // Add alternative format fallback
   if (format === 'webm') {
     sources.push({
@@ -180,13 +188,13 @@ export const getOptimizedVideoSources = (originalPath) => {
       type: 'video/mp4'
     });
   }
-  
+
   // Add original as final fallback
   sources.push({
     src: originalPath,
     type: 'video/mp4'
   });
-  
+
   return sources;
 };
 
@@ -194,16 +202,16 @@ export const getOptimizedVideoSources = (originalPath) => {
 export const useOptimizedVideo = (originalPath, options = {}) => {
   const [format, setFormat] = useState(getOptimalFormat());
   const [resolution, setResolution] = useState(getOptimalResolution());
-  
+
   useEffect(() => {
     // Update format and resolution on mount
     setFormat(getOptimalFormat());
     setResolution(getOptimalResolution());
   }, []);
-  
+
   const optimizedPath = getOptimizedVideoPath(originalPath, { format, resolution });
   const sources = getOptimizedVideoSources(originalPath);
-  
+
   return {
     optimizedPath,
     sources,

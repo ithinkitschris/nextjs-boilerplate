@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { useBrowser } from '../context/BrowserContext';
 import { useVideoContext } from '../context/VideoContext';
 
 export const useVideoCleanup = (videoRef) => {
   useEffect(() => {
     const video = videoRef.current;
-    
+
     return () => {
       if (video) {
         video.pause();
@@ -33,7 +33,7 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
   const originalSrc = useRef(src);
   const safariTimeoutRef = useRef(null);
   const unloadTimeoutRef = useRef(null);
-  
+
   const {
     rootMargin = isMobile ? '200px' : '50px',
     threshold = 0.1,
@@ -44,7 +44,7 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
   } = options;
 
   // Load video
-  const loadVideo = () => {
+  const loadVideo = useCallback(() => {
     const video = videoRef.current;
     if (video && !isLoaded && originalSrc.current) {
       if (useSourceTags) {
@@ -65,20 +65,20 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
       setIsLoaded(true);
       setHasBeenLoaded(true);
     }
-  };
+  }, [isLoaded, useSourceTags]);
 
   // Unload video
-  const unloadVideo = () => {
+  const unloadVideo = useCallback(() => {
     const video = videoRef.current;
     if (video && isLoaded) {
       video.pause();
-      
+
       // Clear Safari timeout
       if (safariTimeoutRef.current) {
         clearTimeout(safariTimeoutRef.current);
         safariTimeoutRef.current = null;
       }
-      
+
       if (useCache && hasBeenLoaded) {
         video.currentTime = 0;
       } else {
@@ -93,11 +93,11 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
         video.load();
         setHasBeenLoaded(false);
       }
-      
+
       setIsLoaded(false);
       setHidePoster(false);
     }
-  };
+  }, [isLoaded, useCache, hasBeenLoaded, useSourceTags]);
 
   // Video event listeners - Safari-optimized
   useEffect(() => {
@@ -109,10 +109,10 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
       if (safariTimeoutRef.current) {
         clearTimeout(safariTimeoutRef.current);
       }
-      
+
       // For Safari, use a short delay after playing event
       const delay = browserType === 'safari' ? 200 : 100;
-      
+
       safariTimeoutRef.current = setTimeout(() => {
         // Double-check that video is still playing and has progressed
         if (!video.paused && video.currentTime > 0) {
@@ -166,7 +166,7 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
       video.removeEventListener('ended', handleEnded);
       video.removeEventListener('loadstart', handleLoadStart);
       video.removeEventListener('error', handleError);
-      
+
       if (safariTimeoutRef.current) {
         clearTimeout(safariTimeoutRef.current);
         safariTimeoutRef.current = null;
@@ -183,7 +183,7 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
       ([entry]) => {
         const inViewport = entry.isIntersecting;
         setIsInViewport(inViewport);
-        
+
         if (inViewport) {
           // Cancel any pending unload when entering viewport
           if (unloadTimeoutRef.current) {
@@ -196,7 +196,7 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
           if (unloadTimeoutRef.current) {
             clearTimeout(unloadTimeoutRef.current);
           }
-          
+
           unloadTimeoutRef.current = setTimeout(() => {
             if (!isInViewport) {
               unloadVideo();
@@ -223,18 +223,26 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
         unloadTimeoutRef.current = null;
       }
     };
-  }, [rootMargin, threshold, isInViewport, unloadDelay]);
+  }, [rootMargin, threshold, isInViewport, unloadDelay, loadVideo, unloadVideo]);
 
   // Auto-play (respect global pause state)
   useEffect(() => {
     const video = videoRef.current;
-    if (video && isLoaded && isInViewport && autoPlay && !isGloballyPaused) {
+    if (!video) return;
+
+    // If globally paused, ensure video is paused regardless of other conditions
+    if (isGloballyPaused) {
+      if (!video.paused) {
+        video.pause();
+      }
+      return;
+    }
+
+    // Only attempt to play if all conditions are met AND not globally paused
+    if (isLoaded && isInViewport && autoPlay) {
       video.play().catch(() => {
         // Ignore autoplay errors
       });
-    } else if (video && isGloballyPaused && !video.paused) {
-      // Pause video if global pause is active
-      video.pause();
     }
   }, [isLoaded, isInViewport, autoPlay, isGloballyPaused]);
 
@@ -244,22 +252,22 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
       originalSrc.current = src;
       setHasBeenLoaded(false);
       setHidePoster(false);
-      
+
       if (safariTimeoutRef.current) {
         clearTimeout(safariTimeoutRef.current);
         safariTimeoutRef.current = null;
       }
-      
+
       if (unloadTimeoutRef.current) {
         clearTimeout(unloadTimeoutRef.current);
         unloadTimeoutRef.current = null;
       }
-      
+
       if (isInViewport) {
         loadVideo();
       }
     }
-  }, [src, isInViewport]);
+  }, [src, isInViewport, loadVideo]);
 
   // Cleanup
   useEffect(() => {
@@ -275,12 +283,12 @@ export const useVideoOptimization = (videoRef, src, options = {}) => {
         video.onpause = null;
         video.onended = null;
       }
-      
+
       if (safariTimeoutRef.current) {
         clearTimeout(safariTimeoutRef.current);
         safariTimeoutRef.current = null;
       }
-      
+
       if (unloadTimeoutRef.current) {
         clearTimeout(unloadTimeoutRef.current);
         unloadTimeoutRef.current = null;
