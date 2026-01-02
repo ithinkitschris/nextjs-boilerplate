@@ -1183,7 +1183,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
               id="subway-description-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9998] rounded-[20pt] pl-6 pr-5 py-4 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[360px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
+              className="fixed pointer-events-none z-[9998] rounded-[20pt] pl-6 pr-5 py-4 border-b-1.5 border-r-1.5 text-sm lg:text-[14.5px] font-medium tracking-[-0.1pt] max-w-[360px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -1268,7 +1268,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
               id="bloom-description-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[315px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
+              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[14.5px] font-medium tracking-[-0.1pt] max-w-[315px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -1327,7 +1327,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
               id="expense-description-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[290px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
+              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[14.5px] font-medium tracking-[-0.1pt] max-w-[290px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -1386,7 +1386,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
               id="isv-description-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-xs lg:text-[13px] font-medium tracking-[-0.1pt] max-w-[290px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
+              className="fixed pointer-events-none z-[9997] rounded-[20pt] pl-6 pr-4 py-4 border-1 border-b-1.5 border-r-1.5 text-sm lg:text-[14.5px] font-medium tracking-[-0.1pt] max-w-[290px] bg-background border-foreground/10 text-foreground dark:bg-black/20 dark:border-white/10 dark:text-white drop-shadow-lg backdrop-blur-3xl leading-[1.5]"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -1445,7 +1445,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
               id="thesis-subtitle-tooltip"
               role="tooltip"
               aria-live="polite"
-              className="fixed pointer-events-none z-[9998] rounded-[20pt] px-6 py-4 border-b-1.5 border-r-1.5 text-[13px] font-medium tracking-[-0.1pt] bg-background border-foreground/10 text-foreground dark:bg-black/30 dark:border-white/5 dark:text-white drop-shadow-lg backdrop-blur-3xl max-w-[310px]"
+              className="fixed pointer-events-none z-[9998] rounded-[20pt] px-6 py-4 border-b-1.5 border-r-1.5 text-[14.5px] font-medium tracking-[-0.1pt] bg-background border-foreground/10 text-foreground dark:bg-black/30 dark:border-white/5 dark:text-white drop-shadow-lg backdrop-blur-3xl max-w-[310px]"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}

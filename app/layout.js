@@ -114,32 +114,30 @@ export default function RootLayout({ children }) {
 
     return (
       <motion.div
-        className="fixed bottom-4 md:bottom-6 left-0 inset-x-0 mx-auto md:w-200 z-50 flex justify-center "
+        className="fixed bottom-4 md:bottom-7 left-0 inset-x-0 mx-auto md:w-200 z-50 flex justify-center items-center gap-2.5 pl-4"
         animate={{
           y: hideFooter ? 60 : 0,
           opacity: hideFooter ? 0 : 1,
           pointerEvents: hideFooter ? 'none' : 'auto'
         }}
         transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 24
+          y: { type: "spring", stiffness: 500, damping: 24 },
+          opacity: { duration: 0.2 }
         }}
       >
         <div
           ref={footerRef}
           className={`
-          transition-all 
           text-center 
           rounded-full 
           whitespace-nowrap 
-          tracking-tight 
-          text-[10.5pt]
-          font-medium
+          tracking-[-0.1pt] 
+          text-[11.5pt]
+          font-base
           cursor-pointer
-          px-2
-          pr-2 
-          py-1
+          px-3
+          pr-3.5
+          py-1.5
           bg-background 
           dark:bg-transparent 
           dark:text-white
@@ -151,6 +149,7 @@ export default function RootLayout({ children }) {
           md:dark:hover:bg-transparent 
           md:hover:text-white 
           md:hover:scale-95
+          transition-all
           ${browserType === 'chrome'
               ? ''
               : browserType === 'safari'
@@ -168,17 +167,23 @@ export default function RootLayout({ children }) {
             backdropFilter: 'blur(1.25px) url(#backdrop-distortion)',
           } : {}}
 
-          onClick={toggleChangelog}>
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleChangelog();
+          }}>
 
           <div className={`inline-flex ml-1.5 ${isWhiteBG ? 'text-black !text-black dark:!text-black font-semibold' : ''}`}>
             About this website
             {changelog ? (
-              <ChevronDownIcon className={`h-3.5 w-auto ml-1.5 mt-[3px] ${isWhiteBG ? 'text-black !text-black dark:!text-black' : ''}`} />
+              <ChevronDownIcon className={`h-4 w-auto ml-1.5 mt-[3px] ${isWhiteBG ? 'text-black !text-black dark:!text-black' : ''}`} />
             ) : (
-              <ChevronUpIcon className={`h-3.5 w-auto ml-1.5 mt-[3px] ${isWhiteBG ? 'text-black !text-black dark:!text-black' : ''}`} />
+              <ChevronUpIcon className={`h-4 w-auto ml-1.5 mt-[3px] ${isWhiteBG ? 'text-black !text-black dark:!text-black' : ''}`} />
             )}
           </div>
         </div>
+
+        {/* Global Video Control Button */}
+        <GlobalVideoControl />
       </motion.div>
     );
   };
@@ -200,9 +205,6 @@ export default function RootLayout({ children }) {
               {/* Video Performance Monitor - Only in development */}
               <VideoDebugger enabled={process.env.NODE_ENV === 'development'} />
 
-              {/* Global Video Play/Pause Control */}
-              <GlobalVideoControl />
-
               {/* Backdrop Blur */}
               <div className={`${changelog ? 'bg-black/60 backdrop-blur-sm' : 'backdrop-blur-none pointer-events-none'}
                 fixed top-0 left-0 w-full h-full z-[50] transition-all duration-500 md:duration-300`} />
@@ -220,7 +222,7 @@ export default function RootLayout({ children }) {
               {changelog && (
                 <motion.div
                   ref={changelogRef}
-                  className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 left-0 inset-x-0 mx-auto z-50 rounded-3xl overflow-y-auto md:overflow-hidden md:p-2 md:pt-4 no-scrollbar overflow-x-hidden
+                  className="grid grid-cols-1 md:grid-cols-4 fixed bottom-16 md:bottom-20 left-0 inset-x-0 mx-auto z-50 rounded-3xl overflow-y-auto md:overflow-hidden md:p-2 md:pt-4 no-scrollbar overflow-x-hidden
                   h-[85%] md:h-[480px] w-[85%] md:w-[90%] tracking-tight text-[9pt] text-black/50 dark:text-white/75">
 
                   {/* About */}
@@ -258,7 +260,7 @@ export default function RootLayout({ children }) {
                     </a>
 
                     {/* Last Updated */}
-                    <p className="mt-6 text-xxs opacity-75 leading-tight">Website last meddled with on 29.12.25 for the 319th time.</p>
+                    <p className="mt-6 text-xxs opacity-75 leading-tight">Website last meddled with on 01.01.26 for the 320th time.</p>
 
                   </motion.div>
 
@@ -321,6 +323,13 @@ export default function RootLayout({ children }) {
 
                         <div className="flex flex-col">
                           <p className='text-foreground font-medium'>Latest Iterations</p>
+                        </div>
+
+                        <div className="flex flex-col gap-3 leading-4 mb-4">
+                          <p className='text-foreground font-medium'>v3.02</p>
+
+                          <p>Shifted play/pause button to the right of floating footer.</p>
+
                         </div>
 
                         <div className="flex flex-col gap-3 leading-4 mb-4">

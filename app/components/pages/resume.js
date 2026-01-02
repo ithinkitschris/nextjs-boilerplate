@@ -89,8 +89,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
     const ghibliVideoY = useSpring(imageCursorY, { stiffness: 300, damping: 30 });
 
     // Convert Ghibli video motion values to pixel strings for positioning
-    const ghibliVideoXpx = useTransform(ghibliVideoX, (value) => `${value - 200}px`); // Same positioning as ISV video
-    const ghibliVideoYpx = useTransform(ghibliVideoY, (value) => `${value - 250}px`); // Same positioning as ISV video
+    const ghibliVideoXpx = useTransform(ghibliVideoX, (value) => `${value - 112}px`); // Center the smaller video (w-56 = 224px, so 224/2 = 112)
+    const ghibliVideoYpx = useTransform(ghibliVideoY, (value) => `${value - 340}px`); // Position much higher above cursor
 
     // Motion values for Nike video popup animation (reuse cursor tracking)
     const nikeVideoX = useSpring(imageCursorX, { stiffness: 300, damping: 30 });
@@ -1193,7 +1193,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                             <AnimatePresence>
                                 {showGhibliVideo && (
                                     <motion.div
-                                        className="rounded-[20pt] w-96 aspect-video fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
+                                        className="rounded-[20pt] w-56 aspect-[1144/1620] fixed shadow-[0px_2px_30px_rgba(0,0,0,0.3)] border-b-1 border-white/15 overflow-hidden pointer-events-none z-50 drop-shadow-[2px_10px_25px_rgba(0,0,0,0.5)]"
                                         style={{
                                             left: ghibliVideoXpx,
                                             top: ghibliVideoYpx,
@@ -1210,7 +1210,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     >
                                         <motion.video
                                             ref={ghibliVideoRef}
-                                            src="/Ghibli/banner1.mp4"
+                                            src="/ghibli/KVanimated.mp4"
                                             className="h-full w-full object-cover transition-all"
                                             autoPlay
                                             muted
