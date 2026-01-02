@@ -523,7 +523,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
 
       {/* Thesis Cover Video */}
       <motion.button
-        className="col-span-full mb-0 cursor-pointer rounded-[25pt] relative overflow-hidden h-[600px] md:h-auto w-full focus-visible-standard group"
+        className="hidden md:flex col-span-full mb-0 cursor-pointer rounded-[25pt] relative overflow-hidden h-[600px] md:h-auto w-full focus-visible-standard group"
         whileHover={{ scale: 0.99 }}
         transition={{
           type: "spring",
