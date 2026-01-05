@@ -522,128 +522,134 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
       variants={animateIn}>
 
       {/* Thesis Cover Video */}
-      <motion.button
-        className="hidden md:flex col-span-full mb-0 cursor-pointer rounded-[25pt] relative overflow-hidden h-[600px] md:h-full w-full focus-visible-standard group"
-        whileHover={{ scale: 0.99 }}
-        transition={{
-          type: "spring",
-          stiffness: 1000,
-          damping: 15,
-        }}
-        onMouseEnter={(e) => {
-          if (isMobile) return;
-          if (thesisHideTimeoutRef.current) {
-            clearTimeout(thesisHideTimeoutRef.current);
-            thesisHideTimeoutRef.current = null;
-          }
+      <div className="hidden md:flex col-span-full mb-0 relative">
 
-          setIsThesisTooltipVisible(true);
-          if (typeof window !== 'undefined') {
-            const tooltipOffset = 20;
-            const targetX = e.clientX + tooltipOffset;
-            const targetY = e.clientY;
-            thesisCursorX.set(targetX);
-            thesisCursorY.set(targetY);
-            thesisPrevPosRef.current = { x: e.clientX, y: e.clientY };
-            thesisTitleRotation.set(0);
-            thesisSubtitleRotation.set(0);
-          }
-        }}
-        onMouseLeave={() => {
-          if (thesisHideTimeoutRef.current) {
-            clearTimeout(thesisHideTimeoutRef.current);
-            thesisHideTimeoutRef.current = null;
-          }
+        {/* White Background Glow - Outside overflow-hidden */}
+        <div className="absolute inset-0 rounded-[200pt] bg-white blur-[50px] opacity-15 -z-10 pointer-events-none scale-x-[110%] scale-y-[130%] translate-y-8" />
 
-          setIsThesisTooltipVisible(false);
-          thesisTitleRotation.set(0);
-          thesisSubtitleRotation.set(0);
-        }}
-        onFocus={(e) => {
-          if (thesisHideTimeoutRef.current) {
-            clearTimeout(thesisHideTimeoutRef.current);
-            thesisHideTimeoutRef.current = null;
-          }
-
-          setIsThesisTooltipVisible(true);
-          if (typeof window !== 'undefined') {
-            // Position tooltip in center of screen for keyboard navigation, offset 150px to the left
-            const centerX = window.innerWidth / 2 - 150;
-            const centerY = window.innerHeight / 2 - 150;
-            thesisCursorX.set(centerX);
-            thesisCursorY.set(centerY);
-            thesisPrevPosRef.current = { x: centerX, y: centerY };
-            thesisTitleRotation.set(0);
-            thesisSubtitleRotation.set(0);
-          }
-          // Center focused element in viewport
-          e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-        }}
-        onBlur={() => {
-          if (thesisHideTimeoutRef.current) {
-            clearTimeout(thesisHideTimeoutRef.current);
-            thesisHideTimeoutRef.current = null;
-          }
-
-          setIsThesisTooltipVisible(false);
-          thesisTitleRotation.set(0);
-          thesisSubtitleRotation.set(0);
-        }}
-        onMouseMove={handleThesisMouseMove}
-        onClick={() => {
-          window.open('https://bargainingwiththefuture.com', '_blank');
-        }}
-        aria-label="Navigate to Bargaining with the Future"
-        aria-describedby="thesis-description-tooltip"
-      >
-        {/* Corner Arrow */}
-        <CornerArrow />
-
-        {/* Glass Edge Effect */}
-        <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)]
-          pointer-events-none mix-blend-overlay z-10"/>
-
-        {/* Video */}
-        <OptimizedVideo
-          videoId="currently-thesis"
-          src="/thesis/cover.mp4"
-          className="w-full h-full object-cover rounded-[25pt] brightness-100 z-20"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/poster/thesis2.jpg"
-          useOptimized={true}
-        />
-        {/* Lockup */}
-        <img
-          src="/thesis/lifeoslockup.svg"
-          alt="LifeOS lockup"
-          className="absolute hidden top-[48%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[125%] md:max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
-        />
-
-        {/* Bottom Gradient Blur - Mobile Only */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-[60%] pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px] md:hidden"
-          style={{
-            maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
-            zIndex: 15
+        <motion.button
+          className="cursor-pointer rounded-[25pt] relative overflow-hidden h-[600px] md:h-full w-full focus-visible-standard group"
+          whileHover={{ scale: 0.99 }}
+          transition={{
+            type: "spring",
+            stiffness: 1000,
+            damping: 15,
           }}
-        />
+          onMouseEnter={(e) => {
+            if (isMobile) return;
+            if (thesisHideTimeoutRef.current) {
+              clearTimeout(thesisHideTimeoutRef.current);
+              thesisHideTimeoutRef.current = null;
+            }
 
-        {/* Text Container - Mobile Only */}
-        <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
-          {/* Title */}
-          <h2 className="tracking-[-0.05pt] font-medium z-30 w-[95%] md:w-[80%] text-xl leading-none mb-1.5 text-white text-left">
-            Bargaining with the Future:<br /> <span className="block mt-1 text-[11pt] md:text-[12pt] font-normal">Understanding Agency in Human-AI Interaction</span>
-          </h2>
-          {/* Description */}
-          <p className="tracking-[-0.05pt] z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
-            Ongoing Master's Thesis in Interaction Design.
-          </p>
-        </div>
-      </motion.button>
+            setIsThesisTooltipVisible(true);
+            if (typeof window !== 'undefined') {
+              const tooltipOffset = 20;
+              const targetX = e.clientX + tooltipOffset;
+              const targetY = e.clientY;
+              thesisCursorX.set(targetX);
+              thesisCursorY.set(targetY);
+              thesisPrevPosRef.current = { x: e.clientX, y: e.clientY };
+              thesisTitleRotation.set(0);
+              thesisSubtitleRotation.set(0);
+            }
+          }}
+          onMouseLeave={() => {
+            if (thesisHideTimeoutRef.current) {
+              clearTimeout(thesisHideTimeoutRef.current);
+              thesisHideTimeoutRef.current = null;
+            }
+
+            setIsThesisTooltipVisible(false);
+            thesisTitleRotation.set(0);
+            thesisSubtitleRotation.set(0);
+          }}
+          onFocus={(e) => {
+            if (thesisHideTimeoutRef.current) {
+              clearTimeout(thesisHideTimeoutRef.current);
+              thesisHideTimeoutRef.current = null;
+            }
+
+            setIsThesisTooltipVisible(true);
+            if (typeof window !== 'undefined') {
+              // Position tooltip in center of screen for keyboard navigation, offset 150px to the left
+              const centerX = window.innerWidth / 2 - 150;
+              const centerY = window.innerHeight / 2 - 150;
+              thesisCursorX.set(centerX);
+              thesisCursorY.set(centerY);
+              thesisPrevPosRef.current = { x: centerX, y: centerY };
+              thesisTitleRotation.set(0);
+              thesisSubtitleRotation.set(0);
+            }
+            // Center focused element in viewport
+            e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+          }}
+          onBlur={() => {
+            if (thesisHideTimeoutRef.current) {
+              clearTimeout(thesisHideTimeoutRef.current);
+              thesisHideTimeoutRef.current = null;
+            }
+
+            setIsThesisTooltipVisible(false);
+            thesisTitleRotation.set(0);
+            thesisSubtitleRotation.set(0);
+          }}
+          onMouseMove={handleThesisMouseMove}
+          onClick={() => {
+            window.open('https://bargainingwiththefuture.com', '_blank');
+          }}
+          aria-label="Navigate to Bargaining with the Future"
+          aria-describedby="thesis-description-tooltip"
+        >
+          {/* Corner Arrow */}
+          <CornerArrow />
+
+          {/* Glass Edge Effect */}
+          <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)]
+            pointer-events-none mix-blend-overlay z-10"/>
+
+          {/* Video */}
+          <OptimizedVideo
+            videoId="currently-thesis"
+            src="/thesis/cover.mp4"
+            className="w-full h-full object-cover rounded-[25pt] brightness-100 z-20 scale-[101%]"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/poster/thesis2.jpg"
+            useOptimized={true}
+          />
+          {/* Lockup */}
+          <img
+            src="/thesis/lifeoslockup.svg"
+            alt="LifeOS lockup"
+            className="absolute hidden top-[48%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[125%] md:max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
+          />
+
+          {/* Bottom Gradient Blur - Mobile Only */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-[60%] pointer-events-none backdrop-blur-[100px] saturate-150 brightness-110 -mb-[0.5px] md:hidden"
+            style={{
+              maskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 0%, black 30%, transparent 100%)',
+              zIndex: 15
+            }}
+          />
+
+          {/* Text Container - Mobile Only */}
+          <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
+            {/* Title */}
+            <h2 className="tracking-[-0.05pt] font-medium z-30 w-[95%] md:w-[80%] text-xl leading-none mb-1.5 text-white text-left">
+              Bargaining with the Future:<br /> <span className="block mt-1 text-[11pt] md:text-[12pt] font-normal">Understanding Agency in Human-AI Interaction</span>
+            </h2>
+            {/* Description */}
+            <p className="tracking-[-0.05pt] z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
+              Ongoing Master's Thesis in Interaction Design.
+            </p>
+          </div>
+        </motion.button>
+      </div>
 
       {/* Subway */}
       <motion.button
