@@ -523,7 +523,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
 
       {/* Thesis Cover Video */}
       <motion.button
-        className="hidden md:flex col-span-full mb-0 cursor-pointer rounded-[25pt] relative overflow-hidden h-[600px] md:h-auto w-full focus-visible-standard group"
+        className="hidden md:flex col-span-full mb-0 cursor-pointer rounded-[25pt] relative overflow-hidden h-[600px] md:h-full w-full focus-visible-standard group"
         whileHover={{ scale: 0.99 }}
         transition={{
           type: "spring",
@@ -606,20 +606,20 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
         {/* Video */}
         <OptimizedVideo
           videoId="currently-thesis"
-          src="/thesis/lifeoscover2.mp4"
-          className="w-full h-full object-cover scale-120 rounded-[25pt] brightness-75 z-20"
+          src="/thesis/cover.mp4"
+          className="w-full h-full object-cover rounded-[25pt] brightness-100 z-20"
           autoPlay
           muted
           loop
           playsInline
-          poster="/poster/thesis.jpg"
-          useOptimized={useOptimizedVideos}
+          poster="/poster/thesis2.jpg"
+          useOptimized={true}
         />
         {/* Lockup */}
         <img
           src="/thesis/lifeoslockup.svg"
           alt="LifeOS lockup"
-          className="absolute top-[48%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[125%] md:max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
+          className="absolute hidden top-[48%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 scale-110 max-w-[125%] md:max-w-[60%] h-auto object-contain drop-shadow-[2px_5px_5px_rgba(0,0,0,0.2)]"
         />
 
         {/* Bottom Gradient Blur - Mobile Only */}

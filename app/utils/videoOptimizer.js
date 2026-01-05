@@ -153,7 +153,8 @@ export const getOptimizedVideoPath = (originalPath, options = {}) => {
       '/subway/cover_blank.mp4': 'subway-cover_blank',
       '/bloom/talk.mp4': 'bloom-talk',
       '/thesis/lifeoscover.mp4': 'thesis-lifeoscover',
-      '/thesis/lifeoscover2.mp4': 'thesis-lifeoscover2'
+      '/thesis/lifeoscover2.mp4': 'thesis-lifeoscover2',
+      '/thesis/cover.mp4': 'thesis-cover'
     };
 
     return pathMap[originalPath] || fileName.replace(/\.[^/.]+$/, '');
