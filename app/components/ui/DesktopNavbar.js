@@ -42,7 +42,7 @@ const DesktopNavbar = ({
     : (shouldExpandNav
       ? (isMobile ? '161px' : '545px')
       : (showArchiveButton
-        ? (isMobile ? '161px' : '168px')
+        ? (isMobile ? '161px' : '152px')
         : (isMobile ? '161px' : '85.5px')));
 
   return (
@@ -187,7 +187,7 @@ const DesktopNavbar = ({
                 damping: 15,
               }}
             >
-              {shouldExpandNav ? 'All' : 'Archive'}
+              {shouldExpandNav ? 'All' : 'Work'}
             </motion.button>
           )}
 

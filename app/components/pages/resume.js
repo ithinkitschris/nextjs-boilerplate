@@ -1801,7 +1801,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                 {/* Archive */}
                 <ResumeSectionHeader
                     header="2016 – 2025"
-                    title="Archive."
+                    title="Work."
                     headerClassName="md:ml-1" />
                 <Archive ref={archiveSectionRef} className='col-span-full' key='archive' toggleWork={toggleWork} />
 
