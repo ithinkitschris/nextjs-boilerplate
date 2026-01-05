@@ -1210,7 +1210,7 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                     >
                                         <motion.video
                                             ref={ghibliVideoRef}
-                                            src="/ghibli/KVanimated.mp4"
+                                            src="/Ghibli/KVanimated.mp4"
                                             className="h-full w-full object-cover transition-all"
                                             autoPlay
                                             muted
