@@ -10,9 +10,6 @@ import { animateInChild } from "../../constants/animations";
 import Currently from "./currently";
 import Archive from "./archive";
 import ResumeFooter from "../resume/ResumeFooter";
-import OptimizedVideo from "../ui/OptimizedVideo";
-
-const MotionOptimizedVideo = motion(OptimizedVideo);
 import { useExperienceState } from "../../hooks/useExperienceState";
 import ResumeSectionHeader from "../resume/ResumeSectionHeader";
 import { useHideNav } from "../../context/HideNavContext";
@@ -1166,9 +1163,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                             duration: 0.1
                                         }}
                                     >
-                                        <MotionOptimizedVideo
+                                        <motion.video
                                             ref={isvVideoRef}
-                                            videoId="resume-isv"
                                             src="/isv/montagenew.mp4"
                                             className="h-full w-full object-cover transition-all"
                                             autoPlay
@@ -1212,9 +1208,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                             duration: 0.1
                                         }}
                                     >
-                                        <MotionOptimizedVideo
+                                        <motion.video
                                             ref={ghibliVideoRef}
-                                            videoId="resume-ghibli"
                                             src="/ghibli/KVanimated.mp4"
                                             className="h-full w-full object-cover transition-all"
                                             autoPlay
@@ -1258,9 +1253,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                             duration: 0.1
                                         }}
                                     >
-                                        <MotionOptimizedVideo
+                                        <motion.video
                                             ref={nikeVideoRef}
-                                            videoId="resume-nike"
                                             src="/nike/cover.mp4"
                                             className="h-full w-full object-cover transition-all"
                                             autoPlay
@@ -1304,9 +1298,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                             duration: 0.1
                                         }}
                                     >
-                                        <MotionOptimizedVideo
+                                        <motion.video
                                             ref={samsungVideoRef}
-                                            videoId="resume-samsung"
                                             src="/samsung/montage.mp4"
                                             className="h-full w-full object-cover transition-all"
                                             autoPlay
@@ -1350,9 +1343,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                             duration: 0.1
                                         }}
                                     >
-                                        <MotionOptimizedVideo
+                                        <motion.video
                                             ref={subwayVideoRef}
-                                            videoId="resume-subway"
                                             src="/subway/cover_blank.mp4"
                                             className="h-full w-full object-cover transition-all contrast-125 brightness-90"
                                             autoPlay
@@ -1402,9 +1394,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                             duration: 0.1
                                         }}
                                     >
-                                        <MotionOptimizedVideo
+                                        <motion.video
                                             ref={stanfordVideoRef}
-                                            videoId="resume-stanford"
                                             src="/bloom/talk.mp4"
                                             className="h-full w-full object-cover transition-all"
                                             autoPlay
@@ -1448,9 +1439,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                             duration: 0.1
                                         }}
                                     >
-                                        <MotionOptimizedVideo
+                                        <motion.video
                                             ref={navigationVideoRef}
-                                            videoId="resume-navigation"
                                             src="/subway/cover_blank.mp4"
                                             className="h-full w-full object-cover transition-all contrast-125 brightness-90"
                                             autoPlay
@@ -1500,9 +1490,8 @@ const Resume = forwardRef(({ className = "", toggleWork }, ref) => {
                                             duration: 0.1
                                         }}
                                     >
-                                        <MotionOptimizedVideo
+                                        <motion.video
                                             ref={thesisVideoRef}
-                                            videoId="resume-thesis"
                                             src="/thesis/lifeoscover.mp4"
                                             className="h-full w-full object-cover transition-all brightness-50"
                                             autoPlay

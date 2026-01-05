@@ -76,6 +76,16 @@ export const getOptimizedVideoPath = (originalPath, options = {}) => {
   const fileName = pathParts[pathParts.length - 1];
   const directory = pathParts.slice(1, -1).join('/');
 
+  // Map directory names to their correct case in the optimized folder
+  // This is needed because macOS filesystem is case-insensitive but case-preserving
+  const directoryMap = {
+    'ghibli': 'Ghibli',
+    'Ghibli': 'Ghibli'
+  };
+
+  // Get the correctly cased directory name
+  const correctCaseDirectory = directoryMap[directory] || directory;
+
   // Map original filenames to the naming convention used by compression script
   // Use full path as key to avoid conflicts
   const getBaseName = (originalPath, fileName) => {
@@ -93,6 +103,7 @@ export const getOptimizedVideoPath = (originalPath, options = {}) => {
       // Best Work videos
       '/CCS/bestworkmontage.mp4': 'bestworkmontage',
       '/Ghibli/banner1.mp4': 'ghibli-banner1',
+      '/ghibli/banner1.mp4': 'ghibli-banner1', // Add lowercase variant
       '/Cocktail/cover2.mp4': 'cocktail-cover2',
       '/Hemsaker/cover.mp4': 'hemsaker-cover',
       '/lounge/montage.mp4': 'lounge-montage',
@@ -151,9 +162,9 @@ export const getOptimizedVideoPath = (originalPath, options = {}) => {
   // Get the base name used by compression script
   const baseName = getBaseName(originalPath, fileName);
 
-  // Create optimized path using the compression script naming convention
+  // Create optimized path using the compression script naming convention with correct case
   const optimizedFileName = `${baseName}_${resolution}.${format}`;
-  const optimizedPath = `/optimized/${directory}/${optimizedFileName}`;
+  const optimizedPath = `/optimized/${correctCaseDirectory}/${optimizedFileName}`;
 
   return optimizedPath;
 };
