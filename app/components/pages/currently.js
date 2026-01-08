@@ -608,7 +608,14 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
           <div className="absolute inset-0 rounded-[25pt] shadow-[0px_2px_30px_rgba(0,0,0,0.3),inset_0px_0px_25px_0px_rgba(255,255,255,1)]
             pointer-events-none mix-blend-overlay z-10"/>
 
-          {/* Video */}
+          {/* Static Cover Image (Video code commented below for future use) */}
+          <img
+            src="/poster/thesis2.jpg"
+            alt="Bargaining with the Future cover"
+            className="w-full h-full object-cover rounded-[25pt] brightness-100 z-20 scale-[101%]"
+          />
+
+          {/* Video - Commented out, can be restored by uncommenting below and removing the img above
           <OptimizedVideo
             videoId="currently-thesis"
             src="/thesis/cover.mp4"
@@ -620,6 +627,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
             poster="/poster/thesis2.jpg"
             useOptimized={true}
           />
+          */}
           {/* Lockup */}
           <img
             src="/thesis/lifeoslockup.svg"
