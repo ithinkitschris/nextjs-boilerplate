@@ -1,6 +1,6 @@
 // Video data extracted from page.js
 export const videoData = [
-  { src: '/thesis/lifeoscover2.mp4', title: 'Understanding Agency in Human-AI Interaction', subheader: 'Ongoing Master\'s Thesis in Interaction Design.', poster: '/poster/thesis.jpg', tags: ['lifeos', 'all', 'product'], link: 'https://bargainingwiththefuture.com' },
+  { src: '/thesis/lifeoscover2.mp4', title: 'Bargaining with the Future', subheader: 'Ongoing Master\'s Thesis in Interaction Design.', poster: '/poster/thesis.jpg', tags: ['lifeos', 'all', 'product'], link: 'https://bargainingwiththefuture.com' },
   { src: '/optimized/isv/covergrid.mp4', title: 'In-Flight Safety Video', subheader: 'Brand Film for Singapore Airlines', poster: '/poster/isv.jpg', tags: ['isv', 'all', 'creative'], link: '/isv' },
   { src: '/optimized/bloom/cover_grid.mp4', title: 'Bloom', subheader: 'Stanford Longevity Design Challenge – First Place.', poster: '/poster/bloom.jpg', tags: ['bloom', 'all', 'product'], link: 'https://www.figma.com/deck/zX29aRXmKQE1orzfgvwDqN/Bloom-Final-Presentation?node-id=152-476' },
   { src: '/optimized/subway/coverportrait_1080p.mp4', title: 'Enhanced Subway Navigation with Apple Maps', subheader: 'UI + UX Design', poster: '/poster/subwayportrait.jpg', tags: ['subway', 'all', 'product'], link: '/subway' },

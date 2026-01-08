@@ -142,7 +142,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
   const thesisTitleXpx = useTransform(thesisTitleX, (value) => `${value}px`);
   const thesisTitleYpx = useTransform(thesisTitleY, (value) => `${value}px`);
   const thesisSubtitleXpx = useTransform(thesisSubtitleX, (value) => `${value}px`);
-  const thesisSubtitleYpx = useTransform(thesisSubtitleY, (value) => `${value + 85}px`);
+  const thesisSubtitleYpx = useTransform(thesisSubtitleY, (value) => `${value + 110}px`);
 
   // Thesis rotations - Independent
   const thesisTitleRotation = useMotionValue(0);
@@ -649,11 +649,11 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
           <div className="absolute inset-0 flex flex-col items-start justify-end pb-5 pl-6 w-full mb-1 pointer-events-none z-30 md:hidden">
             {/* Title */}
             <h2 className="tracking-[-0.05pt] font-medium z-30 w-[95%] md:w-[80%] text-xl leading-none mb-1.5 text-white text-left">
-              Bargaining with the Future:<br /> <span className="block mt-1 text-[11pt] md:text-[12pt] font-normal">Understanding Agency in Human-AI Interaction</span>
+              Bargaining with the Future:<br /> <span className="block mt-1 text-[11pt] md:text-[12pt] font-normal">Designing for User Alignment in Agentic Operating Systems</span>
             </h2>
             {/* Description */}
             <p className="tracking-[-0.05pt] z-30 md:w-[90%] text-[9pt] leading-tight opacity-60 mix-blend-screen text-white text-left mt-1">
-              Ongoing Master's Thesis in Interaction Design.
+              An ongoing speculative design thesis that aims to visualize user alignment in the form of an Operating System centered around oversight.
             </p>
           </div>
         </motion.button>
@@ -1452,7 +1452,7 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
                 zIndex: 9999,
               }}
             >
-              Bargaining with the Future:<br /> <span className="block mt-1 text-[12pt]">Understanding Agency in Human-AI Interaction</span>
+              Bargaining with the Future:<br /> <span className="block mt-1 text-[12pt]">Designing for User Alignment in<br /> Agentic Operating Systems</span>
             </motion.div>
 
             {/* Second tooltip - Subtitle */}
@@ -1478,13 +1478,13 @@ const Currently = ({ className, toggleWork, useOptimizedVideos = true }) => {
                 zIndex: 9998,
               }}
             >
-              An ongoing speculative design thesis that investigates user agency within Human–AI interaction in a fully agentic future.
+              An ongoing speculative design thesis that aims to visualize user alignment in the form of an Operating System centered around oversight.
             </motion.div>
           </>
         )}
       </AnimatePresence>
 
-    </motion.div>
+    </motion.div >
 
   );
 };
